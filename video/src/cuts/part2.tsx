@@ -102,10 +102,10 @@ export const StoreFallback: React.FC<{ name: string; color: string }> = ({ name,
   <g>
     <rect width={1920} height={1080} fill="#E6EEF2" />
     <rect y={820} width={1920} height={260} fill={C.paperDeep} />
-    <At x={960} y={560} s={1.9}>
+    <At x={960} y={640} s={1.7}>
       <IconStore w={560} />
     </At>
-    <g transform="translate(960 180)">
+    <g transform="translate(960 150)">
       <rect x={-300} y={-70} width={600} height={140} rx={24} fill={color} />
       <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={96} fill={C.white} letterSpacing={6}>
         {name}

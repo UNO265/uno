@@ -63,8 +63,20 @@ const bgmLevel = envelope([
   ["C114", "C130", BGM],
   ["C131", "END", BGM * 1.3],
 ]);
-const bgm = (f: number) => bgmLevel(f) * duck(f);
-const ambience = envelope([["C001", "C005", 0.5]]);
+/** カットの途中で BGM を止める区間（冒頭の質問）: [開始, 終了] フレーム */
+const c001 = cuts[0];
+const hookQ = c001.from + sec(c001.segments[c001.segments.length - 1]?.end ?? 5.2);
+const MUTES: [number, number][] = [[hookQ, c001.from + c001.duration]];
+const mute = (f: number) => {
+  for (const [a, b] of MUTES) {
+    if (f >= a - 6 && f <= b + 6) return interpolate(f, [a - 6, a, b, b + 6], [1, 0, 0, 1], clamp);
+  }
+  return 1;
+};
+
+const bgm = (f: number) => bgmLevel(f) * duck(f) * mute(f);
+const ambienceLevel = envelope([["C001", "C005", 0.5]]);
+const ambience = (f: number) => ambienceLevel(f) * mute(f);
 
 export const Main: React.FC = () => (
   <AbsoluteFill style={{ background: C.paper }}>

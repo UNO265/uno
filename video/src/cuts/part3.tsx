@@ -41,7 +41,7 @@ import { Sfx, clamp, ease } from "../lib";
 import { BRAND, C, FONT } from "../theme";
 import { Fade, GaugeRows, Pill, PriceShelf, Slots, Svg, mk } from "./common";
 import { Basket } from "./opening";
-import { ClueBoard, Clipping, Evidence, MoneyFlow, Question, Red } from "../case";
+import { ClueBoard, Clipping, Evidence, MiniClue, MoneyFlow, Question, Red } from "../case";
 import { BrandPhotos, StoreFallback } from "./part2";
 
 /* ── 9. 心理 ───────────────── */
@@ -113,19 +113,25 @@ const C064 = mk(({ f, s }) => {
 });
 
 const C065 = mk(({ f, s }) => {
-  const dark = ease(f, s(2) - 6, s(2) + 6);
+  const phase = ease(f, s(2) - 6, s(2) + 6);
+  const settle = s(3) + 6;
+  const n = f < settle ? 1 + (Math.floor(Math.max(0, f - s(2)) / 3) % 12) : 0;
+  const pop = ease(f, settle, settle + 10, 0, 1, Easing.out(Easing.back(2)));
   return (
     <>
-      <AbsoluteFill style={{ opacity: 1 - dark }}>
+      <AbsoluteFill style={{ opacity: 1 - phase }}>
         <Headline lines={[{ t: "~1個 × 100円~", at: s(0), strikeAt: s(1) + 14, size: 110 }]} />
       </AbsoluteFill>
-      <Fade o={dark} color={C.night} />
-      <Question
-        kicker="CLUE 03"
-        lines={[
-          { t: <>一人に、<Red>何個</Red>買ってもらえるか。</>, at: s(2) + 4, size: 104 },
-        ]}
-      />
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 150, fontFamily: FONT, opacity: phase }}>
+        <div style={{ fontSize: 44, fontWeight: 700, color: C.inkSoft, letterSpacing: 8 }}>一人のお客さんに</div>
+        <div style={{ fontSize: 210, fontWeight: 900, color: C.ink, letterSpacing: 6, fontVariantNumeric: "tabular-nums" }}>
+          1人 × <span style={{ color: C.red, display: "inline-block", minWidth: 220, textAlign: "center", transform: `scale(${f >= settle ? 0.8 + 0.2 * pop : 1})` }}>{f >= settle ? "？" : n}</span>個
+        </div>
+      </AbsoluteFill>
+      {Array.from({ length: Math.max(0, Math.floor((settle - s(2)) / 3)) }, (_, k) => (
+        <Sfx key={k} at={s(2) + k * 3} name="type" volume={0.3} />
+      ))}
+      <Sfx at={settle} name="thud" volume={0.8} />
     </>
   );
 });
@@ -814,14 +820,22 @@ const C100 = mk(
   { bg: "dark" },
 );
 
-const C101 = mk(({ s }) => (
-  <Question
-    lines={[
-      { t: <>100円を<Red>やめたほうが</Red></>, at: s(1) - 2, size: 110 },
-      { t: "簡単ではないだろうか？", at: s(2) - 2, size: 96 },
-    ]}
-  />
-), { bg: "night", noSub: true });
+const C101 = mk(({ f, s }) => {
+  const x = interpolate(f, [s(0), s(1) + 16], [1900, 1340], { ...clamp, easing: Easing.out(Easing.cubic) });
+  return (
+    <>
+      <Svg>
+        <TagHero y={500} s={1.5} qAt={s(2)} />
+        <g transform={`translate(${x} 510) rotate(-12)`}>
+          <rect x={-110} y={-60} width={220} height={120} rx={18} fill="#F29CA3" />
+          <rect x={-110} y={-60} width={80} height={120} rx={18} fill={C.blue} />
+        </g>
+        <Sfx at={s(1) + 16} name="stamp" volume={0.5} />
+      </Svg>
+      <Headline lines={[{ t: "*100円*を、やめる？", at: s(1), size: 88 }]} top={70} />
+    </>
+  );
+});
 
 const C102 = mk(({ s }) => (
   <Svg>
@@ -962,21 +976,9 @@ const C110 = mk(({ f, s }) => (
   </Svg>
 ));
 
-const C111 = mk(({ f, s }) => (
+const C111 = mk(({ s }) => (
   <Svg>
-    <SplitBg at={s(1) - 10} />
-    <g opacity={ease(f, s(2), s(2) + 12)}>
-      <Ladder x0={260} dx={200} dy={130} y0={720} s={0.45} steps={[{ text: "100円", at: s(2) }, { text: "300円", at: s(2) + 8, color: BRAND.daiso }, { text: "500円", at: s(2) + 16, color: C.ink }]} />
-      <text x={480} y={260} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={BRAND.daiso}>
-        ルールを広げる
-      </text>
-    </g>
-    <g opacity={ease(f, s(2) + 10, s(2) + 22)}>
-      <TagHero x={1440} y={540} s={0.8} glowAt={s(2) + 14} />
-      <text x={1440} y={260} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={BRAND.seria}>
-        ルールを守る
-      </text>
-    </g>
+    <ClueBoard lit={[-100, -100, -100, -100, s(1)]} focus={4} title={{ at: -30 }} />
   </Svg>
 ));
 
@@ -1028,7 +1030,7 @@ const C115 = mk(({ s }) => (
 
 const C116 = mk(({ s }) => (
   <Svg>
-    <ClueBoard lit={[s(0), s(2), -100, -100]} title={{ at: 0 }} />
+    <ClueBoard lit={[s(0), s(2), -100, -100, -100]} title={{ at: 0 }} />
   </Svg>
 ));
 
@@ -1078,33 +1080,34 @@ const RING = [
   ["選ぶ", <IconPerson key="e" />, 0.75],
 ] as const;
 
-const PIECES = ["商品構成", "大量仕入れ", "取引条件", "物流", "価格戦略", "まとめ買い"];
 const C120 = mk(({ f, s }) => {
-  const times = [s(0), s(1), s(1) + 12, s(2), s(3), s(5)];
+  // 作る→商品構成 / 仕入れる→大量仕入れ・取引条件 / 運ぶ→(つながり) / 売る→価格戦略 / 選ぶ→まとめ買い
+  const times = [s(1), s(0), s(5), s(1) + 12, s(3)];
   const merge = ease(f, s(6) - 4, s(6) + 20, 0, 1, Easing.inOut(Easing.cubic));
   const final = ease(f, s(6) + 16, s(6) + 30);
+  const link = ease(f, s(2), s(2) + 20) * (1 - merge);
+  const pos = (i: number) => {
+    const a = -Math.PI / 2 + (i / 5) * Math.PI * 2;
+    return [960 + Math.cos(a) * 600 * (1 - merge), 440 + Math.sin(a) * 290 * (1 - merge)];
+  };
   return (
     <>
       <Svg>
+        <ellipse cx={960} cy={440} rx={600} ry={290} fill="none" stroke={C.red} strokeWidth={6} strokeDasharray="16 14" opacity={link} />
         <g opacity={1 - final * 0.85}>
           <TagHero y={440} s={0.9 + 0.5 * merge} glowAt={s(6) + 14} />
         </g>
-        {PIECES.map((label, i) => {
-          const a = -Math.PI / 2 + (i / PIECES.length) * Math.PI * 2;
-          const x = 960 + Math.cos(a) * 600 * (1 - merge);
-          const y = 440 + Math.sin(a) * 300 * (1 - merge);
+        {[0, 1, 2, 3, 4].map((i) => {
+          const [x, y] = pos(i);
           const p = ease(f, times[i], times[i] + 12, 0, 1, Easing.out(Easing.back(2)));
-          const w = [...label].length * 50 + 70;
           return (
-            <g key={label} transform={`translate(${x} ${y}) scale(${p * (1 - 0.7 * merge)})`} opacity={1 - merge}>
-              <rect x={-w / 2} y={-46} width={w} height={92} rx={46} fill={i === 5 ? C.red : C.ink} />
-              <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={46} fill={C.white}>
-                {label}
-              </text>
+            <g key={i} transform={`translate(${x} ${y}) scale(${p * (1 - 0.7 * merge)})`} opacity={1 - merge}>
+              <MiniClue i={i} />
               <Sfx at={times[i]} name={`tok${i % 6}`} volume={0.6} />
             </g>
           );
         })}
+        <Sfx at={s(2)} name="whoosh" volume={0.4} />
         <Sfx at={s(6) - 4} name="whoosh" volume={0.7} />
       </Svg>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 170, fontFamily: FONT, color: C.ink, textAlign: "center", opacity: final }}>
@@ -1232,17 +1235,20 @@ const C126 = mk(({ f, s }) => {
 });
 
 const C127 = mk(({ f, s }) => {
-  const chars = "100円";
-  const n = [0, 1, 2, 3].filter((k) => f >= s(2) + k * 7).length;
+  const show = f >= s(2) - 2;
+  const pop = ease(f, s(2) - 2, s(2) + 10, 0, 1, Easing.out(Easing.back(2)));
   return (
     <Svg>
-      <At x={960} y={460} s={2.4} r={-4}>
-        <PriceTag string={false} text={chars.slice(0, n)} />
+      <At x={960} y={460} s={2.4 * ease(f, 4, 18, 0.9, 1)} r={-4}>
+        <PriceTag string={false} text="" />
       </At>
-      {[0, 1, 2, 3].map((k) => (
-        <Sfx key={k} at={s(2) + k * 7} name="tok2" volume={0.7} />
-      ))}
-      <Sfx at={s(2) + 30} name="ding" volume={0.6} />
+      {show && (
+        <At x={960} y={460} s={2.4 * (0.85 + 0.15 * pop)} r={-4} o={pop}>
+          <PriceTag string={false} />
+        </At>
+      )}
+      <Sfx at={s(2) - 2} name="stamp" volume={0.6} />
+      <Sfx at={s(2) + 8} name="ding" volume={0.6} />
     </Svg>
   );
 });

@@ -185,11 +185,11 @@ export const CaseTitle: React.FC<{ no: string; q1: React.ReactNode; q2: React.Re
 };
 
 /* ── CLUE ボード（手がかりのファイル） ───────────────── */
-export const CLUES = ["大量仕入れ", "商品構成", "まとめ買い", "取引条件"];
+export const CLUES = ["大量仕入れ", "商品構成", "まとめ買い", "取引条件", "価格戦略"];
 export const ClueBoard: React.FC<{ lit: (number | undefined)[]; focus?: number; y?: number; title?: { at: number } }> = ({ lit, focus, y = 480, title }) => {
   const f = useCurrentFrame();
-  const W = 380;
-  const gap = 36;
+  const W = 316;
+  const gap = 22;
   const x0 = 960 - (CLUES.length * W + (CLUES.length - 1) * gap) / 2;
   return (
     <g>
@@ -208,13 +208,13 @@ export const ClueBoard: React.FC<{ lit: (number | undefined)[]; focus?: number; 
         const x = x0 + i * (W + gap) + W / 2;
         return (
           <g key={i} transform={`translate(${x} ${y}) scale(${s})`} opacity={dim}>
-            <path d={`M ${-W / 2} -150 h 150 l 24 -34 h 110 l 24 34 h ${W - 308} v 300 h ${-W} Z`} fill={on ? "#E9D8B4" : "rgba(233,216,180,0.45)"} stroke={on ? C.ink : C.line} strokeWidth={5} strokeDasharray={on ? "0" : "14 10"} />
-            <text x={-W / 2 + 212} y={-160} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={24} fill={on ? C.ink : C.line} letterSpacing={2}>
+            <path d={`M ${-W / 2} -150 h 100 l 24 -34 h 110 l 24 34 h ${W - 258} v 300 h ${-W} Z`} fill={on ? "#E9D8B4" : "rgba(233,216,180,0.45)"} stroke={on ? C.ink : C.line} strokeWidth={5} strokeDasharray={on ? "0" : "14 10"} />
+            <text x={-W / 2 + 179} y={-160} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={24} fill={on ? C.ink : C.line} letterSpacing={2}>
               CLUE 0{i + 1}
             </text>
             {on ? (
               <g transform={`scale(${p})`}>
-                <text y={10} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={[...l].length > 4 ? 52 : 60} fill={C.ink}>
+                <text y={10} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={[...l].length > 4 ? 50 : 58} fill={C.ink}>
                   {l}
                 </text>
                 <rect x={-120} y={70} width={240} height={10} rx={5} fill={C.red} />
@@ -231,6 +231,20 @@ export const ClueBoard: React.FC<{ lit: (number | undefined)[]; focus?: number; 
     </g>
   );
 };
+
+/** 最後の回収用の小さな CLUE カード */
+export const MiniClue: React.FC<{ i: number }> = ({ i }) => (
+  <g>
+    <path d="M -130 -80 h 80 l 16 -24 h 80 l 16 24 h 68 v 160 h -260 Z" fill="#E9D8B4" stroke={C.ink} strokeWidth={4} />
+    <text x={-10} y={-88} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={18} fill={C.ink} letterSpacing={2}>
+      CLUE 0{i + 1}
+    </text>
+    <text y={0} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={40} fill={C.ink}>
+      {CLUES[i]}
+    </text>
+    <rect x={-80} y={40} width={160} height={8} rx={4} fill={C.red} />
+  </g>
+);
 
 /* ── MONEY FLOW（商品は右へ、お金は左へ） ───────────────── */
 export type FlowStop = { label: string; icon: React.ReactNode; at: number; color?: string };
