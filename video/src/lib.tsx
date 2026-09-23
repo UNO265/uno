@@ -93,7 +93,7 @@ export const Paper: React.FC<{ color?: string }> = ({ color = C.paper }) => (
 );
 
 /** 長い字幕は句読点の近くで 2 行に分ける（スマホで読みやすく） */
-const splitSub = (t: string): string[] => {
+export const splitSub = (t: string): string[] => {
   const chars = [...t];
   if (chars.length <= 20) return [t];
   const mid = chars.length / 2;

@@ -1,0 +1,80 @@
+[
+ {
+  "file": "case002/music/c2_01_hook.wav",
+  "from": 0,
+  "to": 1088,
+  "mood": "hook"
+ },
+ {
+  "file": "case002/music/c2_02_trace.wav",
+  "from": 1088,
+  "to": 3568,
+  "mood": "trace"
+ },
+ {
+  "file": "case002/music/c2_03_index.wav",
+  "from": 3733,
+  "to": 6146,
+  "mood": "pressure"
+ },
+ {
+  "file": "case002/music/c2_04_wall.wav",
+  "from": 6146,
+  "to": 8673,
+  "mood": "wall"
+ },
+ {
+  "file": "case002/music/c2_05_menu.wav",
+  "from": 8673,
+  "to": 10153,
+  "mood": "menu"
+ },
+ {
+  "file": "case002/music/c2_06_paradox.wav",
+  "from": 10153,
+  "to": 12763,
+  "mood": "paradox"
+ },
+ {
+  "file": "case002/music/c2_07_cause.wav",
+  "from": 12895,
+  "to": 14060,
+  "mood": "pressure"
+ },
+ {
+  "file": "case002/music/c2_08_craft.wav",
+  "from": 14060,
+  "to": 15463,
+  "mood": "craft"
+ },
+ {
+  "file": "case002/music/c2_09_system.wav",
+  "from": 15463,
+  "to": 17502,
+  "mood": "system"
+ },
+ {
+  "file": "case002/music/c2_10_tiers.wav",
+  "from": 17502,
+  "to": 19218,
+  "mood": "tiers"
+ },
+ {
+  "file": "case002/music/c2_11_answer.wav",
+  "from": 19218,
+  "to": 22429,
+  "mood": "answer"
+ },
+ {
+  "file": "case002/music/c2_12_outro.wav",
+  "from": 22571,
+  "to": 23386,
+  "mood": "outro"
+ },
+ {
+  "file": "case002/music/c2_13_end.wav",
+  "from": 23386,
+  "to": 23872,
+  "mood": "outro"
+ }
+]

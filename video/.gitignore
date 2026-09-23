@@ -5,3 +5,5 @@ public/voice/
 public/sfx/
 public/timeline.json
 .voicevox/
+public/case002/voice/
+public/case002/music/*.wav

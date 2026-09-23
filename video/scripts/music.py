@@ -4,7 +4,9 @@
 - 章ごとに調・テンポ・楽器を変え、8 小節ごとに編成を入れ替えて単調なループを避ける。
 - 長さは public/timeline.json の章の長さに合わせる（ナレーション確定後に実行する）。
 - public/music/cues.json に各キューの開始フレームと長さを書き出し、Main.tsx が読む。
+- `--case case002` で CASE #002 用（public/case002/）を作る。曲想・進行はケースごとに別に用意し、同じループを使い回さない。
 """
+import argparse
 import json
 import subprocess
 import tempfile
@@ -15,7 +17,6 @@ import mido
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "public" / "music"
 SF2 = "/usr/share/sounds/sf2/FluidR3_GM.sf2"
 SR = 48000
 FPS = 30
@@ -64,6 +65,36 @@ SECTIONS = [
     ("s12_answer", "resolve", "C114", ("C120", 5)),
     ("s13_outro", "outro", ("C120", 6), "C130"),
     ("s14_end", "outro", "C131", "END"),
+]
+
+# CASE #002: 題材（湯気・厨房・数字の逆説）に合わせた別の曲想。BGM は背景に徹する（v2 24）
+MOODS_002 = {
+    "hook": dict(prog=["Dm9", "Bbmaj7", "Gm9", "A7sus4"], bpm=72, beats=4, lead=EPIANO, pulse="sparse", pizz=False, pad=WARMPAD, key=50),
+    "trace": dict(prog=["Fmaj7", "Am7", "Dm7", "C6"], bpm=86, beats=4, lead=MARIMBA, pulse="arp8", pizz=True, pad=STRINGS, key=53),
+    "pressure": dict(prog=["Em", "Cmaj7", "Am7", "B7sus4"], bpm=70, beats=4, lead=PIANO, pulse="sparse", pizz=False, pad=SLOWSTR, key=52),
+    "wall": dict(prog=["Fm", "Db", "Bbm7", "C7sus4"], bpm=66, beats=4, lead=PIANO, pulse="sparse", pizz=False, pad=SLOWSTR, key=53),
+    "menu": dict(prog=["Gmaj7", "Em7", "Am7", "D6"], bpm=88, beats=4, lead=VIBES, pulse="broken", pizz=True, pad=WARMPAD, key=55),
+    "paradox": dict(prog=["Gm7", "Ebmaj7", "Bb", "F6"], bpm=84, beats=4, lead=PIANO, pulse="octave8", pizz=True, pad=STRINGS, key=55),
+    "craft": dict(prog=["Cmaj7", "Em7", "Fmaj7", "G6"], bpm=78, beats=3, lead=NYLON, pulse="waltz", pizz=False, pad=None, key=48),
+    "system": dict(prog=["Am7", "Fmaj7", "Cmaj7", "Gsus4"], bpm=92, beats=4, lead=MARIMBA, pulse="call", pizz=True, pad=WARMPAD, key=57),
+    "tiers": dict(prog=["Bm7", "Gmaj7", "Em7", "F#7sus4"], bpm=84, beats=4, lead=VIBES, pulse="arp8", pizz=False, pad=STRINGS, key=47),
+    "answer": dict(prog=["Ebmaj7", "Cm7", "Abmaj7", "Bb6"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=51),
+    "outro": dict(prog=["Gmaj7", "Em7", "Cmaj7", "D6"], bpm=76, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=55, bell=CELESTA),
+}
+SECTIONS_002 = [
+    ("c2_01_hook", "hook", "S01", "S06"),
+    ("c2_02_trace", "trace", "S06", "S13"),
+    ("c2_03_index", "pressure", "S14", "S21"),
+    ("c2_04_wall", "wall", "S21", "S26"),
+    ("c2_05_menu", "menu", "S26", "S29"),
+    ("c2_06_paradox", "paradox", "S29", "S35"),
+    ("c2_07_cause", "pressure", "S36", "S39"),
+    ("c2_08_craft", "craft", "S39", "S42"),
+    ("c2_09_system", "system", "S42", "S48"),
+    ("c2_10_tiers", "tiers", "S48", "S53"),
+    ("c2_11_answer", "answer", "S53", ("S59", 0)),
+    ("c2_12_outro", "outro", ("S59", 1), "S62"),
+    ("c2_13_end", "outro", "S62", "END"),
 ]
 
 
@@ -189,7 +220,14 @@ def render(song, programs, vols, seconds) -> np.ndarray:
 
 
 def main():
-    t = json.loads((ROOT / "public" / "timeline.json").read_text(encoding="utf-8"))
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--case", help="例: case002（省略時は CASE #001）")
+    args = ap.parse_args()
+    base = ROOT / "public" / args.case if args.case else ROOT / "public"
+    out = base / "music"
+    prefix = f"{args.case}/music" if args.case else "music"
+    moods, sections, seed0 = (MOODS_002, SECTIONS_002, 200) if args.case == "case002" else (MOODS, SECTIONS, 100)
+    t = json.loads((base / "timeline.json").read_text(encoding="utf-8"))
     cuts = {c["id"]: c for c in t["cuts"]}
 
     def frame_of(spec, start=False):
@@ -201,23 +239,23 @@ def main():
             return c["from"] + round(c["segments"][seg]["end"] * FPS)
         return cuts[spec]["from"]
 
-    OUT.mkdir(parents=True, exist_ok=True)
-    for old in OUT.glob("*.wav"):
+    out.mkdir(parents=True, exist_ok=True)
+    for old in out.glob("*.wav"):
         old.unlink()
     cues = []
-    for i, (name, mood, a, b) in enumerate(SECTIONS):
+    for i, (name, mood, a, b) in enumerate(sections):
         s, e = frame_of(a), frame_of(b)
         seconds = (e - s) / FPS + 2.5
-        song, programs, vols = compose(MOODS[mood], seconds, seed=100 + i)
+        song, programs, vols = compose(moods[mood], seconds, seed=seed0 + i)
         x = render(song, programs, vols, seconds)
-        with wave.open(str(OUT / f"{name}.wav"), "wb") as w:
+        with wave.open(str(out / f"{name}.wav"), "wb") as w:
             w.setnchannels(2)
             w.setsampwidth(2)
             w.setframerate(SR)
             w.writeframes((x * 32767).astype(np.int16).tobytes())
-        cues.append({"file": f"music/{name}.wav", "from": s, "to": e, "mood": mood})
+        cues.append({"file": f"{prefix}/{name}.wav", "from": s, "to": e, "mood": mood})
         print(f"{name:14s} {mood:12s} {(e - s) / FPS:6.1f}s")
-    (OUT / "cues.json").write_text(json.dumps(cues, indent=1), encoding="utf-8")
+    (out / "cues.json").write_text(json.dumps(cues, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":

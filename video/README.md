@@ -14,6 +14,19 @@ npm run studio     # 브라우저에서 미리보기
 npm run render     # out/final.mp4 (음량 -14 LUFS로 마스터링)
 ```
 
+### CASE #002
+
+```bash
+python3 scripts/narration.py --case case002   # cases/case002/cuts.json → public/case002/voice, timeline.json
+python3 scripts/music.py --case case002       # public/case002/music/
+python3 scripts/evidence.py                   # 실사 슬롯 목록(public/case002/stock/) 갱신
+npx remotion render Case002 out/case002_render.mp4 --concurrency=4
+scripts/master.sh out/case002_render.mp4 out/case002_final.mp4
+CASE=case002 AT=0.35,0.85 node scripts/contact.mjs   # 장면 확인용 콘택트 시트
+```
+
+화면 코드는 `src/case002/`(CASE #001 부품은 쓰지 않고 v2 기준으로 새로 만듦), 장면 설계는 [CASE #002 장면 설계](../docs/case002-scene-design.md)를 참고하세요.
+
 클라우드 환경처럼 Chromium을 따로 지정해야 하면 `REMOTION_CHROME=<경로>`를 설정하세요.
 
 ## 구성

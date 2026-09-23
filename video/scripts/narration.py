@@ -1,4 +1,7 @@
-"""data/cuts.json からナレーションを合成し、public/timeline.json を書き出す。
+"""カット表からナレーションを合成し、timeline.json を書き出す。
+
+  python3 scripts/narration.py                 # CASE #001: data/cuts.json → public/
+  python3 scripts/narration.py --case case002  # cases/case002/cuts.json → public/case002/
 
 音声: VOICEVOX（雀松朱司 / style 52）。事前に scripts/setup_voicevox.sh で
 エンジン一式（core・ONNX Runtime・辞書・音声モデル）を .voicevox/ に取得しておく。
@@ -7,6 +10,7 @@
 テンポと間を変える（質問はゆっくり＋余白、数字・結論はゆっくり）。
 セグメントの開始・終了時刻は字幕とアニメーションのタイミングに使う。
 """
+import argparse
 import json
 import subprocess
 import tempfile
@@ -37,11 +41,17 @@ READINGS = {
     "矢野博丈": "やのひろたけ",
     "粗利益率": "あらりえきりつ",
     "脱・100円": "脱100円",
+    "KANENAZO": "カネナゾ",
+    "上がった分": "上がったぶん",
+    "日本のラーメン": "にほんのラーメン",
     "――": "、",
 }
 
 # 結論部はゆっくり、重みを持たせる
-SLOW_CUTS = {"C118", "C119", "C120", "C127", "C128", "C129", "C130", "C131"}
+SLOW_CUTS = {
+    "C118", "C119", "C120", "C127", "C128", "C129", "C130", "C131",  # CASE #001
+    "S55", "S59", "S61", "S62", "S63", "S64",  # CASE #002
+}
 
 
 def prosody(cut_id: str, seg: str) -> dict:
@@ -125,8 +135,17 @@ def write_wav(path: Path, data: np.ndarray) -> None:
 
 
 def main() -> None:
-    cuts = json.loads((ROOT / "data" / "cuts.json").read_text(encoding="utf-8"))
-    voice_dir = ROOT / "public" / "voice"
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--case", help="例: case002（省略時は CASE #001）")
+    args = ap.parse_args()
+    if args.case:
+        src = ROOT.parent / "cases" / args.case / "cuts.json"
+        out_dir = ROOT / "public" / args.case
+        prefix = f"{args.case}/"
+    else:
+        src, out_dir, prefix = ROOT / "data" / "cuts.json", ROOT / "public", ""
+    cuts = json.loads(src.read_text(encoding="utf-8"))
+    voice_dir = out_dir / "voice"
     voice_dir.mkdir(parents=True, exist_ok=True)
     voice = Voice()
 
@@ -138,6 +157,8 @@ def main() -> None:
         pauses = {int(k): v for k, v in cut.get("pauses", {}).items()}
         segs = [s for s in cut["text"].split("/") if s]
         entry = {"id": cut["id"], "segments": []}
+        if "clue" in cut:
+            entry["clue"] = cut["clue"]
 
         if segs:
             parts, t = [], 0.0
@@ -155,7 +176,7 @@ def main() -> None:
                 t += d
             out = voice_dir / f"{cut['id']}.wav"
             write_wav(out, level(np.concatenate(parts)))
-            entry["voice"] = f"voice/{cut['id']}.wav"
+            entry["voice"] = f"{prefix}voice/{cut['id']}.wav"
             entry["voiceStart"] = lead
             seconds = lead + t + tail
         else:
@@ -168,7 +189,7 @@ def main() -> None:
         timeline.append(entry)
         print(f"{cut['id']}  {seconds:5.1f}s", flush=True)
 
-    (ROOT / "public" / "timeline.json").write_text(
+    (out_dir / "timeline.json").write_text(
         json.dumps({"fps": FPS, "totalFrames": frame, "cuts": timeline}, ensure_ascii=False, indent=1),
         encoding="utf-8",
     )

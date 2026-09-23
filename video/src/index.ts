@@ -2,15 +2,30 @@ import React from "react";
 import { Composition, registerRoot } from "remotion";
 import timeline from "../public/timeline.json";
 import { Main } from "./Main";
+import { Main002, total002 } from "./case002/Main";
 
 const Root: React.FC = () =>
-  React.createElement(Composition, {
-    id: "Kanenazo",
-    component: Main,
-    durationInFrames: timeline.totalFrames,
-    fps: timeline.fps,
-    width: 1920,
-    height: 1080,
-  });
+  React.createElement(
+    React.Fragment,
+    null,
+    // CASE #001「100円ショップは、なぜ100円で儲かるのか」
+    React.createElement(Composition, {
+      id: "Kanenazo",
+      component: Main,
+      durationInFrames: timeline.totalFrames,
+      fps: timeline.fps,
+      width: 1920,
+      height: 1080,
+    }),
+    // CASE #002「ラーメン一杯1000円。店には、いくら残る？」
+    React.createElement(Composition, {
+      id: "Case002",
+      component: Main002,
+      durationInFrames: total002,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
+  );
 
 registerRoot(Root);
