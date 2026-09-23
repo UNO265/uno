@@ -439,3 +439,81 @@ export const Shelves: React.FC<{ o?: number }> = ({ o = 1 }) => {
     </g>
   );
 };
+
+/* ── 追加部品 ───────────────────────── */
+export const Gear: React.FC<{ r?: number; teeth?: number; color?: string; rot?: number }> = ({ r = 100, teeth = 10, color = C.inkSoft, rot = 0 }) => {
+  const pts: string[] = [];
+  const n = teeth * 4;
+  for (let i = 0; i < n; i++) {
+    const a = (i / n) * Math.PI * 2;
+    const rr = i % 4 < 2 ? r : r * 0.8;
+    pts.push(`${Math.cos(a) * rr},${Math.sin(a) * rr}`);
+  }
+  return (
+    <g transform={`rotate(${rot})`}>
+      <polygon points={pts.join(" ")} fill={color} strokeLinejoin="round" />
+      <circle r={r * 0.32} fill={C.paper} />
+      <circle r={r * 0.12} fill={color} />
+    </g>
+  );
+};
+
+export const IconHQ: React.FC = () => (
+  <g>
+    <rect x={-70} y={-130} width={140} height={220} fill={C.inkSoft} />
+    {Array.from({ length: 12 }, (_, i) => (
+      <rect key={i} x={-50 + (i % 3) * 38} y={-110 + Math.floor(i / 3) * 44} width={24} height={26} fill={C.orange} opacity={0.85} />
+    ))}
+    <rect x={-20} y={50} width={40} height={40} fill={C.ink} />
+  </g>
+);
+
+export const IconPerson: React.FC<{ color?: string }> = ({ color = C.red }) => (
+  <g>
+    <circle cy={-70} r={36} fill={C.inkSoft} />
+    <rect x={-48} y={-28} width={96} height={120} rx={44} fill={color} />
+  </g>
+);
+
+export const IconDoc: React.FC<{ w?: number; h?: number; lines?: number; hl?: number }> = ({ w = 360, h = 460, lines = 8, hl = -1 }) => (
+  <g>
+    <rect x={-w / 2 + 10} y={-h / 2 + 12} width={w} height={h} rx={14} fill="rgba(0,0,0,0.1)" />
+    <rect x={-w / 2} y={-h / 2} width={w} height={h} rx={14} fill={C.white} stroke={C.ink} strokeWidth={5} />
+    {Array.from({ length: lines }, (_, i) => (
+      <rect
+        key={i}
+        x={-w / 2 + 36}
+        y={-h / 2 + 50 + i * ((h - 90) / lines)}
+        width={(w - 72) * (i % 3 === 2 ? 0.6 : 1)}
+        height={14}
+        rx={7}
+        fill={i === hl ? C.orange : C.line}
+      />
+    ))}
+  </g>
+);
+
+export const IconBox3D: React.FC<{ color?: string }> = ({ color = "#C9A06A" }) => (
+  <g>
+    <path d="M -50 -20 L 0 -45 L 50 -20 L 0 5 Z" fill="#DDB982" />
+    <path d="M -50 -20 L 0 5 L 0 60 L -50 35 Z" fill={color} />
+    <path d="M 50 -20 L 0 5 L 0 60 L 50 35 Z" fill="#A9814C" />
+  </g>
+);
+
+export const IconSticker: React.FC = () => (
+  <g>
+    <rect x={-70} y={-55} width={140} height={110} rx={12} fill={C.white} stroke={C.line} strokeWidth={4} />
+    <circle cx={-30} cy={-10} r={20} fill="#F29CA3" />
+    <path d="M 10 -30 l 10 20 l 22 3 l -16 15 l 4 22 l -20 -11 l -20 11 l 4 -22 l -16 -15 l 22 -3 Z" fill="#F6CF4A" />
+    <circle cx={40} cy={30} r={12} fill={C.blue} />
+  </g>
+);
+
+export const IconLamp: React.FC = () => (
+  <g>
+    <path d="M -70 20 L -40 -60 H 40 L 70 20 Z" fill="#F6CF4A" />
+    <rect x={-8} y={20} width={16} height={100} fill={C.inkSoft} />
+    <rect x={-50} y={115} width={100} height={16} rx={8} fill={C.ink} />
+  </g>
+);

@@ -99,7 +99,7 @@ const Item: React.FC<{ i: number; land: number; kind?: number }> = ({ i, land, k
   );
 };
 
-const Basket: React.FC<{ x?: number; y?: number; s?: number; lands: number[]; kinds?: number[]; tags?: boolean }> = ({
+export const Basket: React.FC<{ x?: number; y?: number; s?: number; lands: number[]; kinds?: number[]; tags?: boolean }> = ({
   x = 960,
   y = 760,
   s = 1,

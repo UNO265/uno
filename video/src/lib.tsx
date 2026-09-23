@@ -44,9 +44,12 @@ export const usePop = (delay: number, damping = 11) => {
   return spring({ frame: f - delay, fps, config: { damping, mass: 0.6, stiffness: 140 } });
 };
 
+/** 効果音全体のゲイン。ナレーションより前に出ないよう控えめにする */
+export const SFX_GAIN = 0.4;
+
 export const Sfx: React.FC<{ at: number; name: string; volume?: number }> = ({ at, name, volume = 1 }) => (
   <Sequence from={Math.max(0, Math.round(at))} layout="none">
-    <Audio src={staticFile(`sfx/${name}.wav`)} volume={volume} />
+    <Audio src={staticFile(`sfx/${name}.wav`)} volume={volume * SFX_GAIN} />
   </Sequence>
 );
 
@@ -66,8 +69,8 @@ export const Paper: React.FC<{ color?: string }> = ({ color = C.paper }) => (
   </AbsoluteFill>
 );
 
-/** ナレーションに同期した字幕 */
-export const Subtitle: React.FC<{ cut: CutData; dark?: boolean }> = ({ cut, dark }) => {
+/** ナレーションに同期した字幕（濃紺の帯 + 白文字） */
+export const Subtitle: React.FC<{ cut: CutData; dark?: boolean }> = ({ cut }) => {
   const f = useCurrentFrame();
   const segs = cut.segments;
   const idx = segs.findIndex((s, i) => {
@@ -77,18 +80,25 @@ export const Subtitle: React.FC<{ cut: CutData; dark?: boolean }> = ({ cut, dark
   if (idx < 0) return null;
   const s = segs[idx];
   const opacity = interpolate(f, [sec(s.start) - 3, sec(s.start) + 2], [0, 1], clamp);
-  const glow = dark ? "rgba(10,14,24,0.9)" : "rgba(244,238,227,0.95)";
+  const len = [...s.text].length;
+  const fontSize = Math.min(62, Math.floor(1560 / Math.max(1, len)));
   return (
-    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 70 }}>
+    <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 54 }}>
       <div
         style={{
           fontFamily: FONT,
-          fontWeight: 700,
-          fontSize: 50,
-          letterSpacing: 2,
-          color: dark ? "#F4EEE3" : C.ink,
+          fontWeight: 800,
+          fontSize,
+          lineHeight: 1.25,
+          letterSpacing: 3,
+          color: "#FFFFFF",
+          background: "rgba(22, 30, 48, 0.86)",
+          padding: "14px 40px 16px",
+          borderRadius: 16,
+          boxShadow: "0 8px 24px rgba(0,0,0,0.25)",
           opacity,
-          textShadow: `0 0 8px ${glow}, 0 0 16px ${glow}, 0 0 3px ${glow}`,
+          whiteSpace: "nowrap",
+          textShadow: "0 2px 4px rgba(0,0,0,0.5)",
         }}
       >
         {s.text}
@@ -98,16 +108,17 @@ export const Subtitle: React.FC<{ cut: CutData; dark?: boolean }> = ({ cut, dark
 };
 
 /** カット共通のラッパー: 背景・字幕・ナレーション音声 */
-export const CutFrame: React.FC<{ cut: CutData; dark?: boolean; bg?: React.ReactNode; children: React.ReactNode }> = ({
+export const CutFrame: React.FC<{ cut: CutData; dark?: boolean; bg?: React.ReactNode; children: React.ReactNode; noSub?: boolean }> = ({
   cut,
   dark,
   bg,
   children,
+  noSub,
 }) => (
   <AbsoluteFill style={{ fontFamily: FONT, overflow: "hidden" }}>
     {bg ?? <Paper />}
     {children}
-    <Subtitle cut={cut} dark={dark} />
+    {!noSub && <Subtitle cut={cut} dark={dark} />}
     {cut.voice ? (
       <Sequence from={sec(cut.voiceStart ?? 0)} layout="none">
         <Audio src={staticFile(cut.voice)} volume={1} />

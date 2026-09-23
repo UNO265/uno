@@ -25,12 +25,28 @@ SPEED = 0.95      # 落ち着いた語り口
 LEAD = 0.4        # カット頭から声が始まるまで
 TAIL = 0.6        # 声が終わってから次のカットまで
 GAP = 0.25        # セグメント間の間
+PEAK = 0.93       # ナレーションのピーク（効果音より前に出す）
+
+# 読み上げ専用の表記ゆれ補正（字幕には影響しない）
+READINGS = {
+    "DAISO": "ダイソー",
+    "Seria": "セリア",
+    "Standard Products": "スタンダードプロダクツ",
+    "THREEPPY": "スリーピー",
+    "矢野博丈": "やのひろたけ",
+    "大創産業": "だいそうさんぎょう",
+    "粗利益率": "あらりえきりつ",
+    "脱・100円": "脱100円",
+    "――": "、",
+}
 
 
 def synth(text: str) -> np.ndarray:
     with tempfile.TemporaryDirectory() as d:
         src, out = Path(d) / "t.txt", Path(d) / "t.wav"
-        src.write_text(text.replace("――", "、"), encoding="utf-8")
+        for k, v in READINGS.items():
+            text = text.replace(k, v)
+        src.write_text(text, encoding="utf-8")
         subprocess.run(
             ["open_jtalk", "-x", DIC, "-m", str(VOICE), "-r", str(SPEED),
              "-s", str(SR), "-ow", str(out), str(src)],
@@ -55,6 +71,14 @@ def trim(x: np.ndarray, thresh: int = 300) -> np.ndarray:
     a = max(0, idx[0] - int(0.03 * SR))
     b = min(len(x), idx[-1] + int(0.08 * SR))
     return x[a:b]
+
+
+def loud(x: np.ndarray) -> np.ndarray:
+    """ピーク正規化 + 軽いコンプレッションで声を前に出す"""
+    y = x.astype(np.float64) / 32768
+    y = y / (np.max(np.abs(y)) or 1)
+    y = np.tanh(y * 1.8) / np.tanh(1.8)
+    return (y * PEAK * 32767).astype(np.int16)
 
 
 def write_wav(path: Path, data: np.ndarray) -> None:
@@ -88,7 +112,7 @@ def main() -> None:
                 entry["segments"].append({"text": s, "start": lead + t, "end": lead + t + d})
                 parts += [audio, np.zeros(int(gap * SR), dtype=np.int16)]
                 t += d + gap
-            write_wav(out, np.concatenate(parts[:-1]))
+            write_wav(out, loud(np.concatenate(parts[:-1])))
         elif segs:
             # 差し替え音声: セグメント時刻は文字数で按分する
             total = len(read_wav(out)) / SR

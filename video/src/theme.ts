@@ -18,3 +18,11 @@ export const FONT = "'Noto Sans CJK JP', 'Noto Sans JP', sans-serif";
 
 export const W = 1920;
 export const H = 1080;
+
+/** ブランドはロゴを使わず抽象色 + テキストで表す */
+export const BRAND = {
+  daiso: "#D9477A",
+  seria: "#2F9C8C",
+  std: "#6E7F99",
+  threeppy: "#E9A23B",
+};
