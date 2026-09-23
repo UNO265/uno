@@ -17,6 +17,7 @@ import {
 } from "../art";
 import { CutFrame, CutProps, Paper, Sfx, clamp, ease, segEnd, segStart, usePop } from "../lib";
 import { C, FONT } from "../theme";
+import { CaseTitle } from "../case";
 import { Scene } from "./opening";
 
 const ROAD_Y = 720;
@@ -276,7 +277,7 @@ export const C010: React.FC<CutProps> = ({ cut }) => {
   const qBounce = shown >= chars ? 1 + 0.25 * Math.exp(-(f - (t0 + span * 0.95)) / 6) * Math.abs(Math.cos((f - t0 - span) / 3)) : 1;
   const typeTimes = Array.from({ length: Math.ceil(chars / 2) }, (_, k) => t0 + (span * 0.95 * (k * 2)) / chars);
   return (
-    <CutFrame cut={cut} bg={<Paper />}>
+    <CutFrame cut={cut} bg={<Paper />} noSub>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", fontFamily: FONT, color: C.ink }}>
         <div style={{ fontSize: 96, fontWeight: 700, height: 150, letterSpacing: 4 }}>
           {a}
@@ -295,14 +296,10 @@ export const C010: React.FC<CutProps> = ({ cut }) => {
   );
 };
 
-/* C011 タイトルカード */
+/* C011 CASE タイトル */
 export const C011: React.FC<CutProps> = ({ cut }) => {
   const f = useCurrentFrame();
   const tag = usePop(4, 10);
-  const t1 = ease(f, 10, 28);
-  const t2 = ease(f, 18, 36);
-  const bar = ease(f, 30, 50);
-  const logo = usePop(40, 12);
   const out = interpolate(f, [cut.duration - 14, cut.duration], [1, 0], clamp);
   const swing = 6 * Math.sin(f / 18);
   return (
@@ -313,23 +310,20 @@ export const C011: React.FC<CutProps> = ({ cut }) => {
             <PriceTag />
           </At>
         </Scene>
-        <div style={{ position: "absolute", left: 700, top: 350, fontFamily: FONT, color: C.ink }}>
-          <div style={{ fontSize: 78, fontWeight: 700, opacity: t1, transform: `translateY(${(1 - t1) * 30}px)`, letterSpacing: 4 }}>
-            <span style={{ color: C.red, fontWeight: 900 }}>100円</span>ショップは、
-          </div>
-          <div style={{ fontSize: 96, fontWeight: 900, whiteSpace: "nowrap", opacity: t2, transform: `translateY(${(1 - t2) * 30}px)`, letterSpacing: 4, marginTop: 10 }}>
-            なぜ<span style={{ color: C.red }}>100円</span>で儲かるのか
-          </div>
-          <div style={{ height: 10, width: 1000 * bar, background: C.red, borderRadius: 5, marginTop: 18 }} />
-        </div>
-        <AbsoluteFill style={{ justifyContent: "flex-end", alignItems: "center", paddingBottom: 110 }}>
-          <div style={{ transform: `scale(${logo})`, display: "flex", alignItems: "center", gap: 24, fontFamily: FONT }}>
-            <div style={{ background: C.ink, color: C.paper, fontWeight: 900, fontSize: 54, padding: "10px 34px", borderRadius: 18, letterSpacing: 8 }}>
-              カネナゾ
-            </div>
-            <div style={{ color: C.inkSoft, fontWeight: 700, fontSize: 34, letterSpacing: 4 }}>身近なお金の謎を解く</div>
-          </div>
-        </AbsoluteFill>
+        <CaseTitle
+          no="#001"
+          at={8}
+          q1={
+            <>
+              <span style={{ color: C.red, fontWeight: 900 }}>100円</span>ショップは、
+            </>
+          }
+          q2={
+            <>
+              なぜ<span style={{ color: C.red }}>100円</span>で儲かる？
+            </>
+          }
+        />
       </AbsoluteFill>
       <Sfx at={4} name="jingle" volume={0.9} />
     </CutFrame>

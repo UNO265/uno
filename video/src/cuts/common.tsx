@@ -9,7 +9,7 @@ import { Scene } from "./opening";
 
 export type Ctx = { cut: CutData; f: number; s: (i: number) => number; e: (i: number) => number; d: number };
 
-type Opt = { bg?: "paper" | "dark" | "night" | "retro"; retro?: (x: Ctx) => number };
+type Opt = { bg?: "paper" | "dark" | "night" | "retro"; retro?: (x: Ctx) => number; noSub?: boolean };
 
 const BG: Record<string, React.ReactNode> = {
   paper: <Paper />,
@@ -26,7 +26,7 @@ export const mk = (render: (x: Ctx) => React.ReactNode, opt: Opt = {}) => {
     const body = render(x);
     const bg = opt.bg ?? "paper";
     return (
-      <CutFrame cut={cut} bg={BG[bg]} dark={bg === "night"}>
+      <CutFrame cut={cut} bg={BG[bg]} dark={bg === "night"} noSub={opt.noSub}>
         {bg === "retro" || opt.retro ? <Retro amount={opt.retro ? opt.retro(x) : 1}>{body}</Retro> : body}
       </CutFrame>
     );
@@ -40,7 +40,7 @@ export const Svg = Scene;
 export const Pill: React.FC<{ x: number; y: number; text: string; color: string; at?: number; size?: number }> = ({ x, y, text, color, at = 0, size = 52 }) => {
   const f = useCurrentFrame();
   const p = ease(f, at, at + 12, 0, 1, Easing.out(Easing.back(2)));
-  const w = [...text].length * size * 0.72 + 90;
+  const w = [...text].reduce((a, ch) => a + (/[\x00-\x7F]/.test(ch) ? 0.62 : 1.02), 0) * size + 80;
   return (
     <g transform={`translate(${x} ${y}) scale(${p})`}>
       <rect x={-w / 2} y={-size * 0.95} width={w} height={size * 1.9} rx={size * 0.95} fill={color} />

@@ -41,9 +41,20 @@ import { Sfx, clamp, ease } from "../lib";
 import { BRAND, C, FONT } from "../theme";
 import { Fade, GaugeRows, Pill, PriceShelf, Slots, Svg, mk } from "./common";
 import { Basket } from "./opening";
+import { ClueBoard, Clipping, Evidence, MoneyFlow, Question, Red } from "../case";
+import { BrandPhotos, StoreFallback } from "./part2";
 
 /* ── 9. 心理 ───────────────── */
-const C061 = mk(({ s }) => <Headline kicker={{ t: "100円ならではの強さ", at: s(1) }} lines={[{ t: "値段を*考えなくていい*", at: s(2), size: 120 }]} />);
+const C061 = mk(({ f, s }) => (
+  <>
+    <AbsoluteFill style={{ opacity: 1 - ease(f, s(2) - 8, s(2)) }}>
+      <Svg>
+        <ClueBoard lit={[-100, -100, s(1)]} focus={2} title={{ at: -30 }} />
+      </Svg>
+    </AbsoluteFill>
+    <Headline lines={[{ t: "値段を*考えなくていい*", at: s(2), size: 120 }]} />
+  </>
+));
 
 const C062 = mk(({ s }) => (
   <Svg>
@@ -101,14 +112,23 @@ const C064 = mk(({ f, s }) => {
   );
 });
 
-const C065 = mk(({ s }) => (
-  <Headline
-    lines={[
-      { t: "~1個 × 100円~", at: s(0), strikeAt: s(1) + 14, size: 96 },
-      { t: "*1人* × 何個？", at: s(3) - 4, size: 140 },
-    ]}
-  />
-));
+const C065 = mk(({ f, s }) => {
+  const dark = ease(f, s(2) - 6, s(2) + 6);
+  return (
+    <>
+      <AbsoluteFill style={{ opacity: 1 - dark }}>
+        <Headline lines={[{ t: "~1個 × 100円~", at: s(0), strikeAt: s(1) + 14, size: 110 }]} />
+      </AbsoluteFill>
+      <Fade o={dark} color={C.night} />
+      <Question
+        kicker="CLUE 03"
+        lines={[
+          { t: <>一人に、<Red>何個</Red>買ってもらえるか。</>, at: s(2) + 4, size: 104 },
+        ]}
+      />
+    </>
+  );
+});
 
 const C066 = mk(({ s }) => (
   <Svg>
@@ -119,35 +139,21 @@ const C066 = mk(({ s }) => (
 /* ── 10. 仕組み③ 取引条件 ───────────────── */
 const C067 = mk(({ s }) => (
   <Svg>
-    <Slots lit={[-100, -100, s(1)]} focus={2} />
+    <ClueBoard lit={[-100, -100, -100, s(1)]} focus={3} title={{ at: -30 }} />
   </Svg>
 ));
 
-const C068 = mk(({ f, s }) => {
-  const hl = ease(f, s(1), s(1) + 14);
-  return (
-    <>
-      <Svg>
-        <g transform="translate(960 470)">
-          <rect x={-560} y={-330} width={1120} height={660} rx={24} fill={C.white} stroke={C.ink} strokeWidth={6} />
-          <rect x={-560} y={-330} width={1120} height={70} rx={24} fill={C.paperDeep} />
-          {[0, 1, 2].map((i) => (
-            <circle key={i} cx={-510 + i * 40} cy={-295} r={12} fill={[C.red, C.orange, C.green][i]} />
-          ))}
-          <text x={-380} y={-285} fontFamily={FONT} fontWeight={700} fontSize={30} fill={C.inkSoft}>
-            セリア 公式サイト（イメージ）
-          </text>
-          {Array.from({ length: 7 }, (_, i) => (
-            <rect key={i} x={-480} y={-200 + i * 70} width={i === 3 ? 960 * hl + 0.001 : i % 3 === 2 ? 600 : 960} height={i === 3 ? 44 : 22} rx={11} fill={i === 3 ? C.orange : C.line} opacity={i === 3 ? 0.9 : 1} />
-          ))}
-          <rect x={-480} y={10} width={960} height={44} rx={11} fill="none" stroke={C.red} strokeWidth={5} opacity={hl} />
-        </g>
-      </Svg>
-      <Source text="出典：セリア公式サイト" />
-      <Sfx at={s(1)} name="whoosh" volume={0.5} />
-    </>
-  );
-});
+const C068 = mk(({ s }) => (
+  <Clipping
+    kind="公式サイト"
+    source="セリア"
+    title="取引条件について"
+    lines={["メーカーと、原則として返品しない条件で契約", "それにより 110円（税込）の販売価格を実現"]}
+    hl={0}
+    hlAt={s(1)}
+    y={170}
+  />
+));
 
 const C069 = mk(({ f, s }) => {
   const at = s(1) + 16;
@@ -272,15 +278,13 @@ const C072 = mk(({ f, s }) => {
 
 const C073 = mk(({ s }) => (
   <Svg>
-    <Flow
-      y={430}
-      x0={300}
-      x1={1620}
-      nodes={[
-        { label: "メーカー", at: s(0), icon: <At s={0.7}><IconFactory /></At> },
-        { label: "取引の仕組み", at: s(0) + 14, icon: <At s={0.55}><IconDoc w={200} h={240} lines={5} /></At> },
-        { label: "お店", at: s(0) + 28, icon: <At s={0.42}><IconStore /></At> },
-        { label: "100円", at: s(1) + 10, color: C.red },
+    <MoneyFlow
+      moneyAt={s(1)}
+      stops={[
+        { label: "メーカー", at: s(0), icon: <At s={0.62}><IconFactory /></At> },
+        { label: "物流", at: s(0) + 10, icon: <At s={0.62}><IconTruck /></At> },
+        { label: "100円ショップ", at: s(0) + 20, icon: <At s={0.4}><IconStore /></At>, color: C.red },
+        { label: "消費者", at: s(0) + 30, icon: <At s={0.8}><IconPerson /></At> },
       ]}
     />
   </Svg>
@@ -289,23 +293,41 @@ const C073 = mk(({ s }) => (
 /* ── 11. 好循環 ───────────────── */
 const C074 = mk(({ f, s }) => (
   <>
+    <Clipping
+      kind="分析"
+      source="過去の決算比較（セリア・ワッツ）"
+      title="仕入れ規模と原価"
+      lines={["セリアの大きな仕入れ規模が", "原価を抑える要因の一つ"]}
+      hl={1}
+      hlAt={s(4)}
+      at={s(2) - 4}
+      x={70}
+      y={170}
+      w={880}
+    />
     <Svg>
       <Bars
         max={1.1}
-        width={260}
-        gap={320}
+        cx={1420}
+        width={200}
+        gap={160}
+        base={760}
+        height={430}
         bars={[
           { label: "セリア", value: 1, color: BRAND.seria, at: s(3) - 10, valueText: "大" },
           { label: "ワッツ", value: 0.45, color: C.line, at: s(3), valueText: "小" },
         ]}
       />
-      <text x={960} y={150} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={56} fill={C.ink} opacity={ease(f, s(2), s(2) + 10)}>
+      <text x={1420} y={200} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={C.ink} opacity={ease(f, s(3) - 10, s(3))}>
         仕入れ規模
       </text>
-      <Pill x={1500} y={330} text="原価 ↓" color={C.green} at={s(4)} size={60} />
-      <Sfx at={s(4)} name="ding" volume={0.6} />
+      <Pill x={1420} y={120} text="原価 ↓" color={C.green} at={s(4) + 8} size={46} />
+      <Sfx at={s(4) + 8} name="ding" volume={0.6} />
+      <Sfx at={s(0)} name="whoosh" volume={0.3} />
     </Svg>
-    <Source text="出典：過去の決算を比較した分析" at={s(2)} />
+    <AbsoluteFill style={{ opacity: 1 - ease(f, s(2) - 10, s(2) - 2) }}>
+      <Headline lines={[{ t: "規模が大きくなるほど、*強くなる*", at: s(0), size: 90 }]} sfx={false} />
+    </AbsoluteFill>
   </>
 ));
 
@@ -514,10 +536,28 @@ const C086 = mk(({ f, s }) => (
 ));
 
 const C087 = mk(({ s }) => (
-  <Svg>
-    <Pill x={960} y={110} text="DAISO" color={BRAND.daiso} at={s(0)} size={52} />
-    <PriceShelf at={s(2)} prices={["100円", "300円", "100円", "200円", "500円", "100円"]} />
-  </Svg>
+  <>
+    <Evidence
+      no="08"
+      file="daiso_interior.jpg"
+      caption="DAISO 店内"
+      x={240}
+      y={60}
+      w={1400}
+      h={660}
+      rot={-1}
+      at={s(0)}
+      fallback={
+        <g>
+          <rect width={1920} height={1080} fill={C.paper} />
+          <PriceShelf at={s(2) - s(0)} prices={["100円", "300円", "100円", "200円", "500円", "100円"]} />
+        </g>
+      }
+    />
+    <Svg>
+      <Pill x={1610} y={120} text="DAISO" color={BRAND.daiso} at={s(0) + 8} size={48} />
+    </Svg>
+  </>
 ));
 
 const C088 = mk(({ s }) => (
@@ -615,55 +655,57 @@ const C091 = mk(({ s }) => (
 const C092 = mk(({ f, s }) => {
   const x = (yen: number) => 260 + (yen / 1000) * 1400;
   const band = ease(f, s(2), s(2) + 18);
+  const show = ease(f, s(2) - 8, s(2));
   return (
     <>
+      <Clipping kind="調査" source="帝国データバンク" title="100円ショップ市場の成長要因" lines={["中価格帯商品の拡充が成長を支える"]} hl={0} hlAt={s(1)} out={s(2) - 10} y={200} />
       <Svg>
-        <rect x={x(0)} y={420} width={1400} height={70} rx={35} fill={C.white} stroke={C.line} strokeWidth={4} />
-        <rect x={x(150)} y={420} width={(x(500) - x(150)) * band} height={70} fill={C.red} opacity={0.85} />
-        {[0, 100, 150, 300, 500, 1000].map((v) => (
-          <g key={v}>
-            <line x1={x(v)} y1={500} x2={x(v)} y2={530} stroke={C.ink} strokeWidth={4} />
-            <text x={x(v)} y={580} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={36} fill={C.ink}>
-              {v}円
-            </text>
-          </g>
-        ))}
-        <text x={(x(150) + x(500)) / 2} y={380} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={60} fill={C.red} opacity={band}>
-          中価格帯
-        </text>
-        <Pill x={960} y={730} text="市場成長を支える ↑" color={C.green} at={s(3)} size={50} />
+        <g opacity={show}>
+          <rect x={x(0)} y={420} width={1400} height={70} rx={35} fill={C.white} stroke={C.line} strokeWidth={4} />
+          <rect x={x(150)} y={420} width={(x(500) - x(150)) * band} height={70} fill={C.red} opacity={0.85} />
+          {[0, 150, 300, 500, 1000].map((v) => (
+            <g key={v}>
+              <line x1={x(v)} y1={500} x2={x(v)} y2={530} stroke={C.ink} strokeWidth={4} />
+              <text x={x(v)} y={580} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={36} fill={C.ink}>
+                {v}円
+              </text>
+            </g>
+          ))}
+          <text x={(x(150) + x(500)) / 2} y={380} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={60} fill={C.red} opacity={band}>
+            中価格帯（150〜500円）
+          </text>
+        </g>
+        <Pill x={960} y={720} text="市場成長を支える ↑" color={C.green} at={s(3)} size={50} />
         <Sfx at={s(2)} name="whoosh" volume={0.5} />
         <Sfx at={s(3)} name="ding" volume={0.6} />
       </Svg>
-      <Source text="出典：帝国データバンク" />
+      <Source text="出典：帝国データバンク" at={s(2)} />
     </>
   );
 });
 
 const C093 = mk(({ s }) => (
   <>
-    <Headline lines={[{ t: "大創産業のブランド", at: s(2) - 4, size: 64 }]} top={110} sfx={false} />
-    <Cards
-      top={300}
-      size={44}
-      items={[
-        { title: "DAISO", color: BRAND.daiso, at: s(3) },
-        { title: "Standard Products", color: BRAND.std, at: s(4) },
-        { title: "THREEPPY", color: BRAND.threeppy, at: s(5) },
-      ]}
-    />
+    <Svg>
+      <Pill x={960} y={110} text="大創産業のブランド" color={C.ink} at={s(2) - 4} size={48} />
+    </Svg>
+    <BrandPhotos at={[s(3), s(4), s(5)]} y={230} />
   </>
 ));
 
-const C094 = mk(({ s }) => (
-  <Cards
-    size={48}
-    w={640}
-    items={[
-      { title: "Standard Products", color: BRAND.std, sub: "デザインや素材にこだわった商品", at: s(0), icon: <At s={0.9}><IconMug /></At> },
-      { title: "THREEPPY", color: BRAND.threeppy, sub: "300円中心の生活雑貨", at: s(2), icon: <At s={0.45} r={-6}><PriceTag string={false} text="300円" color={BRAND.threeppy} /></At> },
-    ]}
-  />
+const C094 = mk(({ f, s }) => (
+  <>
+    <Evidence no="03" file="standard_products.jpg" caption="Standard Products" x={120} y={110} w={760} h={460} rot={-2} at={s(0)} fallback={<StoreFallback name="Standard" color={BRAND.std} />} />
+    <Evidence no="04" file="threeppy.jpg" caption="THREEPPY" x={1010} y={140} w={760} h={460} rot={2} at={s(2)} fallback={<StoreFallback name="THREEPPY" color={BRAND.threeppy} />} />
+    <Svg>
+      <text x={530} y={790} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={BRAND.std} opacity={ease(f, s(1), s(1) + 10)}>
+        デザイン・素材にこだわる
+      </text>
+      <text x={1410} y={820} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={BRAND.threeppy} opacity={ease(f, s(3), s(3) + 10)}>
+        300円中心の生活雑貨
+      </text>
+    </Svg>
+  </>
 ));
 
 const C095 = mk(({ s, e }) => (
@@ -715,39 +757,44 @@ const C097 = mk(({ f, s }) => {
 });
 
 /* ── 14. Seria ───────────────── */
-const C098 = mk(({ f, s }) => (
-  <Svg>
-    <ForkPan f={f} side="right" at={s(0)} />
-    <Sfx at={s(0)} name="whoosh" volume={0.5} />
-  </Svg>
+const C098 = mk(({ s }) => (
+  <>
+    <Evidence no="09" file="seria_store.jpg" caption="Seria 店舗" x={430} y={70} w={1000} h={560} rot={2} at={s(0)} fallback={<StoreFallback name="Seria" color={BRAND.seria} />} />
+    <Svg>
+      <Pill x={1450} y={730} text="かなり違う戦略" color={BRAND.seria} at={s(2)} size={46} />
+    </Svg>
+  </>
 ));
 
 const C099 = mk(({ f, s }) => {
-  const up = ease(f, s(1), s(1) + 40, 0, 1, Easing.in(Easing.quad));
+  const up = ease(f, s(2) - 6, s(2) + 40, 0, 1, Easing.in(Easing.quad));
+  const show = ease(f, s(2) - 14, s(2) - 4);
   return (
     <>
+      <Clipping kind="分析" source="帝国データバンク" title="セリアの戦略" lines={["業界では「脱・100円」が進む", "セリアは「100円均一売場」に特化"]} hl={1} hlAt={s(1) + 20} out={s(2) - 16} y={180} />
       <Svg>
-        <line x1={160} y1={620} x2={1760} y2={620} stroke={C.red} strokeWidth={6} strokeDasharray="18 14" />
-        <text x={180} y={600} fontFamily={FONT} fontWeight={900} fontSize={40} fill={C.red}>
-          100円
-        </text>
-        {[340, 560, 780, 1480, 1680].map((x, i) => (
-          <At key={x} x={x} y={560 - up * (360 + i * 40)} s={0.35} r={-6 + i * 3} o={1 - up * 0.8}>
-            <PriceTag string={false} text={["200円", "300円", "500円", "300円", "150円"][i]} color={C.line} />
-          </At>
-        ))}
-        <text x={560} y={180} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={52} fill={C.inkSoft} opacity={ease(f, s(1), s(1) + 10)}>
-          業界は「脱・100円」
-        </text>
+        <g opacity={show}>
+          <line x1={160} y1={620} x2={1760} y2={620} stroke={C.red} strokeWidth={6} strokeDasharray="18 14" />
+          <text x={180} y={600} fontFamily={FONT} fontWeight={900} fontSize={40} fill={C.red}>
+            100円
+          </text>
+          {[340, 560, 780, 1480, 1680].map((x, i) => (
+            <At key={x} x={x} y={560 - up * (360 + i * 40)} s={0.35} r={-6 + i * 3} o={1 - up * 0.8}>
+              <PriceTag string={false} text={["200円", "300円", "500円", "300円", "150円"][i]} color={C.line} />
+            </At>
+          ))}
+          <text x={560} y={180} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={52} fill={C.inkSoft}>
+            業界は「脱・100円」
+          </text>
+        </g>
         <At x={1130} y={540} s={0.8 * ease(f, s(3), s(3) + 12, 0, 1, Easing.out(Easing.back(2)))} r={-4}>
           <PriceTag string={false} />
         </At>
-        <Pill x={1130} y={380} text="Seria" color={BRAND.seria} at={s(2)} size={48} />
-        <Pill x={1130} y={770} text="100円の価値を高める" color={BRAND.seria} at={s(4)} size={40} />
-        <Sfx at={s(1)} name="whoosh" volume={0.6} />
+        <Pill x={1130} y={380} text="Seria" color={BRAND.seria} at={s(3)} size={48} />
+        <Pill x={1130} y={760} text="100円の価値を高める" color={BRAND.seria} at={s(4)} size={40} />
+        <Sfx at={s(2)} name="whoosh" volume={0.6} />
         <Sfx at={s(3)} name="stamp" volume={0.7} />
       </Svg>
-      <Source text="出典：帝国データバンク" />
     </>
   );
 });
@@ -767,18 +814,14 @@ const C100 = mk(
   { bg: "dark" },
 );
 
-const C101 = mk(({ f, s }) => {
-  const x = interpolate(f, [s(0), s(1) + 16], [1900, 1340], { ...clamp, easing: Easing.out(Easing.cubic) });
-  return (
-    <Svg>
-      <TagHero y={460} s={1.5} qAt={s(2)} />
-      <g transform={`translate(${x} 470) rotate(-12)`}>
-        <rect x={-110} y={-60} width={220} height={120} rx={18} fill="#F29CA3" />
-        <rect x={-110} y={-60} width={80} height={120} rx={18} fill={C.blue} />
-      </g>
-    </Svg>
-  );
-});
+const C101 = mk(({ s }) => (
+  <Question
+    lines={[
+      { t: <>100円を<Red>やめたほうが</Red></>, at: s(1) - 2, size: 110 },
+      { t: "簡単ではないだろうか？", at: s(2) - 2, size: 96 },
+    ]}
+  />
+), { bg: "night", noSub: true });
 
 const C102 = mk(({ s }) => (
   <Svg>
@@ -789,19 +832,36 @@ const C102 = mk(({ s }) => (
 ));
 
 const C103 = mk(({ s }) => (
-  <Svg>
-    <Shelves o={0.4} />
-    <Pill x={960} y={110} text="Seria" color={BRAND.seria} at={0} size={44} />
-    <Bubbles
-      texts={["これは300円かな？", "これは500円かな？"]}
-      times={[s(2), s(3)]}
-      clearAt={s(4)}
-      spots={[
-        [620, 420, -4],
-        [1300, 560, 5],
-      ]}
+  <>
+    <Evidence
+      no="10"
+      file="seria_interior.jpg"
+      caption="Seria 店内"
+      x={240}
+      y={60}
+      w={1400}
+      h={660}
+      rot={1}
+      at={0}
+      fallback={
+        <g>
+          <rect width={1920} height={1080} fill={C.paper} />
+          <PriceShelf at={-60} prices={["100円"]} />
+        </g>
+      }
     />
-  </Svg>
+    <Svg>
+      <Bubbles
+        texts={["これは300円かな？", "これは500円かな？"]}
+        times={[s(2), s(3)]}
+        clearAt={s(4)}
+        spots={[
+          [600, 330, -4],
+          [1320, 470, 5],
+        ]}
+      />
+    </Svg>
+  </>
 ));
 
 const C104 = mk(({ f, s }) => {
@@ -870,14 +930,14 @@ const C107 = mk(({ s }) => (
 ));
 
 const C108 = mk(({ s }) => (
-  <Headline
-    kicker={{ t: "最初の疑問", at: s(0) }}
+  <Question
+    kicker="最初の疑問"
     lines={[
-      { t: "なぜ100円ショップは、", at: s(2), size: 84 },
-      { t: "*100円*で儲けることができたのか", at: s(3), size: 92 },
+      { t: "なぜ100円ショップは、", at: s(2) - 2, size: 88 },
+      { t: <><Red>100円</Red>で儲けることができたのか。</>, at: s(3) - 2, size: 96 },
     ]}
   />
-));
+), { bg: "night" });
 
 const C109 = mk(({ s }) => (
   <Headline
@@ -888,18 +948,18 @@ const C109 = mk(({ s }) => (
   />
 ));
 
-const C110 = mk(({ s }) => (
-  <Cards
-    layout="col"
-    size={46}
-    w={1000}
-    top={70}
-    items={["大量に作る", "大量に仕入れる", "大量に売る", "商品の組み合わせを変える", "買いやすい価格にする", "一人が買う点数を増やす"].map((t, i) => ({
-      title: t,
-      at: s(i),
-      color: i < 3 ? C.red : i === 3 ? C.orange : C.green,
-    }))}
-  />
+const C110 = mk(({ f, s }) => (
+  <Svg>
+    <ClueBoard lit={[s(0), s(3), s(4), -100]} title={{ at: 0 }} />
+    <g opacity={ease(f, s(5), s(5) + 10)}>
+      <text x={960} y={800} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={52} fill={C.red}>
+        一人が買う点数 ↑
+      </text>
+    </g>
+    {[s(1), s(2)].map((a, i) => (
+      <Sfx key={i} at={a} name={`tok${i + 2}`} volume={0.5} />
+    ))}
+  </Svg>
 ));
 
 const C111 = mk(({ f, s }) => (
@@ -968,7 +1028,7 @@ const C115 = mk(({ s }) => (
 
 const C116 = mk(({ s }) => (
   <Svg>
-    <Slots lit={[s(0), s(2), undefined]} />
+    <ClueBoard lit={[s(0), s(2), -100, -100]} title={{ at: 0 }} />
   </Svg>
 ));
 
@@ -1018,30 +1078,45 @@ const RING = [
   ["選ぶ", <IconPerson key="e" />, 0.75],
 ] as const;
 
+const PIECES = ["商品構成", "大量仕入れ", "取引条件", "物流", "価格戦略", "まとめ買い"];
 const C120 = mk(({ f, s }) => {
-  const times = [s(0), s(1), s(2), s(3), s(5)];
+  const times = [s(0), s(1), s(1) + 12, s(2), s(3), s(5)];
+  const merge = ease(f, s(6) - 4, s(6) + 20, 0, 1, Easing.inOut(Easing.cubic));
+  const final = ease(f, s(6) + 16, s(6) + 30);
   return (
-    <Svg>
-      <TagHero y={430} s={0.9} />
-      {RING.map(([label, icon, sc], i) => {
-        const a = -Math.PI / 2 + (i / RING.length) * Math.PI * 2;
-        const x = 960 + Math.cos(a) * 520;
-        const y = 440 + Math.sin(a) * 330;
-        const p = ease(f, times[i], times[i] + 12, 0, 1, Easing.out(Easing.back(2)));
-        return (
-          <g key={i} transform={`translate(${x} ${y}) scale(${p})`}>
-            <circle r={105} fill={C.white} stroke={i === 4 ? C.red : C.ink} strokeWidth={8} />
-            <g transform={`scale(${sc})`}>{icon}</g>
-            <rect x={-80} y={80} width={160} height={56} rx={28} fill={i === 4 ? C.red : C.ink} />
-            <text y={108} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={36} fill={C.white}>
-              {label}
-            </text>
-            <Sfx at={times[i]} name={`tok${i + 1}`} volume={0.7} />
-          </g>
-        );
-      })}
-      <Pill x={960} y={640} text="ビジネスのルール" color={C.red} at={s(6)} size={50} />
-    </Svg>
+    <>
+      <Svg>
+        <g opacity={1 - final * 0.85}>
+          <TagHero y={440} s={0.9 + 0.5 * merge} glowAt={s(6) + 14} />
+        </g>
+        {PIECES.map((label, i) => {
+          const a = -Math.PI / 2 + (i / PIECES.length) * Math.PI * 2;
+          const x = 960 + Math.cos(a) * 600 * (1 - merge);
+          const y = 440 + Math.sin(a) * 300 * (1 - merge);
+          const p = ease(f, times[i], times[i] + 12, 0, 1, Easing.out(Easing.back(2)));
+          const w = [...label].length * 50 + 70;
+          return (
+            <g key={label} transform={`translate(${x} ${y}) scale(${p * (1 - 0.7 * merge)})`} opacity={1 - merge}>
+              <rect x={-w / 2} y={-46} width={w} height={92} rx={46} fill={i === 5 ? C.red : C.ink} />
+              <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={46} fill={C.white}>
+                {label}
+              </text>
+              <Sfx at={times[i]} name={`tok${i % 6}`} volume={0.6} />
+            </g>
+          );
+        })}
+        <Sfx at={s(6) - 4} name="whoosh" volume={0.7} />
+      </Svg>
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 170, fontFamily: FONT, color: C.ink, textAlign: "center", opacity: final }}>
+        <div style={{ fontSize: 84, fontWeight: 700, letterSpacing: 4 }}>
+          <span style={{ color: C.red, fontWeight: 900 }}>100円</span>は、ただの値段ではない。
+        </div>
+        <div style={{ fontSize: 124, fontWeight: 900, letterSpacing: 6, marginTop: 14, transform: `scale(${0.94 + 0.06 * final})` }}>
+          ビジネスの<span style={{ color: C.red }}>ルール</span>だった。
+        </div>
+      </AbsoluteFill>
+      <Sfx at={s(6) + 16} name="thud" volume={0.7} />
+    </>
   );
 });
 
@@ -1095,47 +1170,60 @@ const C123 = mk(({ f, s }) => {
   );
 });
 
-const CHAIN = (s: (i: number) => number, all = false) => [
+
+const CHAIN = (s: (i: number) => number, all = false): { label: string; at: number; icon: React.ReactNode; color?: string }[] => [
   { label: "メーカー", at: all ? -30 : s(1), icon: <At s={0.62}><IconFactory /></At> },
   { label: "企業", at: all ? -30 : s(2), icon: <At s={0.7}><IconHQ /></At> },
   { label: "物流", at: all ? -30 : s(3), icon: <At s={0.62}><IconTruck /></At> },
-  { label: "店舗", at: all ? -30 : s(4), icon: <At s={0.4}><IconStore /></At> },
+  { label: "店舗", at: all ? -30 : s(4), icon: <At s={0.4}><IconStore /></At>, color: C.red },
 ];
 
 const C124 = mk(({ f, s }) => (
-  <>
-    <Svg>
-      <g opacity={ease(f, s(1) - 6, s(1) + 6)}>
-        <Flow y={420} x0={260} x1={1660} nodes={CHAIN(s)} />
-      </g>
-      <g opacity={1 - ease(f, s(1) - 10, s(1))}>
-        <TagHero y={450} s={1.4} />
-      </g>
-    </Svg>
-  </>
+  <Svg>
+    <g opacity={ease(f, s(1) - 6, s(1) + 6)}>
+      <MoneyFlow stops={CHAIN(s)} />
+    </g>
+    <g opacity={1 - ease(f, s(1) - 10, s(1))}>
+      <TagHero y={450} s={1.4} />
+    </g>
+  </Svg>
 ));
 
-const C125 = mk(({ f, s }) => {
-  const glow = ease(f, s(2), s(2) + 14);
-  return (
-    <Svg>
-      <Flow y={420} x0={200} x1={1720} r={108} nodes={[...CHAIN(s, true), { label: "私たち", at: s(1), color: C.red, icon: <At s={0.8}><IconPerson /></At> }]} />
-      <rect x={100} y={260} width={1720} height={330} rx={60} fill="none" stroke={C.red} strokeWidth={10} opacity={glow} strokeDasharray="30 18" />
-      <Sfx at={s(2)} name="jingle" volume={0.5} />
-    </Svg>
-  );
-});
+const C125 = mk(({ s }) => (
+  <Svg>
+    <MoneyFlow
+      stops={[...CHAIN(s, true), { label: "私たち", at: s(1), color: C.red, icon: <At s={0.8}><IconPerson /></At> }]}
+      moneyAt={s(1) + 10}
+      highlight={s(2)}
+    />
+    <Sfx at={s(2)} name="jingle" volume={0.5} />
+  </Svg>
+));
 
 const C126 = mk(({ f, s }) => {
   const focus = ease(f, s(3), s(3) + 20);
   return (
     <>
-      <Svg>
-        <PriceShelf at={-60} prices={["100円"]} />
-      </Svg>
+      <Evidence
+        no="11"
+        file="shelf_100yen.jpg"
+        caption="100円ショップの棚"
+        x={240}
+        y={60}
+        w={1400}
+        h={660}
+        rot={-1}
+        at={0}
+        fallback={
+          <g>
+            <rect width={1920} height={1080} fill={C.paper} />
+            <PriceShelf at={-60} prices={["100円"]} />
+          </g>
+        }
+      />
       <AbsoluteFill
         style={{
-          background: `radial-gradient(circle at 40% 42%, rgba(0,0,0,0) ${260 - 120 * focus}px, rgba(20,27,43,${0.65 * focus}) ${420 - 100 * focus}px)`,
+          background: `radial-gradient(circle at 40% 45%, rgba(0,0,0,0) ${260 - 120 * focus}px, rgba(20,27,43,${0.65 * focus}) ${420 - 100 * focus}px)`,
         }}
       />
       <Sfx at={s(3)} name="whoosh" volume={0.4} />
@@ -1166,20 +1254,23 @@ const C128 = mk(({ f }) => (
   </Svg>
 ));
 
-const C129 = mk(({ s }) => <Headline lines={[{ t: "身近なお金には、", at: s(0), size: 90 }, { t: "まだまだ*謎*がある", at: s(1), size: 110 }]} />);
+const C129 = mk(({ s }) => <Headline lines={[{ t: "身近なお金には、", at: s(0), size: 90 }, { t: "まだまだ*謎*がある。", at: s(1), size: 120 }]} />, { noSub: true });
 
 const C130 = mk(({ f, s }) => {
-  const p = ease(f, s(0), s(0) + 14, 0, 1, Easing.out(Easing.back(2)));
+  const p = ease(f, s(0), s(0) + 16, 0, 1, Easing.out(Easing.back(1.6)));
   return (
     <>
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 140, fontFamily: FONT }}>
-        <div style={{ transform: `scale(${p})`, background: C.ink, color: C.paper, fontWeight: 900, fontSize: 150, padding: "20px 80px", borderRadius: 40, letterSpacing: 20 }}>カネナゾ</div>
-        <div style={{ fontSize: 56, fontWeight: 700, color: C.inkSoft, letterSpacing: 10, marginTop: 36, opacity: ease(f, s(1), s(1) + 12) }}>身近なお金の謎を解く</div>
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 120, fontFamily: FONT }}>
+        <div style={{ transform: `scale(${p})`, textAlign: "center" }}>
+          <div style={{ fontSize: 170, fontWeight: 900, color: C.ink, letterSpacing: 28 }}>KANENAZO</div>
+          <div style={{ display: "inline-block", marginTop: 8, background: C.red, color: C.white, fontSize: 48, fontWeight: 900, letterSpacing: 16, padding: "4px 30px", borderRadius: 12 }}>カネナゾ</div>
+        </div>
+        <div style={{ fontSize: 64, fontWeight: 900, color: C.inkSoft, letterSpacing: 10, marginTop: 44, opacity: ease(f, s(1), s(1) + 12) }}>身近なお金の謎を解く。</div>
       </AbsoluteFill>
       <Sfx at={s(0)} name="jingle" volume={1} />
     </>
   );
-});
+}, { noSub: true });
 
 const C131 = mk(({ f, s, d }) => {
   const p = ease(f, s(0) + 16, s(0) + 30);
@@ -1201,7 +1292,7 @@ const C131 = mk(({ f, s, d }) => {
       <Fade o={out} color={C.night} />
     </>
   );
-});
+}, { noSub: true });
 
 export const PART3 = {
   C061, C062, C063, C064, C065, C066, C067, C068, C069, C070, C071, C072, C073, C074, C075, C076, C077, C078, C079,

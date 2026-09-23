@@ -129,6 +129,33 @@ export const Basket: React.FC<{ x?: number; y?: number; s?: number; lands: numbe
   );
 };
 
+/** 冒頭のフック: 「100円 × N」 */
+const HookCounter: React.FC<{ n: number; lands: number[]; o?: number }> = ({ n, lands, o = 1 }) => {
+  const f = useCurrentFrame();
+  const bump = lands.some((l) => f >= l && f < l + 6) ? 1.1 : 1;
+  const appear = ease(f, lands[0] - 4, lands[0] + 6);
+  return (
+    <AbsoluteFill style={{ alignItems: "center", paddingTop: 70, opacity: appear * o }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 22,
+          fontFamily: FONT,
+          background: C.white,
+          borderRadius: 28,
+          padding: "10px 40px",
+          boxShadow: "0 10px 26px rgba(60,40,10,0.14)",
+          transform: `scale(${bump})`,
+        }}
+      >
+        <span style={{ background: C.red, color: C.white, fontWeight: 900, fontSize: 70, padding: "0 22px", borderRadius: 14 }}>100円</span>
+        <span style={{ fontWeight: 900, fontSize: 96, color: C.ink, fontVariantNumeric: "tabular-nums" }}>× {n}</span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 /* C002 収納ケース / キッチン用品 / 文房具 / 掃除グッズ */
 export const C002: React.FC<CutProps> = ({ cut }) => {
   const lands = [0, 1, 2, 3].map((i) => segStart(cut, i) + 10);
@@ -140,6 +167,7 @@ export const C002: React.FC<CutProps> = ({ cut }) => {
         <rect x={0} y={920} width={1920} height={160} fill={C.paperDeep} />
         <Basket lands={lands} kinds={kinds} tags />
       </Scene>
+      <HookCounter n={lands.filter((l) => useCurrentFrame() >= l).length} lands={lands} />
       {lands.map((l, i) => (
         <Sfx key={i} at={l} name={`tok${i}`} volume={0.8} />
       ))}
@@ -183,37 +211,43 @@ export const C003: React.FC<CutProps> = ({ cut }) => {
 export const C004: React.FC<CutProps> = ({ cut }) => {
   const f = useCurrentFrame();
   const n = 12;
-  const span = cut.duration - 50;
-  const lands = Array.from({ length: n }, (_, i) => 14 + Math.round((span * i) / (n - 1)) + (i < 4 ? -8 : 0));
-  const count = lands.filter((l) => f >= l).length;
-  const bump = lands.some((l) => f >= l && f < l + 5) ? 1.12 : 1;
+  const span = cut.duration - 70;
+  const lands = Array.from({ length: n }, (_, i) => 10 + Math.round((span * i) / (n - 1)) + (i < 4 ? -6 : 0));
+  const landed = lands.filter((l) => f >= l).length;
+  const qAt = cut.duration - 50;
+  const q = ease(f, qAt, qAt + 12);
   return (
     <CutFrame cut={cut}>
       <Scene>
         <Shelves o={0.55} />
         <rect x={0} y={920} width={1920} height={160} fill={C.paperDeep} />
         <Basket lands={lands} kinds={[0, 1, 2, 3, 4, 5, 6, 7, 3, 1, 5, 0]} />
-        <At x={1590} y={190}>
-          <rect x={-190} y={-90} width={380} height={180} rx={28} fill={C.white} stroke={C.ink} strokeWidth={6} />
-          <text x={0} y={-40} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={36} fill={C.inkSoft}>
-            カゴの中
-          </text>
-          <g transform={`translate(0 40) scale(${bump})`}>
-            <text textAnchor="middle" dominantBaseline="middle" fontFamily={FONT} fontWeight={900} fontSize={96} fill={C.red}>
-              {count}
-              <tspan fontSize={48} dx={8} fill={C.ink}>
-                点
-              </tspan>
-            </text>
-          </g>
-        </At>
       </Scene>
+      <HookCounter n={Math.max(4, 4 + Math.round((landed * 8) / n))} lands={[-10, ...lands]} o={1 - q} />
+      <AbsoluteFill style={{ alignItems: "center", paddingTop: 60, opacity: q }}>
+        <div
+          style={{
+            fontFamily: FONT,
+            fontWeight: 900,
+            fontSize: 110,
+            color: C.paper,
+            background: C.night,
+            padding: "10px 60px 18px",
+            borderRadius: 24,
+            letterSpacing: 4,
+            transform: `scale(${0.9 + 0.1 * q})`,
+          }}
+        >
+          なぜ、これで<span style={{ color: C.orange }}>儲かる</span>？
+        </div>
+      </AbsoluteFill>
       {lands.map((l, i) => (
         <React.Fragment key={i}>
           <Sfx at={l} name={`tok${i % 6}`} volume={0.55} />
           {i % 3 === 2 && <Sfx at={l + 3} name="beep" volume={0.35} />}
         </React.Fragment>
       ))}
+      <Sfx at={qAt} name="thud" volume={0.8} />
     </CutFrame>
   );
 };
