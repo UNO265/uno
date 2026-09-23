@@ -1,0 +1,6 @@
+node_modules/
+out/
+# scripts/ で再生成できるもの
+public/voice/
+public/sfx/
+public/timeline.json

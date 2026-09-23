@@ -1,0 +1,20 @@
+{
+  "name": "kanenazo-100yen",
+  "version": "1.0.0",
+  "scripts": {
+    "audio": "python3 scripts/narration.py && python3 scripts/sfx.py",
+    "studio": "remotion studio",
+    "render": "remotion render Kanenazo out/render.mp4 --concurrency=4 && scripts/master.sh out/render.mp4 out/final.mp4",
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.527",
+    "@remotion/renderer": "^4.0.527",
+    "@types/react": "^18.3.31",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.527",
+    "typescript": "^7.0.2"
+  },
+  "private": true
+}
