@@ -1,0 +1,86 @@
+[
+ {
+  "file": "music/s01_opening.wav",
+  "from": 0,
+  "to": 1414,
+  "mood": "curious"
+ },
+ {
+  "file": "music/s02_market.wav",
+  "from": 1776,
+  "to": 3196,
+  "mood": "analysis"
+ },
+ {
+  "file": "music/s03_origin.wav",
+  "from": 3196,
+  "to": 4587,
+  "mood": "retro"
+ },
+ {
+  "file": "music/s04_idea.wav",
+  "from": 4587,
+  "to": 5865,
+  "mood": "analysis"
+ },
+ {
+  "file": "music/s05_structure.wav",
+  "from": 5982,
+  "to": 8117,
+  "mood": "tracking"
+ },
+ {
+  "file": "music/s06_clues.wav",
+  "from": 8117,
+  "to": 11645,
+  "mood": "investigate"
+ },
+ {
+  "file": "music/s07_clues2.wav",
+  "from": 11930,
+  "to": 14576,
+  "mood": "investigate"
+ },
+ {
+  "file": "music/s08_crisis.wav",
+  "from": 14648,
+  "to": 15517,
+  "mood": "crisis"
+ },
+ {
+  "file": "music/s09_versus.wav",
+  "from": 15517,
+  "to": 21131,
+  "mood": "versus"
+ },
+ {
+  "file": "music/s10_seria.wav",
+  "from": 21322,
+  "to": 22816,
+  "mood": "versus"
+ },
+ {
+  "file": "music/s11_focus.wav",
+  "from": 23125,
+  "to": 24331,
+  "mood": "focus"
+ },
+ {
+  "file": "music/s12_answer.wav",
+  "from": 24331,
+  "to": 26198,
+  "mood": "resolve"
+ },
+ {
+  "file": "music/s13_outro.wav",
+  "from": 26281,
+  "to": 28390,
+  "mood": "outro"
+ },
+ {
+  "file": "music/s14_end.wav",
+  "from": 28509,
+  "to": 28831,
+  "mood": "outro"
+ }
+]

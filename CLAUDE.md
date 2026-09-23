@@ -5,4 +5,4 @@
 - 모든 영상 제작은 `docs/KANENAZO_GUIDE.md`(마스터 지침)를 따른다. 디자인 언어는 CASE #001(`video/`)을 그대로 재사용한다.
 - 대본을 받으면 영상부터 만들지 말고, 먼저 `docs/case###-scene-design.md` 형식으로 의미 단위 장면 설계를 작성한다.
 - 실제 사진·영상은 사용권이 확인된 것만 쓴다. 공개되어 있다는 이유만으로 쓰지 않는다. 자료가 없으면 카네나조 스타일 그래픽으로 대체한다.
-- 영상 빌드 방법은 `video/README.md` 참고.
+- 영상 빌드 방법은 `video/README.md` 참고. 내레이션은 VOICEVOX 雀松朱司, BGM·효과음은 FluidR3_GM 기반 자체 제작(`docs/case001-audio-credits.md`).

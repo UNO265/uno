@@ -9,7 +9,7 @@ import { Scene } from "./opening";
 
 export type Ctx = { cut: CutData; f: number; s: (i: number) => number; e: (i: number) => number; d: number };
 
-type Opt = { bg?: "paper" | "dark" | "night" | "retro"; retro?: (x: Ctx) => number; noSub?: boolean };
+type Opt = { bg?: "paper" | "dark" | "night" | "retro"; retro?: (x: Ctx) => number; noSub?: boolean; hideSubs?: number[] };
 
 const BG: Record<string, React.ReactNode> = {
   paper: <Paper />,
@@ -26,7 +26,7 @@ export const mk = (render: (x: Ctx) => React.ReactNode, opt: Opt = {}) => {
     const body = render(x);
     const bg = opt.bg ?? "paper";
     return (
-      <CutFrame cut={cut} bg={BG[bg]} dark={bg === "night"} noSub={opt.noSub}>
+      <CutFrame cut={cut} bg={BG[bg]} dark={bg === "night"} noSub={opt.noSub} hideSubs={opt.hideSubs}>
         {bg === "retro" || opt.retro ? <Retro amount={opt.retro ? opt.retro(x) : 1}>{body}</Retro> : body}
       </CutFrame>
     );
@@ -147,9 +147,7 @@ export const PriceShelf: React.FC<{ at: number; prices: string[] }> = ({ at, pri
           })}
         </g>
       ))}
-      {Array.from({ length: 12 }, (_, k) => (
-        <Sfx key={k} at={at + k * 3} name={`tok${k % 6}`} volume={0.25} />
-      ))}
+
     </g>
   );
 };

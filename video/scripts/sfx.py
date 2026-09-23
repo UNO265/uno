@@ -1,187 +1,139 @@
-"""効果音と BGM を numpy で合成して public/sfx/ に書き出す（外部素材なし）。"""
+"""効果音を作って public/sfx/ に書き出す。
+
+楽器音は FluidSynth + FluidR3_GM（MIT ライセンス）で生演奏風に鳴らし、
+紙や空気の音だけを numpy でなめらかに合成する（ノイズ感・電子音は使わない）。
+同じ役割の音は複数バリエーションを用意し、lib.tsx の Sfx が自動で使い分ける。
+"""
+import subprocess
+import tempfile
 import wave
 from pathlib import Path
 
+import mido
 import numpy as np
 
 SR = 48000
+SF2 = "/usr/share/sounds/sf2/FluidR3_GM.sf2"
 OUT = Path(__file__).resolve().parent.parent / "public" / "sfx"
-rng = np.random.default_rng(7)
+rng = np.random.default_rng(11)
 
 
-def t(sec):
-    return np.arange(int(sec * SR)) / SR
+def render(notes, program, sec, channel=0, reverb=40, gain=0.8):
+    """notes: [(開始秒, MIDI ノート, ベロシティ, 長さ秒)] を 1 音色で鳴らす"""
+    mid = mido.MidiFile(ticks_per_beat=480)
+    tr = mido.MidiTrack()
+    mid.tracks.append(tr)
+    tr.append(mido.MetaMessage("set_tempo", tempo=500000))
+    tr.append(mido.Message("program_change", program=program, channel=channel, time=0))
+    tr.append(mido.Message("control_change", control=91, value=reverb, channel=channel, time=0))
+    ev = []
+    for st, n, v, d in notes:
+        ev.append((st, mido.Message("note_on", note=n, velocity=v, channel=channel)))
+        ev.append((st + d, mido.Message("note_off", note=n, velocity=0, channel=channel)))
+    ev.sort(key=lambda e: e[0])
+    t = 0.0
+    for st, m in ev:
+        m.time = int(round((st - t) * 960))
+        t = st
+        tr.append(m)
+    with tempfile.TemporaryDirectory() as d:
+        mp, wp = Path(d) / "a.mid", Path(d) / "a.wav"
+        mid.save(mp)
+        subprocess.run(["fluidsynth", "-ni", "-g", str(gain), "-r", str(SR), "-F", str(wp), SF2, str(mp)], check=True, capture_output=True)
+        with wave.open(str(wp)) as w:
+            x = np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).reshape(-1, 2).astype(np.float64) / 32768
+    n = int(sec * SR)
+    x = x[:n] if len(x) >= n else np.pad(x, ((0, n - len(x)), (0, 0)))
+    fade = np.minimum(1, (n - np.arange(n)) / (0.08 * SR))[:, None]
+    return x * fade
 
 
-def env(n, attack=0.005, release=None, decay=None):
-    x = np.arange(n) / SR
-    a = np.clip(x / attack, 0, 1)
-    if decay is not None:
-        return a * np.exp(-x / decay)
-    r = np.clip((n / SR - x) / (release or 0.05), 0, 1)
-    return a * r
+def smooth_noise(sec, lo, hi):
+    """帯域を絞った柔らかいノイズ（紙・空気用）。ざらつきが出ないよう高域を落とす"""
+    n = int(sec * SR)
+    spec = np.fft.rfft(rng.standard_normal(n))
+    f = np.fft.rfftfreq(n, 1 / SR)
+    shape = np.exp(-((np.log(np.maximum(f, 1)) - np.log(np.sqrt(lo * hi))) ** 2) / (2 * (np.log(hi / lo) / 2.5) ** 2))
+    return np.fft.irfft(spec * shape, n)
 
 
-def noise(sec):
-    return rng.uniform(-1, 1, int(sec * SR))
+def env(n, a, r, curve=2.0):
+    t = np.arange(n) / SR
+    return np.clip(t / a, 0, 1) ** 1.5 * np.clip((n / SR - t) / r, 0, 1) ** curve
 
 
-def lowpass(x, alpha):
-    y = np.empty_like(x)
-    acc = 0.0
-    for i, v in enumerate(x):
-        acc += alpha * (v - acc)
-        y[i] = acc
-    return y
-
-
-def sweep_lowpass(x, a0, a1):
-    y = np.empty_like(x)
-    acc = 0.0
-    alphas = np.linspace(a0, a1, len(x))
-    for i, v in enumerate(x):
-        acc += alphas[i] * (v - acc)
-        y[i] = acc
-    return y
-
-
-def save(name, x, gain=0.8, stereo_width=0.0):
+def save(name, x, peak=0.7):
     x = np.asarray(x, dtype=np.float64)
-    peak = np.max(np.abs(x)) or 1.0
-    x = x / peak * gain
-    left = x
-    right = np.roll(x, int(stereo_width * SR)) if stereo_width else x
-    data = (np.stack([left, right], axis=1) * 32767).astype(np.int16)
+    if x.ndim == 1:
+        x = np.stack([x, x], axis=1)
+    x = x / (np.max(np.abs(x)) or 1) * peak
     OUT.mkdir(parents=True, exist_ok=True)
     with wave.open(str(OUT / f"{name}.wav"), "wb") as w:
         w.setnchannels(2)
         w.setsampwidth(2)
         w.setframerate(SR)
-        w.writeframes(data.tobytes())
+        w.writeframes((x * 32767).astype(np.int16).tobytes())
 
 
-def pluck(freq, sec=0.35, decay=0.08, harm=(1, 0.35, 0.12)):
-    tt = t(sec)
-    s = sum(a * np.sin(2 * np.pi * freq * (i + 1) * tt) for i, a in enumerate(harm))
-    return s * env(len(tt), 0.002, decay=decay)
+for old in OUT.glob("*.wav"):
+    if old.stem != "bgm":
+        old.unlink()
 
+# 商品がかごに入る・カード登場: マリンバ（ペンタトニック 6 音）
+for i, n in enumerate([72, 74, 76, 79, 81, 84]):
+    save(f"tok{i}", render([(0, n, 58, 0.25)], 12, 0.6, reverb=30), 0.5)
 
-# 「톡」: 木琴風。音程違いを 6 個
-for i, semi in enumerate([0, 2, 4, 7, 9, 12]):
-    f = 660 * 2 ** (semi / 12)
-    save(f"tok{i}", pluck(f, 0.3, 0.06, (1, 0.5, 0.1)), 0.55)
+# 吹き出し: ピチカート
+for i, n in enumerate([67, 71, 74]):
+    save(f"pop{i}", render([(0, n, 60, 0.2)], 45, 0.5, reverb=30), 0.45)
 
-# 「팝」: 吹き出し
-tt = t(0.18)
-f = np.linspace(300, 900, len(tt))
-save("pop", np.sin(2 * np.pi * np.cumsum(f) / SR) * env(len(tt), 0.002, decay=0.04), 0.6)
+# 疑問: チェレスタ 2 音
+save("question", render([(0, 76, 50, 0.3), (0.16, 83, 50, 0.6)], 8, 1.2), 0.4)
 
-# 「?」: 2 音上昇
-save("question", np.concatenate([pluck(784, 0.14, 0.06), pluck(1175, 0.4, 0.12)]), 0.5)
+# 数字の決定・発見: ビブラフォン（2 種）
+save("ding0", render([(0, 79, 52, 1.0)], 11, 1.8, reverb=60), 0.45)
+save("ding1", render([(0, 84, 48, 1.0), (0, 76, 40, 1.0)], 11, 1.8, reverb=60), 0.45)
 
-# 「삑」: レジのスキャン音
-tt = t(0.09)
-save("beep", np.sign(np.sin(2 * np.pi * 2350 * tt)) * 0.3 * env(len(tt), 0.002, 0.01), 0.3)
+# 強調の低音: ティンパニ + ピアノ低音（柔らかく）
+tim = render([(0, 41, 70, 1.5)], 47, 2.2, reverb=50)
+pno = render([(0, 29, 50, 1.8)], 0, 2.2, reverb=50)
+save("thud", tim + 0.6 * pno, 0.6)
 
-# 「딩」: 完了
-tt = t(1.4)
-ding = sum(a * np.sin(2 * np.pi * 1318 * r * tt) for a, r in [(1, 1), (0.4, 2.76), (0.2, 5.4)])
-save("ding", ding * env(len(tt), 0.002, decay=0.35), 0.5)
+# 木の軽い音: ウッドブロック（3 種）
+for i, n in enumerate([76, 72, 79]):
+    save(f"chip{i}", render([(0, n, 45, 0.1)], 115, 0.4, reverb=20), 0.35)
 
-# 「둥」「쿵」: 低音の衝撃
-tt = t(1.6)
-f = 90 * np.exp(-tt * 2.5) + 38
-boom = np.sin(2 * np.pi * np.cumsum(f) / SR) * env(len(tt), 0.003, decay=0.45)
-boom += lowpass(noise(1.6), 0.02) * env(len(tt), 0.001, decay=0.05) * 3
-save("thud", boom, 0.95)
+# スタンプ: 低いタム（2 種）
+for i, n in enumerate([45, 43]):
+    save(f"stamp{i}", render([(0, n, 70, 0.3)], 0, 0.8, channel=9, reverb=25), 0.5)
 
-# 「슉」「휙」: 風切り
-n = noise(0.55)
-w = sweep_lowpass(n, 0.02, 0.35) * np.sin(np.linspace(0, np.pi, len(n))) ** 2
-save("whoosh", w, 0.5, stereo_width=0.004)
+# コイン・お金の流れ: グロッケン（ごく小さく）
+save("coin", render([(0, 88, 36, 0.3), (0.09, 91, 30, 0.3)], 9, 1.0, reverb=50), 0.3)
 
-# 自動ドア: モーター音 + 空気
-tt = t(1.3)
-motor = np.sin(2 * np.pi * (180 + 40 * tt) * tt) * 0.25 + lowpass(noise(1.3), 0.08)
-save("door", motor * np.sin(np.linspace(0, np.pi, len(tt))) ** 1.5, 0.35)
+# 物流: 柔らかいホルン
+save("horn", render([(0, 53, 55, 1.0), (0, 57, 45, 1.0)], 60, 1.6, reverb=50), 0.4)
 
-# 店内の空気感（ループ用）
-amb = lowpass(noise(8.0), 0.03)
-chime = np.zeros_like(amb)
-for st, fr in [(1.0, 1568), (1.25, 1318), (1.5, 1046)]:
-    seg = pluck(fr, 1.2, 0.4)
-    i = int(st * SR)
-    chime[i:i + len(seg)] += seg * 0.15
-save("ambience", amb * 0.6 + chime, 0.18, stereo_width=0.01)
+# 転換: 空気が流れるような柔らかいスウェル（3 種、高域なし）
+for i, sec in enumerate([0.6, 0.8, 0.5]):
+    n = int(sec * SR)
+    x = smooth_noise(sec, 180, 900) * env(n, sec * 0.55, sec * 0.45)
+    save(f"whoosh{i}", np.stack([x, np.roll(x, 60)], axis=1), 0.25)
 
-# コインが転がる
-tt = t(2.2)
-roll = lowpass(noise(2.2), 0.25) * (0.6 + 0.4 * np.sin(2 * np.pi * 11 * tt) ** 2)
-roll += 0.3 * np.sin(2 * np.pi * 3200 * tt) * (np.sin(2 * np.pi * 5 * tt) > 0.97)
-save("roll", roll * env(len(tt), 0.05, 0.3), 0.35)
+# 大きな転換: 逆再生ピアノ（2 種）
+for i, chord in enumerate([[57, 64, 69, 72], [55, 62, 67, 71]]):
+    x = render([(0, n, 55, 1.4) for n in chord], 0, 1.6, reverb=70)
+    save(f"swell{i}", x[::-1] * env(len(x), 0.05, 0.08)[:, None], 0.4)
 
-# 「칙」: 欠ける
-tt = t(0.12)
-chip = noise(0.12) * env(len(tt), 0.001, decay=0.02) + 0.5 * np.sin(2 * np.pi * 2800 * tt) * env(len(tt), 0.001, decay=0.015)
-save("chip", chip, 0.45)
+# 紙・資料（EVIDENCE / 資料カード）: 柔らかい紙のすべり音（3 種）
+for i, sec in enumerate([0.35, 0.45, 0.3]):
+    n = int(sec * SR)
+    x = smooth_noise(sec, 700, 2600) * env(n, 0.03, sec * 0.8, 1.2)
+    x *= 1 + 0.25 * np.sin(np.arange(n) / SR * 2 * np.pi * (18 + i * 4))
+    save(f"paper{i}", np.stack([x, np.roll(x, 40)], axis=1), 0.2)
 
-# 汽笛
-tt = t(1.4)
-horn = sum(np.sin(2 * np.pi * f0 * k * tt) / k for f0 in (110, 138.6) for k in range(1, 6))
-save("horn", horn * env(len(tt), 0.12, 0.35), 0.35)
-
-# トラック
-tt = t(2.0)
-truck = lowpass(noise(2.0), 0.04) + 0.4 * np.sin(2 * np.pi * 45 * tt) * (1 + 0.3 * np.sin(2 * np.pi * 7 * tt))
-save("truck", truck * np.sin(np.linspace(0, np.pi, len(tt))), 0.4, stereo_width=0.006)
-
-# 「탁」: スタンプ
-tt = t(0.35)
-stamp = np.sin(2 * np.pi * np.cumsum(140 * np.exp(-tt * 18) + 60) / SR) * env(len(tt), 0.001, decay=0.07)
-stamp += noise(0.35) * env(len(tt), 0.0005, decay=0.008) * 0.8
-save("stamp", stamp, 0.8)
-
-# タイプ音
-tt = t(0.06)
-save("type", noise(0.06) * env(len(tt), 0.0005, decay=0.006) + 0.3 * np.sin(2 * np.pi * 1800 * tt) * env(len(tt), 0.0005, decay=0.004), 0.35)
-
-# シリーズジングル（カネナゾ）
-notes = [(0.0, 523.3), (0.14, 659.3), (0.28, 784.0), (0.42, 1046.5)]
-jingle = np.zeros(int(3.2 * SR))
-for st, fr in notes:
-    seg = pluck(fr, 1.5, 0.5, (1, 0.3, 0.1))
-    i = int(st * SR)
-    jingle[i:i + len(seg)] += seg
-tt = t(3.2)
-pad = sum(np.sin(2 * np.pi * fr * tt) for fr in (261.6, 329.6, 392.0, 523.3)) * env(len(tt), 0.5, decay=1.0) * 0.25
-jingle[: len(pad)] += pad
-save("jingle", jingle, 0.6, stereo_width=0.008)
-
-# BGM: 76BPM の穏やかなパッド + アルペジオ（8 小節ループ）
-bpm = 76
-beat = 60 / bpm
-chords = [
-    (174.6, 220.0, 261.6, 329.6),  # Fmaj7
-    (164.8, 196.0, 246.9, 293.7),  # Em7
-    (146.8, 174.6, 220.0, 261.6),  # Dm7
-    (130.8, 164.8, 196.0, 246.9),  # Cmaj7
-]
-bar = beat * 4
-total = bar * 8
-bgm = np.zeros(int(total * SR))
-for b in range(8):
-    ch = chords[(b // 2) % 4]
-    start = int(b * bar * SR)
-    tt = t(bar)
-    pad = sum(np.sin(2 * np.pi * f * tt) + 0.3 * np.sin(2 * np.pi * f * 2.001 * tt) for f in ch)
-    pad *= np.clip(tt / 0.4, 0, 1) * np.clip((bar - tt) / 0.4, 0, 1) * 0.12
-    bgm[start:start + len(pad)] += pad
-    for k in range(8):
-        f = ch[k % 4] * 2
-        seg = pluck(f, 0.9, 0.25, (1, 0.2))
-        i = start + int(k * beat / 2 * SR)
-        bgm[i:i + len(seg)] += seg[: len(bgm) - i] * 0.18
-bgm = lowpass(bgm, 0.25)
-save("bgm", bgm, 0.5, stereo_width=0.012)
+# KANENAZO ジングル: ピアノ + チェレスタ
+pn = render([(0, 57, 60, 0.4), (0.18, 60, 58, 0.4), (0.36, 64, 58, 0.4), (0.54, 69, 62, 2.0), (0.54, 45, 50, 2.2), (0.54, 52, 45, 2.2)], 0, 3.2, reverb=70)
+ce = render([(0.54, 81, 40, 1.5), (0.72, 88, 34, 1.2)], 8, 3.2, reverb=70)
+save("jingle", pn + 0.7 * ce, 0.6)
 
 print("sfx:", sorted(p.stem for p in OUT.glob("*.wav")))

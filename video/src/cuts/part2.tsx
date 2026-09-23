@@ -1,6 +1,6 @@
 /** 2〜8 章（C012–C060）: 市場規模・誕生・発想の転換・仕組み①② */
 import React from "react";
-import { AbsoluteFill, Easing, interpolate } from "remotion";
+import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import {
   At,
   Bubble,
@@ -130,6 +130,57 @@ const C016 = mk(({ s }) => (
   </>
 ));
 
+/** 大創産業の 3 ブランド構造（EVIDENCE 02） */
+export const BrandTree: React.FC<{ at: [number, number, number, number] }> = ({ at }) => {
+  const f = useCurrentFrame();
+  const top = ease(f, at[0], at[0] + 12, 0, 1, Easing.out(Easing.back(1.6)));
+  const brands = [
+    ["DAISO", "100円が中心", BRAND.daiso, 420],
+    ["Standard Products", "デザイン・素材にこだわる", BRAND.std, 960],
+    ["THREEPPY", "300円が中心", BRAND.threeppy, 1500],
+  ] as const;
+  return (
+    <Svg>
+      <g transform="translate(150 110)" opacity={ease(f, at[0], at[0] + 10)}>
+        <rect x={-6} y={-24} width={196} height={46} rx={8} fill={C.red} />
+        <text x={92} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={24} fill={C.white} letterSpacing={3}>
+          EVIDENCE 02
+        </text>
+      </g>
+      <g transform={`translate(960 230) scale(${top})`}>
+        <rect x={-230} y={-60} width={460} height={120} rx={24} fill={C.ink} />
+        <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={62} fill={C.paper} letterSpacing={6}>
+          大創産業
+        </text>
+      </g>
+      {brands.map(([name, sub, color, x], i) => {
+        const a = at[i + 1];
+        const line = ease(f, a - 10, a + 4);
+        const p = ease(f, a, a + 14, 0, 1, Easing.out(Easing.back(1.6)));
+        return (
+          <g key={name}>
+            <path d={`M 960 290 V 360 H ${x} V ${360 + 90 * line}`} fill="none" stroke={C.inkSoft} strokeWidth={6} strokeLinecap="round" opacity={line > 0 ? 1 : 0} />
+            <g transform={`translate(${x} 580) scale(${p})`}>
+              <rect x={-230} y={-130} width={460} height={260} rx={26} fill={C.white} stroke={color} strokeWidth={8} />
+              <rect x={-230} y={-130} width={460} height={24} rx={12} fill={color} />
+              <At x={0} y={-40} s={0.22}>
+                <IconStore />
+              </At>
+              <text y={48} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={name.length > 10 ? 40 : 54} fill={color}>
+                {name}
+              </text>
+              <text y={98} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={30} fill={C.inkSoft}>
+                {sub}
+              </text>
+            </g>
+            <Sfx at={a} name="tok" volume={0.5} />
+          </g>
+        );
+      })}
+    </Svg>
+  );
+};
+
 export const BrandPhotos: React.FC<{ at: number[]; y?: number }> = ({ at, y = 180 }) => (
   <>
     {(
@@ -161,7 +212,7 @@ const C017 = mk(({ f, s, e }) => {
   return (
     <>
       <AbsoluteFill style={{ opacity: 1 - out }}>
-        <BrandPhotos at={[s(0), s(1), s(1) + 18]} />
+        <BrandTree at={[s(0) - 4, s(0) + 8, s(1), s(1) + 18]} />
       </AbsoluteFill>
       <AbsoluteFill style={{ opacity: out }}>
         <Svg>
@@ -252,42 +303,40 @@ const C021 = mk(
     const [x1, y1] = ROUTE[i + 1];
     const tx = x0 + (x1 - x0) * k;
     const ty = y0 + (y1 - y0) * k;
+    const p = ease(f, s(0), s(0) + 14, 0, 1, Easing.out(Easing.back(1.4)));
     return (
-      <>
-        <Svg>
-          <At x={620} y={470} s={1.5}>
-            <JapanMap />
-            <polyline points={ROUTE.slice(0, i + 2).map(([x, y], j) => (j === i + 1 ? `${tx},${ty}` : `${x},${y}`)).join(" ")} fill="none" stroke="#8C6A45" strokeWidth={6} strokeDasharray="10 10" />
-            {ROUTE.slice(0, i + 1).map(([x, y], j) => (
-              <circle key={j} cx={x} cy={y} r={9} fill="#8C6A45" />
-            ))}
-            <At x={tx} y={ty - 30} s={0.35}>
-              <IconTruck t={f} />
-            </At>
+      <Svg>
+        <At x={620} y={470} s={1.5}>
+          <JapanMap />
+          <polyline points={ROUTE.slice(0, i + 2).map(([x, y], j) => (j === i + 1 ? `${tx},${ty}` : `${x},${y}`)).join(" ")} fill="none" stroke="#8C6A45" strokeWidth={6} strokeDasharray="10 10" />
+          {ROUTE.slice(0, i + 1).map(([x, y], j) => (
+            <circle key={j} cx={x} cy={y} r={9} fill="#8C6A45" />
+          ))}
+          <At x={tx} y={ty - 30} s={0.35}>
+            <IconTruck t={f} />
           </At>
-          <Sfx at={s(1)} name="truck" volume={0.6} />
-        </Svg>
-        <Evidence
-          no="05"
-          file="founder.jpg"
-          caption="創業者　矢野博丈"
-          x={1180}
-          y={120}
-          w={560}
-          h={600}
-          rot={2}
-          at={s(0)}
-          viewBox="0 0 560 600"
-          fallback={
-            <g>
-              <rect width={560} height={600} fill="#E3D6BD" />
-              <At x={280} y={380} s={2.6}>
-                <IconPerson color="#8C6A45" />
-              </At>
-            </g>
-          }
-        />
-      </>
+        </At>
+        {/* 創業者の情報グラフィック（写真枠ではない） */}
+        <g transform={`translate(1450 360) scale(${p})`}>
+          <circle r={150} fill="#E3D6BD" stroke="#8C6A45" strokeWidth={8} />
+          <At y={40} s={1.6}>
+            <IconPerson color="#8C6A45" />
+          </At>
+        </g>
+        <text x={1450} y={600} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={36} fill="#8C6A45" opacity={ease(f, s(0) + 6, s(0) + 16)}>
+          創業者
+        </text>
+        <text x={1450} y={670} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={64} fill="#5B4630" opacity={ease(f, s(0) + 8, s(0) + 18)}>
+          矢野博丈
+        </text>
+        <g transform="translate(1450 740)" opacity={ease(f, s(0) + 12, s(0) + 22)}>
+          <rect x={-120} y={-30} width={240} height={60} rx={30} fill="#8C6A45" />
+          <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={34} fill="#F4EEE3" letterSpacing={2}>
+            1970年代
+          </text>
+        </g>
+        <Sfx at={s(1)} name="swell" volume={0.4} />
+      </Svg>
     );
   },
   { bg: "retro" },

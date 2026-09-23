@@ -46,7 +46,7 @@ export const Headline: React.FC<{ lines: HL[]; kicker?: { t: string; at: number 
   kicker,
   dark,
   top,
-  sfx = true,
+  sfx = false,
 }) => {
   const f = useCurrentFrame();
   return (
@@ -171,10 +171,7 @@ export const Counter: React.FC<{
           {fmt(v)}
         </div>
       </AbsoluteFill>
-      {Array.from({ length: Math.floor(dur / 3) }, (_, k) => (
-        <Sfx key={k} at={at + k * 3} name="type" volume={0.35} />
-      ))}
-      <Sfx at={at + dur} name="ding" volume={0.8} />
+      <Sfx at={at + dur} name="ding" volume={0.7} />
     </>
   );
 };
@@ -251,7 +248,7 @@ export const Bars: React.FC<{ bars: Bar[]; max: number; base?: number; height?: 
                 {b.icon}
               </At>
             )}
-            {sfx && <Sfx at={b.at} name="whoosh" volume={0.35} />}
+            {sfx && i === 0 && <Sfx at={b.at} name="whoosh" volume={0.35} />}
           </g>
         );
       })}
@@ -567,7 +564,7 @@ export const IconGrid: React.FC<{ from: number; to: number; cols?: number; rows?
         </At>
       )}
       {stampAt !== undefined && <Sfx at={stampAt} name="stamp" volume={0.9} />}
-      {newAt !== undefined && NEW.map((_, k) => <Sfx key={k} at={newAt + k * 5} name={`tok${k % 6}`} volume={0.3} />)}
+      {newAt !== undefined && <Sfx at={newAt} name="tok" volume={0.4} />}
     </g>
   );
 };
@@ -595,10 +592,7 @@ export const MapCount: React.FC<{ from: number; to: number; value?: number }> = 
       <text x={1560} y={640} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={48} fill={C.ink} opacity={f >= from ? 1 : 0}>
         店舗（国内外）
       </text>
-      {Array.from({ length: 12 }, (_, k) => (
-        <Sfx key={k} at={from + ((to - from) * k) / 12} name={`tok${k % 6}`} volume={0.25} />
-      ))}
-      <Sfx at={to} name="ding" volume={0.7} />
+      <Sfx at={to} name="ding" volume={0.6} />
     </g>
   );
 };
@@ -658,8 +652,7 @@ export const ChapterCard: React.FC<{ no: string; title: string; at: number }> = 
         </div>
         <div style={{ width: 700 * bar, height: 10, background: C.red, borderRadius: 5, marginTop: 26 }} />
       </AbsoluteFill>
-      <Sfx at={at} name="whoosh" volume={0.6} />
-      <Sfx at={at + 14} name="ding" volume={0.6} />
+      <Sfx at={at} name="swell" volume={0.5} />
     </>
   );
 };
@@ -810,8 +803,7 @@ export const RiseArrows: React.FC<{ items: { label: string; at: number }[]; cx?:
             <text x={x} y={850} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={50} fill={C.ink} opacity={ease(f, it.at - 4, it.at + 6)}>
               {it.label}
             </text>
-            <Sfx at={it.at} name={`tok${Math.min(5, i * 2 + 1)}`} volume={0.8} />
-            <Sfx at={it.at} name="whoosh" volume={0.4} />
+            <Sfx at={it.at} name={`tok${Math.min(5, i * 2 + 1)}`} volume={0.6} />
           </g>
         );
       })}
@@ -839,9 +831,7 @@ export const Bubbles: React.FC<{ texts: string[]; times: number[]; clearAt?: num
           </At>
         );
       })}
-      {times.map((t, i) => (
-        <Sfx key={i} at={t} name="pop" volume={0.5} />
-      ))}
+      {times.map((t, i) => (i % 2 === 0 && i < 6 ? <Sfx key={i} at={t} name="pop" volume={0.4} /> : null))}
       {clearAt !== undefined && <Sfx at={clearAt} name="whoosh" volume={0.6} />}
     </g>
   );

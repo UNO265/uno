@@ -101,7 +101,7 @@ export const C001: React.FC<CutProps> = ({ cut }) => {
       {lands.map((l, i) => (
         <Sfx key={i} at={l} name={`tok${i}`} volume={0.8} />
       ))}
-      <Sfx at={qAt} name="thud" volume={0.9} />
+      <Sfx at={qAt} name="thud" volume={0.35} />
     </CutFrame>
   );
 };

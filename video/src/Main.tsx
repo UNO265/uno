@@ -1,6 +1,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile } from "remotion";
 import timeline from "../public/timeline.json";
+import cueList from "../public/music/cues.json";
 import { C, FONT } from "./theme";
 import { CutData, CutProps, CutFrame, clamp, sec } from "./lib";
 import { C001, C002, C003, C004, C005 } from "./cuts/opening";
@@ -24,59 +25,54 @@ const Placeholder: React.FC<CutProps> = ({ cut }) => (
 );
 
 const cuts = timeline.cuts as CutData[];
+const cues = cueList as Cue[];
 const at = (id: string) => cuts.find((c) => c.id === id)?.from ?? 0;
 
 /** ナレーションが鳴っている区間（BGM のダッキング用） */
 const VOICE: [number, number][] = cuts.flatMap((c) => c.segments.map((s) => [c.from + sec(s.start), c.from + sec(s.end)] as [number, number]));
+const DUCK = 0.33;
+const smooth = (x: number) => 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, Math.max(0, x)));
+/** 声の直前 0.3 秒でゆっくり下げ、声の後 0.9 秒かけて戻す（急に落ちない） */
 const duck = (f: number) => {
-  let d = Infinity;
+  let g = 1;
   for (const [a, b] of VOICE) {
-    if (f >= a && f <= b) return 0.45;
-    d = Math.min(d, f < a ? a - f : f - b);
+    if (f >= a && f <= b) return DUCK;
+    if (f < a && a - f < 9) g = Math.min(g, DUCK + (1 - DUCK) * smooth((a - f) / 9));
+    if (f > b && f - b < 27) g = Math.min(g, DUCK + (1 - DUCK) * smooth((f - b) / 27));
   }
-  return interpolate(d, [0, 12], [0.45, 1], clamp);
+  return g;
 };
 
-/**
- * BGM の音量。[開始カット, 終了カット(含まない), 音量]。
- * 区間の外は無音（暗転・質問などのパターンブレイクで BGM を止める）。
- */
-const envelope = (ranges: [string, string, number][]) => (f: number) => {
-  for (const [a, b, v] of ranges) {
-    const s = at(a);
-    const e = b === "END" ? timeline.totalFrames : at(b);
-    if (f >= s && f < e) return interpolate(f, [s, s + 15, e - 12, e], [0, v, v, 0], clamp);
-  }
-  return 0;
-};
-
-const BGM = 0.22;
-const bgmLevel = envelope([
-  ["C001", "C005", BGM],
-  ["C006", "C009", BGM],
-  ["C012", "C036", BGM],
-  ["C037", "C065", BGM],
-  ["C066", "C077", BGM],
-  ["C078", "C101", BGM * 0.8],
-  ["C102", "C108", BGM],
-  ["C109", "C113", BGM],
-  ["C114", "C130", BGM],
-  ["C131", "END", BGM * 1.3],
-]);
 /** カットの途中で BGM を止める区間（冒頭の質問）: [開始, 終了] フレーム */
 const c001 = cuts[0];
 const hookQ = c001.from + sec(c001.segments[c001.segments.length - 1]?.end ?? 5.2);
 const MUTES: [number, number][] = [[hookQ, c001.from + c001.duration]];
 const mute = (f: number) => {
   for (const [a, b] of MUTES) {
-    if (f >= a - 6 && f <= b + 6) return interpolate(f, [a - 6, a, b, b + 6], [1, 0, 0, 1], clamp);
+    if (f >= a - 8 && f <= b + 10) return interpolate(f, [a - 8, a, b, b + 10], [1, 0, 0, 1], clamp);
   }
   return 1;
 };
 
-const bgm = (f: number) => bgmLevel(f) * duck(f) * mute(f);
-const ambienceLevel = envelope([["C001", "C005", 0.5]]);
-const ambience = (f: number) => ambienceLevel(f) * mute(f);
+/** 章ごとの BGM（scripts/music.py が作成） */
+type Cue = { file: string; from: number; to: number; mood: string };
+const BGM_LEVEL: Record<string, number> = { crisis: 0.38, focus: 0.36, resolve: 0.38 };
+const CueTrack: React.FC<{ cue: Cue }> = ({ cue }) => {
+  const len = cue.to - cue.from;
+  const level = BGM_LEVEL[cue.mood] ?? 0.42;
+  return (
+    <Sequence from={cue.from} durationInFrames={len + 20} layout="none">
+      <Audio
+        src={staticFile(cue.file)}
+        volume={(f) => {
+          const g = cue.from + f;
+          const fade = interpolate(f, [0, 30, len - 24, len + 20], [0, 1, 1, 0], clamp);
+          return level * fade * duck(g) * mute(g);
+        }}
+      />
+    </Sequence>
+  );
+};
 
 export const Main: React.FC = () => (
   <AbsoluteFill style={{ background: C.paper }}>
@@ -88,7 +84,8 @@ export const Main: React.FC = () => (
         </Sequence>
       );
     })}
-    <Audio src={staticFile("sfx/bgm.wav")} loop volume={bgm} />
-    <Audio src={staticFile("sfx/ambience.wav")} loop volume={ambience} />
+    {cues.map((cue) => (
+      <CueTrack key={cue.file} cue={cue} />
+    ))}
   </AbsoluteFill>
 );

@@ -45,13 +45,36 @@ export const usePop = (delay: number, damping = 11) => {
 };
 
 /** 効果音全体のゲイン。ナレーションより前に出ないよう控えめにする */
-export const SFX_GAIN = 0.4;
+export const SFX_GAIN = 0.32;
 
-export const Sfx: React.FC<{ at: number; name: string; volume?: number }> = ({ at, name, volume = 1 }) => (
-  <Sequence from={Math.max(0, Math.round(at))} layout="none">
-    <Audio src={staticFile(`sfx/${name}.wav`)} volume={volume * SFX_GAIN} />
-  </Sequence>
-);
+/** 同じ役割の効果音はバリエーションを自動で使い分ける（ファイル名 = 名前 + 番号） */
+const VARIANTS: Record<string, number> = { tok: 6, whoosh: 3, pop: 3, chip: 3, stamp: 2, paper: 3, ding: 2, swell: 2 };
+/** 旧名 → 新しい音。"" は鳴らさない（ノイズ系・電子音系の廃止分） */
+const ALIAS: Record<string, string> = {
+  beep: "",
+  type: "",
+  ambience: "",
+  door: "swell",
+  truck: "swell",
+  roll: "coin",
+};
+
+const resolve = (name: string, at: number): string => {
+  const n = name in ALIAS ? ALIAS[name] : name;
+  if (!n) return "";
+  if (n in VARIANTS) return `${n}${Math.abs(Math.round(at * 7 + at / 3)) % VARIANTS[n]}`;
+  return n;
+};
+
+export const Sfx: React.FC<{ at: number; name: string; volume?: number }> = ({ at, name, volume = 1 }) => {
+  const file = resolve(name, at);
+  if (!file) return null;
+  return (
+    <Sequence from={Math.max(0, Math.round(at))} layout="none">
+      <Audio src={staticFile(`sfx/${file}.wav`)} volume={volume * SFX_GAIN} />
+    </Sequence>
+  );
+};
 
 /** 紙の質感 */
 export const Paper: React.FC<{ color?: string }> = ({ color = C.paper }) => (
@@ -91,14 +114,14 @@ const splitSub = (t: string): string[] => {
 };
 
 /** ナレーションに同期した字幕（濃紺の帯 + 白文字） */
-export const Subtitle: React.FC<{ cut: CutData; dark?: boolean }> = ({ cut }) => {
+export const Subtitle: React.FC<{ cut: CutData; dark?: boolean; hide?: number[] }> = ({ cut, hide = [] }) => {
   const f = useCurrentFrame();
   const segs = cut.segments;
   const idx = segs.findIndex((s, i) => {
     const next = segs[i + 1];
-    return f >= sec(s.start) - 3 && (next ? f < sec(next.start) - 3 : f < sec(s.end) + 12);
+    return f >= sec(s.start) - 3 && f < Math.min(next ? sec(next.start) - 3 : Infinity, sec(s.end) + 18);
   });
-  if (idx < 0) return null;
+  if (idx < 0 || hide.includes(idx)) return null;
   const s = segs[idx];
   const opacity = interpolate(f, [sec(s.start) - 3, sec(s.start) + 2], [0, 1], clamp);
   const lines = splitSub(s.text);
@@ -134,17 +157,18 @@ export const Subtitle: React.FC<{ cut: CutData; dark?: boolean }> = ({ cut }) =>
 };
 
 /** カット共通のラッパー: 背景・字幕・ナレーション音声 */
-export const CutFrame: React.FC<{ cut: CutData; dark?: boolean; bg?: React.ReactNode; children: React.ReactNode; noSub?: boolean }> = ({
+export const CutFrame: React.FC<{ cut: CutData; dark?: boolean; bg?: React.ReactNode; children: React.ReactNode; noSub?: boolean; hideSubs?: number[] }> = ({
   cut,
   dark,
   bg,
   children,
   noSub,
+  hideSubs,
 }) => (
   <AbsoluteFill style={{ fontFamily: FONT, overflow: "hidden" }}>
     {bg ?? <Paper />}
     {children}
-    {!noSub && <Subtitle cut={cut} dark={dark} />}
+    {!noSub && <Subtitle cut={cut} dark={dark} hide={hideSubs} />}
     {cut.voice ? (
       <Sequence from={sec(cut.voiceStart ?? 0)} layout="none">
         <Audio src={staticFile(cut.voice)} volume={1} />

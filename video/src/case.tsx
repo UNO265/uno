@@ -88,8 +88,7 @@ export const Evidence: React.FC<{
           EVIDENCE {no}
         </div>
       </div>
-      <Sfx at={at} name="whoosh" volume={0.35} />
-      <Sfx at={at + 10} name="stamp" volume={0.25} />
+      <Sfx at={at} name="paper" volume={0.6} />
     </>
   );
 };
@@ -158,8 +157,7 @@ export const Clipping: React.FC<{
         </div>
         <div style={{ position: "absolute", left: "44%", top: -18, width: 150, height: 40, background: "rgba(243,163,58,0.55)", transform: "rotate(-4deg)" }} />
       </div>
-      <Sfx at={at} name="whoosh" volume={0.35} />
-      {hlAt !== undefined && <Sfx at={hlAt} name="type" volume={0.4} />}
+      <Sfx at={at} name="paper" volume={0.6} />
     </>
   );
 };
@@ -227,7 +225,7 @@ export const ClueBoard: React.FC<{ lit: (number | undefined)[]; focus?: number; 
           </g>
         );
       })}
-      {lit.map((a, i) => (a !== undefined && a >= 0 ? <Sfx key={i} at={a} name="ding" volume={0.55} /> : null))}
+      {lit.map((a, i) => (a !== undefined && a >= 0 ? <Sfx key={i} at={a} name="swell" volume={0.4} /> : null))}
     </g>
   );
 };
@@ -310,7 +308,7 @@ export const MoneyFlow: React.FC<{ stops: FlowStop[]; moneyAt?: number; y?: numb
       {stops.map((st, i) => (
         <Sfx key={i} at={st.at} name={`tok${i % 6}`} volume={0.6} />
       ))}
-      {moneyAt !== undefined && <Sfx at={moneyAt} name="roll" volume={0.4} />}
+      {moneyAt !== undefined && <Sfx at={moneyAt} name="coin" volume={0.4} />}
     </g>
   );
 };
@@ -329,9 +327,7 @@ export const Question: React.FC<{ lines: { t: React.ReactNode; size?: number; at
           </div>
         );
       })}
-      {lines.map((l, i) => (
-        <Sfx key={i} at={l.at} name="thud" volume={i === 0 ? 0.6 : 0.3} />
-      ))}
+
     </AbsoluteFill>
   );
 };

@@ -254,44 +254,24 @@ export const C009: React.FC<CutProps> = ({ cut }) => {
   );
 };
 
-/* C010 たった100円で、本当に利益が出るのだろうか？ */
+/* C010 では、利益はどこから生まれるのか？ */
 export const C010: React.FC<CutProps> = ({ cut }) => {
   const f = useCurrentFrame();
-  const l1 = ["たった", "100円", "で、"];
-  const l2 = "本当に利益が出る？";
-  const chars = 3 + 4 + 2 + l2.length;
-  const t0 = segStart(cut, 0);
-  const span = segEnd(cut, 0) - t0;
-  const shown = Math.floor(interpolate(f, [t0 - 2, t0 + span * 0.95], [0, chars], clamp));
-  const lens = [3, 4, 2];
-  let used = 0;
-  const part = (s: string, len: number) => {
-    const n = Math.max(0, Math.min(len, shown - used));
-    used += len;
-    return s.slice(0, n === len ? s.length : n);
-  };
-  const a = part(l1[0], lens[0]);
-  const b = part(l1[1], lens[1]);
-  const c = part(l1[2], lens[2]);
-  const d2 = part(l2, l2.length);
-  const qBounce = shown >= chars ? 1 + 0.25 * Math.exp(-(f - (t0 + span * 0.95)) / 6) * Math.abs(Math.cos((f - t0 - span) / 3)) : 1;
-  const typeTimes = Array.from({ length: Math.ceil(chars / 2) }, (_, k) => t0 + (span * 0.95 * (k * 2)) / chars);
+  const a0 = segStart(cut, 0) - 2;
+  const b0 = segStart(cut, 1) - 2;
+  const l1 = ease(f, a0, a0 + 12);
+  const l2 = ease(f, b0, b0 + 14);
+  const q = f >= segEnd(cut, 1) ? 1 + 0.2 * Math.exp(-(f - segEnd(cut, 1)) / 6) : 1;
   return (
     <CutFrame cut={cut} bg={<Paper />} noSub>
-      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", fontFamily: FONT, color: C.ink }}>
-        <div style={{ fontSize: 96, fontWeight: 700, height: 150, letterSpacing: 4 }}>
-          {a}
-          <span style={{ color: C.red, fontWeight: 900, fontSize: 124 }}>{b}</span>
-          {c}
-        </div>
-        <div style={{ fontSize: 150, fontWeight: 900, letterSpacing: 6, height: 210 }}>
-          {d2.replace("？", "")}
-          {d2.endsWith("？") && <span style={{ display: "inline-block", color: C.red, transform: `scale(${qBounce})` }}>？</span>}
+      <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 80, fontFamily: FONT, color: C.ink }}>
+        <div style={{ fontSize: 96, fontWeight: 700, letterSpacing: 4, opacity: l1, transform: `translateY(${(1 - l1) * 24}px)` }}>では、利益は</div>
+        <div style={{ fontSize: 150, fontWeight: 900, letterSpacing: 6, opacity: l2, transform: `translateY(${(1 - l2) * 24}px)` }}>
+          <span style={{ color: C.red }}>どこから</span>生まれるのか
+          <span style={{ display: "inline-block", color: C.red, transform: `scale(${q})` }}>？</span>
         </div>
       </AbsoluteFill>
-      {typeTimes.map((t, k) => (
-        <Sfx key={k} at={t} name="type" volume={0.45} />
-      ))}
+      <Sfx at={b0} name="thud" volume={0.35} />
     </CutFrame>
   );
 };

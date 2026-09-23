@@ -42,7 +42,7 @@ import { BRAND, C, FONT } from "../theme";
 import { Fade, GaugeRows, Pill, PriceShelf, Slots, Svg, mk } from "./common";
 import { Basket } from "./opening";
 import { ClueBoard, Clipping, Evidence, MiniClue, MoneyFlow, Question, Red } from "../case";
-import { BrandPhotos, StoreFallback } from "./part2";
+import { BrandTree, StoreFallback } from "./part2";
 
 /* ── 9. 心理 ───────────────── */
 const C061 = mk(({ f, s }) => (
@@ -690,14 +690,7 @@ const C092 = mk(({ f, s }) => {
   );
 });
 
-const C093 = mk(({ s }) => (
-  <>
-    <Svg>
-      <Pill x={960} y={110} text="大創産業のブランド" color={C.ink} at={s(2) - 4} size={48} />
-    </Svg>
-    <BrandPhotos at={[s(3), s(4), s(5)]} y={230} />
-  </>
-));
+const C093 = mk(({ s }) => <BrandTree at={[s(2) - 4, s(3), s(4), s(5)]} />);
 
 const C094 = mk(({ f, s }) => (
   <>
@@ -1080,11 +1073,13 @@ const RING = [
   ["選ぶ", <IconPerson key="e" />, 0.75],
 ] as const;
 
-const C120 = mk(({ f, s }) => {
+const C120 = mk(({ f, s, e }) => {
   // 作る→商品構成 / 仕入れる→大量仕入れ・取引条件 / 運ぶ→(つながり) / 売る→価格戦略 / 選ぶ→まとめ買い
   const times = [s(1), s(0), s(5), s(1) + 12, s(3)];
-  const merge = ease(f, s(6) - 4, s(6) + 20, 0, 1, Easing.inOut(Easing.cubic));
-  const final = ease(f, s(6) + 16, s(6) + 30);
+  const m0 = e(5) + 2;
+  const merge = ease(f, m0, m0 + 20, 0, 1, Easing.inOut(Easing.cubic));
+  const final = ease(f, m0 + 14, m0 + 28);
+  const final2 = ease(f, s(6) - 2, s(6) + 12);
   const link = ease(f, s(2), s(2) + 20) * (1 - merge);
   const pos = (i: number) => {
     const a = -Math.PI / 2 + (i / 5) * Math.PI * 2;
@@ -1095,7 +1090,7 @@ const C120 = mk(({ f, s }) => {
       <Svg>
         <ellipse cx={960} cy={440} rx={600} ry={290} fill="none" stroke={C.red} strokeWidth={6} strokeDasharray="16 14" opacity={link} />
         <g opacity={1 - final * 0.85}>
-          <TagHero y={440} s={0.9 + 0.5 * merge} glowAt={s(6) + 14} />
+          <TagHero y={440} s={0.9 + 0.5 * merge} glowAt={m0 + 14} />
         </g>
         {[0, 1, 2, 3, 4].map((i) => {
           const [x, y] = pos(i);
@@ -1108,20 +1103,20 @@ const C120 = mk(({ f, s }) => {
           );
         })}
         <Sfx at={s(2)} name="whoosh" volume={0.4} />
-        <Sfx at={s(6) - 4} name="whoosh" volume={0.7} />
+        <Sfx at={m0} name="whoosh" volume={0.5} />
       </Svg>
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center", paddingBottom: 170, fontFamily: FONT, color: C.ink, textAlign: "center", opacity: final }}>
         <div style={{ fontSize: 84, fontWeight: 700, letterSpacing: 4 }}>
           <span style={{ color: C.red, fontWeight: 900 }}>100円</span>は、ただの値段ではない。
         </div>
-        <div style={{ fontSize: 124, fontWeight: 900, letterSpacing: 6, marginTop: 14, transform: `scale(${0.94 + 0.06 * final})` }}>
+        <div style={{ fontSize: 124, fontWeight: 900, letterSpacing: 6, marginTop: 14, opacity: final2, transform: `scale(${0.94 + 0.06 * final2})` }}>
           ビジネスの<span style={{ color: C.red }}>ルール</span>だった。
         </div>
       </AbsoluteFill>
-      <Sfx at={s(6) + 16} name="thud" volume={0.7} />
+      <Sfx at={s(6) - 2} name="thud" volume={0.5} />
     </>
   );
-});
+}, { hideSubs: [6] });
 
 const C121 = mk(({ f, s }) => (
   <Svg>
