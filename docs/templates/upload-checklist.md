@@ -35,7 +35,7 @@
 
 ## VISUAL
 - [ ] Flat 2D만 계속되지 않는가?
-- [ ] REAL이 있는가?
+- [ ] REAL이 있는가? (CASE #010까지는 실사 대신 OBJECT·DOCUMENT·BLUEPRINT 질감이 있는가?)
 - [ ] EVIDENCE가 있는가?
 - [ ] DATA가 독립된 화면을 갖는가?
 - [ ] Documentary Reset이 있는가?

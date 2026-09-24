@@ -1,5 +1,7 @@
 # CASE #003 AI 실사 영상 프롬프트 (ChatGPT / Gemini)
 
+> **보류**: CASE #010까지는 실사를 쓰지 않기로 했다([v3 0번](KANENAZO_GUIDE_v3.md)). 이 문서와 `video/scripts/gen_footage.py`는 CASE #011 이후를 위해 보관한다.
+
 유료 스톡 대신 AI로 실사 느낌의 영상(REAL 컷)을 만든다. 대본: [script_draft.txt](../cases/case003/script_draft.txt)
 
 ## 0. 사용 원칙

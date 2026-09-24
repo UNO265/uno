@@ -9,7 +9,8 @@
 |---|---|---|
 
 ### 1-2. 실제 자료
-REAL(실사)은 영상의 20~30%를 차지하므로 **대본 전에 확보 가능성부터 확인**한다.
+**CASE #010까지는 실사를 쓰지 않는다**([v3 0번](../KANENAZO_GUIDE_v3.md#0-임시-운용-case-010까지는-실사-없이-추가)). 이 표에는 공식 자료(EVIDENCE)만 적고, REAL 자리는 6번 장면 설계에서 그래픽 질감(OBJECT·DOCUMENT·BLUEPRINT 등)으로 지정한다.
+CASE #011부터는 REAL(실사)이 영상의 20~30%를 차지하므로 **대본 전에 확보 가능성부터 확인**한다.
 
 | 자료 | 종류(REAL 영상·사진 / 공식 자료 / 가격표·메뉴 등) | 후보 출처(직접 촬영·유료 스톡·공식 제공) | 사용권 상태(확인됨/문의중/불가) | 쓸 장면 |
 |---|---|---|---|---|
@@ -41,7 +42,7 @@ REAL(실사)은 영상의 20~30%를 차지하므로 **대본 전에 확보 가�
 |---|---|---|---|---|
 
 ## 6. 장면 설계
-**타입**: A REAL / B EVIDENCE / C DATA / D GRAPH / E FLAT 2D / F MONEY FLOW / G QUESTION·DARK / H KEY TYPOGRAPHY / I CLUE / J DOCUMENTARY RESET
+**타입**: A REAL(CASE #010까지는 OBJECT·DOCUMENT·BLUEPRINT로 대체) / B EVIDENCE / C DATA / D GRAPH / E FLAT 2D / F MONEY FLOW / G QUESTION·DARK / H KEY TYPOGRAPHY / I CLUE / J DOCUMENTARY RESET
 **역할(v3 19번)**: ① 현실 ② 설명 ③ 증명 ④ 비교 ⑤ 질문 ⑥ 반전
 **질감**: 실사 / 문서 / 흰 화면 / 어두운 화면 / 베이지 2D / 지도·타임라인 등. 인접 장면과 같은 질감이면 이유를 적는다.
 
