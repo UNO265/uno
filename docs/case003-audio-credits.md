@@ -27,4 +27,8 @@ BGM・効果音：オリジナル（音源：FluidR3_GM SoundFont / MIT License�
 
 ## 최종 완성본 점검(`video/out/case003_final.mp4`)
 
-QC_PLACEHOLDER
+- **길이**: 14:05.3(1920×1080, 30fps, H.264 / AAC)
+- **음량**: 통합 -14.1 LUFS, True Peak -1.1 dBFS, LRA 2.8 LU
+- **클리핑**: 0 샘플(최대 피크 -1.13 dBFS)
+- **1.5초 이상의 무음 구간**: 없음(가장 긴 정적 1.0초. 0:39 첫 질문 뒤, 3:28 「1454円」 뒤의 의도된 여백)
+- **전달용 분할**: `video/out/case003_parts/`의 3개 파일(각 30MB 미만) + `join_windows.bat` / `join_mac.command`(ffmpeg로 무손실 합치기, 합친 길이 14:05.3 확인)
