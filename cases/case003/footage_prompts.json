@@ -1,0 +1,139 @@
+{
+ "style": "Photorealistic documentary cinematography, shot on a cinema camera with a 35mm lens, shallow depth of field, natural film grain, warm tungsten practical lights mixed with cool screen light, realistic textures, set in a modern Japanese multiplex cinema. No text, no letters, no numbers, no logos, no brand names, no watermarks, no recognizable faces.",
+ "negative": "text, letters, numbers, subtitles, logos, brand names, watermark, recognizable faces, deformed hands, melted food, cartoon, illustration",
+ "shots": [
+  {
+   "id": "R1",
+   "title": "팝콘이 넘쳐 나오는 기계 (오프닝, 가장 중요)",
+   "file": "R1_popcorn_overflow.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Extreme close-up of a commercial popcorn machine kettle in a cinema concession stand. Freshly popped white popcorn bursts and overflows from the glass case, kernels popping in slow motion, steam and warm golden light behind the glass. The camera slowly pushes in. Sound: crisp popping and a soft hum of the machine, no music.",
+   "image_prompt": "Extreme close-up of a glass popcorn machine overflowing with freshly popped white popcorn, a few kernels frozen mid-air, warm golden backlight, dark background, crisp detail on each piece."
+  },
+  {
+   "id": "R2",
+   "title": "팝콘 한 컵 (답 직전·썸네일 겸용)",
+   "file": "R2_popcorn_cup_hero.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "A single large paper cup filled to the top with fresh salted popcorn, placed on a dark counter in a dim cinema lobby. The cup is plain white and red striped with no printing. Soft warm key light from the side, bokeh of cinema lobby lights in the background. Very slow orbit around the cup, a few pieces fall from the top.",
+   "image_prompt": "Hero product shot of a plain red-and-white striped paper popcorn cup overflowing with fresh popcorn on a dark counter, warm side light, blurred cinema lobby lights in the background, empty space on the right side of the frame for text."
+  },
+  {
+   "id": "R3",
+   "title": "원료: 옥수수 알갱이·기름·소금",
+   "file": "R3_ingredients.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Top-down macro shot on a stainless steel prep table: a scoop of dry yellow popcorn kernels poured slowly into a small metal bowl, next to a clear bottle of cooking oil and a small dish of fine salt. Simple, clean, neutral light. The kernels bounce and settle.",
+   "image_prompt": "Top-down macro still life on a stainless steel table: a small pile of dry yellow popcorn kernels, a clear bottle of cooking oil and a small dish of fine salt, clean neutral light, minimal composition."
+  },
+  {
+   "id": "R4",
+   "title": "매점에서 퍼 담아 건네기",
+   "file": "R4_scoop_handoff.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Close-up at a cinema concession counter: a staff member's hands in a dark uniform and thin disposable gloves scoop popcorn from the machine into a plain striped paper cup, then hand it across the counter to a customer's hands. Only hands are visible, no faces. Warm counter lights, shallow depth of field.",
+   "image_prompt": "Close-up of gloved hands handing a plain striped popcorn cup across a cinema concession counter to a customer's hands, only hands visible, warm counter lights."
+  },
+  {
+   "id": "R5",
+   "title": "영화관 로비 (챕터 시작)",
+   "file": "R5_lobby.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Wide shot of a modern Japanese multiplex cinema lobby in the evening: dark carpet with subtle patterns, a long concession counter glowing in the background, blank illuminated poster frames on the wall, a few visitors walking as soft silhouettes, slow sideways dolly movement. Signs and posters are blank or blurred.",
+   "image_prompt": "Wide shot of a modern Japanese multiplex cinema lobby at night, dark patterned carpet, glowing concession counter in the background, blank illuminated poster frames, a few people as soft blurred silhouettes."
+  },
+  {
+   "id": "R6",
+   "title": "티켓 발권기",
+   "file": "R6_ticket_kiosk.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Close-up of a row of self-service ticket kiosks in a cinema lobby. A person's hand touches the blank glowing touchscreen, then takes a printed paper ticket from the slot. The screen shows only soft abstract light, no readable text. Shallow depth of field.",
+   "image_prompt": "Close-up of a hand taking a blank paper ticket from a self-service ticket kiosk in a cinema lobby, screen glowing with abstract light and no readable text."
+  },
+  {
+   "id": "R7",
+   "title": "영사실·영사기",
+   "file": "R7_projection_room.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Inside a dark cinema projection room: a modern digital cinema projector with its lens glowing, a bright beam of light cutting through faint haze toward a small window. Cooling fans hum. Slow push-in toward the lens.",
+   "image_prompt": "Dark cinema projection room, a modern digital projector with a glowing lens, a bright beam of light through faint haze toward a small window."
+  },
+  {
+   "id": "R8",
+   "title": "거대한 스크린과 스피커",
+   "file": "R8_screen_speakers.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Low-angle wide shot from the front rows of an empty large cinema auditorium: a huge blank white screen, wall-mounted speakers along the side walls, rows of red seats. The house lights are half on. Slow upward tilt revealing the scale of the screen.",
+   "image_prompt": "Low-angle wide shot of an empty large cinema auditorium, a huge blank white screen, wall-mounted speakers on the side walls, rows of red seats, house lights half on."
+  },
+  {
+   "id": "R9",
+   "title": "평일 낮의 빈 좌석",
+   "file": "R9_empty_seats.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Wide shot of a cinema auditorium during a weekday afternoon screening: only two or three people seated far apart, seen from behind as silhouettes, most red seats empty, the soft flicker of the screen light on the empty rows. Static camera, quiet mood.",
+   "image_prompt": "Cinema auditorium with almost all red seats empty, two or three viewers seen from behind as small silhouettes, soft screen light flickering over empty rows."
+  },
+  {
+   "id": "R10",
+   "title": "비 오는 날의 극장 입구",
+   "file": "R10_rainy_entrance.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Exterior of a modern cinema entrance in a Japanese city on a rainy weekday afternoon: wet pavement reflecting warm lights, one person with a transparent umbrella walking past, glass doors with no signage or blurred signage, very few people. Static camera, rain falling.",
+   "image_prompt": "Exterior of a modern cinema entrance in a Japanese city on a rainy afternoon, wet pavement reflecting warm lights, one person with a transparent umbrella, glass doors with no readable signs."
+  },
+  {
+   "id": "R11",
+   "title": "상영 사이의 청소",
+   "file": "R11_cleaning.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Inside a cinema auditorium between screenings with house lights on: a staff member seen from behind in a dark uniform walks along a row of seats with a dustpan and broom, collecting spilled popcorn. No face visible. Medium shot, handheld, gentle movement.",
+   "image_prompt": "Cinema auditorium with house lights on, a staff member seen from behind with a broom and dustpan collecting spilled popcorn between seats, no face visible."
+  },
+  {
+   "id": "R12",
+   "title": "팝콘을 들고 상영관으로 가는 관객",
+   "file": "R12_walk_with_popcorn.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Following shot from behind: a visitor carrying a plain striped popcorn cup and a drink walks down a dim cinema corridor toward the auditorium entrance, warm wall lights passing by. Only the back and hands are visible. Smooth gimbal movement.",
+   "image_prompt": "View from behind of a person holding a plain striped popcorn cup and a drink, walking down a dim cinema corridor toward an auditorium entrance, warm wall lights."
+  },
+  {
+   "id": "R13",
+   "title": "불이 꺼지는 객석 (엔딩)",
+   "file": "R13_lights_dim.mp4",
+   "kind": "video",
+   "aspect": "16:9",
+   "prompt": "Inside a cinema auditorium seen from the back rows: the house lights slowly dim to darkness, the screen begins to glow and its light falls on the backs of the audience's heads as silhouettes. One person in the foreground holds a popcorn cup. Static shot, the dimming happens over about five seconds.",
+   "image_prompt": "Cinema auditorium from the back rows just after the lights dim, screen glow falling on silhouettes of the audience, a popcorn cup held in the foreground."
+  },
+  {
+   "id": "T1",
+   "title": "썸네일 배경 (이미지만)",
+   "file": "T1_thumbnail.png",
+   "kind": "image",
+   "aspect": "16:9",
+   "prompt": "Photorealistic close-up of a plain red-and-white striped paper cup overflowing with popcorn against a very dark background, strong warm rim light, popcorn pieces sharp and bright, the cup placed on the left third of the frame, large empty dark space on the right two thirds for big text. High contrast, readable at small size. Aspect ratio 16:9, 1280x720. No text, no logos."
+  },
+  {
+   "id": "S1",
+   "title": "쇼츠 첫 프레임용 세로 컷",
+   "file": "S1_popcorn_vertical.mp4",
+   "kind": "video",
+   "aspect": "9:16",
+   "prompt": "Vertical close-up: fresh popcorn overflowing from a glass popcorn machine and falling toward the camera, filling most of the frame, warm golden light, dark background. Slow motion. Sound: popping. Aspect ratio 9:16."
+  }
+ ]
+}
