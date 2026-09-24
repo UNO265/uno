@@ -89,12 +89,13 @@ const B05 = mk(({ f, s }) => (
 
 const B06 = mk(({ f, s }) => <Big y={820} lines={[{ t: "本当にすごいのは、", at: s(0), size: 76 }, { t: <><Red>ここから</Red>。</>, at: s(0) + 16, size: 110 }]} />, { noCap: true });
 
-const B07 = mk(({ f, s }) => {
+const B07 = mk(({ f, s, e }) => {
+  const step = (k: number) => s(1) + Math.round(((e(1) - s(1)) * k) / 4);
   const STEPS = [
-    { t: "探す", icon: <IconDoc w={160} h={200} lines={5} />, at: s(1) },
-    { t: "作る", icon: <IconFactory t={f / 10} />, at: s(1) + 26 },
-    { t: "運ぶ", icon: <IconTruck t={f / 6} />, at: s(1) + 46 },
-    { t: "並べる", icon: <IconStore w={260} />, at: s(1) + 64 },
+    { t: "探す", icon: <IconDoc w={160} h={200} lines={5} />, at: step(0) },
+    { t: "作る", icon: <IconFactory t={f / 10} />, at: step(1) },
+    { t: "運ぶ", icon: <IconTruck t={f / 6} />, at: step(2) },
+    { t: "並べる", icon: <IconStore w={260} />, at: step(3) },
   ];
   return (
     <V>
@@ -122,7 +123,8 @@ const B07 = mk(({ f, s }) => {
   );
 });
 
-const B08 = mk(({ f, s }) => {
+const B08 = mk(({ f, s, e }) => {
+  const third = (k: number) => s(1) + Math.round(((e(1) - s(1)) * k) / 3);
   const strike = ease(f, s(0) + 30, s(0) + 44);
   return (
     <>
@@ -136,8 +138,8 @@ const B08 = mk(({ f, s }) => {
         y={880}
         lines={[
           { t: "商売そのものを", at: s(1), size: 84, serif: true },
-          { t: <><Red>100円</Red>で成り立つように</>, at: s(1) + 20, size: 76, serif: true },
-          { t: "作り変えた", at: s(1) + 40, size: 96, serif: true },
+          { t: <><Red>100円</Red>で成り立つように</>, at: third(1), size: 76, serif: true },
+          { t: "作り変えた", at: third(2), size: 96, serif: true },
         ]}
       />
     </>

@@ -4,12 +4,12 @@
 
 | 편 | 제목(화면 상단) | 길이 | 내용 | 대본 |
 |---|---|---|---|---|
-| 1 | なぜ100円で儲かる？ | 40.6초 | 시장 약 1조1100억 엔 → 수수께끼를 푸는 단서 3가지(대량 매입 / 상품 조합 / 겸사겸사 구매) → 「ビジネスのルールだった」 | `cases/case001_shorts/short1/cuts.json` |
-| 2 | なぜ全部100円？ | 54.1초 | 1970년대 이동 판매 → 「全部、同じ値段に」 → 값을 먼저 정하고 장사를 다시 설계 | `cases/case001_shorts/short2/cuts.json` |
-| 3 | DAISOとSeria、答えは正反対？ | 50.4초 | 비용 상승 → DAISO는 100엔을 넘어감 / Seria는 100엔을 지킴 | `cases/case001_shorts/short3/cuts.json` |
+| 1 | なぜ100円で儲かる？ | 32.5초 | 시장 약 1조1100억 엔 → 수수께끼를 푸는 단서 3가지(대량 매입 / 상품 조합 / 겸사겸사 구매) → 「ビジネスのルールだった」 | `cases/case001_shorts/short1/cuts.json` |
+| 2 | なぜ全部100円？ | 43.1초 | 1970년대 이동 판매 → 「全部、同じ値段に」 → 값을 먼저 정하고 장사를 다시 설계 | `cases/case001_shorts/short2/cuts.json` |
+| 3 | DAISOとSeria、答えは正反対？ | 40.2초 | 비용 상승 → DAISO는 100엔을 넘어감 / Seria는 100엔을 지킴 | `cases/case001_shorts/short3/cuts.json` |
 
 - **형식**: 1080×1920 / 30fps, -14 LUFS(TP ≤ -1.0, 클리핑 0)
-- **음성**: VOICEVOX 雀松朱司(본편과 같음). 각 편의 첫 질문은 0.15초에 시작합니다.
+- **음성**: VOICEVOX 雀松朱司(본편과 같음). **본편보다 1.3배 빠르게** 읽고, 문장 사이 간격도 같은 비율로 줄였습니다(`--rate 1.3`). 음높이는 그대로입니다. 각 편의 첫 질문은 0.1초 안에 시작합니다.
 - **BGM**: 각 편 전용으로 새로 작곡(FluidR3_GM)
 - **자막**: 화면 중앙 아래(y≈1250)에 크게 넣었습니다. YouTube UI가 겹치는 하단 380px는 비워 두었습니다.
 - **창업자**: 사진을 쓰지 않고 이름과 연대만 표시합니다.
@@ -18,7 +18,7 @@
 
 ```bash
 cd video
-python3 scripts/narration.py --case case001_shorts/short1   # 2, 3도 같음
+python3 scripts/narration.py --case case001_shorts/short1 --rate 1.3   # 2, 3도 같음
 python3 scripts/music.py --case case001_shorts/short1
 npx remotion render Short001-1 out/shorts001/render_1.mp4
 scripts/master.sh out/shorts001/render_1.mp4 out/shorts001/KANENAZO_CASE001_short1.mp4

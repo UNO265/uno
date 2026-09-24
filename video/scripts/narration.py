@@ -137,7 +137,9 @@ def write_wav(path: Path, data: np.ndarray) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--case", help="例: case002（省略時は CASE #001）")
+    ap.add_argument("--rate", type=float, default=1.0, help="話す速さの倍率（ショートは 1.3）。間も同じ割合で詰める")
     args = ap.parse_args()
+    rate = args.rate
     if args.case:
         src = ROOT.parent / "cases" / args.case / "cuts.json"
         out_dir = ROOT / "public" / args.case
@@ -151,10 +153,10 @@ def main() -> None:
 
     timeline, frame = [], 0
     for cut in cuts:
-        lead = cut.get("lead", LEAD)
-        tail = cut.get("tail", TAIL)
-        gap = cut.get("gap", GAP)
-        pauses = {int(k): v for k, v in cut.get("pauses", {}).items()}
+        lead = cut.get("lead", LEAD) / rate
+        tail = cut.get("tail", TAIL) / rate
+        gap = cut.get("gap", GAP) / rate
+        pauses = {int(k): v / rate for k, v in cut.get("pauses", {}).items()}
         segs = [s for s in cut["text"].split("/") if s]
         entry = {"id": cut["id"], "segments": []}
         if "clue" in cut:
@@ -165,11 +167,11 @@ def main() -> None:
             for i, s in enumerate(segs):
                 if i > 0:
                     prev = segs[i - 1]
-                    g = pauses.get(i, Q_GAP if prev.endswith(("？", "?")) else gap)
+                    g = pauses.get(i, Q_GAP / rate if prev.endswith(("？", "?")) else gap)
                     parts.append(np.zeros(int(g * SR)))
                     t += g
                 p = prosody(cut["id"], s)
-                audio = voice.say(s, p["speed"], p["intonation"])
+                audio = voice.say(s, p["speed"] * rate, p["intonation"])
                 d = len(audio) / SR
                 entry["segments"].append({"text": s, "start": lead + t, "end": lead + t + d})
                 parts.append(audio)
