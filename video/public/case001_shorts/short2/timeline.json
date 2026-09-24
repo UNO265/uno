@@ -1,0 +1,177 @@
+{
+ "fps": 30,
+ "totalFrames": 1620,
+ "cuts": [
+  {
+   "id": "B01",
+   "segments": [
+    {
+     "text": "100円ショップは、なぜ全部100円なのか？",
+     "start": 0.15,
+     "end": 3.478625
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B01.wav",
+   "voiceStart": 0.15,
+   "from": 0,
+   "duration": 113
+  },
+  {
+   "id": "B02",
+   "segments": [
+    {
+     "text": "始まりは、1970年代。",
+     "start": 0.2,
+     "end": 3.0405833333333336
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B02.wav",
+   "voiceStart": 0.2,
+   "from": 113,
+   "duration": 100
+  },
+  {
+   "id": "B03",
+   "segments": [
+    {
+     "text": "DAISOの創業者、矢野博丈は、",
+     "start": 0.2,
+     "end": 2.771166666666667
+    },
+    {
+     "text": "店を持たず、各地を回って商品を売っていた。",
+     "start": 2.971166666666667,
+     "end": 6.2495
+    },
+    {
+     "text": "移動販売だ。",
+     "start": 6.4495000000000005,
+     "end": 7.5019375
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B03.wav",
+   "voiceStart": 0.2,
+   "from": 213,
+   "duration": 234
+  },
+  {
+   "id": "B04",
+   "segments": [
+    {
+     "text": "商品ごとに値段が違うから、",
+     "start": 0.2,
+     "end": 2.2513750000000003
+    },
+    {
+     "text": "お客さんに次々と値段を聞かれる。",
+     "start": 2.4513750000000005,
+     "end": 4.751375
+    },
+    {
+     "text": "忙しい売り場で、そのたびに答えるのは大変だった。",
+     "start": 4.9513750000000005,
+     "end": 8.536770833333334
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B04.wav",
+   "voiceStart": 0.2,
+   "from": 447,
+   "duration": 265
+  },
+  {
+   "id": "B05",
+   "segments": [
+    {
+     "text": "そこで生まれたのが――",
+     "start": 0.2,
+     "end": 1.4328125
+    },
+    {
+     "text": "「全部、同じ値段にしてしまう」という発想だった。",
+     "start": 1.9328125,
+     "end": 5.726145833333334
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B05.wav",
+   "voiceStart": 0.2,
+   "from": 712,
+   "duration": 187
+  },
+  {
+   "id": "B06",
+   "segments": [
+    {
+     "text": "でも、本当にすごいのはここからだ。",
+     "start": 0.2,
+     "end": 2.834
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B06.wav",
+   "voiceStart": 0.2,
+   "from": 899,
+   "duration": 94
+  },
+  {
+   "id": "B07",
+   "segments": [
+    {
+     "text": "先に100円という値段を決めて、",
+     "start": 0.2,
+     "end": 2.387125
+    },
+    {
+     "text": "その値段で売れる商品を探し、作り、運び、並べる。",
+     "start": 2.5871250000000003,
+     "end": 7.073416666666667
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B07.wav",
+   "voiceStart": 0.2,
+   "from": 993,
+   "duration": 221
+  },
+  {
+   "id": "B08",
+   "segments": [
+    {
+     "text": "商品を100円にしたのではない。",
+     "start": 0.2,
+     "end": 2.3209583333333335
+    },
+    {
+     "text": "商売そのものを、100円で成り立つように作り変えたのだ。",
+     "start": 2.6009583333333337,
+     "end": 6.613875
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B08.wav",
+   "voiceStart": 0.2,
+   "from": 1214,
+   "duration": 213
+  },
+  {
+   "id": "B09",
+   "segments": [
+    {
+     "text": "では、どうやって？",
+     "start": 0.2,
+     "end": 1.9753958333333332
+    },
+    {
+     "text": "続きは本編で。",
+     "start": 2.4753958333333337,
+     "end": 3.8108958333333334
+    },
+    {
+     "text": "カネナゾ。",
+     "start": 4.090895833333334,
+     "end": 4.835041666666667
+    }
+   ],
+   "voice": "case001_shorts/short2/voice/B09.wav",
+   "voiceStart": 0.2,
+   "from": 1427,
+   "duration": 193
+  }
+ ]
+}

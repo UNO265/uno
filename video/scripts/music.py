@@ -97,6 +97,13 @@ SECTIONS_002 = [
     ("c2_13_end", "outro", "S62", "END"),
 ]
 
+# CASE #001 のショート（縦型）: ケース名 → (曲想, 乱数の種)
+SHORTS = {
+    "case001_shorts/short1": ("investigate", 301),
+    "case001_shorts/short2": ("retro", 302),
+    "case001_shorts/short3": ("versus", 303),
+}
+
 
 class Song:
     def __init__(self, bpm):
@@ -226,8 +233,15 @@ def main():
     base = ROOT / "public" / args.case if args.case else ROOT / "public"
     out = base / "music"
     prefix = f"{args.case}/music" if args.case else "music"
-    moods, sections, seed0 = (MOODS_002, SECTIONS_002, 200) if args.case == "case002" else (MOODS, SECTIONS, 100)
     t = json.loads((base / "timeline.json").read_text(encoding="utf-8"))
+    if args.case == "case002":
+        moods, sections, seed0 = MOODS_002, SECTIONS_002, 200
+    elif args.case and args.case in SHORTS:
+        # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
+        mood, seed0 = SHORTS[args.case]
+        moods, sections = MOODS, [("bgm", mood, t["cuts"][0]["id"], "END")]
+    else:
+        moods, sections, seed0 = MOODS, SECTIONS, 100
     cuts = {c["id"]: c for c in t["cuts"]}
 
     def frame_of(spec, start=False):

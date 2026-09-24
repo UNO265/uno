@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "totalFrames": 1215,
+ "cuts": [
+  {
+   "id": "A01",
+   "segments": [
+    {
+     "text": "100円ショップは、なぜ100円で儲かるのか？",
+     "start": 0.15,
+     "end": 3.5778125
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A01.wav",
+   "voiceStart": 0.15,
+   "from": 0,
+   "duration": 116
+  },
+  {
+   "id": "A02",
+   "segments": [
+    {
+     "text": "国内の100円ショップ市場は、",
+     "start": 0.2,
+     "end": 2.289729166666667
+    },
+    {
+     "text": "約1兆1100億円。",
+     "start": 2.569729166666667,
+     "end": 4.427979166666667
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A02.wav",
+   "voiceStart": 0.2,
+   "from": 116,
+   "duration": 143
+  },
+  {
+   "id": "A03",
+   "segments": [
+    {
+     "text": "でも、",
+     "start": 0.2,
+     "end": 0.7858333333333334
+    },
+    {
+     "text": "100円の商品一つで、大きく儲けているわけではない。",
+     "start": 1.0658333333333334,
+     "end": 4.9731875
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A03.wav",
+   "voiceStart": 0.2,
+   "from": 259,
+   "duration": 160
+  },
+  {
+   "id": "A04",
+   "segments": [
+    {
+     "text": "手がかりは、三つ。",
+     "start": 0.2,
+     "end": 1.8570833333333332
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A04.wav",
+   "voiceStart": 0.2,
+   "from": 419,
+   "duration": 65
+  },
+  {
+   "id": "A05",
+   "segments": [
+    {
+     "text": "まず、",
+     "start": 0.2,
+     "end": 0.7675624999999999
+    },
+    {
+     "text": "大量に仕入れて、",
+     "start": 0.9675624999999999,
+     "end": 2.1899583333333332
+    },
+    {
+     "text": "一つあたりのコストを下げる。",
+     "start": 2.3899583333333334,
+     "end": 4.0625625
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A05.wav",
+   "voiceStart": 0.2,
+   "from": 484,
+   "duration": 131
+  },
+  {
+   "id": "A06",
+   "segments": [
+    {
+     "text": "次に、",
+     "start": 0.2,
+     "end": 0.8568958333333334
+    },
+    {
+     "text": "原価の違う商品を組み合わせて、",
+     "start": 1.0568958333333334,
+     "end": 3.29175
+    },
+    {
+     "text": "店全体で利益を出す。",
+     "start": 3.4917500000000006,
+     "end": 5.213041666666667
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A06.wav",
+   "voiceStart": 0.2,
+   "from": 615,
+   "duration": 165
+  },
+  {
+   "id": "A07",
+   "segments": [
+    {
+     "text": "そして、",
+     "start": 0.2,
+     "end": 0.7999166666666666
+    },
+    {
+     "text": "「ついで買い」で、",
+     "start": 0.9999166666666666,
+     "end": 2.3948541666666667
+    },
+    {
+     "text": "一人あたりの買い物を増やす。",
+     "start": 2.594854166666667,
+     "end": 4.493
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A07.wav",
+   "voiceStart": 0.2,
+   "from": 780,
+   "duration": 150
+  },
+  {
+   "id": "A08",
+   "segments": [
+    {
+     "text": "100円は、ただの値段ではない。",
+     "start": 0.3,
+     "end": 2.6918333333333333
+    },
+    {
+     "text": "ビジネスのルールだった。",
+     "start": 3.2918333333333334,
+     "end": 4.721
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A08.wav",
+   "voiceStart": 0.3,
+   "from": 930,
+   "duration": 160
+  },
+  {
+   "id": "A09",
+   "segments": [
+    {
+     "text": "続きは本編で。",
+     "start": 0.2,
+     "end": 1.5354999999999999
+    },
+    {
+     "text": "カネナゾ。",
+     "start": 1.8155,
+     "end": 2.559645833333333
+    }
+   ],
+   "voice": "case001_shorts/short1/voice/A09.wav",
+   "voiceStart": 0.2,
+   "from": 1090,
+   "duration": 125
+  }
+ ]
+}

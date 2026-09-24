@@ -1,0 +1,187 @@
+{
+ "fps": 30,
+ "totalFrames": 1509,
+ "cuts": [
+  {
+   "id": "D01",
+   "segments": [
+    {
+     "text": "同じ100円ショップなのに、",
+     "start": 0.15,
+     "end": 1.8980833333333333
+    },
+    {
+     "text": "なぜ答えが正反対なのか？",
+     "start": 2.0480833333333335,
+     "end": 4.255041666666667
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D01.wav",
+   "voiceStart": 0.15,
+   "from": 0,
+   "duration": 137
+  },
+  {
+   "id": "D02",
+   "segments": [
+    {
+     "text": "原材料も、物流費も、人件費も上がる。",
+     "start": 0.2,
+     "end": 3.6860208333333335
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D02.wav",
+   "voiceStart": 0.2,
+   "from": 137,
+   "duration": 120
+  },
+  {
+   "id": "D03",
+   "segments": [
+    {
+     "text": "普通の店なら、値上げすればいい。",
+     "start": 0.2,
+     "end": 2.5147083333333335
+    },
+    {
+     "text": "でも100円ショップが値上げすれば、",
+     "start": 2.7147083333333337,
+     "end": 4.869479166666667
+    },
+    {
+     "text": "もう「100円ショップ」ではなくなってしまう。",
+     "start": 5.069479166666667,
+     "end": 8.561687500000001
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D03.wav",
+   "voiceStart": 0.2,
+   "from": 257,
+   "duration": 267
+  },
+  {
+   "id": "D04",
+   "segments": [
+    {
+     "text": "DAISOは、100円を超えていく。",
+     "start": 0.2,
+     "end": 2.6487083333333334
+    },
+    {
+     "text": "200円。",
+     "start": 2.8287083333333336,
+     "end": 3.7347708333333336
+    },
+    {
+     "text": "300円。",
+     "start": 3.9147708333333338,
+     "end": 4.890625
+    },
+    {
+     "text": "500円。",
+     "start": 5.070625000000001,
+     "end": 5.945520833333334
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D04.wav",
+   "voiceStart": 0.2,
+   "from": 524,
+   "duration": 187
+  },
+  {
+   "id": "D05",
+   "segments": [
+    {
+     "text": "100円という入口を残しながら、",
+     "start": 0.2,
+     "end": 2.574229166666667
+    },
+    {
+     "text": "その先の選択肢を広げている。",
+     "start": 2.774229166666667,
+     "end": 4.879604166666667
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D05.wav",
+   "voiceStart": 0.2,
+   "from": 711,
+   "duration": 157
+  },
+  {
+   "id": "D06",
+   "segments": [
+    {
+     "text": "一方、Seriaは、100円にこだわる。",
+     "start": 0.2,
+     "end": 3.3603958333333335
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D06.wav",
+   "voiceStart": 0.2,
+   "from": 868,
+   "duration": 110
+  },
+  {
+   "id": "D07",
+   "segments": [
+    {
+     "text": "値段を確かめなくても選べる。",
+     "start": 0.2,
+     "end": 2.0868333333333333
+    },
+    {
+     "text": "その分かりやすさが、ブランドの価値になる。",
+     "start": 2.2868333333333335,
+     "end": 5.050895833333334
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D07.wav",
+   "voiceStart": 0.2,
+   "from": 978,
+   "duration": 162
+  },
+  {
+   "id": "D08",
+   "segments": [
+    {
+     "text": "価格の壁を広げるDAISO。",
+     "start": 0.2,
+     "end": 2.0738541666666666
+    },
+    {
+     "text": "価格の壁を守るSeria。",
+     "start": 2.473854166666667,
+     "end": 4.175583333333334
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D08.wav",
+   "voiceStart": 0.2,
+   "from": 1140,
+   "duration": 140
+  },
+  {
+   "id": "D09",
+   "segments": [
+    {
+     "text": "100円ショップの未来は、どちらに向かうのか。",
+     "start": 0.2,
+     "end": 3.3930625
+    },
+    {
+     "text": "続きは本編で。",
+     "start": 3.6730625000000003,
+     "end": 5.0085625
+    },
+    {
+     "text": "カネナゾ。",
+     "start": 5.2885625,
+     "end": 6.032708333333334
+    }
+   ],
+   "voice": "case001_shorts/short3/voice/D09.wav",
+   "voiceStart": 0.2,
+   "from": 1280,
+   "duration": 229
+  }
+ ]
+}

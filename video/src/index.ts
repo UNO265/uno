@@ -3,6 +3,7 @@ import { Composition, registerRoot } from "remotion";
 import timeline from "../public/timeline.json";
 import { Main } from "./Main";
 import { Main002, total002 } from "./case002/Main";
+import { SHORTS } from "./shorts001/Main";
 
 const Root: React.FC = () =>
   React.createElement(
@@ -26,6 +27,10 @@ const Root: React.FC = () =>
       width: 1920,
       height: 1080,
     }),
+    // CASE #001 のショート（縦型）
+    ...SHORTS.map((sh) =>
+      React.createElement(Composition, { key: sh.id, id: sh.id, component: sh.Comp, durationInFrames: sh.frames, fps: 30, width: 1080, height: 1920 }),
+    ),
   );
 
 registerRoot(Root);
