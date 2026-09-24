@@ -21,7 +21,7 @@ fs.mkdirSync(out, { recursive: true });
 
 const serveUrl = await bundle({ entryPoint: path.join(root, "src/index.ts") });
 const browser = await openBrowser("chrome", { browserExecutable: process.env.REMOTION_CHROME ?? null });
-const composition = await selectComposition({ serveUrl, id: CASE === "case002" ? "Case002" : "Kanenazo", puppeteerInstance: browser });
+const composition = await selectComposition({ serveUrl, id: CASE ? `Case${CASE.slice(4)}` : "Kanenazo", puppeteerInstance: browser });
 for (const c of cuts) {
   const frame = c.from + Math.min(c.duration - 1, Math.floor(c.duration * c.at));
   await renderStill({ serveUrl, composition, frame, output: path.join(out, `${c.id}.jpg`), scale: 0.25, imageFormat: "jpeg", puppeteerInstance: browser });

@@ -27,7 +27,7 @@ export const K = {
   cost: ["#8FBBD6", "#7FBF9E", "#E9B949", "#C9A0DC", "#E8A07A"],
 };
 
-export type Bg = "paper" | "night" | "white" | "steel";
+export type Bg = "paper" | "night" | "white" | "steel" | "black" | "blueprint" | "velvet";
 export type Ctx = { cut: CutData; f: number; s: (i: number) => number; e: (i: number) => number; d: number };
 type Opt = { bg?: Bg; noSub?: boolean; hideSubs?: number[] | ((x: Ctx) => number[]) };
 
@@ -36,6 +36,19 @@ const BGS: Record<Bg, React.ReactNode> = {
   night: <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 45%, #1B2438 0%, #0E1320 75%)" }} />,
   white: <AbsoluteFill style={{ background: "#FCFBF8" }} />,
   steel: <AbsoluteFill style={{ background: "linear-gradient(180deg, #243047 0%, #1A2233 100%)" }} />,
+  // CASE #003 以降（実写の代わりの質感）
+  black: <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 55%, #1A1712 0%, #070707 70%)" }} />,
+  blueprint: (
+    <AbsoluteFill
+      style={{
+        background: "#10294A",
+        backgroundImage:
+          "linear-gradient(rgba(143,211,255,0.08) 2px, transparent 2px), linear-gradient(90deg, rgba(143,211,255,0.08) 2px, transparent 2px), linear-gradient(rgba(143,211,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(143,211,255,0.04) 1px, transparent 1px)",
+        backgroundSize: "120px 120px, 120px 120px, 24px 24px, 24px 24px",
+      }}
+    />
+  ),
+  velvet: <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #5A1418 0%, #2A080B 80%)" }} />,
 };
 
 /* ── 字幕（v2: 小さく・薄く。短い言葉は箱なし） ───────────────── */
@@ -52,7 +65,7 @@ const Sub: React.FC<{ cut: CutData; bg: Bg; hide: number[] }> = ({ cut, bg, hide
   const lines = splitSub(s.text);
   const longest = Math.max(...lines.map((l) => [...l].length));
   const short = [...s.text].length <= 9;
-  const dark = bg === "night" || bg === "steel";
+  const dark = bg === "night" || bg === "steel" || bg === "black" || bg === "blueprint" || bg === "velvet";
   const fontSize = Math.min(lines.length > 1 ? 58 : 64, Math.floor(1640 / Math.max(1, longest)));
   const boxed: React.CSSProperties = short
     ? {

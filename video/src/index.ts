@@ -4,6 +4,7 @@ import timeline from "../public/timeline.json";
 import { Main } from "./Main";
 import { Main002, total002 } from "./case002/Main";
 import { SHORTS } from "./shorts001/Main";
+import { Main003, total003 } from "./case003/Main";
 
 const Root: React.FC = () =>
   React.createElement(
@@ -23,6 +24,15 @@ const Root: React.FC = () =>
       id: "Case002",
       component: Main002,
       durationInFrames: total002,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
+    // CASE #003「映画館のポップコーン、なぜこんなに高い？」
+    React.createElement(Composition, {
+      id: "Case003",
+      component: Main003,
+      durationInFrames: total003,
       fps: 30,
       width: 1920,
       height: 1080,
