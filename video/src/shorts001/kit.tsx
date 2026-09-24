@@ -90,7 +90,15 @@ const Header: React.FC<{ title: string; dark?: boolean }> = ({ title, dark }) =>
   </div>
 );
 
-type Opt = { dark?: boolean; noCap?: boolean; hide?: number[]; header?: boolean; sepia?: (x: Ctx) => number };
+type Opt = { dark?: boolean; noCap?: boolean; hide?: number[]; header?: boolean; sepia?: (x: Ctx) => number; bg?: string; logo?: boolean };
+
+/** 小さなチャンネル表示（v1.0 24-1: 本編の広告に見せない。ヘッダーの代わり） */
+const Logo: React.FC<{ dark?: boolean }> = ({ dark }) => (
+  <div style={{ position: "absolute", left: 56, top: 96, display: "flex", alignItems: "center", gap: 12, fontFamily: FONT, opacity: 0.85 }}>
+    <div style={{ fontSize: 26, fontWeight: 900, letterSpacing: 8, color: dark ? "#F4EEE3" : C.ink }}>KANENAZO</div>
+    <div style={{ background: C.red, color: C.white, fontWeight: 900, fontSize: 24, letterSpacing: 4, padding: "1px 10px", borderRadius: 6 }}>カネナゾ</div>
+  </div>
+);
 
 export const shortCut = (title: string) => (render: (x: Ctx) => React.ReactNode, opt: Opt = {}) => {
   const Comp: React.FC<CutProps> = ({ cut }) => {
@@ -99,9 +107,10 @@ export const shortCut = (title: string) => (render: (x: Ctx) => React.ReactNode,
     const sep = opt.sepia ? opt.sepia(x) : 0;
     return (
       <AbsoluteFill style={{ fontFamily: FONT, overflow: "hidden" }}>
-        {opt.dark ? <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #1B2438 0%, #0E1320 80%)" }} /> : <Paper />}
+        {opt.bg ? <AbsoluteFill style={{ background: opt.bg }} /> : opt.dark ? <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #1B2438 0%, #0E1320 80%)" }} /> : <Paper />}
         <AbsoluteFill style={{ filter: sep ? `sepia(${0.6 * sep}) saturate(${1 - 0.3 * sep})` : undefined }}>{render(x)}</AbsoluteFill>
         {opt.header !== false && <Header title={title} dark={opt.dark} />}
+        {opt.logo && <Logo dark={opt.dark} />}
         {!opt.noCap && <Caption cut={cut} hide={opt.hide ?? []} dark={opt.dark} />}
         {cut.voice ? (
           <Sequence from={sec(cut.voiceStart ?? 0)} layout="none">
