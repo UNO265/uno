@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 27926,
+ "totalFrames": 28415,
  "placeholder": false,
  "voicedLines": 217,
  "lines": 217,
@@ -21,12 +21,12 @@
     {
      "text": "\"한 걸음 앞에 사람이 있는 건 알겠는데, 그게 누구인지는 모르겠다.\"",
      "start": 0.45,
-     "end": 5.198,
+     "end": 5.618,
      "voice": "sejong/voice/H01_0.wav"
     }
    ],
    "from": 0,
-   "duration": 214
+   "duration": 227
   },
   {
    "id": "H02",
@@ -45,12 +45,12 @@
     {
      "text": "1439년. 마흔을 갓 넘긴 한 왕이, 신하들 앞에서 털어놓은 말입니다.",
      "start": 0.45,
-     "end": 6.667,
+     "end": 5.874,
      "voice": "sejong/voice/H02_0.wav"
     }
    ],
-   "from": 214,
-   "duration": 223
+   "from": 227,
+   "duration": 199
   },
   {
    "id": "H03",
@@ -74,24 +74,24 @@
     {
      "text": "그는 십 년 넘게 당뇨를 앓고 있었습니다.",
      "start": 0.45,
-     "end": 2.89,
+     "end": 2.988,
      "voice": "sejong/voice/H03_0.wav"
     },
     {
      "text": "등이 아파 마음대로 돌아눕지도 못했고,",
-     "start": 3.27,
-     "end": 5.686,
+     "start": 3.368,
+     "end": 6.286,
      "voice": "sejong/voice/H03_1.wav"
     },
     {
      "text": "어두운 방에서는 지팡이 없이 걷지 못했습니다.",
-     "start": 6.066,
-     "end": 8.965,
+     "start": 6.666,
+     "end": 9.755,
      "voice": "sejong/voice/H03_2.wav"
     }
    ],
-   "from": 437,
-   "duration": 291
+   "from": 426,
+   "duration": 315
   },
   {
    "id": "H04",
@@ -112,24 +112,24 @@
     {
      "text": "그런데 이 왕은 쉬지 않았습니다.",
      "start": 0.45,
-     "end": 2.256,
+     "end": 2.598,
      "voice": "sejong/voice/H04_0.wav"
     },
     {
      "text": "일흔 살 재상이 올린 사직서를 돌려보냈고,",
-     "start": 2.636,
-     "end": 5.354,
+     "start": 2.978,
+     "end": 5.78,
      "voice": "sejong/voice/H04_1.wav"
     },
     {
      "text": "몸이 약해진 그에게 집에서라도 일하라고 명했습니다.",
-     "start": 5.734,
-     "end": 9.139,
+     "start": 6.16,
+     "end": 9.514,
      "voice": "sejong/voice/H04_2.wav"
     }
    ],
-   "from": 728,
-   "duration": 297
+   "from": 741,
+   "duration": 308
   },
   {
    "id": "H05",
@@ -145,18 +145,18 @@
     {
      "text": "그리고 흐려져 가던 그 눈으로,",
      "start": 0.45,
-     "end": 2.059,
+     "end": 2.27,
      "voice": "sejong/voice/H05_0.wav"
     },
     {
      "text": "지금 여러분이 이 화면에서 읽고 있는 글자를 만들었습니다.",
-     "start": 2.439,
-     "end": 6.375,
+     "start": 2.65,
+     "end": 6.613,
      "voice": "sejong/voice/H05_1.wav"
     }
    ],
-   "from": 1025,
-   "duration": 214
+   "from": 1049,
+   "duration": 221
   },
   {
    "id": "H06",
@@ -171,18 +171,18 @@
     {
      "text": "만 원짜리 지폐 속에서 온화하게 웃고 있는 그 왕.",
      "start": 0.45,
-     "end": 3.804,
+     "end": 3.717,
      "voice": "sejong/voice/H06_0.wav"
     },
     {
      "text": "세종대왕입니다.",
-     "start": 4.184,
-     "end": 5.028,
+     "start": 4.097,
+     "end": 5.198,
      "voice": "sejong/voice/H06_1.wav"
     }
    ],
-   "from": 1239,
-   "duration": 203
+   "from": 1270,
+   "duration": 208
   },
   {
    "id": "H07",
@@ -201,30 +201,30 @@
     {
      "text": "그런데 이 이야기에는 반전이 하나 있습니다.",
      "start": 0.45,
-     "end": 3.023,
+     "end": 3.102,
      "voice": "sejong/voice/H07_0.wav"
     },
     {
      "text": "세종이 그 몸으로 한글을 만들고 있었다는 사실을",
-     "start": 3.403,
-     "end": 6.589,
+     "start": 3.482,
+     "end": 6.653,
      "voice": "sejong/voice/H07_1.wav"
     },
     {
      "text": "가장 확실하게 증명해 준 사람들은,",
-     "start": 6.969,
-     "end": 9.19,
+     "start": 7.033,
+     "end": 9.206,
      "voice": "sejong/voice/H07_2.wav"
     },
     {
      "text": "아이러니하게도, 한글을 가장 강하게 반대했던 신하들이었습니다.",
-     "start": 9.57,
-     "end": 13.845,
+     "start": 9.586,
+     "end": 14.53,
      "voice": "sejong/voice/H07_3.wav"
     }
    ],
-   "from": 1442,
-   "duration": 438
+   "from": 1478,
+   "duration": 458
   },
   {
    "id": "H08",
@@ -241,12 +241,12 @@
     {
      "text": "오늘은 위인전에는 없는, 인간 세종의 이야기입니다.",
      "start": 0.45,
-     "end": 4.047,
+     "end": 3.98,
      "voice": "sejong/voice/H08_0.wav"
     }
    ],
-   "from": 1880,
-   "duration": 180
+   "from": 1936,
+   "duration": 178
   },
   {
    "id": "P01",
@@ -264,24 +264,24 @@
     {
      "text": "깊은 밤, 모두가 잠든 한양 도성.",
      "start": 0.45,
-     "end": 2.54,
+     "end": 2.311,
      "voice": "sejong/voice/P01_0.wav"
     },
     {
      "text": "궁궐 한가운데, 한 전각만이 아직 환하게 불을 밝히고 있습니다.",
-     "start": 2.92,
-     "end": 7.564,
+     "start": 2.691,
+     "end": 7.395,
      "voice": "sejong/voice/P01_1.wav"
     },
     {
      "text": "왕이 신하들과 나랏일을 논하던 곳, 편전입니다.",
-     "start": 7.944,
-     "end": 11.315,
+     "start": 7.775,
+     "end": 11.032,
      "voice": "sejong/voice/P01_2.wav"
     }
    ],
-   "from": 2060,
-   "duration": 362
+   "from": 2114,
+   "duration": 353
   },
   {
    "id": "P02",
@@ -298,18 +298,18 @@
     {
      "text": "바닥에는 올라온 상소문과 문서들이 쌓여 있고,",
      "start": 0.45,
-     "end": 3.743,
+     "end": 3.504,
      "voice": "sejong/voice/P02_0.wav"
     },
     {
      "text": "그 사이로 지친 신하들이 위태롭게 고개를 떨굽니다.",
-     "start": 4.123,
-     "end": 7.32,
+     "start": 3.884,
+     "end": 7.755,
      "voice": "sejong/voice/P02_1.wav"
     }
    ],
-   "from": 2422,
-   "duration": 242
+   "from": 2467,
+   "duration": 255
   },
   {
    "id": "P03",
@@ -327,18 +327,18 @@
     {
      "text": "깜빡 졸 뻔한 젊은 관료의 허리춤을, 옆의 선배가 쿡 찌르며 속삭입니다.",
      "start": 0.45,
-     "end": 6.355,
+     "end": 5.799,
      "voice": "sejong/voice/P03_0.wav"
     },
     {
      "text": "\"눈 똑바로 뜨게. 전하께서 아직 저렇게 앉아 계시지 않은가.\"",
-     "start": 6.735,
-     "end": 11.312,
+     "start": 6.179,
+     "end": 10.464,
      "voice": "sejong/voice/P03_1.wav"
     }
    ],
-   "from": 2664,
-   "duration": 362
+   "from": 2722,
+   "duration": 336
   },
   {
    "id": "P04",
@@ -359,30 +359,30 @@
     {
      "text": "우리에게 세종은 조선 최고의 성군입니다.",
      "start": 0.45,
-     "end": 3.008,
+     "end": 3.11,
      "voice": "sejong/voice/P04_0.wav"
     },
     {
      "text": "하지만 그의 곁에서 일해야 했던 관료들에게 세종은,",
-     "start": 3.388,
-     "end": 6.927,
+     "start": 3.49,
+     "end": 6.801,
      "voice": "sejong/voice/P04_1.wav"
     },
     {
      "text": "새 과제는 끝없이 쌓이고, 사직서를 올려도 좀처럼 받아주지 않는,",
-     "start": 7.307,
-     "end": 12.473,
+     "start": 7.181,
+     "end": 12.008,
      "voice": "sejong/voice/P04_2.wav"
     },
     {
      "text": "가장 집요한 상사였습니다.",
-     "start": 12.853,
-     "end": 14.292,
+     "start": 12.388,
+     "end": 14.16,
      "voice": "sejong/voice/P04_3.wav"
     }
    ],
-   "from": 3026,
-   "duration": 451
+   "from": 3058,
+   "duration": 447
   },
   {
    "id": "P05",
@@ -399,18 +399,18 @@
     {
      "text": "세종은 왜 그렇게까지 해야 했을까요?",
      "start": 0.45,
-     "end": 2.519,
+     "end": 2.94,
      "voice": "sejong/voice/P05_0.wav"
     },
     {
      "text": "그 답을 찾기 위해, 먼저 그의 밥상부터 들여다보겠습니다.",
-     "start": 2.899,
-     "end": 6.712,
+     "start": 3.32,
+     "end": 7.728,
      "voice": "sejong/voice/P05_1.wav"
     }
    ],
-   "from": 3477,
-   "duration": 242
+   "from": 3505,
+   "duration": 272
   },
   {
    "id": "C100",
@@ -427,12 +427,12 @@
     {
      "text": "세종의 고기 사랑은, 아버지가 공인한 사실이었습니다.",
      "start": 1.6,
-     "end": 5.294,
+     "end": 5.442,
      "voice": "sejong/voice/C100_0.wav"
     }
    ],
-   "from": 3719,
-   "duration": 181
+   "from": 3777,
+   "duration": 186
   },
   {
    "id": "C101",
@@ -450,18 +450,18 @@
     {
      "text": "세종이 즉위한 해, 상왕 태종은 이렇게 말합니다.",
      "start": 0.45,
-     "end": 3.719,
+     "end": 4.156,
      "voice": "sejong/voice/C101_0.wav"
     },
     {
      "text": "\"주상은 사냥을 좋아하지 않으나, 몸이 비중하니 때때로 나와서 몸을 움직여야 한다.\"",
-     "start": 4.099,
-     "end": 10.293,
+     "start": 4.536,
+     "end": 10.76,
      "voice": "sejong/voice/C101_1.wav"
     }
    ],
-   "from": 3900,
-   "duration": 331
+   "from": 3963,
+   "duration": 345
   },
   {
    "id": "C102",
@@ -480,18 +480,18 @@
     {
      "text": "비중. 몸이 무겁다는 뜻입니다.",
      "start": 0.45,
-     "end": 2.55,
+     "end": 3.048,
      "voice": "sejong/voice/C102_0.wav"
     },
     {
      "text": "활쏘기보다 책을 좋아하던 스물두 살 왕의 모습이, 아버지의 말 한마디에 담겨 있습니다.",
-     "start": 2.93,
-     "end": 9.394,
+     "start": 3.428,
+     "end": 9.099,
      "voice": "sejong/voice/C102_1.wav"
     }
    ],
-   "from": 4231,
-   "duration": 304
+   "from": 4308,
+   "duration": 295
   },
   {
    "id": "C103",
@@ -509,24 +509,24 @@
     {
      "text": "태종의 걱정은 죽음 앞에서도 이어졌습니다.",
      "start": 0.45,
-     "end": 3.166,
+     "end": 3.447,
      "voice": "sejong/voice/C103_0.wav"
     },
     {
      "text": "조선에서는 부모가 세상을 떠나면, 자식은 고기를 끊고 거친 음식으로 상을 치러야 했습니다.",
-     "start": 3.546,
-     "end": 10.147,
+     "start": 3.827,
+     "end": 10.548,
      "voice": "sejong/voice/C103_1.wav"
     },
     {
      "text": "세종은 앞서 어머니의 상을 치를 때도 고기를 끊었다가 몸이 크게 상한 적이 있었습니다.",
-     "start": 10.527,
-     "end": 16.944,
+     "start": 10.928,
+     "end": 17.113,
      "voice": "sejong/voice/C103_2.wav"
     }
    ],
-   "from": 4535,
-   "duration": 531
+   "from": 4603,
+   "duration": 536
   },
   {
    "id": "C104",
@@ -545,24 +545,24 @@
     {
      "text": "그래서 태종은 이런 유언을 남깁니다.",
      "start": 0.45,
-     "end": 2.468,
+     "end": 2.853,
      "voice": "sejong/voice/C104_0.wav"
     },
     {
      "text": "\"주상은 고기가 아니면 진지를 들지 못하니,",
-     "start": 2.848,
-     "end": 5.58,
+     "start": 3.233,
+     "end": 5.852,
      "voice": "sejong/voice/C104_1.wav"
     },
     {
      "text": "내가 죽은 뒤에는 형편에 맞게 하여 상을 마치게 하라.\"",
-     "start": 5.96,
-     "end": 9.617,
+     "start": 6.232,
+     "end": 9.852,
      "voice": "sejong/voice/C104_2.wav"
     }
    ],
-   "from": 5066,
-   "duration": 311
+   "from": 5139,
+   "duration": 318
   },
   {
    "id": "C105",
@@ -578,24 +578,24 @@
     {
      "text": "아버지가 세상을 떠나자, 세종은 그래도 고기를 입에 대지 않으려 버텼습니다.",
      "start": 0.45,
-     "end": 5.445,
+     "end": 6.66,
      "voice": "sejong/voice/C105_0.wav"
     },
     {
      "text": "그러자 흥미로운 장면이 벌어집니다.",
-     "start": 5.825,
-     "end": 7.764,
+     "start": 7.04,
+     "end": 9.363,
      "voice": "sejong/voice/C105_1.wav"
     },
     {
      "text": "사극에서처럼 \"기름진 것만 드시면 아니 되옵니다\" 하고 말리는 신하가 아니라,",
-     "start": 8.145,
-     "end": 13.768,
+     "start": 9.743,
+     "end": 15.204,
      "voice": "sejong/voice/C105_2.wav"
     }
    ],
-   "from": 5377,
-   "duration": 436
+   "from": 5457,
+   "duration": 479
   },
   {
    "id": "C106",
@@ -612,18 +612,18 @@
     {
      "text": "반대로 신하들이 나서서, 제발 고기를 드시라고 간청한 것입니다.",
      "start": 0.45,
-     "end": 4.86,
+     "end": 5.213,
      "voice": "sejong/voice/C106_0.wav"
     },
     {
      "text": "결국 세종은 수라상에 다시 고기를 올립니다.",
-     "start": 5.24,
-     "end": 8.041,
+     "start": 5.593,
+     "end": 8.4,
      "voice": "sejong/voice/C106_1.wav"
     }
    ],
-   "from": 5813,
-   "duration": 264
+   "from": 5936,
+   "duration": 274
   },
   {
    "id": "C107",
@@ -643,24 +643,24 @@
     {
      "text": "이 시대의 어의 전순의가 남긴 요리책 『산가요록』에는",
      "start": 0.45,
-     "end": 4.078,
+     "end": 3.62,
      "voice": "sejong/voice/C107_0.wav"
     },
     {
      "text": "'포계'라는 요리가 실려 있습니다.",
-     "start": 4.458,
-     "end": 6.039,
+     "start": 4.0,
+     "end": 6.154,
      "voice": "sejong/voice/C107_1.wav"
     },
     {
      "text": "닭을 잘게 토막 내, 달군 그릇에 기름을 두르고 재빨리 지져 익히는 요리입니다.",
-     "start": 6.419,
-     "end": 12.358,
+     "start": 6.534,
+     "end": 12.285,
      "voice": "sejong/voice/C107_2.wav"
     }
    ],
-   "from": 6077,
-   "duration": 393
+   "from": 6210,
+   "duration": 391
   },
   {
    "id": "C108",
@@ -676,12 +676,12 @@
     {
      "text": "그렇다면 세종의 육식은, 단순한 식탐이었을까요?",
      "start": 0.45,
-     "end": 3.781,
+     "end": 4.145,
      "voice": "sejong/voice/C108_0.wav"
     }
    ],
-   "from": 6470,
-   "duration": 154
+   "from": 6601,
+   "duration": 165
   },
   {
    "id": "C109",
@@ -713,30 +713,30 @@
     {
      "text": "세종의 하루를 보면 다른 해석도 가능합니다.",
      "start": 0.45,
-     "end": 3.039,
+     "end": 3.459,
      "voice": "sejong/voice/C109_0.wav"
     },
     {
      "text": "이른 아침에는 경연에서 신하들과 경서를 논하고,",
-     "start": 3.419,
-     "end": 6.899,
+     "start": 3.839,
+     "end": 7.229,
      "voice": "sejong/voice/C109_1.wav"
     },
     {
      "text": "낮에는 나랏일 보고를 받고,",
-     "start": 7.279,
-     "end": 8.861,
+     "start": 7.609,
+     "end": 9.449,
      "voice": "sejong/voice/C109_2.wav"
     },
     {
      "text": "밤에는 집현전 학자들과 달력과 농사법, 법전을 논의했습니다.",
-     "start": 9.241,
-     "end": 13.789,
+     "start": 9.829,
+     "end": 14.386,
      "voice": "sejong/voice/C109_3.wav"
     }
    ],
-   "from": 6624,
-   "duration": 436
+   "from": 6766,
+   "duration": 454
   },
   {
    "id": "C110",
@@ -753,24 +753,24 @@
     {
      "text": "하루 종일 앉아서 머리를 쓰는 일과를 버티려면, 많은 열량이 필요합니다.",
      "start": 0.45,
-     "end": 5.828,
+     "end": 5.381,
      "voice": "sejong/voice/C110_0.wav"
     },
     {
      "text": "오늘날 야근하는 직장인이 커피로 버티듯,",
-     "start": 6.208,
-     "end": 8.725,
+     "start": 5.761,
+     "end": 8.779,
      "voice": "sejong/voice/C110_1.wav"
     },
     {
      "text": "세종에게 고기 한 점은, 고된 하루를 버티게 해주는 연료였을지도 모릅니다.",
-     "start": 9.105,
-     "end": 14.239,
+     "start": 9.159,
+     "end": 14.623,
      "voice": "sejong/voice/C110_2.wav"
     }
    ],
-   "from": 7060,
-   "duration": 450
+   "from": 7220,
+   "duration": 461
   },
   {
    "id": "C111",
@@ -789,18 +789,18 @@
     {
      "text": "다만 분명한 것이 하나 있습니다.",
      "start": 0.45,
-     "end": 2.274,
+     "end": 2.496,
      "voice": "sejong/voice/C111_0.wav"
     },
     {
      "text": "이 식습관과 생활은, 그의 몸에 흔적을 남기기 시작했다는 것입니다.",
-     "start": 2.654,
-     "end": 7.724,
+     "start": 2.876,
+     "end": 7.481,
      "voice": "sejong/voice/C111_1.wav"
     }
    ],
-   "from": 7510,
-   "duration": 254
+   "from": 7681,
+   "duration": 247
   },
   {
    "id": "C200",
@@ -818,18 +818,18 @@
     {
      "text": "세종의 몸 상태를 가장 정확하게 알려주는 사람은,",
      "start": 1.6,
-     "end": 5.3,
+     "end": 4.704,
      "voice": "sejong/voice/C200_0.wav"
     },
     {
      "text": "역사학자도, 의사도 아닌, 세종 자신입니다.",
-     "start": 5.68,
-     "end": 8.801,
+     "start": 5.084,
+     "end": 7.745,
      "voice": "sejong/voice/C200_1.wav"
     }
    ],
-   "from": 7764,
-   "duration": 287
+   "from": 7928,
+   "duration": 255
   },
   {
    "id": "C201",
@@ -849,30 +849,30 @@
     {
      "text": "1439년 6월. 세종은 신하들 앞에서 자신의 병을 하나하나 털어놓습니다.",
      "start": 0.45,
-     "end": 6.864,
+     "end": 6.356,
      "voice": "sejong/voice/C201_0.wav"
     },
     {
      "text": "\"젊어서부터 한쪽 다리가 아파, 십여 년 만에 조금 나았다.",
-     "start": 7.244,
-     "end": 11.433,
+     "start": 6.736,
+     "end": 10.975,
      "voice": "sejong/voice/C201_1.wav"
     },
     {
      "text": "또 등에 부종이 생긴 지 오래다.",
-     "start": 11.813,
-     "end": 13.491,
+     "start": 11.355,
+     "end": 13.327,
      "voice": "sejong/voice/C201_2.wav"
     },
     {
      "text": "아플 때는 마음대로 돌아눕지도 못해, 그 고통을 참을 수가 없다.\"",
-     "start": 13.871,
-     "end": 18.554,
+     "start": 13.707,
+     "end": 19.31,
      "voice": "sejong/voice/C201_3.wav"
     }
    ],
-   "from": 8051,
-   "duration": 579
+   "from": 8183,
+   "duration": 602
   },
   {
    "id": "C202",
@@ -890,18 +890,18 @@
     {
      "text": "\"또 소갈증이 있은 지, 열서너 해가 되었다.\"",
      "start": 0.45,
-     "end": 2.904,
+     "end": 3.331,
      "voice": "sejong/voice/C202_0.wav"
     },
     {
      "text": "\"지난해 여름에는 임질을 앓아, 오래 정사를 보지 못했다.\"",
-     "start": 3.284,
-     "end": 7.18,
+     "start": 3.711,
+     "end": 8.031,
      "voice": "sejong/voice/C202_1.wav"
     }
    ],
-   "from": 8630,
-   "duration": 238
+   "from": 8785,
+   "duration": 263
   },
   {
    "id": "C203",
@@ -918,18 +918,18 @@
     {
      "text": "\"지난봄부터 왼쪽 눈이 아프고, 오른쪽 눈도 어두워져,",
      "start": 0.45,
-     "end": 4.654,
+     "end": 4.375,
      "voice": "sejong/voice/C203_0.wav"
     },
     {
      "text": "한 걸음 사이에서도 사람이 있는 것만 알 뿐, 누구인지를 알지 못하겠다.\"",
-     "start": 5.034,
-     "end": 10.357,
+     "start": 4.755,
+     "end": 10.088,
      "voice": "sejong/voice/C203_1.wav"
     }
    ],
-   "from": 8868,
-   "duration": 333
+   "from": 9048,
+   "duration": 325
   },
   {
    "id": "C204",
@@ -961,24 +961,24 @@
     {
      "text": "소갈증은 오늘날의 당뇨병입니다.",
      "start": 0.45,
-     "end": 2.382,
+     "end": 2.713,
      "voice": "sejong/voice/C204_0.wav"
     },
     {
      "text": "열서너 해 전이라면, 그가 스무 살 후반이던 무렵입니다.",
-     "start": 2.762,
-     "end": 6.625,
+     "start": 3.093,
+     "end": 6.923,
      "voice": "sejong/voice/C204_1.wav"
     },
     {
      "text": "여기서 말하는 임질은, 소변을 보기 어렵고 아픈 배뇨 질환을 가리킵니다.",
-     "start": 7.005,
-     "end": 12.437,
+     "start": 7.303,
+     "end": 13.048,
      "voice": "sejong/voice/C204_2.wav"
     }
    ],
-   "from": 9201,
-   "duration": 396
+   "from": 9373,
+   "duration": 414
   },
   {
    "id": "C205",
@@ -1003,24 +1003,24 @@
     {
      "text": "다리, 등, 당뇨, 배뇨, 그리고 눈.",
      "start": 0.45,
-     "end": 2.746,
+     "end": 2.659,
      "voice": "sejong/voice/C205_0.wav"
     },
     {
      "text": "마흔 초반의 왕이 스스로 읊은 이 목록은,",
-     "start": 3.126,
-     "end": 6.063,
+     "start": 3.039,
+     "end": 5.541,
      "voice": "sejong/voice/C205_1.wav"
     },
     {
      "text": "오늘날로 치면 종합병원의 여러 과를 동시에 다녀야 하는 상태였습니다.",
-     "start": 6.443,
-     "end": 11.359,
+     "start": 5.921,
+     "end": 10.668,
      "voice": "sejong/voice/C205_2.wav"
     }
    ],
-   "from": 9597,
-   "duration": 363
+   "from": 9787,
+   "duration": 343
   },
   {
    "id": "C206",
@@ -1040,24 +1040,24 @@
     {
      "text": "눈에 대한 기록은 더 이어집니다.",
      "start": 0.45,
-     "end": 2.139,
+     "end": 2.69,
      "voice": "sejong/voice/C206_0.wav"
     },
     {
      "text": "\"두 눈이 흐릿하고 깔깔하며 아파,",
-     "start": 2.519,
-     "end": 4.483,
+     "start": 3.07,
+     "end": 5.397,
      "voice": "sejong/voice/C206_1.wav"
     },
     {
      "text": "어둡고 침침한 곳은 지팡이가 아니면 걷기 어렵다.\"",
-     "start": 4.863,
-     "end": 8.222,
+     "start": 5.777,
+     "end": 9.488,
      "voice": "sejong/voice/C206_2.wav"
     }
    ],
-   "from": 9960,
-   "duration": 269
+   "from": 10130,
+   "duration": 307
   },
   {
    "id": "C207",
@@ -1072,12 +1072,12 @@
     {
      "text": "한 나라의 왕이, 어두운 방에서는 지팡이를 짚어야 걸을 수 있었던 것입니다.",
      "start": 0.45,
-     "end": 5.843,
+     "end": 5.825,
      "voice": "sejong/voice/C207_0.wav"
     }
    ],
-   "from": 10229,
-   "duration": 198
+   "from": 10437,
+   "duration": 197
   },
   {
    "id": "C208",
@@ -1097,18 +1097,18 @@
     {
      "text": "오랫동안 세종의 병은 비만과 당뇨, 그리고 그 합병증으로 설명되어 왔습니다.",
      "start": 0.45,
-     "end": 6.071,
+     "end": 5.988,
      "voice": "sejong/voice/C208_0.wav"
     },
     {
      "text": "그런데 최근 일부 전문의들은, 실록을 다시 읽으며 다른 가능성을 이야기합니다.",
-     "start": 6.451,
-     "end": 11.999,
+     "start": 6.368,
+     "end": 11.674,
      "voice": "sejong/voice/C208_1.wav"
     }
    ],
-   "from": 10427,
-   "duration": 382
+   "from": 10634,
+   "duration": 373
   },
   {
    "id": "C209",
@@ -1132,24 +1132,24 @@
     {
      "text": "젊은 시절부터 이어진 다리와 등의 통증.",
      "start": 0.45,
-     "end": 3.089,
+     "end": 3.205,
      "voice": "sejong/voice/C209_0.wav"
     },
     {
      "text": "돌아눕기도 힘들 만큼 뻣뻣한 몸.",
-     "start": 3.469,
-     "end": 5.687,
+     "start": 3.585,
+     "end": 5.769,
      "voice": "sejong/voice/C209_1.wav"
     },
     {
      "text": "그리고 통증을 동반한 눈병.",
-     "start": 6.067,
-     "end": 7.696,
+     "start": 6.149,
+     "end": 7.936,
      "voice": "sejong/voice/C209_2.wav"
     }
    ],
-   "from": 10809,
-   "duration": 253
+   "from": 11007,
+   "duration": 261
   },
   {
    "id": "C210",
@@ -1167,24 +1167,24 @@
     {
      "text": "척추와 관절에 염증이 생겨 점점 굳어가는 병, 강직성 척추염.",
      "start": 0.45,
-     "end": 5.653,
+     "end": 4.458,
      "voice": "sejong/voice/C210_0.wav"
     },
     {
      "text": "그리고 이 병과 함께 흔히 찾아오는 눈의 염증, 포도막염과 닮았다는 것입니다.",
-     "start": 6.033,
-     "end": 12.145,
+     "start": 4.838,
+     "end": 10.267,
      "voice": "sejong/voice/C210_1.wav"
     },
     {
      "text": "당뇨로 인한 눈병은 대개 통증이 적은데, 세종은 눈이 아프다고 여러 번 호소했기 때문입니다.",
-     "start": 12.525,
-     "end": 19.308,
+     "start": 10.647,
+     "end": 17.335,
      "voice": "sejong/voice/C210_2.wav"
     }
    ],
-   "from": 11062,
-   "duration": 602
+   "from": 11268,
+   "duration": 543
   },
   {
    "id": "C211",
@@ -1204,24 +1204,24 @@
     {
      "text": "물론 육백 년 전 기록만으로 병을 확진할 수는 없습니다.",
      "start": 0.45,
-     "end": 4.325,
+     "end": 4.17,
      "voice": "sejong/voice/C211_0.wav"
     },
     {
      "text": "하지만 이 가설이 맞다면, 세종이 사냥과 활쏘기를 즐기지 않았던 이유도 달리 보입니다.",
-     "start": 4.705,
-     "end": 11.158,
+     "start": 4.55,
+     "end": 10.833,
      "voice": "sejong/voice/C211_1.wav"
     },
     {
      "text": "게을러서가 아니라, 움직일 때마다 아팠기 때문일 수도 있는 것이죠.",
-     "start": 11.538,
-     "end": 16.287,
+     "start": 11.213,
+     "end": 16.026,
      "voice": "sejong/voice/C211_2.wav"
     }
    ],
-   "from": 11664,
-   "duration": 511
+   "from": 11811,
+   "duration": 503
   },
   {
    "id": "C212",
@@ -1240,24 +1240,24 @@
     {
      "text": "돌아눕지도 못하는 등.",
      "start": 0.45,
-     "end": 1.789,
+     "end": 2.014,
      "voice": "sejong/voice/C212_0.wav"
     },
     {
      "text": "흐려져 가는 두 눈.",
-     "start": 2.169,
-     "end": 3.091,
+     "start": 2.394,
+     "end": 3.549,
      "voice": "sejong/voice/C212_1.wav"
     },
     {
      "text": "그 몸으로, 왕은 정사를 멈추지 않았습니다.",
-     "start": 3.471,
-     "end": 6.297,
+     "start": 3.929,
+     "end": 6.673,
      "voice": "sejong/voice/C212_2.wav"
     }
    ],
-   "from": 12175,
-   "duration": 211
+   "from": 12314,
+   "duration": 223
   },
   {
    "id": "C300",
@@ -1275,18 +1275,18 @@
     {
      "text": "왕 스스로가 이런 상태로 일했으니,",
      "start": 1.6,
-     "end": 3.568,
+     "end": 3.762,
      "voice": "sejong/voice/C300_0.wav"
     },
     {
      "text": "그를 모시는 신하들의 처지는 어땠을까요?",
-     "start": 3.948,
-     "end": 6.131,
+     "start": 4.142,
+     "end": 6.747,
      "voice": "sejong/voice/C300_1.wav"
     }
    ],
-   "from": 12386,
-   "duration": 206
+   "from": 12537,
+   "duration": 225
   },
   {
    "id": "C301",
@@ -1304,18 +1304,18 @@
     {
      "text": "조선의 선비에게, 부모의 삼년상은 어떤 법보다 앞서는 의무였습니다.",
      "start": 0.45,
-     "end": 5.682,
+     "end": 5.587,
      "voice": "sejong/voice/C301_0.wav"
     },
     {
      "text": "그것은 슬픔의 표현이자, 지친 관료가 공식적으로 쉴 수 있는 거의 유일한 기회이기도 했습니다.",
-     "start": 6.062,
-     "end": 12.77,
+     "start": 5.967,
+     "end": 12.577,
      "voice": "sejong/voice/C301_1.wav"
     }
    ],
-   "from": 12592,
-   "duration": 406
+   "from": 12762,
+   "duration": 400
   },
   {
    "id": "C302",
@@ -1335,24 +1335,24 @@
     {
      "text": "하지만 나라에 꼭 필요한 인물이라면 사정이 달라졌습니다.",
      "start": 0.45,
-     "end": 4.49,
+     "end": 4.517,
      "voice": "sejong/voice/C302_0.wav"
     },
     {
      "text": "상중에 있는 관리를, 왕명으로 다시 불러내 일하게 하는 제도.",
-     "start": 4.87,
-     "end": 9.373,
+     "start": 4.897,
+     "end": 9.19,
      "voice": "sejong/voice/C302_1.wav"
     },
     {
      "text": "기복이 있었기 때문입니다.",
-     "start": 9.753,
-     "end": 11.118,
+     "start": 9.57,
+     "end": 11.402,
      "voice": "sejong/voice/C302_2.wav"
     }
    ],
-   "from": 12998,
-   "duration": 356
+   "from": 13162,
+   "duration": 365
   },
   {
    "id": "C303",
@@ -1373,30 +1373,30 @@
     {
      "text": "상상해 보십시오.",
      "start": 0.45,
-     "end": 1.454,
+     "end": 1.522,
      "voice": "sejong/voice/C303_0.wav"
     },
     {
      "text": "부모를 잃은 신하가 삼년상을 허락해 달라고 엎드려 청합니다.",
-     "start": 1.834,
-     "end": 6.163,
+     "start": 1.902,
+     "end": 6.069,
      "voice": "sejong/voice/C303_1.wav"
     },
     {
      "text": "그리고 돌아오는 것은, 왕의 위로와 함께 내려진 고기 한 상.",
-     "start": 6.543,
-     "end": 11.068,
+     "start": 6.449,
+     "end": 10.57,
      "voice": "sejong/voice/C303_2.wav"
     },
     {
      "text": "그리고 기운을 차려 돌아오라는 명입니다.",
-     "start": 11.448,
-     "end": 13.692,
+     "start": 10.95,
+     "end": 13.88,
      "voice": "sejong/voice/C303_3.wav"
     }
    ],
-   "from": 13354,
-   "duration": 433
+   "from": 13527,
+   "duration": 439
   },
   {
    "id": "C304",
@@ -1414,12 +1414,12 @@
     {
      "text": "슬퍼할 시간조차, 나라에 바쳐야 했던 것입니다.",
      "start": 0.45,
-     "end": 3.576,
+     "end": 3.905,
      "voice": "sejong/voice/C304_0.wav"
     }
    ],
-   "from": 13787,
-   "duration": 130
+   "from": 13966,
+   "duration": 140
   },
   {
    "id": "C305",
@@ -1440,30 +1440,30 @@
     {
      "text": "이 조정에서 가장 오래 붙잡혀 있었던 사람.",
      "start": 0.45,
-     "end": 2.933,
+     "end": 3.314,
      "voice": "sejong/voice/C305_0.wav"
     },
     {
      "text": "바로 황희 정승입니다.",
-     "start": 3.313,
-     "end": 4.478,
+     "start": 3.694,
+     "end": 5.166,
      "voice": "sejong/voice/C305_1.wav"
     },
     {
      "text": "우리는 황희를 여유로운 미소의 백발 재상으로 떠올립니다.",
-     "start": 4.858,
-     "end": 8.619,
+     "start": 5.546,
+     "end": 9.473,
      "voice": "sejong/voice/C305_2.wav"
     },
     {
      "text": "하지만 실록 속 그는, 사직서를 내고 또 내도 번번이 돌려받은 장기근속자였습니다.",
-     "start": 8.999,
-     "end": 15.039,
+     "start": 9.853,
+     "end": 15.496,
      "voice": "sejong/voice/C305_3.wav"
     }
    ],
-   "from": 13917,
-   "duration": 474
+   "from": 14106,
+   "duration": 487
   },
   {
    "id": "C306",
@@ -1483,24 +1483,24 @@
     {
      "text": "1432년. 일흔 살 무렵의 황희는, 늙었다는 이유로 물러나기를 청합니다.",
      "start": 0.45,
-     "end": 6.704,
+     "end": 6.326,
      "voice": "sejong/voice/C306_0.wav"
     },
     {
      "text": "일흔은 관리가 벼슬에서 물러나는 나이로 여겨졌습니다.",
-     "start": 7.084,
-     "end": 10.595,
+     "start": 6.706,
+     "end": 10.168,
      "voice": "sejong/voice/C306_1.wav"
     },
     {
      "text": "세종의 답은, 허락하지 않는다, 였습니다.",
-     "start": 10.975,
-     "end": 13.585,
+     "start": 10.548,
+     "end": 13.673,
      "voice": "sejong/voice/C306_2.wav"
     }
    ],
-   "from": 14391,
-   "duration": 430
+   "from": 14593,
+   "duration": 433
   },
   {
    "id": "C307",
@@ -1517,30 +1517,30 @@
     {
      "text": "조선에는 늙은 대신에게, 몸을 기댈 안석과 지팡이를 내려주는 제도가 있었습니다.",
      "start": 0.45,
-     "end": 6.454,
+     "end": 6.323,
      "voice": "sejong/voice/C307_0.wav"
     },
     {
      "text": "궤장입니다.",
-     "start": 6.834,
-     "end": 7.582,
+     "start": 6.703,
+     "end": 7.495,
      "voice": "sejong/voice/C307_1.wav"
     },
     {
      "text": "존경의 표시였지만, 뒤집어 보면 이런 뜻이기도 했습니다.",
-     "start": 7.962,
-     "end": 11.742,
+     "start": 7.875,
+     "end": 12.154,
      "voice": "sejong/voice/C307_2.wav"
     },
     {
      "text": "안석에 기대고, 지팡이를 짚어서라도, 계속 일해 달라.",
-     "start": 12.122,
-     "end": 16.058,
+     "start": 12.534,
+     "end": 16.628,
      "voice": "sejong/voice/C307_3.wav"
     }
    ],
-   "from": 14821,
-   "duration": 504
+   "from": 15026,
+   "duration": 521
   },
   {
    "id": "C308",
@@ -1557,30 +1557,30 @@
     {
      "text": "세월이 흘러 몸이 더 약해진 황희가 다시 사직을 청하자,",
      "start": 0.45,
-     "end": 4.539,
+     "end": 4.214,
      "voice": "sejong/voice/C308_0.wav"
     },
     {
      "text": "세종은 또 한 번 받아주지 않습니다.",
-     "start": 4.919,
-     "end": 6.86,
+     "start": 4.594,
+     "end": 6.826,
      "voice": "sejong/voice/C308_1.wav"
     },
     {
      "text": "대신, 한 달에 두 번만 조회에 나오고, 나머지 일은 집에서 처리하라고 합니다.",
-     "start": 7.24,
-     "end": 12.719,
+     "start": 7.206,
+     "end": 12.837,
      "voice": "sejong/voice/C308_2.wav"
     },
     {
      "text": "육백 년 전의, 재택근무였습니다.",
-     "start": 13.099,
-     "end": 15.246,
+     "start": 13.217,
+     "end": 15.792,
      "voice": "sejong/voice/C308_3.wav"
     }
    ],
-   "from": 15325,
-   "duration": 480
+   "from": 15547,
+   "duration": 496
   },
   {
    "id": "C309",
@@ -1596,24 +1596,24 @@
     {
      "text": "황희가 마침내 영의정에서 물러난 것은 1449년.",
      "start": 0.45,
-     "end": 4.646,
+     "end": 4.404,
      "voice": "sejong/voice/C309_0.wav"
     },
     {
      "text": "그의 나이, 여든일곱이었습니다.",
-     "start": 5.026,
-     "end": 6.669,
+     "start": 4.784,
+     "end": 6.967,
      "voice": "sejong/voice/C309_1.wav"
     },
     {
      "text": "그리고 삼 년 뒤, 아흔의 나이로 세상을 떠납니다.",
-     "start": 7.049,
-     "end": 10.152,
+     "start": 7.347,
+     "end": 10.581,
      "voice": "sejong/voice/C309_2.wav"
     }
    ],
-   "from": 15805,
-   "duration": 351
+   "from": 16043,
+   "duration": 364
   },
   {
    "id": "C310",
@@ -1632,18 +1632,18 @@
     {
      "text": "황희만이 아니었습니다.",
      "start": 0.45,
-     "end": 1.642,
+     "end": 2.012,
      "voice": "sejong/voice/C310_0.wav"
     },
     {
      "text": "훗날 큰 호랑이라 불린 김종서도, 본래는 과거에 급제한 문관이었습니다.",
-     "start": 2.022,
-     "end": 7.106,
+     "start": 2.392,
+     "end": 7.663,
      "voice": "sejong/voice/C310_1.wav"
     }
    ],
-   "from": 16156,
-   "duration": 236
+   "from": 16407,
+   "duration": 252
   },
   {
    "id": "C311",
@@ -1661,24 +1661,24 @@
     {
      "text": "세종은 그를 여진과 맞닿은 혹한의 북방으로 보냅니다.",
      "start": 0.45,
-     "end": 4.036,
+     "end": 4.334,
      "voice": "sejong/voice/C311_0.wav"
     },
     {
      "text": "김종서는 그곳에서 여섯 개의 진을 세웠고,",
-     "start": 4.416,
-     "end": 7.163,
+     "start": 4.714,
+     "end": 7.496,
      "voice": "sejong/voice/C311_1.wav"
     },
     {
      "text": "한양으로 돌아오기까지 칠 년이 넘는 세월을 그 땅에서 보냈습니다.",
-     "start": 7.543,
-     "end": 12.108,
+     "start": 7.876,
+     "end": 12.704,
      "voice": "sejong/voice/C311_2.wav"
     }
    ],
-   "from": 16392,
-   "duration": 386
+   "from": 16659,
+   "duration": 404
   },
   {
    "id": "C312",
@@ -1695,24 +1695,24 @@
     {
      "text": "집현전에도 유명한 이야기가 전합니다.",
      "start": 0.45,
-     "end": 2.453,
+     "end": 2.98,
      "voice": "sejong/voice/C312_0.wav"
     },
     {
      "text": "숙직하던 젊은 학자 신숙주가 밤늦도록 책을 읽다 잠들자,",
-     "start": 2.833,
-     "end": 7.526,
+     "start": 3.36,
+     "end": 7.852,
      "voice": "sejong/voice/C312_1.wav"
     },
     {
      "text": "세종이 자신의 담비 가죽옷을 벗어 덮어주게 했다는 일화입니다.",
-     "start": 7.906,
-     "end": 12.378,
+     "start": 8.232,
+     "end": 12.539,
      "voice": "sejong/voice/C312_2.wav"
     }
    ],
-   "from": 16778,
-   "duration": 394
+   "from": 17063,
+   "duration": 399
   },
   {
    "id": "C313",
@@ -1732,30 +1732,30 @@
     {
      "text": "사람들은 이 이야기를, 임금과 신하의 따뜻한 정으로 기억합니다.",
      "start": 0.45,
-     "end": 5.259,
+     "end": 5.138,
      "voice": "sejong/voice/C313_0.wav"
     },
     {
      "text": "그런데 신숙주의 입장이 되어 보면 어떨까요?",
-     "start": 5.639,
-     "end": 8.315,
+     "start": 5.518,
+     "end": 9.114,
      "voice": "sejong/voice/C313_1.wav"
     },
     {
      "text": "왕의 옷을 덮고 깨어난 그 아침,",
-     "start": 8.695,
-     "end": 10.771,
+     "start": 9.494,
+     "end": 11.491,
      "voice": "sejong/voice/C313_2.wav"
     },
     {
      "text": "그는 이 일을 결코 가볍게 내려놓을 수 없다는 것을 느끼지 않았을까요?",
-     "start": 11.151,
-     "end": 15.937,
+     "start": 11.871,
+     "end": 16.708,
      "voice": "sejong/voice/C313_3.wav"
     }
    ],
-   "from": 17172,
-   "duration": 501
+   "from": 17462,
+   "duration": 524
   },
   {
    "id": "C400",
@@ -1772,12 +1772,12 @@
     {
      "text": "여기서 의문이 생깁니다.",
      "start": 1.6,
-     "end": 2.932,
+     "end": 3.073,
      "voice": "sejong/voice/C400_0.wav"
     }
    ],
-   "from": 17673,
-   "duration": 110
+   "from": 17986,
+   "duration": 115
   },
   {
    "id": "C401",
@@ -1795,18 +1795,18 @@
     {
      "text": "조선의 관료들은, 어리석거나 비굴한 사람들이 아니었습니다.",
      "start": 0.45,
-     "end": 4.7,
+     "end": 5.002,
      "voice": "sejong/voice/C401_0.wav"
     },
     {
      "text": "명분을 목숨처럼 여기고, 왕이 틀렸다고 생각하면 목숨을 걸고 반대하던 사람들이었습니다.",
-     "start": 5.08,
-     "end": 12.0,
+     "start": 5.382,
+     "end": 12.197,
      "voice": "sejong/voice/C401_1.wav"
     }
    ],
-   "from": 17783,
-   "duration": 382
+   "from": 18101,
+   "duration": 388
   },
   {
    "id": "C402",
@@ -1823,18 +1823,18 @@
     {
      "text": "그런 그들이, 왜 이 가혹한 조정을 떠나지 않았을까요?",
      "start": 0.45,
-     "end": 3.933,
+     "end": 4.449,
      "voice": "sejong/voice/C402_0.wav"
     },
     {
      "text": "왕명이 두려워서였을까요?",
-     "start": 4.313,
-     "end": 5.736,
+     "start": 4.829,
+     "end": 6.521,
      "voice": "sejong/voice/C402_1.wav"
     }
    ],
-   "from": 18165,
-   "duration": 213
+   "from": 18489,
+   "duration": 236
   },
   {
    "id": "C403",
@@ -1860,36 +1860,36 @@
     {
      "text": "그 답의 일부는, 앞에서 본 세종의 진단서에 있습니다.",
      "start": 0.45,
-     "end": 4.071,
+     "end": 3.913,
      "voice": "sejong/voice/C403_0.wav"
     },
     {
      "text": "신하들이 편전에서 마주한 왕은,",
-     "start": 4.451,
-     "end": 6.398,
+     "start": 4.293,
+     "end": 6.295,
      "voice": "sejong/voice/C403_1.wav"
     },
     {
      "text": "돌아눕지도 못할 만큼 등이 아프고,",
-     "start": 6.778,
-     "end": 9.043,
+     "start": 6.675,
+     "end": 9.664,
      "voice": "sejong/voice/C403_2.wav"
     },
     {
      "text": "어두운 곳에서는 지팡이를 짚어야 걷고,",
-     "start": 9.423,
-     "end": 11.941,
+     "start": 10.044,
+     "end": 12.964,
      "voice": "sejong/voice/C403_3.wav"
     },
     {
      "text": "한 걸음 앞의 사람이 누구인지 알아보지 못하는 사람이었습니다.",
-     "start": 12.321,
-     "end": 16.977,
+     "start": 13.344,
+     "end": 17.694,
      "voice": "sejong/voice/C403_4.wav"
     }
    ],
-   "from": 18378,
-   "duration": 532
+   "from": 18725,
+   "duration": 553
   },
   {
    "id": "C404",
@@ -1917,24 +1917,24 @@
     {
      "text": "세종도 결국, 몸의 한계를 인정합니다.",
      "start": 0.45,
-     "end": 3.045,
+     "end": 2.991,
      "voice": "sejong/voice/C404_0.wav"
     },
     {
      "text": "1442년, 세자를 돕는 관청을 두고,",
-     "start": 3.425,
-     "end": 6.576,
+     "start": 3.371,
+     "end": 6.183,
      "voice": "sejong/voice/C404_1.wav"
     },
     {
      "text": "1445년부터는 큰일을 뺀 나머지 업무를 세자에게 맡깁니다.",
-     "start": 6.956,
-     "end": 11.819,
+     "start": 6.563,
+     "end": 11.428,
      "voice": "sejong/voice/C404_2.wav"
     }
    ],
-   "from": 18910,
-   "duration": 377
+   "from": 19278,
+   "duration": 365
   },
   {
    "id": "C405",
@@ -1954,18 +1954,18 @@
     {
      "text": "하지만 그가 끝까지 놓지 않은 일이 있었습니다.",
      "start": 0.45,
-     "end": 3.363,
+     "end": 3.849,
      "voice": "sejong/voice/C405_0.wav"
     },
     {
      "text": "그리고 그 일을 함께 해야 했던 사람들이, 바로 그 신하들이었습니다.",
-     "start": 3.743,
-     "end": 8.221,
+     "start": 4.229,
+     "end": 9.119,
      "voice": "sejong/voice/C405_1.wav"
     }
    ],
-   "from": 19287,
-   "duration": 269
+   "from": 19643,
+   "duration": 296
   },
   {
    "id": "C406",
@@ -1983,18 +1983,18 @@
     {
      "text": "쉬라고 말해야 할 사람이 가장 쉬지 않을 때,",
      "start": 0.45,
-     "end": 3.425,
+     "end": 3.356,
      "voice": "sejong/voice/C406_0.wav"
     },
     {
      "text": "그 곁에서 먼저, 오늘은 집에 가겠습니다, 라고 말하기는 쉽지 않았을 것입니다.",
-     "start": 3.805,
-     "end": 9.355,
+     "start": 3.736,
+     "end": 9.835,
      "voice": "sejong/voice/C406_1.wav"
     }
    ],
-   "from": 19556,
-   "duration": 303
+   "from": 19939,
+   "duration": 318
   },
   {
    "id": "C407",
@@ -2016,24 +2016,24 @@
     {
      "text": "왕의 병든 몸은, 어떤 어명보다 강하게 신하들을 붙잡아 두었습니다.",
      "start": 0.45,
-     "end": 5.37,
+     "end": 5.241,
      "voice": "sejong/voice/C407_0.wav"
     },
     {
      "text": "그것은 존경이었을 수도, 부담이었을 수도 있습니다.",
-     "start": 5.75,
-     "end": 9.036,
+     "start": 5.621,
+     "end": 9.383,
      "voice": "sejong/voice/C407_1.wav"
     },
     {
      "text": "그리고 아마, 둘 다였을 것입니다.",
-     "start": 9.416,
-     "end": 11.345,
+     "start": 9.763,
+     "end": 12.236,
      "voice": "sejong/voice/C407_2.wav"
     }
    ],
-   "from": 19859,
-   "duration": 363
+   "from": 20257,
+   "duration": 390
   },
   {
    "id": "C500",
@@ -2051,18 +2051,18 @@
     {
      "text": "세종이 왕위에 오른 1418년.",
      "start": 1.6,
-     "end": 3.749,
+     "end": 3.777,
      "voice": "sejong/voice/C500_0.wav"
     },
     {
      "text": "조선은 세워진 지 겨우 스물여섯 해밖에 되지 않은 나라였습니다.",
-     "start": 4.129,
-     "end": 8.572,
+     "start": 4.157,
+     "end": 8.391,
      "voice": "sejong/voice/C500_1.wav"
     }
    ],
-   "from": 20222,
-   "duration": 280
+   "from": 20647,
+   "duration": 274
   },
   {
    "id": "C501",
@@ -2090,24 +2090,24 @@
     {
      "text": "법도, 제도도 아직 다 갖춰지지 않았고,",
      "start": 0.45,
-     "end": 3.034,
+     "end": 3.994,
      "voice": "sejong/voice/C501_0.wav"
     },
     {
      "text": "북방은 불안했으며, 가뭄이 들면 백성들은 굶주렸습니다.",
-     "start": 3.414,
-     "end": 7.453,
+     "start": 4.374,
+     "end": 8.345,
      "voice": "sejong/voice/C501_1.wav"
     },
     {
      "text": "세종의 시대에 쌓인 것들은, 바로 이 빈틈을 메우는 일이었습니다.",
-     "start": 7.833,
-     "end": 12.63,
+     "start": 8.725,
+     "end": 13.277,
      "voice": "sejong/voice/C501_2.wav"
     }
    ],
-   "from": 20502,
-   "duration": 401
+   "from": 20921,
+   "duration": 421
   },
   {
    "id": "C502",
@@ -2122,17 +2122,17 @@
     {
      "text": "1434년. 시간을 알기 어려운 백성들을 위해,",
      "start": 0.45,
-     "end": 4.647,
+     "end": 4.136,
      "voice": "sejong/voice/C502_0.wav"
     },
     {
      "text": "해시계 앙부일구를 만들어 길가에 두었습니다.",
-     "start": 5.027,
-     "end": 7.929,
+     "start": 4.516,
+     "end": 7.914,
      "voice": "sejong/voice/C502_1.wav"
     }
    ],
-   "from": 20903,
+   "from": 21342,
    "duration": 260
   },
   {
@@ -2148,18 +2148,18 @@
     {
      "text": "1441년. 비의 양을 재는 측우기를 만들고,",
      "start": 0.45,
-     "end": 4.604,
+     "end": 4.002,
      "voice": "sejong/voice/C503_0.wav"
     },
     {
      "text": "이듬해부터 전국에서 비의 양을 기록하게 했습니다.",
-     "start": 4.984,
-     "end": 8.231,
+     "start": 4.382,
+     "end": 7.812,
      "voice": "sejong/voice/C503_1.wav"
     }
    ],
-   "from": 21163,
-   "duration": 269
+   "from": 21602,
+   "duration": 257
   },
   {
    "id": "C504",
@@ -2176,18 +2176,18 @@
     {
      "text": "그리고 북방에 4군과 6진을 설치하며,",
      "start": 0.45,
-     "end": 3.135,
+     "end": 3.11,
      "voice": "sejong/voice/C504_0.wav"
     },
     {
      "text": "압록강과 두만강을 잇는 오늘날 국경선의 기틀을 놓았습니다.",
-     "start": 3.515,
-     "end": 7.848,
+     "start": 3.49,
+     "end": 7.882,
      "voice": "sejong/voice/C504_1.wav"
     }
    ],
-   "from": 21432,
-   "duration": 258
+   "from": 21859,
+   "duration": 259
   },
   {
    "id": "C505",
@@ -2206,24 +2206,24 @@
     {
      "text": "1443년 겨울.",
      "start": 0.45,
-     "end": 1.946,
+     "end": 1.803,
      "voice": "sejong/voice/C505_0.wav"
     },
     {
      "text": "실록에 아주 짧은 기사 하나가 실립니다.",
-     "start": 2.326,
-     "end": 4.749,
+     "start": 2.183,
+     "end": 4.681,
      "voice": "sejong/voice/C505_1.wav"
     },
     {
      "text": "임금이 친히, 언문 스물여덟 자를 만들었다.",
-     "start": 5.129,
-     "end": 8.165,
+     "start": 5.061,
+     "end": 8.007,
      "voice": "sejong/voice/C505_2.wav"
     }
    ],
-   "from": 21690,
-   "duration": 267
+   "from": 22118,
+   "duration": 263
   },
   {
    "id": "C506",
@@ -2243,18 +2243,18 @@
     {
      "text": "이 문자를 만드는 과정은, 실록에 거의 남아 있지 않습니다.",
      "start": 0.45,
-     "end": 4.454,
+     "end": 4.466,
      "voice": "sejong/voice/C506_0.wav"
     },
     {
      "text": "그래서 더 놀라운 것은, 그다음 해의 기록입니다.",
-     "start": 4.834,
-     "end": 7.912,
+     "start": 4.846,
+     "end": 8.189,
      "voice": "sejong/voice/C506_1.wav"
     }
    ],
-   "from": 21957,
-   "duration": 260
+   "from": 22381,
+   "duration": 268
   },
   {
    "id": "C507",
@@ -2275,24 +2275,24 @@
     {
      "text": "1444년.",
      "start": 0.45,
-     "end": 1.532,
+     "end": 1.521,
      "voice": "sejong/voice/C507_0.wav"
     },
     {
      "text": "집현전의 최만리 등이, 새 문자에 반대하는 상소를 올립니다.",
-     "start": 1.912,
-     "end": 6.07,
+     "start": 1.901,
+     "end": 6.034,
      "voice": "sejong/voice/C507_1.wav"
     },
     {
      "text": "그 상소에는 이런 대목이 있습니다.",
-     "start": 6.45,
-     "end": 8.28,
+     "start": 6.413,
+     "end": 8.479,
      "voice": "sejong/voice/C507_2.wav"
     }
    ],
-   "from": 22217,
-   "duration": 271
+   "from": 22649,
+   "duration": 277
   },
   {
    "id": "C508",
@@ -2313,24 +2313,24 @@
     {
      "text": "\"이번 청주 초수리에 가셨을 때에도,",
      "start": 0.45,
-     "end": 2.468,
+     "end": 2.562,
      "voice": "sejong/voice/C508_0.wav"
     },
     {
      "text": "언문 같은 것은 급하게 서두를 일도 아닌데,",
-     "start": 2.848,
-     "end": 5.612,
+     "start": 2.942,
+     "end": 5.799,
      "voice": "sejong/voice/C508_1.wav"
     },
     {
      "text": "어찌 머무시는 곳에서까지 서두르시어, 옥체를 돌보는 일을 번거롭게 하십니까.\"",
-     "start": 5.992,
-     "end": 11.817,
+     "start": 6.179,
+     "end": 12.007,
      "voice": "sejong/voice/C508_2.wav"
     }
    ],
-   "from": 22488,
-   "duration": 377
+   "from": 22926,
+   "duration": 383
   },
   {
    "id": "C509",
@@ -2348,18 +2348,18 @@
     {
      "text": "초수리.",
      "start": 0.45,
-     "end": 0.984,
+     "end": 0.957,
      "voice": "sejong/voice/C509_0.wav"
     },
     {
      "text": "세종이 눈병을 고치려고 찾아간 곳이었습니다.",
-     "start": 1.364,
-     "end": 4.184,
+     "start": 1.337,
+     "end": 4.476,
      "voice": "sejong/voice/C509_1.wav"
     }
    ],
-   "from": 22865,
-   "duration": 166
+   "from": 23309,
+   "duration": 175
   },
   {
    "id": "C510",
@@ -2381,30 +2381,30 @@
     {
      "text": "눈이 흐려져 가던 왕이,",
      "start": 0.45,
-     "end": 1.867,
+     "end": 1.85,
      "voice": "sejong/voice/C510_0.wav"
     },
     {
      "text": "병을 치료하러 간 곳에서도 새 문자를 붙들고 있었다는 사실.",
-     "start": 2.247,
-     "end": 6.342,
+     "start": 2.23,
+     "end": 6.087,
      "voice": "sejong/voice/C510_1.wav"
     },
     {
      "text": "그것을 증명해 준 것은,",
-     "start": 6.722,
-     "end": 8.125,
+     "start": 6.466,
+     "end": 7.83,
      "voice": "sejong/voice/C510_2.wav"
     },
     {
      "text": "아이러니하게도, 한글을 반대한 신하들의 상소였습니다.",
-     "start": 8.505,
-     "end": 12.066,
+     "start": 8.21,
+     "end": 12.199,
      "voice": "sejong/voice/C510_3.wav"
     }
    ],
-   "from": 23031,
-   "duration": 408
+   "from": 23484,
+   "duration": 412
   },
   {
    "id": "C511",
@@ -2426,30 +2426,30 @@
     {
      "text": "훈민정음은 이렇게 시작합니다.",
      "start": 0.45,
-     "end": 2.113,
+     "end": 2.742,
      "voice": "sejong/voice/C511_0.wav"
     },
     {
      "text": "\"나랏말씀이 중국과 달라, 문자와 서로 통하지 아니하니,",
-     "start": 2.493,
-     "end": 7.127,
+     "start": 3.122,
+     "end": 7.171,
      "voice": "sejong/voice/C511_1.wav"
     },
     {
      "text": "어리석은 백성이 이르고자 하는 바가 있어도,",
-     "start": 7.507,
-     "end": 10.214,
+     "start": 7.551,
+     "end": 10.28,
      "voice": "sejong/voice/C511_2.wav"
     },
     {
      "text": "마침내 제 뜻을 펴지 못하는 사람이 많다.\"",
-     "start": 10.594,
-     "end": 13.258,
+     "start": 10.66,
+     "end": 13.299,
      "voice": "sejong/voice/C511_3.wav"
     }
    ],
-   "from": 23439,
-   "duration": 420
+   "from": 23896,
+   "duration": 421
   },
   {
    "id": "C512",
@@ -2466,18 +2466,18 @@
     {
      "text": "앞이 흐려져 가던 왕이,",
      "start": 0.45,
-     "end": 1.627,
+     "end": 1.91,
      "voice": "sejong/voice/C512_0.wav"
     },
     {
      "text": "백성의 눈을 뜨게 해 줄 문자를 만든 것입니다.",
-     "start": 2.007,
-     "end": 4.86,
+     "start": 2.29,
+     "end": 5.219,
      "voice": "sejong/voice/C512_1.wav"
     }
    ],
-   "from": 23859,
-   "duration": 198
+   "from": 24317,
+   "duration": 209
   },
   {
    "id": "C513",
@@ -2503,18 +2503,18 @@
     {
      "text": "1446년. 훈민정음은 세상에 반포됩니다.",
      "start": 0.45,
-     "end": 4.376,
+     "end": 4.223,
      "voice": "sejong/voice/C513_0.wav"
     },
     {
      "text": "그리고 사 년 뒤인 1450년, 세종은 쉰넷의 나이로 세상을 떠납니다.",
-     "start": 4.756,
-     "end": 10.294,
+     "start": 4.603,
+     "end": 9.436,
      "voice": "sejong/voice/C513_1.wav"
     }
    ],
-   "from": 24057,
-   "duration": 331
+   "from": 24526,
+   "duration": 306
   },
   {
    "id": "C514",
@@ -2532,36 +2532,36 @@
     {
      "text": "측우기. 앙부일구. 4군 6진. 그리고 한글.",
      "start": 0.45,
-     "end": 4.189,
+     "end": 4.354,
      "voice": "sejong/voice/C514_0.wav"
     },
     {
      "text": "교과서에서 한 줄로 외웠던 이 이름들은,",
-     "start": 4.569,
-     "end": 6.893,
+     "start": 4.734,
+     "end": 7.087,
      "voice": "sejong/voice/C514_1.wav"
     },
     {
      "text": "옥좌에 앉은 천재가 붓을 한 번 휘둘러 만든 마법이 아니었습니다.",
-     "start": 7.273,
-     "end": 12.043,
+     "start": 7.467,
+     "end": 11.692,
      "voice": "sejong/voice/C514_2.wav"
     },
     {
      "text": "병든 왕과 지친 신하들이, 밤마다 촛불 아래서",
-     "start": 12.423,
-     "end": 15.745,
+     "start": 12.072,
+     "end": 15.355,
      "voice": "sejong/voice/C514_3.wav"
     },
     {
      "text": "자신의 시간과 건강을 태워 남긴 것이었습니다.",
-     "start": 16.125,
-     "end": 19.232,
+     "start": 15.735,
+     "end": 18.748,
      "voice": "sejong/voice/C514_4.wav"
     }
    ],
-   "from": 24388,
-   "duration": 623
+   "from": 24832,
+   "duration": 609
   },
   {
    "id": "E00",
@@ -2579,18 +2579,18 @@
     {
      "text": "역사는 대개, 찬란한 업적을 먼저 기억합니다.",
      "start": 1.6,
-     "end": 4.686,
+     "end": 4.78,
      "voice": "sejong/voice/E00_0.wav"
     },
     {
      "text": "그 뒤에 얼마나 많은 고통과 희생이 있었는지는, 쉽게 잊곤 합니다.",
-     "start": 5.066,
-     "end": 9.557,
+     "start": 5.16,
+     "end": 9.717,
      "voice": "sejong/voice/E00_1.wav"
     }
    ],
-   "from": 25011,
-   "duration": 309
+   "from": 25441,
+   "duration": 314
   },
   {
    "id": "E01",
@@ -2610,24 +2610,24 @@
     {
      "text": "세종은 분명, 신하들을 놓아주지 않은 가혹한 상사였습니다.",
      "start": 0.45,
-     "end": 4.691,
+     "end": 4.539,
      "voice": "sejong/voice/E01_0.wav"
     },
     {
      "text": "동시에, 그 누구보다 자기 자신을 가장 혹독하게 몰아붙인 사람이기도 했습니다.",
-     "start": 5.071,
-     "end": 10.726,
+     "start": 4.919,
+     "end": 10.62,
      "voice": "sejong/voice/E01_1.wav"
     },
     {
      "text": "둘 중 어느 하나만이 진실은 아닙니다.",
-     "start": 11.106,
-     "end": 13.318,
+     "start": 11.0,
+     "end": 13.424,
      "voice": "sejong/voice/E01_2.wav"
     }
    ],
-   "from": 25320,
-   "duration": 422
+   "from": 25755,
+   "duration": 425
   },
   {
    "id": "E02",
@@ -2643,24 +2643,24 @@
     {
      "text": "오늘 밤, 퇴근길 지하철에서 스마트폰을 쥐고 있는 여러분의 손을 한번 보십시오.",
      "start": 0.45,
-     "end": 6.349,
+     "end": 6.138,
      "voice": "sejong/voice/E02_0.wav"
     },
     {
      "text": "우리는 아무렇지 않게 자판을 두드려 안부를 전하고,",
-     "start": 6.729,
-     "end": 10.219,
+     "start": 6.518,
+     "end": 10.414,
      "voice": "sejong/voice/E02_1.wav"
     },
     {
      "text": "화면 아래 흘러가는 자막을 편안하게 읽어 내려갑니다.",
-     "start": 10.599,
-     "end": 13.983,
+     "start": 10.794,
+     "end": 14.456,
      "voice": "sejong/voice/E02_2.wav"
     }
    ],
-   "from": 25742,
-   "duration": 442
+   "from": 26180,
+   "duration": 456
   },
   {
    "id": "E03",
@@ -2679,18 +2679,18 @@
     {
      "text": "읽고, 생각하고, 전하는 이 평범한 일상.",
      "start": 0.45,
-     "end": 3.248,
+     "end": 3.12,
      "voice": "sejong/voice/E03_0.wav"
     },
     {
      "text": "그러나 이 당연함은, 거저 주어진 것이 아닐지도 모릅니다.",
-     "start": 3.628,
-     "end": 7.719,
+     "start": 3.5,
+     "end": 7.584,
      "voice": "sejong/voice/E03_1.wav"
     }
    ],
-   "from": 26184,
-   "duration": 254
+   "from": 26636,
+   "duration": 250
   },
   {
    "id": "E04",
@@ -2708,24 +2708,24 @@
     {
      "text": "육백 년 전 오늘 같은 깊은 밤,",
      "start": 0.45,
-     "end": 2.43,
+     "end": 2.325,
      "voice": "sejong/voice/E04_0.wav"
     },
     {
      "text": "촛불 아래서 문서를 넘기던 신하들.",
-     "start": 2.81,
-     "end": 4.924,
+     "start": 2.705,
+     "end": 4.969,
      "voice": "sejong/voice/E04_1.wav"
     },
     {
      "text": "그리고 흐려진 눈과 굳어가는 몸으로, 끝까지 그 일을 놓지 않았던 한 왕.",
-     "start": 5.304,
-     "end": 10.73,
+     "start": 5.349,
+     "end": 10.545,
      "voice": "sejong/voice/E04_2.wav"
     }
    ],
-   "from": 26438,
-   "duration": 344
+   "from": 26886,
+   "duration": 339
   },
   {
    "id": "E05",
@@ -2740,18 +2740,18 @@
     {
      "text": "그들이 자신의 시간과 건강으로 치러 준 영수증 위에서,",
      "start": 0.45,
-     "end": 4.314,
+     "end": 4.286,
      "voice": "sejong/voice/E05_0.wav"
     },
     {
      "text": "우리는 오늘을 살고 있습니다.",
-     "start": 4.694,
-     "end": 6.213,
+     "start": 4.666,
+     "end": 6.56,
      "voice": "sejong/voice/E05_1.wav"
     }
    ],
-   "from": 26782,
-   "duration": 239
+   "from": 27225,
+   "duration": 249
   },
   {
    "id": "E06",
@@ -2770,24 +2770,24 @@
     {
      "text": "만약 여러분이 육백 년 전, 천재 관료로 태어난다면.",
      "start": 0.45,
-     "end": 4.215,
+     "end": 4.116,
      "voice": "sejong/voice/E06_0.wav"
     },
     {
      "text": "역사에 이름을 남길 이 가혹하고도 찬란한 부름에 응답하시겠습니까?",
-     "start": 4.595,
-     "end": 9.366,
+     "start": 4.496,
+     "end": 9.43,
      "voice": "sejong/voice/E06_1.wav"
     },
     {
      "text": "아니면, 내 소중한 일상을 위해 뒤도 돌아보지 않고 도망치시겠습니까?",
-     "start": 9.746,
-     "end": 14.663,
+     "start": 9.81,
+     "end": 14.919,
      "voice": "sejong/voice/E06_2.wav"
     }
    ],
-   "from": 27021,
-   "duration": 498
+   "from": 27474,
+   "duration": 506
   },
   {
    "id": "E07",
@@ -2803,24 +2803,24 @@
     {
      "text": "여러분의 솔직한 생각을 댓글로 들려주세요.",
      "start": 0.45,
-     "end": 3.208,
+     "end": 3.646,
      "voice": "sejong/voice/E07_0.wav"
     },
     {
      "text": "오늘 이야기가 마음에 와닿으셨다면, 구독과 좋아요 부탁드립니다.",
-     "start": 3.588,
-     "end": 8.428,
+     "start": 4.026,
+     "end": 9.064,
      "voice": "sejong/voice/E07_1.wav"
     },
     {
      "text": "시청해 주셔서 감사합니다.",
-     "start": 8.808,
-     "end": 10.305,
+     "start": 9.444,
+     "end": 11.257,
      "voice": "sejong/voice/E07_2.wav"
     }
    ],
-   "from": 27519,
-   "duration": 407
+   "from": 27980,
+   "duration": 435
   }
  ]
 }
