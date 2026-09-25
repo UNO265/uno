@@ -4,8 +4,11 @@
 소리는 그 시각에 맞는 조각에서 자르므로 빠지거나 겹치는 프레임이 없고, 받은 쪽에서 순서대로 이어 붙이면
 (재인코딩 없는 concat) 원본과 같은 영상이 된다.
 
+조각 이름은 <이름>_<번호>of<개수>.mp4 이고, 같은 폴더에 join_windows.bat 을 함께 만든다.
+받은 쪽에서는 조각과 join_windows.bat 을 한 폴더에 두고 더블클릭하면 <이름>.mp4 로 합쳐진다(ffmpeg 필요).
+
   pip install av
-  python3 scripts/sejong_split.py [입력=out/sejong.mp4] [출력 폴더=out/sejong_split] [조각당 최대 MB=25]
+  python3 scripts/sejong_split.py [입력=out/sejong.mp4] [출력 폴더=out/sejong_split] [조각당 최대 MB=25] [이름=SEJONG]
 """
 import math
 import sys
@@ -20,6 +23,7 @@ def main():
     src = Path(sys.argv[1] if len(sys.argv) > 1 else ROOT / "out/sejong.mp4")
     out = Path(sys.argv[2] if len(sys.argv) > 2 else ROOT / "out/sejong_split")
     max_mb = float(sys.argv[3]) if len(sys.argv) > 3 else 25
+    name = sys.argv[4] if len(sys.argv) > 4 else "SEJONG"
     out.mkdir(parents=True, exist_ok=True)
     for f in out.glob("*"):
         f.unlink()
@@ -35,11 +39,10 @@ def main():
 
     inp = av.open(str(src))
     v, a = inp.streams.video[0], inp.streams.audio[0]
-    base = src.stem
-    names = [f"{base}_part{i + 1}_of{n}.mp4" for i in range(n)]
+    names = [f"{name}_{i + 1}of{n}.mp4" for i in range(n)]
     outs, vmap, amap, off = [], [], [], []
-    for name in names:
-        o = av.open(str(out / name), "w", options={"movflags": "+faststart"})
+    for nm in names:
+        o = av.open(str(out / nm), "w", options={"movflags": "+faststart"})
         vmap.append(o.add_stream_from_template(v))
         amap.append(o.add_stream_from_template(a))
         outs.append(o)
@@ -68,7 +71,17 @@ def main():
     for o in outs:
         o.close()
     inp.close()
-    (out / "list.txt").write_text("".join(f"file '{nm}'\n" for nm in names))
+    bat = [
+        "@echo off",
+        'cd /d "%~dp0"',
+        f"(for %%i in ({' '.join(str(i + 1) for i in range(n))}) do @echo file '{name}_%%iof{n}.mp4') > list.txt",
+        f"ffmpeg -y -f concat -safe 0 -i list.txt -c copy -movflags +faststart {name}.mp4",
+        "del list.txt",
+        "echo.",
+        f"echo Done: {name}.mp4",
+        "pause",
+    ]
+    (out / "join_windows.bat").write_bytes(("\r\n".join(bat) + "\r\n").encode("ascii"))
     for i, nm in enumerate(names):
         print(f"{nm}  {(out / nm).stat().st_size / 1048576:.1f}MB  from {cuts[i]:.2f}s  video {counts[i][0]}  audio {counts[i][1]}")
 

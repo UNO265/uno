@@ -42,8 +42,8 @@ python3 scripts/sejong_split.py              # 원본 화질 그대로 25MB 이�
 scripts/sejong_youtube.sh                   # (참고) 한 파일로 강하게 압축한 버전(1080p HEVC, 약 28.5MB) → out/sejong_youtube.mp4
 ```
 
-최종 영상은 나눠서 받은 뒤 합친다. 조각은 재압축 없이 원본 데이터를 그대로 나눈 것이라, 같은 폴더에서
-`ffmpeg -f concat -safe 0 -i list.txt -c copy sejong.mp4` 로 이어 붙이면 원본과 같은 파일이 된다(영상 프레임 일치 확인).
+최종 영상은 나눠서 받은 뒤 합친다(`SEJONG_1of5.mp4`… + `join_windows.bat`). 조각은 재압축 없이 원본 데이터를 그대로 나눈 것이라, 한 폴더에 두고 `join_windows.bat`을 실행하거나
+같은 ffmpeg concat 명령으로 이어 붙이면 원본과 같은 파일이 된다(영상 프레임 일치 확인).
 
 내레이션 넣기 (셋 중 하나, 넣은 뒤 `sejong_voice.py` → `sejong_music.py` → 렌더링 순서로 다시 실행):
 
