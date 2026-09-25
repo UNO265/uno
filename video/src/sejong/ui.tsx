@@ -4,6 +4,7 @@
  */
 import React from "react";
 import { AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame } from "remotion";
+import BREAKS from "../../public/sejong/subtitle_breaks.json";
 
 export const S = {
   paper: "#ECE4D2",
@@ -77,6 +78,38 @@ export const Stage: React.FC<{ children: React.ReactNode; style?: React.CSSPrope
   </svg>
 );
 
+/**
+ * 자막 줄바꿈: 26자를 넘으면 두 줄로 나눈다.
+ * 가운데에 가까운 쉼표 뒤를 먼저 고르고, 없으면 가운데에 가까운 띄어쓰기에서 끊는다(어절 단위).
+ */
+export const breakLine = (text: string): string[] => {
+  const manual = (BREAKS as Record<string, string[]>)[text];
+  if (manual) return manual;
+  const MAX = 27;
+  if (text.length <= MAX) return [text];
+  const mid = text.length / 2;
+  let best = -1;
+  let score = Infinity;
+  for (let i = 1; i < text.length - 1; i++) {
+    if (text[i] !== " ") continue;
+    const a = text.slice(0, i);
+    const b = text.slice(i + 1);
+    const longest = Math.max(a.length, b.length);
+    let sc = Math.abs(i - mid) + Math.max(0, longest - 30) * 4;
+    if (a.endsWith(",")) sc -= text.length * 0.3; // 쉼표 뒤는 자연스러운 쉼
+    // 보조 용언·의존 명사 앞(읽고 / 있는), 관형어 뒤(한 / 왕)에서는 끊지 않는다
+    if (/^(있|했|하|않|못|수 |것|때|줄|뿐|듯|적|거|된|되|싶|버|보|주)/.test(b)) sc += 14;
+    if (/(^| )(한|그|이|저|두|세|네|몇|각|온|새|옛|헌|첫|더|덜|잘|안|못|꼭|또)$/.test(a)) sc += 14;
+    if (/(고|어|아|여|해|야|게|지)$/.test(a) && /^(있|했|하|않|싶|버|보|주|두|놓|내)/.test(b)) sc += 20;
+    if (/["“]$/.test(a)) sc += 20;
+    if (sc < score) {
+      score = sc;
+      best = i;
+    }
+  }
+  return best < 0 ? [text] : [text.slice(0, best), text.slice(best + 1)];
+};
+
 /** 자막: 지금 말하고 있는 줄을 아래에 */
 export const Subtitle: React.FC<{ cut: Cut }> = ({ cut }) => {
   const f = useCurrentFrame();
@@ -114,7 +147,11 @@ export const Subtitle: React.FC<{ cut: Cut }> = ({ cut }) => {
           letterSpacing: "-0.01em",
         }}
       >
-        {seg.text}
+        {breakLine(seg.text).map((l, i) => (
+          <div key={i} style={{ whiteSpace: "nowrap" }}>
+            {l}
+          </div>
+        ))}
       </div>
     </div>
   );
