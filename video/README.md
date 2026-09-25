@@ -38,6 +38,7 @@ python3 scripts/sejong_voice.py            # 음성 → 타이밍(public/sejong/
 python3 scripts/sejong_music.py            # 국악풍 BGM(가야금풍 현·드론·대금풍) + 효과음, 직접 합성
 REMOTION_CHROME=<chrome 경로> node scripts/sejong_contact.mjs   # 확인용 시트 out/contact_sejong/
 REMOTION_CHROME=<chrome 경로> scripts/sejong_render.sh out/sejong.mp4   # 구간별 렌더링(끊기면 이어서) → 합치기
+scripts/sejong_youtube.sh                   # YouTube 업로드용 한 파일(1080p HEVC, 약 28.5MB) → out/sejong_youtube.mp4
 ```
 
 내레이션 넣기 (셋 중 하나, 넣은 뒤 `sejong_voice.py` → `sejong_music.py` → 렌더링 순서로 다시 실행):
