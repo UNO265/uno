@@ -38,8 +38,12 @@ python3 scripts/sejong_voice.py            # 음성 → 타이밍(public/sejong/
 python3 scripts/sejong_music.py            # 국악풍 BGM(가야금풍 현·드론·대금풍) + 효과음, 직접 합성
 REMOTION_CHROME=<chrome 경로> node scripts/sejong_contact.mjs   # 확인용 시트 out/contact_sejong/
 REMOTION_CHROME=<chrome 경로> scripts/sejong_render.sh out/sejong.mp4   # 구간별 렌더링(끊기면 이어서) → 합치기
-scripts/sejong_youtube.sh                   # YouTube 업로드용 한 파일(1080p HEVC, 약 28.5MB) → out/sejong_youtube.mp4
+python3 scripts/sejong_split.py              # 원본 화질 그대로 25MB 이하 조각으로 나누기 → out/sejong_split/ (pip install av)
+scripts/sejong_youtube.sh                   # (참고) 한 파일로 강하게 압축한 버전(1080p HEVC, 약 28.5MB) → out/sejong_youtube.mp4
 ```
+
+최종 영상은 나눠서 받은 뒤 합친다. 조각은 재압축 없이 원본 데이터를 그대로 나눈 것이라, 같은 폴더에서
+`ffmpeg -f concat -safe 0 -i list.txt -c copy sejong.mp4` 로 이어 붙이면 원본과 같은 파일이 된다(영상 프레임 일치 확인).
 
 내레이션 넣기 (셋 중 하나, 넣은 뒤 `sejong_voice.py` → `sejong_music.py` → 렌더링 순서로 다시 실행):
 
