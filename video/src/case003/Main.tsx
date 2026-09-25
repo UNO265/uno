@@ -1,4 +1,4 @@
-/** CASE #002「ラーメン一杯1000円。店には、いくら残る？」 */
+/** CASE #003「映画館のポップコーン、なぜ高い？」 */
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, interpolate, staticFile } from "remotion";
 import timeline from "../../public/case003/timeline.json";
@@ -35,7 +35,7 @@ const duck = (f: number) => {
 const whole = (id: string): [number, number] => [cut(id).from, cut(id).from + cut(id).duration];
 const m43 = cut("M43");
 const MUTES: [number, number][] = [
-  whole("M05"), // 最初の問い
+  whole("M01"), // 最初の問い（ポップコーンの音と声だけ）
   whole("M17"), // 1454円
   whole("M20"), // チケット代は、映画館だけのお金ではない
   [m43.from, m43.from + sec(m43.segments[0].start)], // 答えの直前

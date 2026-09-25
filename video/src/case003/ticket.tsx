@@ -10,6 +10,14 @@ const EIREN = "日本映画製作者連盟「2025年 全国映画概況」";
 const M12 = mk(({ f, s }) => (
   <Stage>
     <line x1={960} x2={960} y1={200} y2={900} stroke={K.line} strokeWidth={6} opacity={fade(f, s(0))} />
+    {[520, 1400].map((x, i) => (
+      <g key={i} opacity={fade(f, s(0) + 8) * (1 - fade(f, s(1 + i)))}>
+        <rect x={x - 260} y={410} width={520} height={220} rx={16} fill="none" stroke={K.inkSoft} strokeWidth={5} strokeDasharray="18 14" />
+        <text x={x} y={520} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={110} fill={K.inkSoft}>
+          ？
+        </text>
+      </g>
+    ))}
     <g opacity={fade(f, s(1))} transform="translate(520 520)">
       <rect x={-260} y={-110} width={520} height={220} rx={16} fill={T.ticket} stroke={T.velvet} strokeWidth={6} />
       <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={80} fill={T.velvet}>
@@ -47,6 +55,12 @@ const M13 = mk(({ f, s }) => {
         <FlowLine d="M 1190 510 L 1330 510" at={s(3) + 60} color={K.inkSoft} w={10} />
         <text x={960} y={700} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={46} fill={K.inkSoft} opacity={fade(f, s(4))}>
           作品を借りて、上映する
+        </text>
+      </g>
+      <g opacity={fade(f, s(0)) * (1 - fade(f, s(1)))} transform={`translate(${960 + 600 * ease(f, s(1) - 16, s(1) + 10)} 510)`}>
+        <rect x={-260} y={-110} width={520} height={220} rx={16} fill={T.ticket} stroke={T.velvet} strokeWidth={6} />
+        <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={80} fill={T.velvet}>
+          チケット
         </text>
       </g>
       <g opacity={fade(f, s(1)) * (1 - fade(f, s(3)))} transform="translate(1560 300)">
@@ -103,7 +117,7 @@ const M14 = mk(({ f, s }) => {
           </text>
         </g>
       </Stage>
-      <Tag text="業界の目安（みずほ銀行 産業調査部ほか）" x={60} y={50} at={s(2)} />
+      <Tag text="業界の目安" x={60} y={50} at={s(2)} />
     </>
   );
 }, { bg: "white" });
@@ -284,9 +298,9 @@ const M21 = mk(({ f, s }) => {
         <Pill x={1440} y={620} text="映画館のビジネス" at={s(3)} size={44} color={K.red} />
         <g opacity={costs}>
           {["材料", "容器", "スタッフ"].map((t, i) => (
-            <Pill key={i} x={1230 + i * 210} y={790} text={t} at={s(5) + i * 5} size={36} color={K.soy} />
+            <Pill key={i} x={1230 + i * 210} y={730} text={t} at={s(5) + i * 5} size={36} color={K.soy} />
           ))}
-          <text x={1440} y={900} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={34} fill={K.inkSoft} opacity={fade(f, s(4))}>
+          <text x={1440} y={830} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} fill={K.inkSoft} opacity={fade(f, s(4))}>
             売上 ≠ 利益
           </text>
         </g>

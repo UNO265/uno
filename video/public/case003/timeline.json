@@ -1,28 +1,113 @@
 {
  "fps": 30,
- "totalFrames": 25357,
+ "totalFrames": 24832,
  "cuts": [
   {
    "id": "M01",
    "segments": [
     {
-     "text": "映画のチケット、2200円。",
+     "text": "映画館のポップコーンは、なぜこんなに高いのか？",
      "start": 0.15,
-     "end": 2.763395833333333
-    },
-    {
-     "text": "都心の映画館では、これが一般料金になった。",
-     "start": 3.043395833333333,
-     "end": 6.4814791666666665
+     "end": 3.7998125
     }
    ],
    "voice": "case003/voice/M01.wav",
    "voiceStart": 0.15,
    "from": 0,
-   "duration": 206
+   "duration": 135
   },
   {
    "id": "M02",
+   "segments": [
+    {
+     "text": "家で作れば、材料費はわずかなはずだ。",
+     "start": 0.4,
+     "end": 3.391395833333333
+    },
+    {
+     "text": "それなのに、映画館に来ると、なぜか買いたくなる。",
+     "start": 3.671395833333333,
+     "end": 7.340645833333333
+    }
+   ],
+   "voice": "case003/voice/M02.wav",
+   "voiceStart": 0.4,
+   "from": 135,
+   "duration": 238
+  },
+  {
+   "id": "M03",
+   "segments": [
+    {
+     "text": "しかも、映画のチケットは2200円。",
+     "start": 0.4,
+     "end": 3.494895833333333
+    },
+    {
+     "text": "都心の一部の映画館では、これが一般料金だ。",
+     "start": 3.7748958333333333,
+     "end": 7.338229166666666
+    }
+   ],
+   "voice": "case003/voice/M03.wav",
+   "voiceStart": 0.4,
+   "from": 373,
+   "duration": 229
+  },
+  {
+   "id": "M04",
+   "segments": [
+    {
+     "text": "気づけば、チケットとは別に、売店でもお金を払っている。",
+     "start": 0.4,
+     "end": 4.813270833333334
+    },
+    {
+     "text": "そのお金は、どこへ行くのか。",
+     "start": 5.093270833333334,
+     "end": 7.346666666666668
+    }
+   ],
+   "voice": "case003/voice/M04.wav",
+   "voiceStart": 0.4,
+   "from": 602,
+   "duration": 238
+  },
+  {
+   "id": "M05",
+   "segments": [
+    {
+     "text": "実は、そのチケット代が、この謎の入口になる。",
+     "start": 0.4,
+     "end": 4.171
+    }
+   ],
+   "voice": "case003/voice/M05.wav",
+   "voiceStart": 0.4,
+   "from": 840,
+   "duration": 140
+  },
+  {
+   "id": "M06",
+   "segments": [
+    {
+     "text": "今日のカネナゾは――",
+     "start": 0.4,
+     "end": 1.5653333333333332
+    },
+    {
+     "text": "「映画館のポップコーン、なぜこんなに高い？」",
+     "start": 1.8453333333333335,
+     "end": 5.0041875000000005
+    }
+   ],
+   "voice": "case003/voice/M06.wav",
+   "voiceStart": 0.4,
+   "from": 980,
+   "duration": 192
+  },
+  {
+   "id": "M07",
    "segments": [
     {
      "text": "チケットを買って、スクリーンへ向かう。",
@@ -35,13 +120,13 @@
      "end": 6.6853125
     }
    ],
-   "voice": "case003/voice/M02.wav",
+   "voice": "case003/voice/M07.wav",
    "voiceStart": 0.4,
-   "from": 206,
+   "from": 1172,
    "duration": 219
   },
   {
-   "id": "M03",
+   "id": "M08",
    "segments": [
     {
      "text": "売店だ。",
@@ -54,149 +139,57 @@
      "end": 3.4355
     }
    ],
-   "voice": "case003/voice/M03.wav",
+   "voice": "case003/voice/M08.wav",
    "voiceStart": 0.4,
-   "from": 425,
+   "from": 1391,
    "duration": 121
   },
   {
-   "id": "M04",
+   "id": "M09",
    "segments": [
     {
-     "text": "映画を見るだけなら、本来、必要ない。",
+     "text": "トウモロコシそのものは、決して高級な食材ではない。",
      "start": 0.4,
-     "end": 3.5073958333333333
-    },
-    {
-     "text": "それなのに、映画館に来ると、なぜか買いたくなる。",
-     "start": 3.7873958333333335,
-     "end": 7.456645833333333
-    },
-    {
-     "text": "塩味。",
-     "start": 7.736645833333334,
-     "end": 8.539770833333334
-    },
-    {
-     "text": "キャラメル味。",
-     "start": 8.819770833333333,
-     "end": 9.742833333333333
-    },
-    {
-     "text": "そして、ドリンク。",
-     "start": 10.022833333333333,
-     "end": 11.517520833333332
-    },
-    {
-     "text": "気づけば、チケットとは別に、かなりのお金を払っている。",
-     "start": 11.797520833333332,
-     "end": 15.963416666666664
-    }
-   ],
-   "voice": "case003/voice/M04.wav",
-   "voiceStart": 0.4,
-   "from": 546,
-   "duration": 497
-  },
-  {
-   "id": "M05",
-   "segments": [
-    {
-     "text": "映画館のポップコーンは、なぜこんなに高いのか？",
-     "start": 0.3,
-     "end": 3.9498124999999997
-    }
-   ],
-   "voice": "case003/voice/M05.wav",
-   "voiceStart": 0.3,
-   "from": 1043,
-   "duration": 145
-  },
-  {
-   "id": "M06",
-   "segments": [
-    {
-     "text": "家で作れば、材料費はわずかなはずだ。",
-     "start": 0.4,
-     "end": 3.391395833333333
-    },
-    {
-     "text": "そう感じたことがある人は、少なくないだろう。",
-     "start": 3.671395833333333,
-     "end": 6.658312499999999
-    },
-    {
-     "text": "私たちが売店で払ったお金は、いったいどこへ行くのか。",
-     "start": 6.9383125,
-     "end": 11.168020833333333
-    }
-   ],
-   "voice": "case003/voice/M06.wav",
-   "voiceStart": 0.4,
-   "from": 1188,
-   "duration": 353
-  },
-  {
-   "id": "M07",
-   "segments": [
-    {
-     "text": "スーパーのお菓子売り場にも、ポップコーンは並んでいる。",
-     "start": 0.4,
-     "end": 3.7045
-    },
-    {
-     "text": "トウモロコシそのものも、決して高級な食材ではない。",
-     "start": 3.9845,
-     "end": 7.593729166666667
+     "end": 4.0198125000000005
     },
     {
      "text": "もちろん、映画館のポップコーンには、原料以外のコストもかかっている。",
-     "start": 7.873729166666668,
-     "end": 12.811020833333334
+     "start": 4.299812500000001,
+     "end": 9.237104166666668
     },
     {
      "text": "オイル。",
-     "start": 13.091020833333335,
-     "end": 13.656416666666669
-    },
-    {
-     "text": "味付け。",
-     "start": 13.936416666666668,
-     "end": 14.752145833333335
+     "start": 9.517104166666666,
+     "end": 10.0825
     },
     {
      "text": "容器。",
-     "start": 15.032145833333335,
-     "end": 15.701541666666667
+     "start": 10.362499999999999,
+     "end": 11.031895833333332
     },
     {
      "text": "人件費。",
-     "start": 15.981541666666667,
-     "end": 16.840625
-    },
-    {
-     "text": "設備。",
-     "start": 17.120625,
-     "end": 17.8115625
+     "start": 11.311895833333331,
+     "end": 12.170979166666664
     },
     {
      "text": "そして、売れ残りの廃棄。",
-     "start": 18.091562500000002,
-     "end": 20.18897916666667
+     "start": 12.450979166666663,
+     "end": 14.54839583333333
     },
     {
      "text": "だから、「原料が安いから、ほとんどが利益」と、単純に言うことはできない。",
-     "start": 20.46897916666667,
-     "end": 26.484083333333338
+     "start": 14.828395833333328,
+     "end": 20.843499999999995
     }
    ],
-   "voice": "case003/voice/M07.wav",
+   "voice": "case003/voice/M09.wav",
    "voiceStart": 0.4,
-   "from": 1541,
-   "duration": 813
+   "from": 1512,
+   "duration": 643
   },
   {
-   "id": "M08",
+   "id": "M10",
    "segments": [
     {
      "text": "それでも、ひとつ気になることがある。",
@@ -224,43 +217,10 @@
      "end": 16.136604166666665
     }
    ],
-   "voice": "case003/voice/M08.wav",
-   "voiceStart": 0.4,
-   "from": 2354,
-   "duration": 502
-  },
-  {
-   "id": "M09",
-   "segments": [
-    {
-     "text": "実は、そのチケット代が、この謎の入口になる。",
-     "start": 0.4,
-     "end": 4.171
-    }
-   ],
-   "voice": "case003/voice/M09.wav",
-   "voiceStart": 0.4,
-   "from": 2856,
-   "duration": 140
-  },
-  {
-   "id": "M10",
-   "segments": [
-    {
-     "text": "今日のカネナゾは――",
-     "start": 0.4,
-     "end": 1.5653333333333332
-    },
-    {
-     "text": "「映画館のポップコーン、なぜこんなに高い？」",
-     "start": 1.8453333333333335,
-     "end": 5.0041875000000005
-    }
-   ],
    "voice": "case003/voice/M10.wav",
    "voiceStart": 0.4,
-   "from": 2996,
-   "duration": 192
+   "from": 2155,
+   "duration": 502
   },
   {
    "id": "M11",
@@ -293,7 +253,7 @@
    ],
    "voice": "case003/voice/M11.wav",
    "voiceStart": 0.4,
-   "from": 3188,
+   "from": 2657,
    "duration": 444
   },
   {
@@ -317,7 +277,7 @@
    ],
    "voice": "case003/voice/M12.wav",
    "voiceStart": 0.4,
-   "from": 3632,
+   "from": 3101,
    "duration": 269
   },
   {
@@ -351,7 +311,7 @@
    ],
    "voice": "case003/voice/M13.wav",
    "voiceStart": 0.4,
-   "from": 3901,
+   "from": 3370,
    "duration": 615
   },
   {
@@ -385,7 +345,7 @@
    ],
    "voice": "case003/voice/M14.wav",
    "voiceStart": 0.4,
-   "from": 4516,
+   "from": 3985,
    "duration": 1025
   },
   {
@@ -424,7 +384,7 @@
    ],
    "voice": "case003/voice/M15.wav",
    "voiceStart": 0.4,
-   "from": 5541,
+   "from": 5010,
    "duration": 333
   },
   {
@@ -443,7 +403,7 @@
    ],
    "voice": "case003/voice/M16.wav",
    "voiceStart": 0.4,
-   "from": 5874,
+   "from": 5343,
    "duration": 298
   },
   {
@@ -457,7 +417,7 @@
    ],
    "voice": "case003/voice/M17.wav",
    "voiceStart": 0.3,
-   "from": 6172,
+   "from": 5641,
    "duration": 85
   },
   {
@@ -501,7 +461,7 @@
    ],
    "voice": "case003/voice/M18.wav",
    "voiceStart": 0.4,
-   "from": 6257,
+   "from": 5726,
    "duration": 755
   },
   {
@@ -530,7 +490,7 @@
    ],
    "voice": "case003/voice/M19.wav",
    "voiceStart": 0.4,
-   "from": 7012,
+   "from": 6481,
    "duration": 646
   },
   {
@@ -544,7 +504,7 @@
    ],
    "voice": "case003/voice/M20.wav",
    "voiceStart": 0.4,
-   "from": 7658,
+   "from": 7127,
    "duration": 134
   },
   {
@@ -593,7 +553,7 @@
    ],
    "voice": "case003/voice/M21.wav",
    "voiceStart": 0.4,
-   "from": 7792,
+   "from": 7261,
    "duration": 1102
   },
   {
@@ -618,7 +578,7 @@
    "clue": 1,
    "voice": "case003/voice/M22.wav",
    "voiceStart": 0.4,
-   "from": 8894,
+   "from": 8363,
    "duration": 320
   },
   {
@@ -637,7 +597,7 @@
    ],
    "voice": "case003/voice/M23.wav",
    "voiceStart": 0.4,
-   "from": 9214,
+   "from": 8683,
    "duration": 215
   },
   {
@@ -696,7 +656,7 @@
    ],
    "voice": "case003/voice/M24.wav",
    "voiceStart": 0.4,
-   "from": 9429,
+   "from": 8898,
    "duration": 679
   },
   {
@@ -745,7 +705,7 @@
    ],
    "voice": "case003/voice/M25.wav",
    "voiceStart": 0.4,
-   "from": 10108,
+   "from": 9577,
    "duration": 1224
   },
   {
@@ -765,7 +725,7 @@
    "clue": 2,
    "voice": "case003/voice/M26.wav",
    "voiceStart": 0.4,
-   "from": 11332,
+   "from": 10801,
    "duration": 232
   },
   {
@@ -814,7 +774,7 @@
    ],
    "voice": "case003/voice/M27.wav",
    "voiceStart": 0.4,
-   "from": 11564,
+   "from": 11033,
    "duration": 909
   },
   {
@@ -848,7 +808,7 @@
    ],
    "voice": "case003/voice/M28.wav",
    "voiceStart": 0.4,
-   "from": 12473,
+   "from": 11942,
    "duration": 829
   },
   {
@@ -867,7 +827,7 @@
    ],
    "voice": "case003/voice/M29.wav",
    "voiceStart": 0.4,
-   "from": 13302,
+   "from": 12771,
    "duration": 228
   },
   {
@@ -911,7 +871,7 @@
    ],
    "voice": "case003/voice/M30.wav",
    "voiceStart": 0.4,
-   "from": 13530,
+   "from": 12999,
    "duration": 544
   },
   {
@@ -951,7 +911,7 @@
    "clue": 3,
    "voice": "case003/voice/M31.wav",
    "voiceStart": 0.4,
-   "from": 14074,
+   "from": 13543,
    "duration": 662
   },
   {
@@ -995,7 +955,7 @@
    ],
    "voice": "case003/voice/M32.wav",
    "voiceStart": 0.4,
-   "from": 14736,
+   "from": 14205,
    "duration": 548
   },
   {
@@ -1029,7 +989,7 @@
    ],
    "voice": "case003/voice/M33.wav",
    "voiceStart": 0.4,
-   "from": 15284,
+   "from": 14753,
    "duration": 426
   },
   {
@@ -1093,7 +1053,7 @@
    ],
    "voice": "case003/voice/M34.wav",
    "voiceStart": 0.4,
-   "from": 15710,
+   "from": 15179,
    "duration": 1054
   },
   {
@@ -1110,45 +1070,45 @@
      "end": 7.077916666666667
     },
     {
-     "text": "売店の売上が国内売上の約3分の1を占め、その利益率は8割を超えると報じられている。",
+     "text": "売店の売上が国内売上の約3分の1を占め、その粗利益率は8割を超えると報じられている。",
      "start": 7.357916666666667,
-     "end": 14.319812500000001
+     "end": 14.512
     },
     {
      "text": "日本の映画館とは、条件も数字も違う。",
-     "start": 14.599812499999999,
-     "end": 17.801812499999997
+     "start": 14.792,
+     "end": 17.994
     },
     {
      "text": "ただ、チケットを分け合う映画館にとって、売店が重要な収入源だという構造は共通している。",
-     "start": 18.081812499999998,
-     "end": 24.9395
+     "start": 18.274,
+     "end": 25.1316875
     },
     {
      "text": "最大手のAMCでは、2025年、観客一人あたりの売店の売上が、",
-     "start": 25.2195,
-     "end": 31.413541666666667
+     "start": 25.411687500000003,
+     "end": 31.60572916666667
     },
     {
      "text": "前の年より1割ほど増えたと報告されている。",
-     "start": 31.69354166666667,
-     "end": 34.83408333333333
+     "start": 31.88572916666667,
+     "end": 35.026270833333335
     },
     {
      "text": "値上げと、売店で買う人の割合が増えたことが理由だという。",
-     "start": 35.11408333333333,
-     "end": 39.2985625
+     "start": 35.306270833333336,
+     "end": 39.490750000000006
     },
     {
      "text": "客単価を上げる動きは、海外でも続いている。",
-     "start": 39.578562500000004,
-     "end": 42.93435416666667
+     "start": 39.77075000000001,
+     "end": 43.126541666666675
     }
    ],
    "voice": "case003/voice/M35.wav",
    "voiceStart": 0.4,
-   "from": 16764,
-   "duration": 1306
+   "from": 16233,
+   "duration": 1312
   },
   {
    "id": "M36",
@@ -1176,7 +1136,7 @@
    ],
    "voice": "case003/voice/M36.wav",
    "voiceStart": 0.4,
-   "from": 18070,
+   "from": 17545,
    "duration": 357
   },
   {
@@ -1210,7 +1170,7 @@
    ],
    "voice": "case003/voice/M37.wav",
    "voiceStart": 0.4,
-   "from": 18427,
+   "from": 17902,
    "duration": 834
   },
   {
@@ -1239,7 +1199,7 @@
    ],
    "voice": "case003/voice/M38.wav",
    "voiceStart": 0.4,
-   "from": 19261,
+   "from": 18736,
    "duration": 565
   },
   {
@@ -1273,7 +1233,7 @@
    ],
    "voice": "case003/voice/M39.wav",
    "voiceStart": 0.4,
-   "from": 19826,
+   "from": 19301,
    "duration": 748
   },
   {
@@ -1287,7 +1247,7 @@
    ],
    "voice": "case003/voice/M40.wav",
    "voiceStart": 0.4,
-   "from": 20574,
+   "from": 20049,
    "duration": 139
   },
   {
@@ -1331,7 +1291,7 @@
    ],
    "voice": "case003/voice/M41.wav",
    "voiceStart": 0.4,
-   "from": 20713,
+   "from": 20188,
    "duration": 852
   },
   {
@@ -1350,7 +1310,7 @@
    ],
    "voice": "case003/voice/M42.wav",
    "voiceStart": 0.5,
-   "from": 21565,
+   "from": 21040,
    "duration": 227
   },
   {
@@ -1380,7 +1340,7 @@
    "clue": "FINAL",
    "voice": "case003/voice/M43.wav",
    "voiceStart": 0.8,
-   "from": 21792,
+   "from": 21267,
    "duration": 788
   },
   {
@@ -1414,7 +1374,7 @@
    ],
    "voice": "case003/voice/M44.wav",
    "voiceStart": 0.4,
-   "from": 22580,
+   "from": 22055,
    "duration": 721
   },
   {
@@ -1473,7 +1433,7 @@
    ],
    "voice": "case003/voice/M45.wav",
    "voiceStart": 0.4,
-   "from": 23301,
+   "from": 22776,
    "duration": 912
   },
   {
@@ -1502,7 +1462,7 @@
    ],
    "voice": "case003/voice/M46.wav",
    "voiceStart": 0.4,
-   "from": 24213,
+   "from": 23688,
    "duration": 658
   },
   {
@@ -1516,7 +1476,7 @@
    ],
    "voice": "case003/voice/M47.wav",
    "voiceStart": 0.4,
-   "from": 24871,
+   "from": 24346,
    "duration": 117
   },
   {
@@ -1540,7 +1500,7 @@
    ],
    "voice": "case003/voice/M48.wav",
    "voiceStart": 0.4,
-   "from": 24988,
+   "from": 24463,
    "duration": 152
   },
   {
@@ -1559,7 +1519,7 @@
    ],
    "voice": "case003/voice/M49.wav",
    "voiceStart": 0.4,
-   "from": 25140,
+   "from": 24615,
    "duration": 217
   }
  ]

@@ -107,9 +107,9 @@ MOODS_003 = {
     "outro": dict(prog=["Fmaj7", "Am7", "Bbmaj7", "C6"], bpm=76, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=53, bell=CELESTA),
 }
 SECTIONS_003 = [
-    ("c3_01_lobby", "lobby", "M01", "M05"),
-    ("c3_02_lobby", "lobby", "M06", "M10"),
-    ("c3_03_ledger", "ledger", "M10", "M17"),
+    ("c3_01_lobby", "lobby", "M01", "M06"),
+    ("c3_02_lobby", "lobby", "M07", "M12"),
+    ("c3_03_ledger", "ledger", "M12", "M17"),
     ("c3_04_ledger", "ledger", "M18", "M23"),
     ("c3_05_pressure", "pressure", "M23", "M26"),
     ("c3_06_seats", "seats", "M26", "M34"),

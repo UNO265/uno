@@ -45,8 +45,8 @@ const M27 = mk(({ f, s }) => {
         {["スクリーン", "座席", "上映時間"].map((t, i) => (
           <Pill key={i} x={560 + i * 400} y={300} text={t} at={s(3 + i)} size={52} color="#FFFFFF" fill="#10294A" />
         ))}
-        <text x={960} y={820} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={60} fill="#FFFFFF" opacity={fade(f, s(7))}>
-          1スクリーンで売れる席は、1日に数回分
+        <text x={960} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={60} fill="#FFFFFF" opacity={fade(f, s(7))}>
+          1スクリーン ＝ 1日に数回分
         </text>
       </g>
     </Stage>
@@ -79,11 +79,11 @@ const M28 = mk(({ f, s }) => {
               </g>
             );
           })}
-          <rect x={560} y={640} width={800} height={160} rx={16} fill="rgba(226,69,47,0.2)" stroke={K.red} strokeWidth={6} opacity={fade(f, s(3))} />
-          <text x={960} y={740} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={64} fill="#FFFFFF" opacity={fade(f, s(3))}>
+          <rect x={560} y={620} width={800} height={200} rx={16} fill="rgba(226,69,47,0.2)" stroke={K.red} strokeWidth={6} opacity={fade(f, s(3))} />
+          <text x={960} y={715} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={64} fill="#FFFFFF" opacity={fade(f, s(3))}>
             売店は、一つ
           </text>
-          <Note x={960} y={870} text="全員が通るロビー" at={s(4)} size={44} color="#FFFFFF" />
+          <Note x={960} y={785} text="全員が通るロビー" at={s(4)} size={40} color="#FFFFFF" />
         </Stage>
       </AbsoluteFill>
     </>
@@ -157,14 +157,14 @@ const M31 = mk(({ f, s }) => {
         <Stage>
           <g opacity={fade(f, s(2))}>
             <Cup x={420} y={560} s={0.75} fill={1} />
-            <text x={420} y={860} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={T.butter}>
+            <text x={420} y={815} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={T.butter}>
               大きなポップコーン
             </text>
           </g>
           <g opacity={fade(f, s(3))} transform="translate(960 560)">
             <rect x={-90} y={-170} width={180} height={320} rx={18} fill="#2A5A8A" />
             <rect x={-100} y={-190} width={200} height={34} rx={10} fill="#DDE8F2" />
-            <text y={300} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={T.butter}>
+            <text y={255} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={T.butter}>
               大きなドリンク
             </text>
           </g>
@@ -172,7 +172,7 @@ const M31 = mk(({ f, s }) => {
             <rect x={1260} y={380} width={520} height={360} rx={24} fill="none" stroke={T.butter} strokeWidth={6} strokeDasharray="20 14" />
             <Cup x={1440} y={560} s={0.4} fill={1} />
             <rect x={1600} y={500} width={80} height={150} rx={10} fill="#2A5A8A" />
-            <text x={1520} y={860} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={T.butter}>
+            <text x={1520} y={815} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={T.butter}>
               セット
             </text>
           </g>
@@ -195,7 +195,7 @@ const M32 = mk(({ f, s }) => {
       {steps.map((st, i) => (
         <g key={i} opacity={fade(f, st.at)}>
           <circle cx={st.x} cy={st.y} r={18} fill="#FFFFFF" />
-          <text x={st.x + (i === 2 ? 0 : 40)} y={st.y + (i === 2 ? -40 : 14)} textAnchor={i === 2 ? "middle" : "start"} fontFamily={FONT} fontWeight={800} fontSize={42} fill={T.bp}>
+          <text x={st.x + (i === 2 ? 0 : 40)} y={st.y + (i === 2 ? -40 : i === 1 ? 70 : 14)} textAnchor={i === 2 ? "middle" : "start"} fontFamily={FONT} fontWeight={800} fontSize={42} fill={T.bp}>
             {st.t}
           </text>
         </g>
@@ -269,7 +269,7 @@ const M35 = mk(({ f, s }) => (
       source="CNN（2024年5月）／AMC Entertainment 年次報告書（2025年度）"
       rows={[
         { t: "AMC・シネマーク：売店＝国内売上の約3分の1", at: s(2), hl: s(2) + 20 },
-        { t: "売店の利益率は8割超と報道", at: s(2) + 40, hl: s(2) + 60 },
+        { t: "売店の粗利益率は8割超と報道", at: s(2) + 40, hl: s(2) + 60 },
         { t: "AMC：観客1人あたり売店売上 ＋10%（2025年）", at: s(5), hl: s(6) },
         { t: "理由：値上げ・売店で買う人の割合の増加", at: s(7), hl: s(7) + 20 },
       ]}
@@ -378,20 +378,20 @@ const M39 = mk(({ f, s }) => {
         <text x={960} y={270} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} fill="#F4EEE3">
           建物・スクリーン・スタッフ
         </text>
-        <rect x={600} y={360} width={140} height={440} fill={T.ticket} />
-        <text x={670} y={860} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={T.ticket}>
+        <rect x={600} y={360} width={140} height={380} fill={T.ticket} />
+        <text x={670} y={795} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={T.ticket}>
           チケット
         </text>
-        <text x={670} y={910} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={30} fill="#C9C2B6" opacity={fade(f, s(3))}>
+        <text x={670} y={840} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={30} fill="#C9C2B6" opacity={fade(f, s(3))}>
           （分け合ったあと）
         </text>
       </g>
       <g opacity={two}>
-        <rect x={1180} y={360} width={140} height={440} fill={T.butter} />
-        <text x={1250} y={860} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={T.butter}>
+        <rect x={1180} y={360} width={140} height={380} fill={T.butter} />
+        <text x={1250} y={795} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={T.butter}>
           売店
         </text>
-        <text x={960} y={990} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={40} fill="#C9C2B6">
+        <text x={960} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={44} fill={T.butter}>
           もう一本の柱、と見ることもできる
         </text>
       </g>

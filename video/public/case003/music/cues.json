@@ -2,61 +2,61 @@
  {
   "file": "case003/music/c3_01_lobby.wav",
   "from": 0,
-  "to": 1043,
+  "to": 980,
   "mood": "lobby"
  },
  {
   "file": "case003/music/c3_02_lobby.wav",
-  "from": 1188,
-  "to": 2996,
+  "from": 1172,
+  "to": 3101,
   "mood": "lobby"
  },
  {
   "file": "case003/music/c3_03_ledger.wav",
-  "from": 2996,
-  "to": 6172,
+  "from": 3101,
+  "to": 5641,
   "mood": "ledger"
  },
  {
   "file": "case003/music/c3_04_ledger.wav",
-  "from": 6257,
-  "to": 9214,
+  "from": 5726,
+  "to": 8683,
   "mood": "ledger"
  },
  {
   "file": "case003/music/c3_05_pressure.wav",
-  "from": 9214,
-  "to": 11332,
+  "from": 8683,
+  "to": 10801,
   "mood": "pressure"
  },
  {
   "file": "case003/music/c3_06_seats.wav",
-  "from": 11332,
-  "to": 15710,
+  "from": 10801,
+  "to": 15179,
   "mood": "seats"
  },
  {
   "file": "case003/music/c3_07_aroma.wav",
-  "from": 15710,
-  "to": 20574,
+  "from": 15179,
+  "to": 20049,
   "mood": "aroma"
  },
  {
   "file": "case003/music/c3_08_answer.wav",
-  "from": 20574,
-  "to": 21792,
+  "from": 20049,
+  "to": 21267,
   "mood": "answer"
  },
  {
   "file": "case003/music/c3_09_answer.wav",
-  "from": 21792,
-  "to": 24871,
+  "from": 21267,
+  "to": 24346,
   "mood": "answer"
  },
  {
   "file": "case003/music/c3_10_outro.wav",
-  "from": 24871,
-  "to": 25357,
+  "from": 24346,
+  "to": 24832,
   "mood": "outro"
  }
 ]
