@@ -17,3 +17,4 @@ public/sejong/voice/
 public/sejong/music/*.wav
 public/sejong/*.png
 .models/
+__pycache__/
