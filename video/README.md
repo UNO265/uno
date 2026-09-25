@@ -27,6 +27,27 @@ CASE=case002 AT=0.35,0.85 node scripts/contact.mjs   # 장면 확인용 콘택�
 
 화면 코드는 `src/case002/`(CASE #001 부품은 쓰지 않고 v2 기준으로 새로 만듦), 장면 설계는 [CASE #002 장면 설계](../docs/case002-scene-design.md)를 참고하세요.
 
+### 세종「고기 없인 못 살던 왕과 꺼지지 않는 편전의 불빛」(한국어 역사 영상)
+
+대본은 [최종 대본](../docs/sejong/sejong-final-script.md), 컷 목록은 `data/sejong/cuts.json`(83컷·217줄, 대본과 글자 단위로 일치), 화면 코드는 `src/sejong/`입니다. 스타일은 한지 위 먹선 + 촛불 한 점, 세종의 눈이 흐려지는 흐림 효과(2장~5장)가 훈민정음 장면에서 걷힙니다.
+
+```bash
+pip install numpy pillow edge-tts
+python3 scripts/sejong_texture.py          # 한지·먹 바탕 PNG (한 번만)
+python3 scripts/sejong_voice.py            # 음성 → 타이밍(public/sejong/timeline.json). 음성이 없으면 글자 수로 추정
+python3 scripts/sejong_music.py            # 국악풍 BGM(가야금풍 현·드론·대금풍) + 효과음, 직접 합성
+REMOTION_CHROME=<chrome 경로> node scripts/sejong_contact.mjs   # 확인용 시트 out/contact_sejong/
+npx remotion render src/sejong/index.ts Sejong out/sejong.mp4 --concurrency=4
+```
+
+내레이션 넣기 (셋 중 하나, 넣은 뒤 `sejong_voice.py` → `sejong_music.py` → 렌더링 순서로 다시 실행):
+
+- 직접 녹음·외부 TTS: 줄마다 `public/sejong/voice/<컷ID>_<줄번호>.wav`(예: `H01_0.wav`)로 넣고 `python3 scripts/sejong_voice.py`
+- Google Cloud TTS: `GOOGLE_TTS_API_KEY=... python3 scripts/sejong_voice.py --engine google` (기본 목소리 `ko-KR-Neural2-C`, 남성 중저음)
+- Edge TTS: `python3 scripts/sejong_voice.py --engine edge` (기본 `ko-KR-InJoonNeural`, 네트워크에서 `speech.platform.bing.com` 허용 필요)
+
+음성이 하나도 없으면 `timeline.json`에 `"placeholder": true`가 붙고, 자막·BGM만 있는 미리보기로 렌더링됩니다.
+
 클라우드 환경처럼 Chromium을 따로 지정해야 하면 `REMOTION_CHROME=<경로>`를 설정하세요.
 
 ## 구성

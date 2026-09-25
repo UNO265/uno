@@ -6,6 +6,7 @@ import { Main002, total002 } from "./case002/Main";
 import { SHORTS } from "./shorts001/Main";
 import { SHORTS002 } from "./shorts002/Main";
 import { Main003, total003 } from "./case003/Main";
+import { MainSejong, totalSejong } from "./sejong/Main";
 
 const Root: React.FC = () =>
   React.createElement(
@@ -34,6 +35,15 @@ const Root: React.FC = () =>
       id: "Case003",
       component: Main003,
       durationInFrames: total003,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
+    // 세종「고기 없인 못 살던 왕과 꺼지지 않는 편전의 불빛」(한국어 역사 영상)
+    React.createElement(Composition, {
+      id: "Sejong",
+      component: MainSejong,
+      durationInFrames: totalSejong,
       fps: 30,
       width: 1920,
       height: 1080,
