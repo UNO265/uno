@@ -8,7 +8,7 @@
                      처음 실행 때 Hugging Face 에서 모델을 .models/supertonic-3 에 받는다(pip install supertonic soundfile).
   --engine kss       오프라인 합성(scripts/sejong_tts_kss.py, 여성 단일 화자·비상업 데이터셋 → 미리보기용).
   --voice NAME       목소리 이름을 바꾼다(supertonic: M1~M5, F1~F5).
-  --rate             말하기 속도(edge: -8%, google: 0.92, supertonic: 0.95 형식).
+  --rate             말하기 속도(edge: -8%, google: 0.92, supertonic: 초당 음절 6.8 형식).
   --force            이미 있는 음성 파일도 다시 합성한다.
 
 직접 녹음한 음성을 쓸 때는 같은 파일명으로 wav 를 넣고 `--engine files` 로 다시 실행하면 된다.
@@ -106,25 +106,56 @@ def tts_google(text, dst, voice, rate):
 _supertonic = {}
 
 
-def tts_supertonic(text, dst, voice, rate):
+def speech_rate(a, sr, text):
+    """쉼을 뺀 실제 발화 구간 기준 초당 음절 수."""
     import numpy as np
+
+    fr = int(sr * 0.02)
+    e = np.sqrt(np.add.reduceat(a[: len(a) // fr * fr] ** 2, np.arange(0, len(a) // fr * fr, fr)) / fr)
+    voiced = max(0.2, (e > 0.03 * e.max()).sum() * 0.02)
+    return len(re.findall(r"[가-힣]", text)) / voiced
+
+
+def tts_supertonic(text, dst, voice, target):
+    """문장(. ? !) 단위로 합성하고, 문장마다 말 속도를 재서 target(초당 음절)에 맞춘다.
+    Supertonic 은 짧은 문장을 빨리 읽는 경향이 있어 속도 값을 고정하면 줄마다 빠르기가 들쭉날쭉해진다."""
+    import numpy as np
+    import supertonic.core
     from supertonic import TTS
 
+    # speed 는 예측한 발화 길이를 나누는 값일 뿐이라, 아주 짧은 문장은 0.7 아래로 내려야 목표 속도가 된다.
+    supertonic.core.MIN_SPEED = 0.55
     if "tts" not in _supertonic:
         _supertonic["tts"] = TTS(model_dir=ROOT / ".models/supertonic-3")
     tts = _supertonic["tts"]
+    sr = tts.sample_rate
     style = _supertonic.setdefault(voice, tts.get_voice_style(voice))
-    a, _ = tts.synthesize(text, voice_style=style, lang="ko", speed=float(rate), total_steps=16)
-    a = np.asarray(a, dtype=np.float32).squeeze()
-    # 앞뒤 무음 정리 + 음량 정규화
-    idx = np.where(np.abs(a) > 0.02 * np.abs(a).max())[0]
-    a = a[max(0, idx[0] - 1200): idx[-1] + 3000] if len(idx) else a
+
+    def trim(a):
+        idx = np.where(np.abs(a) > 0.02 * np.abs(a).max())[0]
+        return a[max(0, idx[0] - 600): idx[-1] + 1500] if len(idx) else a
+
+    parts = []
+    for sent in [x.strip() for x in re.findall(r"[^.?!]+[.?!]?", text) if x.strip()]:
+        speed, best = 0.95, None
+        for _ in range(4):
+            a, _ = tts.synthesize(sent, voice_style=style, lang="ko", speed=speed, total_steps=16)
+            a = trim(np.asarray(a, dtype=np.float32).squeeze())
+            r = speech_rate(a, sr, sent)
+            if best is None or abs(r - target) < abs(best[1] - target):
+                best = (a, r)
+            if abs(r - target) / target < 0.04:
+                break
+            speed = min(1.25, max(0.55, speed * target / r))
+        parts.append(best[0])
+        parts.append(np.zeros(int(sr * 0.45), dtype=np.float32))
+    a = np.concatenate(parts[:-1])
     a = a / max(1e-6, np.abs(a).max()) * 0.85
     tmp = dst.with_suffix(".raw.wav")
     with wave.open(str(tmp), "w") as w:
         w.setnchannels(1)
         w.setsampwidth(2)
-        w.setframerate(tts.sample_rate)
+        w.setframerate(sr)
         w.writeframes((a * 32767).astype(np.int16).tobytes())
     to_wav(tmp, dst)
     tmp.unlink()
@@ -165,7 +196,7 @@ def main():
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
     voice = a.voice or {"edge": "ko-KR-InJoonNeural", "google": "ko-KR-Neural2-C", "supertonic": "M2"}.get(a.engine)
-    rate = a.rate or {"edge": "-8%", "google": "0.92", "supertonic": "0.95"}.get(a.engine)
+    rate = a.rate or {"edge": "-8%", "google": "0.92", "supertonic": "6.8"}.get(a.engine)
 
     cuts = json.loads(CUTS.read_text())
     VOICE.mkdir(parents=True, exist_ok=True)
@@ -182,7 +213,7 @@ def main():
                 if a.engine == "edge":
                     asyncio.run(tts_edge(clean(line), wav, voice, rate))
                 elif a.engine == "supertonic":
-                    tts_supertonic(clean(line), wav, voice, rate)
+                    tts_supertonic(clean(line), wav, voice, float(rate))
                 elif a.engine == "kss":
                     tts_kss(clean(line), wav, float(rate or 1.12))
                 else:

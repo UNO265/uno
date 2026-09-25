@@ -43,7 +43,7 @@ scripts/sejong_youtube.sh                   # YouTube 업로드용 한 파일(10
 
 내레이션 넣기 (셋 중 하나, 넣은 뒤 `sejong_voice.py` → `sejong_music.py` → 렌더링 순서로 다시 실행):
 
-- Supertonic 3(권장, 오프라인·상업 이용 가능한 OpenRAIL-M 모델): `pip install supertonic soundfile && python3 scripts/sejong_voice.py --engine supertonic` (기본 목소리 `M2` 저음 남성, 속도 `0.95`. 처음 실행 때 Hugging Face에서 모델을 `.models/supertonic-3`에 받음. 연도 같은 숫자는 한글 한자어로 풀어 읽히고, 잘못 읽는 말은 `sejong_voice.py`의 `READ` 표에서 읽기용으로만 고침)
+- Supertonic 3(권장, 오프라인·상업 이용 가능한 OpenRAIL-M 모델): `pip install supertonic soundfile && python3 scripts/sejong_voice.py --engine supertonic` (기본 목소리 `M2` 저음 남성, 말 속도 초당 6.8음절(문장마다 재서 맞춤). 처음 실행 때 Hugging Face에서 모델을 `.models/supertonic-3`에 받음. 연도 같은 숫자는 한글 한자어로 풀어 읽히고, 잘못 읽는 말은 `sejong_voice.py`의 `READ` 표에서 읽기용으로만 고침)
 - 직접 녹음·외부 TTS: 줄마다 `public/sejong/voice/<컷ID>_<줄번호>.wav`(예: `H01_0.wav`)로 넣고 `python3 scripts/sejong_voice.py`
 - Google Cloud TTS: `GOOGLE_TTS_API_KEY=... python3 scripts/sejong_voice.py --engine google` (기본 목소리 `ko-KR-Neural2-C`, 남성 중저음)
 - Edge TTS: `python3 scripts/sejong_voice.py --engine edge` (기본 `ko-KR-InJoonNeural`, 네트워크에서 `speech.platform.bing.com` 허용 필요)
