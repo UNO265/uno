@@ -1,4 +1,7 @@
 /** 세종 영상「고기 없인 못 살던 왕과 꺼지지 않는 편전의 불빛」 */
+import "@fontsource/gowun-batang/400.css";
+import "@fontsource/gowun-batang/700.css";
+import "@fontsource/gowun-dodum/400.css";
 import "@fontsource/nanum-myeongjo/400.css";
 import "@fontsource/nanum-myeongjo/700.css";
 import "@fontsource/nanum-myeongjo/800.css";
@@ -65,7 +68,7 @@ const ALL_TEXT = JSON.stringify(timeline.cuts) + "ㄱㅋㆁㄷㅌㄴㅂㅍㅁㅈ
 const useFonts = () => {
   const [handle] = useState(() => delayRender("fonts"));
   useEffect(() => {
-    const specs = ["400 40px 'Nanum Myeongjo'", "700 40px 'Nanum Myeongjo'", "800 40px 'Nanum Myeongjo'", "400 40px 'Noto Sans KR'", "500 40px 'Noto Sans KR'", "700 40px 'Noto Sans KR'", "900 40px 'Noto Sans KR'"];
+    const specs = ["400 40px 'Gowun Batang'", "700 40px 'Gowun Batang'", "400 40px 'Gowun Dodum'", "400 40px 'Nanum Myeongjo'", "700 40px 'Nanum Myeongjo'", "800 40px 'Nanum Myeongjo'", "400 40px 'Noto Sans KR'", "500 40px 'Noto Sans KR'", "700 40px 'Noto Sans KR'", "900 40px 'Noto Sans KR'"];
     Promise.all(specs.map((s) => document.fonts.load(s, ALL_TEXT)))
       .then(() => document.fonts.ready)
       .then(() => continueRender(handle));

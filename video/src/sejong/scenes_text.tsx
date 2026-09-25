@@ -42,7 +42,7 @@ export const Word: React.FC<SceneProps> = ({ cut }) => {
           </Rise>
         )}
         {lines.map((l, i) => (
-          <Rise key={i} from={10 + i * 10} dur={22} style={{ fontFamily: SERIF, fontWeight: 800, fontSize: l.length > 8 ? 110 : 150, color: color(dark), lineHeight: 1.25, letterSpacing: "0.02em" }}>
+          <Rise key={i} from={10 + i * 10} dur={22} style={{ fontFamily: SERIF, fontWeight: 700, fontSize: l.length > 8 ? 110 : 150, color: color(dark), lineHeight: 1.25, letterSpacing: "0.02em" }}>
             {l}
           </Rise>
         ))}
@@ -72,7 +72,7 @@ export const List: React.FC<SceneProps> = ({ cut }) => {
   return (
     <Ground dark={dark}>
       <div style={{ position: "absolute", left: 300, top: 170, right: 300 }}>
-        <Rise from={4} style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 64, color: dark ? S.flame : S.seal, marginBottom: 46 }}>
+        <Rise from={4} style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 64, color: dark ? S.flame : S.seal, marginBottom: 46 }}>
           {title}
         </Rise>
         {items.map((it, i) => {
@@ -104,13 +104,13 @@ export const Flip: React.FC<SceneProps> = ({ cut }) => {
   return (
     <Ground>
       <div style={{ ...center, paddingBottom: 110, gap: 40 }}>
-        <div style={{ position: "relative", fontFamily: SERIF, fontWeight: 800, fontSize: a.length > 8 ? 84 : 120, color: S.ink, opacity: interpolate(ease(f, 4, 20), [0, 1], [0, 1]) * (1 - 0.55 * strike) }}>
+        <div style={{ position: "relative", fontFamily: SERIF, fontWeight: 700, fontSize: a.length > 8 ? 84 : 120, color: S.ink, opacity: interpolate(ease(f, 4, 20), [0, 1], [0, 1]) * (1 - 0.55 * strike) }}>
           {a}
           {!both && <div style={{ position: "absolute", left: -10, right: -10, top: "52%", height: 8, background: S.seal, transformOrigin: "left", transform: `scaleX(${strike})` }} />}
         </div>
-        <div style={{ fontFamily: SERIF, fontWeight: 800, fontSize: b.length > 8 ? 84 : 120, color: both ? S.ink : S.seal, opacity: pb, transform: `translateY(${(1 - pb) * 20}px)` }}>{b}</div>
+        <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: b.length > 8 ? 84 : 120, color: both ? S.ink : S.seal, opacity: pb, transform: `translateY(${(1 - pb) * 20}px)` }}>{b}</div>
         {both && (
-          <div style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 96, color: S.seal, opacity: ease(f, t3, t3 + 18) }}>{both}</div>
+          <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 96, color: S.seal, opacity: ease(f, t3, t3 + 18) }}>{both}</div>
         )}
       </div>
     </Ground>
@@ -124,7 +124,7 @@ export const Question: React.FC<SceneProps> = ({ cut }) => {
     <Ground dark>
       <div style={{ ...center, paddingBottom: 120 }}>
         {lines.map((l, i) => (
-          <Rise key={i} from={8 + i * 12} dur={24} style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 112, color: S.darkInk, lineHeight: 1.3 }}>
+          <Rise key={i} from={8 + i * 12} dur={24} style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 112, color: S.darkInk, lineHeight: 1.3 }}>
             {l}
           </Rise>
         ))}
@@ -146,7 +146,7 @@ export const Chapter: React.FC<SceneProps> = ({ cut }) => {
           {cut.p.n}
         </Rise>
         {lines.map((l, i) => (
-          <Rise key={i} from={10 + i * 8} dur={24} style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 108, color: S.ink, lineHeight: 1.3 }}>
+          <Rise key={i} from={10 + i * 8} dur={24} style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 108, color: S.ink, lineHeight: 1.3 }}>
             {l}
           </Rise>
         ))}
@@ -168,7 +168,7 @@ export const Title: React.FC<SceneProps> = ({ cut }) => {
       </Stage>
       <div style={{ position: "absolute", left: 0, right: 0, top: 150, display: "flex", flexDirection: "column", alignItems: "center" }}>
         {lines.map((l, i) => (
-          <Rise key={i} from={10 + i * 14} dur={28} style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 92, color: S.darkInk, lineHeight: 1.35 }}>
+          <Rise key={i} from={10 + i * 14} dur={28} style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 92, color: S.darkInk, lineHeight: 1.35 }}>
             {l}
           </Rise>
         ))}
@@ -262,7 +262,7 @@ export const Gloss: React.FC<SceneProps> = ({ cut }) => {
       <div style={{ position: "absolute", left: 250, right: 250, top: 190 }}>
         {items.map(([k, v], i) => (
           <Rise key={i} from={at(cut, i)} style={{ display: "flex", alignItems: "baseline", gap: 40, padding: "26px 0", borderBottom: `2px solid ${S.line}` }}>
-            <div style={{ width: 420, fontFamily: SERIF, fontWeight: 800, fontSize: 66, color: S.seal }}>{k}</div>
+            <div style={{ width: 420, fontFamily: SERIF, fontWeight: 700, fontSize: 66, color: S.seal }}>{k}</div>
             <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 56, color: S.ink }}>→ {v}</div>
           </Rise>
         ))}
@@ -291,7 +291,7 @@ export const Chart: React.FC<SceneProps> = ({ cut }) => {
             const p = ease(f, t, t + 10);
             return (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 30, height: 112, borderBottom: "1px solid #E3E6EA", opacity: 0.25 + 0.75 * p }}>
-                <div style={{ width: 54, height: 54, border: "4px solid #2F5D7C", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "#C0392B", fontSize: 50, fontWeight: 900, fontFamily: SANS }}>
+                <div style={{ width: 54, height: 54, border: "4px solid #2F5D7C", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", color: "#C0392B", fontSize: 50, fontWeight: 700, fontFamily: SANS }}>
                   {p > 0.5 ? "✓" : ""}
                 </div>
                 <div style={{ width: 200, fontFamily: SANS, fontWeight: 700, fontSize: 50, color: "#1d2a33" }}>{it}</div>
@@ -301,7 +301,7 @@ export const Chart: React.FC<SceneProps> = ({ cut }) => {
           })}
         </div>
       </div>
-      <div style={{ position: "absolute", right: 150, top: 730, transform: "rotate(-10deg)", opacity: ease(f, at(cut, 2), at(cut, 2) + 10), color: "#C0392B", border: "6px solid #C0392B", padding: "8px 26px", fontFamily: SANS, fontWeight: 900, fontSize: 52, borderRadius: 10 }}>
+      <div style={{ position: "absolute", right: 150, top: 730, transform: "rotate(-10deg)", opacity: ease(f, at(cut, 2), at(cut, 2) + 10), color: "#C0392B", border: "6px solid #C0392B", padding: "8px 26px", fontFamily: SANS, fontWeight: 700, fontSize: 52, borderRadius: 10 }}>
         종합병원급
       </div>
     </AbsoluteFill>
@@ -325,7 +325,7 @@ export const Years: React.FC<SceneProps> = ({ cut }) => {
           return (
             <g key={i} opacity={p}>
               <circle cx={xs[i]} cy={500} r={18} fill={S.seal} />
-              <text x={xs[i]} y={430} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={92} fill={S.ink}>
+              <text x={xs[i]} y={430} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={92} fill={S.ink}>
                 {y}
               </text>
               <text x={xs[i]} y={590} textAnchor="middle" fontFamily={SANS} fontSize={40} fill={S.ink2}>
@@ -356,7 +356,7 @@ export const Counter: React.FC<SceneProps> = ({ cut }) => {
     <Ground>
       <div style={{ ...center, paddingBottom: 120 }}>
         <div style={{ fontFamily: SANS, fontSize: 44, color: S.ink2, letterSpacing: "0.1em" }}>황희 · {year}년</div>
-        <div style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 300, color: f >= t1 ? S.seal : S.ink, lineHeight: 1.1 }}>
+        <div style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 300, color: f >= t1 ? S.seal : S.ink, lineHeight: 1.1 }}>
           {age}
           <span style={{ fontSize: 110 }}>세</span>
         </div>
@@ -374,7 +374,7 @@ export const Calendar: React.FC<SceneProps> = ({ cut }) => {
   return (
     <Ground>
       <Stage>
-        <text x={960} y={150} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={60} fill={S.ink}>
+        <text x={960} y={150} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.ink}>
           황희의 한 달
         </text>
         {Array.from({ length: 30 }, (_, i) => {
@@ -393,7 +393,7 @@ export const Calendar: React.FC<SceneProps> = ({ cut }) => {
               {court ? (
                 <g opacity={p}>
                   <circle cx={x + 56} cy={y + 92} r={40} fill="none" stroke={S.seal} strokeWidth={6} />
-                  <text x={x + 56} y={y + 104} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={32} fill={S.seal}>
+                  <text x={x + 56} y={y + 104} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={32} fill={S.seal}>
                     조회
                   </text>
                 </g>
@@ -406,7 +406,7 @@ export const Calendar: React.FC<SceneProps> = ({ cut }) => {
             </g>
           );
         })}
-        <text x={960} y={830} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={72} fill={S.seal} opacity={ease(f, t3, t3 + 16)}>
+        <text x={960} y={830} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={72} fill={S.seal} opacity={ease(f, t3, t3 + 16)}>
           600년 전의 재택근무
         </text>
       </Stage>
@@ -424,7 +424,7 @@ export const Person: React.FC<SceneProps> = ({ cut }) => {
         <Figure x={640} y={690} s={1.25} kind="sit" />
       </Stage>
       <div style={{ position: "absolute", left: 1000, top: 290 }}>
-        <Rise from={6} style={{ fontFamily: SERIF, fontWeight: 800, fontSize: 150, color: S.ink }}>
+        <Rise from={6} style={{ fontFamily: SERIF, fontWeight: 700, fontSize: 150, color: S.ink }}>
           {name}
         </Rise>
         <Rise from={14} style={{ fontFamily: SANS, fontSize: 44, color: S.seal, marginTop: 8 }}>
@@ -454,7 +454,7 @@ export const Stamp: React.FC<SceneProps> = ({ cut }) => {
           {[...Array(7)].map((_, i) => (
             <line key={i} x1={-150 + i * 50} y1={-310} x2={-150 + i * 50} y2={250} stroke={S.line} strokeWidth={1} />
           ))}
-          <text x={160} y={-250} fontFamily={SERIF} fontWeight={800} fontSize={84} fill={S.ink} style={{ writingMode: "vertical-rl" } as any}>
+          <text x={160} y={-250} fontFamily={SERIF} fontWeight={700} fontSize={84} fill={S.ink} style={{ writingMode: "vertical-rl" } as any}>
             {cut.p.doc}
           </text>
           <text x={-150} y={-250} fontFamily={SANS} fontSize={30} fill={S.ink2} style={{ writingMode: "vertical-rl" } as any}>
@@ -466,7 +466,7 @@ export const Stamp: React.FC<SceneProps> = ({ cut }) => {
           <g opacity={ease(f, homeAt, homeAt + 16)} transform={`translate(1360 ${560 - 20 * ease(f, homeAt, homeAt + 16)})`}>
             <path d="M -170 0 L 0 -150 L 170 0 L 170 180 L -170 180 Z" fill="none" stroke={S.ink} strokeWidth={10} strokeLinejoin="round" />
             <rect x={-40} y={80} width={80} height={100} fill={S.ink} />
-            <text x={0} y={280} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={56} fill={S.seal}>
+            <text x={0} y={280} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={56} fill={S.seal}>
               집에서라도
             </text>
           </g>
@@ -491,7 +491,7 @@ export const Receipt: React.FC<SceneProps> = ({ cut }) => {
     <Ground dark>
       <div style={{ position: "absolute", left: 660, top: 60, width: 600, height: h, overflow: "hidden", background: "#F4F1EA", boxShadow: "0 0 60px rgba(247,198,107,0.25)" }}>
         <div style={{ padding: "40px 50px", fontFamily: SANS, color: "#222" }}>
-          <div style={{ textAlign: "center", fontSize: 46, fontWeight: 800, letterSpacing: "0.3em" }}>영 수 증</div>
+          <div style={{ textAlign: "center", fontSize: 46, fontWeight: 700, letterSpacing: "0.3em" }}>영 수 증</div>
           <div style={{ textAlign: "center", fontSize: 24, color: "#666", marginTop: 8 }}>1418 — 1450 · 편전</div>
           <div style={{ borderTop: "3px dashed #999", margin: "26px 0" }} />
           {rows.map(([a, b]) => (
@@ -501,13 +501,13 @@ export const Receipt: React.FC<SceneProps> = ({ cut }) => {
             </div>
           ))}
           <div style={{ borderTop: "3px dashed #999", margin: "26px 0" }} />
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 36, fontWeight: 800 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 36, fontWeight: 700 }}>
             <span>지불</span>
             <span>시간 · 건강</span>
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", fontSize: 32, marginTop: 18 }}>
             <span>받는 사람</span>
-            <span style={{ color: S.seal, fontWeight: 800, opacity: ease(f, t, t + 14) }}>오늘의 우리</span>
+            <span style={{ color: S.seal, fontWeight: 700, opacity: ease(f, t, t + 14) }}>오늘의 우리</span>
           </div>
         </div>
       </div>
@@ -521,7 +521,7 @@ export const Choice: React.FC<SceneProps> = ({ cut }) => {
   const ta = at(cut, 1);
   const tb = at(cut, 2);
   const box = (label: string, t: number, x: number, c: string) => (
-    <div style={{ position: "absolute", left: x, top: 330, width: 560, height: 260, border: `5px solid ${c}`, borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SERIF, fontWeight: 800, fontSize: 96, color: c, opacity: ease(f, t, t + 16), transform: `scale(${0.92 + 0.08 * ease(f, t, t + 16)})` }}>
+    <div style={{ position: "absolute", left: x, top: 330, width: 560, height: 260, border: `5px solid ${c}`, borderRadius: 18, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SERIF, fontWeight: 700, fontSize: 96, color: c, opacity: ease(f, t, t + 16), transform: `scale(${0.92 + 0.08 * ease(f, t, t + 16)})` }}>
       {label}
     </div>
   );
@@ -546,7 +546,7 @@ export const End: React.FC<SceneProps> = ({ cut }) => {
         <Candle x={960} y={640} s={1} h={140} lit={1 - out} />
         {out > 0 && <path d={`M 960 ${590 - out * 120} q 20 -40 -10 -80 q -20 -40 10 -80`} stroke="#8C8273" strokeWidth={4} fill="none" opacity={0.6 * (1 - ease(f, cut.duration - 20, cut.duration))} />}
       </Stage>
-      <Rise from={at(cut, 0)} style={{ position: "absolute", left: 0, right: 0, top: 170, textAlign: "center", fontFamily: SERIF, fontWeight: 800, fontSize: 72, color: S.darkInk }}>
+      <Rise from={at(cut, 0)} style={{ position: "absolute", left: 0, right: 0, top: 170, textAlign: "center", fontFamily: SERIF, fontWeight: 700, fontSize: 72, color: S.darkInk }}>
         여러분의 생각을 댓글로
       </Rise>
       <Rise from={at(cut, 1)} style={{ position: "absolute", left: 0, right: 0, top: 280, textAlign: "center", fontFamily: SANS, fontSize: 40, color: S.flame, letterSpacing: "0.2em" }}>
@@ -581,7 +581,7 @@ export const Day: React.FC<SceneProps> = ({ cut }) => {
           return (
             <g key={i} opacity={p} transform={`translate(${(1 - p) * -40} 0)`}>
               <g transform={`translate(420 ${y})`}>{icon(i)}</g>
-              <text x={540} y={y + 26} fontFamily={SERIF} fontWeight={800} fontSize={76} fill={S.seal}>
+              <text x={540} y={y + 26} fontFamily={SERIF} fontWeight={700} fontSize={76} fill={S.seal}>
                 {k}
               </text>
               <text x={780} y={y + 22} fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.ink}>

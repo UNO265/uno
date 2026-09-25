@@ -17,8 +17,8 @@ export const S = {
   seal: "#A8322A",
   line: "rgba(30,27,24,0.25)",
 };
-export const SERIF = "'Nanum Myeongjo', serif";
-export const SANS = "'Noto Sans KR', sans-serif";
+export const SERIF = "'Gowun Batang', 'Nanum Myeongjo', serif";
+export const SANS = "'Gowun Dodum', 'Noto Sans KR', sans-serif";
 export const FPS = 30;
 
 export type Seg = { text: string; start: number; end: number; voice?: string };
@@ -105,7 +105,7 @@ export const Subtitle: React.FC<{ cut: Cut }> = ({ cut }) => {
           borderRadius: 8,
           color: "#F4EEE2",
           fontFamily: SANS,
-          fontWeight: 500,
+          fontWeight: 400,
           fontSize: 44,
           lineHeight: 1.42,
           textAlign: "center",
@@ -288,7 +288,7 @@ export const Seal: React.FC<{ x: number; y: number; text: string; from: number; 
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${sc})`} opacity={Math.min(1, p * 1.4)}>
       <rect x={-size / 2} y={-size / 2} width={size} height={size} rx={10} fill="none" stroke={S.seal} strokeWidth={9} />
-      <text x={0} y={size * 0.16} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={size * (text.length > 1 ? 0.42 : 0.6)} fill={S.seal}>
+      <text x={0} y={size * 0.16} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={size * (text.length > 1 ? 0.42 : 0.6)} fill={S.seal}>
         {text}
       </text>
     </g>

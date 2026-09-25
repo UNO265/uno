@@ -106,7 +106,7 @@ export const Night: React.FC<SceneProps> = ({ cut }) => {
           <Figure x={1140} y={960} s={1.1} kind="sit" fill="#050403" flip />
         </g>
         {f > poke && f < poke + 30 && (
-          <text x={990} y={640} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={60} fill={S.glow} opacity={1 - ease(f, poke + 14, poke + 30)}>
+          <text x={990} y={640} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.glow} opacity={1 - ease(f, poke + 14, poke + 30)}>
             쿡
           </text>
         )}
@@ -126,7 +126,7 @@ export const Night: React.FC<SceneProps> = ({ cut }) => {
         {list.map((it, i) => {
           const t = at(cut, i + 2);
           return (
-            <text key={i} x={1570} y={310 + i * 110} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={48} fill={S.darkInk} opacity={ease(f, t, t + 16)}>
+            <text key={i} x={1570} y={310 + i * 110} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={48} fill={S.darkInk} opacity={ease(f, t, t + 16)}>
               {it}
             </text>
           );
@@ -195,10 +195,10 @@ export const Bill: React.FC<SceneProps> = ({ cut }) => {
           {Array.from({ length: 14 }, (_, i) => (
             <circle key={i} cx={560} cy={550} r={40 + i * 14} fill="none" stroke="#9BB08A" strokeWidth={2} opacity={0.5} />
           ))}
-          <text x={400} y={400} fontFamily={SERIF} fontWeight={800} fontSize={110} fill="#4A5E3E">
+          <text x={400} y={400} fontFamily={SERIF} fontWeight={700} fontSize={110} fill="#4A5E3E">
             10000
           </text>
-          <text x={400} y={780} fontFamily={SERIF} fontWeight={800} fontSize={60} fill="#4A5E3E">
+          <text x={400} y={780} fontFamily={SERIF} fontWeight={700} fontSize={60} fill="#4A5E3E">
             만 원
           </text>
           <ellipse cx={1250} cy={560} rx={230} ry={250} fill="#B5C6A2" stroke="#6E8260" strokeWidth={4} />
@@ -212,7 +212,7 @@ export const Bill: React.FC<SceneProps> = ({ cut }) => {
           </defs>
         </g>
       </Stage>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 440, textAlign: "center", opacity: ease(f, t, t + 14), fontFamily: SERIF, fontWeight: 800, fontSize: 170, color: S.ink, textShadow: "0 0 30px #ECE4D2, 0 0 60px #ECE4D2" }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 440, textAlign: "center", opacity: ease(f, t, t + 14), fontFamily: SERIF, fontWeight: 700, fontSize: 170, color: S.ink, textShadow: "0 0 30px #ECE4D2, 0 0 60px #ECE4D2" }}>
         세종대왕
       </div>
     </Ground>
@@ -237,13 +237,13 @@ export const Scroll: React.FC<SceneProps> = ({ cut }) => {
           <rect x={50 + 360 * open} y={-180} width={40} height={360} rx={16} fill="#6B4B2A" />
           <rect x={-70} y={-20} width={140} height={40} fill={S.seal} opacity={1 - open} />
         </g>
-        <text x={960} y={780} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={64} fill={S.darkInk} opacity={ease(f, 10, 30)}>
+        <text x={960} y={780} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={64} fill={S.darkInk} opacity={ease(f, 10, 30)}>
           {cut.p.label}
         </text>
-        <text x={960} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={120} fill={S.flame} opacity={ease(f, at(cut, 1), at(cut, 1) + 20) * (1 - open)}>
+        <text x={960} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={120} fill={S.flame} opacity={ease(f, at(cut, 1), at(cut, 1) + 20) * (1 - open)}>
           ?
         </text>
-        <text x={960} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={64} fill={S.flame} opacity={open}>
+        <text x={960} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={64} fill={S.flame} opacity={open}>
           반대한 사람들이 증명했다
         </text>
       </Stage>
@@ -281,10 +281,10 @@ export const Table: React.FC<SceneProps> = ({ cut }) => {
             고기
           </text>
         </g>
-        <text x={960} y={110} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={60} fill={S.seal} opacity={gone * (1 - weak)}>
+        <text x={960} y={110} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.seal} opacity={gone * (1 - weak)}>
           상중에는 고기를 끊는다
         </text>
-        <text x={960} y={110} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={60} fill={S.seal} opacity={weak}>
+        <text x={960} y={110} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.seal} opacity={weak}>
           어머니의 상 · 몸이 크게 상하다
         </text>
       </Stage>
@@ -355,7 +355,7 @@ export const Bow: React.FC<SceneProps> = ({ cut }) => {
         <g opacity={ease(f, sayAt, sayAt + 14)}>
           <rect x={560} y={200} width={800} height={150} rx={30} fill="#F6F0E2" stroke={S.ink} strokeWidth={4} />
           <path d={`M ${mourn ? 1100 : 900} 348 L ${mourn ? 1130 : 880} 420 L ${mourn ? 1150 : 940} 348 Z`} fill="#F6F0E2" stroke={S.ink} strokeWidth={4} />
-          <text x={960} y={298} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={60} fill={S.ink}>
+          <text x={960} y={298} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.ink}>
             {cut.p.say}
           </text>
         </g>
@@ -378,7 +378,7 @@ export const Book: React.FC<SceneProps> = ({ cut }) => {
           <rect x={300} y={200} width={340} height={580} fill="#C8B48E" />
           <rect x={410} y={240} width={120} height={440} fill="#F3EDDC" stroke={S.ink2} strokeWidth={2} />
           {(cut.p.title as string).split("").map((ch, i) => (
-            <text key={i} x={470} y={330 + i * 96} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={72} fill={S.ink}>
+            <text key={i} x={470} y={330 + i * 96} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={72} fill={S.ink}>
               {ch}
             </text>
           ))}
@@ -387,7 +387,7 @@ export const Book: React.FC<SceneProps> = ({ cut }) => {
           </text>
         </g>
         <g opacity={ease(f, at(cut, 1), at(cut, 1) + 16)}>
-          <text x={1240} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={110} fill={S.seal}>
+          <text x={1240} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={110} fill={S.seal}>
             {cut.p.dish}
           </text>
           <ellipse cx={1240} cy={470} rx={260} ry={80} fill="#2A241E" />
@@ -424,17 +424,17 @@ export const Fuel: React.FC<SceneProps> = ({ cut }) => {
           {[0, 1, 2].map((i) => (
             <path key={i} d={`M ${-40 + i * 40} -190 q 16 -30 0 -60 q -16 -30 0 -60`} stroke={S.ink2} strokeWidth={4} fill="none" opacity={0.5 + 0.3 * Math.sin(f * 0.1 + i)} />
           ))}
-          <text x={0} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={56} fill={S.ink}>
+          <text x={0} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={56} fill={S.ink}>
             오늘의 야근
           </text>
         </g>
-        <text x={960} y={540} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={120} fill={S.seal} opacity={ease(f, b, b + 12)}>
+        <text x={960} y={540} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={120} fill={S.seal} opacity={ease(f, b, b + 12)}>
           ≈
         </text>
         <g opacity={ease(f, b, b + 16)} transform="translate(1360 520)">
           <ellipse cx={0} cy={40} rx={190} ry={70} fill="#F3EFE6" stroke={S.ink} strokeWidth={6} />
           <ellipse cx={0} cy={26} rx={110} ry={40} fill="#9A4A2E" />
-          <text x={0} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={56} fill={S.ink}>
+          <text x={0} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={56} fill={S.ink}>
             15세기 세종의 수라상
           </text>
         </g>
@@ -458,7 +458,7 @@ export const Eye: React.FC<SceneProps> = ({ cut }) => {
         </g>
         <g opacity={ease(f, t, t + 20)}>
           {[700, 1000, 1300].map((x, i) => (
-            <text key={i} x={x} y={i === 1 ? 560 : 620} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={90} fill={S.flame}>
+            <text key={i} x={x} y={i === 1 ? 560 : 620} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={90} fill={S.flame}>
               ?
             </text>
           ))}
@@ -512,14 +512,14 @@ export const Spine: React.FC<SceneProps> = ({ cut }) => {
             </g>
           );
         })}
-        <text x={510} y={110} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={54} fill={S.seal} opacity={ease(f, at(cut, 0) + 20, at(cut, 0) + 40)}>
+        <text x={510} y={110} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={54} fill={S.seal} opacity={ease(f, at(cut, 0) + 20, at(cut, 0) + 40)}>
           강직성 척추염
         </text>
         <g opacity={eye} transform="translate(1260 330)">
           <path d="M -220 0 Q 0 -150 220 0 Q 0 150 -220 0 Z" fill="#F6F0E2" stroke={S.ink} strokeWidth={6} />
           <circle cx={0} cy={0} r={80} fill="none" stroke={S.seal} strokeWidth={24} opacity={0.6 + 0.2 * Math.sin(f * 0.2)} />
           <circle cx={0} cy={0} r={40} fill={S.ink} />
-          <text x={0} y={200} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={54} fill={S.seal}>
+          <text x={0} y={200} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={54} fill={S.seal}>
             포도막염 · 눈의 염증
           </text>
         </g>
@@ -533,7 +533,7 @@ export const Spine: React.FC<SceneProps> = ({ cut }) => {
           <text x={900} y={830} fontFamily={SANS} fontSize={40} fill={S.ink2}>
             세종의 기록
           </text>
-          <text x={1400} y={830} fontFamily={SERIF} fontWeight={800} fontSize={44} fill={S.seal}>
+          <text x={1400} y={830} fontFamily={SERIF} fontWeight={700} fontSize={44} fill={S.seal}>
             눈이 아프다
           </text>
         </g>
@@ -554,21 +554,21 @@ export const Gwejang: React.FC<SceneProps> = ({ cut }) => {
           <rect x={420} y={520} width={520} height={120} rx={40} fill="#8A5634" stroke={S.ink} strokeWidth={5} />
           <rect x={440} y={430} width={120} height={120} rx={30} fill="#8A5634" stroke={S.ink} strokeWidth={5} />
           <rect x={800} y={430} width={120} height={120} rx={30} fill="#8A5634" stroke={S.ink} strokeWidth={5} />
-          <text x={680} y={740} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={56} fill={S.ink}>
+          <text x={680} y={740} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={56} fill={S.ink}>
             안석
           </text>
         </g>
         <g opacity={ease(f, 20, 36)}>
           <line x1={1300} y1={260} x2={1300} y2={720} stroke="#6B4B2A" strokeWidth={22} strokeLinecap="round" />
           <path d="M 1300 270 q 70 -40 90 20 q -30 30 -60 10" stroke="#6B4B2A" strokeWidth={18} fill="none" strokeLinecap="round" />
-          <text x={1430} y={620} textAnchor="start" fontFamily={SERIF} fontWeight={800} fontSize={56} fill={S.ink}>
+          <text x={1430} y={620} textAnchor="start" fontFamily={SERIF} fontWeight={700} fontSize={56} fill={S.ink}>
             지팡이
           </text>
         </g>
-        <text x={960} y={200} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={110} fill={S.seal} opacity={ease(f, t1, t1 + 14)}>
+        <text x={960} y={200} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={110} fill={S.seal} opacity={ease(f, t1, t1 + 14)}>
           궤장
         </text>
-        <text x={960} y={850} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={64} fill={S.seal} opacity={ease(f, t3, t3 + 16)}>
+        <text x={960} y={850} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={64} fill={S.seal} opacity={ease(f, t3, t3 + 16)}>
           계속 일해 달라
         </text>
       </Stage>
@@ -607,10 +607,10 @@ export const MapScene: React.FC<SceneProps> = ({ cut }) => {
           <>
             <path d="M 900 560 Q 1080 420 1180 160" fill="none" stroke={S.seal} strokeWidth={5} strokeDasharray="14 12" strokeDashoffset={-f} opacity={ease(f, 20, 40)} />
             {JIN6.map(([x, y], i) => dot(x, y, at(cut, 1) + i * 8, `j${i}`))}
-            <text x={1300} y={100} fontFamily={SERIF} fontWeight={800} fontSize={56} fill={S.seal} opacity={ease(f, at(cut, 1), at(cut, 1) + 16)}>
+            <text x={1300} y={100} fontFamily={SERIF} fontWeight={700} fontSize={56} fill={S.seal} opacity={ease(f, at(cut, 1), at(cut, 1) + 16)}>
               6진
             </text>
-            <text x={1290} y={260} fontFamily={SERIF} fontWeight={800} fontSize={60} fill={S.ink} opacity={ease(f, at(cut, 2), at(cut, 2) + 16)}>
+            <text x={1290} y={260} fontFamily={SERIF} fontWeight={700} fontSize={60} fill={S.ink} opacity={ease(f, at(cut, 2), at(cut, 2) + 16)}>
               7년 넘게
             </text>
             <text x={1300} y={330} fontFamily={SANS} fontSize={34} fill={S.ink2} opacity={ease(f, at(cut, 2), at(cut, 2) + 16)}>
@@ -622,10 +622,10 @@ export const MapScene: React.FC<SceneProps> = ({ cut }) => {
           <>
             {GUN4.map(([x, y], i) => dot(x, y, at(cut, 0) + 10 + i * 8, `g${i}`))}
             {JIN6.map(([x, y], i) => dot(x, y, at(cut, 0) + 30 + i * 8, `j${i}`))}
-            <text x={760} y={200} textAnchor="end" fontFamily={SERIF} fontWeight={800} fontSize={52} fill={S.seal} opacity={ease(f, at(cut, 0) + 10, at(cut, 0) + 26)}>
+            <text x={760} y={200} textAnchor="end" fontFamily={SERIF} fontWeight={700} fontSize={52} fill={S.seal} opacity={ease(f, at(cut, 0) + 10, at(cut, 0) + 26)}>
               4군
             </text>
-            <text x={1300} y={100} fontFamily={SERIF} fontWeight={800} fontSize={52} fill={S.seal} opacity={ease(f, at(cut, 0) + 30, at(cut, 0) + 46)}>
+            <text x={1300} y={100} fontFamily={SERIF} fontWeight={700} fontSize={52} fill={S.seal} opacity={ease(f, at(cut, 0) + 30, at(cut, 0) + 46)}>
               6진
             </text>
             <text x={700} y={330} textAnchor="end" fontFamily={SANS} fontSize={34} fill="#3E6A8A" opacity={ease(f, at(cut, 1), at(cut, 1) + 20)}>
@@ -644,7 +644,7 @@ export const MapScene: React.FC<SceneProps> = ({ cut }) => {
             </text>
             <path d="M 900 560 Q 950 590 975 630" fill="none" stroke={S.seal} strokeWidth={4} strokeDasharray="10 8" strokeDashoffset={-f} opacity={ease(f, 20, 40)} />
             <circle cx={975} cy={632} r={16 + 4 * Math.sin(f * 0.2)} fill={S.seal} opacity={ease(f, 30, 44)} />
-            <text x={1000} y={645} fontFamily={SERIF} fontWeight={800} fontSize={40} fill={S.seal} opacity={ease(f, 30, 44)}>
+            <text x={1000} y={645} fontFamily={SERIF} fontWeight={700} fontSize={40} fill={S.seal} opacity={ease(f, 30, 44)}>
               청주 초수리
             </text>
             <text x={1000} y={690} fontFamily={SANS} fontSize={24} fill={S.ink2} opacity={ease(f, at(cut, 1), at(cut, 1) + 16)}>
@@ -677,7 +677,7 @@ export const Sleep: React.FC<SceneProps> = ({ cut }) => {
         <path d={`M 700 ${760 - 400 * (1 - coat)} Q 900 ${620 - 400 * (1 - coat)} 1080 ${760 - 400 * (1 - coat)} L 1060 930 L 720 930 Z`} fill="#5A3E28" opacity={coat} />
         {!dawn && <Candle x={1200} y={660} s={0.6} h={40} />}
         {dawn && (
-          <text x={960} y={160} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={56} fill="#2A2018" opacity={ease(f, at(cut, 3), at(cut, 3) + 16)}>
+          <text x={960} y={160} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={56} fill="#2A2018" opacity={ease(f, at(cut, 3), at(cut, 3) + 16)}>
             내려놓을 수 없는 일
           </text>
         )}
@@ -705,10 +705,10 @@ export const Sundial: React.FC<SceneProps> = ({ cut }) => {
           <line x1={0} y1={0} x2={120} y2={-80} stroke={S.ink} strokeWidth={6} />
           <line x1={0} y1={0} x2={220 * Math.cos((ang * Math.PI) / 180)} y2={40 * Math.sin((ang * Math.PI) / 180) + 10} stroke="rgba(0,0,0,0.45)" strokeWidth={8} />
         </g>
-        <text x={960} y={180} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={90} fill={S.ink} opacity={ease(f, at(cut, 1), at(cut, 1) + 14)}>
+        <text x={960} y={180} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={90} fill={S.ink} opacity={ease(f, at(cut, 1), at(cut, 1) + 14)}>
           앙부일구
         </text>
-        <text x={420} y={200} fontFamily={SERIF} fontWeight={800} fontSize={80} fill={S.seal} opacity={ease(f, 4, 18)}>
+        <text x={420} y={200} fontFamily={SERIF} fontWeight={700} fontSize={80} fill={S.seal} opacity={ease(f, 4, 18)}>
           1434
         </text>
       </Stage>
@@ -736,12 +736,12 @@ export const Rain: React.FC<SceneProps> = ({ cut }) => {
           {[0, 1, 2, 3, 4].map((i) => (
             <line key={i} x1={-90} y1={400 + i * 80} x2={-60} y2={400 + i * 80} stroke={S.ink} strokeWidth={4} />
           ))}
-          <text x={0} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={80} fill={S.ink}>
+          <text x={0} y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={80} fill={S.ink}>
             측우기
           </text>
         </g>
         <g opacity={ease(f, t, t + 16)}>
-          <text x={1380} y={420} textAnchor="middle" fontFamily={SERIF} fontWeight={800} fontSize={90} fill={S.seal}>
+          <text x={1380} y={420} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={90} fill={S.seal}>
             1441
           </text>
           <text x={1380} y={520} textAnchor="middle" fontFamily={SERIF} fontWeight={700} fontSize={50} fill={S.ink}>
@@ -764,14 +764,14 @@ export const Hangul: React.FC<SceneProps> = ({ cut }) => {
     const fs = Math.min(64, Math.floor(680 / (Math.max(...cols.map((c) => c.length)) * 1.1)));
     return (
       <Ground>
-        <Rise from={4} style={{ position: "absolute", left: 0, right: 0, top: 60, textAlign: "center", fontFamily: SERIF, fontWeight: 800, fontSize: 64, color: S.seal }}>
+        <Rise from={4} style={{ position: "absolute", left: 0, right: 0, top: 60, textAlign: "center", fontFamily: SERIF, fontWeight: 700, fontSize: 64, color: S.seal }}>
           훈민정음
         </Rise>
         <div style={{ position: "absolute", left: 0, right: 0, top: 170, display: "flex", flexDirection: "row-reverse", justifyContent: "center" }}>
           {cols.map((c, i) => {
             const t0 = s + ((e - s) * i) / cols.length;
             return (
-              <div key={i} style={{ writingMode: "vertical-rl", width: fs * 2.6, fontFamily: SERIF, fontWeight: 800, fontSize: fs, lineHeight: `${fs * 2.6}px`, letterSpacing: "0.06em", color: S.ink, clipPath: `inset(0 0 ${(1 - ease(f, t0, t0 + 24)) * 100}% 0)` }}>
+              <div key={i} style={{ writingMode: "vertical-rl", width: fs * 2.6, fontFamily: SERIF, fontWeight: 700, fontSize: fs, lineHeight: `${fs * 2.6}px`, letterSpacing: "0.06em", color: S.ink, clipPath: `inset(0 0 ${(1 - ease(f, t0, t0 + 24)) * 100}% 0)` }}>
                 {c}
               </div>
             );
@@ -795,7 +795,7 @@ export const Hangul: React.FC<SceneProps> = ({ cut }) => {
           );
         })}
       </div>
-      <Rise from={at(cut, 1) + 20} style={{ position: "absolute", left: 0, right: 0, top: 760, textAlign: "center", fontFamily: SERIF, fontWeight: 800, fontSize: 60, color: S.darkInk }}>
+      <Rise from={at(cut, 1) + 20} style={{ position: "absolute", left: 0, right: 0, top: 760, textAlign: "center", fontFamily: SERIF, fontWeight: 700, fontSize: 60, color: S.darkInk }}>
         스물여덟 자
       </Rise>
     </Ground>
@@ -816,7 +816,7 @@ export const Legacy: React.FC<SceneProps> = ({ cut }) => {
           {items.map((it, i) => {
             const t0 = s + ((e - s) * i) / 4;
             return (
-              <div key={it} style={{ width: 340, height: 340, border: `4px solid ${burn > 0.5 ? S.flame : S.ink}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SERIF, fontWeight: 800, fontSize: 66, color: burn > 0.5 ? S.darkInk : S.ink, opacity: ease(f, t0, t0 + 12) }}>
+              <div key={it} style={{ width: 340, height: 340, border: `4px solid ${burn > 0.5 ? S.flame : S.ink}`, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SERIF, fontWeight: 700, fontSize: 66, color: burn > 0.5 ? S.darkInk : S.ink, opacity: ease(f, t0, t0 + 12) }}>
                 {it}
               </div>
             );
@@ -827,7 +827,7 @@ export const Legacy: React.FC<SceneProps> = ({ cut }) => {
             <Candle x={960} y={820} s={0.8} h={60} />
           </Stage>
         )}
-        <div style={{ position: "absolute", left: 0, right: 0, top: 660, textAlign: "center", fontFamily: SERIF, fontWeight: 800, fontSize: 60, color: S.flame, opacity: ease(f, at(cut, 4), at(cut, 4) + 16) }}>
+        <div style={{ position: "absolute", left: 0, right: 0, top: 660, textAlign: "center", fontFamily: SERIF, fontWeight: 700, fontSize: 60, color: S.flame, opacity: ease(f, at(cut, 4), at(cut, 4) + 16) }}>
           시간과 건강을 태워 남긴 것
         </div>
       </Ground>
