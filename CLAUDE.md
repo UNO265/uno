@@ -18,3 +18,4 @@
 - **CASE #010까지는 실사를 쓰지 않는다**(유료 스톡·AI 생성 실사 모두). v3의 REAL 자리는 `docs/KANENAZO_GUIDE_v3.md` 0번(임시 운용)의 **그래픽 질감**으로 채운다: OBJECT(큰 물체 하나), DOCUMENT(종이·표·영수증), DATA(흰 화면 숫자), DARK(암전 질문), BLUEPRINT(단면도·선화), TIMELINE/MAP, KEY TYPOGRAPHY. 베이지 Flat만 이어지지 않게 하는 원칙은 그대로다. AI 실사용 자료(`docs/case003-ai-footage-prompts.md`, `video/scripts/gen_footage.py`)는 CASE #011 이후를 위해 보관만 한다.
 - 실제 사진·영상은 사용권이 확인된 것만 쓴다. 공개되어 있다는 이유만으로 쓰지 않는다. 자료가 없으면 카네나조 스타일 그래픽으로 대체한다.
 - 영상 빌드 방법은 `video/README.md` 참고. 내레이션은 VOICEVOX 雀松朱司, BGM·효과음은 FluidR3_GM 기반 자체 제작(`docs/case001-audio-credits.md`).
+- **한국사 다큐(세종 편 등)** 는 카네나조와 별도다. 다음 한국사 영상은 `docs/sejong/next-video-guide.md`(세종 편 회고 지침: 큰 글자·잦은 전환, 자막 문장부호 생략·한 줄 우선, 문장 단위 내레이션, 강조 장면 효과음, 흐름별 BGM 전환, 끝 20초 최종 화면 비우기)를 따른다.
