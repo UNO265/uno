@@ -9,5 +9,7 @@ public/case002/voice/
 public/case002/music/*.wav
 public/case001_shorts/*/voice/
 public/case001_shorts/*/music/*.wav
+public/case002_shorts/*/voice/
+public/case002_shorts/*/music/*.wav
 public/case003/voice/
 public/case003/music/*.wav

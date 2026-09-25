@@ -16,7 +16,7 @@ import { SHORT3 } from "./short3";
 type Cue = { file: string; from: number; to: number; mood: string };
 type Tl = { totalFrames: number; cuts: unknown[] };
 
-const make = (tl: Tl, cueList: Cue[], screens: Record<string, React.FC<CutProps>>) => {
+export const make = (tl: Tl, cueList: Cue[], screens: Record<string, React.FC<CutProps>>) => {
   const cuts = tl.cuts as CutData[];
   const VOICE = cuts.flatMap((c) => c.segments.map((s) => [c.from + sec(s.start), c.from + sec(s.end)] as [number, number]));
   const DUCK = 0.3;
