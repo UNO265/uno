@@ -16,3 +16,4 @@ public/case003/music/*.wav
 public/sejong/voice/
 public/sejong/music/*.wav
 public/sejong/*.png
+.models/

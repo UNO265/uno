@@ -4,6 +4,7 @@
   --engine files     이미 있는 음성 파일만 쓴다. 없는 줄은 글자 수로 길이를 추정한다(기본값).
   --engine edge      edge-tts 로 합성(네트워크에서 speech.platform.bing.com 허용 필요). 기본 목소리 ko-KR-InJoonNeural.
   --engine google    Google Cloud Text-to-Speech 로 합성. 환경 변수 GOOGLE_TTS_API_KEY 필요. 기본 목소리 ko-KR-Neural2-C.
+  --engine kss       오프라인 합성(scripts/sejong_tts_kss.py, 여성 단일 화자·비상업 데이터셋 → 미리보기용).
   --voice NAME       목소리 이름을 바꾼다.  --rate  말하기 속도(edge: -8%, google: 0.92 형식).
   --force            이미 있는 음성 파일도 다시 합성한다.
 
@@ -79,6 +80,28 @@ def tts_google(text, dst, voice, rate):
     tmp.unlink()
 
 
+def tts_kss(text, dst, length):
+    import sys
+
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import numpy as np
+    from sejong_tts_kss import SR, synth
+
+    a = synth(text, length)
+    # 앞뒤 무음 정리 + 음량 정규화
+    idx = np.where(np.abs(a) > 0.02 * np.abs(a).max())[0]
+    a = a[max(0, idx[0] - 600): idx[-1] + 1500] if len(idx) else a
+    a = a / max(1e-6, np.abs(a).max()) * 0.85
+    tmp = dst.with_suffix(".22k.wav")
+    with wave.open(str(tmp), "w") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(SR)
+        w.writeframes((a * 32767).astype(np.int16).tobytes())
+    to_wav(tmp, dst)
+    tmp.unlink()
+
+
 def wav_len(p: Path) -> float:
     with wave.open(str(p)) as w:
         return w.getnframes() / w.getframerate()
@@ -86,7 +109,7 @@ def wav_len(p: Path) -> float:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--engine", choices=["files", "edge", "google"], default="files")
+    ap.add_argument("--engine", choices=["files", "edge", "google", "kss"], default="files")
     ap.add_argument("--voice")
     ap.add_argument("--rate")
     ap.add_argument("--force", action="store_true")
@@ -108,6 +131,8 @@ def main():
                 print("TTS", wav.name, line[:30])
                 if a.engine == "edge":
                     asyncio.run(tts_edge(clean(line), wav, voice, rate))
+                elif a.engine == "kss":
+                    tts_kss(clean(line), wav, float(rate or 1.12))
                 else:
                     tts_google(clean(line), wav, voice, rate)
             if wav.exists():

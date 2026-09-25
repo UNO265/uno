@@ -2,49 +2,49 @@
  {
   "file": "sejong/music/hook.wav",
   "from": 0,
-  "to": 2582,
+  "to": 2208,
   "mood": "hook"
  },
  {
   "file": "sejong/music/prologue.wav",
-  "from": 2582,
-  "to": 4586,
+  "from": 2208,
+  "to": 3879,
   "mood": "prologue"
  },
  {
   "file": "sejong/music/ch1.wav",
-  "from": 4586,
-  "to": 9534,
+  "from": 3879,
+  "to": 8186,
   "mood": "ch1"
  },
  {
   "file": "sejong/music/ch2.wav",
-  "from": 9534,
-  "to": 15047,
+  "from": 8186,
+  "to": 13074,
   "mood": "ch2"
  },
  {
   "file": "sejong/music/ch3.wav",
-  "from": 15047,
-  "to": 21617,
+  "from": 13074,
+  "to": 18741,
   "mood": "ch3"
  },
  {
   "file": "sejong/music/ch4.wav",
-  "from": 21617,
-  "to": 24766,
+  "from": 18741,
+  "to": 21482,
   "mood": "ch4"
  },
  {
   "file": "sejong/music/ch5.wav",
-  "from": 24766,
-  "to": 30606,
+  "from": 21482,
+  "to": 26591,
   "mood": "ch5"
  },
  {
   "file": "sejong/music/epilogue.wav",
-  "from": 30606,
-  "to": 34148,
+  "from": 26591,
+  "to": 29722,
   "mood": "epilogue"
  }
 ]
