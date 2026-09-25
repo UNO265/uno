@@ -37,7 +37,7 @@ python3 scripts/sejong_texture.py          # 한지·먹 바탕 PNG (한 번만)
 python3 scripts/sejong_voice.py            # 음성 → 타이밍(public/sejong/timeline.json). 음성이 없으면 글자 수로 추정
 python3 scripts/sejong_music.py            # 국악풍 BGM(가야금풍 현·드론·대금풍) + 효과음, 직접 합성
 REMOTION_CHROME=<chrome 경로> node scripts/sejong_contact.mjs   # 확인용 시트 out/contact_sejong/
-npx remotion render src/sejong/index.ts Sejong out/sejong.mp4 --concurrency=4
+REMOTION_CHROME=<chrome 경로> scripts/sejong_render.sh out/sejong.mp4   # 구간별 렌더링(끊기면 이어서) → 합치기
 ```
 
 내레이션 넣기 (셋 중 하나, 넣은 뒤 `sejong_voice.py` → `sejong_music.py` → 렌더링 순서로 다시 실행):
