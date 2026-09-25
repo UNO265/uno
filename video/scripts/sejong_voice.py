@@ -4,7 +4,7 @@
   --engine files     이미 있는 음성 파일만 쓴다. 없는 줄은 글자 수로 길이를 추정한다(기본값).
   --engine edge      edge-tts 로 합성(네트워크에서 speech.platform.bing.com 허용 필요). 기본 목소리 ko-KR-InJoonNeural.
   --engine google    Google Cloud Text-to-Speech 로 합성. 환경 변수 GOOGLE_TTS_API_KEY 필요. 기본 목소리 ko-KR-Neural2-C.
-  --engine supertonic  오프라인 합성(Supertone Supertonic 3, OpenRAIL-M → 상업 이용 가능). 기본 목소리 M3(중저음 남성).
+  --engine supertonic  오프라인 합성(Supertone Supertonic 3, OpenRAIL-M → 상업 이용 가능). 기본 목소리 M2(저음 남성).
                      처음 실행 때 Hugging Face 에서 모델을 .models/supertonic-3 에 받는다(pip install supertonic soundfile).
   --engine kss       오프라인 합성(scripts/sejong_tts_kss.py, 여성 단일 화자·비상업 데이터셋 → 미리보기용).
   --voice NAME       목소리 이름을 바꾼다(supertonic: M1~M5, F1~F5).
@@ -164,7 +164,7 @@ def main():
     ap.add_argument("--rate")
     ap.add_argument("--force", action="store_true")
     a = ap.parse_args()
-    voice = a.voice or {"edge": "ko-KR-InJoonNeural", "google": "ko-KR-Neural2-C", "supertonic": "M3"}.get(a.engine)
+    voice = a.voice or {"edge": "ko-KR-InJoonNeural", "google": "ko-KR-Neural2-C", "supertonic": "M2"}.get(a.engine)
     rate = a.rate or {"edge": "-8%", "google": "0.92", "supertonic": "0.95"}.get(a.engine)
 
     cuts = json.loads(CUTS.read_text())
