@@ -5,6 +5,7 @@ import { Main } from "./Main";
 import { Main002, total002 } from "./case002/Main";
 import { SHORTS } from "./shorts001/Main";
 import { SHORTS002 } from "./shorts002/Main";
+import { SHORTS003 } from "./shorts003/Main";
 import { Main003, total003 } from "./case003/Main";
 
 const Root: React.FC = () =>
@@ -38,8 +39,8 @@ const Root: React.FC = () =>
       width: 1920,
       height: 1080,
     }),
-    // CASE #001・#002 のショート（縦型）
-    ...[...SHORTS, ...SHORTS002].map((sh) =>
+    // CASE #001〜#003 のショート（縦型）
+    ...[...SHORTS, ...SHORTS002, ...SHORTS003].map((sh) =>
       React.createElement(Composition, { key: sh.id, id: sh.id, component: sh.Comp, durationInFrames: sh.frames, fps: 30, width: 1080, height: 1920 }),
     ),
   );
