@@ -1,0 +1,62 @@
+[
+ {
+  "file": "case004/music/c4_01_night.wav",
+  "from": 148,
+  "to": 1005,
+  "mood": "night"
+ },
+ {
+  "file": "case004/music/c4_02_night.wav",
+  "from": 1005,
+  "to": 1402,
+  "mood": "night"
+ },
+ {
+  "file": "case004/music/c4_03_mechanism.wav",
+  "from": 1402,
+  "to": 3306,
+  "mood": "mechanism"
+ },
+ {
+  "file": "case004/music/c4_04_mechanism.wav",
+  "from": 3306,
+  "to": 8106,
+  "mood": "mechanism"
+ },
+ {
+  "file": "case004/music/c4_05_market.wav",
+  "from": 8106,
+  "to": 10493,
+  "mood": "market"
+ },
+ {
+  "file": "case004/music/c4_06_time.wav",
+  "from": 10493,
+  "to": 13547,
+  "mood": "time"
+ },
+ {
+  "file": "case004/music/c4_07_contrast.wav",
+  "from": 13547,
+  "to": 16883,
+  "mood": "contrast"
+ },
+ {
+  "file": "case004/music/c4_08_mechanism.wav",
+  "from": 16883,
+  "to": 18655,
+  "mood": "mechanism"
+ },
+ {
+  "file": "case004/music/c4_09_answer.wav",
+  "from": 18655,
+  "to": 21954,
+  "mood": "answer"
+ },
+ {
+  "file": "case004/music/c4_10_outro.wav",
+  "from": 21954,
+  "to": 22440,
+  "mood": "outro"
+ }
+]

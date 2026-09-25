@@ -6,6 +6,7 @@ import { Main002, total002 } from "./case002/Main";
 import { SHORTS } from "./shorts001/Main";
 import { SHORTS002 } from "./shorts002/Main";
 import { SHORTS003 } from "./shorts003/Main";
+import { Main004, total004 } from "./case004/Main";
 import { Main003, total003 } from "./case003/Main";
 
 const Root: React.FC = () =>
@@ -35,6 +36,15 @@ const Root: React.FC = () =>
       id: "Case003",
       component: Main003,
       durationInFrames: total003,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
+    // CASE #004「コインランドリー、人がいないのになぜ儲かる？」
+    React.createElement(Composition, {
+      id: "Case004",
+      component: Main004,
+      durationInFrames: total004,
       fps: 30,
       width: 1920,
       height: 1080,

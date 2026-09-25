@@ -119,6 +119,29 @@ SECTIONS_003 = [
     ("c3_10_outro", "outro", "M47", "END"),
 ]
 
+# CASE #004: コインランドリー。夜の店の静けさ → 仕組み（回る機械）→ 市場 → 時間 → 逆転 → 選ばれる → 答え
+MOODS_004 = {
+    "night": dict(prog=["Dm9", "Bbmaj7", "Fmaj7", "C6"], bpm=72, beats=4, lead=EPIANO, pulse="sparse", pizz=False, pad=WARMPAD, key=50),
+    "mechanism": dict(prog=["Am7", "Dm7", "G6", "Cmaj7"], bpm=92, beats=4, lead=MARIMBA, pulse="arp8", pizz=True, pad=STRINGS, key=57),
+    "market": dict(prog=["Em9", "Cmaj7", "G6", "D7sus4"], bpm=84, beats=4, lead=VIBES, pulse="call", pizz=False, pad=WARMPAD, key=52),
+    "time": dict(prog=["Fmaj7", "Dm9", "Bbmaj7", "C6"], bpm=78, beats=3, lead=NYLON, pulse="waltz", pizz=False, pad=None, key=53),
+    "contrast": dict(prog=["Gm7", "Ebmaj7", "Bbmaj7", "F7sus4"], bpm=74, beats=4, lead=PIANO, pulse="sparse", pizz=False, pad=SLOWSTR, key=55),
+    "answer": dict(prog=["Cmaj7", "Am7", "Fmaj7", "G7sus4"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=48),
+    "outro": dict(prog=["Fmaj7", "Am7", "Bbmaj7", "C6"], bpm=76, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=53, bell=CELESTA),
+}
+SECTIONS_004 = [
+    ("c4_01_night", "night", "N02", "N06"),
+    ("c4_02_night", "night", "N06", "N08"),
+    ("c4_03_mechanism", "mechanism", "N08", "N13"),
+    ("c4_04_mechanism", "mechanism", "N13", "N23"),
+    ("c4_05_market", "market", "N23", "N28"),
+    ("c4_06_time", "time", "N28", "N35"),
+    ("c4_07_contrast", "contrast", "N35", "N42"),
+    ("c4_08_mechanism", "mechanism", "N42", "N45"),
+    ("c4_09_answer", "answer", "N45", "N51"),
+    ("c4_10_outro", "outro", "N51", "END"),
+]
+
 # ショート（縦型）: ケース名 → (曲想, 乱数の種)
 SHORTS = {
     "case001_shorts/short1": ("investigate", 301),
@@ -268,6 +291,8 @@ def main():
         moods, sections, seed0 = MOODS_002, SECTIONS_002, 200
     elif args.case == "case003":
         moods, sections, seed0 = MOODS_003, SECTIONS_003, 400
+    elif args.case == "case004":
+        moods, sections, seed0 = MOODS_004, SECTIONS_004, 500
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
