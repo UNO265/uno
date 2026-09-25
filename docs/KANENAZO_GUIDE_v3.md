@@ -206,6 +206,8 @@ REAL → QUESTION → EVIDENCE → ANALYSIS → FLAT 2D → MONEY FLOW → REAL
 | 8~20초 | 상식과 현실의 충돌 |
 | 20~30초 | 핵심 질문 / CASE TITLE |
 
+※ CASE #004부터는 [시청지속 지침 v2.0 11-1](KANENAZO_RETENTION_v2.md)의 도입부 순서를 우선한다(0~5초 대상 + 제목의 질문, 15초 안 모순, 30초 안 QUESTION 1, 35초 안 타이틀).
+
 예: REAL 영화관 팝콘 「700円」 → QUESTION 「原価は、いくら？」 → REAL 팝콘이 쏟아짐 → BUT 「でも――」 → CASE TITLE
 
 ## 13. 질문 사다리
