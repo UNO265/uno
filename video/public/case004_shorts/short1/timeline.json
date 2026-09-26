@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 908,
+ "totalFrames": 882,
  "cuts": [
   {
    "id": "W01",
@@ -148,7 +148,7 @@
    "voice": "case004_shorts/short1/voice/W07.wav",
    "voiceStart": 0.15384615384615385,
    "from": 791,
-   "duration": 117
+   "duration": 91
   }
  ]
 }

@@ -2,7 +2,7 @@
  * CASE #004 入口ショート「コインランドリー、人がいないのになぜ儲かる？」（ショート指針 v1）
  * 0秒 ドラム＋本編タイトルの問い → 店員0・レジ0 → 答えは人件費？ 半分だけ正しい（本編 REWARD 1）
  * → 高価な機械に働いてもらう店 → 家にも洗濯機、なのに 1155億円（矢野経済研究所 2025年）
- * → 本編サムネイルと同じ「ドラムの丸窓 + 1155億円 + 何を買ってる？」で止まる（ループ演出なし・宣伝文句なし）
+ * → 本編サムネイルと同じ「ドラムの丸窓 + 1155億円 + 何を買ってる？」→ 最後の 0.5 秒で W01 の画面へ戻る（ループ再生。宣伝文句なし）
  */
 import React from "react";
 import { Big, Red, Sfx } from "../shorts001/kit";
@@ -11,16 +11,14 @@ import { BLACK, C, Chip, FONT, Hook, NIGHT, NO_HEAD, Src, V, WHITE, comma, count
 
 const YEN = "#FFE14D";
 
-/* W01 0秒: 回るドラムが滑り込み、問いの文字は 0 フレームから出ている */
-const W01 = mk(({ f }) => (
+/* W01 0秒: 問いの文字とドラムは 0 フレームから出ていて、ドラムは回っている。W07 の最後がこの画面につながる（ループ） */
+const HOOK = <Hook y={250} sizes={[92, 104, 136]} lines={["コインランドリー、", "人がいないのに、", <>なぜ<Red>儲かる</Red>？</>]} />;
+const W01 = mk(() => (
   <>
-    <Hook y={250} sizes={[92, 104, 136]} lines={["コインランドリー、", "人がいないのに、", <>なぜ<Red>儲かる</Red>？</>]} />
+    {HOOK}
     <V>
-      <g transform={`translate(${480 * (1 - ease(f, -3, 16))} 0)`}>
-        <Washer x={540} y={1090} s={1.3} spin={1.6} />
-      </g>
+      <Washer x={540} y={1090} s={1.3} spin={1.6} />
     </V>
-    <Sfx at={0} name="whoosh" volume={0.4} />
   </>
 ), { ...NO_HEAD, bg: BLACK, dark: true, noCap: true });
 
@@ -117,28 +115,33 @@ const W06 = mk(({ f, s }) => {
   );
 }, { ...NO_HEAD, bg: WHITE });
 
-/* W07 本編サムネイルと同じ絵で止まる: ドラムの丸窓 + 1155億円 + 何を買ってる？ */
-const W07 = mk(({ f, s }) => {
-  const spin = Math.max(0.03, 1 - ease(f, s(1), s(1) + 24)); // 表示は「運転中」のまま、ドラムはほぼ止まる
+/* W07 本編サムネイルと同じ絵: ドラムの丸窓 + 1155億円 + 何を買ってる？ → 最後の 0.5 秒で W01 の画面に戻る（ループ） */
+const W07 = mk(({ f, s, d }) => {
+  const L = ease(f, d - 15, d);
+  // 最後のフレームでドラムの回転角が W01 の 0 フレームと同じ（360° の倍数）になる速さ（Washer は 1 フレーム 9°×spin）
+  const spin = (Math.round((1.6 * 9 * d) / 360) * 360) / (9 * d);
   return (
     <>
       <V>
-        <Washer x={540} y={1010} s={1.25} spin={spin} />
-        <g transform={`translate(540 600) scale(${pop(f, -12)})`}>
+        <Washer x={540} y={1010 + 80 * L} s={1.25 + 0.05 * L} spin={spin} />
+        <g transform={`translate(540 600) scale(${pop(f, -12)})`} opacity={1 - L}>
           <rect x={-250} y={-66} width={500} height={132} rx={20} fill={C.red} />
           <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={96} fill="#FFFFFF">
             1155億円
           </text>
         </g>
       </V>
-      <Big
-        y={330}
-        dark
-        lines={[
-          { t: "客はいったい、", at: s(0) - 4, size: 72, serif: true },
-          { t: <>何を<span style={{ color: YEN }}>買ってる</span>？</>, at: s(1) - 4, size: 140, serif: true },
-        ]}
-      />
+      <div style={{ position: "absolute", inset: 0, opacity: 1 - L }}>
+        <Big
+          y={330}
+          dark
+          lines={[
+            { t: "客はいったい、", at: s(0) - 4, size: 72, serif: true },
+            { t: <>何を<span style={{ color: YEN }}>買ってる</span>？</>, at: s(1) - 4, size: 140, serif: true },
+          ]}
+        />
+      </div>
+      <div style={{ position: "absolute", inset: 0, opacity: L }}>{HOOK}</div>
     </>
   );
 }, { ...NO_HEAD, bg: BLACK, dark: true, noCap: true });
