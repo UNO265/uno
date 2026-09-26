@@ -34,6 +34,7 @@ CASE=case002 AT=0.35,0.85 node scripts/contact.mjs   # 장면 확인용 콘택�
 | 경로 | 내용 |
 |---|---|
 | `data/cuts.json` | 컷별 내레이션 대사. `/`가 자막 한 줄 단위 |
+| `scripts/retention_check.py` | 대본(컷)의 시청지속 위험 구간 점검: 첫 문장·타이틀 시각·타이틀 직후 전환 문장·긴 컷·마지막 20%의 요약/재나열·답→엔딩 시간(`--case case00X`) |
 | `scripts/narration.py` | VOICEVOX 雀松朱司로 내레이션을 합성하고, 실제 발화 길이로 컷 길이·자막 타이밍을 `public/timeline.json`에 기록 |
 | `scripts/sfx.py` | 효과음 제작(FluidR3_GM 악기음 + 부드러운 종이·공기 소리) |
 | `scripts/music.py` | 장별 BGM 14곡을 작곡·렌더링(`public/music/`) |
