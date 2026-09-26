@@ -19,3 +19,5 @@ public/case004/voice/
 public/case004/music/*.wav
 public/case004_shorts/*/voice/
 public/case004_shorts/*/music/*.wav
+public/case005/voice/
+public/case005/music/*.wav
