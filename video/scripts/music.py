@@ -155,6 +155,8 @@ SHORTS = {
     "case003_shorts/short1": ("ledger", 321, "003"),
     "case003_shorts/short2": ("seats", 322, "003"),
     "case003_shorts/short3": ("pressure", 323, "003"),
+    # CASE #004 の入口ショート（本編 CASE #004 の曲想から）
+    "case004_shorts/short1": ("mechanism", 331, "004"),
 }
 
 
@@ -296,7 +298,7 @@ def main():
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
-        moods = {"002": MOODS_002, "003": MOODS_003}.get(src[0], MOODS) if src else MOODS
+        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004}.get(src[0], MOODS) if src else MOODS
         sections = [("bgm", mood, t["cuts"][0]["id"], "END")]
     else:
         moods, sections, seed0 = MOODS, SECTIONS, 100
