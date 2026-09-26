@@ -29,6 +29,7 @@ LEAD = 0.4     # カット頭から声が始まるまで
 TAIL = 0.6     # 声が終わってから次のカットまで
 GAP = 0.28     # セグメント間の間
 Q_GAP = 0.5    # 質問の後の間
+DASH_GAP = 0.55  # 「つまり――」「では――」の後の間（答えの前にためを作る）
 TARGET_RMS = 0.1   # 発話部分の RMS（約 -20 dBFS）
 CEIL = 0.89        # ピーク上限（約 -1 dBFS）
 
@@ -96,12 +97,13 @@ class Voice:
         with VoiceModelFile.open(str(VV / "vvms" / "12.vvm")) as m:
             self.syn.load_voice_model(m)
 
-    def say(self, text: str, speed: float, intonation: float) -> np.ndarray:
+    def say(self, text: str, speed: float, intonation: float, pitch: float = 0.0) -> np.ndarray:
         for k, v in READINGS.items():
             text = text.replace(k, v)
         q = self.syn.create_audio_query(text, STYLE_ID)
         q.speed_scale = speed
         q.intonation_scale = intonation
+        q.pitch_scale = pitch
         q.pre_phoneme_length = 0.05
         q.post_phoneme_length = 0.1
         wav = self.syn.synthesis(q, STYLE_ID)
@@ -188,11 +190,12 @@ def main() -> None:
             for i, s in enumerate(segs):
                 if i > 0:
                     prev = segs[i - 1]
-                    g = pauses.get(i, Q_GAP / rate if prev.endswith(("？", "?")) else gap)
+                    g = pauses.get(i, Q_GAP / rate if prev.endswith(("？", "?")) else (DASH_GAP / rate if prev.endswith("――") else gap))
                     parts.append(np.zeros(int(g * SR)))
                     t += g
                 p = prosody(cut["id"], s)
-                audio = voice.say(s, p["speed"] * rate, p["intonation"])
+                # カットごとの話し方（CASE #005〜）: pace = 速さ, tone = 抑揚, pitch = 声の高さ（VOICEVOX pitch_scale）の倍率・差分
+                audio = voice.say(s, p["speed"] * cut.get("pace", 1.0) * rate, p["intonation"] * cut.get("tone", 1.0), cut.get("pitch", 0.0))
                 d = len(audio) / SR
                 entry["segments"].append({"text": s, "start": lead + t, "end": lead + t + d})
                 parts.append(audio)

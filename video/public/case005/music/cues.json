@@ -1,0 +1,50 @@
+[
+ {
+  "file": "case005/music/c5_01_open.wav",
+  "from": 130,
+  "to": 937,
+  "mood": "o_open"
+ },
+ {
+  "file": "case005/music/c5_02_route.wav",
+  "from": 937,
+  "to": 3680,
+  "mood": "route"
+ },
+ {
+  "file": "case005/music/c5_03_money.wav",
+  "from": 3680,
+  "to": 8975,
+  "mood": "money"
+ },
+ {
+  "file": "case005/music/c5_04_strategy.wav",
+  "from": 8975,
+  "to": 12309,
+  "mood": "strategy"
+ },
+ {
+  "file": "case005/music/c5_05_night.wav",
+  "from": 12309,
+  "to": 16014,
+  "mood": "night_road"
+ },
+ {
+  "file": "case005/music/c5_06_pressure.wav",
+  "from": 16014,
+  "to": 21292,
+  "mood": "pressure"
+ },
+ {
+  "file": "case005/music/c5_07_answer.wav",
+  "from": 21292,
+  "to": 22534,
+  "mood": "answer"
+ },
+ {
+  "file": "case005/music/c5_08_outro.wav",
+  "from": 22534,
+  "to": 23020,
+  "mood": "outro"
+ }
+]

@@ -7,8 +7,11 @@ import { SHORTS } from "./shorts001/Main";
 import { SHORTS002 } from "./shorts002/Main";
 import { SHORTS003 } from "./shorts003/Main";
 import { SHORTS004 } from "./shorts004/Main";
+import { SHORTS005 } from "./shorts005/Main";
 import { Main004, total004 } from "./case004/Main";
+import { Main005, total005 } from "./case005/Main";
 import { Thumb001A, Thumb001B } from "./thumbs/Thumb001";
+import { Thumb005 } from "./thumbs/Thumb005";
 import { Main003, total003 } from "./case003/Main";
 
 const Root: React.FC = () =>
@@ -51,15 +54,25 @@ const Root: React.FC = () =>
       width: 1920,
       height: 1080,
     }),
+    // CASE #005「送料無料、本当に無料？」
+    React.createElement(Composition, {
+      id: "Case005",
+      component: Main005,
+      durationInFrames: total005,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
     // サムネイル（1280×720、静止画）
     ...[
       ["Thumb001A", Thumb001A],
       ["Thumb001B", Thumb001B],
+      ["Thumb005", Thumb005],
     ].map(([id, comp]) =>
       React.createElement(Composition, { key: id as string, id: id as string, component: comp as React.FC, durationInFrames: 1, fps: 30, width: 1280, height: 720 }),
     ),
-    // CASE #001〜#004 のショート（縦型）
-    ...[...SHORTS, ...SHORTS002, ...SHORTS003, ...SHORTS004].map((sh) =>
+    // CASE #001〜#005 のショート（縦型）
+    ...[...SHORTS, ...SHORTS002, ...SHORTS003, ...SHORTS004, ...SHORTS005].map((sh) =>
       React.createElement(Composition, { key: sh.id, id: sh.id, component: sh.Comp, durationInFrames: sh.frames, fps: 30, width: 1080, height: 1920 }),
     ),
   );

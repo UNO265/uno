@@ -24,6 +24,11 @@ FPS = 30
 # 楽器（GM プログラム番号）
 PIANO, EPIANO, CELESTA, MUSICBOX, VIBES, MARIMBA = 0, 4, 8, 10, 11, 12
 NYLON, ABASS, STRINGS, SLOWSTR, PIZZ, WARMPAD = 24, 32, 48, 49, 45, 89
+# CASE #005〜: ケースごとに楽器の組み合わせを変えるための追加音色
+CLAVI, CLEANGTR, MUTEGTR, FRETLESS, TREMSTR, HARP = 7, 27, 28, 35, 44, 46
+BASSOON, POLYSYNTH, SWEEP, KALIMBA = 70, 90, 95, 108
+# 打楽器（GM ch10）: 以前の CASE はすべて打楽器なし。#005 から曲想ごとに軽く入れる
+KICK, STICK, HHC, CABASA, SHAKER, WOOD = 36, 37, 42, 69, 70, 76
 
 N = {"C": 0, "C#": 1, "Db": 1, "D": 2, "Eb": 3, "E": 4, "F": 5, "F#": 6, "Gb": 6, "G": 7, "Ab": 8, "A": 9, "Bb": 10, "B": 11}
 Q = {"": [0, 4, 7], "m": [0, 3, 7], "maj7": [0, 4, 7, 11], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "m9": [0, 3, 7, 10, 14],
@@ -142,6 +147,37 @@ SECTIONS_004 = [
     ("c4_10_outro", "outro", "N51", "END"),
 ]
 
+# CASE #005: 送料無料。題材（箱が運ばれる・夜の道・時間）に合わせて、楽器・リズム・主題を #001〜#004 と変える。
+# 主題（motif）は 4 音「ソ・ラ・ド・レ」相当の上行（箱が届くまでの道のり）。曲想ごとに調と楽器を変えて繰り返す。
+MOTIF_005 = [0, 2, 5, 9]
+MOODS_005 = {
+    # 導入: 秒針のような単音 + 薄いパッド。テンポは語りより遅く、緊張だけ置く
+    "o_open": dict(prog=["Dm", "Bb", "Dm", "A7sus4"], bpm=72, beats=4, lead=KALIMBA, pulse="tick", pizz=False, pad=SWEEP, key=50, motif=MOTIF_005),
+    # 配送の道のり: 16分の刻み + シェイカー。移動感（語りも少し速い区間）
+    "route": dict(prog=["Em", "C", "G", "D"], bpm=96, beats=4, lead=MUTEGTR, pulse="drive16", pizz=False, pad=POLYSYNTH, key=52, bass=FRETLESS, drums="road"),
+    # 証拠と方法: 明るい調べ（クラビネットの呼びかけ）+ 軽いハイハット
+    "money": dict(prog=["F", "Am", "Bb", "C"], bpm=92, beats=4, lead=CLAVI, pulse="call", pizz=True, pad=WARMPAD, key=53, drums="brush", motif=MOTIF_005),
+    # 店の戦略: スウィングで「うまい仕組み」の軽さ。ii-V の進行
+    "strategy": dict(prog=["Gm7", "C7", "Fmaj7", "D7"], bpm=86, beats=4, lead=EPIANO, pulse="shuffle", pizz=False, pad=WARMPAD, key=55, bass=ABASS, drums="brush", swing=0.17),
+    # 夜・運ぶ人: ハープの分散和音とゆっくりした弦。打楽器なし、テンポを落とす
+    "night_road": dict(prog=["Cm", "Ab", "Eb", "Bb"], bpm=64, beats=4, lead=HARP, pulse="harp", pizz=False, pad=SLOWSTR, key=48, bass=FRETLESS),
+    # 変化と圧力: 刻む弦 + 心拍のようなキック。和声短音階の緊張
+    "pressure": dict(prog=["Am", "F", "Dm", "E7"], bpm=88, beats=4, lead=TREMSTR, pulse="trem", pizz=False, pad=SLOWSTR, key=57, bass=FRETLESS, drums="heart"),
+    # 答え: ピアノの分散和音に主題が戻る。#003・#004 の答え（C-Am-F-G）とは別の進行
+    "answer": dict(prog=["Bbmaj7", "F", "Gm7", "Eb"], bpm=70, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=46, bell=KALIMBA, motif=MOTIF_005),
+    "outro": dict(prog=["Eb", "Bb", "Cm", "Ab"], bpm=80, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=51, bell=KALIMBA, motif=MOTIF_005),
+}
+SECTIONS_005 = [
+    ("c5_01_open", "o_open", "K02", "K06"),
+    ("c5_02_route", "route", "K06", "K09"),
+    ("c5_03_money", "money", "K09", "K17"),
+    ("c5_04_strategy", "strategy", "K17", "K22"),
+    ("c5_05_night", "night_road", "K22", "K27"),
+    ("c5_06_pressure", "pressure", "K27", "K33"),
+    ("c5_07_answer", "answer", "K33", "K37"),
+    ("c5_08_outro", "outro", "K37", "END"),
+]
+
 # ショート（縦型）: ケース名 → (曲想, 乱数の種)
 SHORTS = {
     "case001_shorts/short1": ("investigate", 301),
@@ -157,6 +193,8 @@ SHORTS = {
     "case003_shorts/short3": ("pressure", 323, "003"),
     # CASE #004 の入口ショート（本編 CASE #004 の曲想から）
     "case004_shorts/short1": ("mechanism", 331, "004"),
+    # CASE #005 の入口ショート（本編の「配送の道のり」の曲想と主題）
+    "case005_shorts/short1": ("route", 341, "005"),
 }
 
 
@@ -200,7 +238,9 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
     bars = int(np.ceil(total_beats / beats)) + 1
     prog = [chord(c) for c in mood["prog"]]
     key = mood["key"]
-    programs = {0: mood["lead"], 1: mood["pad"] or WARMPAD, 2: ABASS, 3: PIZZ, 4: mood.get("bell", CELESTA)}
+    programs = {0: mood["lead"], 1: mood["pad"] or WARMPAD, 2: mood.get("bass", ABASS), 3: mood.get("off", PIZZ), 4: mood.get("bell", CELESTA)}
+    swing = mood.get("swing", 0.0)  # 8分の裏を遅らせる（0 = ストレート）
+    sw = lambda pos: pos + (swing if (pos * 2) % 2 == 1 else 0)
     for bar in range(bars):
         phrase = bar // 8
         # 8 小節ごとに編成を変える（0: 薄い, 1: 標準, 2: 少し厚い, 3: 標準）
@@ -250,6 +290,50 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             pat = [0, 1.5, 2, 3.5] if bar % 2 == 0 else [0.5, 1, 2.5, 3]
             for k, pos in enumerate(pat):
                 song.note(0, b0 + pos, up[k % len(up)], 40 + 3 * density, 0.4)
+        elif style == "drive16":
+            # 16分の刻み（配送・移動）。和音の根音と5度を行き来する
+            # 語り（約 7 モーラ/秒）とぶつからないよう、8分を基本に小節の終わりだけ 16分で次へ運ぶ
+            for k in range(beats * 4):
+                if k % 2 and not (density >= 1 and k == beats * 4 - 1):
+                    continue
+                n = up[0] if k % 4 in (0, 3) else up[2 % len(up)]
+                song.note(0, b0 + k * 0.25, n - 12, 30 + (8 if k % 4 == 0 else 0) + 2 * density, 0.2)
+        elif style == "shuffle":
+            for k in range(beats * 2):
+                pos = sw(k * 0.5)
+                if k % 2 == 0:
+                    song.note(0, b0 + pos, up[(k // 2) % len(up)], 40 + 2 * density, 0.35)
+                elif density >= 1:
+                    for t in up[1:3]:
+                        song.note(0, b0 + pos, t, 30 + 2 * density, 0.25)
+        elif style == "harp":
+            seq = tones + up + [up[0] + 12]
+            for k in range(beats * 2):
+                song.note(0, b0 + k * 0.5, seq[k % len(seq)], 34 + 2 * density, 1.4)
+        elif style == "trem":
+            # 刻むストリングス（圧力）: 8分で同じ音を強弱つけて
+            for k in range(beats * 2):
+                for t in tones[:2]:
+                    song.note(0, b0 + k * 0.5, t, 30 + (10 if k % 2 == 0 else 0) + 3 * density, 0.45)
+        elif style == "tick":
+            # 時計の秒針のような単音（導入の緊張）
+            for k in range(beats):
+                song.note(0, b0 + k, up[-1] + 12, 30 + (6 if k == 0 else 0), 0.3)
+        # 打楽器（CASE #005〜。drums を持つ曲想だけ）
+        dr = mood.get("drums")
+        if dr and density >= 1:
+            for k in range(beats * 2):
+                pos = sw(k * 0.5)
+                if dr in ("shaker", "road"):
+                    song.note(9, b0 + pos, SHAKER, 26 + (8 if k % 2 else 0), 0.2)
+                if dr == "road" and k % 4 == 2:
+                    song.note(9, b0 + pos, STICK, 30, 0.2)
+                if dr == "brush" and k % 2 == 1:
+                    song.note(9, b0 + pos, HHC, 24 + 2 * density, 0.2)
+                if dr == "brush" and k in (2, 6):
+                    song.note(9, b0 + pos, STICK, 28, 0.2)
+                if dr == "heart" and k in (0, 1):
+                    song.note(9, b0 + k * 0.4, KICK, 50 - 12 * k + 3 * density, 0.3)
         # ピチカート（オフビート）
         if mood["pizz"] and density >= 1:
             for pos in ([1, 3] if beats == 4 else [1]):
@@ -260,7 +344,13 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             ch = 4 if mood.get("bell") else 0
             for j, n in enumerate(mel):
                 song.note(ch, b0 + 1 + j * 1.5, n + (12 if ch == 4 else 0), 30 + 3 * density, 1.2)
-    vols = {0: 100, 1: 70, 2: 90, 3: 70, 4: 60}
+        # ケースの主題（CASE #005〜）: 同じ CASE の中で同じ短い旋律を曲想を変えて繰り返し、CASE ごとに別の旋律にする
+        motif = mood.get("motif")
+        if motif and bar % 8 == 3:
+            step = beats / len(motif)
+            for j, iv in enumerate(motif):
+                song.note(4, b0 + j * step, key + 24 + iv, 44, step * 1.6)
+    vols = {0: 100, 1: 70, 2: 90, 3: 70, 4: 60, 9: 64}
     return song, programs, vols
 
 
@@ -295,10 +385,12 @@ def main():
         moods, sections, seed0 = MOODS_003, SECTIONS_003, 400
     elif args.case == "case004":
         moods, sections, seed0 = MOODS_004, SECTIONS_004, 500
+    elif args.case == "case005":
+        moods, sections, seed0 = MOODS_005, SECTIONS_005, 600
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
-        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004}.get(src[0], MOODS) if src else MOODS
+        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005}.get(src[0], MOODS) if src else MOODS
         sections = [("bgm", mood, t["cuts"][0]["id"], "END")]
     else:
         moods, sections, seed0 = MOODS, SECTIONS, 100
