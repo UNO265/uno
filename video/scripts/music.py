@@ -193,6 +193,8 @@ SHORTS = {
     "case003_shorts/short3": ("pressure", 323, "003"),
     # CASE #004 の入口ショート（本編 CASE #004 の曲想から）
     "case004_shorts/short1": ("mechanism", 331, "004"),
+    "case004_shorts/short2": ("market", 332, "004"),
+    "case004_shorts/short3": ("contrast", 333, "004"),
     # CASE #005 の入口ショート（本編の「配送の道のり」の曲想と主題）
     "case005_shorts/short1": ("route", 341, "005"),
 }
