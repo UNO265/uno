@@ -268,8 +268,8 @@ const G07 = mk(({ f, s }) => {
         </g>
         {/* 2年で1.7倍 */}
         <g opacity={fade(f, s(3))}>
-          <path d={`M 760 ${base - 1150 * k - 90} L 760 ${base - 1150 * k - 130} L 1520 ${base - 1150 * k - 130} L 1520 ${base - 1960 * k - 90}`} fill="none" stroke={K.ink} strokeWidth={4} opacity={1 - ext} />
-          <text x={1140} y={base - 1150 * k - 150} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={50} fill={K.ink} opacity={1 - ext}>
+          <path d={`M 760 ${base - 1150 * k - 90} L 760 ${base - 1960 * k - 100} L 1520 ${base - 1960 * k - 100} L 1520 ${base - 1960 * k - 80}`} fill="none" stroke={K.ink} strokeWidth={4} opacity={1 - ext} />
+          <text x={1140} y={base - 1960 * k - 50} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={50} fill={K.ink} opacity={1 - ext}>
             2年で 1.7倍
           </text>
         </g>
