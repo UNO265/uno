@@ -29,6 +29,8 @@ CLAVI, CLEANGTR, MUTEGTR, FRETLESS, TREMSTR, HARP = 7, 27, 28, 35, 44, 46
 BASSOON, POLYSYNTH, SWEEP, KALIMBA = 70, 90, 95, 108
 # 打楽器（GM ch10）: 以前の CASE はすべて打楽器なし。#005 から曲想ごとに軽く入れる
 KICK, STICK, HHC, CABASA, SHAKER, WOOD = 36, 37, 42, 69, 70, 76
+# CASE #006〜: カプセルトイ（おもちゃ屋・金属の鍵盤・スティールドラム）
+GLOCK, XYLO, SYNBASS, STEELDR = 9, 13, 38, 114
 
 N = {"C": 0, "C#": 1, "Db": 1, "D": 2, "Eb": 3, "E": 4, "F": 5, "F#": 6, "Gb": 6, "G": 7, "Ab": 8, "A": 9, "Bb": 10, "B": 11}
 Q = {"": [0, 4, 7], "m": [0, 3, 7], "maj7": [0, 4, 7, 11], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "m9": [0, 3, 7, 10, 14],
@@ -178,6 +180,37 @@ SECTIONS_005 = [
     ("c5_08_outro", "outro", "K37", "END"),
 ]
 
+# CASE #006: ガチャガチャ。おもちゃ屋のきらめき → 弾む調査 → 昔話（ワルツ）→ メーカーの裏側 → 店・場所の活気 → 広がる緊張 → 答え
+# 主題は「ポン」とカプセルが出るような広い上行の分散和音（#005 の 4 音の上行とは音程を変える）
+MOTIF_006 = [0, 7, 12, 16]
+MOODS_006 = {
+    # 導入: オルゴール + ビブラフォン。打楽器なし
+    "g_open": dict(prog=["Cadd9", "Am7", "Fmaj7", "G6"], bpm=84, beats=4, lead=MUSICBOX, pulse="arp8", pizz=False, pad=WARMPAD, key=60, bell=VIBES, motif=MOTIF_006),
+    # 市場・買う人: シロフォンの弾む呼びかけ + シンセベース + シェイカー
+    "g_maker": dict(prog=["G", "Em7", "C", "D7sus4"], bpm=100, beats=4, lead=XYLO, pulse="pop", pizz=False, pad=POLYSYNTH, key=55, bass=SYNBASS, drums="shaker", motif=MOTIF_006),
+    # 歴史: ナイロンギターの 3 拍子（オルゴールが上に）
+    "g_history": dict(prog=["F", "Dm7", "Bb", "C7"], bpm=76, beats=3, lead=NYLON, pulse="waltz", pizz=False, pad=None, key=53, bell=MUSICBOX),
+    # メーカーの裏側（注文・在庫）: エレピ + ミュートギターの裏拍 + リムショット
+    "g_maker2": dict(prog=["Dm7", "Gm7", "Bbmaj7", "A7sus4"], bpm=88, beats=4, lead=EPIANO, pulse="broken", pizz=True, off=MUTEGTR, pad=WARMPAD, key=50, drums="rim"),
+    # 場所・店: スティールドラムのカリプソ + ピチカート + ブラシ
+    "g_place": dict(prog=["A", "F#m7", "D", "E7sus4"], bpm=96, beats=4, lead=STEELDR, pulse="calypso", pizz=True, pad=WARMPAD, key=57, bass=ABASS, drums="brush", motif=MOTIF_006),
+    # 値段・海外へ広がる緊張: 刻む弦 + 4 つ打ちの弱いキック + グロッケン
+    "g_pressure": dict(prog=["Em", "Cmaj7", "Am7", "B7sus4"], bpm=90, beats=4, lead=TREMSTR, pulse="trem", pizz=False, pad=SLOWSTR, key=52, bass=SYNBASS, bell=GLOCK, drums="kick4"),
+    # 答え: ピアノの分散和音 + オルゴールの主題
+    "g_answer": dict(prog=["Fmaj7", "G6", "Em7", "Am7"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=48, bell=MUSICBOX, motif=MOTIF_006),
+    "outro": dict(prog=["F", "C", "Dm7", "Bb"], bpm=80, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=53, bell=MUSICBOX, motif=MOTIF_006),
+}
+SECTIONS_006 = [
+    ("c6_01_open", "g_open", "G02", "G05"),
+    ("c6_02_maker", "g_maker", "G05", "G12D"),
+    ("c6_03_history", "g_history", "G12D", "G13"),
+    ("c6_04_maker2", "g_maker2", "G13", "G18"),
+    ("c6_05_place", "g_place", "G18", "G22"),
+    ("c6_06_pressure", "g_pressure", "G22", "G27"),
+    ("c6_07_answer", "g_answer", "G27", "G30"),
+    ("c6_08_outro", "outro", "G30", "END"),
+]
+
 # ショート（縦型）: ケース名 → (曲想, 乱数の種)
 SHORTS = {
     "case001_shorts/short1": ("investigate", 301),
@@ -317,6 +350,15 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             for k in range(beats * 2):
                 for t in tones[:2]:
                     song.note(0, b0 + k * 0.5, t, 30 + (10 if k % 2 == 0 else 0) + 3 * density, 0.45)
+        elif style == "pop":
+            # カプセルが弾むような呼びかけ（1 小節 5 音、語りの密度より少なく）
+            pat = [0, 0.75, 1.5, 2.5, 3] if bar % 2 == 0 else [0, 1, 1.75, 3]
+            for k, pos in enumerate(pat):
+                song.note(0, b0 + pos, up[(k + bar) % len(up)] + (12 if k == len(pat) - 1 else 0), 38 + 3 * density, 0.3)
+        elif style == "calypso":
+            # スティールドラムのカリプソ（3+3+2 のアクセント）
+            for k, pos in enumerate([0, 1.5, 3] + ([2.5] if density >= 1 else [])):
+                song.note(0, b0 + pos, up[k % len(up)], 40 + (6 if pos == 0 else 0) + 2 * density, 0.5)
         elif style == "tick":
             # 時計の秒針のような単音（導入の緊張）
             for k in range(beats):
@@ -334,6 +376,10 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
                     song.note(9, b0 + pos, HHC, 24 + 2 * density, 0.2)
                 if dr == "brush" and k in (2, 6):
                     song.note(9, b0 + pos, STICK, 28, 0.2)
+                if dr == "rim" and k in (2, 6):
+                    song.note(9, b0 + pos, STICK, 30 + 2 * density, 0.2)
+                if dr == "kick4" and k % 2 == 0:
+                    song.note(9, b0 + pos, KICK, 36 + 3 * density, 0.3)
                 if dr == "heart" and k in (0, 1):
                     song.note(9, b0 + k * 0.4, KICK, 50 - 12 * k + 3 * density, 0.3)
         # ピチカート（オフビート）
@@ -389,10 +435,12 @@ def main():
         moods, sections, seed0 = MOODS_004, SECTIONS_004, 500
     elif args.case == "case005":
         moods, sections, seed0 = MOODS_005, SECTIONS_005, 600
+    elif args.case == "case006":
+        moods, sections, seed0 = MOODS_006, SECTIONS_006, 700
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
-        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005}.get(src[0], MOODS) if src else MOODS
+        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006}.get(src[0], MOODS) if src else MOODS
         sections = [("bgm", mood, t["cuts"][0]["id"], "END")]
     else:
         moods, sections, seed0 = MOODS, SECTIONS, 100
