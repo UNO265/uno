@@ -24,3 +24,5 @@ public/case005/music/*.wav
 public/case005_shorts/*/voice/
 public/case005_shorts/*/music/*.wav
 __pycache__/
+public/case006/voice/
+public/case006/music/*.wav
