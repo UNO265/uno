@@ -45,8 +45,10 @@ CASE=004 node scripts/shorts_sheet.mjs 1    # 확인용 시트 → out/shorts_sh
 
 ## 업로드 문구
 
+제목: `コインランドリー、人がいないのになぜ儲かる？ #Shorts`
+
+설명란(첫 두 줄 = 쇼츠의 답 → 본편의 질문, 쇼츠 지침 7번):
 ```
-コインランドリー、人がいないのになぜ儲かる？ #Shorts
 答えは人件費？それは半分だけ正しい。コインランドリーは、高価な機械に働いてもらう店。
 でも家には洗濯機があるのに、市場は1155億円。客はいったい、何を買ってる？
 【本編】
@@ -55,7 +57,7 @@ CASE=004 node scripts/shorts_sheet.mjs 1    # 확인용 시트 → out/shorts_sh
 ナレーション：VOICEVOX:雀松朱司
 BGM：オリジナル（FluidR3_GM SoundFont / MIT License）
 
-#コインランドリー #経済 #ビジネス #KANENAZO
+#コインランドリー #無人店舗 #経済 #KANENAZO
 ```
 
 고정 댓글: 「1155億円で客が買っているもの、本編で追いかけました → (본편 URL)」
