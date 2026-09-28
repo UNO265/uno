@@ -1,1 +1,56 @@
-[]
+[
+ {
+  "file": "jeongjo/sound/open.wav",
+  "from": 0,
+  "to": 1371,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/pro.wav",
+  "from": 1311,
+  "to": 3912,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/ch1.wav",
+  "from": 3852,
+  "to": 7547,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/ch2.wav",
+  "from": 7487,
+  "to": 11292,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/ch3.wav",
+  "from": 11232,
+  "to": 18065,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/ch4.wav",
+  "from": 18005,
+  "to": 20736,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/ch5.wav",
+  "from": 20676,
+  "to": 27343,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/epi.wav",
+  "from": 27283,
+  "to": 30909,
+  "vol": 1.0
+ },
+ {
+  "file": "jeongjo/sound/end.wav",
+  "from": 30849,
+  "to": 31509,
+  "vol": 1.0
+ }
+]
