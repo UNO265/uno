@@ -39,5 +39,5 @@ CASE #001과 같은 음원·같은 조건입니다. 약관 확인 내용은 [CAS
 - **1.2초 이상의 무음 구간**: 없음 / **1초 이상의 암전**: 없음
 - **콘택트 시트**: `video/out/contact_case006/`(컷마다 2점, 세 차례). 자막과 겹치는 도형·겹친 글자 약 25곳, 기계 속 캡슐 모양, G07 괄호 위치를 고친 뒤 렌더
 - **`retention_check.py`(실측)**: 모두 통과(타이틀 0:31.3, 최장 컷 38.5초, 답 → 엔딩 10초)
-- **전달용 분할**: `video/out/case006_parts/`의 3개 파일(각 25MB 미만, 키프레임 기준) + `join_windows.bat` / `join_mac.command`(합친 길이 12:32.4 확인)
+- **전달용 분할**: `video/out/case006_parts2/`의 3개 파일(바이트 분할, 각 23MiB 이하) + `join_windows.bat`(copy /b) / `join_mac.command`(cat). ffmpeg 없이 합쳐지고, 합친 파일이 원본과 같음을 확인
 - **썸네일**: `video/out/thumbs/case006_thumb.png`(1280×720)

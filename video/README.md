@@ -57,3 +57,16 @@ CASE=case002 AT=0.35,0.85 node scripts/contact.mjs   # 장면 확인용 콘택�
 ## 라이선스 표기
 
 내레이션·BGM·효과음의 출처와 YouTube 설명란 크레딧은 [오디오 출처·라이선스](../docs/case001-audio-credits.md)를 참고하세요. 필수 표기는 `VOICEVOX:雀松朱司`입니다.
+
+## 전달용 분할(ffmpeg 없이 합치기)
+
+완성본은 파일을 바이트 단위로 잘라 보낸다(각 23MiB). 받는 컴퓨터에 ffmpeg가 없어도 OS 기본 명령으로 합쳐진다.
+
+```bash
+D=out/case00X_parts2; mkdir -p $D
+split -b 23m -d -a 1 out/case00X_final.mp4 $D/KANENAZO_CASE00X.mp4.part
+```
+
+- Windows `join_windows.bat`: `copy /b ...part0 + ...part1 + ...part2 KANENAZO_CASE00X.mp4`
+- Mac `join_mac.command`: `cat ...part0 ...part1 ...part2 > KANENAZO_CASE00X.mp4`
+- 합친 파일이 원본과 같은지 `cmp`로 확인한다. (예전 방식인 ffmpeg segment + concat은 받는 쪽에 ffmpeg가 필요했다)
