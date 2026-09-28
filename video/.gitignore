@@ -18,3 +18,5 @@ public/sejong/music/*.wav
 public/sejong/*.png
 .models/
 __pycache__/
+public/sejong_short*/voice/
+public/sejong_short*/music/*.wav
