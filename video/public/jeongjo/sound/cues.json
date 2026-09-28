@@ -2,55 +2,55 @@
  {
   "file": "jeongjo/sound/open.wav",
   "from": 0,
-  "to": 1371,
+  "to": 1508,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/pro.wav",
-  "from": 1311,
-  "to": 3912,
+  "from": 1448,
+  "to": 4136,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/ch1.wav",
-  "from": 3852,
-  "to": 7547,
+  "from": 4076,
+  "to": 8092,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/ch2.wav",
-  "from": 7487,
-  "to": 11292,
+  "from": 8032,
+  "to": 12084,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/ch3.wav",
-  "from": 11232,
-  "to": 18065,
+  "from": 12024,
+  "to": 19411,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/ch4.wav",
-  "from": 18005,
-  "to": 20736,
+  "from": 19351,
+  "to": 22143,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/ch5.wav",
-  "from": 20676,
-  "to": 27343,
+  "from": 22083,
+  "to": 29404,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/epi.wav",
-  "from": 27283,
-  "to": 30909,
+  "from": 29344,
+  "to": 33087,
   "vol": 1.0
  },
  {
   "file": "jeongjo/sound/end.wav",
-  "from": 30849,
-  "to": 31509,
+  "from": 33027,
+  "to": 33687,
   "vol": 1.0
  }
 ]
