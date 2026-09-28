@@ -202,7 +202,7 @@ def main():
             if sc == "decree":
                 add(fx, thud(), a + c["sentences"][0]["start"] + 1.0)
             if sc == "count":
-                for key in ("스물다섯", "스무", "마흔다섯"):
+                for key in ("25자", "20자", "45자"):
                     add(fx, thud() * 0.4, a + word_at(c, key, 2))
             if sc == "walk" and p.get("mode") == "walk" and len(c["sentences"]) >= 4:
                 for w0, w1 in ((c["sentences"][2]["start"], c["sentences"][2]["start"] + 2.6), (c["sentences"][3]["start"] - 2, c["sentences"][3]["start"] + 2.3)):

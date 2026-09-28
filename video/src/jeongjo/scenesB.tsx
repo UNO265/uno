@@ -575,9 +575,9 @@ export const Wait: React.FC<SP> = ({ cut }) => {
 /* 15. 마흔다섯 자 (C3C) */
 export const Count: React.FC<SP> = ({ cut }) => {
   const f = useCurrentFrame();
-  const a = wAt(cut, "스물다섯", sAt(cut, 2));
-  const b = wAt(cut, "스무", a + 30);
-  const c = wAt(cut, "마흔다섯", b + 30);
+  const a = wAt(cut, "25자", sAt(cut, 2));
+  const b = wAt(cut, "20자", a + 30);
+  const c = wAt(cut, "45자", b + 30);
   const r = rand(5);
   const boxes = [...Array(45)].map((_, i) => ({ i, row: i < 25 ? 0 : 1 }));
   return (

@@ -58,6 +58,21 @@ def tts_para(text, dst):
     tmp.unlink()
 
 
+# 자막은 숫자로 쓰고(1798년 8월), 읽을 때만 한글로 푼다(V.clean: 한자어 읽기).
+# 고유어로 읽어야 하는 숫자는 여기서 읽는 법을 따로 정한다.
+SPEAK = {
+    "297통": "이백아흔일곱 통",
+    "297.": "이백아흔일곱.",
+    "25자와 20자, 합해서 45자": "스물다섯 자와 스무 자, 합해서 마흔다섯 자",
+}
+
+
+def speech(text):
+    for k, v in SPEAK.items():
+        text = text.replace(k, v)
+    return V.clean(text)
+
+
 def split_tag(s):
     m = re.match(r"^【(재구성|해석)】\s*", s)
     return (m.group(1), s[m.end():]) if m else (None, s)
@@ -127,7 +142,7 @@ def build():
                 t2, text = split_tag(raw)
                 tag = t2 or tag
                 items.append((tag, text.startswith("“"), re.sub(r"[“”『』]", "", text)))
-            para = " ".join(x[2] for x in items)
+            para = " ".join(speech(x[2]) for x in items)
             wav = OUT / "voice" / f"{c['id']}.wav"
             key = hashlib.md5(f"{para}|{SPEED}|para".encode()).hexdigest()
             if cache.get(wav.name) != key or not wav.exists():
@@ -136,7 +151,7 @@ def build():
                 best = None
                 for k in range(5):
                     print("TTS", wav.name, f"try{k}", para[:40], flush=True)
-                    tts_para(V.clean(para), wav)
+                    tts_para(para, wav)
                     sc, hyp = F.score(model, wav, para)
                     if best is None or sc > best[0]:
                         best = (sc, wav.read_bytes())
@@ -148,6 +163,10 @@ def build():
                 cache_p.write_text(json.dumps(cache, indent=0))
             d = wav_len(wav)
             per = [SS.words_of(x[2]) for x in items]
+            for (_, _, disp), ws in zip(items, per):
+                # 숫자 표기 단어의 음절 수를 읽는 말 기준으로
+                for w in ws:
+                    w["w"] = max(1, len(re.findall(r"[가-힣]", speech(w["text"]))))
             allw = [w for ws in per for w in ws]
             SS.align(allw, SS.asr_words(model, wav), d)
             k = 0

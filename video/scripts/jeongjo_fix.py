@@ -11,13 +11,29 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import jeongjo as J  # noqa: E402
 import sejong_voice as V  # noqa: E402
 
-norm = lambda s: re.sub(r"[^가-힣]", "", V.clean(s))
+norm = lambda s: re.sub(r"[^가-힣]", "", J.speech(s))
+
+
+def repeats(ref, hyp):
+    """음성인식 결과에 대본보다 더 많이 나오는 4~10음절 말뭉치(=두 번 읽음)가 있으면 그 말을 돌려준다."""
+    for n in range(10, 3, -1):
+        seen = {}
+        for i in range(len(hyp) - n + 1):
+            g = hyp[i:i + n]
+            seen[g] = seen.get(g, 0) + 1
+        for g, k in seen.items():
+            if k > 1 and k > ref.count(g):
+                return g
+    return None
 
 
 def score(model, wav, text):
+    """대본과 음성인식 결과의 일치도. 두 번 읽은 곳이 있으면 0점."""
     segs, _ = model.transcribe(str(wav), language="ko", beam_size=5)
     hyp = "".join(x.text for x in segs)
     a, b = norm(text), norm(hyp)
+    if repeats(a, b):
+        return 0.0, hyp
     r = difflib.SequenceMatcher(None, a, b).ratio()
     over = len(b) / max(1, len(a))
     return r - max(0, over - 1.08) * 2, hyp
