@@ -1,6 +1,6 @@
 # KANENAZO 성과 기록
 
-> [KANENAZO_PERFORMANCE_v1](KANENAZO_PERFORMANCE_v1.md) 28~32번. 업로드 후 같은 시점(예: 7일, 28일)에 기록하고, [30번 해석 순서](KANENAZO_PERFORMANCE_v1.md#30-데이터-해석-순서)대로 읽는다. 작은 표본으로 결론 내리지 않는다(31번).
+> [KANENAZO_PERFORMANCE_v1](archive/KANENAZO_PERFORMANCE_v1.md) 28~32번. 업로드 후 같은 시점(예: 7일, 28일)에 기록하고, [30번 해석 순서](archive/KANENAZO_PERFORMANCE_v1.md#30-데이터-해석-순서)대로 읽는다. 작은 표본으로 결론 내리지 않는다(31번).
 
 ## 롱폼
 

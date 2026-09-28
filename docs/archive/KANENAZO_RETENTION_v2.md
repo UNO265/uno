@@ -1,8 +1,10 @@
 # KANENAZO LONG-FORM RETENTION GUIDELINE v2.0 — 롱폼 시청지속 지침
 
+> **보관본(2026-09-28).** 현재 지침은 [docs/guide/](../guide/00_CORE.md)이다. 이 문서의 번호가 어디로 갔는지는 [MAPPING](../guide/MAPPING.md).
+
 - **적용**: CASE #004부터 (롱폼 대본)
 - **관계**: 기존 지침을 대체하지 않는다. [마스터 지침](KANENAZO_GUIDE.md), [대본 지침](KANENAZO_SCRIPT_GUIDE_v1.md), [v3 영상 지침](KANENAZO_GUIDE_v3.md), [성과 지침](KANENAZO_PERFORMANCE_v1.md)에 더해 적용한다.
-- **양식**: 대본 전 설계는 [templates/question-chain-design.md](templates/question-chain-design.md), 대본 제출 전 검수는 같은 문서의 RETENTION CHECK.
+- **양식**: 대본 전 설계는 [templates/question-chain-design.md](../templates/question-chain-design.md), 대본 제출 전 검수는 같은 문서의 RETENTION CHECK.
 
 기존의 다음 원칙은 모두 그대로 유지한다.
 
@@ -192,7 +194,7 @@ CASE #003은 점검 후 도입부를 재배치했다(질문 0:35 → 0:00, 타�
 - 질문 직후에는 곧바로 모순으로 넘어간다. 질문만 두 번 되풀이하지 않는다.
 - 타이틀 직후는 이탈이 쉬운 자리다. 화면이 빈 채 음성만 흐르는 구간을 두지 않는다(CASE #003 원본 1:46~2:18에 약 20초 있었음).
 
-**검증**: 롱폼 30초 유지율을 [성과 기록](performance-log.md)에 적어 CASE #001·#002(질문 5~35초, 타이틀 1분 이후)와 CASE #003 재배치본, CASE #004를 비교한다. 두세 편에서 같은 방향이 나오기 전에는 이 기준을 확정으로 보지 않는다(20번).
+**검증**: 롱폼 30초 유지율을 [성과 기록](../performance-log.md)에 적어 CASE #001·#002(질문 5~35초, 타이틀 1분 이후)와 CASE #003 재배치본, CASE #004를 비교한다. 두세 편에서 같은 방향이 나오기 전에는 이 기준을 확정으로 보지 않는다(20번).
 
 ### 11-2. 첫 30초 틀 v2.2 — 공감으로 시작한다 (CASE #008부터, 사용자 확정 2026-09-28)
 
@@ -315,7 +317,7 @@ CASE #004부터 새로운 QUESTION CHAIN 구조를 적용한다. 향후 #003의 
 
 ## 21. CASE #004부터 대본 작성 전 반드시 설계할 것
 
-대본을 바로 작성하지 않는다. 먼저 아래 구조를 만든다([양식](templates/question-chain-design.md)).
+대본을 바로 작성하지 않는다. 먼저 아래 구조를 만든다([양식](../templates/question-chain-design.md)).
 
 | 항목 | 내용 |
 |---|---|
@@ -346,7 +348,7 @@ CASE #004부터 새로운 QUESTION CHAIN 구조를 적용한다. 향후 #003의 
 
 ## 23. 최종 RETENTION CHECK
 
-최종 대본 제출 전 반드시 검수한다([양식](templates/question-chain-design.md#retention-check)).
+최종 대본 제출 전 반드시 검수한다([양식](../templates/question-chain-design.md#retention-check)).
 
 - [ ] 0~5초에 대상과 제목의 질문이 보이고 들리는가? (화면 글자 + 음성, 11-1)
 - [ ] 15초 안에 모순이, 30초 안에 2~3분 안에 답할 QUESTION 1이, 35초 안에 CASE 타이틀이 나오는가?
@@ -383,7 +385,7 @@ KANENAZO CASE #004 이후의 대본은 **「질문 하나를 15분 동안 끄는
 
 # v2.1 보완 — 실제 시청지속 데이터 기반 (CASE #005부터)
 
-기존 KANENAZO MASTER STYLE과 v2.0(1~25번)은 그대로 유지한다. v2.1은 **대본의 정보 배치와 후반부 구성**에 관한 추가 규칙이다. 검수 양식은 [templates/question-chain-design.md](templates/question-chain-design.md)의 「v2.1 반복 설명 검사」와 「마지막 20%」.
+기존 KANENAZO MASTER STYLE과 v2.0(1~25번)은 그대로 유지한다. v2.1은 **대본의 정보 배치와 후반부 구성**에 관한 추가 규칙이다. 검수 양식은 [templates/question-chain-design.md](../templates/question-chain-design.md)의 「v2.1 반복 설명 검사」와 「마지막 20%」.
 
 ## 26. QUESTION CHAIN은 질문의 개수가 아니라 정보의 진전으로 평가한다
 
@@ -429,7 +431,7 @@ FINAL MONEY FLOW → 핵심 반전 → 최초 질문에 대한 최종 답 → KA
 
 ## 30. 시청지속 그래프는 실제 장면과 연결해 분석한다
 
-영상 업로드 후 다음 항목을 [성과 기록](performance-log.md)의 「시청지속 그래프 × 장면」 표에 기록한다.
+영상 업로드 후 다음 항목을 [성과 기록](../performance-log.md)의 「시청지속 그래프 × 장면」 표에 기록한다.
 
 - 첫 30초 시청지속률
 - 평균 시청시간
@@ -461,7 +463,7 @@ KANENAZO는 **'하나의 답을 오래 설명하는 영상'이 아니라 '답을
 
 # 추가: CASE #001·#002 시청지속 그래프 분석 반영 (2026-09-26, CASE #005부터)
 
-[성과 기록](performance-log.md)의 「시청지속 그래프 × 장면」에서 두 영상 모두 **같은 종류의 장면에서 크게 빠진 곳**만 규칙으로 만들었다. 표본이 두 편뿐이므로 가설로 두고, CASE #004·#005 그래프로 다시 확인한다(20번). 점검은 `video/scripts/retention_check.py`로 한다(35번).
+[성과 기록](../performance-log.md)의 「시청지속 그래프 × 장면」에서 두 영상 모두 **같은 종류의 장면에서 크게 빠진 곳**만 규칙으로 만들었다. 표본이 두 편뿐이므로 가설로 두고, CASE #004·#005 그래프로 다시 확인한다(20번). 점검은 `video/scripts/retention_check.py`로 한다(35번).
 
 ## 32. 타이틀 직후 20초에 새 정보를 둔다
 

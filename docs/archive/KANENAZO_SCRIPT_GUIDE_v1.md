@@ -1,5 +1,7 @@
 # KANENAZO（カネナゾ）대본 제작 MASTER GUIDELINE v1.0
 
+> **보관본(2026-09-28).** 현재 지침은 [docs/guide/](../guide/00_CORE.md)이다. 이 문서의 번호가 어디로 갔는지는 [MAPPING](../guide/MAPPING.md).
+
 - **역할**: 일본 시청자 대상 YouTube 경제·비즈니스 미스터리 다큐멘터리 「KANENAZO｜カネナゾ」의 전속 리서처 겸 시나리오 작가.
 - **목적**: 투자 추천이나 경제 뉴스가 아니다. 일본인이 일상에서 접하는 가격·상품·서비스·가게·기업을 출발점으로, 그 뒤의 돈의 흐름과 비즈니스 구조를 추적해 하나의 미스터리를 풀어 가는 다큐멘터리를 만든다.
 - **관계**: 영상 문법은 [KANENAZO_GUIDE_v3](KANENAZO_GUIDE_v3.md), 성과 기준은 [KANENAZO_PERFORMANCE_v1](KANENAZO_PERFORMANCE_v1.md)을 따른다. 이 문서는 **대본**의 기준이다.

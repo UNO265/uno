@@ -1,5 +1,7 @@
 # KANENAZO VIDEO PRODUCTION MASTER GUIDE v3.0
 
+> **보관본(2026-09-28).** 현재 지침은 [docs/guide/](../guide/00_CORE.md)이다. 이 문서의 번호가 어디로 갔는지는 [MAPPING](../guide/MAPPING.md).
+
 - **적용 범위**: CASE #003 이후 모든 KANENAZO 영상. v1([KANENAZO_GUIDE.md](KANENAZO_GUIDE.md))과 v2([KANENAZO_STYLE_v2.md](KANENAZO_STYLE_v2.md))는 계속 유효하며, 충돌하면 이 문서가 우선한다.
 - **채널**: KANENAZO｜カネナゾ
 - **브랜드 문구**: 「身近なお金の謎を解く。」

@@ -1,6 +1,6 @@
 # CASE #004 QUESTION CHAIN 설계 — 「コインランドリー、人がいないのになぜ儲かる？」
 
-[시청지속 지침 v2.0](KANENAZO_RETENTION_v2.md) 21번 양식. 대본: [cases/case004/script.txt](../cases/case004/script.txt)(사용자 원문: `script_v0_user.txt`). 시각은 CASE #003의 말하기 속도(약 5.55자/초)로 잡은 **예상치**입니다.
+[시청지속 지침 v2.0](archive/KANENAZO_RETENTION_v2.md) 21번 양식. 대본: [cases/case004/script.txt](../cases/case004/script.txt)(사용자 원문: `script_v0_user.txt`). 시각은 CASE #003의 말하기 속도(약 5.55자/초)로 잡은 **예상치**입니다.
 
 - 썸네일 질문(안): 대형 건조기 하나 + 「1155億円」 + 「何を買ってる？」 → Q3에서 회수(17번)
 

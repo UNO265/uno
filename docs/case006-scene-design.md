@@ -1,6 +1,6 @@
 # CASE #006 장면 설계 — 「ガチャガチャ、なぜ500円に？」
 
-[CORE v4](KANENAZO_CORE_v4.md)(최상위), [v3 영상 지침](KANENAZO_GUIDE_v3.md)(0번: 실사 없음), 시청지속 v2.0·v2.1·32~34, 성과 지침 3-1·4-3·7-1 기준.
+[CORE v4](archive/KANENAZO_CORE_v4.md)(최상위), [v3 영상 지침](archive/KANENAZO_GUIDE_v3.md)(0번: 실사 없음), 시청지속 v2.0·v2.1·32~34, 성과 지침 3-1·4-3·7-1 기준.
 
 - 대본: [cases/case006/script.txt](../cases/case006/script.txt)(공백 제외 4,125자, 확정) / 컷: [cuts.json](../cases/case006/cuts.json)(43컷)
 - 질문 사슬: [case006-question-chain.md](case006-question-chain.md) / 사전 조사: [case006-research.md](case006-research.md)

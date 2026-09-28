@@ -1,4 +1,4 @@
-"""대본(컷)의 시청지속 위험 구간을 찾는다（시청지속 지침 11-1, 32~34번）.
+"""대본(컷)의 시청지속 위험 구간을 찾는다（docs/guide/02_SCRIPT.md S3·S4·S8）.
 
 사용법:
     python3 scripts/retention_check.py --case case004
@@ -57,21 +57,21 @@ def main() -> None:
 
     # 11-1: 첫 문장은 제목의 질문
     first = segs[0][1]
-    (ok if first.endswith(QUESTION_END) else warn).append(f"[11-1] 첫 문장: 「{first}」" + ("" if first.endswith(QUESTION_END) else " → 질문으로 시작하지 않음"))
+    (ok if first.endswith(QUESTION_END) else warn).append(f"[S4] 첫 문장: 「{first}」" + ("" if first.endswith(QUESTION_END) else " → 질문으로 시작하지 않음"))
 
     # 11-1: 타이틀 35초 이내
     title = next((s for s in segs if "今日のカネナゾ" in s[1]), None)
     if title:
-        (ok if title[2] <= 35 else warn).append(f"[11-1] 타이틀 {mmss(title[2])}" + ("" if title[2] <= 35 else " → 35초를 넘음"))
+        (ok if title[2] <= 35 else warn).append(f"[S4] 타이틀 {mmss(title[2])}" + ("" if title[2] <= 35 else " → 35초를 넘음"))
         # 32: 타이틀 직후 20초에 채움말
         after = [s for s in segs if title[2] < s[2] <= title[2] + 25 and "今日のカネナゾ" not in s[1] and not s[1].startswith("「")]
         fill = [s for s in after if any(w in s[1] for w in FILLER)]
         for s in fill:
-            warn.append(f"[32] 타이틀 직후 {mmss(s[2])} {s[0]} 「{s[1]}」 → 새 정보 없는 전환 문장")
+            warn.append(f"[S4] 타이틀 직후 {mmss(s[2])} {s[0]} 「{s[1]}」 → 새 정보 없는 전환 문장")
         if not fill:
-            ok.append("[32] 타이틀 직후 25초에 채움말 없음")
+            ok.append("[S4] 타이틀 직후 25초에 채움말 없음")
     else:
-        warn.append("[11-1] 「今日のカネナゾ」 타이틀 문장을 찾지 못함")
+        warn.append("[S4] 「今日のカネナゾ」 타이틀 문장을 찾지 못함")
 
     # 33: 같은 컷에서 설명이 오래 이어짐（컷 = 한 화면）
     tl_path = ROOT / "public" / args.case / "timeline.json"
@@ -85,9 +85,9 @@ def main() -> None:
             if d > args.max_run:
                 long_cuts.append((c["id"], d, 0.0))
     for cid, d, st in long_cuts:
-        warn.append(f"[33] {cid}（{mmss(st)}〜）한 컷 {d:.0f}초 → 중간에 새 숫자·질문·화면 전환을 넣었는지 확인")
+        warn.append(f"[S3] {cid}（{mmss(st)}〜）한 컷 {d:.0f}초 → 중간에 새 숫자·질문·화면 전환을 넣었는지 확인")
     if not long_cuts:
-        ok.append(f"[33] {args.max_run:.0f}초를 넘는 컷 없음")
+        ok.append(f"[S3] {args.max_run:.0f}초를 넘는 컷 없음")
 
     # 34: 마지막 20%에서 앞의 나열（짧은 항목 3개 이상이 이어진 목록）을 내레이션으로 다시 나열
     def item(t: str) -> str:
@@ -106,24 +106,24 @@ def main() -> None:
         if sg[2] >= total * 0.8:
             hit = [w for w in items if w in sg[1]]
             if len(hit) >= 3:
-                warn.append(f"[34] 마지막 20% {mmss(sg[2])} {sg[0]} 「{sg[1]}」 → 앞에서 나열한 항목({'・'.join(hit)})을 내레이션으로 다시 나열(화면으로 처리)")
+                warn.append(f"[S8] 마지막 20% {mmss(sg[2])} {sg[0]} 「{sg[1]}」 → 앞에서 나열한 항목({'・'.join(hit)})을 내레이션으로 다시 나열(화면으로 처리)")
 
     # 34: 마지막 20%의 요약 표현
     tail_from = total * 0.8
     recap = [s for s in segs if s[2] >= tail_from and any(w in s[1] for w in RECAP)]
     for s in recap:
-        warn.append(f"[34] 마지막 20% {mmss(s[2])} {s[0]} 「{s[1]}」 → 요약 표현")
+        warn.append(f"[S8] 마지막 20% {mmss(s[2])} {s[0]} 「{s[1]}」 → 요약 표현")
     if not recap:
-        ok.append(f"[34] 마지막 20%（{mmss(tail_from)}〜）에 요약 표현 없음")
+        ok.append(f"[S8] 마지막 20%（{mmss(tail_from)}〜）에 요약 표현 없음")
 
     # 34: 최종 답 → 엔딩 60초 이내
     ans = next((s for s in segs if s[2] >= total * 0.7 and s[1].startswith("答えは")), None)
     end = next((s for s in segs if "身近なお金には" in s[1]), None)
     if ans and end:
         gap = end[2] - ans[2]
-        (ok if gap <= 60 else warn).append(f"[34] 최종 답 {mmss(ans[2])} → 엔딩 {mmss(end[2])}: {gap:.0f}초" + ("" if gap <= 60 else " → 60초를 넘음"))
+        (ok if gap <= 60 else warn).append(f"[S8] 최종 답 {mmss(ans[2])} → 엔딩 {mmss(end[2])}: {gap:.0f}초" + ("" if gap <= 60 else " → 60초를 넘음"))
     else:
-        warn.append("[34] 최종 답（「答えは」로 시작, 70% 이후）또는 엔딩 문장을 찾지 못함")
+        warn.append("[S8] 최종 답（「答えは」로 시작, 70% 이후）또는 엔딩 문장을 찾지 못함")
 
     print(f"== {args.case}  길이 {mmss(total)}（{'실측' if measured else '추정'}）")
     for w in ok:

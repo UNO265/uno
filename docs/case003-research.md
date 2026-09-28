@@ -1,7 +1,7 @@
 # CASE #003 사전 조사 — 영화관 팝콘
 
 - 대본 초안: [cases/case003/script_draft.txt](../cases/case003/script_draft.txt) (v0.1)
-- 적용 지침: [KANENAZO_GUIDE_v3](KANENAZO_GUIDE_v3.md), [KANENAZO_PERFORMANCE_v1](KANENAZO_PERFORMANCE_v1.md)
+- 적용 지침: [KANENAZO_GUIDE_v3](archive/KANENAZO_GUIDE_v3.md), [KANENAZO_PERFORMANCE_v1](archive/KANENAZO_PERFORMANCE_v1.md)
 - 실험 위치: CASE #003 = VISUAL TEST (성과 지침 32번)
 
 ## 1. 사실 확인

@@ -1,6 +1,6 @@
 # CASE #003 장면 설계 — 「映画館のポップコーン、なぜ高い？」
 
-[KANENAZO_GUIDE_v3](KANENAZO_GUIDE_v3.md)(0번 임시 운용: 실사 없음)와 [KANENAZO_PERFORMANCE_v1](KANENAZO_PERFORMANCE_v1.md) 기준 설계서입니다.
+[KANENAZO_GUIDE_v3](archive/KANENAZO_GUIDE_v3.md)(0번 임시 운용: 실사 없음)와 [KANENAZO_PERFORMANCE_v1](archive/KANENAZO_PERFORMANCE_v1.md) 기준 설계서입니다.
 
 - 대본: [cases/case003/script.txt](../cases/case003/script.txt)(공백 제외 4,593자)
 - 컷 분할: [cases/case003/cuts.json](../cases/case003/cuts.json)(49컷)

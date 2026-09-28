@@ -1,6 +1,6 @@
 # CASE #002 장면 설계 — 「ラーメン一杯1000円。店には、いくら残る？」
 
-[KANENAZO_STYLE_v2](KANENAZO_STYLE_v2.md) 기준 설계서입니다. 대본 원문은 [cases/case002/script.txt](../cases/case002/script.txt), 컷 분할은 [cases/case002/cuts.json](../cases/case002/cuts.json)에 있습니다.
+[KANENAZO_STYLE_v2](archive/KANENAZO_STYLE_v2.md) 기준 설계서입니다. 대본 원문은 [cases/case002/script.txt](../cases/case002/script.txt), 컷 분할은 [cases/case002/cuts.json](../cases/case002/cuts.json)에 있습니다.
 
 **타임코드**: 수정본 대본을 최종 음성(VOICEVOX 雀松朱司)으로 합성한 뒤 실제 발화 길이로 잰 값입니다(`video/public/case002/timeline.json`, 64컷). 여백을 포함한 총 길이는 **13:15.7**입니다.
 

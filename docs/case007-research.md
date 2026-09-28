@@ -1,6 +1,6 @@
 # CASE #007 사전 조사 — ビジネスホテル
 
-[CORE v4](KANENAZO_CORE_v4.md) 2번(ANSWER CARD)·성과 지침 3-1(상식보다 한 층 더) 기준. 조사일 2026-09-28.
+[CORE v4](archive/KANENAZO_CORE_v4.md) 2번(ANSWER CARD)·성과 지침 3-1(상식보다 한 층 더) 기준. 조사일 2026-09-28.
 ★ = 1차 자료(결산·정부 통계·공적 조사). 작업 환경에서 tsr-net·travelvoice·itmedia·gendai·toyoko-inn 원문이 막혀(EGRESS_BLOCKED) **검색 요약으로 확인한 숫자는 공개 전에 원문을 다시 본다.**
 
 ## 사실 목록

@@ -1,9 +1,11 @@
 # KANENAZO PERFORMANCE IMPROVEMENT GUIDE v1.0 — 카네나조 성과 개선 지침서
 
+> **보관본(2026-09-28).** 현재 지침은 [docs/guide/](../guide/00_CORE.md)이다. 이 문서의 번호가 어디로 갔는지는 [MAPPING](../guide/MAPPING.md).
+
 - **적용**: CASE #003 이후 롱폼 및 Shorts
 - **목적**: 실제 YouTube 초기 데이터를 바탕으로 **CTR → 초반 유지 → 지속 시청 → 다음 영상 시청** 순서로 개선한다.
 - **관계**: 영상 제작 문법은 [KANENAZO_GUIDE_v3](KANENAZO_GUIDE_v3.md)를 따른다. 이 문서는 "누르게 하고, 머물게 하는" 기준을 더한다.
-- **양식**: 업로드 전 검사는 [templates/upload-checklist.md](templates/upload-checklist.md), 데이터 기록은 [performance-log.md](performance-log.md)에 한다.
+- **양식**: 업로드 전 검사는 [templates/upload-checklist.md](../templates/upload-checklist.md), 데이터 기록은 [performance-log.md](../performance-log.md)에 한다.
 
 ## 0. 출발점 데이터 (초기 표본)
 
@@ -114,7 +116,7 @@
 
 **제목 점수 도구에 대해**
 - vidIQ류 도구의 점수는 대부분 **검색 최적화(키워드) 점수**이고, 실제 클릭률을 예측한 값이 아니다. ① SEO를 확인하는 참고로 쓴다.
-- ② 짧음과 ③ 후킹은 도구 점수로 판단하지 않는다. 최종 판단은 YouTube Studio 「テストと比較」(제목 A/B 테스트)와 실제 CTR로 하고, 결과는 [성과 기록](performance-log.md)에 남긴다.
+- ② 짧음과 ③ 후킹은 도구 점수로 판단하지 않는다. 최종 판단은 YouTube Studio 「テストと比較」(제목 A/B 테스트)와 실제 CTR로 하고, 결과는 [성과 기록](../performance-log.md)에 남긴다.
 
 **예**
 
@@ -145,7 +147,7 @@ YouTube Studio 제목 칸 아래의 「Suggestions」와 점수는 YouTube가 �
 4. 「〜の理由」「〜の仕組み」처럼 답을 약속하는 설명형이 많다.
 
 **채널 데이터로 본 판단**
-- 본편 조회의 약 95~98%는 홈·추천에서 오고 검색은 약 1.4%다(#001·#002, [성과 기록](performance-log.md)). 도구 점수가 주로 재는 검색 최적화는 지금 채널에서 영향이 작다. 홈·추천에서는 **짧고 한눈에 질문이 생기는 제목**이 유리하다(4-1).
+- 본편 조회의 약 95~98%는 홈·추천에서 오고 검색은 약 1.4%다(#001·#002, [성과 기록](../performance-log.md)). 도구 점수가 주로 재는 검색 최적화는 지금 채널에서 영향이 작다. 홈·추천에서는 **짧고 한눈에 질문이 생기는 제목**이 유리하다(4-1).
 - 「経営」「副業」은 창업·투자 정보를 찾는 사람을 부른다. 영상 내용과 맞지 않아 초반 이탈이 늘 수 있다.
 - 「最強」「黒字」 같은 말은 대본 지침(숫자·의도를 단정하지 않는다)과 충돌한다.
 
@@ -471,7 +473,7 @@ CASE마다 기록한다: Impressions, CTR, Views, Average View Duration, Average
 
 ## 33. 업로드 전 최종 검사
 
-[templates/upload-checklist.md](templates/upload-checklist.md)에 체크박스로 정리했다(TOPIC / TITLE / THUMBNAIL / HOOK / STORY / VISUAL / ENDING).
+[templates/upload-checklist.md](../templates/upload-checklist.md)에 체크박스로 정리했다(TOPIC / TITLE / THUMBNAIL / HOOK / STORY / VISUAL / ENDING).
 
 ## 34. 핵심 문장
 

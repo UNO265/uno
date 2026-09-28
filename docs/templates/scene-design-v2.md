@@ -1,6 +1,6 @@
 # CASE #00X 장면 설계 (v2 템플릿)
 
-> [KANENAZO_STYLE_v2](../KANENAZO_STYLE_v2.md) 33~34번 기준. 이 파일을 `docs/case00X-scene-design.md`로 복사해 작성한다.
+> [KANENAZO_STYLE_v2](../archive/KANENAZO_STYLE_v2.md) 33~34번 기준. 이 파일을 `docs/case00X-scene-design.md`로 복사해 작성한다.
 
 ## 1. 사전 조사 (대본 전)
 | 자료 | 종류(결산·통계·공식사이트·사진·영상·광고 등) | 출처 | 사용권 상태(확인됨/문의중/불가) | 쓸 장면 |

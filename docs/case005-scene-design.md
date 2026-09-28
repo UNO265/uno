@@ -1,6 +1,6 @@
 # CASE #005 장면 설계 — 「送料無料、本当に無料？」
 
-[v3 영상 지침](KANENAZO_GUIDE_v3.md)(0번: 실사 없음), [시청지속 지침 v2.0·v2.1](KANENAZO_RETENTION_v2.md)(QUESTION CHAIN, 11-1, 26~34번), [성과 지침](KANENAZO_PERFORMANCE_v1.md) 기준.
+[v3 영상 지침](archive/KANENAZO_GUIDE_v3.md)(0번: 실사 없음), [시청지속 지침 v2.0·v2.1](archive/KANENAZO_RETENTION_v2.md)(QUESTION CHAIN, 11-1, 26~34번), [성과 지침](archive/KANENAZO_PERFORMANCE_v1.md) 기준.
 
 - 대본: [cases/case005/script.txt](../cases/case005/script.txt)(공백 제외 약 3,970자, 확정) / 컷: [cuts.json](../cases/case005/cuts.json)(45컷, K31·K31B를 합침)
 - 질문 사슬 설계: [case005-question-chain.md](case005-question-chain.md) / 사전 조사: [case005-research.md](case005-research.md)

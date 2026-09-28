@@ -1,6 +1,6 @@
 # CASE #004 장면 설계 — 「コインランドリー、人がいないのになぜ儲かる？」
 
-[v3 영상 지침](KANENAZO_GUIDE_v3.md)(0번: 실사 없음), [시청지속 지침 v2.0](KANENAZO_RETENTION_v2.md)(QUESTION CHAIN, 11-1 도입부), [성과 지침](KANENAZO_PERFORMANCE_v1.md) 기준.
+[v3 영상 지침](archive/KANENAZO_GUIDE_v3.md)(0번: 실사 없음), [시청지속 지침 v2.0](archive/KANENAZO_RETENTION_v2.md)(QUESTION CHAIN, 11-1 도입부), [성과 지침](archive/KANENAZO_PERFORMANCE_v1.md) 기준.
 
 - 대본: [cases/case004/script.txt](../cases/case004/script.txt)(공백 제외 4,079자, 확정) / 컷: [cuts.json](../cases/case004/cuts.json)(53컷)
 - 질문 사슬 설계: [case004-question-chain.md](case004-question-chain.md) / 사전 조사: [case004-research.md](case004-research.md)

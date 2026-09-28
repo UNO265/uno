@@ -1,5 +1,7 @@
 # KANENAZO MASTER STYLE v2.0 — CASE #002 이후 공통 제작 지침
 
+> **보관본(2026-09-28).** 현재 지침은 [docs/guide/](../guide/00_CORE.md)이다. 이 문서의 번호가 어디로 갔는지는 [MAPPING](../guide/MAPPING.md).
+
 > CASE #001의 디자인을 **복제하지 않고**, CASE #001에서 확립한 **영상 문법을 계승**한다.
 > 브랜드는 같게, 장면은 새롭게, 정보는 더 실제적으로, 오디오는 더 자연스럽게.
 > 기본 지침 [KANENAZO_GUIDE.md](KANENAZO_GUIDE.md)(v1)는 그대로 유효하며, 이 문서가 충돌 시 우선한다.
@@ -135,10 +137,10 @@ KANENAZO / カネナゾ → 「身近なお金の謎を解く。」 → 「で�
 
 ## 34. 장면 설계 기록 항목
 장면 번호 · 타임코드 · 내레이션 · 화면 목적 · 화면 타입(A~H) · 핵심 메시지 · 실제 자료 여부 · EVIDENCE 여부 · 표시할 일본어 · 숫자 · 모션 · BGM 상태 · SFX · 다음 장면과의 연결. 같은 타입의 과도한 연속 여부도 검사.
-→ 템플릿: [templates/scene-design-v2.md](templates/scene-design-v2.md)
+→ 템플릿: [templates/scene-design-v2.md](../templates/scene-design-v2.md)
 
 ## 35. 최종 렌더링 전 자동 체크
-→ 체크리스트: [templates/prerender-checklist.md](templates/prerender-checklist.md)
+→ 체크리스트: [templates/prerender-checklist.md](../templates/prerender-checklist.md)
 
 ## 36. CASE #002의 목표
 애니메이션·효과음·화려함을 늘리는 것이 아니다. **더 실제적이고, 더 신뢰감 있고, 더 다양한 화면 질감, 더 자연스러운 일본어와 오디오, 더 강한 스토리텔링.** "AI가 만든 경제 설명 영상"이 아니라 "KANENAZO라는 제작팀이 만든 일본 경제 미스터리 다큐멘터리"처럼 보여야 한다.
