@@ -165,14 +165,14 @@ def main():
         for k in range(0, n, seg):
             ch = chords[(k // seg) % len(chords)]
             m = min(n - k, seg + 3 * SR)
-            y = L.pad(m, [hz(x) for x in ch], lvl)
+            y = L.pad(m, [hz(x) for x in ch], lvl * 1.5)
             env = np.minimum(1, np.arange(m) / (3 * SR)) * np.minimum(1, (m - np.arange(m)) / (3 * SR))
             add(mus, y * env, k / SR)
         # 뜯음: 5~9초마다 한 음
         tt = rng.uniform(2, 5)
         while tt < dur - 3:
-            add(mus, pluck(hz(rng.choice(scale)), amp=0.07), tt)
-            tt += rng.uniform(5, 9)
+            add(mus, pluck(hz(rng.choice(scale)), amp=0.12), tt)
+            tt += rng.uniform(3.5, 6.5)
         for c in s["cuts"]:
             a = (c["from"] - s["from"]) / FPS
             d = c["duration"] / FPS + 0.5
@@ -234,7 +234,7 @@ def main():
             if sc == "hesitate":
                 pass
         # 내레이션 동안 음악 낮추기(부드럽게)
-        duck = 1 - 0.55 * smooth(speech, int(0.3 * SR))
+        duck = 1 - 0.45 * smooth(speech, int(0.3 * SR))
         if s["sec"] == "end":
             duck[:] = 1
         mix = amb + mus * duck + fx
