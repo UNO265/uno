@@ -15,15 +15,16 @@ norm = lambda s: re.sub(r"[^가-힣]", "", J.speech(s))
 
 
 def repeats(ref, hyp):
-    """음성인식 결과에 대본보다 더 많이 나오는 4~10음절 말뭉치(=두 번 읽음)가 있으면 그 말을 돌려준다."""
-    for n in range(10, 3, -1):
-        seen = {}
-        for i in range(len(hyp) - n + 1):
+    """두 번 읽음 찾기: 같은 2음절 이상 말뭉치가 바로 붙어(사이 3자 이내) 다시 나오는데 대본에는 그렇게 붙어 있지 않으면 그 말을 돌려준다.
+    (인식기의 표기 차이로 멀리 떨어진 같은 말이 생기는 경우는 반복으로 보지 않는다.)"""
+    for n in range(10, 1, -1):
+        for i in range(len(hyp) - 2 * n + 1):
             g = hyp[i:i + n]
-            seen[g] = seen.get(g, 0) + 1
-        for g, k in seen.items():
-            if k > 1 and k > ref.count(g):
-                return g
+            j = hyp.find(g, i + n, i + 2 * n + 3)
+            if j >= 0:
+                k = ref.find(g)
+                if k < 0 or ref.find(g, k + n, k + 2 * n + 3) < 0:
+                    return g
     return None
 
 

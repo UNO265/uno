@@ -51,6 +51,18 @@ MOODS = {
 }
 
 
+def roomtone(n, k=0.02):
+    """방 울림: 아주 낮고 부드러운 잡음(딸깍거림 없음)."""
+    return smooth(smooth(rng.normal(0, 1, n), 600), 600) * 25 * k
+
+
+def soft_swell(dur):
+    """암전 직전 부풂: 거친 잡음 대신 낮은 소리로."""
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    return smooth(rng.normal(0, 1, n), 200) * 6 * (t / dur) ** 3 * 0.25 + np.sin(2 * np.pi * 55 * t) * (t / dur) ** 3 * 0.08
+
+
 def wind(n, k=0.03):
     y = L.lp(rng.normal(0, 1, n), 60)
     return y * (0.6 + 0.4 * np.sin(2 * np.pi * 0.05 * np.arange(n) / SR + 1)) * k
@@ -77,6 +89,8 @@ def pluck(freq, dur=2.5, amp=0.12):
     n = int(dur * SR)
     per = max(2, int(SR / freq))
     buf = rng.uniform(-1, 1, per)
+    for _ in range(3):
+        buf = 0.5 * (buf + np.roll(buf, 1))
     out = np.zeros(n + per)
     out[:per] = buf
     i = per
@@ -85,17 +99,17 @@ def pluck(freq, dur=2.5, amp=0.12):
         prev = out[i - per:i - per + k + 1]
         out[i:i + k] = 0.996 * 0.5 * (prev[:k] + prev[1:k + 1])
         i += k
-    return out[:n] * amp * np.minimum(1, np.arange(n) / (0.004 * SR))
+    return out[:n] * amp * np.minimum(1, np.arange(n) / (0.012 * SR))
 
 
 def impact():
     t = np.arange(int(1.6 * SR)) / SR
-    return (np.sin(2 * np.pi * 42 * t * (1 - 0.3 * t)) * np.exp(-t * 3.5) + L.lp(rng.normal(0, 1, len(t)), 6) * np.exp(-t * 18) * 0.6) * 0.6
+    return np.sin(2 * np.pi * 42 * t * (1 - 0.3 * t)) * np.exp(-t * 3.5) * np.minimum(1, t / 0.02) * 0.6
 
 
 def thud():
     t = np.arange(int(0.6 * SR)) / SR
-    return (np.sin(2 * np.pi * 75 * t * (1 - 0.4 * t)) * np.exp(-t * 16) + L.lp(rng.normal(0, 1, len(t)), 10) * np.exp(-t * 35) * 0.4) * 0.5
+    return (np.sin(2 * np.pi * 75 * t * (1 - 0.4 * t)) * np.exp(-t * 16) + smooth(rng.normal(0, 1, len(t)), 40) * np.exp(-t * 35) * 0.3) * np.minimum(1, t / 0.006) * 0.5
 
 
 def step():
@@ -165,13 +179,13 @@ def main():
             m = int(d * SR)
             sc = c["scene"]
             if sc in WARM:
-                y = L.crackle(m) + L.crickets(m) * 0.6
+                y = roomtone(m)  # 촛불 타닥임·벌레 소리(치지직)는 빼고 부드러운 방 울림만
             elif sc in NIGHT:
-                y = L.crickets(m) + wind(m, 0.02)
+                y = L.crickets(m) * 0.4 + wind(m, 0.02)
             elif sc in DAWN:
-                y = wind(m, 0.025) + birds(m, 0.15, 0.012)
+                y = wind(m, 0.025)
             elif sc in DAY:
-                y = birds(m, 0.5, 0.02) + wind(m, 0.012)
+                y = wind(m, 0.018) + roomtone(m)
             elif sc in MODERN:
                 y = hum(m)
             else:
@@ -187,12 +201,11 @@ def main():
             p = c["p"]
             if sc == "unfold":
                 t0 = 26 / FPS if p.get("quote") else (c["sentences"][1]["start"] - 0.3 if p.get("close") and len(c["sentences"]) > 1 else 0.6)
-                add(fx, L.rustle(1.4), a + t0)
             if sc in ("flame",):
                 add(fx, L.thump(3), a + word_at(c, p.get("stopWord", "없애"), d - 3))
             if sc == "drawer" and p.get("title"):
                 ti = c["sentences"][-1]["end"] + 0.2
-                add(fx, L.swell(1.1), a + c["sentences"][0]["start"] - 1.2)
+                add(fx, soft_swell(1.1), a + c["sentences"][0]["start"] - 1.2)
                 add(fx, L.bell(), a + ti)
             if sc == "angry":
                 add(fx, impact(), a + word_at(c, "개돼지", 1.0) - 0.05)
@@ -216,11 +229,10 @@ def main():
             if sc == "stack":
                 t = 0.4
                 while t < d - 2:
-                    add(fx, L.rustle(0.25) * 0.5, a + t)
                     t += rng.uniform(0.15, 0.4)
                 add(fx, L.bell() * 0.6, a + d - 1.6)
             if sc == "hesitate":
-                add(fx, L.rustle(0.9) * 0.7, a + 0.5)
+                pass
         # 내레이션 동안 음악 낮추기(부드럽게)
         duck = 1 - 0.55 * smooth(speech, int(0.3 * SR))
         if s["sec"] == "end":
