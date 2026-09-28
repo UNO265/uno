@@ -22,3 +22,5 @@ public/sejong_short*/voice/
 public/sejong_short*/music/*.wav
 public/jeongjo_look/voice/
 public/jeongjo_look/*.wav
+public/jeongjo/voice/
+public/jeongjo/sound/*.wav
