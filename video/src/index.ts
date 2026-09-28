@@ -11,9 +11,11 @@ import { SHORTS005 } from "./shorts005/Main";
 import { Main004, total004 } from "./case004/Main";
 import { Main005, total005 } from "./case005/Main";
 import { Main006, total006 } from "./case006/Main";
+import { Main007, total007 } from "./case007/Main";
 import { Thumb001A, Thumb001B } from "./thumbs/Thumb001";
 import { Thumb005 } from "./thumbs/Thumb005";
 import { Thumb006 } from "./thumbs/Thumb006";
+import { Thumb007 } from "./thumbs/Thumb007";
 import { Main003, total003 } from "./case003/Main";
 
 const Root: React.FC = () =>
@@ -74,12 +76,22 @@ const Root: React.FC = () =>
       width: 1920,
       height: 1080,
     }),
+    // CASE #007「ビジネスホテル、なぜ1泊1.5万円に？」
+    React.createElement(Composition, {
+      id: "Case007",
+      component: Main007,
+      durationInFrames: total007,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
     // サムネイル（1280×720、静止画）
     ...[
       ["Thumb001A", Thumb001A],
       ["Thumb001B", Thumb001B],
       ["Thumb005", Thumb005],
       ["Thumb006", Thumb006],
+      ["Thumb007", Thumb007],
     ].map(([id, comp]) =>
       React.createElement(Composition, { key: id as string, id: id as string, component: comp as React.FC, durationInFrames: 1, fps: 30, width: 1280, height: 720 }),
     ),

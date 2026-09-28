@@ -31,6 +31,8 @@ BASSOON, POLYSYNTH, SWEEP, KALIMBA = 70, 90, 95, 108
 KICK, STICK, HHC, CABASA, SHAKER, WOOD = 36, 37, 42, 69, 70, 76
 # CASE #006〜: カプセルトイ（おもちゃ屋・金属の鍵盤・スティールドラム）
 GLOCK, XYLO, SYNBASS, STEELDR = 9, 13, 38, 114
+# CASE #007〜: ビジネスホテル（ロビーのジャズ・値段が動くチェンバロ・夜のトランペット）
+HARPSI, STEELGTR, JAZZGTR, TIMPANI, MUTETRP, FLUTE = 6, 25, 26, 47, 59, 73
 
 N = {"C": 0, "C#": 1, "Db": 1, "D": 2, "Eb": 3, "E": 4, "F": 5, "F#": 6, "Gb": 6, "G": 7, "Ab": 8, "A": 9, "Bb": 10, "B": 11}
 Q = {"": [0, 4, 7], "m": [0, 3, 7], "maj7": [0, 4, 7, 11], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "m9": [0, 3, 7, 10, 14],
@@ -211,6 +213,30 @@ SECTIONS_006 = [
     ("c6_08_outro", "outro", "G30", "END"),
 ]
 
+# CASE #007: ビジネスホテル。夜のロビー → 統計の調査（ジャズ）→ 値段が動く（チェンバロ）→ いつも同じ値段（フルート）→ 今夜（トランペット）→ 押さえつける力 → 答え
+# 主題はエレベーターの到着音のような「ディン・ドン」4音（上 → 下 → 上）
+MOTIF_007 = [12, 7, 9, 4]
+MOODS_007 = {
+    "h_open": dict(prog=["Fmaj7", "Em7", "Dm7", "G7sus4"], bpm=76, beats=4, lead=CELESTA, pulse="sparse", pizz=False, pad=WARMPAD, key=60, motif=MOTIF_007),
+    "h_data": dict(prog=["Dm7", "G7", "Cmaj7", "A7"], bpm=92, beats=4, lead=JAZZGTR, pulse="comp", pizz=False, pad=None, key=50, bass=ABASS, walk=True, drums="brush", swing=0.17),
+    "h_apa": dict(prog=["Am", "Dm", "G", "C"], bpm=104, beats=4, lead=HARPSI, pulse="arp16", pizz=False, pad=STRINGS, key=57, drums="shaker"),
+    "h_toyoko": dict(prog=["G", "D", "Em7", "Cmaj7"], bpm=84, beats=4, lead=FLUTE, pulse="sparse", pizz=True, off=STEELGTR, pad=WARMPAD, key=67, drums="rim"),
+    "h_tonight": dict(prog=["Ebmaj7", "Cm7", "Fm7", "Bb7sus4"], bpm=66, beats=4, lead=MUTETRP, pulse="sparse", pizz=False, pad=SLOWSTR, key=51, bass=ABASS, walk=True),
+    "h_future": dict(prog=["Bm", "G", "Em", "F#7"], bpm=88, beats=4, lead=STRINGS, pulse="stacc", pizz=False, pad=SLOWSTR, key=59, drums="timp"),
+    "h_answer": dict(prog=["Cmaj7", "Am7", "Dm7", "G7sus4"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=48, bell=CELESTA, motif=MOTIF_007),
+    "outro": dict(prog=["F", "Am7", "Dm7", "C"], bpm=80, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=53, bell=CELESTA, motif=MOTIF_007),
+}
+SECTIONS_007 = [
+    ("c7_01_open", "h_open", "H02", "H04"),
+    ("c7_02_data", "h_data", "H04", "H13"),
+    ("c7_03_apa", "h_apa", "H13", "H17"),
+    ("c7_04_toyoko", "h_toyoko", "H17", "H21"),
+    ("c7_05_tonight", "h_tonight", "H21", "H27"),
+    ("c7_06_future", "h_future", "H27", "H31"),
+    ("c7_07_answer", "h_answer", "H31", "H34"),
+    ("c7_08_outro", "outro", "H34", "END"),
+]
+
 # ショート（縦型）: ケース名 → (曲想, 乱数の種)
 SHORTS = {
     "case001_shorts/short1": ("investigate", 301),
@@ -273,7 +299,7 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
     bars = int(np.ceil(total_beats / beats)) + 1
     prog = [chord(c) for c in mood["prog"]]
     key = mood["key"]
-    programs = {0: mood["lead"], 1: mood["pad"] or WARMPAD, 2: mood.get("bass", ABASS), 3: mood.get("off", PIZZ), 4: mood.get("bell", CELESTA)}
+    programs = {0: mood["lead"], 1: mood["pad"] or WARMPAD, 2: mood.get("bass", ABASS), 3: mood.get("off", PIZZ), 4: mood.get("bell", CELESTA), 5: TIMPANI}
     swing = mood.get("swing", 0.0)  # 8分の裏を遅らせる（0 = ストレート）
     sw = lambda pos: pos + (swing if (pos * 2) % 2 == 1 else 0)
     for bar in range(bars):
@@ -291,8 +317,14 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             for t in tones[:4]:
                 song.note(1, b0, t, 34 + 6 * density, beats)
         # ベース
-        song.note(2, b0, base - 24, 52, beats * 0.9)
-        if beats == 4 and density >= 1:
+        if mood.get("walk") and beats == 4:
+            # ウォーキングベース（4分音符で和音の音をたどる）
+            walk = [base - 24, tones[1 % len(tones)] - 24, tones[2 % len(tones)] - 24, base - 24 + (10 if rng.random() < 0.5 else 11)]
+            for k, n in enumerate(walk):
+                song.note(2, b0 + sw(k), n, 50 - 6 * (k % 2), 0.9)
+        else:
+            song.note(2, b0, base - 24, 52, beats * 0.9)
+        if beats == 4 and density >= 1 and not mood.get("walk"):
             song.note(2, b0 + 2.5, base - 24 + (7 if rng.random() < 0.5 else 12), 40, 1.2)
         # リード（伴奏パターン）
         up = [t + 12 for t in tones]
@@ -359,6 +391,22 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             # スティールドラムのカリプソ（3+3+2 のアクセント）
             for k, pos in enumerate([0, 1.5, 3] + ([2.5] if density >= 1 else [])):
                 song.note(0, b0 + pos, up[k % len(up)], 40 + (6 if pos == 0 else 0) + 2 * density, 0.5)
+        elif style == "comp":
+            # ジャズギターのコンピング（2・4拍の裏に短い和音）
+            for pos in ([1.5, 3.5] if bar % 2 == 0 else [1, 2.5, 3.5]):
+                for t in tones[1:4]:
+                    song.note(0, b0 + sw(pos), t, 34 + 2 * density, 0.3)
+        elif style == "arp16":
+            # チェンバロの 16分分散和音（値段が細かく動く）。音量は控えめ
+            seq = up + [up[0] + 12] + up[::-1][1:]
+            for k in range(beats * 4):
+                if density == 0 and k % 2:
+                    continue
+                song.note(0, b0 + k * 0.25, seq[k % len(seq)], 24 + (6 if k % 4 == 0 else 0) + 2 * density, 0.22)
+        elif style == "stacc":
+            # 低い弦のスタッカート（押さえつける力）
+            for k in range(beats * 2):
+                song.note(0, b0 + k * 0.5, base - 12 + (0 if k % 4 < 2 else 7), 34 + (8 if k % 2 == 0 else 0) + 2 * density, 0.25)
         elif style == "tick":
             # 時計の秒針のような単音（導入の緊張）
             for k in range(beats):
@@ -378,6 +426,9 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
                     song.note(9, b0 + pos, STICK, 28, 0.2)
                 if dr == "rim" and k in (2, 6):
                     song.note(9, b0 + pos, STICK, 30 + 2 * density, 0.2)
+                if dr == "timp" and k in (0, 4):
+                    # ティンパニは GM の旋律楽器（ch 5）で根音を打つ
+                    song.note(5, b0 + k * 0.5, base - 24 + (0 if k == 0 else 7), 58 - 10 * (k // 4) + 3 * density, 0.8)
                 if dr == "kick4" and k % 2 == 0:
                     song.note(9, b0 + pos, KICK, 36 + 3 * density, 0.3)
                 if dr == "heart" and k in (0, 1):
@@ -398,7 +449,7 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             step = beats / len(motif)
             for j, iv in enumerate(motif):
                 song.note(4, b0 + j * step, key + 24 + iv, 44, step * 1.6)
-    vols = {0: 100, 1: 70, 2: 90, 3: 70, 4: 60, 9: 64}
+    vols = {0: 100, 1: 70, 2: 90, 3: 70, 4: 60, 5: 80, 9: 64}
     return song, programs, vols
 
 
@@ -437,10 +488,12 @@ def main():
         moods, sections, seed0 = MOODS_005, SECTIONS_005, 600
     elif args.case == "case006":
         moods, sections, seed0 = MOODS_006, SECTIONS_006, 700
+    elif args.case == "case007":
+        moods, sections, seed0 = MOODS_007, SECTIONS_007, 800
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
-        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006}.get(src[0], MOODS) if src else MOODS
+        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006, "007": MOODS_007}.get(src[0], MOODS) if src else MOODS
         sections = [("bgm", mood, t["cuts"][0]["id"], "END")]
     else:
         moods, sections, seed0 = MOODS, SECTIONS, 100

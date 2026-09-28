@@ -1,0 +1,50 @@
+[
+ {
+  "file": "case007/music/c7_01_open.wav",
+  "from": 145,
+  "to": 976,
+  "mood": "h_open"
+ },
+ {
+  "file": "case007/music/c7_02_data.wav",
+  "from": 976,
+  "to": 6915,
+  "mood": "h_data"
+ },
+ {
+  "file": "case007/music/c7_03_apa.wav",
+  "from": 6915,
+  "to": 9822,
+  "mood": "h_apa"
+ },
+ {
+  "file": "case007/music/c7_04_toyoko.wav",
+  "from": 9822,
+  "to": 14622,
+  "mood": "h_toyoko"
+ },
+ {
+  "file": "case007/music/c7_05_tonight.wav",
+  "from": 14622,
+  "to": 17780,
+  "mood": "h_tonight"
+ },
+ {
+  "file": "case007/music/c7_06_future.wav",
+  "from": 17780,
+  "to": 23307,
+  "mood": "h_future"
+ },
+ {
+  "file": "case007/music/c7_07_answer.wav",
+  "from": 23307,
+  "to": 24425,
+  "mood": "h_answer"
+ },
+ {
+  "file": "case007/music/c7_08_outro.wav",
+  "from": 24425,
+  "to": 24911,
+  "mood": "outro"
+ }
+]
