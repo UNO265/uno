@@ -8,6 +8,7 @@
     "typecheck": "tsc -p ."
   },
   "dependencies": {
+    "@fontsource/black-han-sans": "^5.3.0",
     "@fontsource/gowun-batang": "^5.3.0",
     "@fontsource/gowun-dodum": "^5.3.0",
     "@fontsource/liu-jian-mao-cao": "^5.3.0",
