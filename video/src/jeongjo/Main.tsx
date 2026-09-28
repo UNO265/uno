@@ -102,6 +102,11 @@ export const MainJ: React.FC = () => {
       {cutsJ.map((c) => (
         <Sequence key={`b${c.id}`} from={c.from} durationInFrames={c.duration} layout="none">
           <Bars cut={c} />
+          {(c as any).voice && (
+            <Sequence from={fr((c as any).vat)} layout="none">
+              <Audio src={staticFile((c as any).voice)} />
+            </Sequence>
+          )}
           {c.sentences.map((s, i) =>
             s.voice ? (
               <Sequence key={i} from={fr(s.start)} layout="none">

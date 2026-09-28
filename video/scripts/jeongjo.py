@@ -1,6 +1,8 @@
 """정조 편 「정조가 없애라던 편지 297통」: 컷 목록(data/jeongjo/cuts.json) → 내레이션 → 자막 → 소리 → public/jeongjo/timeline.json.
 
-- 내레이션: Supertonic 3 M2, 문장 단위 합성, 쉼 제외 초당 5.7음절(세종 편 6.8보다 느리게).
+- 내레이션: Supertonic 3 M2. 장면(문단) 하나를 통째로 한 번에 합성해 문장 사이 억양이 이어지게 한다.
+  속도는 1.0 고정(쉼 제외 초당 약 6.7음절). 문장별로 속도를 억지로 맞추면 쉼이 늘어나 끊겨 들린다.
+  합성할 때마다 음성인식으로 반복·누락을 확인하고, 더듬으면 다시 합성한다.
 - 자막: 음성인식 단어 시간에 맞춰 아래 검은 띠에 한 줄(최대 30자), 문장부호 없음. 인용문(“ ”)은 화면에 크게 쓰므로 자막을 띄우지 않는다.
 - 【재구성】·【해석】 표시는 그 문장부터 컷 끝까지 위 띠에 작게 보인다.
 - 소리(--sound): 장(章)별 공간 소리(촛불·밤벌레·바람·새벽·현대 실내) + 곡상이 바뀌는 패드 + 강조 효과음을 장별 wav 로 합성.
@@ -25,12 +27,35 @@ import sejong_voice as V  # noqa: E402
 
 OUT = ROOT / "public/jeongjo"
 FPS = 30
-RATE = 5.7
+SPEED = 1.0
 MAXC = 30
-GAP = 0.55        # 문장 사이
-LEAD = 0.7        # 컷 시작 → 첫 문장
-TAIL = 0.8        # 마지막 문장 → 다음 컷
-CHAPTER = 4.2     # 장 제목 카드(내레이션 없음)
+LEAD = 0.35       # 컷 시작 → 첫 문장
+TAIL = 0.4        # 마지막 문장 → 다음 컷
+CHAPTER = 3.6     # 장 제목 카드(내레이션 없음)
+_tts = {}
+
+
+def tts_para(text, dst):
+    """문단을 한 번에 합성(Supertonic 이 120자 안에서 문장을 묶어 한 번에 읽는다)."""
+    from supertonic import TTS
+
+    if "tts" not in _tts:
+        _tts["tts"] = TTS(model_dir=ROOT / ".models/supertonic-3")
+        _tts["style"] = _tts["tts"].get_voice_style("M2")
+    tts = _tts["tts"]
+    a, _ = tts.synthesize(text, voice_style=_tts["style"], lang="ko", speed=SPEED, total_steps=16, silence_duration=0.22)
+    a = np.asarray(a, dtype=np.float32).squeeze()
+    idx = np.where(np.abs(a) > 0.02 * np.abs(a).max())[0]
+    a = a[max(0, idx[0] - 600): idx[-1] + 2000] if len(idx) else a
+    a = a / max(1e-6, np.abs(a).max()) * 0.85
+    tmp = dst.with_suffix(".raw.wav")
+    with wave.open(str(tmp), "w") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)
+        w.setframerate(tts.sample_rate)
+        w.writeframes((a * 32767).astype(np.int16).tobytes())
+    V.to_wav(tmp, dst)
+    tmp.unlink()
 
 
 def split_tag(s):
@@ -89,6 +114,7 @@ def build():
     t, out = 0.0, []
     for c in cuts:
         sents = []
+        voice = {}
         if c["scene"] == "chapter":
             length = CHAPTER
         elif c["scene"] == "endscreen":
@@ -96,32 +122,47 @@ def build():
         else:
             at = c.get("lead", LEAD)
             tag = None
-            for i, raw in enumerate(c["s"]):
+            items = []
+            for raw in c["s"]:
                 t2, text = split_tag(raw)
                 tag = t2 or tag
-                quote = text.startswith("“")
-                speak = re.sub(r"[“”『』]", "", text)
-                wav = OUT / "voice" / f"{c['id']}_{i}.wav"
-                key = hashlib.md5(f"{speak}|{RATE}".encode()).hexdigest()
-                if cache.get(wav.name) != key or not wav.exists():
-                    print("TTS", wav.name, speak, flush=True)
-                    V.tts_supertonic(V.clean(speak), wav, "M2", RATE)
-                    cache[wav.name] = key
-                    cache_p.write_text(json.dumps(cache, indent=0))
-                d = wav_len(wav)
-                ws = SS.align(SS.words_of(speak), SS.asr_words(model, wav), d)
+                items.append((tag, text.startswith("“"), re.sub(r"[“”『』]", "", text)))
+            para = " ".join(x[2] for x in items)
+            wav = OUT / "voice" / f"{c['id']}.wav"
+            key = hashlib.md5(f"{para}|{SPEED}|para".encode()).hexdigest()
+            if cache.get(wav.name) != key or not wav.exists():
+                import jeongjo_fix as F
+
+                best = None
+                for k in range(5):
+                    print("TTS", wav.name, f"try{k}", para[:40], flush=True)
+                    tts_para(V.clean(para), wav)
+                    sc, hyp = F.score(model, wav, para)
+                    if best is None or sc > best[0]:
+                        best = (sc, wav.read_bytes())
+                    if sc >= 0.93:
+                        break
+                    print("   retry", round(sc, 2), hyp, flush=True)
+                wav.write_bytes(best[1])
+                cache[wav.name] = key
+                cache_p.write_text(json.dumps(cache, indent=0))
+            d = wav_len(wav)
+            per = [SS.words_of(x[2]) for x in items]
+            allw = [w for ws in per for w in ws]
+            SS.align(allw, SS.asr_words(model, wav), d)
+            k = 0
+            for (tag, quote, speak), ws in zip(items, per):
                 for w in ws:
                     w["start"] = round(w["start"] + at, 3)
                     w["end"] = round(w["end"] + at, 3)
-                sents.append({"text": speak, "tag": tag, "quote": quote, "start": round(at, 3), "end": round(at + d, 3),
-                              "voice": f"jeongjo/voice/{wav.name}",
-                              "words": [{k: w[k] for k in ("text", "start", "end")} for w in ws],
+                sents.append({"text": speak, "tag": tag, "quote": quote, "start": ws[0]["start"], "end": ws[-1]["end"], "voice": "",
+                              "words": [{kk: w[kk] for kk in ("text", "start", "end")} for w in ws],
                               "cards": [] if quote else line_cards(ws)})
-                at += d + GAP
-            length = at - GAP + TAIL + c.get("hold", 0)
+            voice = {"voice": f"jeongjo/voice/{wav.name}", "vat": round(at, 3)}
+            length = at + d + TAIL + c.get("hold", 0)
         frames = round(length * FPS)
         out.append({"id": c["id"], "sec": c["sec"], "scene": c["scene"], "p": c.get("p", {}), "sentences": sents,
-                    "from": round(t * FPS), "duration": frames})
+                    "from": round(t * FPS), "duration": frames, **(voice if c["scene"] not in ("chapter", "endscreen") else {})})
         t += frames / FPS
     total = sum(c["duration"] for c in out)
     (OUT / "timeline.json").write_text(json.dumps({"fps": FPS, "totalFrames": total, "cuts": out}, ensure_ascii=False, indent=1))

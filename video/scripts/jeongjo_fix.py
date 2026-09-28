@@ -38,7 +38,7 @@ def main():
             best = (sc, wav.read_bytes())
             for k in range(5):
                 tmp = wav.with_suffix(".try.wav")
-                V.tts_supertonic(V.clean(s["text"]), tmp, "M2", J.RATE)
+                J.tts_para(V.clean(s["text"]), tmp)
                 sc2, hyp2 = score(m, tmp, s["text"])
                 print(f"   try{k} {sc2:.2f} | {hyp2}", flush=True)
                 if sc2 > best[0]:
