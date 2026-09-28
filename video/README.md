@@ -58,9 +58,11 @@ CASE=case002 AT=0.35,0.85 node scripts/contact.mjs   # 장면 확인용 콘택�
 
 내레이션·BGM·효과음의 출처와 YouTube 설명란 크레딧은 [오디오 출처·라이선스](../docs/case001-audio-credits.md)를 참고하세요. 필수 표기는 `VOICEVOX:雀松朱司`입니다.
 
-## 전달용 분할(ffmpeg 없이 합치기)
+## 전달용 분할
 
-완성본은 파일을 바이트 단위로 잘라 보낸다(각 23MiB). 받는 컴퓨터에 ffmpeg가 없어도 OS 기본 명령으로 합쳐진다.
+기본은 `out/case00X_parts/`(ffmpeg segment 260초 + `join_windows.bat`/`join_mac.command`, 받는 쪽에 ffmpeg 필요). `join_mac.command`는 같은 폴더의 `./ffmpeg`를 먼저 쓴다. Windows는 같은 폴더의 `ffmpeg.exe`를 자동으로 찾는다.
+
+받는 컴퓨터에 ffmpeg가 없을 때의 예비 방법: 바이트 단위로 잘라 보낸다(각 23MiB). OS 기본 명령으로 합쳐진다.
 
 ```bash
 D=out/case00X_parts2; mkdir -p $D
@@ -69,4 +71,4 @@ split -b 23m -d -a 1 out/case00X_final.mp4 $D/KANENAZO_CASE00X.mp4.part
 
 - Windows `join_windows.bat`: `copy /b ...part0 + ...part1 + ...part2 KANENAZO_CASE00X.mp4`
 - Mac `join_mac.command`: `cat ...part0 ...part1 ...part2 > KANENAZO_CASE00X.mp4`
-- 합친 파일이 원본과 같은지 `cmp`로 확인한다. (예전 방식인 ffmpeg segment + concat은 받는 쪽에 ffmpeg가 필요했다)
+- 합친 파일이 원본과 같은지 `cmp`로 확인한다.
