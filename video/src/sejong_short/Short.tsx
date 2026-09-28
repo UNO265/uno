@@ -329,6 +329,26 @@ const Bridge: React.FC<P> = ({ cut }) => {
   );
 };
 
+/* ── 썸네일(정지 화면): 물체 하나(반려된 사직서) + 숫자 하나(87세) + 짧은 질문 ───────── */
+export const ThumbSejong1: React.FC = () => {
+  useFonts();
+  return (
+    <AbsoluteFill style={{ background: S.paper }}>
+      <Img src={staticFile("sejong/hanji.png")} style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover" }} />
+      <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 55%, rgba(0,0,0,0) 55%, rgba(40,30,20,0.35) 100%)" }} />
+      <Stage>
+        <Txt y={330} size={128} w={900}>퇴사가</Txt>
+        <Txt y={470} size={128} w={900}>안 된다고?</Txt>
+        <Txt y={880} size={440} color={S.seal} serif w={700}>87<tspan fontSize={250}>세</tspan></Txt>
+        <Letter x={540} y={1330} w={470} h={600} rot={-4} />
+        <Seal x={420} y={1480} text="반려" from={-20} size={250} rot={-12} />
+        <rect x={250} y={1700} width={580} height={96} rx={14} fill={S.ink} opacity={0.9} />
+        <Txt y={1767} size={60} color={S.darkInk} w={700}>조선의 재상 <tspan fill={S.flame}>황희</tspan></Txt>
+      </Stage>
+    </AbsoluteFill>
+  );
+};
+
 const SCENES: Record<string, React.FC<P>> = { open: Open, person: Person, reject: Reject, pile: Pile, calendar: Calendar, count: Count, bridge: Bridge };
 
 /* ── 자막: 반투명 상자 + 핵심어 강조, 문장부호 없음 ───────── */

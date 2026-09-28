@@ -30,6 +30,8 @@ npx remotion render src/sejong_short/index.ts SejongShort1 out/sejong_short1_ren
 python3 scripts/sejong_short.py sejong_short1 --master out/sejong_short1_render.mp4 out/SEJONG_short1.mp4
 ```
 
+썸네일: `npx remotion still src/sejong_short/index.ts SejongShort1Thumb out/SEJONG_short1_thumb.png` (1080×1920, [반려된 사직서 + 87세 + 「퇴사가 안 된다고?」]. YouTube 모바일 앱에서 쇼츠 업로드 때 「썸네일 → 사진 업로드」로 올린다)
+
 대본은 `video/data/sejong_short1/script.json`(`[ ]` = 자막 강조어), 화면은 `video/src/sejong_short/Short.tsx`.
 
 ## 업로드 문구
