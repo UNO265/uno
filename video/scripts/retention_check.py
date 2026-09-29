@@ -55,9 +55,15 @@ def main() -> None:
     cuts, segs, total, measured = load(args.case)
     warn, ok = [], []
 
-    # 11-1: 첫 문장은 제목의 질문
+    # S4: 첫 문장이 제목 질문이거나(~#007), 공감 장면 뒤 20초 안에 제목 질문을 말한다(#008~)
     first = segs[0][1]
-    (ok if first.endswith(QUESTION_END) else warn).append(f"[S4] 첫 문장: 「{first}」" + ("" if first.endswith(QUESTION_END) else " → 질문으로 시작하지 않음"))
+    q20 = next((s for s in segs if s[2] <= 20 and s[1].endswith(QUESTION_END)), None)
+    if first.endswith(QUESTION_END):
+        ok.append(f"[S4] 첫 문장이 질문: 「{first}」")
+    elif q20:
+        ok.append(f"[S4] 공감 장면 「{first}」 → 질문 {mmss(q20[2])} 「{q20[1]}」")
+    else:
+        warn.append(f"[S4] 첫 20초 안에 질문이 없음(첫 문장 「{first}」)")
 
     # 11-1: 타이틀 35초 이내
     title = next((s for s in segs if "今日のカネナゾ" in s[1]), None)
