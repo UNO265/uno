@@ -39,8 +39,8 @@ export const Notice: React.FC<SP> = ({ cut }) => {
 export const HookQuote: React.FC<SP> = ({ cut }) => {
   const f = useCurrentFrame();
   const keys: Key[] = [
-    { f: 0, pos: [0, 5.5, 22], look: [0, 2.2, -1.5] },
-    { f: cut.duration + 15, pos: [0, 3.4, 9.5], look: [0, 2.2, -1.5] },
+    { f: 0, pos: [0, 4.2, 22], look: [0, 3.6, -1.5] },
+    { f: cut.duration + 15, pos: [0, 2.8, 10], look: [0, 3.4, -1.5] },
   ];
   const q = "“여러분 하던 얘기를 계속하겠습니다”";
   const n = Math.floor(interpolate(f, [4, 4 + q.length * 1.6], [0, q.length], clamp));
@@ -49,6 +49,7 @@ export const HookQuote: React.FC<SP> = ({ cut }) => {
       <Stage3D keys={keys} light={0.45} spot={PODIUM}>
         <Hall />
       </Stage3D>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 540, background: "linear-gradient(#0B0D10 62%, rgba(11,13,16,0))" }} />
       <div style={{ position: "absolute", left: 0, right: 0, top: 150, textAlign: "center", fontFamily: SERIF, fontWeight: 600, fontSize: 84, color: "#FFFFFF", textShadow: "0 4px 30px rgba(0,0,0,0.9)" }}>
         {q.slice(0, n)}
       </div>
@@ -71,13 +72,13 @@ export const FlyIn: React.FC<SP> = ({ cut }) => {
     <AbsoluteFill>
       <Stage3D keys={keys} light={0.9} spot={PODIUM}>
         <Hall />
-        <Label pos={[PODIUM[0], 3.4, PODIUM[2]]} text="연단" op={lo(8)} size={1.3} />
-        <Label pos={[-3, 2.9, -3.4]} text="귀빈석" op={lo(16)} size={1.3} />
-        <Label pos={[0, 1.2, 10]} text="객석 통로" op={lo(24)} size={1.3} />
-        <Label pos={[-7.6, 1.6, 1.2]} text="합창단" op={lo(32)} size={1.3} />
-        <Label pos={[0, 8.4, -6.9]} text="태극기" op={lo(40)} size={1.3} />
+        <Label pos={[PODIUM[0], 3.6, PODIUM[2]]} text="연단" op={lo(8)} size={2} />
+        <Label pos={[-4.6, 3.1, -3.4]} text="귀빈석" op={lo(16)} size={2} />
+        <Label pos={[0, 2.2, 6]} text="객석 통로" op={lo(24)} size={2} />
+        <Label pos={[-7.6, 1.9, 1.2]} text="합창단" op={lo(32)} size={2} />
+        <Label pos={[0, 8.6, -6.9]} text="태극기" op={lo(40)} size={2} />
       </Stage3D>
-      <Note style={{ left: 56, bottom: 170, fontFamily: MONO, color: "#C3CBD4" }}>1974.08.15 · 서울 장충동 국립극장</Note>
+      <Note style={{ left: 56, top: 120, fontFamily: MONO, color: "#C3CBD4" }}>1974.08.15 · 서울 장충동 국립극장</Note>
       <Recon />
     </AbsoluteFill>
   );
@@ -103,7 +104,7 @@ export const Seat: React.FC<SP> = ({ cut }) => {
         </mesh>
         <Label pos={[SEAT_YUK[0], 3.1, SEAT_YUK[2]]} text="육영수 여사 자리" op={fadeIn(f, 10)} size={0.9} />
       </Stage3D>
-      <div style={{ position: "absolute", right: 90, bottom: 190, fontFamily: UI, textAlign: "right", opacity: empty }}>
+      <div style={{ position: "absolute", right: 70, bottom: 180, fontFamily: UI, textAlign: "right", opacity: empty, background: "rgba(8,10,12,0.85)", padding: "20px 36px", borderRadius: 8, borderLeft: `4px solid ${COL.rec}` }}>
         <div style={{ fontSize: 34, color: "#9AA4B0" }}>서울대병원</div>
         <div style={{ fontFamily: MONO, fontSize: 88, fontWeight: 600, color: "#FFFFFF" }}>오후 7시쯤</div>
         <div style={{ fontSize: 40, color: "#E8ECF0" }}>사망</div>
@@ -119,29 +120,40 @@ export const Bullet: React.FC<SP> = ({ cut }) => {
   const s2 = sAt(cut, 1);
   const shooter: V3 = [0, 1.4, 6.5];
   const hit: V3 = [SEAT_YUK[0], 2.0, SEAT_YUK[2]];
-  const exit: V3 = [SEAT_YUK[0] + 0.25, 2.05, SEAT_YUK[2] - 0.7];
-  const lost: V3[] = [exit, [3.4, 2.6, -5.2], [4.6, 3.6, -6.2], [6.5, 5.6, -6.6]];
+  const exit: V3 = [SEAT_YUK[0] + 0.2, 2.02, SEAT_YUK[2] - 0.6];
   const keys: Key[] = [
-    { f: 0, pos: [8.5, 4.6, 7], look: [1.4, 1.8, -1.5] },
-    { f: s2, pos: [7.5, 4.2, 1.5], look: [3, 2.2, -4] },
-    { f: d + 15, pos: [9.5, 4.8, -1], look: [4.2, 3.2, -5.6] },
+    { f: 0, pos: [11, 6.5, 10], look: [1.4, 1.6, 0.5] },
+    { f: s2, pos: [8.5, 5, 3.5], look: [SEAT_YUK[0], 2, SEAT_YUK[2]] },
+    { f: d + 15, pos: [7.2, 4.4, 1.2], look: [SEAT_YUK[0], 2.1, SEAT_YUK[2] - 0.6] },
   ];
   const p1 = ease(f, 6, 26);
   const p2 = ease(f, 26, 36);
-  const p3 = interpolate(f, [s2 - 4, s2 + 30], [0, 1], clamp);
-  const q = fadeIn(f, s2 + 26, 8);
+  const grow = interpolate(f, [s2 - 4, s2 + 40], [0, 1], clamp);
+  const q = fadeIn(f, s2 + 20, 8);
+  // 방향을 암시하지 않도록: 빠져나간 지점에서 점선 고리 세 개가 퍼진다(어디로 갔는지 모름)
+  const rings = [0, 1, 2].map((k) => {
+    const g = Math.max(0, Math.min(1, grow * 1.6 - k * 0.3));
+    return { r: 0.3 + g * (1.1 + k * 0.9), o: g * (1 - k * 0.22) };
+  });
   return (
     <AbsoluteFill>
       <Stage3D keys={keys} light={0.35}>
         <Hall />
         <Path pts={[shooter, [1.3, 1.8, 1.5], hit]} color={COL.rec} r={0.045} prog={p1} />
-        <Label pos={[0.6, 2.4, 4]} text="판결 · 네 번째 총알" op={fadeIn(f, 10)} size={0.8} />
+        <Label pos={[0.7, 2.6, 4]} text="판결 · 네 번째 총알" op={fadeIn(f, 10)} size={1.1} />
         <Path pts={[hit, exit]} color={COL.wit} r={0.05} prog={p2} />
-        <Label pos={[SEAT_YUK[0] + 0.3, 3.1, SEAT_YUK[2] - 0.3]} text="관통 · 집도의 증언" color={COL.wit} op={fadeIn(f, 30)} size={0.75} />
-        <Path pts={lost} color={COL.miss} r={0.05} dash prog={p3} />
-        <Label pos={[6.8, 6.4, -6.6]} text="?" color={COL.miss} op={q} size={1.6} />
+        <Label pos={[SEAT_YUK[0] - 1.2, 2.9, SEAT_YUK[2] + 0.6]} text="관통 · 집도의 증언" color={COL.wit} op={fadeIn(f, 30) * (1 - q)} size={0.9} />
+        {rings.map((g, k) =>
+          [...Array(18)].map((_, i) => (
+            <mesh key={`${k}-${i}`} position={exit} rotation={[Math.PI / 2, 0, (i / 18) * Math.PI * 2]}>
+              <torusGeometry args={[g.r, 0.035, 6, 8, (Math.PI * 2) / 36]} />
+              <meshBasicMaterial color={COL.miss} transparent opacity={g.o} />
+            </mesh>
+          )),
+        )}
+        <Label pos={[exit[0], exit[1] + 1.2, exit[2]]} text="?" color={COL.miss} op={q} size={1.4} />
       </Stage3D>
-      <div style={{ position: "absolute", right: 80, top: 150, textAlign: "right", fontFamily: UI, opacity: q }}>
+      <div style={{ position: "absolute", right: 70, top: 130, textAlign: "right", fontFamily: UI, opacity: q, background: "rgba(8,10,12,0.85)", padding: "20px 36px", borderRadius: 8, borderRight: `4px solid ${COL.miss}` }}>
         <div style={{ fontSize: 36, color: COL.miss, letterSpacing: 2 }}>탄두 행방</div>
         <div style={{ fontSize: 60, fontWeight: 700, color: "#FFFFFF" }}>공개 기록 없음</div>
       </div>
@@ -192,13 +204,13 @@ const Desk: React.FC<{ title: string; children: React.ReactNode; zoom?: number }
 
 export const DateView: React.FC<SP> = ({ cut }) => {
   const f = useCurrentFrame();
-  const txt = "1974. 8. 15.";
+  const txt = "1974.8.15.";
   const n = Math.floor(interpolate(f, [6, 6 + txt.length * 2], [0, txt.length], clamp));
   const zoom = interpolate(f, [0, cut.duration], [1, 1.06], clamp);
   return (
     <Desk title="사건 기록 · 메모" zoom={zoom}>
       <div style={{ position: "absolute", left: 90, top: 70, fontFamily: MONO, fontSize: 30, color: "#7A8089" }}>사건일</div>
-      <div style={{ position: "absolute", left: 84, top: 130, fontFamily: MONO, fontWeight: 600, fontSize: 190, color: "#15181D" }}>
+      <div style={{ position: "absolute", left: 84, top: 130, fontFamily: MONO, fontWeight: 600, fontSize: 170, color: "#15181D", whiteSpace: "nowrap", letterSpacing: -6 }}>
         {txt.slice(0, n)}
         <span style={{ opacity: Math.floor(f / 8) % 2 ? 1 : 0 }}>|</span>
       </div>
