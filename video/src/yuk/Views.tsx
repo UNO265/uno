@@ -5,7 +5,7 @@ import { SP, clamp, ease, fr, sAt, wAt } from "../jeongjo/kit";
 import { Hall, Key, Label, PODIUM, Path, SEAT_YUK, Stage3D, V3 } from "./Theater";
 import { COL, MONO, Note, SERIF, UI, fadeIn } from "./kit";
 
-const Recon: React.FC = () => <Note style={{ right: 56, top: 54, fontSize: 32 }}>3D 재구성 · 배치와 비율은 실제와 다를 수 있음</Note>;
+export const Recon: React.FC = () => <Note style={{ right: 56, top: 54, fontSize: 32 }}>3D 재구성 · 배치와 비율은 실제와 다를 수 있음</Note>;
 
 /* ───────── 3D ───────── */
 
@@ -117,7 +117,7 @@ export const Seat: React.FC<SP> = ({ cut }) => {
 export const Bullet: React.FC<SP> = ({ cut }) => {
   const f = useCurrentFrame();
   const d = cut.duration;
-  const s2 = sAt(cut, 1);
+  const s2 = cut.p.mode === "inside" ? sAt(cut, 0) + 30 : sAt(cut, 1);
   const shooter: V3 = [0, 1.4, 6.5];
   const hit: V3 = [SEAT_YUK[0], 2.0, SEAT_YUK[2]];
   const exit: V3 = [SEAT_YUK[0] + 0.2, 2.02, SEAT_YUK[2] - 0.6];
@@ -154,8 +154,8 @@ export const Bullet: React.FC<SP> = ({ cut }) => {
         <Label pos={[exit[0], exit[1] + 1.2, exit[2]]} text="?" color={COL.miss} op={q} size={1.4} />
       </Stage3D>
       <div style={{ position: "absolute", right: 70, top: 130, textAlign: "right", fontFamily: UI, opacity: q, background: "rgba(8,10,12,0.85)", padding: "20px 36px", borderRadius: 8, borderRight: `4px solid ${COL.miss}` }}>
-        <div style={{ fontSize: 36, color: COL.miss, letterSpacing: 2 }}>탄두 행방</div>
-        <div style={{ fontSize: 60, fontWeight: 700, color: "#FFFFFF" }}>공개 기록 없음</div>
+        <div style={{ fontSize: 36, color: COL.miss, letterSpacing: 2 }}>{cut.p.mode === "inside" ? "빠져나간 탄두" : "탄두 행방"}</div>
+        <div style={{ fontSize: 60, fontWeight: 700, color: "#FFFFFF" }}>{cut.p.mode === "inside" ? "식장 안 어딘가" : "공개 기록 없음"}</div>
       </div>
       <Recon />
     </AbsoluteFill>
@@ -187,13 +187,13 @@ export const Title: React.FC<SP> = ({ cut }) => {
 
 /* ───────── 조사자 화면(desk) ───────── */
 
-const Cursor: React.FC<{ x: number; y: number }> = ({ x, y }) => (
+export const Cursor: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <svg width={40} height={52} style={{ position: "absolute", left: x, top: y, filter: "drop-shadow(0 3px 4px rgba(0,0,0,0.6))" }}>
     <path d="M 2 2 L 2 40 L 12 30 L 19 47 L 26 44 L 19 28 L 33 28 Z" fill="#FFFFFF" stroke="#111" strokeWidth={2} />
   </svg>
 );
 
-const Desk: React.FC<{ title: string; children: React.ReactNode; zoom?: number }> = ({ title, children, zoom = 1 }) => (
+export const Desk: React.FC<{ title: string; children: React.ReactNode; zoom?: number }> = ({ title, children, zoom = 1 }) => (
   <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 40%, #1E232A 0%, #0B0D10 75%)" }}>
     <div style={{ position: "absolute", left: 210, top: 120, width: 1500, height: 780, background: "#F5F5F2", borderRadius: 14, overflow: "hidden", boxShadow: "0 40px 90px rgba(0,0,0,0.6)", transform: `scale(${zoom})`, transformOrigin: "50% 40%" }}>
       <div style={{ height: 64, background: "#E3E4E1", display: "flex", alignItems: "center", padding: "0 28px", fontFamily: UI, fontSize: 32, color: "#3A3F46", borderBottom: "1px solid #CFD1CD" }}>{title}</div>

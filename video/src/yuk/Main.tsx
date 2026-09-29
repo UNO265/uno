@@ -12,7 +12,8 @@ import timeline from "../../public/yuk/timeline.json";
 import sound from "../../public/yuk/sound/cues.json";
 import { Cut, clamp, fr } from "../jeongjo/kit";
 import { Subs } from "./kit";
-import { VIEWS } from "./Views";
+import { GLYPHS } from "./glyphs";
+import { ALL as VIEWS } from "./registry";
 
 export const cutsY = timeline.cuts as unknown as Cut[];
 export const totalY = timeline.totalFrames;
@@ -26,9 +27,7 @@ const Fade: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 const useFonts = () => {
   const [h] = useState(() => delayRender("fonts"));
   useEffect(() => {
-    const text =
-      JSON.stringify(timeline.cuts) +
-      "본영상은판결공식발표공개외교문서언론보도바탕제작화면모든장면기록그래픽재구성실제촬영아닙니다영화암살자들관련특정인물단체주장대변연단귀빈석객석통로합창단태극기육영수여사자리서울대병원오후쯤사망네번째총알관통집도의증언탄두행방없음맞힌어디로갔나사건메모제회광복절기념식장충동국립극장재판정리문세광심항소기각대법원확정집행부터까지확인표무엇이남았나항목내용등급범인현장체포장봉화학생배치와비율은다를수있음총격몇뒤에서?|0123456789.·「」()“”";
+    const text = JSON.stringify(timeline.cuts) + GLYPHS;
     const specs = ["400 40px 'IBM Plex Sans KR'", "500 40px 'IBM Plex Sans KR'", "600 40px 'IBM Plex Sans KR'", "700 40px 'IBM Plex Sans KR'", "400 40px 'IBM Plex Mono'", "600 40px 'IBM Plex Mono'", "600 40px 'Noto Serif KR'"];
     Promise.all(specs.map((s) => document.fonts.load(s, text)))
       .then(() => document.fonts.ready)

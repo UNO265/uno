@@ -36,7 +36,34 @@ J.SPEAK = {
     "「청와대 안의 야당」": "청와대 안의 야당",
 }
 
+# 음성인식은 「육영수」를 발음대로 「유경수」로, 「육 여사」를 「6여사」로 적는다 → 비교 전에 되돌린다.
+import jeongjo_fix as F  # noqa: E402
+
+_norm = F.norm
+ASR_FIX = {"유경수": "육영수", "6여사": "육여사", "유겨사": "육여사"}
+
+
+def _fixed(s):
+    for k, v in ASR_FIX.items():
+        s = s.replace(k, v)
+    return _norm(s)
+
+
+F.norm = _fixed
+
+def glyphs():
+    """화면에 쓰는 모든 글자(장면 코드 + 컷 목록)를 모아 src/yuk/glyphs.ts 로 — 렌더링 전에 글꼴 조각을 미리 불러오기 위해."""
+    import re
+
+    text = "".join(p.read_text() for p in (ROOT / "src/yuk").glob("*.tsx")) + (ROOT / "data/yuk/cuts.json").read_text()
+    chars = sorted(set(re.findall(r"[^\x00-\x7f]", text)) | set("0123456789.,·?!()%"))
+    (ROOT / "src/yuk/glyphs.ts").write_text("// scripts/yuk.py 가 만든다(손으로 고치지 않는다)\nexport const GLYPHS = " + json.dumps("".join(chars), ensure_ascii=False) + ";\n")
+
+
 if __name__ == "__main__":
+    import json
+
+    glyphs()
     ap = argparse.ArgumentParser()
     ap.add_argument("--sound", action="store_true")
     if ap.parse_args().sound:
