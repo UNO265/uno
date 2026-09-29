@@ -252,16 +252,16 @@ export const Rifling: React.FC<SP> = ({ cut }) => {
   const cmp = ease(f, sAt(cut, 3), sAt(cut, 3) + 20);
   const keys: Key[] = [
     { f: 0, pos: [0.4, 1.4, 4.2], look: [0.3, 0, 0] },
-    { f: d + 15, pos: [0.4, 1.6, 5.4], look: [0.3, -0.4, 0] },
+    { f: d + 15, pos: [0.4, 1.2, 6.2], look: [0.3, -0.35, 0] },
   ];
   return (
     <AbsoluteFill>
       <Stage3D keys={keys} light={1.1}>
-        <group position={[0, cmp * 0.8, 0]}>
+        <group position={[0, cmp * 0.55, 0]}>
           <BulletMesh x={0} spin={f * 0.03} marks={fadeIn(f, sAt(cut, 0) + 6, 20)} />
         </group>
         {cmp > 0 && (
-          <group position={[0, -1.6 * cmp, 0]}>
+          <group position={[0, -1.15 * cmp, 0]}>
             <BulletMesh x={0} spin={f * 0.03 + 0.4} marks={cmp} color="#8E97A1" />
           </group>
         )}

@@ -5,7 +5,7 @@ import { SP, clamp, ease, fr, sAt, wAt } from "../jeongjo/kit";
 import { Hall, Key, Label, PODIUM, Path, SEAT_YUK, Stage3D, V3 } from "./Theater";
 import { COL, MONO, Note, SERIF, UI, fadeIn } from "./kit";
 
-export const Recon: React.FC = () => <Note style={{ right: 56, top: 54, fontSize: 32 }}>3D 재구성 · 배치와 비율은 실제와 다를 수 있음</Note>;
+export const Recon: React.FC = () => <Note style={{ left: 56, top: 128, fontSize: 32 }}>3D 재구성 · 배치와 비율은 실제와 다를 수 있음</Note>;
 
 /* ───────── 3D ───────── */
 
@@ -78,7 +78,7 @@ export const FlyIn: React.FC<SP> = ({ cut }) => {
         <Label pos={[-7.6, 1.9, 1.2]} text="합창단" op={lo(32)} size={2} />
         <Label pos={[0, 8.6, -6.9]} text="태극기" op={lo(40)} size={2} />
       </Stage3D>
-      <Note style={{ left: 56, top: 120, fontFamily: MONO, color: "#C3CBD4" }}>1974.08.15 · 서울 장충동 국립극장</Note>
+      <Note style={{ left: 56, top: 176, fontFamily: MONO, color: "#C3CBD4" }}>1974.08.15 · 서울 장충동 국립극장</Note>
       <Recon />
     </AbsoluteFill>
   );

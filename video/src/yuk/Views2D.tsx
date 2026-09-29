@@ -706,7 +706,7 @@ export const TwoViews: React.FC<SP> = ({ cut }) => {
       )}
       {st === 1 && (
         <div style={{ position: "absolute", left: 0, right: 0, top: 500, display: "flex", flexDirection: "column", alignItems: "center", opacity: fadeIn(f, sAt(cut, 2)) }}>
-          <svg width={220} height={120}>
+          <svg width={440} height={240} viewBox="0 0 220 120">
             <path d="M 10 30 L 140 30 Q 210 60 140 90 L 10 90 Z" fill="none" stroke={COL.miss} strokeWidth={6} strokeDasharray="14 10" />
           </svg>
           <div style={{ fontFamily: UI, fontSize: 56, fontWeight: 700, color: COL.miss, marginTop: 20, opacity: fadeIn(f, sAt(cut, 3)) }}>탄두 기록 · 미공개</div>
