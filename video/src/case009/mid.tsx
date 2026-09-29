@@ -134,7 +134,7 @@ const D17 = mk(({ f, s }) => {
         <g opacity={fade(f, s(4))}>
           <Front x={1560} y={620} s={0.5} kind="super" />
         </g>
-        <g opacity={fade(f, s(2))} transform="translate(1100 300)">
+        <g opacity={fade(f, s(2))} transform="translate(1100 320) scale(1.6)">
           <MedBox x={-120} y={0} s={1} />
           <rect x={-30} y={-40} width={60} height={80} rx={10} fill="#98C1D9" />
           <Egg x={120} y={0} s={0.9} />
@@ -238,7 +238,7 @@ const D20 = mk(({ f, s }) => {
           <text x={790} y={base + 44} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
             コスモス薬品
           </text>
-          <text x={630} y={220} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
+          <text x={630} y={150} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
             売上に対する販売管理費
           </text>
         </g>
@@ -275,15 +275,15 @@ const D20B = mk(({ f, s }) => {
         <Cam keys={[{ at: 0, s: 1 }, { at: s(1), s: 1.1, x: 1300, y: 500 }, { at: s(4), s: 1, x: 960, y: 540 }]}>
           <rect x={0} y={0} width={960} height={1080} fill="#FFF3E6" />
           <rect x={960} y={0} width={960} height={1080} fill="#FBE9EF" />
-          <Front x={480} y={560} s={0.7} kind="suburb" />
-          <Front x={1440} y={560} s={0.9} kind="station" />
-          <text x={480} y={200} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={P.food}>
+          <Front x={480} y={470} s={0.7} kind="suburb" />
+          <Front x={1440} y={470} s={0.6} kind="station" />
+          <text x={480} y={180} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={P.food}>
             郊外・食品
           </text>
-          <text x={1440} y={200} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={P.beauty}>
+          <text x={1440} y={180} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={P.beauty}>
             駅前・化粧品
           </text>
-          <g opacity={fade(f, s(1))} transform="translate(1440 650)">
+          <g opacity={fade(f, s(1)) * (1 - fade(f, s(3)))} transform="translate(1440 580)">
             <text textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={P.beauty}>
               「美と健康」72.4%
             </text>
@@ -292,7 +292,7 @@ const D20B = mk(({ f, s }) => {
             </text>
           </g>
           {[0, 1, 2].map((i) => (
-            <Person8 key={i} x={1300 + i * 120} y={560} s={0.45} color={["#F2CC8F", "#98C1D9", "#E5989B"][i]} o={fade(f, s(2))} />
+            <Person8 key={i} x={1300 + i * 120} y={470} s={0.45} color={["#F2CC8F", "#98C1D9", "#E5989B"][i]} o={fade(f, s(2)) * (1 - fade(f, s(3)))} />
           ))}
           <g opacity={fade(f, s(3))}>
             <rect x={380} y={820 - 4.0 * 30 * b} width={200} height={4.0 * 30 * b} rx={8} fill={P.food} />
@@ -305,7 +305,7 @@ const D20B = mk(({ f, s }) => {
             </text>
           </g>
         </Cam>
-        <text x={960} y={870} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={22} fill={K.inkSoft} opacity={fade(f, s(4))}>
+        <text x={960} y={110} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={22} fill={K.inkSoft} opacity={fade(f, s(4))}>
           ※営業利益÷売上の計算（コスモス薬品 2025年5月期／マツキヨココカラ 2026年3月期）
         </text>
       </Stage>
@@ -341,10 +341,10 @@ const D22 = mk(({ f, s }) => (
       <g transform="translate(560 120) scale(0.5)">
         <StorePlan />
       </g>
-      <Wallet x={260} y={560} color={P.food} label="① 食品・日用品" o={fade(f, s(1))} />
-      <Wallet x={260} y={800} color={P.beauty} label="② ついでの薬・化粧品" o={fade(f, s(3))} />
-      <CoinTrail pts={[[340, 540], [700, 420], [760, 380]]} at={s(1) + 10} n={30} dur={40} gap={24} r={12} loop />
-      <CoinTrail pts={[[340, 780], [700, 420], [760, 330]]} at={s(3) + 10} n={30} dur={36} gap={14} r={16} loop />
+      <Wallet x={260} y={500} color={P.food} label="① 食品・日用品" o={fade(f, s(1))} />
+      <Wallet x={260} y={700} color={P.beauty} label="② ついでの薬・化粧品" o={fade(f, s(3))} />
+      <CoinTrail pts={[[340, 480], [700, 420], [760, 380]]} at={s(1) + 10} n={30} dur={40} gap={24} r={12} loop />
+      <CoinTrail pts={[[340, 680], [700, 420], [760, 330]]} at={s(3) + 10} n={30} dur={36} gap={14} r={16} loop />
       <InsCard x={1640} y={300} s={0.9} o={0.25 * fade(f, s(0))} />
       <text x={1640} y={400} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={60} fill="#9FB3C8" opacity={0.6 * fade(f, s(0))}>
         ③ ?

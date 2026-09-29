@@ -26,14 +26,15 @@ const D28 = mk(({ f, s }) => {
       <Stage>
         <Cam keys={[{ at: 0, s: 1.1, y: 480 }, { at: s(2), s: 1, x: 960, y: 540 }]}>
           <g opacity={fade(f, s(1))}>
-            <rect x={560 + 180 * m} y={220} width={380} height={200} rx={20} fill={P.beauty} />
-            <text x={750 + 180 * m} y={320} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={50} fill="#FFFFFF">
+            <rect x={560 + 20 * m} y={220} width={380} height={200} rx={20} fill={P.beauty} />
+            <text x={750 + 20 * m} y={320} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={50} fill="#FFFFFF">
               ウエルシア
             </text>
-            <rect x={980 - 180 * m} y={220} width={380} height={200} rx={20} fill={P.rx} />
-            <text x={1170 - 180 * m} y={320} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={50} fill="#FFFFFF">
+            <rect x={980 - 20 * m} y={220} width={380} height={200} rx={20} fill={P.rx} />
+            <text x={1170 - 20 * m} y={320} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={50} fill="#FFFFFF">
               ツルハ
             </text>
+            <rect x={560} y={210} width={800} height={220} rx={26} fill="none" stroke={K.ink} strokeWidth={6} opacity={m} />
           </g>
           <g opacity={fade(f, s(2))}>
             <text x={960} y={530} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={80} fill={K.ink}>
@@ -170,9 +171,9 @@ const D31 = mk(({ f, s }) => {
           </text>
         </g>
         <g opacity={fade(f, s(4))}>
-          <HBar x={560} y={260} w={1100} v={23723 / 56000 * b} color={P.beauty} label="いま" value={b > 0.9 ? "2万3,723店" : ""} />
-          <HBar x={560} y={400} w={1100} v={35000 / 56000 * b} color={P.beauty} label="2030年目標" value={b > 0.9 ? "3万5,000店" : ""} />
-          <HBar x={560} y={540} w={1100} v={b} color="#9FB3C8" label="コンビニ" value={b > 0.9 ? "約5万6,000店" : ""} o={fade(f, s(5))} />
+          <HBar x={560} y={260} w={900} v={23723 / 56000 * b} color={P.beauty} label="いま" value={b > 0.9 ? "2万3,723店" : ""} />
+          <HBar x={560} y={400} w={900} v={35000 / 56000 * b} color={P.beauty} label="2030年目標" value={b > 0.9 ? "3万5,000店" : ""} />
+          <HBar x={560} y={540} w={900} v={b} color="#9FB3C8" label="コンビニ" value={b > 0.9 ? "約5万6,000店" : ""} o={fade(f, s(5))} />
         </g>
         <g opacity={fade(f, s(7))} transform="translate(960 760)">
           {[0, 1, 2, 3, 4, 5].map((i) => (

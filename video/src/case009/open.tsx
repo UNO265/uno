@@ -285,10 +285,10 @@ const D10 = mk(({ f, s }) => {
           </g>
           <path d="M -30 60 L 0 6 L 30 60 Z" fill={K.ink} />
         </g>
-        <text x={1560} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={56} fill={P.food} opacity={fade(f, s(0) + 20)}>
+        <text x={1560} y={760} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={56} fill={P.food} opacity={fade(f, s(0) + 20)}>
           約3割
         </text>
-        <text x={1560} y={600} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(0) + 20)}>
+        <text x={1560} y={800} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(0) + 20)}>
           ※2兆8,329億÷10兆307億
         </text>
       </Stage>

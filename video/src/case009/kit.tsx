@@ -54,10 +54,10 @@ export const MedBox: React.FC<{ x: number; y: number; s?: number; color?: string
 /** カゴ。items: 入っている物の数（順に 薬・卵・牛乳・パン） */
 export const Basket: React.FC<{ x: number; y: number; s?: number; items: number; o?: number }> = ({ x, y, s = 1, items, o = 1 }) => (
   <g transform={`translate(${x} ${y}) scale(${s})`} opacity={o}>
-    {items > 0 && <MedBox x={-120} y={-70} s={1} />}
-    {items > 1 && <Egg x={10} y={-60} s={1.1} />}
-    {items > 2 && <Milk x={110} y={-80} s={1} />}
-    {items > 3 && <Bread x={-40} y={-100} s={0.9} />}
+    {items > 3 && <Bread x={-30} y={-150} s={1.3} />}
+    {items > 0 && <MedBox x={-130} y={-100} s={1.4} />}
+    {items > 1 && <Egg x={20} y={-80} s={1.6} />}
+    {items > 2 && <Milk x={140} y={-120} s={1.4} />}
     <path d="M -220 -40 L 220 -40 L 180 120 L -180 120 Z" fill="rgba(242,140,40,0.85)" stroke="#B8651A" strokeWidth={6} />
     {[0, 1, 2, 3, 4, 5].map((i) => (
       <line key={i} x1={-170 + i * 68} y1={-30} x2={-150 + i * 60} y2={110} stroke="#B8651A" strokeWidth={4} opacity={0.6} />
