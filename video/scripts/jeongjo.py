@@ -30,6 +30,7 @@ OUT = ROOT / "public/jeongjo"
 TAGS = "재구성|해석"
 FPS = 30
 SPEED = 1.0
+SIL = 0.22        # 문단 안 문장 사이 쉼(초)
 MAXC = 30
 LEAD = 0.35       # 컷 시작 → 첫 문장
 TAIL = 0.4        # 마지막 문장 → 다음 컷
@@ -45,7 +46,7 @@ def tts_para(text, dst):
         _tts["tts"] = TTS(model_dir=ROOT / ".models/supertonic-3")
         _tts["style"] = _tts["tts"].get_voice_style("M2")
     tts = _tts["tts"]
-    a, _ = tts.synthesize(text, voice_style=_tts["style"], lang="ko", speed=SPEED, total_steps=16, silence_duration=0.22)
+    a, _ = tts.synthesize(text, voice_style=_tts["style"], lang="ko", speed=SPEED, total_steps=16, silence_duration=SIL)
     a = np.asarray(a, dtype=np.float32).squeeze()
     idx = np.where(np.abs(a) > 0.02 * np.abs(a).max())[0]
     a = a[max(0, idx[0] - 600): idx[-1] + 2000] if len(idx) else a
@@ -146,7 +147,7 @@ def build():
                 items.append((tag, text.startswith("“"), re.sub(r"[“”『』]", "", text)))
             para = " ".join(speech(x[2]) for x in items)
             wav = OUT / "voice" / f"{c['id']}.wav"
-            key = hashlib.md5(f"{para}|{SPEED}|para".encode()).hexdigest()
+            key = hashlib.md5((f"{para}|{SPEED}|para" + ("" if SIL == 0.22 else f"|{SIL}")).encode()).hexdigest()
             if cache.get(wav.name) != key or not wav.exists():
                 import jeongjo_fix as F
 

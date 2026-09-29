@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 1230,
+ "totalFrames": 1591,
  "cuts": [
   {
    "id": "n0",
@@ -25,38 +25,38 @@
      "text": "여러분, 하던 얘기를 계속하겠습니다.",
      "tag": null,
      "quote": true,
-     "start": 0.2,
-     "end": 1.6,
+     "start": 0.6,
+     "end": 2.32,
      "voice": "",
      "words": [
       {
        "text": "여러분",
-       "start": 0.2,
-       "end": 0.46
+       "start": 0.6,
+       "end": 0.86
       },
       {
        "text": "하던",
-       "start": 0.46,
-       "end": 0.82
+       "start": 0.86,
+       "end": 1.34
       },
       {
        "text": "얘기를",
-       "start": 0.82,
-       "end": 1.0
+       "start": 1.34,
+       "end": 1.6
       },
       {
        "text": "계속하겠습니다",
-       "start": 1.0,
-       "end": 1.6
+       "start": 1.6,
+       "end": 2.32
       }
      ],
      "cards": []
     }
    ],
    "from": 150,
-   "duration": 72,
+   "duration": 112,
    "voice": "yuk/voice/h1.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "h2",
@@ -70,39 +70,39 @@
      "text": "1974년 8월 15일.",
      "tag": "기록",
      "quote": false,
-     "start": 0.2,
-     "end": 2.0,
+     "start": 0.6,
+     "end": 2.54,
      "voice": "",
      "words": [
       {
        "text": "1974년",
-       "start": 0.2,
-       "end": 1.2
+       "start": 0.6,
+       "end": 1.68
       },
       {
        "text": "8월",
-       "start": 1.2,
-       "end": 1.56
+       "start": 1.68,
+       "end": 2.06
       },
       {
        "text": "15일",
-       "start": 1.56,
-       "end": 2.0
+       "start": 2.06,
+       "end": 2.54
       }
      ],
      "cards": [
       {
-       "start": 0.2,
-       "end": 2.0,
+       "start": 0.6,
+       "end": 2.54,
        "text": "1974년 8월 15일"
       }
      ]
     }
    ],
-   "from": 222,
-   "duration": 74,
+   "from": 262,
+   "duration": 108,
    "voice": "yuk/voice/h2.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "h3",
@@ -116,84 +116,84 @@
      "text": "총소리가 울리고 몇 분 뒤 연단에 다시 선 대통령이 한 말입니다.",
      "tag": "기록",
      "quote": false,
-     "start": 0.2,
-     "end": 4.38,
+     "start": 0.6,
+     "end": 5.24,
      "voice": "",
      "words": [
       {
        "text": "총소리가",
-       "start": 0.2,
-       "end": 0.72
+       "start": 0.6,
+       "end": 1.16
       },
       {
        "text": "울리고",
-       "start": 0.72,
-       "end": 1.18
+       "start": 1.16,
+       "end": 1.64
       },
       {
        "text": "몇",
-       "start": 1.18,
-       "end": 1.48
+       "start": 1.64,
+       "end": 2.1
       },
       {
        "text": "분",
-       "start": 1.48,
-       "end": 1.7
+       "start": 2.1,
+       "end": 2.34
       },
       {
        "text": "뒤",
-       "start": 1.7,
-       "end": 1.94
+       "start": 2.34,
+       "end": 2.62
       },
       {
        "text": "연단에",
-       "start": 1.94,
-       "end": 2.68
+       "start": 2.62,
+       "end": 3.42
       },
       {
        "text": "다시",
-       "start": 2.68,
-       "end": 2.92
+       "start": 3.42,
+       "end": 3.7
       },
       {
        "text": "선",
-       "start": 2.92,
-       "end": 3.22
+       "start": 3.7,
+       "end": 3.98
       },
       {
        "text": "대통령이",
-       "start": 3.22,
-       "end": 3.88
+       "start": 3.98,
+       "end": 4.76
       },
       {
        "text": "한",
-       "start": 3.88,
-       "end": 4.06
+       "start": 4.76,
+       "end": 4.94
       },
       {
        "text": "말입니다",
-       "start": 4.06,
-       "end": 4.38
+       "start": 4.94,
+       "end": 5.24
       }
      ],
      "cards": [
       {
-       "start": 0.2,
-       "end": 2.68,
+       "start": 0.6,
+       "end": 3.42,
        "text": "총소리가 울리고 몇 분 뒤 연단에"
       },
       {
-       "start": 2.68,
-       "end": 4.38,
+       "start": 3.42,
+       "end": 5.24,
        "text": "다시 선 대통령이 한 말입니다"
       }
      ]
     }
    ],
-   "from": 296,
-   "duration": 151,
+   "from": 370,
+   "duration": 195,
    "voice": "yuk/voice/h3.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "h4",
@@ -207,70 +207,70 @@
      "text": "그 사이 영부인 육영수 여사는 머리에 총을 맞고 실려 나갔습니다.",
      "tag": "기록",
      "quote": false,
-     "start": 0.2,
-     "end": 4.38,
+     "start": 0.6,
+     "end": 5.4,
      "voice": "",
      "words": [
       {
        "text": "그",
-       "start": 0.2,
-       "end": 0.3
+       "start": 0.6,
+       "end": 0.7
       },
       {
        "text": "사이",
-       "start": 0.3,
-       "end": 0.66
+       "start": 0.7,
+       "end": 1.02
       },
       {
        "text": "영부인",
-       "start": 0.66,
-       "end": 1.26
+       "start": 1.02,
+       "end": 1.52
       },
       {
        "text": "육영수",
-       "start": 1.26,
-       "end": 1.74
+       "start": 1.52,
+       "end": 2.02
       },
       {
        "text": "여사는",
-       "start": 1.74,
-       "end": 2.24
+       "start": 2.02,
+       "end": 2.56
       },
       {
        "text": "머리에",
-       "start": 2.24,
-       "end": 2.88
+       "start": 2.56,
+       "end": 3.36
       },
       {
        "text": "총을",
-       "start": 2.88,
-       "end": 3.24
+       "start": 3.36,
+       "end": 3.86
       },
       {
        "text": "맞고",
-       "start": 3.24,
-       "end": 3.58
+       "start": 3.86,
+       "end": 4.32
       },
       {
        "text": "실려",
-       "start": 3.58,
-       "end": 3.809
+       "start": 4.32,
+       "end": 4.629
       },
       {
        "text": "나갔습니다",
-       "start": 3.809,
-       "end": 4.38
+       "start": 4.629,
+       "end": 5.4
       }
      ],
      "cards": [
       {
-       "start": 0.2,
-       "end": 2.88,
+       "start": 0.6,
+       "end": 3.36,
        "text": "그 사이 영부인 육영수 여사는 머리에"
       },
       {
-       "start": 2.88,
-       "end": 4.38,
+       "start": 3.36,
+       "end": 5.4,
        "text": "총을 맞고 실려 나갔습니다"
       }
      ]
@@ -279,49 +279,49 @@
      "text": "그리고 그날 저녁 숨을 거뒀습니다.",
      "tag": "기록",
      "quote": false,
-     "start": 4.66,
-     "end": 7.02,
+     "start": 5.68,
+     "end": 8.24,
      "voice": "",
      "words": [
       {
        "text": "그리고",
-       "start": 4.66,
-       "end": 5.12
+       "start": 5.68,
+       "end": 6.14
       },
       {
        "text": "그날",
-       "start": 5.12,
-       "end": 5.54
+       "start": 6.14,
+       "end": 6.72
       },
       {
        "text": "저녁",
-       "start": 5.54,
-       "end": 5.98
+       "start": 6.72,
+       "end": 7.18
       },
       {
        "text": "숨을",
-       "start": 5.98,
-       "end": 6.5
+       "start": 7.18,
+       "end": 7.64
       },
       {
        "text": "거뒀습니다",
-       "start": 6.5,
-       "end": 7.02
+       "start": 7.64,
+       "end": 8.24
       }
      ],
      "cards": [
       {
-       "start": 4.66,
-       "end": 7.02,
+       "start": 5.68,
+       "end": 8.24,
        "text": "그리고 그날 저녁 숨을 거뒀습니다"
       }
      ]
     }
    ],
-   "from": 447,
-   "duration": 229,
+   "from": 565,
+   "duration": 285,
    "voice": "yuk/voice/h4.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "h5",
@@ -335,45 +335,45 @@
      "text": "범인 문세광은 넉 달 뒤 사형됐습니다.",
      "tag": "기록",
      "quote": false,
-     "start": 0.2,
-     "end": 2.58,
+     "start": 0.6,
+     "end": 3.44,
      "voice": "",
      "words": [
       {
        "text": "범인",
-       "start": 0.2,
-       "end": 0.46
+       "start": 0.6,
+       "end": 0.88
       },
       {
        "text": "문세광은",
-       "start": 0.46,
-       "end": 1.04
+       "start": 0.88,
+       "end": 1.54
       },
       {
        "text": "넉",
-       "start": 1.04,
-       "end": 1.36
+       "start": 1.54,
+       "end": 2.0
       },
       {
        "text": "달",
-       "start": 1.36,
-       "end": 1.5
+       "start": 2.0,
+       "end": 2.16
       },
       {
        "text": "뒤",
-       "start": 1.5,
-       "end": 1.7
+       "start": 2.16,
+       "end": 2.4
       },
       {
        "text": "사형됐습니다",
-       "start": 1.7,
-       "end": 2.58
+       "start": 2.4,
+       "end": 3.44
       }
      ],
      "cards": [
       {
-       "start": 0.2,
-       "end": 2.58,
+       "start": 0.6,
+       "end": 3.44,
        "text": "범인 문세광은 넉 달 뒤 사형됐습니다"
       }
      ]
@@ -382,34 +382,34 @@
      "text": "판결은 끝났습니다.",
      "tag": "기록",
      "quote": false,
-     "start": 3.06,
-     "end": 4.06,
+     "start": 3.94,
+     "end": 4.92,
      "voice": "",
      "words": [
       {
        "text": "판결은",
-       "start": 3.06,
-       "end": 3.48
+       "start": 3.94,
+       "end": 4.36
       },
       {
        "text": "끝났습니다",
-       "start": 3.48,
-       "end": 4.06
+       "start": 4.36,
+       "end": 4.92
       }
      ],
      "cards": [
       {
-       "start": 3.06,
-       "end": 4.06,
+       "start": 3.94,
+       "end": 4.92,
        "text": "판결은 끝났습니다"
       }
      ]
     }
    ],
-   "from": 676,
-   "duration": 141,
+   "from": 850,
+   "duration": 184,
    "voice": "yuk/voice/h5.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "h6",
@@ -423,89 +423,89 @@
      "text": "그런데 반세기가 지난 지금도 공개된 기록으로 확인할 수 없는 것이 하나 있습니다.",
      "tag": null,
      "quote": false,
-     "start": 0.2,
-     "end": 5.14,
+     "start": 0.6,
+     "end": 6.34,
      "voice": "",
      "words": [
       {
        "text": "그런데",
-       "start": 0.2,
-       "end": 0.46
+       "start": 0.6,
+       "end": 0.88
       },
       {
        "text": "반세기가",
-       "start": 0.46,
-       "end": 1.16
+       "start": 0.88,
+       "end": 1.68
       },
       {
        "text": "지난",
-       "start": 1.16,
-       "end": 1.48
+       "start": 1.68,
+       "end": 2.0
       },
       {
        "text": "지금도",
-       "start": 1.48,
-       "end": 2.06
+       "start": 2.0,
+       "end": 2.72
       },
       {
        "text": "공개된",
-       "start": 2.06,
-       "end": 2.66
+       "start": 2.72,
+       "end": 3.4
       },
       {
        "text": "기록으로",
-       "start": 2.66,
-       "end": 3.18
+       "start": 3.4,
+       "end": 4.0
       },
       {
        "text": "확인할",
-       "start": 3.18,
-       "end": 3.82
+       "start": 4.0,
+       "end": 4.8
       },
       {
        "text": "수",
-       "start": 3.82,
-       "end": 3.96
+       "start": 4.8,
+       "end": 4.96
       },
       {
        "text": "없는",
-       "start": 3.96,
-       "end": 4.16
+       "start": 4.96,
+       "end": 5.22
       },
       {
        "text": "것이",
-       "start": 4.16,
-       "end": 4.6
+       "start": 5.22,
+       "end": 5.72
       },
       {
        "text": "하나",
-       "start": 4.6,
-       "end": 4.86
+       "start": 5.72,
+       "end": 6.02
       },
       {
        "text": "있습니다",
-       "start": 4.86,
-       "end": 5.14
+       "start": 6.02,
+       "end": 6.34
       }
      ],
      "cards": [
       {
-       "start": 0.2,
-       "end": 3.18,
+       "start": 0.6,
+       "end": 4.0,
        "text": "그런데 반세기가 지난 지금도 공개된 기록으로"
       },
       {
-       "start": 3.18,
-       "end": 5.14,
+       "start": 4.0,
+       "end": 6.34,
        "text": "확인할 수 없는 것이 하나 있습니다"
       }
      ]
     }
    ],
-   "from": 817,
-   "duration": 177,
+   "from": 1034,
+   "duration": 233,
    "voice": "yuk/voice/h6.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "h7",
@@ -519,40 +519,40 @@
      "text": "육 여사를 맞힌 그 총알.",
      "tag": "미공개",
      "quote": false,
-     "start": 0.2,
-     "end": 1.64,
+     "start": 0.6,
+     "end": 2.26,
      "voice": "",
      "words": [
       {
        "text": "육",
-       "start": 0.2,
-       "end": 0.305
+       "start": 0.6,
+       "end": 0.73
       },
       {
        "text": "여사를",
-       "start": 0.305,
-       "end": 0.62
+       "start": 0.73,
+       "end": 1.12
       },
       {
        "text": "맞힌",
-       "start": 0.62,
-       "end": 1.02
+       "start": 1.12,
+       "end": 1.6
       },
       {
        "text": "그",
-       "start": 1.02,
-       "end": 1.16
+       "start": 1.6,
+       "end": 1.76
       },
       {
        "text": "총알",
-       "start": 1.16,
-       "end": 1.64
+       "start": 1.76,
+       "end": 2.26
       }
      ],
      "cards": [
       {
-       "start": 0.2,
-       "end": 1.64,
+       "start": 0.6,
+       "end": 2.26,
        "text": "육 여사를 맞힌 그 총알"
       }
      ]
@@ -561,39 +561,39 @@
      "text": "탄두는 어디로 갔을까요?",
      "tag": "미공개",
      "quote": false,
-     "start": 1.98,
-     "end": 3.16,
+     "start": 2.66,
+     "end": 4.04,
      "voice": "",
      "words": [
       {
        "text": "탄두는",
-       "start": 1.98,
-       "end": 2.36
+       "start": 2.66,
+       "end": 3.18
       },
       {
        "text": "어디로",
-       "start": 2.36,
-       "end": 2.68
+       "start": 3.18,
+       "end": 3.56
       },
       {
        "text": "갔을까요?",
-       "start": 2.68,
-       "end": 3.16
+       "start": 3.56,
+       "end": 4.04
       }
      ],
      "cards": [
       {
-       "start": 1.98,
-       "end": 3.16,
+       "start": 2.66,
+       "end": 4.04,
        "text": "탄두는 어디로 갔을까요?"
       }
      ]
     }
    ],
-   "from": 994,
-   "duration": 131,
+   "from": 1267,
+   "duration": 189,
    "voice": "yuk/voice/h7.wav",
-   "vat": 0.2
+   "vat": 0.6
   },
   {
    "id": "t0",
@@ -603,8 +603,8 @@
     "view": "title"
    },
    "sentences": [],
-   "from": 1125,
-   "duration": 105
+   "from": 1456,
+   "duration": 135
   }
  ]
 }

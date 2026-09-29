@@ -39,8 +39,8 @@ export const Notice: React.FC<SP> = ({ cut }) => {
 export const HookQuote: React.FC<SP> = ({ cut }) => {
   const f = useCurrentFrame();
   const keys: Key[] = [
-    { f: 0, pos: [0, 4.2, 22], look: [0, 3.6, -1.5] },
-    { f: cut.duration + 15, pos: [0, 2.8, 10], look: [0, 3.4, -1.5] },
+    { f: 0, pos: [0, 4.2, 22], look: [0, 4.3, -1.5] },
+    { f: cut.duration + 15, pos: [0, 2.8, 10.5], look: [0, 4.2, -1.5] },
   ];
   const q = "“여러분 하던 얘기를 계속하겠습니다”";
   const n = Math.floor(interpolate(f, [4, 4 + q.length * 1.6], [0, q.length], clamp));
@@ -49,11 +49,11 @@ export const HookQuote: React.FC<SP> = ({ cut }) => {
       <Stage3D keys={keys} light={0.45} spot={PODIUM}>
         <Hall />
       </Stage3D>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 540, background: "linear-gradient(#0B0D10 62%, rgba(11,13,16,0))" }} />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 150, textAlign: "center", fontFamily: SERIF, fontWeight: 600, fontSize: 84, color: "#FFFFFF", textShadow: "0 4px 30px rgba(0,0,0,0.9)" }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 330, background: "linear-gradient(#0B0D10 60%, rgba(11,13,16,0))" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 100, textAlign: "center", fontFamily: SERIF, fontWeight: 600, fontSize: 84, color: "#FFFFFF", textShadow: "0 4px 30px rgba(0,0,0,0.9)" }}>
         {q.slice(0, n)}
       </div>
-      <Note style={{ left: 0, right: 0, top: 290, textAlign: "center", color: "#C3CBD4", opacity: fadeIn(f, 30) }}>1974년 8월 15일 · 총격 몇 분 뒤 연단에서</Note>
+      <Note style={{ left: 0, right: 0, top: 232, textAlign: "center", color: "#C3CBD4", opacity: fadeIn(f, 30) }}>1974년 8월 15일 · 총격 몇 분 뒤 연단에서</Note>
       <Recon />
     </AbsoluteFill>
   );

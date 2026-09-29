@@ -139,6 +139,86 @@ export const Path: React.FC<{ pts: V3[]; color: string; r?: number; dash?: boole
   );
 };
 
+/**
+ * 태극기(국기법 도안 비율): 가로:세로 3:2, 태극 지름 = 세로의 1/2(빨강 위·파랑 아래, 대각선 방향으로 기울임),
+ * 네 모서리 괘(건 왼쪽 위 · 곤 오른쪽 아래 · 감 오른쪽 위 · 리 왼쪽 아래), 괘 길이 = 세로/4, 막대 두께 = 세로/24, 간격 = 세로/48.
+ */
+const flagTexture = () => {
+  const W = 1200;
+  const H = 800;
+  const cv = document.createElement("canvas");
+  cv.width = W;
+  cv.height = H;
+  const g = cv.getContext("2d")!;
+  g.fillStyle = "#FFFFFF";
+  g.fillRect(0, 0, W, H);
+  const r = H / 4;
+  const ang = Math.atan2(H, W); // 왼쪽 위 → 오른쪽 아래 대각선
+  g.save();
+  g.translate(W / 2, H / 2);
+  g.rotate(ang);
+  // 위 반원 빨강, 아래 반원 파랑
+  g.fillStyle = "#CD2E3A";
+  g.beginPath();
+  g.arc(0, 0, r, Math.PI, 0);
+  g.fill();
+  g.fillStyle = "#0047A0";
+  g.beginPath();
+  g.arc(0, 0, r, 0, Math.PI);
+  g.fill();
+  // 작은 원 두 개로 물결 경계(왼쪽은 빨강이 아래로, 오른쪽은 파랑이 위로)
+  g.fillStyle = "#CD2E3A";
+  g.beginPath();
+  g.arc(-r / 2, 0, r / 2, 0, Math.PI * 2);
+  g.fill();
+  g.fillStyle = "#0047A0";
+  g.beginPath();
+  g.arc(r / 2, 0, r / 2, 0, Math.PI * 2);
+  g.fill();
+  g.restore();
+  // 괘: 1 = 이어진 막대, 0 = 끊어진 막대(안쪽부터)
+  const bar = H / 24;
+  const gap = H / 48;
+  const len = H / 4;
+  const dist = H / 4 + H / 8; // 태극 가장자리 → 괘 안쪽 막대까지
+  const TRI: [number, number[]][] = [
+    [Math.PI + ang, [1, 1, 1]], // 건: 왼쪽 위
+    [-ang, [0, 1, 0]], // 감: 오른쪽 위
+    [Math.PI - ang, [1, 0, 1]], // 리: 왼쪽 아래
+    [ang, [0, 0, 0]], // 곤: 오른쪽 아래
+  ];
+  g.fillStyle = "#111111";
+  for (const [a, bars] of TRI) {
+    g.save();
+    g.translate(W / 2, H / 2);
+    g.rotate(a);
+    bars.forEach((b, i) => {
+      const x = dist + i * (bar + gap);
+      if (b) g.fillRect(x, -len / 2, bar, len);
+      else {
+        g.fillRect(x, -len / 2, bar, len / 2 - gap / 2);
+        g.fillRect(x, gap / 2, bar, len / 2 - gap / 2);
+      }
+    });
+    g.restore();
+  }
+  const t = new THREE.CanvasTexture(cv);
+  t.anisotropy = 8;
+  return t;
+};
+
+const Flag: React.FC<{ pos: V3; w?: number }> = ({ pos, w = 4.2 }) => {
+  const tex = useMemo(flagTexture, []);
+  return (
+    <group position={pos}>
+      <mesh>
+        <planeGeometry args={[w, (w * 2) / 3]} />
+        <meshStandardMaterial map={tex} roughness={0.95} />
+      </mesh>
+    </group>
+  );
+};
+
 export const SEAT_YUK: V3 = [2.6, 1.75, -3.4]; // 귀빈석(재구성 위치)
 export const PODIUM: V3 = [0, 1.2, -1.2];
 
@@ -155,11 +235,7 @@ export const Hall: React.FC<{ dim?: number; hiSeat?: number }> = ({ dim = 1, hiS
     <Block pos={[0, 0.6, -3.5]} size={[20, 1.2, 7]} color={COL.stage} />
     {/* 무대 뒤 벽 + 태극기 자리 */}
     <Block pos={[0, 5, -7.2]} size={[22, 10, 0.4]} color={COL.wall} edgeOp={0.35} />
-    <Block pos={[0, 6.2, -6.95]} size={[4.2, 2.8, 0.05]} color="#E9E9E6" edgeOp={0.9} />
-    <mesh position={[0, 6.2, -6.9]}>
-      <circleGeometry args={[0.7, 48]} />
-      <meshBasicMaterial color="#8A94A3" />
-    </mesh>
+    <Flag pos={[0, 6.2, -6.97]} />
     {/* 연단 */}
     <Block pos={[PODIUM[0], 1.8, PODIUM[2]]} size={[1.2, 1.2, 0.8]} color="#9AA3AE" edge="#FFFFFF" edgeOp={0.9} />
     {/* 귀빈석 */}

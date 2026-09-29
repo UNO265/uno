@@ -18,6 +18,11 @@ import jeongjo as J  # noqa: E402
 J.NAME = "yuk"
 J.OUT = ROOT / "public/yuk"
 J.TAGS = "기록|증언|주장|미공개|해석"
+# 인간극장·다큐 내레이션 속도: 조금 느리게 읽고, 문장·장면 사이 쉼을 넉넉히
+J.SPEED = 0.9
+J.SIL = 0.5
+J.LEAD = 0.6
+J.TAIL = 1.0
 # 자막은 숫자, 읽기는 한글. 고유어로 읽거나 쉼표가 든 숫자는 여기서 정한다.
 J.SPEAK = {
     "「암살자(들)」": "암살자들",
