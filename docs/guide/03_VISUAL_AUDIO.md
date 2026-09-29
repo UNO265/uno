@@ -1,5 +1,7 @@
 # 03 VISUAL & AUDIO — 장면 설계·화면·소리·렌더링
 
+> **CASE #008 재제작부터 화면·연출·콘티는 [06 DIRECTION](06_DIRECTION.md)이 최상위다.** V1~V6 중 06과 겹치는 것은 06을 따르고, V7 나레이션·V8 BGM·V9 순서는 그대로 쓴다.
+>
 > 양식: [scene-design-v3](../templates/scene-design-v3.md)(장면 설계), [prerender-checklist](../templates/prerender-checklist.md)(렌더링 직전). 빌드 명령은 [video/README.md](../../video/README.md).
 
 ## V1. 원칙

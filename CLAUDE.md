@@ -2,7 +2,7 @@
 
 일본어 경제 미스터리 다큐멘터리 YouTube 채널의 영상 제작 레포.
 
-## 지침 (2026-09-28 정리: 이 6개가 전부다)
+## 지침 (2026-09-29: 이 7개가 전부다)
 
 지침은 **`docs/guide/`** 에 제작 순서대로 있다. 규칙 하나는 한 곳에만 있다. 옛 지침 8개는 `docs/archive/`(보관, 근거용)이고, 옛 번호가 어디로 갔는지는 `docs/guide/MAPPING.md`.
 
@@ -14,8 +14,9 @@
 | [03_VISUAL_AUDIO](docs/guide/03_VISUAL_AUDIO.md) | 음성·장면 설계·화면·BGM·렌더링·전달 |
 | [04_SHORTS](docs/guide/04_SHORTS.md) | 쇼츠 |
 | [05_DATA](docs/guide/05_DATA.md) | 업로드·성과 기록·해석 |
+| **[06_DIRECTION](docs/guide/06_DIRECTION.md)** | 화면·연출·콘티의 최상위(사용자 원본 v1.0, #008 재제작부터). 유형 자동 판단·LEVEL·카메라·시청지속률 자체 검수 |
 
-양식: `docs/templates/`(question-chain-design, scene-design-v3, prerender-checklist, upload-checklist). 기록: `docs/performance-log.md`, 로드맵: `docs/case-roadmap.md`.
+양식: `docs/templates/`(question-chain-design, **conti-v4**(콘티, #008 재제작부터), scene-design-v3(#007까지), prerender-checklist, upload-checklist). 기록: `docs/performance-log.md`, 로드맵: `docs/case-roadmap.md`.
 
 ## 꼭 기억할 것 (자세한 내용은 위 문서)
 
@@ -27,6 +28,7 @@
 - **단계마다 사용자 확정**: 제목 → 질문 사슬 설계 → 대본 → 최종 음성·장면 설계 → 제작·렌더링. 대본을 받으면 영상부터 만들지 않는다. 최종 일본어 음성을 먼저 만들고 그 길이에 맞춘다. (C7)
 - **첫 30초(CASE #008부터)**: 공감 장면 → 위화감 → 제목 질문 → 약속·예고 → 타이틀 2~3초 → 비공개 한 문장. (S4)
 - **세 시점(S10, #008부터)**: 대본마다 ① 사는 사람(왜 그래도 사나·어디서 저항하나) ② 파는 쪽의 구체적 대응(원가 절감·효율화) ③ 시청자에게 남는 선택지·앞으로를 근거 있는 컷으로 넣는다.
+- **연출(06)**: 자료를 움직이지 말고 경제가 움직이는 모습을. 내용이 형식을 정한다. 컷 연출은 사용자에게 묻지 않고 AI가 판단·자체 검수한 **최종 콘티**(CUT·[유형/LEVEL]·카메라)를 제시. 화면은 나레이션을 복사하지 않는다. #010까지 REAL은 2D 재현(C5), 제목 질문의 첫 답은 C2대로.
 - 사용자가 **"최종 대본"** 을 요청하면 일본어 내레이션만 코드 블록 하나로. (S1)
 - **썸네일 이미지는 사용자가 직접 만든다**(우리는 설계안만). (P5)
 - 쇼츠는 CASE마다 ① 입구 ② 의외의 숫자 ③ 돈의 흐름, 반복 재생형, 최근 10편 평균 1,000회 목표. (04)

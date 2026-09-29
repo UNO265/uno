@@ -11,7 +11,8 @@
 | 항상 | **00 CORE**(이 문서) | — |
 | 주제·제목·썸네일 정하기 | [01_PLANNING](01_PLANNING.md) | [question-chain-design](../templates/question-chain-design.md) 0번 ANSWER CARD |
 | 질문 사슬 설계·대본 | [02_SCRIPT](02_SCRIPT.md) | [question-chain-design](../templates/question-chain-design.md) |
-| 음성·장면 설계·화면·BGM·렌더링 | [03_VISUAL_AUDIO](03_VISUAL_AUDIO.md) | [scene-design-v3](../templates/scene-design-v3.md), [prerender-checklist](../templates/prerender-checklist.md) |
+| 화면·연출·콘티(#008 재제작부터 최상위) | [06_DIRECTION](06_DIRECTION.md) | [conti-v4](../templates/conti-v4.md) |
+| 음성·BGM·렌더링 | [03_VISUAL_AUDIO](03_VISUAL_AUDIO.md) | [prerender-checklist](../templates/prerender-checklist.md) |
 | 쇼츠 | [04_SHORTS](04_SHORTS.md) | — |
 | 업로드·데이터 | [05_DATA](05_DATA.md) | [upload-checklist](../templates/upload-checklist.md), [performance-log](../performance-log.md) |
 
