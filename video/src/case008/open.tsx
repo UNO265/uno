@@ -404,7 +404,7 @@ const J12 = mk(({ f, s }) => {
             2024年
           </text>
         </g>
-        <text x={520} y={260} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={V.red} opacity={fade(f, s(1))}>
+        <text x={520} y={810} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={V.red} opacity={fade(f, s(1))}>
           2025年は 195万台（報道）
         </text>
         {/* 1台あたり */}
@@ -424,7 +424,7 @@ const J12 = mk(({ f, s }) => {
             10年で −8%
           </text>
         </g>
-        <Badge x={960} y={830} text="残った1台も、売れなくなっている" at={s(5)} size={38} fill={K.ink} />
+        <Badge x={1400} y={840} text="残った1台も、売れなくなっている" at={s(5)} size={36} fill={K.ink} />
       </Stage>
       <EvidenceMark no="#02" source="飲料総研（2024年）" at={s(0)} />
     </>
@@ -509,11 +509,10 @@ const J13B = mk(({ f, s }) => {
 /* J13C OBJECT（S10 ① 買う人）: よいところ（時間を気にせず・手間がかからない・店に行かなくていい）＝便利さの値段 / 「店より高いのであまり買わない」 */
 const J13C = mk(({ f, s }) => {
   const good = ["時間を気にせず買える", "手間がかからない", "お店に行かなくていい"];
-  const tilt = ease(f, s(3), s(3) + 30) - ease(f, s(5), s(5) + 30) * 0;
   return (
     <>
       <Stage>
-        <Machine x={400} y={860} s={0.72} led="200" />
+        <Machine x={400} y={840} s={0.7} led={f > s(5) ? "---" : "200"} lit={1 - 0.6 * ease(f, s(5), s(5) + 40)} />
         <text x={1200} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill={K.inkSoft} opacity={fade(f, s(1))}>
           自販機のよいところ（クロス・マーケティング 2022年）
         </text>
@@ -534,20 +533,7 @@ const J13C = mk(({ f, s }) => {
             「お店より高いので、あまり買わない」
           </text>
         </g>
-        {/* 天秤: 便利さ vs 値段（値段が重くなる） */}
-        <g opacity={fade(f, s(4))} transform="translate(1200 840)">
-          <g transform={`rotate(${8 * ease(f, s(4), s(4) + 30) + 0 * tilt})`}>
-            <line x1={-240} x2={240} y1={0} y2={0} stroke={K.ink} strokeWidth={8} />
-            <text x={-240} y={-20} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={28} fill={V.band}>
-              便利さ
-            </text>
-            <text x={240} y={-20} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={28} fill={V.red}>
-              値段
-            </text>
-          </g>
-        </g>
-        <Walker x={200 + 700 * ease(f, s(5), s(5) + 90)} y={860} s={0.7} color="#9AA3AF" o={fade(f, s(5))} />
-      </Stage>
+        </Stage>
       <EvidenceMark no="#22" source="クロス・マーケティング「自動販売機に関する調査」（2022年）" at={s(1)} />
     </>
   );

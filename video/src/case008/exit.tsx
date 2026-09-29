@@ -191,7 +191,7 @@ const J34 = mk(({ f, s }) => {
           ))}
         </g>
         <rect x={0} y={860} width={1920} height={220} fill={V.street} />
-        <Machine x={480} y={880} s={0.76} prices={Array(12).fill("100")} led="100" o={fade(f, s(1))} />
+        <Machine x={480} y={850} s={0.72} prices={Array(12).fill("100")} led="100" o={fade(f, s(1))} />
         {tags.map((g, i) => (
           <g key={i} transform={`translate(1260 ${260 + i * 120}) scale(${pop(f, g.at)})`} opacity={fade(f, g.at)}>
             <rect x={-280} y={-44} width={560} height={88} rx={44} fill="rgba(255,214,110,0.15)" stroke="#FFD66E" strokeWidth={4} />
@@ -276,7 +276,7 @@ const J35B = mk(({ f, s }) => {
         </g>
         {Array.from({ length: 12 }, (_, i) => {
           const x = 720 + (i % 6) * 190;
-          const y = 440 + Math.floor(i / 6) * 260;
+          const y = 400 + Math.floor(i / 6) * 230;
           return (
             <g key={i}>
               <Mini x={x} y={y} s={0.9} />
@@ -285,7 +285,7 @@ const J35B = mk(({ f, s }) => {
           );
         })}
         <path
-          d="M 600 820 L 1100 820 L 1100 520 L 1480 520 L 1480 820 L 1860 820"
+          d="M 600 720 L 1100 720 L 1100 460 L 1480 460 L 1480 720 L 1860 720"
           stroke={V.blue}
           strokeWidth={10}
           fill="none"
@@ -295,29 +295,29 @@ const J35B = mk(({ f, s }) => {
         />
         <Badge x={1290} y={180} text="空振りの訪問↓ 必要な台だけ回る" at={s(2)} size={36} fill={V.blue} />
         <g opacity={fade(f, s(3)) * (1 - fade(f, s(4)))}>
-          <rect x={120} y={560} width={420} height={260} rx={20} fill="#F2F4F7" />
-          <text x={330} y={620} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+          <rect x={120} y={530} width={420} height={250} rx={20} fill="#F2F4F7" />
+          <text x={330} y={590} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
             ダイドー（2020年の計画）
           </text>
-          <text x={330} y={690} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={K.ink}>
+          <text x={330} y={660} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={K.ink}>
             直営 約8万台を通信化
           </text>
-          <text x={330} y={770} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={V.blue}>
+          <text x={330} y={740} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={V.blue}>
             補充の人 3割減
           </text>
         </g>
         <g opacity={fade(f, s(4))}>
-          <rect x={120} y={560} width={420} height={260} rx={20} fill="#F2F4F7" />
-          <text x={330} y={620} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+          <rect x={120} y={530} width={420} height={250} rx={20} fill="#F2F4F7" />
+          <text x={330} y={590} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
             コカ･コーラBJ（報道）
           </text>
-          <text x={330} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
+          <text x={330} y={650} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
             自販機・アプリのデータで
           </text>
-          <text x={330} y={730} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+          <text x={330} y={700} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
             置く場所・品ぞろえ
           </text>
-          <text x={330} y={780} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+          <text x={330} y={750} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
             補充の回数を決める
           </text>
         </g>
