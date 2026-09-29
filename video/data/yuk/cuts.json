@@ -1,0 +1,11 @@
+[
+ {"id": "n0", "sec": "notice", "scene": "silent", "dur": 5, "p": {"view": "notice"}},
+ {"id": "h1", "sec": "hook", "scene": "stage", "lead": 0.2, "p": {"view": "hookQuote"}, "s": ["“여러분, 하던 얘기를 계속하겠습니다.”"]},
+ {"id": "h2", "sec": "hook", "scene": "desk", "lead": 0.2, "p": {"view": "date"}, "s": ["【기록】1974년 8월 15일."]},
+ {"id": "h3", "sec": "hook", "scene": "stage", "lead": 0.2, "p": {"view": "flyin"}, "s": ["【기록】총소리가 울리고 몇 분 뒤 연단에 다시 선 대통령이 한 말입니다."]},
+ {"id": "h4", "sec": "hook", "scene": "stage", "lead": 0.2, "p": {"view": "seat"}, "s": ["【기록】그 사이 영부인 육영수 여사는 머리에 총을 맞고 실려 나갔습니다.", "그리고 그날 저녁 숨을 거뒀습니다."]},
+ {"id": "h5", "sec": "hook", "scene": "desk", "lead": 0.2, "p": {"view": "verdict"}, "s": ["【기록】범인 문세광은 넉 달 뒤 사형됐습니다.", "판결은 끝났습니다."]},
+ {"id": "h6", "sec": "hook", "scene": "desk", "lead": 0.2, "p": {"view": "memo"}, "s": ["그런데 반세기가 지난 지금도 공개된 기록으로 확인할 수 없는 것이 하나 있습니다."]},
+ {"id": "h7", "sec": "hook", "scene": "stage", "lead": 0.2, "hold": 0.6, "p": {"view": "bullet"}, "s": ["【미공개】육 여사를 맞힌 그 총알.", "탄두는 어디로 갔을까요?"]},
+ {"id": "t0", "sec": "hook", "scene": "silent", "dur": 3.5, "p": {"view": "title"}}
+]

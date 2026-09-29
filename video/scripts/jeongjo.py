@@ -25,7 +25,9 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import sejong_short as SS  # noqa: E402
 import sejong_voice as V  # noqa: E402
 
+NAME = "jeongjo"   # 다른 편은 NAME·OUT·SPEAK·TAGS 를 바꿔 build() 를 부른다(scripts/yuk.py)
 OUT = ROOT / "public/jeongjo"
+TAGS = "재구성|해석"
 FPS = 30
 SPEED = 1.0
 MAXC = 30
@@ -74,7 +76,7 @@ def speech(text):
 
 
 def split_tag(s):
-    m = re.match(r"^【(재구성|해석)】\s*", s)
+    m = re.match(rf"^【({TAGS})】\s*", s)
     return (m.group(1), s[m.end():]) if m else (None, s)
 
 
@@ -121,7 +123,7 @@ def wav_len(p):
 def build():
     from faster_whisper import WhisperModel
 
-    cuts = json.loads((ROOT / "data/jeongjo/cuts.json").read_text())
+    cuts = json.loads((ROOT / f"data/{NAME}/cuts.json").read_text())
     (OUT / "voice").mkdir(parents=True, exist_ok=True)
     cache_p = OUT / "voice/cache.json"
     cache = json.loads(cache_p.read_text()) if cache_p.exists() else {}
@@ -132,7 +134,7 @@ def build():
         voice = {}
         if c["scene"] == "chapter":
             length = CHAPTER
-        elif c["scene"] == "endscreen":
+        elif c["scene"] in ("endscreen", "silent"):
             length = c.get("dur", 20)
         else:
             at = c.get("lead", LEAD)
@@ -177,11 +179,11 @@ def build():
                 sents.append({"text": speak, "tag": tag, "quote": quote, "start": ws[0]["start"], "end": ws[-1]["end"], "voice": "",
                               "words": [{kk: w[kk] for kk in ("text", "start", "end")} for w in ws],
                               "cards": [] if quote else line_cards(ws)})
-            voice = {"voice": f"jeongjo/voice/{wav.name}", "vat": round(at, 3)}
+            voice = {"voice": f"{NAME}/voice/{wav.name}", "vat": round(at, 3)}
             length = at + d + TAIL + c.get("hold", 0)
         frames = round(length * FPS)
         out.append({"id": c["id"], "sec": c["sec"], "scene": c["scene"], "p": c.get("p", {}), "sentences": sents,
-                    "from": round(t * FPS), "duration": frames, **(voice if c["scene"] not in ("chapter", "endscreen") else {})})
+                    "from": round(t * FPS), "duration": frames, **(voice if c["scene"] not in ("chapter", "endscreen", "silent") else {})})
         t += frames / FPS
     total = sum(c["duration"] for c in out)
     (OUT / "timeline.json").write_text(json.dumps({"fps": FPS, "totalFrames": total, "cuts": out}, ensure_ascii=False, indent=1))
