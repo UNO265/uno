@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 25354,
+ "totalFrames": 25321,
  "cuts": [
   {
    "id": "J01",
@@ -1287,25 +1287,20 @@
    "id": "J42",
    "segments": [
     {
-     "text": "KANENAZO。",
+     "text": "カネナゾ。",
      "start": 0.4,
      "end": 1.2169375
     },
     {
-     "text": "カネナゾ。",
-     "start": 1.4969375,
-     "end": 2.313875
-    },
-    {
      "text": "「身近なお金の謎を解く。」",
-     "start": 2.593875,
-     "end": 4.463104166666667
+     "start": 1.4969375,
+     "end": 3.3661666666666665
     }
    ],
    "voice": "case008/voice/J42.wav",
    "voiceStart": 0.4,
    "from": 24985,
-   "duration": 152
+   "duration": 119
   },
   {
    "id": "J43",
@@ -1323,7 +1318,7 @@
    ],
    "voice": "case008/voice/J43.wav",
    "voiceStart": 0.4,
-   "from": 25137,
+   "from": 25104,
    "duration": 217
   }
  ]
