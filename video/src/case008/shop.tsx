@@ -1,138 +1,143 @@
-/** J17–J29: QUESTION 2 → 定価で売れる自分の店 → ダイドー → 場所の持ち主 → 災害 → 台数で稼ぐ → 長く同じ値段 → QUESTION 3 → CCBJH 881億円 → DyDo 298億円 → 台数を減らす → QUESTION 4 → 悪循環 → CLUE 02 → 台数 × 赤字 */
+/** CUT 020–032（J17–J29）。なぜこんなに置かれたか → 定価の自分の店 → 台数で稼ぐ → 大手が手放す → 悪循環（HERO）→ CLUE 02 → 65万台の重さ */
 import React from "react";
-import { AbsoluteFill } from "remotion";
-import { EvidenceMark, Lines, R, Stage, count, mk } from "../case002/ui";
-import { Badge, FArrow, FNode, Head, Timeline6 } from "../case006/kit";
-import { Can, CanClue, Doc, Easing, FONT, K, Led, Machine, Mini, SERIF, Sfx, Street, Truck, V, ease, fade, pop } from "./kit";
+import { EvidenceMark, Stage, count, mk } from "../case002/ui";
+import { FArrow, FNode } from "../case006/kit";
+import { Can, CanClue, Easing, FONT, K, Led, Machine, Mini, SERIF, Sfx, Street, Truck, V, ease, fade, pop } from "./kit";
+import { Cam, BottleTrail, Coin8, CoinTrail, JapanMap, Person8, Sys } from "./kit2";
 
-/* J17 DARK: QUESTION 2。街じゅうの自販機のシルエット */
+/* CUT 020 — [QUESTION / LEVEL 2] J17: 街じゅうの自販機が次々に灯る（Slow Zoom Out） */
 const J17 = mk(({ f, s }) => (
   <>
     <Stage>
-      <Street n={16} on={16 * fade(f, 0, 30)} y={900} s={1} />
+      <Cam keys={[{ at: 0, s: 1.6, x: 960, y: 820 }, { at: s(2) + 20, s: 1, x: 960, y: 560 }]}>
+        <Street n={22} on={22 * ease(f, s(2), s(2) + 40)} y={420} s={0.45} />
+        <Street n={16} on={16 * ease(f, s(1), s(1) + 60)} y={620} s={0.7} />
+        <Street n={9} on={9 * ease(f, 0, 40)} y={900} s={1.2} x0={200} x1={1720} />
+      </Cam>
     </Stage>
-    <Lines
-      dark
-      y={-280}
-      lines={[
-        { t: "そんなに費用がかかるなら、", at: s(1), size: 64 },
-        { t: <>なぜ、<R>こんなに置かれた</R>？</>, at: s(2), size: 100 },
-      ]}
-    />
     <Sfx at={s(2)} name="question" volume={0.5} />
   </>
-), { bg: "black", noSub: true });
+), { bg: "black" });
 
-/* J18 FLAT: スーパー（値段を決めるのは店・特売で下がる）vs 自販機（飲料会社が決める・定価） */
+/* CUT 021 — [INFOGRAPHIC / LEVEL 2] J18: 値段を決める手。スーパーは店員の手が「特売」に、自販機は飲料会社の手が定価に固定 */
+const Hand: React.FC<{ x: number; y: number; r?: number; color?: string }> = ({ x, y, r = 0, color = "#F2C9A8" }) => (
+  <g transform={`translate(${x} ${y}) rotate(${r})`}>
+    <rect x={-20} y={0} width={40} height={140} rx={16} fill={color} stroke="#C9926B" strokeWidth={3} />
+    <rect x={-40} y={-40} width={80} height={70} rx={24} fill={color} stroke="#C9926B" strokeWidth={3} />
+  </g>
+);
 const J18 = mk(({ f, s }) => {
-  const down = ease(f, s(2), s(2) + 24);
+  const flip = ease(f, s(2), s(2) + 16);
   return (
     <>
       <Stage>
-        <Head text={"自販機 ＝ 「定価で売れる自分の店」"} at={s(0)} y={150} size={54} />
-        <g opacity={fade(f, s(1))} transform="translate(520 560)">
-          <rect x={-320} y={-260} width={640} height={420} rx={24} fill="#FFFFFF" stroke={K.inkSoft} strokeWidth={4} />
-          <text y={-190} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={K.inkSoft}>
-            スーパー・コンビニ
-          </text>
-          <text y={-120} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
-            値段を決めるのは お店
-          </text>
-          {[0, 1, 2].map((i) => (
-            <Can key={i} x={-160 + i * 160} y={0} color="#81B29A" s={1.2} bottle />
-          ))}
-          <g transform={`translate(0 ${110 + 20 * down})`}>
-            <rect x={-150} y={-36} width={300} height={72} rx={10} fill={down > 0.5 ? V.red : "#FFFFFF"} stroke={V.red} strokeWidth={4} />
-            <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={40} fill={down > 0.5 ? "#FFFFFF" : V.red}>
-              {down > 0.5 ? "特売 ↓" : "定価"}
+        <Cam keys={[{ at: 0, s: 1.1, x: 960, y: 520 }, { at: s(1), s: 1.15, x: 560, y: 520 }, { at: s(3), s: 1.15, x: 1360, y: 520 }, { at: s(3) + 80, s: 1, x: 960, y: 540 }]}>
+          <g opacity={fade(f, s(0))} transform="translate(560 540)">
+            <g stroke={K.inkSoft} strokeWidth={5} fill="none">
+              <rect x={-260} y={-200} width={520} height={360} />
+              <line x1={-260} x2={260} y1={-80} y2={-80} />
+              <line x1={-260} x2={260} y1={40} y2={40} />
+            </g>
+            {[0, 1, 2].map((i) => (
+              <Can key={i} x={-160 + i * 160} y={-10} color="#81B29A" s={1.1} bottle />
+            ))}
+            <g transform={`translate(0 110) scale(1 ${Math.abs(1 - 2 * flip)})`}>
+              <rect x={-110} y={-34} width={220} height={68} rx={10} fill={flip > 0.5 ? V.red : "#FFFFFF"} stroke={V.red} strokeWidth={4} />
+              <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={34} fill={flip > 0.5 ? "#FFFFFF" : V.red}>
+                {flip > 0.5 ? "特売 ↓" : "定価"}
+              </text>
+            </g>
+            <Hand x={150 - 40 * flip} y={150} r={-20} />
+            <text y={240} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={K.inkSoft}>
+              店
             </text>
           </g>
-        </g>
-        <g opacity={fade(f, s(3))} transform="translate(1400 560)">
-          <rect x={-320} y={-260} width={640} height={420} rx={24} fill="#FFFFFF" stroke={V.band} strokeWidth={6} />
-          <text y={-190} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={V.band}>
-            自販機
-          </text>
-          <text y={-120} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
-            値段を決めるのは 飲料会社・系列の会社
-          </text>
-          <Mini x={-150} y={110} s={1.3} />
-          <Led x={110} y={10} text="定価" size={70} w={220} />
-        </g>
+          <g opacity={fade(f, s(3))} transform="translate(1360 540)">
+            <Machine x={-60} y={200} s={0.5} led="200" />
+            <Hand x={140} y={-20} r={-30} color="#DDE3EA" />
+            <text x={140} y={200} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={V.band}>
+              飲料会社
+            </text>
+            <Led x={140} y={-100} text="定価" size={46} w={150} />
+          </g>
+        </Cam>
       </Stage>
     </>
   );
 }, { bg: "paper" });
 
-/* J19 EVIDENCE: ダイドー 国内飲料の8〜9割が自販機（報道）/ 25万台前後 */
-const J19 = mk(({ f, s }) => (
-  <>
-    <Stage>
-      <Doc
-        x={140}
-        y={200}
-        w={900}
-        title="ダイドーグループ（国内の飲料）"
-        rows={[
-          { k: "売上のうち 自販機", v: "約8〜9割", at: s(1) + 10, color: V.red, big: true },
-          { k: "自販機の台数", v: "25万台前後", at: s(2) + 6 },
-        ]}
-      />
-      <g opacity={fade(f, s(1) + 10)} transform="translate(590 740)">
-        <rect x={-450} y={-40} width={900} height={60} rx={12} fill="#E8EBF0" />
-        <rect x={-450} y={-40} width={900 * 0.85 * ease(f, s(1) + 20, s(1) + 50)} height={60} rx={12} fill={V.red} />
-        <text x={-440} y={60} fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft}>
-          ※報道。8〜9割の中ほどで表示
-        </text>
-      </g>
-      <g opacity={fade(f, s(3))}>
-        <Mini x={1360} y={820} s={2.6} />
-        <Can x={1630} y={700} color="#8C6E3F" s={2.4} />
-        <text x={1500} y={260} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={42} fill={K.ink}>
-          自分の自販機で 缶コーヒー
-        </text>
-      </g>
-    </Stage>
-    <EvidenceMark no="#11" source="報道（日本経済新聞 ほか）" at={s(1)} />
-    <Sfx at={s(1) + 10} name="paper" volume={0.45} />
-  </>
-), { bg: "paper" });
-
-/* J20 MONEY FLOW ②: 飲料会社 → 自販機 → 客、場所の持ち主に売上の一部 / 事業所 47.7%・大企業 約8割 */
-const J20 = mk(({ f, s }) => {
-  const stat = fade(f, s(4));
+/* CUT 022 — [EVIDENCE / LEVEL 1] J19: 円グラフが自販機の色で 8〜9割（中ほど表示）、缶コーヒー 1 本（カメラ固定） */
+const J19 = mk(({ f, s }) => {
+  const k = ease(f, s(1), s(1) + 30) * 0.85;
+  const a = k * Math.PI * 2;
+  const R = 220;
+  const x = 700 + R * Math.sin(a);
+  const y = 500 - R * Math.cos(a);
   return (
     <>
       <Stage>
-        <g opacity={1 - stat}>
-          <FNode x={320} y={420} label="飲料会社" sub="補充・修理" o={fade(f, s(2))} color={V.band} />
-          <FNode x={960} y={420} label="自販機" sub="定価" o={fade(f, s(0))} />
-          <FNode x={1600} y={420} label="客" o={fade(f, s(0))} />
-          <FNode x={960} y={740} label="場所の持ち主" sub="置くだけ" o={fade(f, s(1))} color="#C98A2B" w={360} />
-          <FArrow d="M 1460 380 L 1110 380" o={fade(f, s(0) + 10)} label="お金" lx={1285} ly={340} />
-          <FArrow d="M 1110 460 L 1460 460" o={fade(f, s(0) + 10)} color={K.inkSoft} label="飲み物" lx={1285} ly={500} />
-          <FArrow d="M 960 500 L 960 660" o={fade(f, s(1) + 10)} color="#C98A2B" label="売上の一部" lx={1120} ly={580} />
-          <FArrow d="M 470 420 L 810 420" o={fade(f, s(2) + 10)} color={V.band} />
+        <circle cx={700} cy={500} r={R} fill="#E8EBF0" />
+        {k > 0 && <path d={`M 700 500 L 700 ${500 - R} A ${R} ${R} 0 ${k > 0.5 ? 1 : 0} 1 ${x} ${y} Z`} fill={V.band} />}
+        <text x={700} y={510} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={70} fill="#FFFFFF" opacity={fade(f, s(1) + 30)}>
+          8〜9割
+        </text>
+        <text x={700} y={780} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft} opacity={fade(f, s(1))}>
+          ダイドー 国内飲料の売上のうち自販機（報道）
+        </text>
+        <g opacity={fade(f, s(2))}>
+          <Mini x={1300} y={700} s={2.2} />
+          <Can x={1560} y={600} color="#8C6E3F" s={2.4} />
+          <text x={1420} y={300} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={56} fill={K.ink}>
+            25万台前後
+          </text>
         </g>
-        <g opacity={stat}>
-          <Head text="事業所に自販機を置いている会社（2026年）" at={s(4)} y={200} size={42} color={K.inkSoft} />
-          <text x={620} y={480} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={170} fill={K.ink}>
-            47.7<tspan fontSize={80}>%</tspan>
-          </text>
-          <text x={620} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={36} fill={K.inkSoft}>
-            全体
-          </text>
-          <g opacity={fade(f, s(5))}>
-            <text x={1320} y={480} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={140} fill={V.band}>
-              約8割
-            </text>
-            <text x={1320} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={36} fill={K.inkSoft}>
-              大企業（79.8%）
-            </text>
-          </g>
-          {Array.from({ length: 6 }, (_, i) => (
-            <Mini key={i} x={560 + i * 160} y={800} s={0.8} />
+      </Stage>
+      <EvidenceMark no="#11" source="報道（日本経済新聞 ほか）" at={s(1)} />
+    </>
+  );
+}, { bg: "paper" });
+
+/* CUT 023 — [MONEY FLOW / LEVEL 2] J20: ボトル → 客（右）、硬貨 → 自販機 → 飲料会社（左）、一部は場所の持ち主へ。補充トラックは会社 → 自販機。続いてビルの各階に自販機（47.7%） */
+const J20 = mk(({ f, s }) => {
+  const bld = fade(f, s(4));
+  const floors = 10;
+  return (
+    <>
+      <Stage>
+        <g opacity={1 - bld}>
+          <Cam keys={[{ at: 0, s: 1 }, { at: s(1), s: 1.1, x: 960, y: 620 }, { at: s(2), s: 1, x: 960, y: 540 }]}>
+            <FNode x={260} y={420} label="飲料会社" o={fade(f, s(0))} color={V.band} />
+            <Machine x={960} y={560} s={0.36} led="200" />
+            <Person8 x={1640} y={560} s={0.9} color="#5E6B7D" o={fade(f, s(0))} />
+            <FNode x={960} y={760} label="場所の持ち主" o={fade(f, s(0))} color="#C98A2B" w={360} />
+            <BottleTrail pts={[[1040, 470], [1580, 470]]} at={s(0) + 10} n={40} dur={40} gap={24} s={0.6} loop />
+            <CoinTrail pts={[[1580, 380], [1040, 380]]} at={s(0) + 20} n={40} dur={36} gap={24} loop />
+            <CoinTrail pts={[[880, 380], [420, 380]]} at={s(0) + 50} n={40} dur={36} gap={24} loop />
+            <CoinTrail pts={[[960, 580], [960, 690]]} at={s(1)} n={40} dur={24} gap={30} loop />
+            <g opacity={fade(f, s(2))}>
+              <FArrow d="M 400 500 C 560 620 720 620 850 560" o={1} color={V.band} />
+              <Truck x={560 + 200 * ((f % 120) / 120)} y={630} s={0.5} color={V.band} />
+            </g>
+          </Cam>
+        </g>
+        <g opacity={bld}>
+          {/* ビルの断面: 各階に自販機の灯り */}
+          <rect x={560} y={140} width={420} height={680} fill="#F2F4F7" stroke={K.ink} strokeWidth={5} />
+          {Array.from({ length: floors }, (_, i) => (
+            <g key={i}>
+              <line x1={560} x2={980} y1={140 + (i + 1) * 68} y2={140 + (i + 1) * 68} stroke="#C9D1DB" strokeWidth={3} />
+              <Mini x={640 + ((i * 3) % 4) * 80} y={140 + (i + 1) * 68 - 4} s={0.38} lit={i % 2 === 0 || i === 3 ? 1 : 0.02} />
+            </g>
           ))}
+          <text x={1400} y={420} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={140} fill={K.ink}>
+            47.7<tspan fontSize={70}>%</tspan>
+          </text>
+          <text x={1400} y={490} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
+            事業所に自販機がある会社
+          </text>
+          <text x={1400} y={620} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={64} fill={V.band} opacity={fade(f, s(5))}>
+            大企業 約8割
+          </text>
         </g>
       </Stage>
       <EvidenceMark no={f < s(4) ? "#07" : "#12"} source={f < s(4) ? "業界の解説" : "東京商工リサーチ（2026年）"} at={s(1)} />
@@ -140,25 +145,21 @@ const J20 = mk(({ f, s }) => {
   );
 }, { bg: "white" });
 
-/* J21 TIMELINE: 台数 ↑ = 売り場 ↑ / 2000年ごろ 560万台 */
+/* CUT 024 — [GRAPH / LEVEL 3] J21–J21B: 日本地図に点が増える（台数↑）。値段の線は 100 → 110 で平ら（価格は据え置き） */
 const J21 = mk(({ f, s }) => {
-  const n = Math.round(count(f, s(0), s(2) - s(0) + 30, 2, 24));
+  const n = Math.round(560 * ease(f, s(0), s(2) + 20, 0, 1, Easing.inOut(Easing.cubic)));
   return (
     <>
       <Stage>
-        <Head text="台数 ＝ 売り場の数" at={s(0)} y={170} size={60} />
-        <g transform="translate(160 720)">
-          {Array.from({ length: n }, (_, i) => (
-            <Mini key={i} x={(i % 12) * 130 + 60} y={-Math.floor(i / 12) * 170} s={0.8} />
-          ))}
-        </g>
-        <Badge x={960} y={280} text="自販機は、台数で稼ぐ商売" at={s(1)} size={44} fill={K.ink} />
+        <Cam keys={[{ at: 0, s: 1.3, x: 760, y: 470 }, { at: s(2) + 20, s: 1, x: 960, y: 540 }]}>
+          <JapanMap x={700} y={470} s={0.95} n={n} />
+        </Cam>
         <g opacity={fade(f, s(2))}>
-          <text x={1600} y={250} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34} fill={K.inkSoft}>
-            2000年ごろ
+          <text x={1500} y={330} textAnchor="middle" fontFamily="'DejaVu Sans Mono', monospace" fontWeight={700} fontSize={60} fill={K.inkSoft}>
+            2000
           </text>
-          <text x={1600} y={350} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={90} fill={V.red}>
-            560万台
+          <text x={1500} y={460} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={130} fill={V.red}>
+            560<tspan fontSize={60}>万台</tspan>
           </text>
         </g>
       </Stage>
@@ -166,210 +167,270 @@ const J21 = mk(({ f, s }) => {
     </>
   );
 }, { bg: "white" });
-
-/* J21B TIMELINE: 1983 100円 → 1992 110円（と言われる）… 2023 缶コーヒー +25円（25年ぶり） */
 const J21B = mk(({ f, s }) => {
-  const led = f < s(1) + 40 ? "100" : "110";
+  const x0 = 260;
+  const x1 = 1660;
+  const X = (yr: number) => x0 + ((yr - 1980) / 22) * (x1 - x0);
+  const Y = (p: number) => 640 - (p - 90) * 14;
+  const draw = ease(f, s(1), s(1) + 60);
+  const xEnd = x0 + (x1 - x0) * draw;
   return (
     <>
       <Stage>
-        <Timeline6
-          y={330}
-          x1={1450}
-          items={[
-            { year: "1983", text: "缶 100円", at: s(1) },
-            { year: "1992", text: "缶 110円", at: s(1) + 40 },
-          ]}
+        <JapanMap x={1740} y={580} s={0.24} n={560} o={0.9} r={4.5} />
+        <line x1={x0} x2={x1} y1={720} y2={720} stroke={K.ink} strokeWidth={4} />
+        {[1983, 1992, 2000].map((yr) => (
+          <text key={yr} x={X(yr)} y={764} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft} opacity={fade(f, s(1))}>
+            {yr}
+          </text>
+        ))}
+        {/* 値段の階段（1983 100円 → 1992 110円） */}
+        <clipPath id="clip21b">
+          <rect x={0} y={0} width={xEnd} height={1080} />
+        </clipPath>
+        <path
+          d={`M ${X(1983)} ${Y(100)} L ${X(1992)} ${Y(100)} L ${X(1992)} ${Y(110)} L ${X(2002)} ${Y(110)}`}
+          stroke={V.led}
+          strokeWidth={12}
+          fill="none"
+          clipPath="url(#clip21b)"
+          strokeLinejoin="round"
         />
-        <text x={1600} y={480} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(1))}>
-          ※年は「と言われる」
+        <Led x={X(1983) + 100} y={Y(100) - 70} text="100" size={46} w={140} o={fade(f, s(1))} />
+        <Led x={X(1992) + 100} y={Y(110) - 70} text="110" size={46} w={140} o={fade(f, s(1) + 40)} />
+        <text x={x1} y={Y(110) - 40} textAnchor="end" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(1))}>
+          缶の飲み物（と言われる）
         </text>
-        <Led x={600} y={640} text={led} size={120} w={340} o={fade(f, s(1))} />
+        {/* 台数は上へ（地図の点）、値段は横ばい → 2 本の矢印 */}
         <g opacity={fade(f, s(2))}>
-          <text x={1180} y={610} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={K.ink}>
-            値段はそのまま、台数を増やす
+          <path d="M 420 330 L 420 170" stroke={V.band} strokeWidth={16} strokeLinecap="round" />
+          <path d="M 390 210 L 420 170 L 450 210" stroke={V.band} strokeWidth={16} fill="none" strokeLinecap="round" />
+          <text x={420} y={375} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={32} fill={V.band}>
+            台数
+          </text>
+          <path d="M 560 250 L 760 250" stroke={V.led} strokeWidth={16} strokeLinecap="round" />
+          <text x={660} y={300} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={32} fill={V.led}>
+            値段
           </text>
         </g>
-        <Badge x={1180} y={700} text="自販機の勝ちパターン" at={s(3)} size={40} fill={V.band} />
       </Stage>
       <EvidenceMark no="#14" source="日本経済新聞 ほか（報道）" at={s(1)} />
     </>
   );
 }, { bg: "paper" });
 
-/* J22 DARK: QUESTION 3。自販機に「撤去」の札 */
+/* CUT 025 — [QUESTION / LEVEL 2] J22 */
 const J22 = mk(({ f, s }) => (
   <>
     <Stage>
-      <Machine x={960} y={1060} s={0.6} lit={0.7} led="---" tag={f > s(1) ? "撤去" : undefined} />
+      <Cam keys={[{ at: 0, s: 1 }, { at: s(1) + 20, s: 1.2, y: 640 }]}>
+        <Machine x={960} y={1000} s={0.62} lit={0.8} led="---" tag={f > s(1) ? "撤去" : undefined} />
+      </Cam>
     </Stage>
-    <Lines dark y={-330} lines={[{ t: <>なぜ今、大手が<R>手放す</R>？</>, at: s(1), size: 100 }]} />
     <Sfx at={s(1)} name="question" volume={0.5} />
   </>
-), { bg: "black", noSub: true });
+), { bg: "black" });
 
-/* J23 EVIDENCE: CCBJH 約65万〜70万台・売上の約1/4 / 減損881億円 / 減損とは / 最終赤字507億円 */
+/* 帳簿の価値の棒（切り落とされる） */
+const BookBar: React.FC<{ x: number; y: number; cut: number; label: string; amount: string; o?: number }> = ({ x, y, cut, label, amount, o = 1 }) => (
+  <g transform={`translate(${x} ${y})`} opacity={o}>
+    <text x={0} y={-30} fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
+      {label}
+    </text>
+    <rect x={0} y={0} width={900} height={110} rx={10} fill={V.band} />
+    <g transform={`translate(${520 + 60 * cut} ${cut * 130}) rotate(${cut * 10} 190 55)`} opacity={1 - cut * 0.5}>
+      <rect x={0} y={0} width={380} height={110} rx={10} fill={V.red} />
+      <text x={190} y={55} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={56} fill="#FFFFFF">
+        {amount}
+      </text>
+    </g>
+  </g>
+);
+
+/* CUT 026 — [IMPACT / LEVEL 4] J23: CCBJ の 65〜70万台（地図の点）→ 帳簿の棒が 881億円ぶん切り落とされる → −507億円 */
 const J23 = mk(({ f, s }) => {
-  const cut = ease(f, s(3) + 20, s(3) + 60);
+  const cut = ease(f, s(3) + 10, s(3) + 40, 0, 1, Easing.in(Easing.cubic));
   return (
     <>
       <Stage>
-        <Doc
-          x={100}
-          y={150}
-          w={900}
-          title="コカ･コーラ ボトラーズジャパン"
-          rows={[
-            { k: "自販機", v: "約65万〜70万台", at: s(1) },
-            { k: "売上のうち自販機", v: "約1/4", at: s(1) + 40 },
-            { k: "自販機事業の減損（2025年）", v: "881億円", at: s(2) + 10, color: V.red, big: true },
-            { k: "最終損益（2025年12月期）", v: "−507億円", at: s(4) + 10, color: V.red, big: true },
-          ]}
-        />
-        <g opacity={fade(f, s(3))} transform="translate(1420 200)">
-          <text textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={42} fill={K.ink}>
-            減損 ＝
+        <Cam keys={[{ at: 0, s: 1 }, { at: s(2), s: 1.08, x: 900, y: 500 }, { at: s(4), s: 1, x: 960, y: 540 }]}>
+          <g opacity={fade(f, s(1))}>
+            <JapanMap x={1560} y={300} s={0.36} n={65} blue={65} r={5} />
+            <text x={1560} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={44} fill={V.blue}>
+              約65万〜70万台
+            </text>
+            <text x={1560} y={610} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
+              売上の約1/4が自販機
+            </text>
+          </g>
+          <BookBar x={180} y={330} cut={cut} label="自販機事業の帳簿上の価値（イメージ）" amount="881億円" o={fade(f, s(2))} />
+          <text x={630} y={690} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft} opacity={fade(f, s(3))}>
+            減損 ＝ 稼げる見込みを下げ、価値を切り下げる
           </text>
-          <text y={60} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
-            「もう思ったほど稼げない」と認めて
+          <text x={630} y={820} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={100} fill={V.red} opacity={fade(f, s(4))}>
+            −507億円
           </text>
-          <text y={104} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
-            帳簿の価値を切り下げる
-          </text>
-          <Mini x={-150} y={480} s={1.8} />
-          <text x={80} y={220} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
-            帳簿の価値
-          </text>
-          <rect x={20} y={240} width={120} height={260} rx={10} fill="#E8EBF0" />
-          <rect x={20} y={240 + 260 * cut * 0.6} width={120} height={260 - 260 * cut * 0.6} rx={10} fill={V.band} />
-          <text x={80} y={228 + 260 * cut * 0.6 + 60} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={V.red} opacity={cut}>
-            ↓
-          </text>
-        </g>
+        </Cam>
       </Stage>
-      <EvidenceMark no="#15" source="CCBJH 決算（日本経済新聞・東洋経済）" at={s(1)} />
-      <Sfx at={s(2) + 10} name="stamp" volume={0.5} />
+      <EvidenceMark no="#15" source="CCBJH 決算（2025年12月期）" at={s(1)} />
+      <Sfx at={s(3) + 30} name="thud" volume={0.6} />
     </>
   );
 }, { bg: "paper" });
 
-/* J24 EVIDENCE: DyDo 減損298億円・最終赤字307億円 / 国内飲料 営業赤字20億円 / 売上1,426億円(−3.3%) / 数量 −2.7% */
-const J24 = mk(({ f, s }) => (
-  <>
-    <Stage>
-      <Doc
-        x={260}
-        y={140}
-        w={1400}
-        title="ダイドーグループ（2026年1月期）"
-        rows={[
-          { k: "減損", v: "298億円", at: s(1), color: V.red },
-          { k: "最終損益", v: "−307億円", at: s(1) + 30, color: V.red, big: true },
-          { k: "国内の飲料事業 営業損益", v: "−20億円", at: s(2) + 10, color: V.red },
-          { k: "国内の飲料 売上", v: "1,426億円（−3.3%）", at: s(3) + 10 },
-          { k: "自販機で売れた数量", v: "−2.7%", at: s(4) + 10, color: V.blue },
-        ]}
-      />
-    </Stage>
-    <EvidenceMark no="#11" source="DyDo 決算（日本経済新聞・日本食糧新聞）" at={s(1)} />
-    <Sfx at={s(1)} name="paper" volume={0.45} />
-  </>
-), { bg: "paper" });
-
-/* J25 OBJECT: 街の自販機の灯りが大量に消え、トラックが運ぶ / 2万台撤去（報道）/ ポッカサッポロ 約4万台 → 別会社へ */
-const J25 = mk(({ f, s }) => {
-  const n = 18;
-  const on = count(f, s(0) + 10, 60, n, n * 0.7);
-  const tr = ease(f, s(1), s(1) + 120);
+/* CUT 027 — [EVIDENCE / LEVEL 2] J24: 同じ帳簿の棒が 298億円。国内飲料 −20億円、ボトルの山が −2.7% */
+const J24 = mk(({ f, s }) => {
+  const cut = ease(f, s(1), s(1) + 30, 0, 1, Easing.in(Easing.cubic));
+  const k = ease(f, s(3), s(3) + 30);
   return (
     <>
       <Stage>
-        <Street n={n} on={on} y={860} s={0.95} />
-        <Truck x={-200 + 2300 * tr} y={1000} s={1} color="#5E6B7D" />
+        <BookBar x={180} y={260} cut={cut} label="ダイドー（2026年1月期）" amount="298億円" o={fade(f, s(0))} />
+        <g opacity={fade(f, s(1) + 30)}>
+          <text x={380} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
+            最終損益
+          </text>
+          <text x={380} y={770} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={80} fill={V.red}>
+            −307億
+          </text>
+        </g>
+        <g opacity={fade(f, s(2))}>
+          <text x={820} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
+            国内飲料の営業損益
+          </text>
+          <text x={820} y={770} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={80} fill={V.red}>
+            −20億
+          </text>
+        </g>
+        <g opacity={fade(f, s(3))} transform="translate(1440 520)">
+          {Array.from({ length: 36 }, (_, i) => (
+            <Can key={i} x={-180 + (i % 9) * 45} y={-140 + Math.floor(i / 9) * 70} color={V.blue} s={0.55} bottle o={i === 35 && k > 0.5 ? 0.15 : 1} />
+          ))}
+          <text y={200} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={70} fill={V.blue}>
+            −2.7%
+          </text>
+          <text y={250} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={26} fill={K.inkSoft}>
+            自販機で売れた数量
+          </text>
+        </g>
+      </Stage>
+      <EvidenceMark no="#11" source="DyDo 決算（2026年1月期）" at={s(0)} />
+      <Sfx at={s(1) + 20} name="thud" volume={0.5} />
+    </>
+  );
+}, { bg: "paper" });
+
+/* CUT 028 — [REAL(再現) / LEVEL 3] J25: 夜の街から自販機が運ばれていく（Tracking）。約2万台 / 約4万台 */
+const J25 = mk(({ f, s }) => {
+  const n = 18;
+  const on = count(f, s(0) + 10, 90, n, n * 0.62);
+  const tr = ease(f, s(0), s(3) + 30);
+  return (
+    <>
+      <Stage>
+        <Cam keys={[{ at: 0, s: 1.2, x: 400, y: 700 }, { at: s(3) + 30, s: 1.2, x: 1500, y: 700 }]}>
+          <Street n={n} on={on} y={860} s={0.95} />
+          <Truck x={-100 + 2100 * tr} y={1000} s={1} color="#5E6B7D" />
+        </Cam>
         <g opacity={fade(f, s(0))}>
-          <rect x={200} y={200} width={680} height={180} rx={20} fill="rgba(13,22,40,0.85)" stroke={V.led} strokeWidth={4} />
-          <text x={540} y={270} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34} fill="#C9D6E6">
+          <text x={540} y={250} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill="#C9D6E6">
             ダイドー（報道）
           </text>
-          <text x={540} y={345} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={60} fill={V.led}>
-            約2万台を撤去
+          <text x={540} y={340} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={80} fill={V.led}>
+            約2万台 撤去
           </text>
         </g>
         <g opacity={fade(f, s(1))}>
-          <rect x={1040} y={200} width={680} height={180} rx={20} fill="rgba(13,22,40,0.85)" stroke="#FFD66E" strokeWidth={4} />
-          <text x={1380} y={270} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill="#C9D6E6">
-            ポッカサッポロ 約4万台
+          <text x={1380} y={250} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill="#C9D6E6">
+            ポッカサッポロ
           </text>
-          <text x={1380} y={345} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={50} fill="#FFD66E">
-            2026年10月 別会社へ
+          <text x={1380} y={340} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={70} fill="#FFD66E">
+            約4万台 → 別会社へ
+          </text>
+          <text x={1380} y={390} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill="#C9D6E6">
+            2026年10月
           </text>
         </g>
-        <text x={960} y={560} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={56} fill="#F4EEE3" opacity={fade(f, s(3))}>
-          台数で稼いできた会社が、台数を減らす
-        </text>
       </Stage>
       <EvidenceMark no={f < s(1) ? "#11" : "#08"} source={f < s(1) ? "報道" : "ポッカサッポロ 発表"} at={s(0)} dark />
     </>
   );
 }, { bg: "night" });
 
-/* J26 DARK: QUESTION 4 */
-const J26 = mk(({ s }) => (
+/* CUT 029 — [QUESTION / LEVEL 2] J26 */
+const J26 = mk(({ f }) => (
   <>
-    <Lines
-      dark
-      y={-60}
-      lines={[
-        { t: "台数で稼ぐはずが、", at: s(0), size: 72 },
-        { t: <>なぜ<R>台数で苦しむ</R>？</>, at: s(1), size: 100 },
-      ]}
-    />
-    <Sfx at={s(1)} name="question" volume={0.5} />
+    <Stage>
+      <Street n={12} on={12 * (1 - 0.3 * ease(f, 10, 60))} y={760} s={1} />
+    </Stage>
+    <Sfx at={10} name="question" volume={0.5} />
   </>
-), { bg: "black", noSub: true });
+), { bg: "black" });
 
-/* J27 MONEY FLOW ③: 悪循環のループ（イメージ） */
+/* CUT 030 — [SIMULATION / LEVEL 4 HERO] J27: 常識 ≠ 実際。1 台のシステムが一周ずつ回る。二周目は速くなる */
 const J27 = mk(({ f, s }) => {
   const nodes = [
     { t: "値上げ", at: s(1), c: V.red },
-    { t: "売れる本数 ↓", at: s(2), c: V.blue },
+    { t: "本数 ↓", at: s(2), c: V.blue },
     { t: "1台の売上 ↓", at: s(3), c: V.blue },
     { t: "費用はそのまま", at: s(4), c: K.ink },
     { t: "赤字の自販機 ↑", at: s(5), c: V.red },
   ];
-  const cx = 960;
+  const sales = 1 - 0.55 * ease(f, s(2), s(2) + 40);
+  const coins = 1 - 0.6 * ease(f, s(3), s(3) + 30);
+  const red = ease(f, s(5), s(5) + 30);
+  const spinSpeed = f > s(7) ? 3.2 : 1;
+  const spin = f > s(1) ? (f - s(1)) * 0.6 + (f > s(7) ? (f - s(7)) * (spinSpeed - 1) * 0.6 : 0) : 0;
+  const cx = 1280;
   const cy = 470;
-  const R0 = 300;
-  const spin = f > s(7) ? (f - s(7)) * 1.2 : 0;
+  const R0 = 330;
+  const walk = ease(f, s(2), s(2) + 70);
   return (
     <>
       <Stage>
-        <circle cx={cx} cy={cy} r={R0} fill="none" stroke="#E4DED2" strokeWidth={16} />
-        <g transform={`rotate(${spin} ${cx} ${cy})`} opacity={fade(f, s(7))}>
-          <path d={`M ${cx + R0} ${cy} A ${R0} ${R0} 0 0 1 ${cx} ${cy + R0}`} fill="none" stroke={V.red} strokeWidth={16} strokeLinecap="round" />
-          <path d={`M ${cx + 20} ${cy + R0 - 26} L ${cx - 10} ${cy + R0} L ${cx + 20} ${cy + R0 + 26}`} fill="none" stroke={V.red} strokeWidth={14} strokeLinecap="round" />
+        {/* 常識 ≠ 実際 */}
+        <g opacity={fade(f, s(1))} transform="translate(300 170)">
+          <rect x={-230} y={-60} width={460} height={120} rx={20} fill="#FFFFFF" stroke={K.inkSoft} strokeWidth={4} />
+          <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={40} fill={K.inkSoft}>
+            値上げ → 売上 ↑ ?
+          </text>
+          <g opacity={fade(f, s(2) + 10)}>
+            <line x1={-200} y1={-40} x2={200} y2={40} stroke={V.red} strokeWidth={10} />
+            <line x1={-200} y1={40} x2={200} y2={-40} stroke={V.red} strokeWidth={10} />
+          </g>
         </g>
-        {nodes.map((n, i) => {
-          const a = -Math.PI / 2 + (i * 2 * Math.PI) / nodes.length;
-          const x = cx + R0 * Math.cos(a);
-          const y = cy + R0 * Math.sin(a);
-          const p = pop(f, n.at);
-          return (
-            <g key={i} transform={`translate(${x} ${y}) scale(${p})`} opacity={Math.min(1, p * 1.4)}>
-              <rect x={-190} y={-50} width={380} height={100} rx={50} fill="#FFFFFF" stroke={n.c} strokeWidth={6} />
-              <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={40} fill={n.c}>
-                {n.t}
-              </text>
-            </g>
-          );
-        })}
-        <text x={cx} y={cy - 10} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={60} fill={K.ink} opacity={fade(f, s(0))}>
-          悪循環
-        </text>
-        <text x={cx} y={cy + 50} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(0))}>
-          ※イメージ
-        </text>
-        <Badge x={1560} y={820} text="赤字機 2〜3割とも（報道）" at={s(6)} size={32} fill={V.red} />
+        <Cam keys={[{ at: 0, s: 1 }, { at: s(7), s: 1 }, { at: s(7) + 40, s: 1.06, x: 1020, y: 560 }]}>
+          {/* 1 台のシステム */}
+          <Sys x={480} y={900} s={0.62} sales={sales} coins={coins} red={red} led={f > s(1) + 10 ? "220" : "200"} />
+          <Person8 x={120 + 700 * walk} y={900} s={0.7} color="#9FB3C8" step={f / 3} o={walk > 0 && walk < 1 ? 1 : 0} />
+          {/* ループ */}
+          <circle cx={cx} cy={cy} r={R0} fill="none" stroke="#E4DED2" strokeWidth={16} />
+          <g transform={`rotate(${spin} ${cx} ${cy})`} opacity={fade(f, s(1))}>
+            <path d={`M ${cx + R0} ${cy} A ${R0} ${R0} 0 0 1 ${cx} ${cy + R0}`} fill="none" stroke={V.red} strokeWidth={16} strokeLinecap="round" />
+            <path d={`M ${cx + 22} ${cy + R0 - 26} L ${cx - 8} ${cy + R0} L ${cx + 22} ${cy + R0 + 26}`} fill="none" stroke={V.red} strokeWidth={14} strokeLinecap="round" />
+          </g>
+          {nodes.map((n, i) => {
+            const a = -Math.PI / 2 + (i * 2 * Math.PI) / nodes.length;
+            const p = pop(f, n.at);
+            return (
+              <g key={i} transform={`translate(${cx + R0 * Math.cos(a)} ${cy + R0 * Math.sin(a)}) scale(${p})`} opacity={Math.min(1, p * 1.4)}>
+                <rect x={-170} y={-46} width={340} height={92} rx={46} fill="#FFFFFF" stroke={n.c} strokeWidth={6} />
+                <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={36} fill={n.c}>
+                  {n.t}
+                </text>
+              </g>
+            );
+          })}
+          <text x={cx} y={cy + 10} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(0))}>
+            ※イメージ
+          </text>
+          <g opacity={fade(f, s(6))} transform={`translate(${cx} ${cy + R0 + 110})`}>
+            <rect x={-220} y={-34} width={440} height={68} rx={34} fill={V.red} />
+            <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={30} fill="#FFFFFF">
+              赤字機 2〜3割とも（報道）
+            </text>
+          </g>
+        </Cam>
       </Stage>
       <EvidenceMark no="#16" source="東洋経済（2025年）" at={s(6)} />
       {nodes.map((n, i) => (
@@ -379,37 +440,36 @@ const J27 = mk(({ f, s }) => {
   );
 }, { bg: "white" });
 
-/* J28 CLUE 02 */
+/* CUT 031 — [CLUE / LEVEL 3] J28 */
 const J28 = mk(({ s }) => <CanClue no="02" at={s(0) + 6} />, { bg: "paper", noSub: true });
 
-/* J29 DATA: 小さな赤字 × 65万台 = 大きな金額（イメージ）/ 881億円・298億円 */
+/* CUT 032 — [IMPACT / LEVEL 3] J29: 地図の 65 点（1点 = 1万台）に小さな赤字が一つずつ灯り、右の塊に積もる */
 const J29 = mk(({ f, s }) => {
-  const spread = ease(f, s(2), s(2) + 60);
-  const cols = 40;
-  const rows = 14;
+  const reds = Math.round(65 * ease(f, s(2), s(2) + 70));
+  const pile = ease(f, s(2) + 20, s(3));
   return (
     <>
       <Stage>
-        <Head text="65万台 × 1台あたりの小さな赤字" at={s(1)} y={140} size={46} />
-        <g transform="translate(360 210)">
-          {Array.from({ length: cols * rows }, (_, i) => {
-            const on = (((i * 53) % (cols * rows)) / (cols * rows)) < spread * 0.35;
-            return <rect key={i} x={(i % cols) * 30} y={Math.floor(i / cols) * 30} width={22} height={22} rx={4} fill={on ? V.red : "#D5DBE3"} />;
-          })}
-        </g>
-        <text x={1600} y={860} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(2))}>
-          ※イメージ（1マス＝多数の台）
-        </text>
-        <g opacity={fade(f, s(3))}>
-          <rect x={460} y={680} width={1000} height={130} rx={65} fill={K.ink} />
-          <text x={960} y={745} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={52} fill="#FFFFFF">
-            881億円・298億円 ＝ その重さ
-          </text>
-        </g>
+        <Cam keys={[{ at: 0, s: 1.15, x: 700, y: 480 }, { at: s(2), s: 1, x: 960, y: 540 }, { at: s(3) + 20, s: 1.1, x: 1300, y: 500 }]}>
+          <JapanMap x={700} y={480} s={0.95} n={65} blue={65 - reds} red={reds} r={6} />
+          <g opacity={fade(f, s(1))}>
+            <text x={700} y={880} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft}>
+              ● = 1万台（65万台）
+            </text>
+          </g>
+          <g opacity={fade(f, s(2))} transform="translate(1400 700)">
+            {Array.from({ length: 20 }, (_, i) => (
+              <rect key={i} x={-120 + (i % 4) * 62} y={-Math.floor(i / 4) * 62 - 60} width={56} height={56} rx={6} fill={V.red} opacity={i < pile * 20 ? 0.9 : 0.08} />
+            ))}
+            <text y={80} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={56} fill={V.red} opacity={fade(f, s(3))}>
+              881億・298億
+            </text>
+          </g>
+        </Cam>
       </Stage>
     </>
   );
 }, { bg: "white" });
 
 export const SHOP8 = { J17, J18, J19, J20, J21, J21B, J22, J23, J24, J25, J26, J27, J28, J29 };
-export { AbsoluteFill };
+export { Coin8, SERIF };
