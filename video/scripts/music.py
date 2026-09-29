@@ -263,6 +263,30 @@ SECTIONS_008 = [
     ("c8_08_outro", "outro", "J41", "END"),
 ]
 
+# CASE #009: ドラッグストア。明るい店内（マリンバ）→ 統計（ナイロンギター）→ 店づくり（クラビネット）→ 三つの財布（ハープ＋フレットレス）→ これから（ファゴット）→ 選び方（カリンバ）→ 答え
+# 主題は入店チャイムのような「ピン・ポーン」を二回（上 → 下 → 上 → 下）
+MOTIF_009 = [9, 5, 9, 5]
+MOODS_009 = {
+    "d_open": dict(prog=["Cmaj7", "Am7", "Fmaj7", "G6"], bpm=74, beats=4, lead=MARIMBA, pulse="sparse", pizz=False, pad=WARMPAD, key=60, motif=MOTIF_009),
+    "d_data": dict(prog=["Gmaj7", "Em7", "Cmaj7", "D6"], bpm=96, beats=4, lead=NYLON, pulse="arp8", pizz=True, pad=None, key=55, bass=ABASS, drums="shaker"),
+    "d_shop": dict(prog=["A", "F#m7", "D", "E7sus4"], bpm=104, beats=4, lead=CLAVI, pulse="call", pizz=False, pad=WARMPAD, key=57, bass=SYNBASS, drums="kick4"),
+    "d_wallet": dict(prog=["Dm7", "Bbmaj7", "Gm7", "A7sus4"], bpm=82, beats=4, lead=HARP, pulse="harp", pizz=False, pad=SLOWSTR, key=50, bass=FRETLESS, motif=MOTIF_009),
+    "d_future": dict(prog=["Em", "C", "Am", "B7sus4"], bpm=88, beats=4, lead=BASSOON, pulse="stacc", pizz=True, pad=STRINGS, key=52, drums="rim"),
+    "d_choice": dict(prog=["F", "Dm7", "Bb", "C"], bpm=98, beats=4, lead=KALIMBA, pulse="pop", pizz=False, pad=WARMPAD, key=65, drums="shaker"),
+    "d_answer": dict(prog=["Fmaj7", "Em7", "Dm7", "Cmaj7"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=53, bell=MARIMBA, motif=MOTIF_009),
+    "outro": dict(prog=["C", "Am7", "Fmaj7", "G"], bpm=80, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=48, bell=MARIMBA, motif=MOTIF_009),
+}
+SECTIONS_009 = [
+    ("c9_01_open", "d_open", "D03", "D06"),
+    ("c9_02_data", "d_data", "D06", "D14"),
+    ("c9_03_shop", "d_shop", "D14", "D21"),
+    ("c9_04_wallet", "d_wallet", "D21", "D27"),
+    ("c9_05_future", "d_future", "D27", "D32"),
+    ("c9_06_choice", "d_choice", "D32", "D34"),
+    ("c9_07_answer", "d_answer", "D34", "D37"),
+    ("c9_08_outro", "outro", "D37", "END"),
+]
+
 # ショート（縦型）: ケース名 → (曲想, 乱数の種)
 SHORTS = {
     "case001_shorts/short1": ("investigate", 301),
@@ -518,10 +542,12 @@ def main():
         moods, sections, seed0 = MOODS_007, SECTIONS_007, 800
     elif args.case == "case008":
         moods, sections, seed0 = MOODS_008, SECTIONS_008, 900
+    elif args.case == "case009":
+        moods, sections, seed0 = MOODS_009, SECTIONS_009, 1000
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
-        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006, "007": MOODS_007, "008": MOODS_008}.get(src[0], MOODS) if src else MOODS
+        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006, "007": MOODS_007, "008": MOODS_008, "009": MOODS_009}.get(src[0], MOODS) if src else MOODS
         sections = [("bgm", mood, t["cuts"][0]["id"], "END")]
     else:
         moods, sections, seed0 = MOODS, SECTIONS, 100

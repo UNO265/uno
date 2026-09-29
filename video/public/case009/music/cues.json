@@ -1,0 +1,50 @@
+[
+ {
+  "file": "case009/music/c9_01_open.wav",
+  "from": 264,
+  "to": 909,
+  "mood": "d_open"
+ },
+ {
+  "file": "case009/music/c9_02_data.wav",
+  "from": 909,
+  "to": 5963,
+  "mood": "d_data"
+ },
+ {
+  "file": "case009/music/c9_03_shop.wav",
+  "from": 5963,
+  "to": 12647,
+  "mood": "d_shop"
+ },
+ {
+  "file": "case009/music/c9_04_wallet.wav",
+  "from": 12647,
+  "to": 16771,
+  "mood": "d_wallet"
+ },
+ {
+  "file": "case009/music/c9_05_future.wav",
+  "from": 16771,
+  "to": 20662,
+  "mood": "d_future"
+ },
+ {
+  "file": "case009/music/c9_06_choice.wav",
+  "from": 20662,
+  "to": 22312,
+  "mood": "d_choice"
+ },
+ {
+  "file": "case009/music/c9_07_answer.wav",
+  "from": 22312,
+  "to": 23667,
+  "mood": "d_answer"
+ },
+ {
+  "file": "case009/music/c9_08_outro.wav",
+  "from": 23667,
+  "to": 24120,
+  "mood": "outro"
+ }
+]

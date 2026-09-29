@@ -179,7 +179,7 @@ const DOTS: [number, number][] = (() => {
 })();
 export const DOT_COUNT = DOTS.length;
 /** n: 灯る点の数（最大 DOT_COUNT）、blue: そのうち青（飲料）の数、red: 赤い点の数 */
-export const JapanMap: React.FC<{ x: number; y: number; s?: number; n: number; blue?: number; red?: number; dark?: boolean; o?: number; r?: number }> = ({
+export const JapanMap: React.FC<{ x: number; y: number; s?: number; n: number; blue?: number; red?: number; dark?: boolean; o?: number; r?: number; cross?: string }> = ({
   x,
   y,
   s = 1,
@@ -189,6 +189,7 @@ export const JapanMap: React.FC<{ x: number; y: number; s?: number; n: number; b
   dark = false,
   o = 1,
   r = 3.6,
+  cross,
 }) => (
   <g transform={`translate(${x} ${y}) scale(${s}) translate(-545 -450)`} opacity={o}>
     {ISLANDS.map((poly, i) => (
@@ -197,6 +198,13 @@ export const JapanMap: React.FC<{ x: number; y: number; s?: number; n: number; b
     {DOTS.map((p, i) => {
       if (i >= n) return null;
       const c = i < red ? V.red : i < red + blue ? V.blue : dark ? "#FFE9B0" : "#5E6B7D";
+      if (cross)
+        return (
+          <g key={i} transform={`translate(${p[0]} ${p[1]})`}>
+            <rect x={-r * 1.3} y={-r * 0.45} width={r * 2.6} height={r * 0.9} fill={cross} />
+            <rect x={-r * 0.45} y={-r * 1.3} width={r * 0.9} height={r * 2.6} fill={cross} />
+          </g>
+        );
       return <circle key={i} cx={p[0]} cy={p[1]} r={r} fill={c} />;
     })}
   </g>

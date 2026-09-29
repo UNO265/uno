@@ -13,6 +13,7 @@ import { Main005, total005 } from "./case005/Main";
 import { Main006, total006 } from "./case006/Main";
 import { Main007, total007 } from "./case007/Main";
 import { Main008, total008 } from "./case008/Main";
+import { Main009, total009 } from "./case009/Main";
 import { Thumb001A, Thumb001B } from "./thumbs/Thumb001";
 import { Thumb005 } from "./thumbs/Thumb005";
 import { Thumb006 } from "./thumbs/Thumb006";
@@ -91,6 +92,15 @@ const Root: React.FC = () =>
       id: "Case008",
       component: Main008,
       durationInFrames: total008,
+      fps: 30,
+      width: 1920,
+      height: 1080,
+    }),
+    // CASE #009「ドラッグストア、なぜ食品が安い？」
+    React.createElement(Composition, {
+      id: "Case009",
+      component: Main009,
+      durationInFrames: total009,
       fps: 30,
       width: 1920,
       height: 1080,
