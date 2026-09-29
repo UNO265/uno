@@ -27,15 +27,30 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     for f in out.glob("*"):
         f.unlink()
-    n = math.ceil(src.stat().st_size / (max_mb * 1048576))
-
     inp = av.open(str(src))
     v, a = inp.streams.video[0], inp.streams.audio[0]
     dur = float(inp.duration / av.time_base)
-    # 1) 키프레임 시각 모으기 → 균등 길이 지점 바로 앞 키프레임을 자르는 점으로
-    keys = [float(p.pts * v.time_base) for p in inp.demux(v) if p.is_keyframe and p.pts is not None]
-    cuts = [0.0] + [max(k for k in keys if k <= dur * i / n) for i in range(1, n)]
+    abr = (a.bit_rate or 192000) / 8  # 소리 초당 바이트
+    # 1) 키프레임마다 누적 크기를 재서, 조각이 한도(여유 8%)를 넘기 전 마지막 키프레임에서 자른다
+    #    (화면이 복잡한 구간은 데이터가 많아 같은 길이로 자르면 조각 크기가 크게 달라진다)
+    limit = max_mb * 1048576 * 0.92
+    keys, cum = [], 0  # (키프레임 시각, 그 앞까지의 영상 누적 바이트)
+    for p in inp.demux(v):
+        if p.pts is None:
+            continue
+        if p.is_keyframe:
+            keys.append((float(p.pts * v.time_base), cum))
+        cum += p.size
+    keys.append((dur, cum))
     inp.close()
+    cuts = [0.0]
+    base = (0.0, 0)
+    for i in range(1, len(keys)):
+        t, c = keys[i]
+        if (c - base[1]) + (t - base[0]) * abr > limit and keys[i - 1][0] > base[0]:
+            base = keys[i - 1]
+            cuts.append(base[0])
+    n = len(cuts)
 
     inp = av.open(str(src))
     v, a = inp.streams.video[0], inp.streams.audio[0]
