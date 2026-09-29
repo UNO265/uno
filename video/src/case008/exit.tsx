@@ -293,8 +293,20 @@ const J35B = mk(({ f, s }) => {
           strokeDashoffset={-f * 3}
           opacity={route}
         />
-        <Badge x={1290} y={180} text="必要な台だけ回る → 手間↓" at={s(2)} size={38} fill={V.blue} />
-        <g opacity={fade(f, s(3))}>
+        <Badge x={1290} y={180} text="空振りの訪問↓ 必要な台だけ回る" at={s(2)} size={36} fill={V.blue} />
+        <g opacity={fade(f, s(3)) * (1 - fade(f, s(4)))}>
+          <rect x={120} y={560} width={420} height={260} rx={20} fill="#F2F4F7" />
+          <text x={330} y={620} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+            ダイドー（2020年の計画）
+          </text>
+          <text x={330} y={690} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={K.ink}>
+            直営 約8万台を通信化
+          </text>
+          <text x={330} y={770} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={46} fill={V.blue}>
+            補充の人 3割減
+          </text>
+        </g>
+        <g opacity={fade(f, s(4))}>
           <rect x={120} y={560} width={420} height={260} rx={20} fill="#F2F4F7" />
           <text x={330} y={620} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
             コカ･コーラBJ（報道）
@@ -310,7 +322,7 @@ const J35B = mk(({ f, s }) => {
           </text>
         </g>
       </Stage>
-      <EvidenceMark no="#23" source="日本経済新聞・時事通信（報道）" at={s(3)} />
+            <EvidenceMark no="#23" source={f < s(4) ? "日本経済新聞（2020年）" : "日本経済新聞・時事通信（報道）"} at={s(3)} />
     </>
   );
 }, { bg: "white" });
@@ -319,8 +331,8 @@ const J35B = mk(({ f, s }) => {
 const J37B = mk(({ f, s }) => {
   const opts = [
     { t: "急がない1本 → 安い店でまとめて", at: s(2), c: V.green },
-    { t: "自販機なら → アプリのポイント", at: s(3), c: V.band },
-    { t: "自販機なら → 時間帯で下がる台", at: s(3) + 30, c: V.band },
+    { t: "自販機なら → アプリ（15個で1本無料）", at: s(4), c: V.band },
+    { t: "サントリーも自販機アプリを全国へ", at: s(5), c: V.band },
   ];
   return (
     <>
@@ -350,12 +362,12 @@ const J37B = mk(({ f, s }) => {
             </text>
           </g>
         ))}
-        <text x={1260} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft} opacity={fade(f, s(4))}>
-          サントリーの自販機アプリ：2025年3月 全国へ
+        <text x={1260} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={26} fill={K.inkSoft} opacity={fade(f, s(4))}>
+          ※コカ･コーラ公式アプリ：1本ごとにスタンプ1つ／サントリー：2025年3月〜
         </text>
-        <Badge x={960} y={800} text="自販機の1本 ＝「今すぐ・ここで」の値段" at={s(5)} size={40} fill={K.ink} />
+        <Badge x={960} y={800} text="自販機の1本 ＝「今すぐ・ここで」の値段" at={s(6)} size={40} fill={K.ink} />
       </Stage>
-      <EvidenceMark no="#24" source="サントリー 発表（2025年3月）" at={s(4)} />
+      <EvidenceMark no="#24" source={f < s(5) ? "コカ･コーラ 公式アプリ" : "サントリー 発表（2025年3月）"} at={s(4)} />
     </>
   );
 }, { bg: "paper" });

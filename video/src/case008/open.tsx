@@ -380,7 +380,7 @@ const J12 = mk(({ f, s }) => {
   const base = 700;
   const b1 = ease(f, s(0) + 10, s(0) + 36) * 247 * 1.8;
   const b2 = ease(f, s(0) + 50, s(0) + 76) * 204 * 1.8;
-  const boxes = Math.round(count(f, s(2), 40, 10, 9.2));
+  const boxes = Math.round(count(f, s(3), 40, 10, 9.2));
   return (
     <>
       <Stage>
@@ -404,8 +404,11 @@ const J12 = mk(({ f, s }) => {
             2024年
           </text>
         </g>
+        <text x={520} y={260} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={34} fill={V.red} opacity={fade(f, s(1))}>
+          2025年は 195万台（報道）
+        </text>
         {/* 1台あたり */}
-        <g opacity={fade(f, s(1))} transform="translate(1400 180)">
+        <g opacity={fade(f, s(2))} transform="translate(1400 180)">
           <rect x={-420} y={0} width={840} height={600} rx={24} fill="#FFFFFF" stroke={K.ink} strokeWidth={4} />
           <text y={70} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={K.ink}>
             1台が1年に売る量（平均）
@@ -417,11 +420,11 @@ const J12 = mk(({ f, s }) => {
           {Array.from({ length: 10 }, (_, i) => (
             <rect key={i} x={-120 + (i % 5) * 90} y={330 + Math.floor(i / 5) * 90} width={76} height={76} rx={8} fill={i < boxes ? "#C9A46A" : "#EEE8DC"} stroke="#8C6E3F" strokeWidth={3} />
           ))}
-          <text x={100} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={V.red} opacity={fade(f, s(2))}>
+          <text x={100} y={560} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={48} fill={V.red} opacity={fade(f, s(3))}>
             10年で −8%
           </text>
         </g>
-        <Badge x={960} y={830} text="残った1台も、売れなくなっている" at={s(4)} size={38} fill={K.ink} />
+        <Badge x={960} y={830} text="残った1台も、売れなくなっている" at={s(5)} size={38} fill={K.ink} />
       </Stage>
       <EvidenceMark no="#02" source="飲料総研（2024年）" at={s(0)} />
     </>
@@ -467,7 +470,7 @@ const J13 = mk(({ f, s }) => {
 const J13B = mk(({ f, s }) => {
   const spread = ease(f, s(1), s(1) + 60);
   const pts = Array.from({ length: 40 }, (_, i) => [200 + ((i * 373) % 1520), 160 + ((i * 211) % 520)]);
-  const walk = ease(f, s(3), s(3) + 90);
+  const walk = ease(f, s(2), s(2) + 90);
   return (
     <>
       <Stage>
@@ -496,53 +499,56 @@ const J13B = mk(({ f, s }) => {
         </g>
         <rect x={0} y={760} width={1920} height={320} fill={V.street} />
         <Mini x={960} y={860} s={0.9} />
-        <Walker x={200 + 1500 * walk} y={860} s={0.8} o={fade(f, s(3))} />
+        <Walker x={200 + 1500 * walk} y={860} s={0.8} o={fade(f, s(2))} />
       </Stage>
       <EvidenceMark no="#05" source="日本フランチャイズチェーン協会" at={s(1)} dark />
     </>
   );
 }, { bg: "night" });
 
-/* J13C OBJECT（S10 ① 買う人）: それでも買う理由（近い・すぐ・冷えている）＝便利さの値段 / 割高な自販機を控える人も（報道） */
+/* J13C OBJECT（S10 ① 買う人）: よいところ（時間を気にせず・手間がかからない・店に行かなくていい）＝便利さの値段 / 「店より高いのであまり買わない」 */
 const J13C = mk(({ f, s }) => {
-  const reasons = ["買いたいときに 近くにある", "すぐ買える", "よく冷えている"];
-  const tilt = ease(f, s(3), s(3) + 30);
+  const good = ["時間を気にせず買える", "手間がかからない", "お店に行かなくていい"];
+  const tilt = ease(f, s(3), s(3) + 30) - ease(f, s(5), s(5) + 30) * 0;
   return (
     <>
       <Stage>
-        <Machine x={420} y={860} s={0.72} led="200" />
-        {reasons.map((r, i) => (
-          <g key={r} transform={`translate(1180 ${250 + i * 120}) scale(${pop(f, s(1) + 10 + i * 16)})`} opacity={fade(f, s(1) + 10 + i * 16)}>
-            <rect x={-330} y={-46} width={660} height={92} rx={46} fill="#FFFFFF" stroke={V.band} strokeWidth={5} />
-            <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={42} fill={K.ink}>
-              {`${i + 1}. ${r}`}
+        <Machine x={400} y={860} s={0.72} led="200" />
+        <text x={1200} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill={K.inkSoft} opacity={fade(f, s(1))}>
+          自販機のよいところ（クロス・マーケティング 2022年）
+        </text>
+        {good.map((r, i) => (
+          <g key={r} transform={`translate(1200 ${250 + i * 110}) scale(${pop(f, s(1) + 20 + i * 18)})`} opacity={fade(f, s(1) + 20 + i * 18)}>
+            <rect x={-320} y={-44} width={640} height={88} rx={44} fill="#FFFFFF" stroke={V.band} strokeWidth={5} />
+            <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={40} fill={K.ink}>
+              {r}
             </text>
           </g>
         ))}
-        <text x={1180} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill={K.inkSoft} opacity={fade(f, s(1))}>
-          自販機で買う理由（調査の上位）
+        <text x={1200} y={620} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={46} fill={V.band} opacity={fade(f, s(2))}>
+          200円 ＝ 飲み物 ＋「今ここで買える」
         </text>
-        <g opacity={fade(f, s(2))}>
-          <text x={1180} y={640} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={48} fill={V.band}>
-            200円 ＝ 飲み物 ＋「今ここで、冷えた1本」
+        <g transform={`translate(1200 720) scale(${pop(f, s(3))})`} opacity={fade(f, s(3))}>
+          <rect x={-420} y={-44} width={840} height={88} rx={44} fill="#FFFFFF" stroke={V.red} strokeWidth={5} />
+          <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={36} fill={V.red}>
+            「お店より高いので、あまり買わない」
           </text>
         </g>
-        {/* 天秤: 便利さ vs 値段 */}
-        <g opacity={fade(f, s(3))} transform="translate(1180 790)">
-          <g transform={`rotate(${-8 * tilt})`}>
-            <line x1={-260} x2={260} y1={0} y2={0} stroke={K.ink} strokeWidth={8} />
-            <text x={-260} y={-24} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={V.band}>
+        {/* 天秤: 便利さ vs 値段（値段が重くなる） */}
+        <g opacity={fade(f, s(4))} transform="translate(1200 840)">
+          <g transform={`rotate(${8 * ease(f, s(4), s(4) + 30) + 0 * tilt})`}>
+            <line x1={-240} x2={240} y1={0} y2={0} stroke={K.ink} strokeWidth={8} />
+            <text x={-240} y={-20} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={28} fill={V.band}>
               便利さ
             </text>
-            <text x={260} y={-24} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={V.red}>
+            <text x={240} y={-20} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={28} fill={V.red}>
               値段
             </text>
           </g>
-          <path d="M -20 40 L 0 4 L 20 40 Z" fill={K.ink} />
         </g>
-        <Badge x={1180} y={710} text="割高な自販機を控える人も（報道）" at={s(4)} size={32} fill={V.red} />
+        <Walker x={200 + 700 * ease(f, s(5), s(5) + 90)} y={860} s={0.7} color="#9AA3AF" o={fade(f, s(5))} />
       </Stage>
-      <EvidenceMark no="#22" source={f < s(4) ? "消費者調査（自販機の利用理由）" : "TOKYO MX・日本経済新聞（報道）"} at={s(1)} />
+      <EvidenceMark no="#22" source="クロス・マーケティング「自動販売機に関する調査」（2022年）" at={s(1)} />
     </>
   );
 }, { bg: "white" });
@@ -673,10 +679,9 @@ const J14C = mk(({ f, s }) => (
           70万〜150万円
         </text>
       </g>
-      <Badge x={1100} y={830} text="税法上の耐用年数 5年" at={s(2)} size={36} fill={K.ink} />
-      <Badge x={1560} y={560} text="実際は10年以上も" at={s(3)} size={30} fill="#FFFFFF" color={K.ink} />
+      <Badge x={1100} y={820} text="売れない1台ほど 重い" at={s(2)} size={38} fill={V.red} />
     </Stage>
-    <EvidenceMark no="#10" source="業界の解説・税法" at={s(1)} />
+    <EvidenceMark no="#10" source="業界の解説" at={s(1)} />
   </>
 ), { bg: "white" });
 

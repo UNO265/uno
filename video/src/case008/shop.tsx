@@ -140,40 +140,6 @@ const J20 = mk(({ f, s }) => {
   );
 }, { bg: "white" });
 
-/* J20B OBJECT: 災害のとき、中の飲み物を無料で（夜の公園） */
-const J20B = mk(({ f, s }) => {
-  const k = Math.floor(Math.max(0, f - s(0) - 20) / 24) % 4;
-  return (
-    <>
-      <Stage>
-        <rect x={0} y={800} width={1920} height={280} fill={V.street} />
-        <g stroke="#3B4B68" strokeWidth={8} fill="none">
-          <path d="M 1500 800 L 1500 520 M 1440 520 L 1560 520" />
-        </g>
-        <Machine x={760} y={870} s={0.74} free led="0" drop={((f - s(0)) % 24) / 24} />
-        <g opacity={fade(f, s(0))}>
-          {[0, 1, 2, 3].map((i) => (
-            <Can key={i} x={1000 + i * 70} y={800} color="#81B29A" bottle s={0.9} o={i <= k ? 1 : 0.2} />
-          ))}
-        </g>
-        <g opacity={fade(f, s(0))} transform="translate(1400 300)">
-          <rect x={-300} y={-80} width={600} height={160} rx={20} fill="rgba(13,22,40,0.85)" stroke="#FFD66E" strokeWidth={4} />
-          <text textAnchor="middle" y={-10} fontFamily={FONT} fontWeight={900} fontSize={54} fill="#FFD66E">
-            災害のとき 無料
-          </text>
-          <text textAnchor="middle" y={50} fontFamily={FONT} fontWeight={800} fontSize={30} fill="#C9D6E6" opacity={fade(f, s(1))}>
-            自治体と協定を結んで設置
-          </text>
-        </g>
-        <text x={1400} y={560} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={48} fill="#F4EEE3" opacity={fade(f, s(2))}>
-          売り場で、街の備え
-        </text>
-      </Stage>
-      <EvidenceMark no="#13" source="コカ･コーラ ボトラーズジャパン・各自治体" at={s(0)} dark />
-    </>
-  );
-}, { bg: "night" });
-
 /* J21 TIMELINE: 台数 ↑ = 売り場 ↑ / 2000年ごろ 560万台 */
 const J21 = mk(({ f, s }) => {
   const n = Math.round(count(f, s(0), s(2) - s(0) + 30, 2, 24));
@@ -203,7 +169,7 @@ const J21 = mk(({ f, s }) => {
 
 /* J21B TIMELINE: 1983 100円 → 1992 110円（と言われる）… 2023 缶コーヒー +25円（25年ぶり） */
 const J21B = mk(({ f, s }) => {
-  const led = f < s(1) + 40 ? "100" : f < s(4) ? "110" : "+25";
+  const led = f < s(1) + 40 ? "100" : "110";
   return (
     <>
       <Stage>
@@ -213,7 +179,6 @@ const J21B = mk(({ f, s }) => {
           items={[
             { year: "1983", text: "缶 100円", at: s(1) },
             { year: "1992", text: "缶 110円", at: s(1) + 40 },
-            { year: "2023", text: "缶コーヒー +25円", at: s(4), color: V.red },
           ]}
         />
         <text x={1600} y={480} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(1))}>
@@ -226,10 +191,8 @@ const J21B = mk(({ f, s }) => {
           </text>
         </g>
         <Badge x={1180} y={700} text="自販機の勝ちパターン" at={s(3)} size={40} fill={V.band} />
-        <Badge x={1180} y={810} text="25年ぶりの大きな値上げ（報道）" at={s(5)} size={34} fill={V.red} />
       </Stage>
       <EvidenceMark no="#14" source="日本経済新聞 ほか（報道）" at={s(1)} />
-      <Sfx at={s(4)} name="tok" volume={0.4} />
     </>
   );
 }, { bg: "paper" });
@@ -448,5 +411,5 @@ const J29 = mk(({ f, s }) => {
   );
 }, { bg: "white" });
 
-export const SHOP8 = { J17, J18, J19, J20, J20B, J21, J21B, J22, J23, J24, J25, J26, J27, J28, J29 };
+export const SHOP8 = { J17, J18, J19, J20, J21, J21B, J22, J23, J24, J25, J26, J27, J28, J29 };
 export { AbsoluteFill };
