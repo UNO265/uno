@@ -191,7 +191,7 @@ const J34 = mk(({ f, s }) => {
           ))}
         </g>
         <rect x={0} y={860} width={1920} height={220} fill={V.street} />
-        <Machine x={480} y={960} s={0.85} prices={Array(12).fill("100")} led="100" o={fade(f, s(1))} />
+        <Machine x={480} y={880} s={0.76} prices={Array(12).fill("100")} led="100" o={fade(f, s(1))} />
         {tags.map((g, i) => (
           <g key={i} transform={`translate(1260 ${260 + i * 120}) scale(${pop(f, g.at)})`} opacity={fade(f, g.at)}>
             <rect x={-280} y={-44} width={560} height={88} rx={44} fill="rgba(255,214,110,0.15)" stroke="#FFD66E" strokeWidth={4} />
@@ -257,6 +257,108 @@ const J35 = mk(({ f, s }) => {
     </>
   );
 }, { bg: "white" });
+
+/* J35B（S10 ② 売る側の対応）: 通信でつながった自販機 → 売り切れそうな台だけ回る / CCBJ データで場所・品ぞろえ・補充回数（報道） */
+const J35B = mk(({ f, s }) => {
+  const low = [2, 5, 9];
+  const route = ease(f, s(2), s(2) + 50);
+  return (
+    <>
+      <Stage>
+        <g opacity={fade(f, s(1))}>
+          <rect x={120} y={200} width={420} height={300} rx={20} fill="#FFFFFF" stroke={K.ink} strokeWidth={4} />
+          <text x={330} y={260} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={36} fill={K.ink}>
+            事務所の画面
+          </text>
+          {Array.from({ length: 12 }, (_, i) => (
+            <rect key={i} x={160 + (i % 4) * 90} y={300 + Math.floor(i / 4) * 60} width={70} height={40} rx={6} fill={low.includes(i) ? V.red : V.green} opacity={0.85} />
+          ))}
+        </g>
+        {Array.from({ length: 12 }, (_, i) => {
+          const x = 720 + (i % 6) * 190;
+          const y = 440 + Math.floor(i / 6) * 260;
+          return (
+            <g key={i}>
+              <Mini x={x} y={y} s={0.9} />
+              <circle cx={x + 38} cy={y - 150} r={16} fill={low.includes(i) ? V.red : V.green} opacity={fade(f, s(1) + 10)} />
+            </g>
+          );
+        })}
+        <path
+          d="M 600 820 L 1100 820 L 1100 520 L 1480 520 L 1480 820 L 1860 820"
+          stroke={V.blue}
+          strokeWidth={10}
+          fill="none"
+          strokeDasharray="30 20"
+          strokeDashoffset={-f * 3}
+          opacity={route}
+        />
+        <Badge x={1290} y={180} text="必要な台だけ回る → 手間↓" at={s(2)} size={38} fill={V.blue} />
+        <g opacity={fade(f, s(3))}>
+          <rect x={120} y={560} width={420} height={260} rx={20} fill="#F2F4F7" />
+          <text x={330} y={620} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+            コカ･コーラBJ（報道）
+          </text>
+          <text x={330} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={28} fill={K.inkSoft}>
+            自販機・アプリのデータで
+          </text>
+          <text x={330} y={730} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+            置く場所・品ぞろえ
+          </text>
+          <text x={330} y={780} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+            補充の回数を決める
+          </text>
+        </g>
+      </Stage>
+      <EvidenceMark no="#23" source="日本経済新聞・時事通信（報道）" at={s(3)} />
+    </>
+  );
+}, { bg: "white" });
+
+/* J37B（S10 ③ 見る人の選択肢）: 同じ1本でも売り場で値段が違う / 急がないなら安い店 / 自販機ならアプリ・時間帯 / サントリー 2025年3月 全国 */
+const J37B = mk(({ f, s }) => {
+  const opts = [
+    { t: "急がない1本 → 安い店でまとめて", at: s(2), c: V.green },
+    { t: "自販機なら → アプリのポイント", at: s(3), c: V.band },
+    { t: "自販機なら → 時間帯で下がる台", at: s(3) + 30, c: V.band },
+  ];
+  return (
+    <>
+      <Stage>
+        <Head text="買う側は、どうすればいい？" at={s(0)} y={140} size={52} />
+        <g opacity={fade(f, s(1))} transform="translate(200 250)">
+          <Mini x={80} y={170} s={1.1} />
+          <text x={80} y={240} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+            自販機
+          </text>
+          <g stroke={K.inkSoft} strokeWidth={5} fill="none">
+            <rect x={240} y={30} width={200} height={140} />
+            <line x1={240} x2={440} y1={100} y2={100} />
+          </g>
+          <text x={340} y={240} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={K.ink}>
+            スーパー・ドラッグストア
+          </text>
+          <text x={210} y={330} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={V.red}>
+            同じ1本でも 値段が違う
+          </text>
+        </g>
+        {opts.map((o, i) => (
+          <g key={i} transform={`translate(1260 ${270 + i * 130}) scale(${pop(f, o.at)})`} opacity={fade(f, o.at)}>
+            <rect x={-420} y={-48} width={840} height={96} rx={48} fill="#FFFFFF" stroke={o.c} strokeWidth={5} />
+            <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={40} fill={K.ink}>
+              {o.t}
+            </text>
+          </g>
+        ))}
+        <text x={1260} y={680} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft} opacity={fade(f, s(4))}>
+          サントリーの自販機アプリ：2025年3月 全国へ
+        </text>
+        <Badge x={960} y={800} text="自販機の1本 ＝「今すぐ・ここで」の値段" at={s(5)} size={40} fill={K.ink} />
+      </Stage>
+      <EvidenceMark no="#24" source="サントリー 発表（2025年3月）" at={s(4)} />
+    </>
+  );
+}, { bg: "paper" });
 
 /* J36 DARK: QUESTION 6 */
 const J36 = mk(({ s }) => (
@@ -330,9 +432,12 @@ const J38 = mk(({ f }) => {
         <FArrow d="M 900 400 L 950 550" o={st(2)} color={V.blue} />
         <FArrow d="M 960 400 L 1320 550" o={st(2)} color={V.red} />
         <g opacity={st(3)}>
-          <rect x={360} y={740} width={1200} height={100} rx={50} fill={K.ink} />
-          <text x={960} y={790} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={38} fill="#FFFFFF">
-            本数↓ → 1台の売上↓ → 費用そのまま → 値上げ　｜　出口：減らす・組む・動かす・逆のモデル
+          <rect x={160} y={740} width={1600} height={170} rx={40} fill={K.ink} />
+          <text x={960} y={795} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={38} fill="#FFFFFF">
+            本数↓ → 1台の売上↓ → 費用はそのまま → 値上げ（悪循環）
+          </text>
+          <text x={960} y={860} textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={34} fill="#FFD66E">
+            出口：減らす・組む・値段を動かす・逆のモデル
           </text>
         </g>
       </Stage>
@@ -407,4 +512,4 @@ const J43 = mk(
   { noSub: true },
 );
 
-export const EXIT8 = { J30, J31, J32, J33, J33B, J34, J35, J36, J37, J38, J39, J40, J41, J42, J43 };
+export const EXIT8 = { J30, J31, J32, J33, J33B, J34, J35, J35B, J36, J37, J37B, J38, J39, J40, J41, J42, J43 };

@@ -19,9 +19,9 @@ const J01 = mk(
       <>
         <Stage>
           <rect x={0} y={760} width={1920} height={320} fill={V.street} />
-          <Machine x={960} y={1000} s={0.9} pressed={f > 18 ? 4 : -1} led={f > 18 ? "200" : "---"} />
-          {/* 指 */}
-          <g transform={`translate(${1260 - 250 * push} ${500 - 40 * push})`}>
+          <Machine x={960} y={880} s={0.78} pressed={f > 18 ? 4 : -1} led={f > 18 ? "200" : "---"} />
+          {/* 指（先端が「200」のボタンへ） */}
+          <g transform={`translate(${1240 - 350 * push} ${600 - 36 * push})`}>
             <rect x={0} y={-22} width={220} height={44} rx={22} fill="#F2C9A8" stroke="#C9926B" strokeWidth={3} />
             <rect x={150} y={-40} width={170} height={80} rx={30} fill="#F2C9A8" stroke="#C9926B" strokeWidth={3} />
           </g>
@@ -45,7 +45,7 @@ const J02 = mk(({ f, s }) => {
     <>
       <Stage>
         <rect x={0} y={760} width={1920} height={320} fill={V.street} />
-        <Machine x={960} y={1000} s={0.9} pressed={4} led="200" drop={drop} />
+        <Machine x={960} y={880} s={0.78} pressed={4} led="200" drop={drop} />
         <g opacity={1 - coin} transform={`translate(${1150 - 60 * coin} ${700 - 40 * coin})`}>
           <circle r={26} fill={V.coin} stroke="#B8902A" strokeWidth={4} />
         </g>
@@ -106,14 +106,14 @@ const J05 = mk(({ f, s }) => {
   return (
     <>
       <Stage>
-        <g transform="translate(960 400)" opacity={fade(f, s(0)) * (1 - 0.7 * fade(f, s(1)))}>
-          <circle r={170} fill="none" stroke="#F4EEE3" strokeWidth={10} />
-          <line x1={0} y1={0} x2={0} y2={-130} stroke="#F4EEE3" strokeWidth={10} strokeLinecap="round" transform={`rotate(${clock * 360})`} />
-          <text y={250} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={72} fill="#F4EEE3">
+        <g transform="translate(960 300)" opacity={fade(f, s(0)) * (1 - 0.6 * fade(f, s(1)))}>
+          <circle r={150} fill="none" stroke="#F4EEE3" strokeWidth={10} />
+          <line x1={0} y1={0} x2={0} y2={-115} stroke="#F4EEE3" strokeWidth={10} strokeLinecap="round" transform={`rotate(${clock * 360})`} />
+          <text y={235} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={72} fill="#F4EEE3">
             答えは <tspan fill={V.led}>2分</tspan> で出る
           </text>
         </g>
-        <text x={960} y={760} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={120} fill={V.led} opacity={0.75 * fade(f, s(1) + 20)} style={{ filter: "blur(2px)" }}>
+        <text x={960} y={770} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={110} fill={V.led} opacity={0.75 * fade(f, s(1) + 20)} style={{ filter: "blur(2px)" }}>
           −881億円
         </text>
       </Stage>
@@ -282,10 +282,10 @@ const J09 = mk(({ f, s }) => {
           </text>
           <Can x={1030} y={420} color="#81B29A" s={2.2} bottle />
           <Led x={1450} y={400} text={price} size={150} w={420} />
-          <text x={1450} y={520} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={K.ink}>
+          <text x={1450} y={570} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={40} fill={K.ink}>
             {price === "180" ? "〜2025年9月" : price === "200" ? "2025年10月〜" : "2026年9月出荷分〜"}
           </text>
-          <text x={1450} y={580} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft} opacity={fade(f, s(5))}>
+          <text x={1450} y={625} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={30} fill={K.inkSoft} opacity={fade(f, s(5))}>
             ※いずれも税抜
           </text>
         </g>
@@ -343,7 +343,7 @@ const J11 = mk(({ f, s }) => {
   return (
     <>
       <Stage>
-        <Machine x={420} y={940} s={0.9} led="200" />
+        <Machine x={400} y={1040} s={0.82} led="200" />
         <g transform="translate(900 820)" opacity={fade(f, s(1) + 10)}>
           <text x={150} y={-420} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={38} fill={K.inkSoft}>
             売る本数
@@ -503,6 +503,50 @@ const J13B = mk(({ f, s }) => {
   );
 }, { bg: "night" });
 
+/* J13C OBJECT（S10 ① 買う人）: それでも買う理由（近い・すぐ・冷えている）＝便利さの値段 / 割高な自販機を控える人も（報道） */
+const J13C = mk(({ f, s }) => {
+  const reasons = ["買いたいときに 近くにある", "すぐ買える", "よく冷えている"];
+  const tilt = ease(f, s(3), s(3) + 30);
+  return (
+    <>
+      <Stage>
+        <Machine x={420} y={860} s={0.72} led="200" />
+        {reasons.map((r, i) => (
+          <g key={r} transform={`translate(1180 ${250 + i * 120}) scale(${pop(f, s(1) + 10 + i * 16)})`} opacity={fade(f, s(1) + 10 + i * 16)}>
+            <rect x={-330} y={-46} width={660} height={92} rx={46} fill="#FFFFFF" stroke={V.band} strokeWidth={5} />
+            <text textAnchor="middle" dominantBaseline="central" fontFamily={FONT} fontWeight={900} fontSize={42} fill={K.ink}>
+              {`${i + 1}. ${r}`}
+            </text>
+          </g>
+        ))}
+        <text x={1180} y={170} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={32} fill={K.inkSoft} opacity={fade(f, s(1))}>
+          自販機で買う理由（調査の上位）
+        </text>
+        <g opacity={fade(f, s(2))}>
+          <text x={1180} y={640} textAnchor="middle" fontFamily={SERIF} fontWeight={900} fontSize={48} fill={V.band}>
+            200円 ＝ 飲み物 ＋「今ここで、冷えた1本」
+          </text>
+        </g>
+        {/* 天秤: 便利さ vs 値段 */}
+        <g opacity={fade(f, s(3))} transform="translate(1180 790)">
+          <g transform={`rotate(${-8 * tilt})`}>
+            <line x1={-260} x2={260} y1={0} y2={0} stroke={K.ink} strokeWidth={8} />
+            <text x={-260} y={-24} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={V.band}>
+              便利さ
+            </text>
+            <text x={260} y={-24} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={30} fill={V.red}>
+              値段
+            </text>
+          </g>
+          <path d="M -20 40 L 0 4 L 20 40 Z" fill={K.ink} />
+        </g>
+        <Badge x={1180} y={710} text="割高な自販機を控える人も（報道）" at={s(4)} size={32} fill={V.red} />
+      </Stage>
+      <EvidenceMark no="#22" source={f < s(4) ? "消費者調査（自販機の利用理由）" : "TOKYO MX・日本経済新聞（報道）"} at={s(1)} />
+    </>
+  );
+}, { bg: "white" });
+
 /* J14 BLUEPRINT: 1台ごとの費用。補充（1日20〜30台・1人150台）/ 場所代（売上の2〜3割）/ 機械・点検・修理 */
 const J14 = mk(({ f, s }) => {
   const block = (y: number, label: string, sub: string, at: number, color: string) => (
@@ -530,8 +574,8 @@ const J14 = mk(({ f, s }) => {
           </text>
         </g>
         <g opacity={fade(f, s(1))}>
-          <path d="M 120 880 C 400 820 700 900 1000 860" stroke="#8FD3FF" strokeWidth={4} strokeDasharray="14 10" fill="none" />
-          <Truck x={120 + 820 * drive} y={900} s={0.6} color="#3C8DBC" />
+          <path d="M 120 820 C 400 780 700 840 1000 800" stroke="#8FD3FF" strokeWidth={4} strokeDasharray="14 10" fill="none" />
+          <Truck x={120 + 820 * drive} y={835} s={0.6} color="#3C8DBC" />
         </g>
         {block(260, "補充", "1日20〜30台を回る・1人で150台ほど（という）", s(1), "#8FD3FF")}
         {block(480, "場所代", "売上の2〜3割ほど（と言われる）", s(3), "#FFD66E")}
@@ -621,7 +665,7 @@ const J14C = mk(({ f, s }) => (
         ]}
       />
       <g opacity={fade(f, s(1))}>
-        <Machine x={480} y={900} s={0.5} led="---" />
+        <Machine x={480} y={850} s={0.46} led="---" />
         <text x={1100} y={640} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={36} fill={K.inkSoft}>
           自販機の新品（と言われる）
         </text>
@@ -673,4 +717,4 @@ const J15 = mk(({ f, s }) => {
 /* J16 CLUE 01 */
 const J16 = mk(({ s }) => <CanClue no="01" at={s(0) + 8} />, { bg: "paper", noSub: true });
 
-export const OPEN8 = { J01, J02, J03, J04, J05, J06, J07, J08, J09, J10, J11, J12, J13, J13B, J14, J14B, J14C, J15, J16 };
+export const OPEN8 = { J01, J02, J03, J04, J05, J06, J07, J08, J09, J10, J11, J12, J13, J13B, J13C, J14, J14B, J14C, J15, J16 };

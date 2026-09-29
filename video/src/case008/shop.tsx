@@ -150,10 +150,10 @@ const J20B = mk(({ f, s }) => {
         <g stroke="#3B4B68" strokeWidth={8} fill="none">
           <path d="M 1500 800 L 1500 520 M 1440 520 L 1560 520" />
         </g>
-        <Machine x={760} y={960} s={0.85} free led="0" drop={((f - s(0)) % 24) / 24} />
+        <Machine x={760} y={870} s={0.74} free led="0" drop={((f - s(0)) % 24) / 24} />
         <g opacity={fade(f, s(0))}>
           {[0, 1, 2, 3].map((i) => (
-            <Can key={i} x={1060 + i * 70} y={900} color="#81B29A" bottle s={0.9} o={i <= k ? 1 : 0.2} />
+            <Can key={i} x={1000 + i * 70} y={800} color="#81B29A" bottle s={0.9} o={i <= k ? 1 : 0.2} />
           ))}
         </g>
         <g opacity={fade(f, s(0))} transform="translate(1400 300)">
@@ -188,10 +188,10 @@ const J21 = mk(({ f, s }) => {
         </g>
         <Badge x={960} y={280} text="自販機は、台数で稼ぐ商売" at={s(1)} size={44} fill={K.ink} />
         <g opacity={fade(f, s(2))}>
-          <text x={1500} y={430} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34} fill={K.inkSoft}>
+          <text x={1600} y={250} textAnchor="middle" fontFamily={FONT} fontWeight={800} fontSize={34} fill={K.inkSoft}>
             2000年ごろ
           </text>
-          <text x={1500} y={520} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={90} fill={V.red}>
+          <text x={1600} y={350} textAnchor="middle" fontFamily={FONT} fontWeight={900} fontSize={90} fill={V.red}>
             560万台
           </text>
         </g>
@@ -209,13 +209,14 @@ const J21B = mk(({ f, s }) => {
       <Stage>
         <Timeline6
           y={330}
+          x1={1450}
           items={[
             { year: "1983", text: "缶 100円", at: s(1) },
             { year: "1992", text: "缶 110円", at: s(1) + 40 },
             { year: "2023", text: "缶コーヒー +25円", at: s(4), color: V.red },
           ]}
         />
-        <text x={1600} y={420} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(1))}>
+        <text x={1600} y={480} textAnchor="middle" fontFamily={FONT} fontWeight={700} fontSize={24} fill={K.inkSoft} opacity={fade(f, s(1))}>
           ※年は「と言われる」
         </text>
         <Led x={600} y={640} text={led} size={120} w={340} o={fade(f, s(1))} />
