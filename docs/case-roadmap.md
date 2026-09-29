@@ -5,7 +5,7 @@
 | #006 | カプセルトイ(ガチャガチャ) | 렌더링 완료(12:32) |
 | #007 | ビジネスホテル | 렌더링 완료(13:50) |
 | #008 | 自動販売機 | 제목 확정 「自販機、なぜ減っても値上げ？」 → 질문 사슬 → 대본 4,861자(S10 보강) → **06 DIRECTION 재제작**: 콘티 47 CUT → 음성 14:58 → **렌더 완료(14:58, out/case008_parts 4개)** ([case008-research.md](case008-research.md)) |
-| #009 | ドラッグストア | 사전 조사·ANSWER CARD·제목 후보 → [case009-research.md](case009-research.md) |
+| #009 | ドラッグストア | 제목 확정 「ドラッグストア、なぜ食品が安い？」 → 질문 사슬 설계 → [case009-research.md](case009-research.md) |
 | #010 | コンビニ | 대기 |
 
 - 각 CASE는 CORE v4 순서로 진행한다: ANSWER CARD → 질문 사슬 설계 → 대본 → 장면 설계 → 음성 → 영상 → PROMISE AUDIT.
