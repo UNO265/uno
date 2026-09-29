@@ -33,6 +33,8 @@ KICK, STICK, HHC, CABASA, SHAKER, WOOD = 36, 37, 42, 69, 70, 76
 GLOCK, XYLO, SYNBASS, STEELDR = 9, 13, 38, 114
 # CASE #007〜: ビジネスホテル（ロビーのジャズ・値段が動くチェンバロ・夜のトランペット）
 HARPSI, STEELGTR, JAZZGTR, TIMPANI, MUTETRP, FLUTE = 6, 25, 26, 47, 59, 73
+# CASE #008〜: 自動販売機（ボタンの電子音・昔の街角・出口を探すクラリネット）
+CLARINET = 71
 
 N = {"C": 0, "C#": 1, "Db": 1, "D": 2, "Eb": 3, "E": 4, "F": 5, "F#": 6, "Gb": 6, "G": 7, "Ab": 8, "A": 9, "Bb": 10, "B": 11}
 Q = {"": [0, 4, 7], "m": [0, 3, 7], "maj7": [0, 4, 7, 11], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "m9": [0, 3, 7, 10, 14],
@@ -235,6 +237,30 @@ SECTIONS_007 = [
     ("c7_06_future", "h_future", "H27", "H31"),
     ("c7_07_answer", "h_answer", "H31", "H34"),
     ("c7_08_outro", "outro", "H34", "END"),
+]
+
+# CASE #008: 自動販売機。夜の駅（グロッケン）→ 統計（エレピ＋シンセベース）→ 昔の街角（シロフォン）→ 減損（低い弦＋ティンパニ）→ 出口（クラリネット）→ 答え
+# 主題は自販機の「ピッ・ピッ・ゴトン」3音（同じ音 2 回 → 5度下）
+MOTIF_008 = [7, 7, 0]
+MOODS_008 = {
+    "v_open": dict(prog=["Am7", "Fmaj7", "Dm7", "E7sus4"], bpm=72, beats=4, lead=GLOCK, pulse="sparse", pizz=False, pad=WARMPAD, key=57, motif=MOTIF_008),
+    "v_data": dict(prog=["Cmaj7", "Em7", "Fmaj7", "G6"], bpm=94, beats=4, lead=EPIANO, pulse="arp8", pizz=False, pad=None, key=60, bass=SYNBASS, drums="kick4"),
+    "v_shop": dict(prog=["D", "Bm7", "G", "A7sus4"], bpm=100, beats=4, lead=XYLO, pulse="call", pizz=True, off=STEELGTR, pad=WARMPAD, key=62, drums="shaker", motif=MOTIF_008),
+    "v_loss": dict(prog=["Cm", "Ab", "Fm7", "G7sus4"], bpm=70, beats=4, lead=SLOWSTR, pulse="sparse", pizz=False, pad=SLOWSTR, key=48, drums="timp"),
+    "v_exit": dict(prog=["F", "Dm7", "Bb", "C7sus4"], bpm=96, beats=4, lead=CLARINET, pulse="call", pizz=True, pad=STRINGS, key=65, bass=ABASS, drums="rim"),
+    "v_future": dict(prog=["Em7", "Cmaj7", "Am7", "B7sus4"], bpm=80, beats=4, lead=VIBES, pulse="sparse", pizz=False, pad=WARMPAD, key=52, bell=GLOCK),
+    "v_answer": dict(prog=["Fmaj7", "Em7", "Dm7", "Cmaj7"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=53, bell=GLOCK, motif=MOTIF_008),
+    "outro": dict(prog=["C", "Em7", "Fmaj7", "G"], bpm=80, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=48, bell=GLOCK, motif=MOTIF_008),
+}
+SECTIONS_008 = [
+    ("c8_01_open", "v_open", "J03", "J06"),
+    ("c8_02_data", "v_data", "J06", "J17"),
+    ("c8_03_shop", "v_shop", "J17", "J22"),
+    ("c8_04_loss", "v_loss", "J22", "J30"),
+    ("c8_05_exit", "v_exit", "J30", "J36"),
+    ("c8_06_future", "v_future", "J36", "J38"),
+    ("c8_07_answer", "v_answer", "J38", "J41"),
+    ("c8_08_outro", "outro", "J41", "END"),
 ]
 
 # ショート（縦型）: ケース名 → (曲想, 乱数の種)
@@ -490,10 +516,12 @@ def main():
         moods, sections, seed0 = MOODS_006, SECTIONS_006, 700
     elif args.case == "case007":
         moods, sections, seed0 = MOODS_007, SECTIONS_007, 800
+    elif args.case == "case008":
+        moods, sections, seed0 = MOODS_008, SECTIONS_008, 900
     elif args.case and args.case in SHORTS:
         # ショート: 1 本通しの短い曲（本編とは別の種で作曲）
         mood, seed0, *src = SHORTS[args.case]
-        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006, "007": MOODS_007}.get(src[0], MOODS) if src else MOODS
+        moods = {"002": MOODS_002, "003": MOODS_003, "004": MOODS_004, "005": MOODS_005, "006": MOODS_006, "007": MOODS_007, "008": MOODS_008}.get(src[0], MOODS) if src else MOODS
         sections = [("bgm", mood, t["cuts"][0]["id"], "END")]
     else:
         moods, sections, seed0 = MOODS, SECTIONS, 100
