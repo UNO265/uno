@@ -8,43 +8,43 @@
  {
   "file": "case008/music/c8_02_data.wav",
   "from": 805,
-  "to": 9881,
+  "to": 9603,
   "mood": "v_data"
  },
  {
   "file": "case008/music/c8_03_shop.wav",
-  "from": 9881,
-  "to": 13067,
+  "from": 9603,
+  "to": 12789,
   "mood": "v_shop"
  },
  {
   "file": "case008/music/c8_04_loss.wav",
-  "from": 13067,
-  "to": 17977,
+  "from": 12789,
+  "to": 17486,
   "mood": "v_loss"
  },
  {
   "file": "case008/music/c8_05_exit.wav",
-  "from": 17977,
-  "to": 23607,
+  "from": 17486,
+  "to": 23116,
   "mood": "v_exit"
  },
  {
   "file": "case008/music/c8_06_future.wav",
-  "from": 23607,
-  "to": 25783,
+  "from": 23116,
+  "to": 25017,
   "mood": "v_future"
  },
  {
   "file": "case008/music/c8_07_answer.wav",
-  "from": 25783,
-  "to": 27264,
+  "from": 25017,
+  "to": 26498,
   "mood": "v_answer"
  },
  {
   "file": "case008/music/c8_08_outro.wav",
-  "from": 27264,
-  "to": 27717,
+  "from": 26498,
+  "to": 26951,
   "mood": "outro"
  }
 ]

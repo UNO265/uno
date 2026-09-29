@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 27717,
+ "totalFrames": 26951,
  "cuts": [
   {
    "id": "J01",
@@ -142,17 +142,12 @@
      "text": "そのうち、飲み物の自販機は、およそ220万台。",
      "start": 14.373875,
      "end": 18.611875
-    },
-    {
-     "text": "たばこの自販機は、ピークのおよそ63万台から、6万5900台まで減っている。",
-     "start": 18.891875,
-     "end": 25.307916666666664
     }
    ],
    "voice": "case008/voice/J08.wav",
    "voiceStart": 0.4,
    "from": 1455,
-   "duration": 777
+   "duration": 576
   },
   {
    "id": "J09",
@@ -190,7 +185,7 @@
    ],
    "voice": "case008/voice/J09.wav",
    "voiceStart": 0.4,
-   "from": 2232,
+   "from": 2031,
    "duration": 702
   },
   {
@@ -214,7 +209,7 @@
    ],
    "voice": "case008/voice/J10.wav",
    "voiceStart": 0.4,
-   "from": 2934,
+   "from": 2733,
    "duration": 316
   },
   {
@@ -233,7 +228,7 @@
    ],
    "voice": "case008/voice/J11.wav",
    "voiceStart": 0.4,
-   "from": 3250,
+   "from": 3049,
    "duration": 296
   },
   {
@@ -245,35 +240,30 @@
      "end": 11.052979166666667
     },
     {
-     "text": "2025年には、195万台まで減ったと報じられている。",
-     "start": 11.332979166666666,
-     "end": 16.350166666666667
-    },
-    {
      "text": "そして、1台が1年に売る量は、平均207ケース。",
-     "start": 16.630166666666664,
-     "end": 21.465437499999997
+     "start": 11.332979166666666,
+     "end": 16.16825
     },
     {
      "text": "この10年で、8%減っている。",
-     "start": 21.745437499999998,
-     "end": 24.66214583333333
+     "start": 16.448249999999998,
+     "end": 19.36495833333333
     },
     {
      "text": "台数が減っただけではない。",
-     "start": 24.94214583333333,
-     "end": 26.69745833333333
+     "start": 19.64495833333333,
+     "end": 21.40027083333333
     },
     {
      "text": "残った1台も、売れなくなっている。",
-     "start": 26.97745833333333,
-     "end": 29.796562499999997
+     "start": 21.68027083333333,
+     "end": 24.499374999999997
     }
    ],
    "voice": "case008/voice/J12.wav",
    "voiceStart": 0.4,
-   "from": 3546,
-   "duration": 912
+   "from": 3345,
+   "duration": 753
   },
   {
    "id": "J13",
@@ -301,7 +291,7 @@
    ],
    "voice": "case008/voice/J13.wav",
    "voiceStart": 0.4,
-   "from": 4458,
+   "from": 4098,
    "duration": 572
   },
   {
@@ -325,7 +315,7 @@
    ],
    "voice": "case008/voice/J13B.wav",
    "voiceStart": 0.4,
-   "from": 5030,
+   "from": 4670,
    "duration": 484
   },
   {
@@ -364,7 +354,7 @@
    ],
    "voice": "case008/voice/J13C.wav",
    "voiceStart": 0.4,
-   "from": 5514,
+   "from": 5154,
    "duration": 1109
   },
   {
@@ -403,7 +393,7 @@
    ],
    "voice": "case008/voice/J14.wav",
    "voiceStart": 0.4,
-   "from": 6623,
+   "from": 6263,
    "duration": 791
   },
   {
@@ -438,12 +428,17 @@
      "text": "ダイドーでも、2021年の数字では、1台が1日に売るのは930円ほどだった。",
      "start": 26.212125,
      "end": 33.510395833333334
+    },
+    {
+     "text": "これで、本当に儲かるのか。",
+     "start": 33.790395833333335,
+     "end": 36.22960416666667
     }
    ],
    "voice": "case008/voice/J14B.wav",
    "voiceStart": 0.4,
-   "from": 7414,
-   "duration": 1023
+   "from": 7054,
+   "duration": 1105
   },
   {
    "id": "J14C",
@@ -466,7 +461,7 @@
    ],
    "voice": "case008/voice/J14C.wav",
    "voiceStart": 0.4,
-   "from": 8437,
+   "from": 8159,
    "duration": 647
   },
   {
@@ -500,7 +495,7 @@
    ],
    "voice": "case008/voice/J15.wav",
    "voiceStart": 0.4,
-   "from": 9084,
+   "from": 8806,
    "duration": 575
   },
   {
@@ -520,7 +515,7 @@
    "clue": "01",
    "voice": "case008/voice/J16.wav",
    "voiceStart": 0.4,
-   "from": 9659,
+   "from": 9381,
    "duration": 222
   },
   {
@@ -544,7 +539,7 @@
    ],
    "voice": "case008/voice/J17.wav",
    "voiceStart": 0.4,
-   "from": 9881,
+   "from": 9603,
    "duration": 268
   },
   {
@@ -573,7 +568,7 @@
    ],
    "voice": "case008/voice/J18.wav",
    "voiceStart": 0.4,
-   "from": 10149,
+   "from": 9871,
    "duration": 605
   },
   {
@@ -602,7 +597,7 @@
    ],
    "voice": "case008/voice/J19.wav",
    "voiceStart": 0.4,
-   "from": 10754,
+   "from": 10476,
    "duration": 493
   },
   {
@@ -641,7 +636,7 @@
    ],
    "voice": "case008/voice/J20.wav",
    "voiceStart": 0.4,
-   "from": 11247,
+   "from": 10969,
    "duration": 857
   },
   {
@@ -665,7 +660,7 @@
    ],
    "voice": "case008/voice/J21.wav",
    "voiceStart": 0.4,
-   "from": 12104,
+   "from": 11826,
    "duration": 386
   },
   {
@@ -694,7 +689,7 @@
    ],
    "voice": "case008/voice/J21B.wav",
    "voiceStart": 0.4,
-   "from": 12490,
+   "from": 12212,
    "duration": 577
   },
   {
@@ -713,7 +708,7 @@
    ],
    "voice": "case008/voice/J22.wav",
    "voiceStart": 0.4,
-   "from": 13067,
+   "from": 12789,
    "duration": 218
   },
   {
@@ -747,7 +742,7 @@
    ],
    "voice": "case008/voice/J23.wav",
    "voiceStart": 0.4,
-   "from": 13285,
+   "from": 13007,
    "duration": 1047
   },
   {
@@ -769,20 +764,15 @@
      "end": 15.736854166666667
     },
     {
-     "text": "国内の飲料の売上は1426億円で、前の年より3.3%減。",
-     "start": 16.016854166666665,
-     "end": 22.85277083333333
-    },
-    {
      "text": "自販機で売れた数量も、2.7%減った。",
-     "start": 23.132770833333332,
-     "end": 27.18089583333333
+     "start": 16.016854166666665,
+     "end": 20.064979166666664
     }
    ],
    "voice": "case008/voice/J24.wav",
    "voiceStart": 0.4,
-   "from": 14332,
-   "duration": 833
+   "from": 14054,
+   "duration": 620
   },
   {
    "id": "J25",
@@ -810,7 +800,7 @@
    ],
    "voice": "case008/voice/J25.wav",
    "voiceStart": 0.4,
-   "from": 15165,
+   "from": 14674,
    "duration": 771
   },
   {
@@ -829,7 +819,7 @@
    ],
    "voice": "case008/voice/J26.wav",
    "voiceStart": 0.4,
-   "from": 15936,
+   "from": 15445,
    "duration": 182
   },
   {
@@ -878,7 +868,7 @@
    ],
    "voice": "case008/voice/J27.wav",
    "voiceStart": 0.4,
-   "from": 16118,
+   "from": 15627,
    "duration": 997
   },
   {
@@ -893,7 +883,7 @@
    "clue": "02",
    "voice": "case008/voice/J28.wav",
    "voiceStart": 0.4,
-   "from": 17115,
+   "from": 16624,
    "duration": 157
   },
   {
@@ -922,7 +912,7 @@
    ],
    "voice": "case008/voice/J29.wav",
    "voiceStart": 0.4,
-   "from": 17272,
+   "from": 16781,
    "duration": 705
   },
   {
@@ -941,7 +931,7 @@
    ],
    "voice": "case008/voice/J30.wav",
    "voiceStart": 0.4,
-   "from": 17977,
+   "from": 17486,
    "duration": 254
   },
   {
@@ -970,7 +960,7 @@
    ],
    "voice": "case008/voice/J31.wav",
    "voiceStart": 0.4,
-   "from": 18231,
+   "from": 17740,
    "duration": 474
   },
   {
@@ -1004,7 +994,7 @@
    ],
    "voice": "case008/voice/J32.wav",
    "voiceStart": 0.4,
-   "from": 18705,
+   "from": 18214,
    "duration": 655
   },
   {
@@ -1033,7 +1023,7 @@
    ],
    "voice": "case008/voice/J33.wav",
    "voiceStart": 0.4,
-   "from": 19360,
+   "from": 18869,
    "duration": 644
   },
   {
@@ -1067,7 +1057,7 @@
    ],
    "voice": "case008/voice/J33B.wav",
    "voiceStart": 0.4,
-   "from": 20004,
+   "from": 19513,
    "duration": 975
   },
   {
@@ -1106,7 +1096,7 @@
    ],
    "voice": "case008/voice/J34.wav",
    "voiceStart": 0.4,
-   "from": 20979,
+   "from": 20488,
    "duration": 820
   },
   {
@@ -1140,7 +1130,7 @@
    ],
    "voice": "case008/voice/J35.wav",
    "voiceStart": 0.4,
-   "from": 21799,
+   "from": 21308,
    "duration": 802
   },
   {
@@ -1174,7 +1164,7 @@
    ],
    "voice": "case008/voice/J35B.wav",
    "voiceStart": 0.4,
-   "from": 22601,
+   "from": 22110,
    "duration": 1006
   },
   {
@@ -1188,7 +1178,7 @@
    ],
    "voice": "case008/voice/J36.wav",
    "voiceStart": 0.4,
-   "from": 23607,
+   "from": 23116,
    "duration": 132
   },
   {
@@ -1218,22 +1208,12 @@
      "text": "1回の買い物が高ければ、同じ補充の手間でも、1台の売上は大きくなる。",
      "start": 16.637166666666666,
      "end": 22.544416666666667
-    },
-    {
-     "text": "そして業界全体の売上は、2017年から公表されないまま。",
-     "start": 22.824416666666668,
-     "end": 27.781770833333333
-    },
-    {
-     "text": "どこまで減るのかは、統計と決算で追いかけるしかない。",
-     "start": 28.061770833333334,
-     "end": 31.709125
     }
    ],
    "voice": "case008/voice/J37.wav",
    "voiceStart": 0.4,
-   "from": 23739,
-   "duration": 969
+   "from": 23248,
+   "duration": 694
   },
   {
    "id": "J37B",
@@ -1276,7 +1256,7 @@
    ],
    "voice": "case008/voice/J37B.wav",
    "voiceStart": 0.4,
-   "from": 24708,
+   "from": 23942,
    "duration": 1075
   },
   {
@@ -1290,7 +1270,7 @@
    ],
    "voice": "case008/voice/J38.wav",
    "voiceStart": 0.4,
-   "from": 25783,
+   "from": 25017,
    "duration": 302
   },
   {
@@ -1320,7 +1300,7 @@
    "clue": "FINAL",
    "voice": "case008/voice/J39.wav",
    "voiceStart": 0.4,
-   "from": 26085,
+   "from": 25319,
    "duration": 663
   },
   {
@@ -1344,7 +1324,7 @@
    ],
    "voice": "case008/voice/J40.wav",
    "voiceStart": 0.6,
-   "from": 26748,
+   "from": 25982,
    "duration": 516
   },
   {
@@ -1358,7 +1338,7 @@
    ],
    "voice": "case008/voice/J41.wav",
    "voiceStart": 0.4,
-   "from": 27264,
+   "from": 26498,
    "duration": 117
   },
   {
@@ -1377,7 +1357,7 @@
    ],
    "voice": "case008/voice/J42.wav",
    "voiceStart": 0.4,
-   "from": 27381,
+   "from": 26615,
    "duration": 119
   },
   {
@@ -1396,7 +1376,7 @@
    ],
    "voice": "case008/voice/J43.wav",
    "voiceStart": 0.4,
-   "from": 27500,
+   "from": 26734,
    "duration": 217
   }
  ]
