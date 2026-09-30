@@ -1,5 +1,4 @@
-"""感動ショート（ドーベルマンと男の子）: 原音 + ナレーション + BGM をミックスし、
-上タイトル帯・中央映像・映像上の字幕のレイアウトで 1080x1920 を書き出す。
+"""感動ショート（ドーベルマンと男の子）: 原音 + ナレーション + BGM をミックスし、字幕を焼き込んで 1080x1920 を書き出す。
 usage: python3 build.py SRC.mp4 WORK_DIR OUT.mp4 FONT.ttf
   WORK_DIR には narration.py の voice/ と music.py の music/bgm.wav が入っていること。
 """
@@ -67,65 +66,61 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "f32le", "-ar", str(SR), "-
 
 # ---------- subtitles ----------
 WHITE, YELLOW, CREAM = (255, 255, 255), (255, 216, 90), (255, 240, 214)
+OUTLINE = (40, 26, 18)
 
 
-# ---------- レイアウト（上: タイトル帯 / 中: 映像 / 下: 映像のぼかし） ----------
-BAND_H = 440                  # タイトル帯 0–440
-VID_Y, VID_H = 440, 1160      # 映像 440–1600（元映像 360x387 を y=85 から切り出し）
-CROP_Y = 85
-NAVY = (17, 22, 36)
-SUB_CY = 1335                 # 字幕の中心（映像の下寄り・画面 70% 付近、下部 UI の上）
-
-
-def title_layer():
-    img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    d = ImageDraw.Draw(img)
-    d.rectangle([0, 0, W, BAND_H], fill=NAVY + (255,))
-    font = ImageFont.truetype(FONT, 80)
-    colors = {"white": WHITE, "yellow": YELLOW}
-    lh = 112
-    top = 150
-    for k, ln in enumerate(S["title"]):
-        x = W / 2 - font.getlength(ln["text"]) / 2
-        d.text((x, top + k * lh), ln["text"], font=font, fill=colors[ln["color"]])
-    return np.asarray(img, np.float32) / 255.0
-
-
-def sub_layer(text, fill=WHITE, hl=None, size=60):
-    """映像の上に置く字幕: 横いっぱいの半透明の帯（端はぼかす）+ 白文字、強調語は黄色。"""
+def text_layer(lines_spec, size, cy, stroke, fill=WHITE, hl=None, hl_color=YELLOW, lead=1.28, band=False,
+               cx=W / 2, max_w=W - 120):
+    """cx 中心揃えの複数行テロップを RGBA で描く。hl に含まれる語は hl_color で強調。
+    いちばん長い行が max_w を超えるときは文字を小さくする。"""
+    lines = lines_spec.split("\n")
     font = ImageFont.truetype(FONT, size)
-    lines = text.split("\n")
-    lh = int(size * 1.35)
-    h = lh * len(lines)
-    top = int(SUB_CY - h / 2)
-    band = Image.new("L", (W, H), 0)
-    ImageDraw.Draw(band).rectangle([60, top - 34, W - 60, top + h + 26], fill=150)
-    band = band.filter(ImageFilter.GaussianBlur(26))
+    while max(font.getlength(l) for l in lines) > max_w:
+        size -= 2
+        font = ImageFont.truetype(FONT, size)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-    img.putalpha(band)
+    lh = int(size * lead)
+    top = int(cy - lh * len(lines) / 2)
+    if band:
+        pad = int(size * 0.45)
+        widest = max(font.getlength(l) for l in lines)
+        bd = ImageDraw.Draw(img)
+        bd.rounded_rectangle([cx - widest / 2 - pad, top - pad * 0.7, cx + widest / 2 + pad,
+                              top + lh * len(lines) + pad * 0.3], radius=28, fill=(0, 0, 0, 120))
+    shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    sd = ImageDraw.Draw(shadow)
     d = ImageDraw.Draw(img)
     for k, line in enumerate(lines):
         segs = [(line, fill)]
         if hl and hl in line:
             a, b = line.split(hl, 1)
-            segs = [(a, fill), (hl, YELLOW), (b, fill)]
-        x = W / 2 - font.getlength(line) / 2
+            segs = [(a, fill), (hl, hl_color), (b, fill)]
+        x = cx - font.getlength(line) / 2
         y = top + k * lh
         for t, c in segs:
-            if t:
-                d.text((x, y), t, font=font, fill=c, stroke_width=3, stroke_fill=(10, 10, 10))
-                x += font.getlength(t)
-    return np.asarray(img, np.float32) / 255.0
+            if not t:
+                continue
+            sd.text((x + 6, y + 8), t, font=font, fill=(0, 0, 0, 170), stroke_width=stroke, stroke_fill=(0, 0, 0, 170))
+            d.text((x, y), t, font=font, fill=c, stroke_width=stroke, stroke_fill=OUTLINE)
+            x += font.getlength(t)
+    shadow = shadow.filter(ImageFilter.GaussianBlur(7))
+    return np.asarray(Image.alpha_composite(shadow, img), np.float32) / 255.0
 
 
-title = title_layer()
+# Shorts の UI を避けた配置（1080x1920）
+#   上: 0–約150px は検索・メニューのアイコン → タイトルはその直下（中心 12.5%）
+#   右: x 950 より右、高さ 50〜85% は高評価・コメント・共有ボタンの列 → 字幕は x 60–940 に収める
+#   下: 約 75% より下はチャンネル名・説明・シークバー → 字幕の中心は 63%
+SAFE_CX, SAFE_W = 500, 820
+hook = text_layer("\n".join(l["text"] for l in S["title"]), 80, H * 0.125, 9,
+                  hl=next(l["text"] for l in S["title"] if l["color"] == "yellow"), band=True)
 subs = []  # (start, end, layer)
 starts = [ln["start"] for ln in S["narration"]] + [DUR]
 for i, ln in enumerate(S["narration"]):
     end = min(spans[i][1] + 0.5, starts[i + 1] - 0.15, DUR)
-    subs.append((ln["start"] - 0.05, end, sub_layer(ln["sub"], hl=ln.get("hl"))))
+    subs.append((ln["start"] - 0.05, end, text_layer(ln["sub"], 64, H * 0.63, 8, hl=ln.get("hl"), cx=SAFE_CX, max_w=SAFE_W)))
 vs = S["voice_sub"]
-subs.append((vs["start"], vs["end"], sub_layer(vs["text"], fill=CREAM)))
+subs.append((vs["start"], vs["end"], text_layer(vs["text"], 70, H * 0.63, 8, fill=CREAM, cx=SAFE_CX, max_w=SAFE_W)))
 
 FADE = 0.18
 
@@ -138,12 +133,7 @@ def alpha_at(t, s, e):
 
 # ---------- video ----------
 dec = subprocess.Popen(["ffmpeg", "-v", "error", "-i", str(SRC), "-t", str(DUR),
-                        "-filter_complex",
-                        f"[0:v]fps={FPS},split[a][b];"
-                        f"[b]scale={W}:{H},gblur=sigma=40,eq=brightness=-0.32:saturation=0.8[bg];"
-                        f"[a]crop=360:387:0:{CROP_Y},scale={W}:{VID_H}:flags=lanczos,"
-                        f"unsharp=5:5:0.5,eq=saturation=1.06:contrast=1.03[fg];"
-                        f"[bg][fg]overlay=0:{VID_Y}",
+                        "-vf", f"scale={W}:{H}:flags=lanczos,unsharp=5:5:0.5,eq=saturation=1.06:contrast=1.03,fps={FPS}",
                         "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], stdout=subprocess.PIPE)
 enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
                         "-r", str(FPS), "-i", "-", "-i", str(WORK / "mix.wav"),
@@ -158,7 +148,7 @@ while True:
         break
     t = f / FPS
     frame = np.frombuffer(buf, np.uint8).reshape(H, W, 3).astype(np.float32) / 255.0
-    layers = [(title, 1.0)]  # 0 フレームから表示（フェードなし）
+    layers = [(hook, min(1.0, t / 0.001 if t > 0 else 1.0))]  # 0 フレームから表示（フェードなし）
     layers += [(L, alpha_at(t, s, e)) for s, e, L in subs]
     for L, a in layers:
         if a <= 0:
