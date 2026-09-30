@@ -147,7 +147,7 @@ def title_layer_at(t):
     if y not in _title_cache:
         _title_cache[y] = text_layer(TITLE_TEXT, 80, H * y, 9, hl=TITLE_HL, band=True)
     return _title_cache[y]
-SUB_Y = S.get("sub_y", 0.63)
+SUB_Y = S.get("sub_y", 0.70)  # 字幕は下 70% 固定が既定（ユーザー決定）
 layers = []  # (start, end, layer)
 starts = [ln["start"] for ln in S["narration"]] + [DUR]
 for i, ln in enumerate(S["narration"]):
