@@ -81,6 +81,7 @@ COLORS = {"white": (255, 255, 255), "yellow": (255, 216, 90), "cream": (255, 240
 OUTLINE = (40, 26, 18)
 # Shorts の UI（1080x1920）: 上 0–150px はアイコン、右 x>950・高さ 50–85% はボタン列、下 75% 以下は説明・シークバー
 SAFE_CX, SAFE_W = 500, 820
+# 字幕はセリフごとに "y"（縦の中心）・"x"（横の中心）・"w"（最大幅）を画面比で指定できる。被写体を避けるときに使う
 
 
 def sparkle(d, cx, cy, r, fill):
@@ -152,7 +153,8 @@ starts = [ln["start"] for ln in S["narration"]] + [DUR]
 for i, ln in enumerate(S["narration"]):
     end = min(spans[i][1] + 0.5, starts[i + 1] - 0.12, DUR)
     layers.append((ln["start"] - 0.05, end, text_layer(ln["sub"], 64, H * ln.get("y", SUB_Y), hl=ln.get("hl"),
-                                                       cx=SAFE_CX, max_w=SAFE_W)))
+                                                       cx=W * ln["x"] if "x" in ln else SAFE_CX,
+                                                       max_w=W * ln["w"] if "w" in ln else SAFE_W)))
 for c in S.get("captions", []):
     style = c.get("style", "sub")
     if style == "overlay":  # 焼き込み文字の差し替え（元の見た目に合わせて細め・影だけ）
