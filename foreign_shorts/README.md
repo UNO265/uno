@@ -51,6 +51,7 @@ python3 common/build.py CASE/script.json SRC.mp4 WORK OUT.mp4 ZenMaruGothic-Blac
 | `puppy/` | もふもふ子犬、ぜんぶ許せる (코믹, 장면 순서 재배치) | 春日部つむぎ |
 | `kindness1/` | 優しい動物 ① 自分のごはんを分けてあげる (모음 영상 3분할, 확정: `script_title_fixed.json`) | 四国めたん |
 | `kindness2/` | 優しい動物 ② 困っている友だちを放っておけない (기린 장면 슬로모션) | 青山龍星 |
+| `chimp_hug/` | 大好きな人に全力で飛びつくチンパンジー (현장 소리 유지, `fit_h`) | 九州そら |
 | `kitten/` | 立ち上がってだっこをせがむ子猫 (`fit_h`로 영상을 내려 제목과 얼굴 분리) | 雨晴はう |
 | `crab/` | 小さなカニに本気で挑む犬 (정사각형 → `layout: fit`, 다큐 패러디) | 剣崎雌雄 |
 | `kindness3/` | 優しい動物 ③ 小さな命を守る (개 장면 슬로모션, 새를 따라가는 줌) | 冥鳴ひまり |
