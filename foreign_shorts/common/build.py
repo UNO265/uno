@@ -216,7 +216,7 @@ for b in src.get("blur", []):
                                          radius=40, fill=255)
     mk = np.asarray(mk.filter(ImageFilter.GaussianBlur(pad * 0.35)), np.float32)[..., None] / 255.0
     blurs.append({"t0": b["t0"], "t1": b["t1"], "box": (x0, y0, x1, y1), "mask": mk})
-# 見せ場に寄る: {"t0", "t1", "from": 1.0, "to": 1.25, "cx": 0.5, "cy": 0.45, "ramp": 0.4, "back": true}
+# 見せ場に寄る: {"t0", "t1", "from": 1.0, "to": 1.25, "cx": 0.5, "cy": 0.45, "from_cx", "from_cy", "ramp": 0.4, "back": true}
 #   t0 から ease で from→to 倍まで寄り、t1 まで保つ。back=true なら t1 の手前 0.35 秒で from に戻す
 #   from=to にすれば区間ずっと一定の拡大（焼き込み文字を画面外に出すトリミングにも使う）
 ZOOMS = S.get("zooms", [])
@@ -235,7 +235,9 @@ def zoom_at(t):
             if z.get("back"):
                 k = min(k, ease((z["t1"] - t) / 0.35))
             z0 = z.get("from", 1.0)
-            return z0 + (z["to"] - z0) * k, z.get("cx", 0.5), z.get("cy", 0.5)
+            cx, cy = z.get("cx", 0.5), z.get("cy", 0.5)
+            cx0, cy0 = z.get("from_cx", cx), z.get("from_cy", cy)  # 中心も一緒に動かせる（被写体を追う）
+            return z0 + (z["to"] - z0) * k, cx0 + (cx - cx0) * k, cy0 + (cy - cy0) * k
     return 1.0, 0.5, 0.5
 
 
