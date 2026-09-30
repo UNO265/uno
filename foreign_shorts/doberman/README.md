@@ -37,5 +37,4 @@ python3 build.py SRC.mp4 WORK OUT.mp4 ZenMaruGothic-Black.ttf
 
 ――――――――――
 ナレーション：VOICEVOX:冥鳴ひまり
-元動画：（撮影者・許諾元をここに記載）
 ```
