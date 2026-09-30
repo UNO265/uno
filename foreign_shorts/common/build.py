@@ -80,7 +80,7 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", *RAW, "-af", LN2, "-ar", str(SR),
 COLORS = {"white": (255, 255, 255), "yellow": (255, 216, 90), "cream": (255, 240, 214)}
 OUTLINE = (40, 26, 18)
 # Shorts の UI（1080x1920）: 上 0–150px はアイコン、右 x>950・高さ 50–85% はボタン列、下 75% 以下は説明・シークバー
-SAFE_CX, SAFE_W = 500, 820
+SAFE_CX, SAFE_W = 540, 820  # 字幕は画面の真ん中にそろえる（ユーザー決定）。幅 820 なら x 130–950 で右のボタン列にかからない
 # 字幕はセリフごとに "y"（縦の中心）・"x"（横の中心）・"w"（最大幅）を画面比で指定できる。被写体を避けるときに使う
 
 
@@ -191,11 +191,20 @@ EDIT = WORK / "edit.mp4"
 subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(SRC), "-filter_complex", ";".join(fc), "-map", "[out]",
                 "-fps_mode", "cfr", "-r", str(FPS), "-an", "-c:v", "libx264", "-crf", "12", "-preset", "fast",
                 str(EDIT)], check=True)
-# 2) 最後のフレームで hold_end 秒止めて 1080x1920 に拡大（縦横比は保ち、はみ出た左右/上下を切る）
-dec = subprocess.Popen(["ffmpeg", "-v", "error", "-i", str(EDIT), "-vf",
-                        f"tpad=stop_mode=clone:stop_duration={HOLD},scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,"
-                        f"crop={W}:{H},"
-                        f"unsharp=5:5:0.6,eq=saturation=1.06:contrast=1.03",
+# 2) 最後のフレームで hold_end 秒止めて 1080x1920 に拡大（縦横比は保ち、はみ出た左右/上下を切る。layout=fit なら切らずに中央へ）
+LOOK = "unsharp=5:5:0.6,eq=saturation=1.06:contrast=1.03"
+if S.get("layout") == "fit":
+    # 正方形・横長の元動画: 画面の真ん中に元の比率のまま置き、上下（左右）は同じ映像を大きくぼかして敷く
+    vf = ["-filter_complex",
+          f"[0:v]tpad=stop_mode=clone:stop_duration={HOLD},split[a][b];"
+          f"[b]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},gblur=sigma=40,"
+          f"eq=brightness=-0.22:saturation=0.85[bg];"
+          f"[a]scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,{LOOK}[fg];"
+          f"[bg][fg]overlay=(W-w)/2:(H-h)/2"]
+else:
+    vf = ["-vf", f"tpad=stop_mode=clone:stop_duration={HOLD},scale={W}:{H}:force_original_aspect_ratio=increase:"
+                 f"flags=lanczos,crop={W}:{H},{LOOK}"]
+dec = subprocess.Popen(["ffmpeg", "-v", "error", "-i", str(EDIT), *vf,
                         "-fps_mode", "cfr", "-r", str(FPS), "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
                        stdout=subprocess.PIPE)
 enc = subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
