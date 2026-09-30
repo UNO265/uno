@@ -195,12 +195,14 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(SRC), "-filter_complex"
 LOOK = "unsharp=5:5:0.6,eq=saturation=1.06:contrast=1.03"
 if S.get("layout") == "fit":
     # 正方形・横長の元動画: 画面の真ん中に元の比率のまま置き、上下（左右）は同じ映像を大きくぼかして敷く
+    # fit_h/fit_y を指定すると、映像の高さ（画面比）と上端の位置を決められる（被写体をタイトルの下へ下げるとき）
     vf = ["-filter_complex",
           f"[0:v]tpad=stop_mode=clone:stop_duration={HOLD},split[a][b];"
           f"[b]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},gblur=sigma=40,"
           f"eq=brightness=-0.22:saturation=0.85[bg];"
-          f"[a]scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,{LOOK}[fg];"
-          f"[bg][fg]overlay=(W-w)/2:(H-h)/2"]
+          + (f"[a]scale=-2:{int(H * S['fit_h'])}:flags=lanczos,{LOOK}[fg];[bg][fg]overlay=(W-w)/2:{int(H * S['fit_y'])}"
+             if "fit_h" in S else
+             f"[a]scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,{LOOK}[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2")]
 else:
     vf = ["-vf", f"tpad=stop_mode=clone:stop_duration={HOLD},scale={W}:{H}:force_original_aspect_ratio=increase:"
                  f"flags=lanczos,crop={W}:{H},{LOOK}"]
