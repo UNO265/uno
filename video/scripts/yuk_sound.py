@@ -299,7 +299,7 @@ def write(path, x):
         w.writeframes((x * 32767).astype(np.int16).tobytes())
 
 
-def main():
+def main(name="yuk"):
     tl = json.loads((OUT / "timeline.json").read_text())
     cuts = tl["cuts"]
     total = tl["totalFrames"] / FPS
@@ -372,10 +372,14 @@ def main():
             add(fx, st(c, 3), stamp() * 0.6)
         elif v == "claim":
             add(fx, st(c, 2), stamp() * 0.5)
-        elif v == "shots":
+        elif v == "vOpen":
+            add(fx, a, hit(2.5, 44) * 0.6)
+        elif v == "vChain":
+            add(fx, st(c, 1) + 2.0, stamp() * 0.6)
+        elif v in ("shots", "vShots"):
             for i, _ in enumerate(c["p"].get("shots", [])):
                 add(fx, st(c, i) + 0.2, hit(0.9, 62) * 0.25)
-        elif v == "answer":
+        elif v in ("answer", "vAnswer"):
             add(fx, st(c, 2), hit(2.0, 46) * 0.5)
         elif v == "hall" and "question" in c["p"].get("marks", []):
             add(fx, st(c, 1), hit(2.0, 44) * 0.4)
@@ -390,6 +394,8 @@ def main():
             dips.append(st(c, 3))
         if v == "answer":
             dips.append(st(c, 2))
+        if v == "vShots" and 4 in c["p"].get("shots", []):
+            dips.append(st(c, 0))
     g = np.ones(n)
     for d in dips:
         i, j, k = int((d - 0.8) * SR), int((d + 0.05) * SR), int((d + 1.4) * SR)
@@ -403,7 +409,7 @@ def main():
     mix = np.tanh(mix * 1.1) / 1.1
     (OUT / "sound").mkdir(parents=True, exist_ok=True)
     write(OUT / "sound/bed.wav", mix[: int(total * SR)])
-    (OUT / "sound/cues.json").write_text(json.dumps([{"file": "yuk/sound/bed.wav", "from": 0, "to": tl["totalFrames"], "vol": 1.0}]))
+    (OUT / "sound/cues.json").write_text(json.dumps([{"file": f"{name}/sound/bed.wav", "from": 0, "to": tl["totalFrames"], "vol": 1.0}]))
     print("sound", round(total, 1), "s ·", " → ".join(f"{m}" for m, _, _ in spans))
 
 

@@ -7,9 +7,9 @@ import { Hall, Key, Label, PODIUM, Path, SEAT_YUK, Stage3D, V3 } from "./Theater
 import { COL, MONO, Note, UI, fadeIn } from "./kit";
 import { Recon } from "./Views";
 
-const SHOOTER: V3 = [0, 1.4, 6.5];
-const HIT: V3 = [SEAT_YUK[0], 2.0, SEAT_YUK[2]];
-const EXIT: V3 = [SEAT_YUK[0] + 0.2, 2.02, SEAT_YUK[2] - 0.6];
+export const SHOOTER: V3 = [0, 1.4, 6.5];
+export const HIT: V3 = [SEAT_YUK[0], 2.0, SEAT_YUK[2]];
+export const EXIT: V3 = [SEAT_YUK[0] + 0.2, 2.02, SEAT_YUK[2] - 0.6];
 const CHOIR: V3 = [-7.6, 0.6, 1.2];
 
 /** 바닥에 놓인 빛나는 고리 */
@@ -37,7 +37,7 @@ export const LostRings: React.FC<{ pos: V3; grow: number; color?: string }> = ({
 );
 
 /** 사람 대신 쓰는 반투명 기둥 */
-const Marker: React.FC<{ pos: V3; color?: string; op?: number }> = ({ pos, color = COL.rec, op = 1 }) => (
+export const Marker: React.FC<{ pos: V3; color?: string; op?: number }> = ({ pos, color = COL.rec, op = 1 }) => (
   <mesh position={[pos[0], pos[1] + 0.9, pos[2]]}>
     <cylinderGeometry args={[0.28, 0.28, 1.8, 24]} />
     <meshBasicMaterial color={color} transparent opacity={0.45 * op} />
@@ -128,7 +128,7 @@ export const HallView: React.FC<SP> = ({ cut }) => {
 };
 
 /* 판결에 적힌 다섯 발 */
-const SHOTS: { to: V3; label: string; text: string }[] = [
+export const SHOTS: { to: V3; label: string; text: string }[] = [
   { to: [0.3, 0.5, 6.9], label: "① 허벅지", text: "자기 허벅지" },
   { to: [0, 1.9, -0.8], label: "② 연단", text: "연단" },
   { to: SHOOTER, label: "③ 불발", text: "불발" },
@@ -204,7 +204,7 @@ const Helix: React.FC<{ len: number; r: number; turns: number; phase: number; co
   );
 };
 
-const BulletMesh: React.FC<{ x: number; spin: number; marks?: number; color?: string }> = ({ x, spin, marks = 0, color = "#B08A4E" }) => (
+export const BulletMesh: React.FC<{ x: number; spin: number; marks?: number; color?: string }> = ({ x, spin, marks = 0, color = "#B08A4E" }) => (
   <group position={[x, 0, 0]} rotation={[spin, 0, 0]}>
     <mesh rotation={[0, 0, -Math.PI / 2]}>
       <cylinderGeometry args={[0.45, 0.45, 1.2, 40]} />

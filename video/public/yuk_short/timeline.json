@@ -1,0 +1,797 @@
+{
+ "fps": 30,
+ "totalFrames": 1437,
+ "cuts": [
+  {
+   "id": "k1",
+   "sec": "hook",
+   "scene": "stage",
+   "p": {
+    "view": "vOpen"
+   },
+   "sentences": [
+    {
+     "text": "1974년 광복절, 판결문에 적힌 총알은 다섯 발입니다.",
+     "tag": "기록",
+     "quote": false,
+     "start": 0.15,
+     "end": 4.49,
+     "voice": "",
+     "words": [
+      {
+       "text": "1974년",
+       "start": 0.15,
+       "end": 1.225
+      },
+      {
+       "text": "광복절",
+       "start": 1.225,
+       "end": 1.859
+      },
+      {
+       "text": "판결문에",
+       "start": 1.859,
+       "end": 2.923
+      },
+      {
+       "text": "적힌",
+       "start": 2.923,
+       "end": 3.228
+      },
+      {
+       "text": "총알은",
+       "start": 3.228,
+       "end": 3.659
+      },
+      {
+       "text": "다섯",
+       "start": 3.659,
+       "end": 3.937
+      },
+      {
+       "text": "발입니다",
+       "start": 3.937,
+       "end": 4.49
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.15,
+       "end": 1.859,
+       "text": "1974년 광복절"
+      },
+      {
+       "start": 1.859,
+       "end": 3.659,
+       "text": "판결문에 적힌 총알은"
+      },
+      {
+       "start": 3.659,
+       "end": 4.49,
+       "text": "다섯 발입니다"
+      }
+     ]
+    }
+   ],
+   "from": 0,
+   "duration": 162,
+   "voice": "yuk_short/voice/k1.wav",
+   "vat": 0.15
+  },
+  {
+   "id": "k2",
+   "sec": "shots",
+   "scene": "stage",
+   "p": {
+    "view": "vShots",
+    "shots": [
+     1,
+     2,
+     3,
+     5
+    ],
+    "done": [],
+    "head": "판결 · 다섯 발"
+   },
+   "sentences": [
+    {
+     "text": "첫 발은 자기 허벅지.",
+     "tag": null,
+     "quote": false,
+     "start": 0.35,
+     "end": 1.67,
+     "voice": "",
+     "words": [
+      {
+       "text": "첫",
+       "start": 0.35,
+       "end": 0.51
+      },
+      {
+       "text": "발은",
+       "start": 0.51,
+       "end": 0.83
+      },
+      {
+       "text": "자기",
+       "start": 0.83,
+       "end": 1.07
+      },
+      {
+       "text": "허벅지",
+       "start": 1.07,
+       "end": 1.67
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.35,
+       "end": 1.67,
+       "text": "첫 발은 자기 허벅지"
+      }
+     ]
+    },
+    {
+     "text": "두 번째는 연단.",
+     "tag": null,
+     "quote": false,
+     "start": 1.77,
+     "end": 3.17,
+     "voice": "",
+     "words": [
+      {
+       "text": "두",
+       "start": 1.77,
+       "end": 2.21
+      },
+      {
+       "text": "번째는",
+       "start": 2.21,
+       "end": 2.73
+      },
+      {
+       "text": "연단",
+       "start": 2.73,
+       "end": 3.17
+      }
+     ],
+     "cards": [
+      {
+       "start": 1.77,
+       "end": 3.17,
+       "text": "두 번째는 연단"
+      }
+     ]
+    },
+    {
+     "text": "세 번째는 불발.",
+     "tag": null,
+     "quote": false,
+     "start": 3.53,
+     "end": 4.55,
+     "voice": "",
+     "words": [
+      {
+       "text": "세",
+       "start": 3.53,
+       "end": 3.73
+      },
+      {
+       "text": "번째는",
+       "start": 3.73,
+       "end": 4.13
+      },
+      {
+       "text": "불발",
+       "start": 4.13,
+       "end": 4.55
+      }
+     ],
+     "cards": [
+      {
+       "start": 3.53,
+       "end": 4.55,
+       "text": "세 번째는 불발"
+      }
+     ]
+    },
+    {
+     "text": "다섯 번째는 무대 뒤 태극기.",
+     "tag": null,
+     "quote": false,
+     "start": 4.83,
+     "end": 6.85,
+     "voice": "",
+     "words": [
+      {
+       "text": "다섯",
+       "start": 4.83,
+       "end": 5.17
+      },
+      {
+       "text": "번째는",
+       "start": 5.17,
+       "end": 5.63
+      },
+      {
+       "text": "무대",
+       "start": 5.63,
+       "end": 6.01
+      },
+      {
+       "text": "뒤",
+       "start": 6.01,
+       "end": 6.25
+      },
+      {
+       "text": "태극기",
+       "start": 6.25,
+       "end": 6.85
+      }
+     ],
+     "cards": [
+      {
+       "start": 4.83,
+       "end": 6.85,
+       "text": "다섯 번째는 무대 뒤 태극기"
+      }
+     ]
+    }
+   ],
+   "from": 162,
+   "duration": 226,
+   "voice": "yuk_short/voice/k2.wav",
+   "vat": 0.35
+  },
+  {
+   "id": "k3",
+   "sec": "shots",
+   "scene": "stage",
+   "p": {
+    "view": "vShots",
+    "shots": [
+     4
+    ],
+    "done": [
+     1,
+     2,
+     3,
+     5
+    ],
+    "head": "네 번째"
+   },
+   "sentences": [
+    {
+     "text": "그리고 네 번째.",
+     "tag": null,
+     "quote": false,
+     "start": 0.35,
+     "end": 1.23,
+     "voice": "",
+     "words": [
+      {
+       "text": "그리고",
+       "start": 0.35,
+       "end": 0.55
+      },
+      {
+       "text": "네",
+       "start": 0.55,
+       "end": 0.83
+      },
+      {
+       "text": "번째",
+       "start": 0.83,
+       "end": 1.23
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.35,
+       "end": 1.23,
+       "text": "그리고 네 번째"
+      }
+     ]
+    },
+    {
+     "text": "육영수 여사를 맞힌 총알입니다.",
+     "tag": null,
+     "quote": false,
+     "start": 1.23,
+     "end": 3.45,
+     "voice": "",
+     "words": [
+      {
+       "text": "육영수",
+       "start": 1.23,
+       "end": 2.19
+      },
+      {
+       "text": "여사를",
+       "start": 2.19,
+       "end": 2.49
+      },
+      {
+       "text": "맞힌",
+       "start": 2.49,
+       "end": 2.89
+      },
+      {
+       "text": "총알입니다",
+       "start": 2.89,
+       "end": 3.45
+      }
+     ],
+     "cards": [
+      {
+       "start": 1.23,
+       "end": 3.45,
+       "text": "육영수 여사를 맞힌 총알입니다"
+      }
+     ]
+    }
+   ],
+   "from": 388,
+   "duration": 130,
+   "voice": "yuk_short/voice/k3.wav",
+   "vat": 0.35
+  },
+  {
+   "id": "k4",
+   "sec": "chain",
+   "scene": "stage",
+   "p": {
+    "view": "vExit"
+   },
+   "sentences": [
+    {
+     "text": "집도의는 총알이 머리를 뚫고 나갔다고 증언했습니다.",
+     "tag": "증언",
+     "quote": false,
+     "start": 0.35,
+     "end": 3.41,
+     "voice": "",
+     "words": [
+      {
+       "text": "집도의는",
+       "start": 0.35,
+       "end": 0.91
+      },
+      {
+       "text": "총알이",
+       "start": 0.91,
+       "end": 1.35
+      },
+      {
+       "text": "머리를",
+       "start": 1.35,
+       "end": 1.77
+      },
+      {
+       "text": "뚫고",
+       "start": 1.77,
+       "end": 2.15
+      },
+      {
+       "text": "나갔다고",
+       "start": 2.15,
+       "end": 2.71
+      },
+      {
+       "text": "증언했습니다",
+       "start": 2.71,
+       "end": 3.41
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.35,
+       "end": 2.15,
+       "text": "집도의는 총알이 머리를 뚫고"
+      },
+      {
+       "start": 2.15,
+       "end": 3.41,
+       "text": "나갔다고 증언했습니다"
+      }
+     ]
+    },
+    {
+     "text": "그렇다면 탄두는 식장 어딘가에 있었다는 뜻입니다.",
+     "tag": "증언",
+     "quote": false,
+     "start": 3.81,
+     "end": 7.19,
+     "voice": "",
+     "words": [
+      {
+       "text": "그렇다면",
+       "start": 3.81,
+       "end": 4.55
+      },
+      {
+       "text": "탄두는",
+       "start": 4.55,
+       "end": 5.17
+      },
+      {
+       "text": "식장",
+       "start": 5.17,
+       "end": 5.79
+      },
+      {
+       "text": "어딘가에",
+       "start": 5.79,
+       "end": 6.37
+      },
+      {
+       "text": "있었다는",
+       "start": 6.37,
+       "end": 6.79
+      },
+      {
+       "text": "뜻입니다",
+       "start": 6.79,
+       "end": 7.19
+      }
+     ],
+     "cards": [
+      {
+       "start": 3.81,
+       "end": 6.37,
+       "text": "그렇다면 탄두는 식장 어딘가에"
+      },
+      {
+       "start": 6.37,
+       "end": 7.19,
+       "text": "있었다는 뜻입니다"
+      }
+     ]
+    }
+   ],
+   "from": 518,
+   "duration": 242,
+   "voice": "yuk_short/voice/k4.wav",
+   "vat": 0.35
+  },
+  {
+   "id": "k5",
+   "sec": "chain",
+   "scene": "stage",
+   "p": {
+    "view": "vChain"
+   },
+   "sentences": [
+    {
+     "text": "경호실장이 수거했다는 증언은 있습니다.",
+     "tag": "증언",
+     "quote": false,
+     "start": 0.35,
+     "end": 2.55,
+     "voice": "",
+     "words": [
+      {
+       "text": "경호실장이",
+       "start": 0.35,
+       "end": 0.95
+      },
+      {
+       "text": "수거했다는",
+       "start": 0.95,
+       "end": 1.61
+      },
+      {
+       "text": "증언은",
+       "start": 1.61,
+       "end": 2.21
+      },
+      {
+       "text": "있습니다",
+       "start": 2.21,
+       "end": 2.55
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.35,
+       "end": 1.61,
+       "text": "경호실장이 수거했다는"
+      },
+      {
+       "start": 1.61,
+       "end": 2.55,
+       "text": "증언은 있습니다"
+      }
+     ]
+    },
+    {
+     "text": "그런데 누가 보관했는지, 범인의 총과 대조했는지는 지금도 공개된 기록이 없습니다.",
+     "tag": "미공개",
+     "quote": false,
+     "start": 3.11,
+     "end": 8.87,
+     "voice": "",
+     "words": [
+      {
+       "text": "그런데",
+       "start": 3.11,
+       "end": 3.65
+      },
+      {
+       "text": "누가",
+       "start": 3.65,
+       "end": 3.95
+      },
+      {
+       "text": "보관했는지",
+       "start": 3.95,
+       "end": 4.79
+      },
+      {
+       "text": "범인의",
+       "start": 4.79,
+       "end": 5.65
+      },
+      {
+       "text": "총과",
+       "start": 5.65,
+       "end": 6.07
+      },
+      {
+       "text": "대조했는지는",
+       "start": 6.07,
+       "end": 6.87
+      },
+      {
+       "text": "지금도",
+       "start": 6.87,
+       "end": 7.75
+      },
+      {
+       "text": "공개된",
+       "start": 7.75,
+       "end": 8.29
+      },
+      {
+       "text": "기록이",
+       "start": 8.29,
+       "end": 8.65
+      },
+      {
+       "text": "없습니다",
+       "start": 8.65,
+       "end": 8.87
+      }
+     ],
+     "cards": [
+      {
+       "start": 3.11,
+       "end": 4.79,
+       "text": "그런데 누가 보관했는지"
+      },
+      {
+       "start": 4.79,
+       "end": 7.75,
+       "text": "범인의 총과 대조했는지는 지금도"
+      },
+      {
+       "start": 7.75,
+       "end": 8.87,
+       "text": "공개된 기록이 없습니다"
+      }
+     ]
+    }
+   ],
+   "from": 760,
+   "duration": 298,
+   "voice": "yuk_short/voice/k5.wav",
+   "vat": 0.35
+  },
+  {
+   "id": "k6",
+   "sec": "ch5",
+   "scene": "stage",
+   "p": {
+    "view": "vAnswer"
+   },
+   "sentences": [
+    {
+     "text": "판결은 문세광입니다.",
+     "tag": "기록",
+     "quote": false,
+     "start": 0.35,
+     "end": 1.77,
+     "voice": "",
+     "words": [
+      {
+       "text": "판결은",
+       "start": 0.35,
+       "end": 0.89
+      },
+      {
+       "text": "문세광입니다",
+       "start": 0.89,
+       "end": 1.77
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.35,
+       "end": 1.77,
+       "text": "판결은 문세광입니다"
+      }
+     ]
+    },
+    {
+     "text": "이 결론을 뒤집는 기록은 없습니다.",
+     "tag": "기록",
+     "quote": false,
+     "start": 2.39,
+     "end": 4.15,
+     "voice": "",
+     "words": [
+      {
+       "text": "이",
+       "start": 2.39,
+       "end": 2.45
+      },
+      {
+       "text": "결론을",
+       "start": 2.45,
+       "end": 2.99
+      },
+      {
+       "text": "뒤집는",
+       "start": 2.99,
+       "end": 3.45
+      },
+      {
+       "text": "기록은",
+       "start": 3.45,
+       "end": 3.89
+      },
+      {
+       "text": "없습니다",
+       "start": 3.89,
+       "end": 4.15
+      }
+     ],
+     "cards": [
+      {
+       "start": 2.39,
+       "end": 3.45,
+       "text": "이 결론을 뒤집는"
+      },
+      {
+       "start": 3.45,
+       "end": 4.15,
+       "text": "기록은 없습니다"
+      }
+     ]
+    },
+    {
+     "text": "다만 확인해 줄 기록 하나가 비어 있을 뿐입니다.",
+     "tag": "기록",
+     "quote": false,
+     "start": 4.81,
+     "end": 7.83,
+     "voice": "",
+     "words": [
+      {
+       "text": "다만",
+       "start": 4.81,
+       "end": 5.23
+      },
+      {
+       "text": "확인해",
+       "start": 5.23,
+       "end": 5.935
+      },
+      {
+       "text": "줄",
+       "start": 5.935,
+       "end": 6.17
+      },
+      {
+       "text": "기록",
+       "start": 6.17,
+       "end": 6.41
+      },
+      {
+       "text": "하나가",
+       "start": 6.41,
+       "end": 6.79
+      },
+      {
+       "text": "비어",
+       "start": 6.79,
+       "end": 7.1
+      },
+      {
+       "text": "있을",
+       "start": 7.1,
+       "end": 7.41
+      },
+      {
+       "text": "뿐입니다",
+       "start": 7.41,
+       "end": 7.83
+      }
+     ],
+     "cards": [
+      {
+       "start": 4.81,
+       "end": 6.79,
+       "text": "다만 확인해 줄 기록 하나가"
+      },
+      {
+       "start": 6.79,
+       "end": 7.83,
+       "text": "비어 있을 뿐입니다"
+      }
+     ]
+    }
+   ],
+   "from": 1058,
+   "duration": 259,
+   "voice": "yuk_short/voice/k6.wav",
+   "vat": 0.35
+  },
+  {
+   "id": "k7",
+   "sec": "ch5",
+   "scene": "stage",
+   "p": {
+    "view": "vEnd"
+   },
+   "sentences": [
+    {
+     "text": "전체 기록은 본편에서 확인하세요.",
+     "tag": null,
+     "quote": false,
+     "start": 0.35,
+     "end": 2.01,
+     "voice": "",
+     "words": [
+      {
+       "text": "전체",
+       "start": 0.35,
+       "end": 0.65
+      },
+      {
+       "text": "기록은",
+       "start": 0.65,
+       "end": 1.03
+      },
+      {
+       "text": "본편에서",
+       "start": 1.03,
+       "end": 1.55
+      },
+      {
+       "text": "확인하세요",
+       "start": 1.55,
+       "end": 2.01
+      }
+     ],
+     "cards": [
+      {
+       "start": 0.35,
+       "end": 1.55,
+       "text": "전체 기록은 본편에서"
+      },
+      {
+       "start": 1.55,
+       "end": 2.01,
+       "text": "확인하세요"
+      }
+     ]
+    }
+   ],
+   "from": 1317,
+   "duration": 120,
+   "voice": "yuk_short/voice/k7.wav",
+   "vat": 0.35
+  }
+ ]
+}
