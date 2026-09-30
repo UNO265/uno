@@ -252,6 +252,58 @@ def zoom_at(t):
     return 1.0, 0.5, 0.5
 
 
+# 解説グラフィック: "marks": [{"type": "arrow"|"circle"|"flash", "t0", "t1", ...}]（編集後の時間・画面比の座標）
+#   arrow : "path": [[t, x, y], ...] 矢印の先（下向き）が被写体を追う。"label" は矢印の上の文字
+#   circle: "path" の位置に輪、"r" は半径（画面幅比）
+#   flash : 白く光ってすっと消える（フック → 本編の切り替え）
+MARKS = S.get("marks", [])
+MARK_FONT = ImageFont.truetype(FONT, 60)
+
+
+def _pos(path, t):
+    if t <= path[0][0]:
+        return path[0][1], path[0][2]
+    for (ta, xa, ya), (tb, xb, yb) in zip(path, path[1:]):
+        if ta <= t <= tb:
+            u = (t - ta) / max(tb - ta, 1e-6)
+            return xa + (xb - xa) * u, ya + (yb - ya) * u
+    return path[-1][1], path[-1][2]
+
+
+def draw_marks(frame, t):
+    act = [mk for mk in MARKS if mk["t0"] <= t <= mk["t1"]]
+    if not act:
+        return frame
+    im = Image.fromarray((frame * 255 + 0.5).astype(np.uint8)).convert("RGBA")
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(lay)
+    for mk in act:
+        a = min(1.0, (t - mk["t0"]) / 0.12, (mk["t1"] - t) / 0.12)
+        if mk["type"] == "flash":
+            u = (t - mk["t0"]) / max(mk["t1"] - mk["t0"], 1e-6)
+            d.rectangle([0, 0, W, H], fill=(255, 255, 255, int(220 * (1 - u))))
+            continue
+        x, y = _pos(mk["path"], t)
+        x, y = x * W, y * H
+        col = (255, 216, 90, int(255 * a))
+        dark = (40, 26, 18, int(255 * a))
+        if mk["type"] == "arrow":
+            L, hw = 150, 38
+            for c, grow in ((dark, 7), (col, 0)):
+                d.rectangle([x - 11 - grow, y - L - grow, x + 11 + grow, y - hw * 1.2], fill=c)
+                d.polygon([(x - hw - grow, y - hw * 1.3 - grow), (x + hw + grow, y - hw * 1.3 - grow),
+                           (x, y + grow)], fill=c)
+            if mk.get("label"):
+                tw = MARK_FONT.getlength(mk["label"])
+                d.text((x - tw / 2, y - L - 80), mk["label"], font=MARK_FONT, fill=col, stroke_width=7,
+                       stroke_fill=dark)
+        elif mk["type"] == "circle":
+            r = mk.get("r", 0.12) * W
+            d.ellipse([x - r, y - r, x + r, y + r], outline=dark, width=18)
+            d.ellipse([x - r + 3, y - r + 3, x + r - 3, y + r - 3], outline=col, width=11)
+    return np.asarray(Image.alpha_composite(im, lay).convert("RGB"), np.float32) / 255.0
+
+
 fsize = W * H * 3
 f = 0
 while True:
@@ -275,6 +327,7 @@ while True:
         im = Image.fromarray((frame * 255 + 0.5).astype(np.uint8)).resize((W, H), Image.BICUBIC,
                                                                           box=(x0, y0, x0 + cw, y0 + ch))
         frame = np.asarray(im, np.float32) / 255.0
+    frame = draw_marks(frame, t)
     for L, a in [(title_layer_at(t), 1.0)] + [(L, alpha_at(t, s, e)) for s, e, L in layers]:
         if a > 0:
             al = L[..., 3:4] * a
