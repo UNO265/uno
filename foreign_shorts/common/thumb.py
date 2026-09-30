@@ -8,10 +8,17 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 S = json.loads(Path(sys.argv[1]).read_text())
 EDIT, T, OUT, FONT = sys.argv[2], float(sys.argv[3]), sys.argv[4], sys.argv[5]
 W, H = 1080, 1920
-raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(T), "-i", EDIT, "-frames:v", "1", "-vf",
-                      f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},"
-                      "unsharp=5:5:0.6,eq=saturation=1.06:contrast=1.03", "-f", "rawvideo", "-pix_fmt", "rgb24", "-"],
-                     capture_output=True, check=True).stdout
+LOOK = "unsharp=5:5:0.6,eq=saturation=1.06:contrast=1.03"
+if S.get("layout") == "fit":  # build.py と同じ: 元の比率で置き、まわりはぼかした同じ映像
+    fg = (f"[a]scale=-2:{int(H * S['fit_h'])}:flags=lanczos,{LOOK}[fg];[bg][fg]overlay=(W-w)/2:{int(H * S['fit_y'])}"
+          if "fit_h" in S else
+          f"[a]scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,{LOOK}[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2")
+    vf = ["-filter_complex", f"[0:v]split[a][b];[b]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},"
+                             f"gblur=sigma=40,eq=brightness=-0.22:saturation=0.85[bg];" + fg]
+else:
+    vf = ["-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase:flags=lanczos,crop={W}:{H},{LOOK}"]
+raw = subprocess.run(["ffmpeg", "-v", "error", "-ss", str(T), "-i", EDIT, "-frames:v", "1", *vf,
+                      "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
 im = Image.frombytes("RGB", (W, H), raw)
 
 
