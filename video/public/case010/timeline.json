@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 24528,
+ "totalFrames": 24323,
  "cuts": [
   {
    "id": "E01",
@@ -8,75 +8,70 @@
     {
      "text": "夜11時のコンビニ。",
      "start": 0.15,
-     "end": 1.9601666666666666
+     "end": 1.8129374999999999
     },
     {
      "text": "棚には、まだ弁当が並んでいる。",
-     "start": 2.2401666666666666,
-     "end": 4.6774375
+     "start": 2.0929375,
+     "end": 4.510020833333334
     }
    ],
    "voice": "case010/voice/E01.wav",
    "voiceStart": 0.15,
    "from": 0,
-   "duration": 158
+   "duration": 153
   },
   {
    "id": "E02",
    "segments": [
     {
-     "text": "半額なら買うのに――",
+     "text": "半額なら、買うのに。",
      "start": 0.4,
-     "end": 1.8262708333333335
+     "end": 2.228458333333333
     },
     {
-     "text": "でもコンビニで、半額シールは、あまり見かけない。",
-     "start": 2.3762708333333333,
-     "end": 6.0911875
+     "text": "でも、半額シールは、あまり見かけない。",
+     "start": 2.508458333333333,
+     "end": 5.670166666666667
     }
    ],
    "voice": "case010/voice/E02.wav",
    "voiceStart": 0.4,
-   "from": 158,
-   "duration": 201
+   "from": 153,
+   "duration": 188
   },
   {
    "id": "E03",
    "segments": [
     {
-     "text": "売れ残った弁当は、数時間後に、ごみになる。",
+     "text": "売れ残れば、数時間後にはごみになる。",
      "start": 0.4,
-     "end": 3.9319375
+     "end": 3.118125
     },
     {
-     "text": "2020年に公正取引委員会が発表した調査では、その量は、1店で1年に468万円分。",
-     "start": 4.2119375,
-     "end": 12.345625000000002
+     "text": "国の調査では、1店で1年に468万円分。",
+     "start": 3.398125,
+     "end": 7.779041666666666
     }
    ],
    "voice": "case010/voice/E03.wav",
    "voiceStart": 0.4,
-   "from": 359,
-   "duration": 388
+   "from": 341,
+   "duration": 251
   },
   {
    "id": "E04",
    "segments": [
     {
-     "text": "スーパーなら値引きして売るのに、",
-     "start": 0.4,
-     "end": 2.275916666666667
-    },
-    {
      "text": "コンビニは、なぜ値引きせずに捨てるのか？",
-     "start": 2.5559166666666666,
-     "end": 5.433208333333333
+     "start": 0.15,
+     "end": 3.0272916666666667
     }
    ],
    "voice": "case010/voice/E04.wav",
-   "voiceStart": 0.4,
-   "from": 747,
-   "duration": 178
+   "voiceStart": 0.15,
+   "from": 592,
+   "duration": 106
   },
   {
    "id": "E05",
@@ -94,7 +89,7 @@
    ],
    "voice": "case010/voice/E05.wav",
    "voiceStart": 0.4,
-   "from": 925,
+   "from": 698,
    "duration": 223
   },
   {
@@ -113,7 +108,7 @@
    ],
    "voice": "case010/voice/E06.wav",
    "voiceStart": 0.4,
-   "from": 1148,
+   "from": 921,
    "duration": 169
   },
   {
@@ -132,7 +127,7 @@
    ],
    "voice": "case010/voice/E07.wav",
    "voiceStart": 0.4,
-   "from": 1317,
+   "from": 1090,
    "duration": 379
   },
   {
@@ -156,7 +151,7 @@
    ],
    "voice": "case010/voice/E08.wav",
    "voiceStart": 0.4,
-   "from": 1696,
+   "from": 1469,
    "duration": 651
   },
   {
@@ -185,7 +180,7 @@
    ],
    "voice": "case010/voice/E09.wav",
    "voiceStart": 0.4,
-   "from": 2347,
+   "from": 2120,
    "duration": 532
   },
   {
@@ -204,7 +199,7 @@
    ],
    "voice": "case010/voice/E10.wav",
    "voiceStart": 0.4,
-   "from": 2879,
+   "from": 2652,
    "duration": 187
   },
   {
@@ -228,7 +223,7 @@
    ],
    "voice": "case010/voice/E11.wav",
    "voiceStart": 0.4,
-   "from": 3066,
+   "from": 2839,
    "duration": 288
   },
   {
@@ -267,7 +262,7 @@
    ],
    "voice": "case010/voice/E12.wav",
    "voiceStart": 0.4,
-   "from": 3354,
+   "from": 3127,
    "duration": 1077
   },
   {
@@ -306,7 +301,7 @@
    ],
    "voice": "case010/voice/E13.wav",
    "voiceStart": 0.4,
-   "from": 4431,
+   "from": 4204,
    "duration": 731
   },
   {
@@ -335,7 +330,7 @@
    ],
    "voice": "case010/voice/E13B.wav",
    "voiceStart": 0.4,
-   "from": 5162,
+   "from": 4935,
    "duration": 714
   },
   {
@@ -374,7 +369,7 @@
    ],
    "voice": "case010/voice/E14.wav",
    "voiceStart": 0.4,
-   "from": 5876,
+   "from": 5649,
    "duration": 649
   },
   {
@@ -408,7 +403,7 @@
    ],
    "voice": "case010/voice/E15.wav",
    "voiceStart": 0.4,
-   "from": 6525,
+   "from": 6298,
    "duration": 589
   },
   {
@@ -427,7 +422,7 @@
    ],
    "voice": "case010/voice/E16.wav",
    "voiceStart": 0.4,
-   "from": 7114,
+   "from": 6887,
    "duration": 216
   },
   {
@@ -461,7 +456,7 @@
    ],
    "voice": "case010/voice/E17.wav",
    "voiceStart": 0.4,
-   "from": 7330,
+   "from": 7103,
    "duration": 628
   },
   {
@@ -495,7 +490,7 @@
    ],
    "voice": "case010/voice/E18.wav",
    "voiceStart": 0.4,
-   "from": 7958,
+   "from": 7731,
    "duration": 593
   },
   {
@@ -519,7 +514,7 @@
    ],
    "voice": "case010/voice/E19.wav",
    "voiceStart": 0.4,
-   "from": 8551,
+   "from": 8324,
    "duration": 639
   },
   {
@@ -538,7 +533,7 @@
    ],
    "voice": "case010/voice/E20.wav",
    "voiceStart": 0.4,
-   "from": 9190,
+   "from": 8963,
    "duration": 174
   },
   {
@@ -572,7 +567,7 @@
    ],
    "voice": "case010/voice/E21.wav",
    "voiceStart": 0.4,
-   "from": 9364,
+   "from": 9137,
    "duration": 837
   },
   {
@@ -606,7 +601,7 @@
    ],
    "voice": "case010/voice/E22.wav",
    "voiceStart": 0.4,
-   "from": 10201,
+   "from": 9974,
    "duration": 963
   },
   {
@@ -655,7 +650,7 @@
    ],
    "voice": "case010/voice/E23.wav",
    "voiceStart": 0.4,
-   "from": 11164,
+   "from": 10937,
    "duration": 1060
   },
   {
@@ -674,7 +669,7 @@
    ],
    "voice": "case010/voice/E24.wav",
    "voiceStart": 0.4,
-   "from": 12224,
+   "from": 11997,
    "duration": 188
   },
   {
@@ -708,7 +703,7 @@
    ],
    "voice": "case010/voice/E25.wav",
    "voiceStart": 0.4,
-   "from": 12412,
+   "from": 12185,
    "duration": 747
   },
   {
@@ -742,7 +737,7 @@
    ],
    "voice": "case010/voice/E26.wav",
    "voiceStart": 0.4,
-   "from": 13159,
+   "from": 12932,
    "duration": 791
   },
   {
@@ -776,7 +771,7 @@
    ],
    "voice": "case010/voice/E27.wav",
    "voiceStart": 0.4,
-   "from": 13950,
+   "from": 13723,
    "duration": 895
   },
   {
@@ -805,7 +800,7 @@
    ],
    "voice": "case010/voice/E28.wav",
    "voiceStart": 0.4,
-   "from": 14845,
+   "from": 14618,
    "duration": 881
   },
   {
@@ -854,7 +849,7 @@
    ],
    "voice": "case010/voice/E29.wav",
    "voiceStart": 0.4,
-   "from": 15726,
+   "from": 15499,
    "duration": 1311
   },
   {
@@ -888,7 +883,7 @@
    ],
    "voice": "case010/voice/E30.wav",
    "voiceStart": 0.4,
-   "from": 17037,
+   "from": 16810,
    "duration": 784
   },
   {
@@ -912,7 +907,7 @@
    ],
    "voice": "case010/voice/E30B.wav",
    "voiceStart": 0.4,
-   "from": 17821,
+   "from": 17594,
    "duration": 598
   },
   {
@@ -936,7 +931,7 @@
    ],
    "voice": "case010/voice/E31.wav",
    "voiceStart": 0.4,
-   "from": 18419,
+   "from": 18192,
    "duration": 302
   },
   {
@@ -950,7 +945,7 @@
    ],
    "voice": "case010/voice/E32.wav",
    "voiceStart": 0.4,
-   "from": 18721,
+   "from": 18494,
    "duration": 191
   },
   {
@@ -985,42 +980,51 @@
      "text": "本部の負担には、上限がある。",
      "start": 24.310916666666667,
      "end": 26.6081875
-    },
-    {
-     "text": "店が払うチャージの率も、最大76%から67%に下がる。",
-     "start": 26.8881875,
-     "end": 32.746583333333334
-    },
-    {
-     "text": "一方で、水道光熱費の本部の負担は、80%から50%になる。",
-     "start": 33.026583333333335,
-     "end": 39.15414583333333
-    },
-    {
-     "text": "契約の期間は、15年から10年に短くなり、",
-     "start": 39.43414583333334,
-     "end": 43.25175000000001
-    },
-    {
-     "text": "複数の店を持つオーナーには、2店目から1店あたり月10万円を、チャージから差し引く。",
-     "start": 43.53175000000001,
-     "end": 50.02997916666668
-    },
-    {
-     "text": "24時間営業の店には、月20万円を差し引く。",
-     "start": 50.30997916666668,
-     "end": 54.48177083333334
-    },
-    {
-     "text": "会社は、新しい加盟店を増やすため、と説明している。",
-     "start": 54.761770833333344,
-     "end": 59.10870833333335
     }
    ],
    "voice": "case010/voice/E33.wav",
    "voiceStart": 0.4,
-   "from": 18912,
-   "duration": 1791
+   "from": 18685,
+   "duration": 816
+  },
+  {
+   "id": "E33B",
+   "segments": [
+    {
+     "text": "店が払うチャージの率も、最大76%から67%に下がる。",
+     "start": 0.4,
+     "end": 6.258395833333334
+    },
+    {
+     "text": "一方で、水道光熱費の本部の負担は、80%から50%になる。",
+     "start": 6.538395833333334,
+     "end": 12.665958333333334
+    },
+    {
+     "text": "契約の期間は、15年から10年に短くなり、",
+     "start": 12.945958333333333,
+     "end": 16.7635625
+    },
+    {
+     "text": "複数の店を持つオーナーには、2店目から1店あたり月10万円を、チャージから差し引く。",
+     "start": 17.0435625,
+     "end": 23.54179166666667
+    },
+    {
+     "text": "24時間営業の店には、月20万円を差し引く。",
+     "start": 23.82179166666667,
+     "end": 27.993583333333337
+    },
+    {
+     "text": "会社は、新しい加盟店を増やすため、と説明している。",
+     "start": 28.273583333333338,
+     "end": 32.62052083333334
+    }
+   ],
+   "voice": "case010/voice/E33B.wav",
+   "voiceStart": 0.4,
+   "from": 19501,
+   "duration": 997
   },
   {
    "id": "E34",
@@ -1058,7 +1062,7 @@
    ],
    "voice": "case010/voice/E34.wav",
    "voiceStart": 0.4,
-   "from": 20703,
+   "from": 20498,
    "duration": 635
   },
   {
@@ -1082,7 +1086,7 @@
    ],
    "voice": "case010/voice/E35.wav",
    "voiceStart": 0.4,
-   "from": 21338,
+   "from": 21133,
    "duration": 298
   },
   {
@@ -1121,7 +1125,7 @@
    ],
    "voice": "case010/voice/E36.wav",
    "voiceStart": 0.4,
-   "from": 21636,
+   "from": 21431,
    "duration": 748
   },
   {
@@ -1140,7 +1144,7 @@
    ],
    "voice": "case010/voice/E37.wav",
    "voiceStart": 0.4,
-   "from": 22384,
+   "from": 22179,
    "duration": 367
   },
   {
@@ -1154,7 +1158,7 @@
    ],
    "voice": "case010/voice/E38.wav",
    "voiceStart": 0.4,
-   "from": 22751,
+   "from": 22546,
    "duration": 302
   },
   {
@@ -1184,7 +1188,7 @@
    "clue": "FINAL",
    "voice": "case010/voice/E39.wav",
    "voiceStart": 0.4,
-   "from": 23053,
+   "from": 22848,
    "duration": 698
   },
   {
@@ -1203,7 +1207,7 @@
    ],
    "voice": "case010/voice/E40.wav",
    "voiceStart": 0.6,
-   "from": 23751,
+   "from": 23546,
    "duration": 324
   },
   {
@@ -1217,7 +1221,7 @@
    ],
    "voice": "case010/voice/E41.wav",
    "voiceStart": 0.4,
-   "from": 24075,
+   "from": 23870,
    "duration": 117
   },
   {
@@ -1236,7 +1240,7 @@
    ],
    "voice": "case010/voice/E42.wav",
    "voiceStart": 0.4,
-   "from": 24192,
+   "from": 23987,
    "duration": 119
   },
   {
@@ -1255,7 +1259,7 @@
    ],
    "voice": "case010/voice/E43.wav",
    "voiceStart": 0.4,
-   "from": 24311,
+   "from": 24106,
    "duration": 217
   }
  ]
