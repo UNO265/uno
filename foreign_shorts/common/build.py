@@ -134,8 +134,18 @@ def text_layer(spec, size, cy, stroke=8, fill="white", hl=None, band=False, cx=W
 
 
 title = S["title"]
-title_layer = text_layer("\n".join(l["text"] for l in title), 80, H * 0.125, 9,
-                         hl=next((l["text"] for l in title if l["color"] == "yellow"), None), band=True)
+TITLE_TEXT = "\n".join(l["text"] for l in title)
+TITLE_HL = next((l["text"] for l in title if l["color"] == "yellow"), None)
+# タイトルの位置: 既定は上（12.5%）。被写体が上にある場面だけ "title_pos": [{"t0", "t1", "y"}] で動かす
+#   （場面の切り替わりに合わせて t0/t1 を置くと、位置が変わっても不自然にならない）
+_title_cache = {}
+
+
+def title_layer_at(t):
+    y = next((p["y"] for p in S.get("title_pos", []) if p["t0"] <= t < p["t1"]), 0.125)
+    if y not in _title_cache:
+        _title_cache[y] = text_layer(TITLE_TEXT, 80, H * y, 9, hl=TITLE_HL, band=True)
+    return _title_cache[y]
 SUB_Y = S.get("sub_y", 0.63)
 layers = []  # (start, end, layer)
 starts = [ln["start"] for ln in S["narration"]] + [DUR]
@@ -204,8 +214,9 @@ for b in src.get("blur", []):
                                          radius=40, fill=255)
     mk = np.asarray(mk.filter(ImageFilter.GaussianBlur(pad * 0.35)), np.float32)[..., None] / 255.0
     blurs.append({"t0": b["t0"], "t1": b["t1"], "box": (x0, y0, x1, y1), "mask": mk})
-# 見せ場に寄る: {"t0", "t1", "to": 1.25, "cx": 0.5, "cy": 0.45, "hold": 秒, "back": true}
-#   t0 から ease で to 倍まで寄り、t1 まで保つ。back=true なら t1 の手前 0.35 秒で戻す
+# 見せ場に寄る: {"t0", "t1", "from": 1.0, "to": 1.25, "cx": 0.5, "cy": 0.45, "ramp": 0.4, "back": true}
+#   t0 から ease で from→to 倍まで寄り、t1 まで保つ。back=true なら t1 の手前 0.35 秒で from に戻す
+#   from=to にすれば区間ずっと一定の拡大（焼き込み文字を画面外に出すトリミングにも使う）
 ZOOMS = S.get("zooms", [])
 
 
@@ -221,7 +232,8 @@ def zoom_at(t):
             k = ease((t - z["t0"]) / ramp)
             if z.get("back"):
                 k = min(k, ease((z["t1"] - t) / 0.35))
-            return 1 + (z["to"] - 1) * k, z.get("cx", 0.5), z.get("cy", 0.5)
+            z0 = z.get("from", 1.0)
+            return z0 + (z["to"] - z0) * k, z.get("cx", 0.5), z.get("cy", 0.5)
     return 1.0, 0.5, 0.5
 
 
@@ -248,7 +260,7 @@ while True:
         im = Image.fromarray((frame * 255 + 0.5).astype(np.uint8)).resize((W, H), Image.BICUBIC,
                                                                           box=(x0, y0, x0 + cw, y0 + ch))
         frame = np.asarray(im, np.float32) / 255.0
-    for L, a in [(title_layer, 1.0)] + [(L, alpha_at(t, s, e)) for s, e, L in layers]:
+    for L, a in [(title_layer_at(t), 1.0)] + [(L, alpha_at(t, s, e)) for s, e, L in layers]:
         if a > 0:
             al = L[..., 3:4] * a
             frame = frame * (1 - al) + L[..., :3] * al
