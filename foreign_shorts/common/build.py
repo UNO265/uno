@@ -1,5 +1,7 @@
 """海外動画 → 日本向けショート（共通ビルド）。script.json の設定だけで作る。
-  - 元動画: source.segments で切り出して連結、hold_end 秒だけ最後のフレームを止める、blur で焼き込み文字を隠す
+  - 元動画: source.segments で切り出して好きな順番に連結（各区間に speed=スロー/早送り、freeze_end=止め）、
+    hold_end 秒だけ最後のフレームを止める、blur で焼き込み文字を隠す
+  - 演出: zooms で見せ場に寄る（編集後の時間で指定、なめらかに拡大・戻す）
   - 音: 元音声 (source.orig_audio 倍) + ナレーション + BGM（ナレーション中は下げる）→ -14 LUFS
   - 画面: 1080x1920 全画面、上にタイトル帯、ショートの UI を避けた位置に字幕
 usage: python3 build.py SCRIPT.json SRC.mp4 WORK_DIR OUT.mp4 FONT.ttf
@@ -14,9 +16,14 @@ S = json.loads(Path(sys.argv[1]).read_text())
 SRC, WORK, OUT, FONT = Path(sys.argv[2]), Path(sys.argv[3]), Path(sys.argv[4]), sys.argv[5]
 W, H, FPS, SR = 1080, 1920, 30, 48000
 src = S["source"]
-segs = src["segments"]
+# 区間: [from, to] または {"from", "to", "speed": 0.5 でスロー, "freeze_end": 秒}
+segs = [dict(zip(("from", "to"), sg)) if isinstance(sg, list) else dict(sg) for sg in src["segments"]]
+for sg in segs:
+    sg.setdefault("speed", 1.0)
+    sg.setdefault("freeze_end", 0.0)
+    sg["len"] = (sg["to"] - sg["from"]) / sg["speed"] + sg["freeze_end"]
 HOLD = src.get("hold_end", 0)
-DUR = sum(b - a for a, b in segs) + HOLD
+DUR = sum(sg["len"] for sg in segs) + HOLD
 
 # ---------- audio ----------
 
@@ -53,7 +60,9 @@ duck = env(pts + [(DUR, 1.0)], n)  # 1 = ナレーションなし
 
 mix = narr.copy()
 if src.get("orig_audio", 0) > 0:
-    orig = np.concatenate([load(SRC)[int(a * SR):int(b * SR)] for a, b in segs])
+    if any(sg["speed"] != 1 or sg["freeze_end"] for sg in segs):
+        sys.exit("orig_audio はスロー・止めのある区間と一緒に使えない（音がずれる）")
+    orig = np.concatenate([load(SRC)[int(sg["from"] * SR):int(sg["to"] * SR)] for sg in segs])
     mix += fit(orig, n) * src["orig_audio"] * (0.45 + 0.55 * duck)
 bgm = fit(load(WORK / "music" / "bgm.wav"), n)
 mix += bgm * (0.32 + 0.28 * duck) * env([(0, 0), (0.3, 1), (DUR - 1.0, 1), (DUR, 0)], n)
@@ -158,8 +167,11 @@ def alpha_at(t, s, e):
 fc = ["[0:v]fps=30[v0]"]
 cur = "v0"
 fc.append(f"[{cur}]split={len(segs)}" + "".join(f"[s{i}]" for i in range(len(segs))))
-for i, (a, b) in enumerate(segs):
-    fc.append(f"[s{i}]trim={a}:{b},setpts=PTS-STARTPTS[t{i}]")
+for i, sg in enumerate(segs):
+    f_ = f"[s{i}]trim={sg['from']}:{sg['to']},setpts=(PTS-STARTPTS)/{sg['speed']}"
+    if sg["freeze_end"]:
+        f_ += f",tpad=stop_mode=clone:stop_duration={sg['freeze_end']}"
+    fc.append(f_ + f"[t{i}]")
 fc.append("".join(f"[t{i}]" for i in range(len(segs))) + f"concat=n={len(segs)}:v=1:a=0[cat]")
 fc.append("[cat]null[out]")
 # 1) 元の解像度で 切り出し・ぼかし・連結 → 中間ファイル（フレーム数を固定するため一度書き出す）
@@ -192,6 +204,27 @@ for b in src.get("blur", []):
                                          radius=40, fill=255)
     mk = np.asarray(mk.filter(ImageFilter.GaussianBlur(pad * 0.35)), np.float32)[..., None] / 255.0
     blurs.append({"t0": b["t0"], "t1": b["t1"], "box": (x0, y0, x1, y1), "mask": mk})
+# 見せ場に寄る: {"t0", "t1", "to": 1.25, "cx": 0.5, "cy": 0.45, "hold": 秒, "back": true}
+#   t0 から ease で to 倍まで寄り、t1 まで保つ。back=true なら t1 の手前 0.35 秒で戻す
+ZOOMS = S.get("zooms", [])
+
+
+def ease(u):
+    u = min(1.0, max(0.0, u))
+    return u * u * (3 - 2 * u)
+
+
+def zoom_at(t):
+    for z in ZOOMS:
+        if z["t0"] <= t <= z["t1"]:
+            ramp = z.get("ramp", 0.4)
+            k = ease((t - z["t0"]) / ramp)
+            if z.get("back"):
+                k = min(k, ease((z["t1"] - t) / 0.35))
+            return 1 + (z["to"] - 1) * k, z.get("cx", 0.5), z.get("cy", 0.5)
+    return 1.0, 0.5, 0.5
+
+
 fsize = W * H * 3
 f = 0
 while True:
@@ -207,6 +240,14 @@ while True:
             reg = np.asarray(reg, np.float32) / 255.0
             m = bl["mask"]
             frame[y0:y1, x0:x1] = frame[y0:y1, x0:x1] * (1 - m) + reg * m
+    zf, cx, cy = zoom_at(t)
+    if zf > 1.001:
+        cw, ch = W / zf, H / zf
+        x0 = min(max(cx * W - cw / 2, 0), W - cw)
+        y0 = min(max(cy * H - ch / 2, 0), H - ch)
+        im = Image.fromarray((frame * 255 + 0.5).astype(np.uint8)).resize((W, H), Image.BICUBIC,
+                                                                          box=(x0, y0, x0 + cw, y0 + ch))
+        frame = np.asarray(im, np.float32) / 255.0
     for L, a in [(title_layer, 1.0)] + [(L, alpha_at(t, s, e)) for s, e, L in layers]:
         if a > 0:
             al = L[..., 3:4] * a
