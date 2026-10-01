@@ -12,8 +12,8 @@ STYLES = {
     # チャンネル A: 上 12.5% に角丸の半透明帯（文字幅に合わせる）、Zen Maru Gothic Black 80px、字幕 64px
     "a": dict(title_font=None, title_size=80, title_y=0.125, title_band="round", title_stroke=9,
               title_line=1.28, sub_font=None, sub_size=64, caption_size=68),
-    # ニマル（nimaru）: 画面のいちばん上に横幅いっぱいの帯、Dela Gothic One 116px（白 / 赤）、字幕 Mochiy Pop One 74px
-    "nimaru": dict(title_font="DelaGothicOne-Regular.ttf", title_size=116, title_y=0.14, title_band="full", title_top=True,
+    # ニマル（nimaru）: 上 150px（Shorts のアイコン域）のすぐ下に横幅いっぱいの帯、Dela Gothic One 116px（白 / 赤）、字幕 Mochiy Pop One 74px
+    "nimaru": dict(title_font="DelaGothicOne-Regular.ttf", title_size=116, title_y=0.14, title_band="full", title_top=True, title_offset=150,
                    title_stroke=7, title_line=1.18, title_red_stroke=(255, 255, 255),
                    sub_font="MochiyPopOne-Regular.ttf", sub_size=74, caption_size=78),
 }
@@ -38,12 +38,13 @@ def render_title(S, st, W, H, y):
     lh = int(size * st["title_line"])
     top = int(H * y - lh * len(lines) / 2)
     stroke = st["title_stroke"]
-    if st.get("title_top"):  # 帯を画面のいちばん上（y=0）にくっつけ、文字の上下の余白をそろえて詰める
+    if st.get("title_top"):  # 帯を title_offset の位置から始め、文字の上下の余白をそろえて詰める
         gap = st.get("title_gap", 24)
         ink_top = font.getbbox(lines[0][0], stroke_width=stroke)[1]
         ink_bot = (len(lines) - 1) * lh + font.getbbox(lines[-1][0], stroke_width=stroke)[3]
-        top = gap - ink_top
-        band = (0, top + ink_bot + gap)
+        off = st.get("title_offset", 0)  # 帯の上端の位置（px）。Shorts の上 0–150px はアイコン・状態表示が重なる
+        top = off + gap - ink_top
+        band = (off, top + ink_bot + gap)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     if st.get("title_top"):
