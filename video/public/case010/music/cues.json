@@ -1,0 +1,50 @@
+[
+ {
+  "file": "case010/music/c10_01_open.wav",
+  "from": 359,
+  "to": 1148,
+  "mood": "e_open"
+ },
+ {
+  "file": "case010/music/c10_02_calc.wav",
+  "from": 1148,
+  "to": 7114,
+  "mood": "e_calc"
+ },
+ {
+  "file": "case010/music/c10_03_rule.wav",
+  "from": 7114,
+  "to": 12224,
+  "mood": "e_rule"
+ },
+ {
+  "file": "case010/music/c10_04_why.wav",
+  "from": 12224,
+  "to": 18419,
+  "mood": "e_why"
+ },
+ {
+  "file": "case010/music/c10_05_new.wav",
+  "from": 18419,
+  "to": 21658,
+  "mood": "e_new"
+ },
+ {
+  "file": "case010/music/c10_06_choice.wav",
+  "from": 21658,
+  "to": 22773,
+  "mood": "e_choice"
+ },
+ {
+  "file": "case010/music/c10_07_answer.wav",
+  "from": 22773,
+  "to": 24097,
+  "mood": "e_answer"
+ },
+ {
+  "file": "case010/music/c10_08_outro.wav",
+  "from": 24097,
+  "to": 24550,
+  "mood": "outro"
+ }
+]
