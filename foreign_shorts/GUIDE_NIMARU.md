@@ -27,7 +27,7 @@ bash foreign_shorts/common/setup.sh        # ffmpeg·fluidsynth·VOICEVOX·폰�
    - 저는 소리를 직접 못 들으므로 음성·소리 판단은 "추정"이라고 밝힌다.
 2. **판단**: 여러 클립이면 순서 재배치/분할, 자를 구간, 오프닝 훅·해설 그래픽을 쓸지(§5), 목소리(§4).
 3. **바로 제작까지 진행**하고 결과를 보고한다(사용자는 렌더링 점검 때 수정 사항을 말해 준다). 위험(학대 논란·저작권 등)이 크면 먼저 알린다.
-4. **같이 내는 것**: 영상 + 썸네일 2장(추천/대안) + 업로드 제목 + 설명란(+한국어 번역) → `CASE/UPLOAD.md`에 기록 → 커밋·푸시.
+4. **같이 내는 것**: 영상 + 썸네일 시점(추천/대안, **완성 영상 기준 초**만 — 이미지는 만들지 않음, 2026-10-01 사용자 결정) + 업로드 제목 + 설명란(+한국어 번역) → `CASE/UPLOAD.md`에 기록 → 커밋·푸시.
 
 ---
 
@@ -49,7 +49,7 @@ S=<스크래치패드>/caseX; F=<원본.mp4>; FONT=<setup.sh가 출력한 경로
 python3 foreign_shorts/common/narration.py foreign_shorts/CASE/script.json $S/voice
 python3 foreign_shorts/CASE/music.py $S/music
 python3 foreign_shorts/common/build.py foreign_shorts/CASE/script.json "$F" $S $S/CASE_v1.mp4 $FONT
-python3 foreign_shorts/common/thumb.py foreign_shorts/CASE/script.json $S/edit.mp4 <초> $S/thumb.jpg $FONT
+# 니마루는 썸네일 이미지를 만들지 않는다(thumb.py 안 씀). 시점만 초로 보고한다.
 ```
 
 ---
@@ -116,7 +116,7 @@ python3 foreign_shorts/common/thumb.py foreign_shorts/CASE/script.json $S/edit.m
 - **「w」**: 웃긴 영상에서만, 한 편에 1~2번, 결정적 태클 대사의 **자막(`sub`)에만** 붙인다(`say`에는 넣지 않음). 감동 영상에는 쓰지 않는다.
 - **영상 속 제목(상단 띠)·썸네일**: 내용이 드러나는 제목. 2줄, 한 줄 8자 안팎(글자가 커서 길면 작아진다). 핵심(웃음·놀라움)을 빨간 2줄에. 예) 子犬と子猫の / 本気のじゃれあい
 - **업로드 제목**: **궁금증을 만드는 부제목 + 이모지 1개만**. 예) `最後、子猫はどこへ消えた？🐱` (영상 속 제목을 붙이지 않음, #Shorts도 붙이지 않음)
-- **썸네일**: 추천 1장 + 대안 1장. 결말(오치)은 숨기는 장면을 추천. 흐림 처리 구간은 thumb.py에 흐림이 없어 문구가 보이니 피한다.
+- **썸네일**: **이미지는 만들지 않고 시점(초)만** 알려 준다. 추천 1개 + 대안 1개, 완성 영상 기준 초(예: 11.0초). 결말(오치)은 숨기는 장면을 추천. 시점을 고를 때 완성 영상에서 그 프레임을 뽑아 직접 확인한다.
 - **설명란** 형식:
 
 ```
@@ -155,10 +155,10 @@ python3 foreign_shorts/common/thumb.py foreign_shorts/CASE/script.json $S/edit.m
 
 ## 8. 보고 형식 (사용자에게)
 
-1. 영상·썸네일 2장 파일 전송
+1. 영상 파일 전송(썸네일 이미지는 보내지 않음)
 2. 구성표: `| 시간 | 장면 | 내레이션 (목소리) | 한국어 |`
 3. "이번에 판단한 것": 순서·삭제, 오프닝 훅/해설 그래픽을 쓴 이유·뺀 이유, `w` 횟수, 소리 처리, 확인이 필요한 추정
-4. 썸네일 추천/대안 이유
+4. 썸네일 시점(초) 추천/대안과 이유
 5. 업로드 제목(+한국어 뜻)
 6. 설명란(일본어 코드 블록) + **한국어 번역 코드 블록**
 7. "UPLOAD.md에 기록해 푸시했습니다"
