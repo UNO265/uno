@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 24323,
+ "totalFrames": 24550,
  "cuts": [
   {
    "id": "E01",
@@ -8,70 +8,75 @@
     {
      "text": "夜11時のコンビニ。",
      "start": 0.15,
-     "end": 1.8129374999999999
+     "end": 1.9601666666666666
     },
     {
      "text": "棚には、まだ弁当が並んでいる。",
-     "start": 2.0929375,
-     "end": 4.510020833333334
+     "start": 2.2401666666666666,
+     "end": 4.6774375
     }
    ],
    "voice": "case010/voice/E01.wav",
    "voiceStart": 0.15,
    "from": 0,
-   "duration": 153
+   "duration": 158
   },
   {
    "id": "E02",
    "segments": [
     {
-     "text": "半額なら、買うのに。",
+     "text": "半額なら買うのに――",
      "start": 0.4,
-     "end": 2.228458333333333
+     "end": 1.8262708333333335
     },
     {
-     "text": "でも、半額シールは、あまり見かけない。",
-     "start": 2.508458333333333,
-     "end": 5.670166666666667
+     "text": "でもコンビニで、半額シールは、あまり見かけない。",
+     "start": 2.3762708333333333,
+     "end": 6.0911875
     }
    ],
    "voice": "case010/voice/E02.wav",
    "voiceStart": 0.4,
-   "from": 153,
-   "duration": 188
+   "from": 158,
+   "duration": 201
   },
   {
    "id": "E03",
    "segments": [
     {
-     "text": "売れ残れば、数時間後にはごみになる。",
+     "text": "売れ残った弁当は、数時間後に、ごみになる。",
      "start": 0.4,
-     "end": 3.118125
+     "end": 3.9319375
     },
     {
-     "text": "国の調査では、1店で1年に468万円分。",
-     "start": 3.398125,
-     "end": 7.779041666666666
+     "text": "2020年に公正取引委員会が発表した調査では、その量は、1店で1年に468万円分。",
+     "start": 4.2119375,
+     "end": 12.345625000000002
     }
    ],
    "voice": "case010/voice/E03.wav",
    "voiceStart": 0.4,
-   "from": 341,
-   "duration": 251
+   "from": 359,
+   "duration": 388
   },
   {
    "id": "E04",
    "segments": [
     {
+     "text": "スーパーなら値引きして売るのに、",
+     "start": 0.4,
+     "end": 2.275916666666667
+    },
+    {
      "text": "コンビニは、なぜ値引きせずに捨てるのか？",
-     "start": 0.15,
-     "end": 3.0272916666666667
+     "start": 2.5559166666666666,
+     "end": 5.433208333333333
     }
    ],
    "voice": "case010/voice/E04.wav",
-   "voiceStart": 0.15,
-   "from": 592,
-   "duration": 106
+   "voiceStart": 0.4,
+   "from": 747,
+   "duration": 178
   },
   {
    "id": "E05",
@@ -89,7 +94,7 @@
    ],
    "voice": "case010/voice/E05.wav",
    "voiceStart": 0.4,
-   "from": 698,
+   "from": 925,
    "duration": 223
   },
   {
@@ -108,7 +113,7 @@
    ],
    "voice": "case010/voice/E06.wav",
    "voiceStart": 0.4,
-   "from": 921,
+   "from": 1148,
    "duration": 169
   },
   {
@@ -127,7 +132,7 @@
    ],
    "voice": "case010/voice/E07.wav",
    "voiceStart": 0.4,
-   "from": 1090,
+   "from": 1317,
    "duration": 379
   },
   {
@@ -151,7 +156,7 @@
    ],
    "voice": "case010/voice/E08.wav",
    "voiceStart": 0.4,
-   "from": 1469,
+   "from": 1696,
    "duration": 651
   },
   {
@@ -180,7 +185,7 @@
    ],
    "voice": "case010/voice/E09.wav",
    "voiceStart": 0.4,
-   "from": 2120,
+   "from": 2347,
    "duration": 532
   },
   {
@@ -199,7 +204,7 @@
    ],
    "voice": "case010/voice/E10.wav",
    "voiceStart": 0.4,
-   "from": 2652,
+   "from": 2879,
    "duration": 187
   },
   {
@@ -223,7 +228,7 @@
    ],
    "voice": "case010/voice/E11.wav",
    "voiceStart": 0.4,
-   "from": 2839,
+   "from": 3066,
    "duration": 288
   },
   {
@@ -262,7 +267,7 @@
    ],
    "voice": "case010/voice/E12.wav",
    "voiceStart": 0.4,
-   "from": 3127,
+   "from": 3354,
    "duration": 1077
   },
   {
@@ -301,7 +306,7 @@
    ],
    "voice": "case010/voice/E13.wav",
    "voiceStart": 0.4,
-   "from": 4204,
+   "from": 4431,
    "duration": 731
   },
   {
@@ -330,7 +335,7 @@
    ],
    "voice": "case010/voice/E13B.wav",
    "voiceStart": 0.4,
-   "from": 4935,
+   "from": 5162,
    "duration": 714
   },
   {
@@ -369,7 +374,7 @@
    ],
    "voice": "case010/voice/E14.wav",
    "voiceStart": 0.4,
-   "from": 5649,
+   "from": 5876,
    "duration": 649
   },
   {
@@ -403,7 +408,7 @@
    ],
    "voice": "case010/voice/E15.wav",
    "voiceStart": 0.4,
-   "from": 6298,
+   "from": 6525,
    "duration": 589
   },
   {
@@ -422,7 +427,7 @@
    ],
    "voice": "case010/voice/E16.wav",
    "voiceStart": 0.4,
-   "from": 6887,
+   "from": 7114,
    "duration": 216
   },
   {
@@ -456,7 +461,7 @@
    ],
    "voice": "case010/voice/E17.wav",
    "voiceStart": 0.4,
-   "from": 7103,
+   "from": 7330,
    "duration": 628
   },
   {
@@ -490,7 +495,7 @@
    ],
    "voice": "case010/voice/E18.wav",
    "voiceStart": 0.4,
-   "from": 7731,
+   "from": 7958,
    "duration": 593
   },
   {
@@ -514,7 +519,7 @@
    ],
    "voice": "case010/voice/E19.wav",
    "voiceStart": 0.4,
-   "from": 8324,
+   "from": 8551,
    "duration": 639
   },
   {
@@ -533,7 +538,7 @@
    ],
    "voice": "case010/voice/E20.wav",
    "voiceStart": 0.4,
-   "from": 8963,
+   "from": 9190,
    "duration": 174
   },
   {
@@ -567,7 +572,7 @@
    ],
    "voice": "case010/voice/E21.wav",
    "voiceStart": 0.4,
-   "from": 9137,
+   "from": 9364,
    "duration": 837
   },
   {
@@ -601,7 +606,7 @@
    ],
    "voice": "case010/voice/E22.wav",
    "voiceStart": 0.4,
-   "from": 9974,
+   "from": 10201,
    "duration": 963
   },
   {
@@ -650,7 +655,7 @@
    ],
    "voice": "case010/voice/E23.wav",
    "voiceStart": 0.4,
-   "from": 10937,
+   "from": 11164,
    "duration": 1060
   },
   {
@@ -669,7 +674,7 @@
    ],
    "voice": "case010/voice/E24.wav",
    "voiceStart": 0.4,
-   "from": 11997,
+   "from": 12224,
    "duration": 188
   },
   {
@@ -703,7 +708,7 @@
    ],
    "voice": "case010/voice/E25.wav",
    "voiceStart": 0.4,
-   "from": 12185,
+   "from": 12412,
    "duration": 747
   },
   {
@@ -737,7 +742,7 @@
    ],
    "voice": "case010/voice/E26.wav",
    "voiceStart": 0.4,
-   "from": 12932,
+   "from": 13159,
    "duration": 791
   },
   {
@@ -771,7 +776,7 @@
    ],
    "voice": "case010/voice/E27.wav",
    "voiceStart": 0.4,
-   "from": 13723,
+   "from": 13950,
    "duration": 895
   },
   {
@@ -800,7 +805,7 @@
    ],
    "voice": "case010/voice/E28.wav",
    "voiceStart": 0.4,
-   "from": 14618,
+   "from": 14845,
    "duration": 881
   },
   {
@@ -849,7 +854,7 @@
    ],
    "voice": "case010/voice/E29.wav",
    "voiceStart": 0.4,
-   "from": 15499,
+   "from": 15726,
    "duration": 1311
   },
   {
@@ -883,7 +888,7 @@
    ],
    "voice": "case010/voice/E30.wav",
    "voiceStart": 0.4,
-   "from": 16810,
+   "from": 17037,
    "duration": 784
   },
   {
@@ -907,7 +912,7 @@
    ],
    "voice": "case010/voice/E30B.wav",
    "voiceStart": 0.4,
-   "from": 17594,
+   "from": 17821,
    "duration": 598
   },
   {
@@ -931,7 +936,7 @@
    ],
    "voice": "case010/voice/E31.wav",
    "voiceStart": 0.4,
-   "from": 18192,
+   "from": 18419,
    "duration": 302
   },
   {
@@ -945,7 +950,7 @@
    ],
    "voice": "case010/voice/E32.wav",
    "voiceStart": 0.4,
-   "from": 18494,
+   "from": 18721,
    "duration": 191
   },
   {
@@ -984,7 +989,7 @@
    ],
    "voice": "case010/voice/E33.wav",
    "voiceStart": 0.4,
-   "from": 18685,
+   "from": 18912,
    "duration": 816
   },
   {
@@ -1023,7 +1028,7 @@
    ],
    "voice": "case010/voice/E33B.wav",
    "voiceStart": 0.4,
-   "from": 19501,
+   "from": 19728,
    "duration": 997
   },
   {
@@ -1062,7 +1067,7 @@
    ],
    "voice": "case010/voice/E34.wav",
    "voiceStart": 0.4,
-   "from": 20498,
+   "from": 20725,
    "duration": 635
   },
   {
@@ -1086,7 +1091,7 @@
    ],
    "voice": "case010/voice/E35.wav",
    "voiceStart": 0.4,
-   "from": 21133,
+   "from": 21360,
    "duration": 298
   },
   {
@@ -1125,7 +1130,7 @@
    ],
    "voice": "case010/voice/E36.wav",
    "voiceStart": 0.4,
-   "from": 21431,
+   "from": 21658,
    "duration": 748
   },
   {
@@ -1144,7 +1149,7 @@
    ],
    "voice": "case010/voice/E37.wav",
    "voiceStart": 0.4,
-   "from": 22179,
+   "from": 22406,
    "duration": 367
   },
   {
@@ -1158,7 +1163,7 @@
    ],
    "voice": "case010/voice/E38.wav",
    "voiceStart": 0.4,
-   "from": 22546,
+   "from": 22773,
    "duration": 302
   },
   {
@@ -1188,7 +1193,7 @@
    "clue": "FINAL",
    "voice": "case010/voice/E39.wav",
    "voiceStart": 0.4,
-   "from": 22848,
+   "from": 23075,
    "duration": 698
   },
   {
@@ -1207,7 +1212,7 @@
    ],
    "voice": "case010/voice/E40.wav",
    "voiceStart": 0.6,
-   "from": 23546,
+   "from": 23773,
    "duration": 324
   },
   {
@@ -1221,7 +1226,7 @@
    ],
    "voice": "case010/voice/E41.wav",
    "voiceStart": 0.4,
-   "from": 23870,
+   "from": 24097,
    "duration": 117
   },
   {
@@ -1240,7 +1245,7 @@
    ],
    "voice": "case010/voice/E42.wav",
    "voiceStart": 0.4,
-   "from": 23987,
+   "from": 24214,
    "duration": 119
   },
   {
@@ -1259,7 +1264,7 @@
    ],
    "voice": "case010/voice/E43.wav",
    "voiceStart": 0.4,
-   "from": 24106,
+   "from": 24333,
    "duration": 217
   }
  ]
