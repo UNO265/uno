@@ -12,8 +12,8 @@ STYLES = {
     # チャンネル A: 上 12.5% に角丸の半透明帯（文字幅に合わせる）、Zen Maru Gothic Black 80px、字幕 64px
     "a": dict(title_font=None, title_size=80, title_y=0.125, title_band="round", title_stroke=9,
               title_line=1.28, sub_font=None, sub_size=64, caption_size=68),
-    # ニマル（nimaru）: 横幅いっぱいの帯、Dela Gothic One 116px（白 / 赤）、字幕 Mochiy Pop One 74px
-    "nimaru": dict(title_font="DelaGothicOne-Regular.ttf", title_size=116, title_y=0.14, title_band="full",
+    # ニマル（nimaru）: 画面のいちばん上に横幅いっぱいの帯、Dela Gothic One 116px（白 / 赤）、字幕 Mochiy Pop One 74px
+    "nimaru": dict(title_font="DelaGothicOne-Regular.ttf", title_size=116, title_y=0.14, title_band="full", title_top=True,
                    title_stroke=7, title_line=1.18, title_red_stroke=(255, 255, 255),
                    sub_font="MochiyPopOne-Regular.ttf", sub_size=74, caption_size=78),
 }
@@ -37,6 +37,8 @@ def render_title(S, st, W, H, y):
         font = ImageFont.truetype(st["title_font"], size)
     lh = int(size * st["title_line"])
     top = int(H * y - lh * len(lines) / 2)
+    if st.get("title_top"):  # 帯を画面のいちばん上（y=0）にくっつける。title_y / title_pos は使わない
+        top = int(size * 0.3)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     if st["title_band"] == "full":
