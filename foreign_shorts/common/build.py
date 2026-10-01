@@ -74,7 +74,9 @@ meas = subprocess.run(["ffmpeg", "-hide_banner", *RAW, "-af", LN + ":print_forma
 mj = json.loads(meas[meas.rindex("{"):meas.rindex("}") + 1])
 LN2 = (f"{LN}:measured_I={mj['input_i']}:measured_TP={mj['input_tp']}:measured_LRA={mj['input_lra']}:"
        f"measured_thresh={mj['input_thresh']}:offset={mj['target_offset']}:linear=true")
-subprocess.run(["ffmpeg", "-v", "error", "-y", *RAW, "-af", LN2, "-ar", str(SR), str(WORK / "mix.wav")], check=True)
+# 最後にリミッター: 低音の強い BGM でも真のピークを -1.5 dBFS 付近に抑える（音割れ防止）
+subprocess.run(["ffmpeg", "-v", "error", "-y", *RAW, "-af", LN2 + ",alimiter=limit=0.82:attack=5:release=50:level=false",
+                "-ar", str(SR), str(WORK / "mix.wav")], check=True)
 
 # ---------- テロップ ----------
 COLORS = {"white": (255, 255, 255), "yellow": (255, 216, 90), "cream": (255, 240, 214)}
