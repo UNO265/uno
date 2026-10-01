@@ -37,11 +37,18 @@ def render_title(S, st, W, H, y):
         font = ImageFont.truetype(st["title_font"], size)
     lh = int(size * st["title_line"])
     top = int(H * y - lh * len(lines) / 2)
-    if st.get("title_top"):  # 帯を画面のいちばん上（y=0）にくっつける。title_y / title_pos は使わない
-        top = int(size * 0.3)
+    stroke = st["title_stroke"]
+    if st.get("title_top"):  # 帯を画面のいちばん上（y=0）にくっつけ、文字の上下の余白をそろえて詰める
+        gap = st.get("title_gap", 24)
+        ink_top = font.getbbox(lines[0][0], stroke_width=stroke)[1]
+        ink_bot = (len(lines) - 1) * lh + font.getbbox(lines[-1][0], stroke_width=stroke)[3]
+        top = gap - ink_top
+        band = (0, top + ink_bot + gap)
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    if st["title_band"] == "full":
+    if st.get("title_top"):
+        d.rectangle([0, band[0], W, band[1]], fill=(0, 0, 0, 200))
+    elif st["title_band"] == "full":
         pad = int(size * 0.3)
         d.rectangle([0, top - pad, W, top + lh * len(lines) + pad * 0.6], fill=(0, 0, 0, 200))
     else:
@@ -51,7 +58,6 @@ def render_title(S, st, W, H, y):
                              top + lh * len(lines) + pad * 0.3], radius=28, fill=(0, 0, 0, 120))
     shadow = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     sd = ImageDraw.Draw(shadow)
-    stroke = st["title_stroke"]
     for k, (t, c) in enumerate(lines):
         x = W / 2 - font.getlength(t) / 2
         yy = top + k * lh
