@@ -32,4 +32,7 @@ done
 
 FONT="$FONT_DIR/ZenMaruGothic-Black.ttf"
 [ -f "$FONT" ] || curl -fsSL -o "$FONT" https://raw.githubusercontent.com/google/fonts/main/ofl/zenmarugothic/ZenMaruGothic-Black.ttf
+G=https://raw.githubusercontent.com/google/fonts/main/ofl  # nimaru 用
+[ -f "$FONT_DIR/DelaGothicOne-Regular.ttf" ] || curl -fsSL -o "$FONT_DIR/DelaGothicOne-Regular.ttf" $G/delagothicone/DelaGothicOne-Regular.ttf
+[ -f "$FONT_DIR/MochiyPopOne-Regular.ttf" ] || curl -fsSL -o "$FONT_DIR/MochiyPopOne-Regular.ttf" $G/mochiypopone/MochiyPopOne-Regular.ttf
 echo "READY  FONT=$FONT"

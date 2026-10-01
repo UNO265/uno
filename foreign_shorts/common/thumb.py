@@ -3,7 +3,8 @@ usage: python3 thumb.py SCRIPT.json EDIT.mp4 T OUT.jpg FONT.ttf
 """
 import json, subprocess, sys
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+from PIL import Image
+import styles
 
 S = json.loads(Path(sys.argv[1]).read_text())
 EDIT, T, OUT, FONT = sys.argv[2], float(sys.argv[3]), sys.argv[4], sys.argv[5]
@@ -42,24 +43,7 @@ for z in S.get("zooms", []):  # build.py の zoom_at と同じ計算
         im = im.resize((W, H), Image.BICUBIC, box=(x0, y0, x0 + cw, y0 + ch))
         break
 
-im = im.convert("RGBA")
-lines = [(l["text"], (255, 216, 90) if l["color"] == "yellow" else (255, 255, 255)) for l in S["title"]]
-font = ImageFont.truetype(FONT, 80)
-lh = int(80 * 1.28)
-top = int(H * 0.125 - lh * len(lines) / 2)
-lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-d = ImageDraw.Draw(lay)
-wid = max(font.getlength(t) for t, _ in lines)
-pad = 36
-d.rounded_rectangle([W / 2 - wid / 2 - pad, top - pad * 0.7, W / 2 + wid / 2 + pad, top + lh * len(lines) + pad * 0.3],
-                    radius=28, fill=(0, 0, 0, 120))
-sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-sd = ImageDraw.Draw(sh)
-for k, (t, c) in enumerate(lines):
-    x = W / 2 - font.getlength(t) / 2
-    y = top + k * lh
-    sd.text((x + 5, y + 7), t, font=font, fill=(0, 0, 0, 170), stroke_width=9, stroke_fill=(0, 0, 0, 170))
-    d.text((x, y), t, font=font, fill=c, stroke_width=9, stroke_fill=(40, 26, 18))
-im = Image.alpha_composite(Image.alpha_composite(im, sh.filter(ImageFilter.GaussianBlur(6))), lay)
+st = styles.get(S, FONT)  # build.py と同じタイトル帯（チャンネルごとのテンプレート）
+im = Image.alpha_composite(im.convert("RGBA"), styles.render_title(S, st, W, H, st["title_y"]))
 im.convert("RGB").save(OUT, quality=95)
 print("thumb ->", OUT)
