@@ -2,6 +2,8 @@
 
 일본어 경제 미스터리 다큐멘터리 YouTube 채널의 영상 제작 레포.
 
+> 이 문서와 `docs/guide/`는 **KANENAZO 전용**이다. 다른 채널은 `channels/` 아래에 따로 두고 그 폴더의 `CLAUDE.md`·지침만 따른다(규칙을 섞지 않는다). 현재: [`channels/foreigner-story/`](channels/foreigner-story/CLAUDE.md)(외국인 일본 체험 스토리 채널).
+
 ## 지침 (2026-09-29: 이 7개가 전부다)
 
 지침은 **`docs/guide/`** 에 제작 순서대로 있다. 규칙 하나는 한 곳에만 있다. 옛 지침 8개는 `docs/archive/`(보관, 근거용)이고, 옛 번호가 어디로 갔는지는 `docs/guide/MAPPING.md`.
