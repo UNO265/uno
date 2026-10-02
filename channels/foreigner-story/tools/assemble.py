@@ -86,6 +86,33 @@ def render_items(plan, src, tmp, narr):
     return files
 
 
+def split_narr(e, limit=22):
+    """긴 내레이션 자막을 문장(。)·쉼표(、) 단위로 나눠 차례로 보여 준다(한 줄 원칙, 화면 밖으로 넘치지 않게)."""
+    import re
+    parts = [p for p in re.split(r"(?<=。)", e["ja"]) if p]
+    out = []
+    for p in parts:
+        if len(p) > limit:
+            sub = [q for q in re.split(r"(?<=、)", p) if q]
+            buf = ""
+            for q in sub:
+                if buf and len(buf + q) > limit:
+                    out.append(buf); buf = q
+                else:
+                    buf += q
+            if buf:
+                out.append(buf)
+        else:
+            out.append(p)
+    n = [len(x) for x in out]
+    t, span, res = e["t0"], e["t1"] - e["t0"], []
+    for x, k in zip(out, n):
+        d = span * k / sum(n)
+        res.append(dict(e, ja=x, t0=t, t1=t + d - 0.04))
+        t += d
+    return res
+
+
 def build_events(plan, cues, starts, durs, narr):
     ev, narr_pos = [], []
     for it, t0, d in zip(plan["items"], starts, durs):
@@ -111,6 +138,7 @@ def build_events(plan, cues, starts, durs, narr):
             ev.append(dict(t0=t0 + 0.25, t1=t0 + d - 0.2, kind="CB", ja=it["big"]))
             if it.get("small"):
                 ev.append(dict(t0=t0 + 0.25, t1=t0 + d - 0.2, kind="CS", ja=it["small"]))
+    ev = [x for e in ev for x in (split_narr(e) if e["kind"] == "N" else [e])]
     ev.sort(key=lambda e: e["t0"])
     ys = [e for e in ev if e["kind"] == "Y"]
     for x, y in zip(ys, ys[1:]):
