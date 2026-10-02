@@ -1,0 +1,17 @@
+{
+  "note": "따뜻한 휴먼 드라마. 초반은 쓸쓸한 단조 피아노, 이웃을 만나며 장조로, 진통 장면은 낮은 패드만, 병원 이후는 밝은 장조와 첼레스타.",
+  "length": 163.86,
+  "bpm": 76,
+  "programs": {"0": 0, "1": 49, "2": 32, "3": 8},
+  "volumes": {"0": 92, "1": 70, "2": 64, "3": 60},
+  "sections": [
+    {"t": [0, 18.8], "prog": ["Dm", "Bbmaj7", "Gm7", "Asus4"], "piano": "sparse", "pad": true, "dyn": 0.85},
+    {"t": [18.8, 50.8], "prog": ["Dm", "Bbmaj7", "F", "C"], "piano": "arp", "pad": true, "bass": true, "dyn": 0.9},
+    {"t": [50.8, 64.2], "prog": ["F", "C", "Dm7", "Bbmaj7"], "piano": "broken", "pad": false, "bass": true, "dyn": 0.8},
+    {"t": [64.2, 73.6], "prog": ["Bbmaj7", "F", "Gm7", "Csus4"], "piano": "arp", "pad": true, "bass": true, "dyn": 0.95},
+    {"t": [73.6, 89.2], "prog": ["Dm", "Dm", "Bb", "A"], "piano": null, "pad": true, "bass": true, "dyn": 0.75},
+    {"t": [89.2, 123.2], "prog": ["F", "Am7", "Bbmaj7", "C"], "piano": "broken", "pad": true, "bass": true, "dyn": 0.85},
+    {"t": [123.2, 138.4], "prog": ["Dm7", "Bbmaj7", "Gm7", "Csus4"], "piano": "sparse", "pad": true, "dyn": 0.8},
+    {"t": [138.4, 163.86], "prog": ["F", "C", "Dm7", "Bbmaj7"], "piano": "arp", "pad": true, "bass": true, "bell": true, "dyn": 0.95}
+  ]
+}

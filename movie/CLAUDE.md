@@ -23,6 +23,15 @@
 ## 폴더
 
 - `guide/` 지침
+- `projects/<slug>/` 영상별 대본·타임라인(`script.json`)과 BGM 구성(`bgm.json`)
+- `tools/` 제작 도구: `tts.py`(edge-tts, 프록시 CA), `narrate.py`(해설 생성·속도 맞춤), `bgm.py`(BGM 작곡), `build.py`(오디오 믹스·블러·자막·렌더)
 - `work/` 중간 파일(레포에 올리지 않음, `.gitignore`)
 - `outputs/` 납품물(MP4·SRT·ASS·대본·검수 내역). 영상·음성 파일은 용량 때문에 커밋하지 않고 텍스트 산출물만 커밋한다.
 - 원본 영상은 덮어쓰지 않는다.
+
+## 제작 순서(한 영상)
+
+1. 원본을 `work/<slug>/source.mp4`로 받고 프레임·자막 띠·음성 인식(한국어·영어)으로 분석 → `work/<slug>/events.json`(한국어 자막 이벤트)
+2. `demucs --two-stems=vocals`로 해설 분리(한국어 해설 구간에만 쓴다)
+3. `projects/<slug>/script.json` 작성(해설·대사·캡션·레이아웃) → `python3 tools/narrate.py <slug>` → `python3 tools/bgm.py <slug>` → `python3 tools/build.py <slug>`
+4. 검수(지침 7장) 후 `outputs/<slug>/`에 MP4·SRT·ASS·대본/검수 내역
