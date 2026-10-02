@@ -19,5 +19,5 @@
 
 - **색**: Deep Navy `#1B2A41` / Japanese Red `#C8102E` / Warm Ivory `#F7F3EA`. 붉은색은 점 하나에만 쓴다.
 - **프로필에는 투명 배경을 쓰지 않는다.** 남색 심볼이 YouTube 다크 모드(거의 검정)에서 사라진다. 아이보리 배경을 꽉 채운 `tabinome-profile-1024.png`를 쓴다.
-- **글꼴**: 「タビノメ」 Noto Sans JP ExtraBold(800), 「TABINOME」 Noto Sans JP SemiBold(600, 자간 0.42em). 자막과 같은 Noto Sans JP 계열(SIL OFL 1.1, 상업 이용 가능). 글꼴 파일은 레포에 넣지 않았다(Google Fonts `ofl/notosansjp`에서 받아 `render.sh` 옆에 둔다).
+- **글꼴**: 「タビノメ」(타비노메) Noto Sans JP ExtraBold(800), 「TABINOME」 Noto Sans JP SemiBold(600, 자간 0.42em). 자막과 같은 Noto Sans JP 계열(SIL OFL 1.1, 상업 이용 가능). 글꼴 파일은 레포에 넣지 않았다(Google Fonts `ofl/notosansjp`에서 받아 `render.sh` 옆에 둔다).
 - 심볼의 비율·점 간격을 임의로 늘리거나 색을 바꾸지 않는다. 바꿀 때는 `src/gen.py`의 상수를 고쳐 다시 만든다.

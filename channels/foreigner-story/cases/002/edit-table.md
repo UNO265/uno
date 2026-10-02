@@ -13,7 +13,7 @@
 | 2 | 00:00–00:30 | (원본 내레이션) "We had only known these people for a few hours… And then they invited us to stay with them for Golden Week. So, of course, we said yes." | 8~25초: 누구에게 무슨 일이 | USE | — | 이 구간의 화면(몽타주)에 나중 장면이 섞여 있으면 결과를 먼저 다 보여 주지 않게 줄인다 |
 | 3 | 01:15–01:30 | "But when Mori's car pulled over and picked us up, we didn't know any of that yet. All we knew was we needed a ride." | 되짚기로 넘어가는 문 | USE | — | — |
 | 4 | 01:30–02:20 | 비 오는 아오시마, "We're out in the streets not knowing where to go, how to go." / "I don't think we're hitchhiking today" | 25~45초: 상황·불확실성 | SUPPORT | — | 이 날과 Mori를 만난 날의 순서(전편 확인) |
-| 5 | (전편) | Mori의 차가 서는 장면 | 만남 | USE 예정 | 「宮崎でヒッチハイクをしていた二人。車を止めたのが、モリさんでした。」 | **전편 스크립트·화면 필요** |
+| 5 | (전편) | Mori의 차가 서는 장면 | 만남 | USE 예정 | 「宮崎でヒッチハイクをしていた二人。車を止めたのが、モリさんでした。」(미야자키에서 히치하이크를 하던 두 사람. 차를 세운 사람이 모리 씨였습니다.) | **전편 스크립트·화면 필요** |
 | 6 | 02:54–03:30 | "Mori, he sent us a message asking if we want to explore Miyazaki today. The answer is yes." | 사건1 시작(목적) | USE | — | — |
 | 7 | 03:30–04:06 | 문신 대화 "You have tattoo?" "Yakuza?!" "deer" | 첫 대면의 웃음 | SUPPORT(보류) | — | 화면: 누가 농담했는지. 야쿠자 고정관념으로 읽히면 DELETE |
 | 8 | 04:06–04:35 | 흔들리는 다리 "You brought us to a dangerous place." | Mori가 데려간 곳 | SUPPORT | — | — |
@@ -27,7 +27,7 @@
 | 16 | 10:57–11:48 | 술을 안 마시는 사람이 25도 술 "It's not actually so bad… I thought it was going to be stronger" | 시도 → 반응 | USE | — | 술 이름·도수 화면 확인 |
 | 17 | 11:48–12:40 | 일본 음료 시음 "fizzy and sour" "I used to love this as a kid" | 반응 | SUPPORT | — | 음료 이름, "as a kid"를 말한 사람 |
 | 18 | 13:20–14:04 | "allowing us to stay here during Golden Week; the most busy time and also their vacation… I love them already." | 사건2 결과 | **USE** | — | — |
-| 19 | 14:55–15:36 | 다카치호협, 비로 갈색 물, 보트는 예약 필요 | 장소 이동 | SUPPORT(짧게) | 「翌日は、家族そろって高千穂峡へ。」 | 다음 날인지 확인 |
+| 19 | 14:55–15:36 | 다카치호협, 비로 갈색 물, 보트는 예약 필요 | 장소 이동 | SUPPORT(짧게) | 「翌日は、家族そろって高千穂峡へ。」(다음 날은 가족이 다 함께 다카치호협으로.) | 다음 날인지 확인 |
 | 20 | 18:57–21:02 | 포켓몬 카드 자판기 → 어릴 때 카드를 줘 버린 아쉬움 → "this has brought back so many childhood memories" | 사건3: 가장 개인적인 반응 | **USE** | — | 시청자에게 묻는 구간(21:02~21:26) 제외 |
 | 21 | 21:26–22:04 | 새벽 1시 케이크 "We usually go to sleep at 10. Crazy." "In Japan, everybody eats cake at 1 in the morning?" "No, no, no" | 생활 리듬의 차이 + 웃음 | **USE** | — | — |
 | 22 | 23:54–24:20 | Arisa·Mori가 물리치료사, 다리 통증을 봐 줌 | 사건4: 손님 → 돌봄 | USE | — | — |
