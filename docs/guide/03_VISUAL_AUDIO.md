@@ -82,7 +82,7 @@
 2. **화면 제작**: `video/src/case00X/`(kit.tsx + 구간별 파일 + Main.tsx), `src/index.ts`에 등록. `npx tsc --noEmit`.
 3. **콘택트 시트 점검**: `CASE=00X AT=0.4,0.97 node scripts/contact_sheet.mjs` → 겹침·글자 넘침·자막 영역 침범·빈 화면·질감 연속을 고치고 다시 확인(보통 두 번).
 4. **렌더링 직전**: [prerender-checklist](../templates/prerender-checklist.md).
-5. **그래픽카드 사용(사용자 결정, 2026-10-02)**: 3D 장면(Remotion three / Blender)의 최종 렌더링은 **사용자 PC의 그래픽카드로 한다**. 이 작업 환경(CPU)에서는 점검용 저해상도 정지 화면만 만든다. 첫 속도 테스트는 `video/out/gpu_bench/KANENAZO_GPU_TEST.zip`(사용자 PC에서 아직 미실행).
+5. **그래픽카드 사용(사용자 결정, 2026-10-02)**: 3D 장면(Remotion three / Blender)의 최종 렌더링은 **사용자 PC의 그래픽카드로 한다**. 이 작업 환경(CPU)에서는 점검용 저해상도 정지 화면만 만든다. 속도 실측(2026-10-02, `KANENAZO_GPU_TEST.zip`): 쇼츠 D(1080×1920, 668프레임) **61초**(이 환경 23분), 사진풍 미니어처(1920×1080, 150프레임) **21초** → 본편 한 편(약 24,500프레임)을 웹 3D로 해도 **약 40분~1시간**. Blender(Cycles)는 미측정.
 6. **렌더링·마스터링**: `npx remotion render src/index.ts Case00X out/case00X_render.mp4 --browser-executable=<headless_shell>` → `scripts/master.sh`(−14 LUFS, TP −1.5). 점검: 길이, 음량, 1.2초 이상 무음 없음, 1초 이상 암전 없음, `retention_check.py`(실측).
 6. **전달용 분할**: ffmpeg segment 260초(키프레임) → `KANENAZO_CASE00X_NofM.mp4` + `join_windows.bat` / `join_mac.command`(같은 폴더의 ffmpeg도 사용). 합친 길이를 확인한다. 예비: 바이트 분할(video/README.md).
 7. **기록**: `docs/case00X-audio-credits.md`(BGM 구성·최종 점검 수치).
