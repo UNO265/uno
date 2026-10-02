@@ -138,11 +138,11 @@ const splitCaption = (t: string): string[] => {
     if ("、。」）".includes(ch) && i < chars.length - 2 && Math.abs(acc - half) < bestD) { best = i; bestD = Math.abs(acc - half); }
   });
   if (best < 0 || bestD > half * 0.45) {
-    // 句読点が遠いときは、真ん中に近い助詞（は・が・を・に・で・の・も・と・へ）の後ろで切る
+    // 句読点が遠いときは、真ん中に近い助詞（は・が・を・に・で・も・へ）の後ろで切る（の・と は語の途中になりやすいので除く）
     acc = 0; let pb = -1, pd = 1e9;
     chars.forEach((ch, i) => {
       acc += /[\x00-\x7f]/.test(ch) ? 0.55 : 1;
-      if ("はがをにでのもとへ".includes(ch) && i < chars.length - 2 && !/[\x00-\x7fー]/.test(chars[i + 1]) && Math.abs(acc - half) < pd) { pb = i; pd = Math.abs(acc - half); }
+      if ("はがをにでもへ".includes(ch) && i < chars.length - 2 && !/[\x00-\x7fー]/.test(chars[i + 1]) && Math.abs(acc - half) < pd) { pb = i; pd = Math.abs(acc - half); }
     });
     if (pb >= 0 && pd < bestD) best = pb;
     if (best < 0) { let a = 0; best = chars.findIndex((ch) => (a += /[\x00-\x7f]/.test(ch) ? 0.55 : 1) >= half); }

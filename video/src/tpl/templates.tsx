@@ -50,7 +50,7 @@ export const QuestionDrum: React.FC<TP & { text: string; hot: string; band: stri
           ))}
         </div>
       </At>
-      {[{ y: -380, r: -6, s: 7, bg: C.or }, { y: 400, r: 5, s: -6, bg: C.ink }].map((m, i) => (
+      {[{ y: -400, r: -6, s: 7, bg: C.or }, { y: 260, r: 5, s: -6, bg: C.ink }].map((m, i) => (
         <At key={i} y={m.y} z={-100 - i * 200} rz={m.r}>
           <div style={{ width: 3400, overflow: "hidden", background: m.bg, padding: "6px 0" }}>
             <div style={{ fontFamily: F.en, fontSize: 64, color: C.bg, whiteSpace: "nowrap", transform: `translateX(${((f * m.s) % 700) - 700}px)`, letterSpacing: 2 }}>{Array(10).fill(`${band}  ✦  `).join("")}</div>

@@ -148,7 +148,7 @@ export const SCENES: Scene[] = [
   /* D28 統合 2兆3124億円 */
   { ids: ["D28"], el: ({ dur }) => { const f = use(); return (<><NumberPunch f={f} dur={dur} value="2兆3124億円" label="ウエルシア＋ツルハ（2025年12月 経営統合）　国内 5659店" source="出典：統合説明資料・報道（世界6位の規模と報じられている）" wall="統合" /><S at={2} name="whoosh0" /><S at={20} name="thud" v={0.55} /></>); } },
   /* D29 備蓄米 */
-  { ids: ["D29"], el: ({ dur, rel }) => { const f = use(); const a = rel("D29", 3); return <NumberPunch f={f} dur={dur} value={`${countText(f, a, 30, 400, (n) => Math.round(n).toString())}万袋`} label="コスモス薬品が引き受けた備蓄米 2万トン（5キロ・約2000円）" source="出典：コスモス薬品 発表（2025年）" wall="備蓄米" />; } },
+  { ids: ["D29"], el: ({ dur, rel }) => { const f = use(); const a = 10; return <NumberPunch f={f} dur={dur} value={`${countText(f, a, 30, 400, (n) => Math.round(n).toString())}万袋`} label="コスモス薬品が引き受けた備蓄米 2万トン（5キロ・約2000円）" source="出典：コスモス薬品 発表（2025年）" wall="備蓄米" />; } },
   /* D30 倒産 358件 */
   { ids: ["D30"], light: true, el: ({ dur }) => { const f = use(); return <KeyLine f={f} dur={dur} parts={[{ t: "飲食料品の小売店の倒産、" }, { t: "358件", hot: true }, { t: "（4年連続で増加）" }]} note={`出典：帝国データバンク（2025年度）`} />; } },
   /* D30B スーパーの反撃 */

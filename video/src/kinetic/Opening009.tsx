@@ -329,7 +329,7 @@ export const Opening009: React.FC<{ audio?: boolean }> = ({ audio = true }) => {
       {/* 前面の 2D: 拍で光る縁・計器・字幕 */}
       <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
         <rect x={20} y={20} width={1880} height={1040} fill="none" stroke={white ? C.bg : C.ink} strokeOpacity={0.08 + bp * 0.12} strokeWidth={2} />
-        <Hud f={f} scene={scene} total={6} dark={!white} />
+        <Hud f={f} scene={1} total={6} dark={!white} />
         <Caption text={cap} dark={!white} />
       </svg>
 
