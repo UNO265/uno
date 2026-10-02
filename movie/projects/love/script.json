@@ -733,5 +733,10 @@
    ],
    "y": 1182
   }
- ]
+ ],
+ "brand": {
+  "image": "assets/channel_wordmark.png",
+  "height": 52,
+  "y": 318
+ }
 }
