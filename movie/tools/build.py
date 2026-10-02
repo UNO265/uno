@@ -241,7 +241,7 @@ def render(preview=None):
     br = S.get("brand")
     if br:
         cmd += ["-loop", "1", "-i", str(ROOT / br["image"])]
-        fc = fc.replace("[v]", "[vt]") + f";[3:v]scale=-1:{br['height']},format=rgba[brd];[vt][brd]overlay=(W-w)/2:{br['y']}:shortest=1[v]"
+        fc = fc.replace("[v]", "[vt]") + f";[3:v]scale=-1:{br['height']},format=rgba[brd];[vt][brd]overlay={br.get('x', '(W-w)/2')}:{br['y']}:shortest=1[v]"
     cmd += ["-filter_complex", fc, "-map", "[v]", "-map", "2:a",
             "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p", "-r", str(FPS),
             "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-movflags", "+faststart", "-shortest", str(out)]

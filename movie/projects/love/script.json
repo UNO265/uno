@@ -735,8 +735,9 @@
   }
  ],
  "brand": {
-  "image": "assets/channel_wordmark.png",
-  "height": 52,
-  "y": 318
+  "image": "assets/channel_badge.png",
+  "x": 815,
+  "y": 440,
+  "height": 95
  }
 }
