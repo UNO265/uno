@@ -3,7 +3,8 @@
   python3 scripts/narration.py                 # CASE #001: data/cuts.json → public/
   python3 scripts/narration.py --case case002  # cases/case002/cuts.json → public/case002/
 
-音声: VOICEVOX（雀松朱司 / style 52）。事前に scripts/setup_voicevox.sh で
+音声: VOICEVOX（--voice suzumatsu = 雀松朱司 / style 52、--voice aoyama = 青山龍星 ノーマル / style 13。
+CASE #009 キネティック版から青山龍星）。事前に scripts/setup_voicevox.sh で
 エンジン一式（core・ONNX Runtime・辞書・音声モデル）を .voicevox/ に取得しておく。
 
 各カットの "/" 区切りを 1 セグメントとして個別に合成し、内容に応じて
@@ -24,7 +25,10 @@ ROOT = Path(__file__).resolve().parent.parent
 VV = ROOT / ".voicevox"
 FPS = 30
 SR = 48000
-STYLE_ID = 52  # 雀松朱司 ノーマル
+VOICES = {  # 名前: (音声モデル, style id)
+    "suzumatsu": ("12.vvm", 52),  # 雀松朱司 ノーマル（〜CASE #010）
+    "aoyama": ("15.vvm", 13),     # 青山龍星 ノーマル（CASE #009 キネティック版〜）
+}
 LEAD = 0.4     # カット頭から声が始まるまで
 TAIL = 0.6     # 声が終わってから次のカットまで
 GAP = 0.28     # セグメント間の間
@@ -113,25 +117,26 @@ def prosody(cut_id: str, seg: str) -> dict:
 
 
 class Voice:
-    def __init__(self) -> None:
+    def __init__(self, name: str = "suzumatsu") -> None:
         from voicevox_core.blocking import Onnxruntime, OpenJtalk, Synthesizer, VoiceModelFile
 
         lib = next((VV / "onnxruntime" / "lib").glob("libvoicevox_onnxruntime.so.*.*"))
         ort = Onnxruntime.load_once(filename=str(lib))
         self.syn = Synthesizer(ort, OpenJtalk(str(VV / "open_jtalk_dic_utf_8-1.11")))
-        with VoiceModelFile.open(str(VV / "vvms" / "12.vvm")) as m:
+        vvm, self.style = VOICES[name]
+        with VoiceModelFile.open(str(VV / "vvms" / vvm)) as m:
             self.syn.load_voice_model(m)
 
     def say(self, text: str, speed: float, intonation: float, pitch: float = 0.0) -> np.ndarray:
         for k, v in READINGS.items():
             text = text.replace(k, v)
-        q = self.syn.create_audio_query(text, STYLE_ID)
+        q = self.syn.create_audio_query(text, self.style)
         q.speed_scale = speed
         q.intonation_scale = intonation
         q.pitch_scale = pitch
         q.pre_phoneme_length = 0.05
         q.post_phoneme_length = 0.1
-        wav = self.syn.synthesis(q, STYLE_ID)
+        wav = self.syn.synthesis(q, self.style)
         with tempfile.TemporaryDirectory() as d:
             src, dst = Path(d) / "a.wav", Path(d) / "b.wav"
             src.write_bytes(wav)
@@ -186,6 +191,7 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--case", help="例: case002（省略時は CASE #001）")
     ap.add_argument("--rate", type=float, default=1.0, help="話す速さの倍率（ショートは 1.3）。間も同じ割合で詰める")
+    ap.add_argument("--voice", choices=sorted(VOICES), default="suzumatsu", help="話者（既定は雀松朱司）")
     args = ap.parse_args()
     rate = args.rate
     if args.case:
@@ -197,7 +203,7 @@ def main() -> None:
     cuts = json.loads(src.read_text(encoding="utf-8"))
     voice_dir = out_dir / "voice"
     voice_dir.mkdir(parents=True, exist_ok=True)
-    voice = Voice()
+    voice = Voice(args.voice)
 
     timeline, frame = [], 0
     for cut in cuts:
