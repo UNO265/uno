@@ -4,7 +4,7 @@
 
 ## 지침
 
-**[guide/00_GUIDE.md](guide/00_GUIDE.md)**(제작 기준 v1.1, 2026-10-02)와 [guide/01_COVER.md](guide/01_COVER.md)(커버 제목 위치, 사용자 추가 규칙). 원본은 `guide/japanese_shorts_claude_guide_v1.1.pdf`이고, 내용이 다르면 PDF가 기준이다. 사용자의 새 요청이 지침보다 우선한다.
+**[guide/00_GUIDE.md](guide/00_GUIDE.md)**(제작 기준 v1.1, 2026-10-02), [guide/01_COVER.md](guide/01_COVER.md)(커버 제목 위치, 사용자 추가 규칙), [guide/02_THUMBNAIL_GPT.md](guide/02_THUMBNAIL_GPT.md)(GPT에 썸네일을 맡길 때 붙여 넣을 지침). 원본은 `guide/japanese_shorts_claude_guide_v1.1.pdf`이고, 내용이 다르면 PDF가 기준이다. 사용자의 새 요청이 지침보다 우선한다.
 
 ## 꼭 기억할 것 (자세한 내용은 지침)
 
