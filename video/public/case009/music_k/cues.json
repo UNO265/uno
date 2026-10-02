@@ -1,0 +1,38 @@
+[
+ {
+  "file": "case009/music_k/c9k_01_open.wav",
+  "from": 0,
+  "to": 3368,
+  "mood": "k_open"
+ },
+ {
+  "file": "case009/music_k/c9k_02_mid.wav",
+  "from": 3368,
+  "to": 12705,
+  "mood": "k_mid"
+ },
+ {
+  "file": "case009/music_k/c9k_03_hero.wav",
+  "from": 12705,
+  "to": 17023,
+  "mood": "k_hero"
+ },
+ {
+  "file": "case009/music_k/c9k_04_mid.wav",
+  "from": 17023,
+  "to": 22564,
+  "mood": "k_mid2"
+ },
+ {
+  "file": "case009/music_k/c9k_05_finale.wav",
+  "from": 22564,
+  "to": 23919,
+  "mood": "k_finale"
+ },
+ {
+  "file": "case009/music_k/c9k_06_outro.wav",
+  "from": 23919,
+  "to": 24372,
+  "mood": "outro"
+ }
+]

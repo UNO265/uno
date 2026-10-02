@@ -35,6 +35,8 @@ GLOCK, XYLO, SYNBASS, STEELDR = 9, 13, 38, 114
 HARPSI, STEELGTR, JAZZGTR, TIMPANI, MUTETRP, FLUTE = 6, 25, 26, 47, 59, 73
 # CASE #008〜: 自動販売機（ボタンの電子音・昔の街角・出口を探すクラリネット）
 CLARINET = 71
+# CASE #009 キネティック版: 鋸歯状波リード・シンセブラス・手拍子・オープンハイハット
+SAWLEAD, SYNBRASS, CLAP, HHO = 81, 62, 39, 46
 
 N = {"C": 0, "C#": 1, "Db": 1, "D": 2, "Eb": 3, "E": 4, "F": 5, "F#": 6, "Gb": 6, "G": 7, "Ab": 8, "A": 9, "Bb": 10, "B": 11}
 Q = {"": [0, 4, 7], "m": [0, 3, 7], "maj7": [0, 4, 7, 11], "m7": [0, 3, 7, 10], "7": [0, 4, 7, 10], "m9": [0, 3, 7, 10, 14],
@@ -276,6 +278,22 @@ MOODS_009 = {
     "d_answer": dict(prog=["Fmaj7", "Em7", "Dm7", "Cmaj7"], bpm=72, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=SLOWSTR, key=53, bell=MARIMBA, motif=MOTIF_009),
     "outro": dict(prog=["C", "Am7", "Fmaj7", "G"], bpm=80, beats=4, lead=PIANO, pulse="broken", pizz=False, pad=STRINGS, key=48, bell=MARIMBA, motif=MOTIF_009),
 }
+# CASE #009 キネティック版（3D キネティック・タイポに合わせた速い曲。拍に合わせて画面が動く）
+MOODS_009K = {
+    "k_open": dict(prog=["Am", "F", "C", "G"], bpm=112, beats=4, lead=SAWLEAD, pulse="stab", pizz=False, pad=None, key=57, bass=SYNBASS, bass8=True, drums="kinetic", motif=MOTIF_009),
+    "k_mid": dict(prog=["Dm7", "Bbmaj7", "Fmaj7", "C"], bpm=100, beats=4, lead=EPIANO, pulse="call", pizz=False, pad=WARMPAD, key=50, bass=SYNBASS, bass8=True, drums="kinetic_lite"),
+    "k_hero": dict(prog=["Em", "C", "G", "D"], bpm=112, beats=4, lead=SYNBRASS, pulse="stab", pizz=False, pad=SLOWSTR, key=52, bass=SYNBASS, bass8=True, drums="kinetic", motif=MOTIF_009),
+    "k_mid2": dict(prog=["Fmaj7", "Am7", "Dm7", "C"], bpm=100, beats=4, lead=MARIMBA, pulse="pop", pizz=False, pad=WARMPAD, key=53, bass=SYNBASS, bass8=True, drums="kinetic_lite"),
+    "k_finale": dict(prog=["Am", "F", "C", "E7sus4"], bpm=112, beats=4, lead=SAWLEAD, pulse="stab", pizz=False, pad=STRINGS, key=57, bass=SYNBASS, bass8=True, drums="kinetic", motif=MOTIF_009),
+}
+SECTIONS_009K = [
+    ("c9k_01_open", "k_open", "D01", "D12"),
+    ("c9k_02_mid", "k_mid", "D12", "D21"),
+    ("c9k_03_hero", "k_hero", "D21", "D27"),
+    ("c9k_04_mid", "k_mid2", "D27", "D34"),
+    ("c9k_05_finale", "k_finale", "D34", "D37"),
+    ("c9k_06_outro", "outro", "D37", "END"),
+]
 SECTIONS_009 = [
     ("c9_01_open", "d_open", "D03", "D06"),
     ("c9_02_data", "d_data", "D06", "D14"),
@@ -396,9 +414,15 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             walk = [base - 24, tones[1 % len(tones)] - 24, tones[2 % len(tones)] - 24, base - 24 + (10 if rng.random() < 0.5 else 11)]
             for k, n in enumerate(walk):
                 song.note(2, b0 + sw(k), n, 50 - 6 * (k % 2), 0.9)
+        elif mood.get("bass8"):
+            # 8分のオクターブで押すベース（キネティック版）
+            for k in range(beats * 2):
+                if density == 0 and k % 2:
+                    continue
+                song.note(2, b0 + k * 0.5, base - 24 + (12 if k % 2 else 0), 50 + (6 if k % 2 == 0 else 0), 0.4)
         else:
             song.note(2, b0, base - 24, 52, beats * 0.9)
-        if beats == 4 and density >= 1 and not mood.get("walk"):
+        if beats == 4 and density >= 1 and not mood.get("walk") and not mood.get("bass8"):
             song.note(2, b0 + 2.5, base - 24 + (7 if rng.random() < 0.5 else 12), 40, 1.2)
         # リード（伴奏パターン）
         up = [t + 12 for t in tones]
@@ -481,6 +505,11 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
             # 低い弦のスタッカート（押さえつける力）
             for k in range(beats * 2):
                 song.note(0, b0 + k * 0.5, base - 12 + (0 if k % 4 < 2 else 7), 34 + (8 if k % 2 == 0 else 0) + 2 * density, 0.25)
+        elif style == "stab":
+            # 裏拍の短い和音（キネティック版）。語りとぶつからないよう音量は控えめ
+            for pos in ([0.5, 1.5, 2.5, 3.5] if density >= 1 else [0.5, 2.5]):
+                for t in tones[:3]:
+                    song.note(0, b0 + pos, t + 12, 30 + 3 * density, 0.18)
         elif style == "tick":
             # 時計の秒針のような単音（導入の緊張）
             for k in range(beats):
@@ -505,6 +534,14 @@ def compose(mood: dict, seconds: float, seed: int) -> tuple:
                     song.note(5, b0 + k * 0.5, base - 24 + (0 if k == 0 else 7), 58 - 10 * (k // 4) + 3 * density, 0.8)
                 if dr == "kick4" and k % 2 == 0:
                     song.note(9, b0 + pos, KICK, 36 + 3 * density, 0.3)
+                if dr in ("kinetic", "kinetic_lite"):
+                    if k % 4 == 0 or (dr == "kinetic" and density == 2 and k == 5):
+                        song.note(9, b0 + pos, KICK, 44 + 3 * density, 0.3)
+                    if k in (2, 6):
+                        song.note(9, b0 + pos, CLAP if dr == "kinetic" else STICK, 34 + 3 * density, 0.2)
+                    song.note(9, b0 + pos, HHC, 20 + (6 if k % 2 else 0) + (0 if dr == "kinetic" else -4), 0.15)
+                    if dr == "kinetic" and k == 7 and density >= 1:
+                        song.note(9, b0 + pos, HHO, 26, 0.3)
                 if dr == "heart" and k in (0, 1):
                     song.note(9, b0 + k * 0.4, KICK, 50 - 12 * k + 3 * density, 0.3)
         # ピチカート（オフビート）
@@ -551,6 +588,10 @@ def main():
     base = ROOT / "public" / args.case if args.case else ROOT / "public"
     out = base / "music"
     prefix = f"{args.case}/music" if args.case else "music"
+    if args.case == "case009k":  # キネティック版は #009 の音声・タイムラインを使い、曲だけ別の場所へ
+        base = ROOT / "public" / "case009"
+        out = base / "music_k"
+        prefix = "case009/music_k"
     t = json.loads((base / "timeline.json").read_text(encoding="utf-8"))
     if args.case == "case002":
         moods, sections, seed0 = MOODS_002, SECTIONS_002, 200
@@ -568,6 +609,8 @@ def main():
         moods, sections, seed0 = MOODS_008, SECTIONS_008, 900
     elif args.case == "case009":
         moods, sections, seed0 = MOODS_009, SECTIONS_009, 1000
+    elif args.case == "case009k":
+        moods, sections, seed0 = {**MOODS_009, **MOODS_009K}, SECTIONS_009K, 1050
     elif args.case == "case010":
         moods, sections, seed0 = MOODS_010, SECTIONS_010, 1100
     elif args.case and args.case in SHORTS:
