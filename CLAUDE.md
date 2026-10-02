@@ -32,4 +32,4 @@
 - 사용자가 **"최종 대본"** 을 요청하면 일본어 내레이션만 코드 블록 하나로. (S1)
 - **썸네일 이미지는 사용자가 직접 만든다**(우리는 설계안만). (P5)
 - 쇼츠는 CASE마다 ① 입구 ② 의외의 숫자 ③ 돈의 흐름, 반복 재생형, 최근 10편 평균 1,000회 목표. (04)
-- 내레이션 VOICEVOX 雀松朱司(style 52), BGM·효과음은 FluidR3_GM 기반 CASE별 자체 작곡(`docs/case001-audio-credits.md`). 빌드는 `video/README.md`.
+- 내레이션 VOICEVOX **青山龍星(style 13, #009 키네틱판부터, 크레디트 필수·사업자가 되면 사전 신청)**(#008까지 雀松朱司 style 52), BGM·효과음은 FluidR3_GM 기반 CASE별 자체 작곡(`docs/case001-audio-credits.md`). 빌드는 `video/README.md`.

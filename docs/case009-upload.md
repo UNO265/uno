@@ -68,7 +68,7 @@
 ※各社の数字は一社の数字で、業界平均ではありません
 
 ▼ クレジット
-ナレーション：VOICEVOX:雀松朱司
+ナレーション：VOICEVOX:青山龍星
 BGM・効果音：オリジナル（音源：FluidR3_GM SoundFont / MIT License）
 
 KANENAZO｜カネナゾ ― 身近なお金の謎を解く。

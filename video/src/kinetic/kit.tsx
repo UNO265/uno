@@ -100,8 +100,10 @@ export const Hud: React.FC<{ f: number; scene: number; total: number; label?: st
     <g fontFamily={F.mono} fontSize={18} fill={col} letterSpacing={2}>
       <text x={40} y={48}>KANENAZO — CASE #009</text>
       <text x={1880} y={48} textAnchor="end">ECONOMY × MYSTERY</text>
-      <text x={40} y={1050}>{tc}</text>
-      <text x={1880} y={1050} textAnchor="end">{String(scene).padStart(2, "0")} / {String(total).padStart(2, "0")}</text>
+      {/* 右下は YouTube のブランディング透かし（チャンネルアイコン）の場所なので空けておく */}
+      <text x={40} y={1050}>
+        {tc}　　{String(scene).padStart(2, "0")} / {String(total).padStart(2, "0")}
+      </text>
       <text x={960} y={48} textAnchor="middle" opacity={0.8}>{label}</text>
     </g>
   );
@@ -125,7 +127,8 @@ export const Marquee: React.FC<{ y: number; text: string; f: number; speed?: num
 export const Caption: React.FC<{ text: string; dark?: boolean }> = ({ text, dark = true }) =>
   text ? (
     <g>
-      <text x={960} y={1000} textAnchor="middle" fontFamily={F.jpb} fontSize={34} fill={dark ? C.ink : C.bg} opacity={0.92}>
+      {/* 長い字幕は右下の透かしにかからないよう幅 1560 に収める */}
+      <text x={960} y={1000} textAnchor="middle" fontFamily={F.jpb} fontSize={34} fill={dark ? C.ink : C.bg} opacity={0.92} {...([...text].length * 34 > 1560 ? { textLength: 1560, lengthAdjust: "spacingAndGlyphs" } : {})}>
         {text}
       </text>
     </g>
