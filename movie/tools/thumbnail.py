@@ -77,12 +77,16 @@ def main():
 
     sizes = list(cfg["sizes"])
     gap = cfg.get("gap", 18)
-    while True:  # 폭(좌우 5%)과 높이(61~88%) 안에 들어갈 때까지 글자를 줄인다
+    while True:  # 폭(좌우 5%)을 넘는 줄만 줄이고, 높이(61~88%)를 넘으면 전체를 줄인다
         layers = text_layer(cfg["lines"], sizes, cfg.get("font", "dela"), cfg.get("scale_x", 1.0))
         total = sum(h for _, _, h, _ in layers) + gap * (len(layers) - 1)
-        if max(w for _, w, _, _ in layers) <= W - 2 * SIDE and total <= BOTTOM - TOP:
+        wide = [i for i, (_, w, _, _) in enumerate(layers) if w > W - 2 * SIDE]
+        if wide:
+            for i in wide: sizes[i] = int(sizes[i] * 0.97)
+        elif total > BOTTOM - TOP:
+            sizes = [int(v * 0.97) for v in sizes]
+        else:
             break
-        sizes = [int(s * 0.96) for s in sizes]
     y = BOTTOM - total  # 블록 아래 끝을 88% 선에 맞춘다(위 끝은 61% 이상)
     y = max(y, TOP)
     canvas = img.convert("RGBA")
