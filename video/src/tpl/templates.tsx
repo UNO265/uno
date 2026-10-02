@@ -17,14 +17,13 @@ const fadeOut = (f: number, dur: number, d = 8) => interpolate(f, [dur - d, dur]
 /* T02 入体の数字 ─────────────────────────── */
 export const NumberPunch: React.FC<TP & { value: string; label: string; source?: string; wall?: string }> = ({ f, dur, value, label, source, wall }) => (
   <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
+    {/* 文字の壁は 3D 空間の外（平面）で描く。遠くの大きな文字を 3D 合成すると極端に重い */}
+    <div style={{ position: "absolute", left: "50%", top: "50%", fontFamily: F.jp, fontSize: 84, lineHeight: 1.02, color: "#1b1b1f", width: 2400, transform: `translate(-50%, -50%) translateX(${interpolate(f, [0, dur], [20, -20])}px) scale(${interpolate(f, [0, dur], [1, 1.06])})` }}>
+      {Array.from({ length: 7 }, (_, r) => (
+        <div key={r} style={{ whiteSpace: "nowrap", transform: `translateX(${(r % 2 ? 1 : -1) * ((f * 3) % 400) - 200}px)` }}>{`${wall ?? value} `.repeat(8)}</div>
+      ))}
+    </div>
     <World cam={{ x: interpolate(f, [0, dur], [-40, 40]), y: 0, z: interpolate(f, [0, dur], [260, 140]), rx: 0, ry: interpolate(f, [0, dur], [-6, 6]) }}>
-      <At z={-700}>
-        <div style={{ fontFamily: F.jp, fontSize: 150, lineHeight: 1.02, color: "#1b1b1f", width: 3800 }}>
-          {Array.from({ length: 7 }, (_, r) => (
-            <div key={r} style={{ whiteSpace: "nowrap", transform: `translateX(${(r % 2 ? 1 : -1) * ((f * 5) % 700) - 350}px)` }}>{`${wall ?? value} `.repeat(8)}</div>
-          ))}
-        </div>
-      </At>
       <At y={-40} ry={backIn(f, 2, 18, 50)} s={0.85 + 0.15 * out(f, 2, 12)}>
         <Ex text={value} size={280} color={C.ink} side="#6a655d" depth={72} />
       </At>

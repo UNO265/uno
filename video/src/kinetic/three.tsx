@@ -41,13 +41,19 @@ export const At: React.FC<{ x?: number; y?: number; z?: number; rx?: number; ry?
 );
 
 /** 厚みのある立体文字（層を奥に重ねる） */
+/** brightness() フィルタの代わりに色を先に暗くする（フィルタは 3D 合成で重い） */
+const shade = (hex: string, k: number) => {
+  const h = hex.replace("#", "");
+  const v = h.length === 3 ? h.split("").map((c) => parseInt(c + c, 16)) : [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16));
+  return `rgb(${v.map((x) => Math.round(x * k)).join(",")})`;
+};
 export const Ex: React.FC<{ text: string; size: number; color?: string; side?: string; depth?: number; font?: string; italic?: boolean; spacing?: number }> = ({ text, size, color = C.ink, side = "#9a968e", depth = 26, font = F.jp, italic, spacing = 0 }) => {
-  const n = Math.max(6, Math.round(depth / 2));
+  const n = Math.min(14, Math.max(6, Math.round(depth / 2)));
   const style: React.CSSProperties = { fontFamily: font, fontSize: size, lineHeight: 1, fontStyle: italic ? "italic" : "normal", letterSpacing: spacing, whiteSpace: "nowrap" };
   return (
     <div style={{ position: "relative", transformStyle: "preserve-3d" }}>
       {Array.from({ length: n }, (_, i) => (
-        <div key={i} style={{ ...style, position: i ? "absolute" : "relative", left: 0, top: 0, color: side, transform: `translateZ(${-(n - i) * (depth / n)}px)`, filter: `brightness(${0.55 + (i / n) * 0.45})` }}>
+        <div key={i} style={{ ...style, position: i ? "absolute" : "relative", left: 0, top: 0, color: shade(side, 0.55 + (i / n) * 0.45), transform: `translateZ(${-(n - i) * (depth / n)}px)` }}>
           {text}
         </div>
       ))}
