@@ -79,7 +79,7 @@ const Basket: React.FC = () => (
 );
 
 /* ── 本体 ───────────────── */
-export const Opening009: React.FC = () => {
+export const Opening009: React.FC<{ audio?: boolean }> = ({ audio = true }) => {
   useFonts();
   const f = useCurrentFrame();
   const cam = camAt(f);
@@ -333,14 +333,14 @@ export const Opening009: React.FC = () => {
         <Caption text={cap} dark={!white} />
       </svg>
 
-      {tl.cuts
+      {audio && tl.cuts
         .filter((c) => c.from < TOTAL009)
         .map((c) => (
           <Sequence key={c.id} from={c.from} durationInFrames={c.duration}>
             <Audio src={staticFile(c.voice)} />
           </Sequence>
         ))}
-      <Audio src={staticFile("case009/music/c9_03_shop.wav")} volume={(fr) => 0.2 * interpolate(fr, [0, 10, TOTAL009 - 25, TOTAL009], [0.4, 1, 1, 0], clamp)} />
+      {audio && <Audio src={staticFile("case009/music/c9_03_shop.wav")} volume={(fr) => 0.2 * interpolate(fr, [0, 10, TOTAL009 - 25, TOTAL009], [0.4, 1, 1, 0], clamp)} />}
     </AbsoluteFill>
   );
 };

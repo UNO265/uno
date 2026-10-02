@@ -10,6 +10,8 @@ import { At, Ex, Prism, Txt, World } from "../kinetic/three";
 const PAPER = "#f3efe6", PINK = "#ffe14d";
 type TP = { f: number; dur: number };
 const backIn = (f: number, a: number, d: number, from: number) => interpolate(f, [a, a + d], [from, 0], { ...clamp, easing: Easing.out(Easing.back(1.5)) });
+/** 幅 w に収まる文字サイズ（英数字は約 0.5 字、和文は 1 字として数える） */
+const fitSize = (t: string, w: number, max: number) => Math.min(max, w / [...t].reduce((a, ch) => a + (/[\x00-\x7f]/.test(ch) ? 0.52 : 1.02), 0));
 const fadeOut = (f: number, dur: number, d = 8) => interpolate(f, [dur - d, dur], [1, 0], clamp);
 
 /* T02 入体の数字 ─────────────────────────── */
@@ -145,7 +147,7 @@ export const Bar3D: React.FC<TP & { title: string; items: { k: string; v: number
             <At key={b.k} x={-((items.length - 1) * 320) / 2 + i * 320} y={330 - h / 2} z={-40} ry={-24}>
               <div style={{ position: "relative" }}>
                 <Prism w={170} h={Math.max(2, h)} d={120} color={b.hot ? C.or : "#3a3a40"} dark={b.hot ? "#b23c10" : "#232327"} top={b.hot ? "#ff8a5c" : "#55555c"} />
-                <div style={{ position: "absolute", top: h + 24, width: 260, left: -45, textAlign: "center", fontFamily: F.jpb, fontSize: 36, color: b.hot ? C.or : "#a0a0a8" }}>{b.k}</div>
+                <div style={{ position: "absolute", top: h + 24, width: 260, left: -45, textAlign: "center", fontFamily: F.jpb, fontSize: 34, lineHeight: 1.2, whiteSpace: "normal", color: b.hot ? C.or : "#a0a0a8" }}>{b.k}</div>
                 <div style={{ position: "absolute", top: -90, width: 260, left: -45, textAlign: "center", fontFamily: F.en, fontSize: 66, color: b.hot ? C.or : C.ink, opacity: out(f, 18 + i * 4, 8) }}>{b.v}{unit}</div>
               </div>
             </At>
@@ -172,7 +174,7 @@ export const CompareCards: React.FC<TP & { lead: string; cards: { title: string;
           <At key={i} x={(i - (n - 1) / 2) * 470} y={40} z={c.hot ? 40 : -40} ry={(i - (n - 1) / 2) * -10 + flip} o={f >= a ? 1 : 0}>
             <div style={{ width: 400, height: 520, borderRadius: 28, background: c.hot ? C.or : "#222227", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 40px 80px rgba(0,0,0,.55)", backfaceVisibility: "hidden" }}>
               <div style={{ fontFamily: F.jpb, fontSize: 44, color: c.hot ? C.bg : "#c8c8cf" }}>{c.title}</div>
-              <div style={{ fontFamily: F.en, fontSize: 170, lineHeight: 1, color: c.hot ? C.bg : C.ink }}>{c.value}</div>
+              <div style={{ fontFamily: F.en, fontSize: fitSize(c.value, 330, 170), lineHeight: 1, color: c.hot ? C.bg : C.ink, whiteSpace: "nowrap" }}>{c.value}</div>
               {c.note && <div style={{ fontFamily: F.jpb, fontSize: 28, color: c.hot ? C.bg : C.gray }}>{c.note}</div>}
             </div>
           </At>
@@ -207,7 +209,6 @@ export const MoneyFlow: React.FC<TP & { nodes: { id: string; label: string; x: n
                 const y = (1 - t) ** 2 * a.y + 2 * (1 - t) * t * my + t * t * b.y;
                 return <circle key={k} cx={x} cy={y} r={14} fill={e.hot ? C.yel : "#c9c9cf"} />;
               })}
-              <text x={mx} y={my + 40} textAnchor="middle" fontFamily={F.jpb} fontSize={34} fill={e.hot ? C.or : "#c8c8cf"} opacity={out(f, at + 10, 8)}>{e.label}</text>
             </g>
           );
         })}
@@ -215,9 +216,17 @@ export const MoneyFlow: React.FC<TP & { nodes: { id: string; label: string; x: n
           const s = pop(f, 2 + i * 4, 10);
           return (
             <g key={n.id} transform={`translate(${n.x} ${n.y}) scale(${s})`}>
-              <rect x={-150} y={-60} width={300} height={120} rx={24} fill={n.hot ? C.or : C.ink} />
+              <rect x={-boxW(n.label) / 2} y={-60} width={boxW(n.label)} height={120} rx={24} fill={n.hot ? C.or : C.ink} />
               <text y={16} textAnchor="middle" fontFamily={F.jp} fontSize={46} fill={C.bg}>{n.label}</text>
             </g>
+          );
+        })}
+        {edges.map((e, i) => {
+          const a = N[e.from], b = N[e.to];
+          const at = 10 + i * 10;
+          const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2 + [-220, 60, 200][i % 3] / 2;
+          return (
+            <text key={i} x={mx} y={my - 26} textAnchor="middle" fontFamily={F.jpb} fontSize={34} fill={e.hot ? C.or : "#c8c8cf"} stroke={C.bg} strokeWidth={10} paintOrder="stroke" opacity={f >= at ? out(f, at + 10, 8) : 0}>{e.label}</text>
           );
         })}
       </svg>
@@ -241,7 +250,7 @@ export const Document: React.FC<TP & { name: string; lines: string[]; mark: numb
         </div>
       </At>
     </World>
-    <div style={{ position: "absolute", left: 160, bottom: 100, fontFamily: F.jpb, fontSize: 24, color: "#6b6b70" }}>{source}</div>
+    <div style={{ position: "absolute", left: 160, top: 110, fontFamily: F.jpb, fontSize: 24, color: "#6b6b70" }}>{source}</div>
   </AbsoluteFill>
 );
 
@@ -257,10 +266,12 @@ export const Timeline: React.FC<TP & { events: { year: string; text: string; hot
           <div style={{ width: events.length * gap + 600, height: 6, background: C.bg }} />
         </At>
         {events.map((e, i) => {
-          const near = Math.abs(camX - i * gap) < gap * 0.6;
+          const d = i * gap - camX;
+          const near = Math.abs(d) < gap * 0.6;
           const s = near ? 1 : 0.82;
+          const o = d < -gap * 0.6 ? interpolate(d, [-gap * 1.1, -gap * 0.6], [0, 0.4], clamp) : near ? 1 : 0.4;
           return (
-            <At key={i} x={i * gap} y={-60} s={s} o={0.4 + 0.6 * (near ? 1 : 0)}>
+            <At key={i} x={i * gap} y={-60} s={s} o={o}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontFamily: F.en, fontSize: 120, color: e.hot ? C.or : C.bg, lineHeight: 1 }}>{e.year}</div>
                 <div style={{ width: 28, height: 28, borderRadius: 14, background: e.hot ? C.or : C.bg, margin: "26px auto" }} />
@@ -298,3 +309,101 @@ export const BlobLayer: React.FC<{ f: number }> = ({ f }) => (
     {[0, 1, 2, 3].map((i) => <Blob key={i} x={[180, 1760, 260, 1680][i]} y={[200, 260, 900, 880][i]} r={60 + i * 10 + beatPulse(f) * 6} f={f} seed={i} color={i === 2 ? C.or : C.bl} />)}
   </svg>
 );
+
+/* ── 追加テンプレート（#009 本編） ─────────────────────────── */
+
+/** T11 の黒地版（答え・CLUE の一文。強い） */
+export const KeyLineDark: React.FC<TP & { parts: { t: string; hot?: boolean; at?: number }[]; size?: number; note?: string }> = ({ f, dur, parts, size = 110, note }) => (
+  <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "baseline", maxWidth: 1600, rowGap: 10, transform: `scale(${1 + 0.035 * interpolate(f, [0, dur], [0, 1])}) perspective(1200px) rotateX(${interpolate(f, [0, dur], [6, -2])}deg)` }}>
+      {parts.map((p, i) => {
+        const a = p.at ?? 3 + i * 6;
+        const s = pop(f, a, 9);
+        return (
+          <span key={i} style={{ display: "inline-block", fontFamily: F.jp, fontSize: p.hot ? size * 1.15 : size, lineHeight: 1.3, color: p.hot ? C.bg : C.ink, background: p.hot ? C.or : "transparent", padding: p.hot ? "0 18px" : 0, margin: "0 6px", opacity: f >= a ? 1 : 0, transform: `scale(${s})` }}>
+            {p.t}
+          </span>
+        );
+      })}
+    </div>
+    {note && <div style={{ position: "absolute", bottom: 130, fontFamily: F.jpb, fontSize: 26, color: C.gray }}>{note}</div>}
+  </AbsoluteFill>
+);
+
+/** 項目が順に出るリスト（紙）。strike: 取り消し線で「やらないこと」 */
+export const ListCard: React.FC<TP & { title: string; items: { t: string; at: number; strike?: boolean; hot?: boolean }[]; dark?: boolean }> = ({ f, dur, title, items, dark }) => {
+  const bg = dark ? C.bg : PAPER, ink = dark ? C.ink : C.bg;
+  return (
+    <AbsoluteFill style={{ background: bg, opacity: fadeOut(f, dur) }}>
+      <div style={{ position: "absolute", left: 220, top: 170, fontFamily: F.jp, fontSize: 64, color: ink, opacity: out(f, 0, 10) }}>{title}</div>
+      <div style={{ position: "absolute", left: 220, top: 300, display: "flex", flexDirection: "column", gap: 34 }}>
+        {items.map((it, i) => {
+          const o = out(f, it.at, 8);
+          const strike = it.strike ? out(f, it.at + 10, 8) : 0;
+          return (
+            <div key={i} style={{ position: "relative", display: "flex", alignItems: "center", gap: 30, opacity: o, transform: `translateX(${(1 - o) * -60}px)` }}>
+              <div style={{ width: 54, height: 54, borderRadius: 12, background: it.hot ? C.or : it.strike ? "#c94a3a" : ink, color: bg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: F.en, fontSize: 40 }}>{it.strike ? "×" : it.hot ? "!" : "✓"}</div>
+              <div style={{ position: "relative", fontFamily: F.jp, fontSize: it.hot ? 92 : 74, color: it.hot ? C.or : ink }}>
+                {it.t}
+                {it.strike && <div style={{ position: "absolute", left: -10, right: -10, top: "52%", height: 10, background: "#c94a3a", transformOrigin: "left", transform: `scaleX(${strike})` }} />}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** 円を回るお金の輪（来店のループ） */
+const boxW = (t: string) => Math.max(300, [...t].reduce((a, ch) => a + (/[\x00-\x7f]/.test(ch) ? 26 : 46), 0) + 80);
+export const LoopFlow: React.FC<TP & { title: string; nodes: { label: string; at: number; hot?: boolean }[] }> = ({ f, dur, title, nodes }) => {
+  const cx = 960, cy = 560, R = 300;
+  const n = nodes.length;
+  const pos = (i: number) => [cx + R * Math.cos(-Math.PI / 2 + (i * 2 * Math.PI) / n), cy + R * Math.sin(-Math.PI / 2 + (i * 2 * Math.PI) / n)];
+  const all = nodes[n - 1].at + 10;
+  const spin = Math.max(0, f - all) / 60;
+  return (
+    <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
+      <svg width={1920} height={1080}>
+        <text x={960} y={140} textAnchor="middle" fontFamily={F.jpb} fontSize={54} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
+        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#3a3a40" strokeWidth={10} strokeDasharray={2 * Math.PI * R} strokeDashoffset={2 * Math.PI * R * (1 - out(f, 2, all))} />
+        {f > all &&
+          Array.from({ length: 6 }, (_, k) => {
+            const a = -Math.PI / 2 + ((spin + k / 6) % 1) * 2 * Math.PI;
+            return <circle key={k} cx={cx + R * Math.cos(a)} cy={cy + R * Math.sin(a)} r={16} fill={C.yel} />;
+          })}
+        {nodes.map((nd, i) => {
+          const [x, y] = pos(i);
+          const s = pop(f, nd.at, 10);
+          return (
+            <g key={i} transform={`translate(${x} ${y}) scale(${s})`}>
+              <rect x={-boxW(nd.label) / 2} y={-62} width={boxW(nd.label)} height={124} rx={28} fill={nd.hot ? C.or : C.ink} />
+              <text y={17} textAnchor="middle" fontFamily={F.jp} fontSize={44} fill={C.bg}>{nd.label}</text>
+            </g>
+          );
+        })}
+      </svg>
+    </AbsoluteFill>
+  );
+};
+
+/** 「非公開」の判子が押される */
+export const Stamp: React.FC<TP & { lines: string[]; stamp: string; at: number }> = ({ f, dur, lines, stamp, at }) => {
+  const p = interpolate(f, [at, at + 6], [2.4, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
+  return (
+    <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center" }}>
+      <div style={{ textAlign: "center", transform: "translateY(-110px)" }}>
+        {lines.map((l, i) => (
+          <div key={i} style={{ fontFamily: F.jp, fontSize: 96, color: C.ink, opacity: out(f, 2 + i * 6, 8), lineHeight: 1.35 }}>{l}</div>
+        ))}
+      </div>
+      {f >= at && (
+        <div style={{ position: "absolute", transform: `translateY(170px) rotate(-8deg) scale(${p})`, border: `14px solid ${C.or}`, borderRadius: 24, padding: "10px 60px", fontFamily: F.jp, fontSize: 170, color: C.or, opacity: 0.92 }}>{stamp}</div>
+      )}
+    </AbsoluteFill>
+  );
+};
+
+/** 数字のカウントアップ表示（NumberPunch の値を数える） */
+export const countText = (f: number, a: number, d: number, to: number, fmt: (n: number) => string) => fmt(interpolate(f, [a, a + d], [0, to], { ...clamp, easing: Easing.out(Easing.cubic) }));
