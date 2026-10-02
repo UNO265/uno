@@ -124,7 +124,7 @@ export const Marquee: React.FC<{ y: number; text: string; f: number; speed?: num
 
 /** 字幕（2026-10 改訂）: 行をほぼ満たす大きさ・半透明の黒帯・白文字。背景が白でも黒でも読める。
  *  長い文は句読点で 2 行に分ける。右下（YouTube の透かしの場所）にはかからない幅 CAP_W に収める。 */
-const CAP_W = 1480, CAP_MAX = 64, CAP_MIN = 44, CAP_BOTTOM = 1004;
+const CAP_W = 1480, CAP_MAX = 64, CAP_MIN = 44, CAP_BOTTOM = 1030;
 const units = (t: string) => [...t].reduce((a, ch) => a + (/[\x00-\x7f]/.test(ch) ? 0.55 : 1), 0);
 const splitCaption = (t: string): string[] => {
   if (units(t) * CAP_MAX * 0.8 <= CAP_W) return [t];
