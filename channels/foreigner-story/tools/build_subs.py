@@ -20,6 +20,8 @@ NARR_STYLE = 31          # No.7 読み聞かせ
 DUCK = 0.3               # 내레이션 중 원본 음량
 CREDIT = "映像：SilkyRonTheRoad（YouTube）"
 READINGS = {"その夜": "そのよる"}   # 내레이션 읽기 보정
+# 화자별 노란 계열 색(E3, 2026-10-02 사용자 결정): S=シルケ 노랑, K=キーラン 주황빛 노랑, J=일본인 출연자 연둣빛 노랑
+SPEAKERS = {"S": "シルケ", "K": "キーラン", "J": "モリさん"}
 
 V2_SEG15_SRC = "19:02.80"   # 뼈대 v2 의 포켓몬 구간 시작(원본 시각)
 
@@ -99,6 +101,9 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Y,TBN Noto Sans JP Bold,50,&H0000D4FF,&H0000D4FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
+Style: YS,TBN Noto Sans JP Bold,50,&H0000D4FF,&H0000D4FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
+Style: YK,TBN Noto Sans JP Bold,50,&H0033A7FF,&H0033A7FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
+Style: YJ,TBN Noto Sans JP Bold,50,&H006BF2D9,&H006BF2D9,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
 Style: N,TBN Noto Sans JP Bold,48,&H00FFFFFF,&H00FFFFFF,&H40141414,&H40141414,0,0,0,0,100,100,1,0,3,12,0,2,60,60,30,1
 Style: C,TBN Noto Sans JP Medium,20,&H40FFFFFF,&H40FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,22,22,34,1
 
@@ -106,8 +111,16 @@ Style: C,TBN Noto Sans JP Medium,20,&H40FFFFFF,&H40FFFFFF,&H00000000,&H00000000,
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     lines = [f"Dialogue: 0,{ass_time(0)},{ass_time(total)},C,,0,0,0,,{CREDIT}"]
+    seen = set()
     for c in cues:
-        lines.append(f"Dialogue: 1,{ass_time(c['t0'])},{ass_time(c['t1'])},{c['kind']},,0,0,0,,{c['ja']}")
+        style, text = c["kind"], c["ja"]
+        spk = c.get("spk")
+        if style == "Y" and spk in SPEAKERS:
+            style = "Y" + spk
+            if spk not in seen:          # 처음 등장할 때만 이름을 작게 붙인다(E3)
+                text = "{\\fs32}" + SPEAKERS[spk] + "{\\fs50}　" + text
+                seen.add(spk)
+        lines.append(f"Dialogue: 1,{ass_time(c['t0'])},{ass_time(c['t1'])},{style},,0,0,0,,{text}")
     Path(path).write_text(head + "\n".join(lines) + "\n", encoding="utf-8")
 
 
@@ -156,11 +169,20 @@ def main():
     cues += [dict(t0=t0, t1=t1, kind=k, ja=ja, ko=ko, abs=True) for t0, t1, k, ja, ko in S.ABS_CUES]
     cues = one_line(snap(cues, json.load(open(words_json))))
 
+    sp = case / "speakers_v1.json"
+    if sp.exists():
+        for c, x in zip(cues, json.load(open(sp))):
+            assert c["ja"] == x["ja"], (c["ja"], x["ja"])
+            c["spk"] = x["spk"]
+
     tmp = tempfile.mkdtemp(prefix="subs_")
     narr = narrate(cues, tmp)
     ass = Path(out).with_suffix(".ass")
     write_ass(cues, total, ass)
     json.dump(cues, open(Path(out).with_suffix(".cues.json"), "w"), ensure_ascii=False, indent=1)
+    if "--ass-only" in sys.argv:
+        print(f"ASS → {ass}")
+        return
 
     inputs = ["-i", cut, "-i", str(WATERMARK)]
     for _, _, w in narr:
