@@ -3,8 +3,8 @@
   python3 scripts/narration.py                 # CASE #001: data/cuts.json → public/
   python3 scripts/narration.py --case case002  # cases/case002/cuts.json → public/case002/
 
-音声: VOICEVOX（--voice suzumatsu = 雀松朱司 / style 52、--voice aoyama = 青山龍星 ノーマル / style 13。
-CASE #009 キネティック版から青山龍星）。事前に scripts/setup_voicevox.sh で
+音声: VOICEVOX（--voice suzumatsu = 雀松朱司 / style 52、--voice aoyama = 青山龍星 ノーマル / style 13、
+--voice nemo_f1 = VOICEVOX Nemo 女声1 / style 10005。CASE #009 キネティック版から Nemo 女声1）。事前に scripts/setup_voicevox.sh で
 エンジン一式（core・ONNX Runtime・辞書・音声モデル）を .voicevox/ に取得しておく。
 
 各カットの "/" 区切りを 1 セグメントとして個別に合成し、内容に応じて
@@ -27,7 +27,8 @@ FPS = 30
 SR = 48000
 VOICES = {  # 名前: (音声モデル, style id)
     "suzumatsu": ("12.vvm", 52),  # 雀松朱司 ノーマル（〜CASE #010）
-    "aoyama": ("15.vvm", 13),     # 青山龍星 ノーマル（CASE #009 キネティック版〜）
+    "aoyama": ("15.vvm", 13),     # 青山龍星 ノーマル（CASE #009 キネティック版の一時期）
+    "nemo_f1": ("n0.vvm", 10005), # VOICEVOX Nemo 女声1（2026-10-02〜、ニュースの読み上げ調）
 }
 LEAD = 0.4     # カット頭から声が始まるまで
 TAIL = 0.6     # 声が終わってから次のカットまで
