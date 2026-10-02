@@ -4,7 +4,7 @@ CASE #001과 같은 음원·같은 조건입니다([CASE #001 문서](case001-au
 
 | 구분 | 사용한 것 | 설명란 표기 |
 |---|---|---|
-| 내레이션 | VOICEVOX / 青山龍星(ノーマル, style 13) — 키네틱판(2026-10-02 교체, 이전 雀松朱司) | **필요**: `VOICEVOX:青山龍星`(제거 불가) |
+| 내레이션 | VOICEVOX Nemo 女声1(style 10005) — 키네틱판(2026-10-02 교체, 이전 雀松朱司→青山龍星) | **필요**: `VOICEVOX Nemo`(상업 이용 무료, 기계학습 이용 금지) |
 | BGM | CASE #009용 오리지널 8곡(`music.py --case case009`, d_open·d_data·d_shop·d_wallet·d_future·d_choice·d_answer·outro), 음원 FluidR3_GM(MIT) | 의무 아님 |
 | 효과음 | 자체 제작 | 의무 아님 |
 
