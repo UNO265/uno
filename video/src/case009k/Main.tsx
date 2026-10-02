@@ -103,7 +103,8 @@ export const Main009K: React.FC = () => {
         const Comp = (END9 as Record<string, React.FC<{ cut: CutData }>>)[id];
         return (
           <Sequence key={id} from={c.from} durationInFrames={c.duration} name={id}>
-            <Comp cut={c} />
+            {/* 固定エンディングの部品は自分で声を鳴らすので、ここでは声を外す（下の全カット共通の声と二重になる） */}
+            <Comp cut={{ ...c, voice: undefined }} />
           </Sequence>
         );
       })}
