@@ -11,6 +11,7 @@
 | `banner_2560.jpg` | 채널 배너 2560×1440. 배경 GPT(`banner_bg_gpt_original.png`, 업스케일) + 아이콘·「カネナゾ」·카피는 영상 서체(Dela Gothic One / Zen Kaku Gothic New / Space Mono) |
 | `banner_safe_area_check.png` | 노랑 = 모든 기기에서 보이는 1546×423, 파랑 = PC 폭 |
 | `banner_mobile_preview.png` | 휴대폰에서 보이는 범위 |
+| `banner_2560_noicon.jpg` | 아이콘 동그라미 없이 글자만 키운 버전(`src/banner_noicon.html`) |
 | `src/banner.html` | 배너 원본(카피 수정 후 headless Chrome으로 2560×1440 스크린샷) |
 
 - 배너 카피: 「身近なお金のナゾを、数字で解く。」(Claude 추천안, 사용자 변경 가능)
