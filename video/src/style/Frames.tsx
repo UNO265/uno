@@ -14,7 +14,7 @@ const Sub: React.FC<{ text: string; dark?: boolean }> = ({ text, dark }) => (
 );
 
 // 切り抜いた紙のおにぎり
-const PaperOnigiri: React.FC<{ x: number; y: number; s?: number; r?: number; gray?: boolean }> = ({ x, y, s = 1, r = 0, gray }) => (
+export const PaperOnigiri: React.FC<{ x: number; y: number; s?: number; r?: number; gray?: boolean }> = ({ x, y, s = 1, r = 0, gray }) => (
   <g transform={`translate(${x} ${y}) rotate(${r}) scale(${s})`} filter="url(#cut)">
     <path d="M0,-46 C10,-46 52,22 50,34 C48,46 -48,46 -50,34 C-52,22 -10,-46 0,-46Z" fill="#fff" stroke="#fff" strokeWidth={8} strokeLinejoin="round" />
     <path d="M0,-46 C10,-46 52,22 50,34 C48,46 -48,46 -50,34 C-52,22 -10,-46 0,-46Z" fill={gray ? "#d9d4c8" : "#fbf8f0"} />
@@ -22,7 +22,7 @@ const PaperOnigiri: React.FC<{ x: number; y: number; s?: number; r?: number; gra
   </g>
 );
 
-const Pin: React.FC<{ x: number; y: number }> = ({ x, y }) => (
+export const Pin: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <g transform={`translate(${x} ${y})`}>
     <ellipse cx={6} cy={10} rx={14} ry={6} fill="rgba(0,0,0,.25)" />
     <circle r={15} fill={RED} />
@@ -30,7 +30,7 @@ const Pin: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   </g>
 );
 
-const Card: React.FC<{ x: number; y: number; w: number; h: number; r: number; children: React.ReactNode; color?: string }> = ({ x, y, w, h, r, children, color = "#f6f0e1" }) => (
+export const Card: React.FC<{ x: number; y: number; w: number; h: number; r: number; children: React.ReactNode; color?: string }> = ({ x, y, w, h, r, children, color = "#f6f0e1" }) => (
   <g transform={`translate(${x} ${y}) rotate(${r})`}>
     <rect x={-w / 2} y={-h / 2} width={w} height={h} fill={color} filter="url(#paper)" />
     {children}
