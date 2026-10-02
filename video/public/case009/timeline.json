@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 24120,
+ "totalFrames": 24369,
  "cuts": [
   {
    "id": "D01",
@@ -120,20 +120,20 @@
      "end": 6.313791666666667
     },
     {
-     "text": "商品ごとの原価も、出していない。",
+     "text": "ただ、ある大手は、商品ごとの売上と仕入れの金額を、決算の資料に載せている。",
      "start": 6.593791666666667,
-     "end": 9.130375
+     "end": 12.7475625
     },
     {
-     "text": "だから今日は、業界の統計と、各社の決算で追いかける。",
-     "start": 9.410375,
-     "end": 13.873270833333333
+     "text": "だから今日は、業界の統計と、その資料で追いかける。",
+     "start": 13.0275625,
+     "end": 17.1521875
     }
    ],
    "voice": "case009/voice/D07.wav",
    "voiceStart": 0.4,
    "from": 1091,
-   "duration": 434
+   "duration": 533
   },
   {
    "id": "D08",
@@ -156,7 +156,7 @@
    ],
    "voice": "case009/voice/D08.wav",
    "voiceStart": 0.4,
-   "from": 1525,
+   "from": 1624,
    "duration": 477
   },
   {
@@ -190,7 +190,7 @@
    ],
    "voice": "case009/voice/D09.wav",
    "voiceStart": 0.4,
-   "from": 2002,
+   "from": 2101,
    "duration": 762
   },
   {
@@ -209,7 +209,7 @@
    ],
    "voice": "case009/voice/D10.wav",
    "voiceStart": 0.4,
-   "from": 2764,
+   "from": 2863,
    "duration": 221
   },
   {
@@ -233,47 +233,47 @@
    ],
    "voice": "case009/voice/D11.wav",
    "voiceStart": 0.4,
-   "from": 2985,
+   "from": 3084,
    "duration": 284
   },
   {
    "id": "D12",
    "segments": [
     {
-     "text": "2019年の報道では、ドラッグストアの食品の粗利、つまり売値から仕入れ値を引いた残りは、売上の15.1%。",
+     "text": "ウエルシアの2025年2月期の資料では、食品の売上は2995億円、仕入れは2457億円。",
      "start": 0.4,
-     "end": 10.327666666666667
+     "end": 10.18
     },
     {
-     "text": "コンビニの、半分ほどだ。",
-     "start": 10.607666666666667,
-     "end": 12.6233125
+     "text": "差し引くと、100円分の食品を売って残るのは、18円ほどだ。",
+     "start": 10.459999999999999,
+     "end": 15.750854166666667
     },
     {
-     "text": "しかも粗利は、まだ利益ではない。",
-     "start": 12.903312499999998,
-     "end": 15.228312499999998
+     "text": "しかもこれは、まだ利益ではない。",
+     "start": 16.030854166666664,
+     "end": 18.274354166666665
     },
     {
      "text": "ここから、店員の給料も、家賃も、電気代も払う。",
-     "start": 15.508312499999999,
-     "end": 20.116916666666665
+     "start": 18.554354166666663,
+     "end": 23.16295833333333
     },
     {
-     "text": "一方、薬は42.3%。",
-     "start": 20.396916666666666,
-     "end": 23.88939583333333
+     "text": "同じ計算をすると、薬は100円で39円ほどが残る。",
+     "start": 23.44295833333333,
+     "end": 28.24289583333333
     },
     {
-     "text": "100円分の食品を売って残るのは15円ほど、100円分の薬なら42円ほど、という計算になる。",
-     "start": 24.169395833333333,
-     "end": 32.10570833333333
+     "text": "食品の、およそ2倍だ。",
+     "start": 28.52289583333333,
+     "end": 30.725687499999996
     }
    ],
    "voice": "case009/voice/D12.wav",
    "voiceStart": 0.4,
-   "from": 3269,
-   "duration": 981
+   "from": 3368,
+   "duration": 940
   },
   {
    "id": "D13",
@@ -306,7 +306,7 @@
    ],
    "voice": "case009/voice/D13.wav",
    "voiceStart": 0.4,
-   "from": 4250,
+   "from": 4308,
    "duration": 605
   },
   {
@@ -360,7 +360,7 @@
    ],
    "voice": "case009/voice/D13B.wav",
    "voiceStart": 0.4,
-   "from": 4855,
+   "from": 4913,
    "duration": 1108
   },
   {
@@ -379,7 +379,7 @@
    ],
    "voice": "case009/voice/D14.wav",
    "voiceStart": 0.4,
-   "from": 5963,
+   "from": 6021,
    "duration": 316
   },
   {
@@ -418,7 +418,7 @@
    ],
    "voice": "case009/voice/D15.wav",
    "voiceStart": 0.4,
-   "from": 6279,
+   "from": 6337,
    "duration": 1307
   },
   {
@@ -467,7 +467,7 @@
    ],
    "voice": "case009/voice/D16.wav",
    "voiceStart": 0.4,
-   "from": 7586,
+   "from": 7644,
    "duration": 1282
   },
   {
@@ -506,7 +506,7 @@
    ],
    "voice": "case009/voice/D17.wav",
    "voiceStart": 0.4,
-   "from": 8868,
+   "from": 8926,
    "duration": 604
   },
   {
@@ -520,7 +520,7 @@
    ],
    "voice": "case009/voice/D18.wav",
    "voiceStart": 0.4,
-   "from": 9472,
+   "from": 9530,
    "duration": 181
   },
   {
@@ -564,7 +564,7 @@
    ],
    "voice": "case009/voice/D19.wav",
    "voiceStart": 0.4,
-   "from": 9653,
+   "from": 9711,
    "duration": 845
   },
   {
@@ -598,7 +598,7 @@
    ],
    "voice": "case009/voice/D20.wav",
    "voiceStart": 0.4,
-   "from": 10498,
+   "from": 10556,
    "duration": 812
   },
   {
@@ -647,7 +647,7 @@
    ],
    "voice": "case009/voice/D20B.wav",
    "voiceStart": 0.4,
-   "from": 11310,
+   "from": 11368,
    "duration": 1337
   },
   {
@@ -671,7 +671,7 @@
    ],
    "voice": "case009/voice/D21.wav",
    "voiceStart": 0.4,
-   "from": 12647,
+   "from": 12705,
    "duration": 386
   },
   {
@@ -710,7 +710,7 @@
    ],
    "voice": "case009/voice/D22.wav",
    "voiceStart": 0.4,
-   "from": 13033,
+   "from": 13091,
    "duration": 792
   },
   {
@@ -750,12 +750,17 @@
      "text": "値下げ競争に、巻き込まれない売上なのだ。",
      "start": 26.563208333333336,
      "end": 29.646145833333335
+    },
+    {
+     "text": "ウエルシアの資料で同じ計算をすると、調剤は100円で37円ほどが残る。",
+     "start": 29.926145833333337,
+     "end": 36.00745833333334
     }
    ],
    "voice": "case009/voice/D23.wav",
    "voiceStart": 0.4,
-   "from": 13825,
-   "duration": 907
+   "from": 13883,
+   "duration": 1098
   },
   {
    "id": "D24",
@@ -793,7 +798,7 @@
    ],
    "voice": "case009/voice/D24.wav",
    "voiceStart": 0.4,
-   "from": 14732,
+   "from": 14981,
    "duration": 1250
   },
   {
@@ -808,7 +813,7 @@
    "clue": "01",
    "voice": "case009/voice/D25.wav",
    "voiceStart": 0.4,
-   "from": 15982,
+   "from": 16231,
    "duration": 120
   },
   {
@@ -847,7 +852,7 @@
    ],
    "voice": "case009/voice/D26.wav",
    "voiceStart": 0.4,
-   "from": 16102,
+   "from": 16351,
    "duration": 669
   },
   {
@@ -861,7 +866,7 @@
    ],
    "voice": "case009/voice/D27.wav",
    "voiceStart": 0.4,
-   "from": 16771,
+   "from": 17020,
    "duration": 210
   },
   {
@@ -895,7 +900,7 @@
    ],
    "voice": "case009/voice/D28.wav",
    "voiceStart": 0.4,
-   "from": 16981,
+   "from": 17230,
    "duration": 743
   },
   {
@@ -924,7 +929,7 @@
    ],
    "voice": "case009/voice/D29.wav",
    "voiceStart": 0.4,
-   "from": 17724,
+   "from": 17973,
    "duration": 623
   },
   {
@@ -953,7 +958,7 @@
    ],
    "voice": "case009/voice/D30.wav",
    "voiceStart": 0.4,
-   "from": 18347,
+   "from": 18596,
    "duration": 714
   },
   {
@@ -977,7 +982,7 @@
    ],
    "voice": "case009/voice/D30B.wav",
    "voiceStart": 0.4,
-   "from": 19061,
+   "from": 19310,
    "duration": 445
   },
   {
@@ -1026,7 +1031,7 @@
    ],
    "voice": "case009/voice/D31.wav",
    "voiceStart": 0.4,
-   "from": 19506,
+   "from": 19755,
    "duration": 1156
   },
   {
@@ -1040,7 +1045,7 @@
    ],
    "voice": "case009/voice/D32.wav",
    "voiceStart": 0.4,
-   "from": 20662,
+   "from": 20911,
    "duration": 128
   },
   {
@@ -1069,7 +1074,7 @@
    ],
    "voice": "case009/voice/D33.wav",
    "voiceStart": 0.4,
-   "from": 20790,
+   "from": 21039,
    "duration": 608
   },
   {
@@ -1108,7 +1113,7 @@
    ],
    "voice": "case009/voice/D33B.wav",
    "voiceStart": 0.4,
-   "from": 21398,
+   "from": 21647,
    "duration": 914
   },
   {
@@ -1122,7 +1127,7 @@
    ],
    "voice": "case009/voice/D34.wav",
    "voiceStart": 0.4,
-   "from": 22312,
+   "from": 22561,
    "duration": 310
   },
   {
@@ -1152,7 +1157,7 @@
    "clue": "FINAL",
    "voice": "case009/voice/D35.wav",
    "voiceStart": 0.4,
-   "from": 22622,
+   "from": 22871,
    "duration": 724
   },
   {
@@ -1171,7 +1176,7 @@
    ],
    "voice": "case009/voice/D36.wav",
    "voiceStart": 0.6,
-   "from": 23346,
+   "from": 23595,
    "duration": 321
   },
   {
@@ -1185,7 +1190,7 @@
    ],
    "voice": "case009/voice/D37.wav",
    "voiceStart": 0.4,
-   "from": 23667,
+   "from": 23916,
    "duration": 117
   },
   {
@@ -1204,7 +1209,7 @@
    ],
    "voice": "case009/voice/D38.wav",
    "voiceStart": 0.4,
-   "from": 23784,
+   "from": 24033,
    "duration": 119
   },
   {
@@ -1223,7 +1228,7 @@
    ],
    "voice": "case009/voice/D39.wav",
    "voiceStart": 0.4,
-   "from": 23903,
+   "from": 24152,
    "duration": 217
   }
  ]
