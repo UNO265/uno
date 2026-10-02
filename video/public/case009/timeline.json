@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 24369,
+ "totalFrames": 24372,
  "cuts": [
   {
    "id": "D01",
@@ -654,25 +654,25 @@
    "id": "D21",
    "segments": [
     {
-     "text": "ただ、食品で残るのは、売上の15%ほど。",
+     "text": "ただ、食品で残るのは、売上の18%ほど。",
      "start": 0.4,
-     "end": 4.9422500000000005
+     "end": 5.066083333333333
     },
     {
      "text": "それでも、業界全体は10兆円に育った。",
-     "start": 5.222250000000001,
-     "end": 8.857208333333334
+     "start": 5.3460833333333335,
+     "end": 8.981041666666666
     },
     {
      "text": "残りのお金は、どこから来ているのか？",
-     "start": 9.137208333333334,
-     "end": 12.257958333333335
+     "start": 9.261041666666667,
+     "end": 12.381791666666668
     }
    ],
    "voice": "case009/voice/D21.wav",
    "voiceStart": 0.4,
    "from": 12705,
-   "duration": 386
+   "duration": 389
   },
   {
    "id": "D22",
@@ -710,7 +710,7 @@
    ],
    "voice": "case009/voice/D22.wav",
    "voiceStart": 0.4,
-   "from": 13091,
+   "from": 13094,
    "duration": 792
   },
   {
@@ -759,7 +759,7 @@
    ],
    "voice": "case009/voice/D23.wav",
    "voiceStart": 0.4,
-   "from": 13883,
+   "from": 13886,
    "duration": 1098
   },
   {
@@ -798,7 +798,7 @@
    ],
    "voice": "case009/voice/D24.wav",
    "voiceStart": 0.4,
-   "from": 14981,
+   "from": 14984,
    "duration": 1250
   },
   {
@@ -813,7 +813,7 @@
    "clue": "01",
    "voice": "case009/voice/D25.wav",
    "voiceStart": 0.4,
-   "from": 16231,
+   "from": 16234,
    "duration": 120
   },
   {
@@ -852,7 +852,7 @@
    ],
    "voice": "case009/voice/D26.wav",
    "voiceStart": 0.4,
-   "from": 16351,
+   "from": 16354,
    "duration": 669
   },
   {
@@ -866,7 +866,7 @@
    ],
    "voice": "case009/voice/D27.wav",
    "voiceStart": 0.4,
-   "from": 17020,
+   "from": 17023,
    "duration": 210
   },
   {
@@ -900,7 +900,7 @@
    ],
    "voice": "case009/voice/D28.wav",
    "voiceStart": 0.4,
-   "from": 17230,
+   "from": 17233,
    "duration": 743
   },
   {
@@ -929,7 +929,7 @@
    ],
    "voice": "case009/voice/D29.wav",
    "voiceStart": 0.4,
-   "from": 17973,
+   "from": 17976,
    "duration": 623
   },
   {
@@ -958,7 +958,7 @@
    ],
    "voice": "case009/voice/D30.wav",
    "voiceStart": 0.4,
-   "from": 18596,
+   "from": 18599,
    "duration": 714
   },
   {
@@ -982,7 +982,7 @@
    ],
    "voice": "case009/voice/D30B.wav",
    "voiceStart": 0.4,
-   "from": 19310,
+   "from": 19313,
    "duration": 445
   },
   {
@@ -1031,7 +1031,7 @@
    ],
    "voice": "case009/voice/D31.wav",
    "voiceStart": 0.4,
-   "from": 19755,
+   "from": 19758,
    "duration": 1156
   },
   {
@@ -1045,7 +1045,7 @@
    ],
    "voice": "case009/voice/D32.wav",
    "voiceStart": 0.4,
-   "from": 20911,
+   "from": 20914,
    "duration": 128
   },
   {
@@ -1074,7 +1074,7 @@
    ],
    "voice": "case009/voice/D33.wav",
    "voiceStart": 0.4,
-   "from": 21039,
+   "from": 21042,
    "duration": 608
   },
   {
@@ -1113,7 +1113,7 @@
    ],
    "voice": "case009/voice/D33B.wav",
    "voiceStart": 0.4,
-   "from": 21647,
+   "from": 21650,
    "duration": 914
   },
   {
@@ -1127,7 +1127,7 @@
    ],
    "voice": "case009/voice/D34.wav",
    "voiceStart": 0.4,
-   "from": 22561,
+   "from": 22564,
    "duration": 310
   },
   {
@@ -1157,7 +1157,7 @@
    "clue": "FINAL",
    "voice": "case009/voice/D35.wav",
    "voiceStart": 0.4,
-   "from": 22871,
+   "from": 22874,
    "duration": 724
   },
   {
@@ -1176,7 +1176,7 @@
    ],
    "voice": "case009/voice/D36.wav",
    "voiceStart": 0.6,
-   "from": 23595,
+   "from": 23598,
    "duration": 321
   },
   {
@@ -1190,7 +1190,7 @@
    ],
    "voice": "case009/voice/D37.wav",
    "voiceStart": 0.4,
-   "from": 23916,
+   "from": 23919,
    "duration": 117
   },
   {
@@ -1209,7 +1209,7 @@
    ],
    "voice": "case009/voice/D38.wav",
    "voiceStart": 0.4,
-   "from": 24033,
+   "from": 24036,
    "duration": 119
   },
   {
@@ -1228,7 +1228,7 @@
    ],
    "voice": "case009/voice/D39.wav",
    "voiceStart": 0.4,
-   "from": 24152,
+   "from": 24155,
    "duration": 217
   }
  ]
