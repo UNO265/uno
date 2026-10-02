@@ -20,23 +20,25 @@ const at = (id: string) => cut(id).from;
 /* ── BGM（OpenTracks）。声の間は下げ、区間の境目は 1 秒で入れ替える ─────────── */
 const VOICE: [number, number][] = cuts.flatMap((c) => c.segments.map((s) => [c.from + Math.round(s.start * 30), c.from + Math.round(s.end * 30)] as [number, number]));
 const smooth = (x: number) => 0.5 - 0.5 * Math.cos(Math.PI * Math.min(1, Math.max(0, x)));
+/* 声の間の BGM の下げ幅（0.42 では携帯のスピーカーで聞こえなかったので 0.55） */
+const DUCK = 0.55;
 const duck = (f: number) => {
   let g = 1;
   for (const [a, b] of VOICE) {
-    if (f >= a && f <= b) return 0.42;
-    if (f < a && a - f < 10) g = Math.min(g, 0.42 + 0.58 * smooth((a - f) / 10));
-    if (f > b && f - b < 24) g = Math.min(g, 0.42 + 0.58 * smooth((f - b) / 24));
+    if (f >= a && f <= b) return DUCK;
+    if (f < a && a - f < 10) g = Math.min(g, DUCK + (1 - DUCK) * smooth((a - f) / 10));
+    if (f > b && f - b < 24) g = Math.min(g, DUCK + (1 - DUCK) * smooth((f - b) / 24));
   }
   return g;
 };
 type Cue = { file: string; from: number; to: number; start?: number; level: number };
 const CUES: Cue[] = [
-  { file: "case009/music_ot/ot_random_number.mp3", from: 0, to: at("D12"), level: 0.11 },
-  { file: "case009/music_ot/ot_investor_night.mp3", from: at("D12"), to: at("D16"), level: 0.1 },
-  { file: "case009/music_ot/ot_cassette_tape_dream.mp3", from: at("D16"), to: at("D21"), level: 0.09 },
-  { file: "case009/music_ot/ot_whisper_of_drums.mp3", from: at("D21"), to: at("D27"), level: 0.1 },
-  { file: "case009/music_ot/ot_connectedness.mp3", from: at("D27"), to: at("D34"), level: 0.1 },
-  { file: "case009/music_ot/ot_random_number.mp3", from: at("D34"), to: at("D37"), start: 60 * 30, level: 0.11 },
+  { file: "case009/music_ot/ot_random_number.mp3", from: 0, to: at("D12"), level: 0.2 },
+  { file: "case009/music_ot/ot_investor_night.mp3", from: at("D12"), to: at("D16"), level: 0.19 },
+  { file: "case009/music_ot/ot_cassette_tape_dream.mp3", from: at("D16"), to: at("D21"), level: 0.18 },
+  { file: "case009/music_ot/ot_whisper_of_drums.mp3", from: at("D21"), to: at("D27"), level: 0.19 },
+  { file: "case009/music_ot/ot_connectedness.mp3", from: at("D27"), to: at("D34"), level: 0.19 },
+  { file: "case009/music_ot/ot_random_number.mp3", from: at("D34"), to: at("D37"), start: 60 * 30, level: 0.2 },
   { file: "case009/music_k/c9k_06_outro.wav", from: at("D37"), to: total009k, level: 0.3 },
 ];
 const CueTrack: React.FC<{ cue: Cue }> = ({ cue }) => {
