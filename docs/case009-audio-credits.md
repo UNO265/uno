@@ -21,3 +21,19 @@ CASE #001과 같은 음원·같은 조건입니다([CASE #001 문서](case001-au
 
 - 주제 선율: 입점 차임 「ピン・ポーン」 두 번(9·5·9·5). #005~#008과 다름.
 - BGM을 끄는 곳: D01~D02, D11(답 먼저), D25(CLUE 01), D36 첫 문장 전.
+
+## 키네틱판(2026-10-02~): BGM을 OpenTracks(옛 DOVA-SYNDROME) 곡으로
+
+라이선스: 상업 이용 가능·저작권 표기 불필요·YouTube 배경음악 사용 가능(정치·종교 콘텐츠 등 금지). 모두 작곡가 조건 「サイト準拠」(추가 조건 없음). 공식 다운로드 페이지에서 받음(`video/public/case009/music_ot/`, git 제외).
+
+| 구간 | 곡 | 작곡 | 페이지 |
+|---|---|---|---|
+| 0:00~1:52 강(도입·두 번째 절벽) | Random Number | Anonyment | https://opentracks.com/bgm/detail/17777 |
+| 1:52~4:14 중 | Investor Night | Anonyment | https://opentracks.com/bgm/detail/15863 |
+| 4:14~7:03 중 | Cassette Tape Dream | しゃろう | https://opentracks.com/bgm/detail/13963 |
+| 7:03~9:27 강(세 지갑 HERO) | Whisper of Drums | Anonyment | https://opentracks.com/bgm/detail/14054 |
+| 9:27~12:32 약·중 | Connectedness | Anonyment | https://opentracks.com/bgm/detail/17212 |
+| 12:32~13:17 강(MONEY FLOW·답) | Random Number(재등장) | Anonyment | 위와 같음 |
+| 13:17~ 엔딩 | 기존 자체 작곡 outro | — | — |
+
+설명란 표기(의무 아님, 권장): `BGM：OpenTracks（Anonyment「Random Number」ほか）`
