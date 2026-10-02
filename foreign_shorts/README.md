@@ -1,6 +1,6 @@
 # 해외 영상 → 일본 타깃 쇼츠
 
-> **새 세션에서는 채널 지침서부터 읽는다**: 채널 A [`GUIDE_CHANNEL_A.md`](GUIDE_CHANNEL_A.md), 니마루 [`GUIDE_NIMARU.md`](GUIDE_NIMARU.md)(환경 설치는 `common/setup.sh`). 이 README는 결정 기록·작품 목록이다.
+> **새 세션에서는 채널 지침서부터 읽는다**: 채널 A 모후피타(モフピタ) [`GUIDE_CHANNEL_A.md`](GUIDE_CHANNEL_A.md), 니마루 [`GUIDE_NIMARU.md`](GUIDE_NIMARU.md)(환경 설치는 `common/setup.sh`). 이 README는 결정 기록·작품 목록이다.
 
 KANENAZO 지침(`docs/guide/`)과 별개인 작업. 원본 영상·완성 MP4는 레포에 넣지 않는다(사용권 확인 전).
 
