@@ -43,11 +43,12 @@ export const SCENES: Scene[] = [
   } },
   /* D09 よく言われる答えは半分正しい → 調剤・ヘルスケア vs フーズ */
   { ids: ["D09"], el: ({ dur, rel }) => {
-    const b = rel("D09", 3) - 4;
+    const b = rel("D09", 3) - 4, q = rel("D09", 1) - 4;
     return (<>
-      <Part from={0} to={b} total={dur}>{(f, d) => <KeyLineDark f={f} dur={d} parts={[{ t: "「薬や化粧品で稼いでいる」", at: rel("D09", 1) }, { t: "これは、", at: rel("D09", 2) }, { t: "半分正しい", hot: true, at: rel("D09", 2) + 14 }]} size={92} />}</Part>
+      <Part from={0} to={q} total={dur}>{(f, d) => <KeyLineDark f={f} dur={d} parts={[{ t: "では、なぜ", at: 4 }, { t: "食品が安い？", hot: true, at: 14 }]} size={110} />}</Part>
+      <Part from={q} to={b} total={dur}>{(f, d) => <KeyLineDark f={f} dur={d} parts={[{ t: "「薬や化粧品で稼いでいる」", at: rel("D09", 1) - q }, { t: "これは、", at: rel("D09", 2) - q }, { t: "半分正しい", hot: true, at: rel("D09", 2) + 14 - q }]} size={92} />}</Part>
       <Part from={b} total={dur}>{(f, d) => <Bar3D f={f} dur={d} title="売上の内訳（2024年度・兆円）" unit="兆" items={[{ k: "調剤・ヘルスケア", v: 3.33 }, { k: "フーズ", v: 2.83, hot: true }, { k: "ホーム", v: 2.04 }, { k: "ビューティ", v: 1.83 }]} source="出典：日本チェーンドラッグストア協会 実態調査" />}</Part>
-      <S at={rel("D09", 2) + 14} name="pop0" /><S at={b} name="whoosh2" />
+      <S at={14} name="pop0" /><S at={rel("D09", 2) + 14} name="pop0" /><S at={b} name="whoosh2" />
     </>);
   } },
   /* D10 割に合うのか？ */

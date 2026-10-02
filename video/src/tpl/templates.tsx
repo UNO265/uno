@@ -333,7 +333,7 @@ export const KeyLineDark: React.FC<TP & { parts: { t: string; hot?: boolean; at?
 export const ListCard: React.FC<TP & { title: string; items: { t: string; at: number; strike?: boolean; hot?: boolean }[]; dark?: boolean }> = ({ f, dur, title, items, dark }) => {
   const bg = dark ? C.bg : PAPER, ink = dark ? C.ink : C.bg;
   return (
-    <AbsoluteFill style={{ background: bg, opacity: fadeOut(f, dur) }}>
+    <AbsoluteFill style={{ background: bg, opacity: fadeOut(f, dur), transformOrigin: "20% 30%", transform: `scale(${1 + 0.05 * interpolate(f, [0, dur], [0, 1])}) translateY(${interpolate(f, [0, dur], [0, -14])}px)` }}>
       <div style={{ position: "absolute", left: 220, top: 170, fontFamily: F.jp, fontSize: 64, color: ink, opacity: out(f, 0, 10) }}>{title}</div>
       <div style={{ position: "absolute", left: 220, top: 300, display: "flex", flexDirection: "column", gap: 34 }}>
         {items.map((it, i) => {
