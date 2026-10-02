@@ -11,10 +11,12 @@ import json, subprocess, sys
 from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
+import styles
 
 S = json.loads(Path(sys.argv[1]).read_text())
 SRC, WORK, OUT, FONT = Path(sys.argv[2]), Path(sys.argv[3]), Path(sys.argv[4]), sys.argv[5]
 W, H, FPS, SR = 1080, 1920, 30, 48000
+ST = styles.get(S, FONT)  # チャンネルごとのテンプレート（common/styles.py）
 src = S["source"]
 # 区間: [from, to] または {"from", "to", "speed": 0.5 でスロー, "freeze_end": 秒}
 segs = [dict(zip(("from", "to"), sg)) if isinstance(sg, list) else dict(sg) for sg in src["segments"]]
@@ -79,8 +81,7 @@ subprocess.run(["ffmpeg", "-v", "error", "-y", *RAW, "-af", LN2 + ",alimiter=lim
                 "-ar", str(SR), str(WORK / "mix.wav")], check=True)
 
 # ---------- テロップ ----------
-COLORS = {"white": (255, 255, 255), "yellow": (255, 216, 90), "cream": (255, 240, 214)}
-OUTLINE = (40, 26, 18)
+COLORS, OUTLINE = styles.COLORS, styles.OUTLINE
 # Shorts の UI（1080x1920）: 上 0–150px はアイコン、右 x>950・高さ 50–85% はボタン列、下 75% 以下は説明・シークバー
 SAFE_CX, SAFE_W = 540, 820  # 字幕は画面の真ん中にそろえる（ユーザー決定）。幅 820 なら x 130–950 で右のボタン列にかからない
 # 字幕はセリフごとに "y"（縦の中心）・"x"（横の中心）・"w"（最大幅）を画面比で指定できる。被写体を避けるときに使う
@@ -95,10 +96,10 @@ def sparkle(d, cx, cy, r, fill):
 def text_layer(spec, size, cy, stroke=8, fill="white", hl=None, band=False, cx=W / 2, max_w=W - 120,
                sparkles=False, shadow_a=170):
     lines = spec.split("\n")
-    font = ImageFont.truetype(FONT, size)
+    font = ImageFont.truetype(ST["sub_font"], size)
     while max(font.getlength(l) for l in lines) > max_w:
         size -= 2
-        font = ImageFont.truetype(FONT, size)
+        font = ImageFont.truetype(ST["sub_font"], size)
     fill = COLORS[fill]
     img = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     lh = int(size * 1.28)
@@ -136,25 +137,24 @@ def text_layer(spec, size, cy, stroke=8, fill="white", hl=None, band=False, cx=W
     return np.asarray(Image.alpha_composite(shadow, img), np.float32) / 255.0
 
 
-title = S["title"]
-TITLE_TEXT = "\n".join(l["text"] for l in title)
-TITLE_HL = next((l["text"] for l in title if l["color"] == "yellow"), None)
-# タイトルの位置: 既定は上（12.5%）。被写体が上にある場面だけ "title_pos": [{"t0", "t1", "y"}] で動かす
+# タイトルの位置: 既定はチャンネルの title_y。被写体が上にある場面だけ "title_pos": [{"t0", "t1", "y"}] で動かす
 #   （場面の切り替わりに合わせて t0/t1 を置くと、位置が変わっても不自然にならない）
 _title_cache = {}
 
 
 def title_layer_at(t):
-    y = next((p["y"] for p in S.get("title_pos", []) if p["t0"] <= t < p["t1"]), 0.125)
+    y = next((p["y"] for p in S.get("title_pos", []) if p["t0"] <= t < p["t1"]), ST["title_y"])
     if y not in _title_cache:
-        _title_cache[y] = text_layer(TITLE_TEXT, 80, H * y, 9, hl=TITLE_HL, band=True)
+        _title_cache[y] = np.asarray(styles.render_title(S, ST, W, H, y), np.float32) / 255.0
     return _title_cache[y]
+
+
 SUB_Y = S.get("sub_y", 0.70)  # 字幕は下 70% 固定が既定（ユーザー決定）
 layers = []  # (start, end, layer)
 starts = [ln["start"] for ln in S["narration"]] + [DUR]
 for i, ln in enumerate(S["narration"]):
     end = min(spans[i][1] + 0.5, starts[i + 1] - 0.12, DUR)
-    layers.append((ln["start"] - 0.05, end, text_layer(ln["sub"], 64, H * ln.get("y", SUB_Y), hl=ln.get("hl"),
+    layers.append((ln["start"] - 0.05, end, text_layer(ln["sub"], ST["sub_size"], H * ln.get("y", SUB_Y), hl=ln.get("hl"),
                                                        cx=W * ln["x"] if "x" in ln else SAFE_CX,
                                                        max_w=W * ln["w"] if "w" in ln else SAFE_W)))
 for c in S.get("captions", []):
@@ -163,7 +163,7 @@ for c in S.get("captions", []):
         L = text_layer(c["text"], c.get("size", 58), H * c["y"], stroke=0, fill=c.get("color", "white"),
                        sparkles=c.get("sparkles", False), shadow_a=200)
     else:
-        L = text_layer(c["text"], c.get("size", 68), H * c.get("y", SUB_Y), fill=c.get("color", "white"),
+        L = text_layer(c["text"], c.get("size", ST["caption_size"]), H * c.get("y", SUB_Y), fill=c.get("color", "white"),
                        cx=SAFE_CX, max_w=SAFE_W)
     layers.append((c["start"], c["end"], L))
 FADE = 0.15
@@ -259,7 +259,7 @@ def zoom_at(t):
 #   circle: "path" の位置に輪、"r" は半径（画面幅比）
 #   flash : 白く光ってすっと消える（フック → 本編の切り替え）
 MARKS = S.get("marks", [])
-MARK_FONT = ImageFont.truetype(FONT, 60)
+MARK_FONT = ImageFont.truetype(ST["sub_font"], 60)
 
 
 def _pos(path, t):
