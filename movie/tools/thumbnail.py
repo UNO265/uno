@@ -10,7 +10,8 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
-FONT = str(ROOT / "work/fonts/DelaGothicOne-Regular.ttf")
+FONTS = {"dela": (str(ROOT / "work/fonts/DelaGothicOne-Regular.ttf"), None),
+         "noto-black": (str(ROOT / "work/fonts/NotoSansJP-VF.ttf"), "Black")}
 W, H = 1080, 1920
 TOP, BOTTOM = int(H * 0.61), int(H * 0.88)
 SIDE = int(W * 0.05)
@@ -24,16 +25,23 @@ def frame(src, t, crop):
     return Image.open(out).convert("RGB")
 
 
-def text_layer(lines, sizes):
+def text_layer(lines, sizes, font="dela", scale_x=1.0):
     """lines: [(텍스트, 'white'|'yellow')], sizes: 각 줄 글자 크기. 줄마다 RGBA 이미지와 실제 글자 상자를 돌려준다."""
     out = []
     for (txt, col), size in zip(lines, sizes):
-        f = ImageFont.truetype(FONT, size)
+        path, var = FONTS[font]
+        f = ImageFont.truetype(path, size)
+        if var: f.set_variation_by_name(var)
         l, t, r, b = f.getbbox(txt)
         w, h = r - l, b - t
         pad = 40
         mask = Image.new("L", (w + pad * 2, h + pad * 2), 0)
         ImageDraw.Draw(mask).text((pad - l, pad - t), txt, font=f, fill=255)
+        if scale_x != 1.0:  # 장체(가로로 좁힌 글자) — 참고 썸네일처럼 세로로 길게
+            mask = mask.resize((int(mask.size[0] * scale_x), mask.size[1]), Image.LANCZOS)
+            w = int(w * scale_x); pad_x = int(pad * scale_x)
+        else:
+            pad_x = pad
         if col == "yellow":  # 위 밝은 노랑 → 아래 진한 노랑
             grad = Image.new("RGB", mask.size)
             g = ImageDraw.Draw(grad)
@@ -49,7 +57,7 @@ def text_layer(lines, sizes):
         edge = mask.filter(ImageFilter.MaxFilter(7))
         layer.paste((10, 10, 10, 255), (0, 0), edge)
         layer.paste(grad, (0, 0), mask)
-        out.append((layer, w, h, pad))
+        out.append((layer, w, h, (pad_x, pad)))
     return out
 
 
@@ -70,7 +78,7 @@ def main():
     sizes = list(cfg["sizes"])
     gap = cfg.get("gap", 18)
     while True:  # 폭(좌우 5%)과 높이(61~88%) 안에 들어갈 때까지 글자를 줄인다
-        layers = text_layer(cfg["lines"], sizes)
+        layers = text_layer(cfg["lines"], sizes, cfg.get("font", "dela"), cfg.get("scale_x", 1.0))
         total = sum(h for _, _, h, _ in layers) + gap * (len(layers) - 1)
         if max(w for _, w, _, _ in layers) <= W - 2 * SIDE and total <= BOTTOM - TOP:
             break
@@ -81,7 +89,7 @@ def main():
     boxes = []
     for layer, w, h, pad in layers:
         x = (W - w) // 2
-        canvas.alpha_composite(layer, (x - pad, y - pad))
+        canvas.alpha_composite(layer, (x - pad[0], y - pad[1]))
         boxes.append((x, y, x + w, y + h))
         y += h + gap
     out = ROOT / f"outputs/{slug}/{slug}_thumbnail.png"

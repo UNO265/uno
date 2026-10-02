@@ -116,5 +116,5 @@
 ## 음악·글꼴 출처
 
 - BGM: `tools/bgm.py`로 이 영상용으로 새로 작곡(구성은 `projects/love/bgm.json`). 음원 FluidR3_GM(MIT 라이선스), 가사 없음.
-- 글꼴: Dela Gothic One(SIL OFL 1.1), Noto Sans CJK JP Bold(SIL OFL 1.1).
+- 글꼴: Dela Gothic One(SIL OFL 1.1), Noto Sans CJK JP Bold(SIL OFL 1.1), 썸네일 Noto Sans JP Black(SIL OFL 1.1).
 - 해설 음성: Microsoft Edge TTS ja-JP-KeitaNeural(edge-tts). 상업 이용 조건은 따로 확인이 필요하다.
