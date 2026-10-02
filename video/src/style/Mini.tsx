@@ -63,11 +63,12 @@ const useTex = (name: string, kind: string, rep: [number, number], srgb = false)
     t.needsUpdate = true;
     return t;
   }, [name, kind, rep[0], rep[1]]);
-const Pbr: React.FC<{ name: string; rep: [number, number]; tint?: string; rough?: number }> = ({ name, rep, tint = "#fff", rough = 1 }) => {
-  const d = useTex(name, "Diffuse", rep, true);
+const Pbr: React.FC<{ name: string; rep: [number, number]; tint?: string; rough?: number; flat?: boolean }> = ({ name, rep, tint = "#fff", rough = 1, flat }) => {
+  const d0 = useTex(name, "Diffuse", rep, true);
+  const d = flat ? null : d0;
   const n = useTex(name, "nor_gl", rep);
   const r = useTex(name, "Rough", rep);
-  return <meshStandardMaterial map={d} normalMap={n} roughnessMap={r} roughness={rough} color={tint} />;
+  return <meshStandardMaterial map={d} normalMap={n} normalScale={new THREE.Vector2(flat ? 0.35 : 1, flat ? 0.35 : 1)} roughnessMap={r} roughness={rough} color={tint} />;
 };
 
 const Env: React.FC = () => {
@@ -78,7 +79,7 @@ const Env: React.FC = () => {
     const pm = new THREE.PMREMGenerator(gl);
     const env = pm.fromEquirectangular(hdr).texture;
     scene.environment = env;
-    (scene as THREE.Scene & { environmentIntensity?: number }).environmentIntensity = 1.0;
+    (scene as THREE.Scene & { environmentIntensity?: number }).environmentIntensity = 1.25;
   }, []);
   return null;
 };
@@ -128,13 +129,6 @@ const Awning: React.FC<{ w: number; p: V3 }> = ({ w, p }) => {
       <mesh geometry={geo} castShadow receiveShadow>
         <meshStandardMaterial map={tex} roughness={0.95} side={THREE.DoubleSide} />
       </mesh>
-      {/* 縁のフリル */}
-      {Array.from({ length: 16 }, (_, i) => (
-        <mesh key={i} position={[-w / 2 + (i + 0.5) * (w / 16), -0.6, 0.02]} rotation={[0.55, 0, 0]} castShadow>
-          <cylinderGeometry args={[w / 32, w / 32, 0.18, 16, 1, false, 0, Math.PI]} />
-          <meshStandardMaterial color={i % 2 ? "#f6efe2" : "#d9652b"} roughness={0.95} side={THREE.DoubleSide} />
-        </mesh>
-      ))}
     </group>
   );
 };
@@ -177,7 +171,7 @@ const Interior: React.FC = () => {
           <meshStandardMaterial color="#fff" emissive="#fff6e6" emissiveIntensity={3} />
         </mesh>
       ))}
-      <pointLight position={[0, 2.6, 0]} intensity={18} color="#fff1d8" distance={9} decay={1.6} />
+      <pointLight position={[0, 2.6, 0]} intensity={10} color="#fff1d8" distance={9} decay={1.6} />
     </group>
   );
 };
@@ -207,12 +201,12 @@ const Store: React.FC = () => {
       </mesh>
       <mesh position={[0, 1.7, -2.5]} receiveShadow>
         <boxGeometry args={[8, 3.4, 0.2]} />
-        <Pbr name="clay_plaster" rep={[3, 1.5]} tint="#efe6d6" />
+        <Pbr name="clay_plaster" flat rep={[3, 1.5]} tint="#f6dfc2" />
       </mesh>
       {[-4, 4].map((x) => (
         <mesh key={x} position={[x, 3.3, -0.2]} castShadow receiveShadow>
           <boxGeometry args={[0.3, 6.6, 4.8]} />
-          <Pbr name="clay_plaster" rep={[2, 3]} tint="#e9dcc6" />
+          <Pbr name="clay_plaster" flat rep={[2, 3]} tint="#efd3b3" />
         </mesh>
       ))}
       <Interior />
@@ -232,15 +226,15 @@ const Store: React.FC = () => {
         <boxGeometry args={[8.1, 0.6, 0.25]} />
         <meshStandardMaterial color="#fbf7ef" />
       </mesh>
-      <mesh position={[0, 3.35, 2.33]}>
-        <planeGeometry args={[6, 0.56]} />
+      <mesh position={[0, 3.62, 2.905]}>
+        <planeGeometry args={[3.6, 0.34]} />
         <meshStandardMaterial map={sign} emissive="#ffffff" emissiveMap={sign} emissiveIntensity={0.35} />
       </mesh>
       <Awning w={8} p={[0, 2.85, 2.6]} />
       {/* 2階（住まい） */}
       <mesh position={[0, 5.0, -0.3]} castShadow receiveShadow>
         <boxGeometry args={[8.2, 2.8, 4.6]} />
-        <Pbr name="clay_plaster" rep={[3, 1]} tint="#f1e3cc" />
+        <Pbr name="clay_plaster" flat rep={[3, 1]} tint="#f8e2c6" />
       </mesh>
       <mesh position={[0, 6.45, -0.3]} castShadow>
         <boxGeometry args={[8.5, 0.15, 4.9]} />
@@ -254,7 +248,7 @@ const Store: React.FC = () => {
           </mesh>
           <mesh position={[0, 0, 0.06]}>
             <planeGeometry args={[1.6, 1.2]} />
-            <meshStandardMaterial color="#ffd9a0" emissive="#ffb766" emissiveIntensity={0.9} />
+            <meshStandardMaterial color="#e9c08e" emissive="#c98a4a" emissiveIntensity={0.35} roughness={0.2} />
           </mesh>
           <mesh position={[0, 0, 0.07]}>
             <boxGeometry args={[0.05, 1.2, 0.02]} />
@@ -263,14 +257,42 @@ const Store: React.FC = () => {
         </group>
       ))}
       {/* バルコニーの花 */}
-      <mesh position={[0, 3.75, 2.4]} castShadow receiveShadow>
-        <boxGeometry args={[8.2, 0.12, 1.0]} />
+      <mesh position={[0, 3.62, 2.4]} castShadow receiveShadow>
+        <boxGeometry args={[8.2, 0.38, 1.0]} />
         <meshStandardMaterial color="#6b3f2a" roughness={0.7} />
       </mesh>
       {[-3.2, -1.6, 1.2, 2.9].map((x, i) => (
         <Model key={x} name={i % 2 ? "potted_plant_02" : "planter_box_01"} p={[x, 3.81, 2.6]} s={i % 2 ? 1.0 : 1.2} r={i * 0.7} />
       ))}
       <Model name="potted_plant_01" p={[0.0, 3.81, 2.5]} s={1.1} />
+      <Flowers p={[0, 3.9, 2.75]} w={8.0} d={0.45} n={2600} seed={3} hang={0.12} />
+      {/* 手すり */}
+      <mesh position={[0, 4.35, 2.88]}>
+        <boxGeometry args={[8.2, 0.04, 0.04]} />
+        <meshStandardMaterial color="#1e1a18" metalness={0.5} roughness={0.4} />
+      </mesh>
+      {Array.from({ length: 41 }, (_, i) => (
+        <mesh key={i} position={[-4.05 + i * 0.2025, 4.1, 2.88]}>
+          <boxGeometry args={[0.018, 0.5, 0.018]} />
+          <meshStandardMaterial color="#1e1a18" metalness={0.5} roughness={0.4} />
+        </mesh>
+      ))}
+      {[-2.4, 2.4].map((x) => (
+        <group key={x}>
+          <mesh position={[x, 4.2, 2.05]} castShadow>
+            <boxGeometry args={[1.9, 0.18, 0.3]} />
+            <meshStandardMaterial color="#5a3a28" />
+          </mesh>
+          <Flowers p={[x, 4.32, 2.08]} w={1.8} d={0.26} n={700} seed={x > 0 ? 7 : 11} hang={0.4} />
+        </group>
+      ))}
+      {/* 屋上の縁取り・角 */}
+      {[2.3, -2.6].map((z) => (
+        <mesh key={z} position={[0, 3.62, z]}>
+          <boxGeometry args={[8.3, 0.1, 0.1]} />
+          <meshStandardMaterial color="#5a3a28" />
+        </mesh>
+      ))}
     </group>
   );
 };
@@ -354,12 +376,16 @@ const Road: React.FC = () => (
       <planeGeometry args={[40, 7]} />
       <Pbr name="asphalt_02" rep={[10, 2]} tint="#8a8a8a" />
     </mesh>
-    {Array.from({ length: 14 }, (_, i) => (
-      <mesh key={i} rotation={[-Math.PI / 2, 0, 0]} position={[-19 + i * 3, 0.005, 4.5]}>
-        <planeGeometry args={[1.6, 0.14]} />
+    {[4.4, 4.62].map((z) => (
+      <mesh key={z} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, z]}>
+        <planeGeometry args={[40, 0.1]} />
         <meshStandardMaterial color="#f2c94c" roughness={0.6} />
       </mesh>
     ))}
+    <mesh position={[0, 0.08, 1.02]} castShadow receiveShadow>
+      <boxGeometry args={[40, 0.16, 0.12]} />
+      <meshStandardMaterial color="#e9e5dd" roughness={0.8} />
+    </mesh>
     {/* 歩道 */}
     <mesh position={[0, 0.075, -1]} receiveShadow castShadow>
       <boxGeometry args={[40, 0.15, 4]} />
@@ -372,12 +398,59 @@ const Road: React.FC = () => (
   </group>
 );
 
+/** あふれる花（小さな球をたくさん） */
+const Flowers: React.FC<{ p: V3; w: number; d: number; n?: number; seed?: number; hang?: number }> = ({ p, w, d, n = 260, seed = 1, hang = 0 }) => {
+  const { leaf, bloom } = useMemo(() => {
+    let x = seed * 9301;
+    const rnd = () => ((x = (x * 9301 + 49297) % 233280) / 233280);
+    const m = new THREE.Matrix4();
+    const leaf = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.05, 1), new THREE.MeshStandardMaterial({ color: "#5d7a3c", roughness: 0.9 }), n);
+    const bloom = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.032, 1), new THREE.MeshStandardMaterial({ roughness: 0.8 }), n);
+    const cols = ["#e7a1a3", "#d65f6c", "#f3dcd0", "#c94a5a", "#f0b8b0"].map((c) => new THREE.Color(c));
+    for (let i = 0; i < n; i++) {
+      const u = rnd(), v = rnd();
+      const drop = hang * Math.max(0, v - 0.75) * 4 * rnd();
+      const y = rnd() * 0.18 - drop;
+      m.makeTranslation((u - 0.5) * w, y, (v - 0.5) * d + drop * 0.2);
+      leaf.setMatrixAt(i, m.clone().multiply(new THREE.Matrix4().makeScale(0.7 + rnd() * 0.6, 0.7 + rnd() * 0.6, 0.7 + rnd() * 0.6)));
+      m.makeTranslation((u - 0.5) * w + (rnd() - 0.5) * 0.08, y + 0.07, (v - 0.5) * d + drop * 0.2 + (rnd() - 0.5) * 0.08);
+      bloom.setMatrixAt(i, m);
+      bloom.setColorAt(i, cols[Math.floor(rnd() * cols.length)]);
+    }
+    for (const o of [leaf, bloom]) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+    return { leaf, bloom };
+  }, [w, d, n, seed, hang]);
+  return (
+    <group position={p}>
+      <primitive object={leaf} />
+      <primitive object={bloom} />
+    </group>
+  );
+};
+
+/** カフェのパラソル */
+const Parasol: React.FC<{ p: V3 }> = ({ p }) => (
+  <group position={p}>
+    <mesh position={[0, 1.15, 0]} castShadow>
+      <cylinderGeometry args={[0.025, 0.025, 2.3, 8]} />
+      <meshStandardMaterial color="#d8d2c8" metalness={0.4} roughness={0.4} />
+    </mesh>
+    <mesh position={[0, 2.25, 0]} castShadow receiveShadow>
+      <coneGeometry args={[0.9, 0.35, 12, 1, true]} />
+      <meshStandardMaterial color="#c9a283" roughness={0.95} side={THREE.DoubleSide} />
+    </mesh>
+  </group>
+);
+
 /** となりの建物 */
 const Neighbor: React.FC<{ x: number; tint: string; h: number }> = ({ x, tint, h }) => (
   <group position={[x, 0.15, -3.2]}>
     <mesh position={[0, h / 2, 0]} castShadow receiveShadow>
       <boxGeometry args={[10, h, 5]} />
-      <Pbr name="clay_plaster" rep={[4, 2]} tint={tint} />
+      <Pbr name="clay_plaster" flat rep={[4, 2]} tint={tint} />
     </mesh>
     {Array.from({ length: Math.floor(h / 2) }, (_, r) =>
       [-3, 0, 3].map((c) => (
@@ -388,7 +461,7 @@ const Neighbor: React.FC<{ x: number; tint: string; h: number }> = ({ x, tint, h
           </mesh>
           <mesh position={[0, 0, 0.04]}>
             <planeGeometry args={[1.15, 0.95]} />
-            <meshStandardMaterial color={(r + c) % 2 ? "#ffcf8f" : "#3a4048"} emissive={(r + c) % 2 ? "#ffad55" : "#000"} emissiveIntensity={0.6} />
+            <meshStandardMaterial color={(r + c) % 3 ? "#5b6670" : "#e8c79a"} roughness={0.15} metalness={0.3} emissive={(r + c) % 3 ? "#000" : "#c98a4a"} emissiveIntensity={0.3} />
           </mesh>
         </group>
       )),
@@ -406,19 +479,20 @@ const CameraRig: React.FC<{ pos: V3; target: V3 }> = ({ pos, target }) => {
 
 const Scene: React.FC<{ f: number }> = ({ f }) => {
   const t = interpolate(f, [0, 149], [0, 1], { easing: Easing.inOut(Easing.cubic) });
-  const pos: V3 = [interpolate(t, [0, 1], [11, 6]), interpolate(t, [0, 1], [10, 7]), interpolate(t, [0, 1], [19, 15])];
-  const focus = new THREE.Vector3(1.4, 0.7, 0.6);
+  const pos: V3 = [interpolate(t, [0, 1], [8, 4.5]), interpolate(t, [0, 1], [12, 9.5]), interpolate(t, [0, 1], [21, 17])];
+  const focus = new THREE.Vector3(0.6, 1.6, 0.4);
   return (
     <>
-      <CameraRig pos={pos} target={[0.4, 1.4, -1.0]} />
-      <color attach="background" args={["#2b211b"]} />
+      <CameraRig pos={pos} target={[0.3, 2.2, -0.8]} />
+      <color attach="background" args={["#d8d0c4"]} />
+      <fog attach="fog" args={["#d8d0c4", 30, 60]} />
       <Env />
-      <directionalLight position={[-8, 12, 10]} intensity={3.4} color="#ffd6a3" castShadow shadow-mapSize={[2048, 2048]} shadow-bias={-0.0003} shadow-normalBias={0.02} shadow-camera-left={-14} shadow-camera-right={14} shadow-camera-top={14} shadow-camera-bottom={-14} />
+      <directionalLight position={[-10, 16, 9]} intensity={4.2} color="#fff0dc" castShadow shadow-mapSize={[2048, 2048]} shadow-bias={-0.0003} shadow-normalBias={0.02} shadow-camera-left={-14} shadow-camera-right={14} shadow-camera-top={14} shadow-camera-bottom={-14} />
       <Road />
       <Store />
       {/* 歩道の小物 */}
-      <Model name="outdoor_table_chair_set_01" p={[2.9, 0.15, 0.1]} r={0.4} />
-      <Model name="outdoor_table_chair_set_01" p={[-2.6, 0.15, 0.3]} r={-0.3} />
+      <Model name="outdoor_table_chair_set_01" p={[3.2, 0.15, 0.3]} r={0.4} />
+      <Model name="outdoor_table_chair_set_01" p={[-3.0, 0.15, 0.4]} r={-0.3} />
       <Model name="street_lamp_01" p={[5.2, 0.15, 0.7]} r={-1.57} />
       <Model name="fire_hydrant" p={[-4.6, 0.15, 0.6]} />
       <Model name="metal_trash_can" p={[4.3, 0.15, -0.6]} />
@@ -433,13 +507,18 @@ const Scene: React.FC<{ f: number }> = ({ f }) => {
       <Model name="potted_plant_01" p={[-4.6, 0.15, -0.8]} />
       <Model name="flower_gazania" p={[7.2, 0.15, -0.6]} s={0.6} />
       <Detective p={[1.4, 0.15, 0.6]} r={0.5} />
+      <Parasol p={[3.2, 0.15, 0.3]} />
+      <Parasol p={[-3.0, 0.15, 0.4]} />
+      
+      <Flowers p={[-6.0, 0.25, 0.7]} w={3} d={0.5} n={1400} seed={21} />
+      <Flowers p={[6.6, 0.25, 0.7]} w={2.6} d={0.5} n={1200} seed={23} />
       <ToyCar p={[interpolate(f, [0, 149], [-13, -6]), 0, 3.0]} color="#bfe3ef" />
       <ToyCar p={[interpolate(f, [0, 149], [12, 7]), 0, 6.0]} color="#f2e1c2" dir={-1} />
-      <Neighbor x={-9.2} tint="#d9c2a8" h={5.5} />
-      <Neighbor x={9.2} tint="#c9b8a4" h={7.5} />
+      <Neighbor x={-9.2} tint="#f0d8c8" h={5.5} />
+      <Neighbor x={9.2} tint="#e6cdb0" h={7.5} />
       <EffectComposer multisampling={0}>
         <N8AO aoRadius={0.6} intensity={2.5} distanceFalloff={0.5} />
-        <DepthOfField target={focus} focalLength={0.04} bokehScale={7} height={540} />
+        <DepthOfField target={focus} focalLength={0.035} bokehScale={6} height={540} />
         <Bloom luminanceThreshold={0.9} intensity={0.4} mipmapBlur />
         <Vignette offset={0.3} darkness={0.5} />
       </EffectComposer>
@@ -460,8 +539,8 @@ export const MiniStill: React.FC = () => {
   }, []);
   if (!ready) return null;
   return (
-    <AbsoluteFill style={{ background: "#2b211b" }}>
-      <ThreeCanvas width={1920} height={1080} shadows={{ type: THREE.PCFSoftShadowMap }} camera={{ fov: 30, near: 0.5, far: 80 }} gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.35 }}>
+    <AbsoluteFill style={{ background: "#d8d0c4" }}>
+      <ThreeCanvas width={1920} height={1080} shadows={{ type: THREE.PCFSoftShadowMap }} camera={{ fov: 27, near: 0.5, far: 90 }} gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.35 }}>
         <Scene f={f} />
       </ThreeCanvas>
     </AbsoluteFill>
