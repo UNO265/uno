@@ -124,6 +124,8 @@ export const Marquee: React.FC<{ y: number; text: string; f: number; speed?: num
 
 /** 字幕（2026-10 改訂）: 行をほぼ満たす大きさ・半透明の黒帯・白文字。背景が白でも黒でも読める。
  *  長い文は句読点で 2 行に分ける。右下（YouTube の透かしの場所）にはかからない幅 CAP_W に収める。 */
+/** 字幕のスタイル: band = 半透明の黒帯 / outline = 白文字＋黒い縁取り */
+export const CAP_STYLE = "band" as "band" | "outline";
 const CAP_W = 1480, CAP_MAX = 64, CAP_MIN = 44, CAP_BOTTOM = 1030;
 const units = (t: string) => [...t].reduce((a, ch) => a + (/[\x00-\x7f]/.test(ch) ? 0.55 : 1), 0);
 const splitCaption = (t: string): string[] => {
@@ -157,9 +159,9 @@ export const Caption: React.FC<{ text: string; dark?: boolean }> = ({ text }) =>
   const top = CAP_BOTTOM - h;
   return (
     <g>
-      <rect x={960 - w / 2} y={top} width={w} height={h} rx={14} fill="rgba(11,11,12,0.74)" />
+      {CAP_STYLE === "band" && <rect x={960 - w / 2} y={top} width={w} height={h} rx={14} fill="rgba(11,11,12,0.74)" />}
       {lines.map((l, i) => (
-        <text key={i} x={960} y={top + padY + lh * i + size * 1.02} textAnchor="middle" fontFamily={F.jpb} fontSize={size} fill="#f4f1ea" {...(units(l) * size > CAP_W ? { textLength: CAP_W, lengthAdjust: "spacingAndGlyphs" } : {})}>
+        <text key={i} x={960} y={top + padY + lh * i + size * 1.02} textAnchor="middle" fontFamily={F.jpb} fontSize={size} fill="#f4f1ea" {...(CAP_STYLE === "outline" ? { stroke: "#0b0b0c", strokeWidth: size * 0.16, strokeLinejoin: "round" as const, paintOrder: "stroke" } : {})} {...(units(l) * size > CAP_W ? { textLength: CAP_W, lengthAdjust: "spacingAndGlyphs" } : {})}>
           {l}
         </text>
       ))}
