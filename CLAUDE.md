@@ -2,6 +2,8 @@
 
 일본어 경제 미스터리 다큐멘터리 YouTube 채널의 영상 제작 레포.
 
+> **`movie/`는 별개 채널(일본 타깃 영화 숏츠)이다.** 이 파일과 `docs/guide/`는 `movie/`에 적용하지 않는다. 그쪽 작업은 [`movie/CLAUDE.md`](movie/CLAUDE.md)만 따른다.
+
 ## 지침 (2026-09-29: 이 7개가 전부다)
 
 지침은 **`docs/guide/`** 에 제작 순서대로 있다. 규칙 하나는 한 곳에만 있다. 옛 지침 8개는 `docs/archive/`(보관, 근거용)이고, 옛 번호가 어디로 갔는지는 `docs/guide/MAPPING.md`.

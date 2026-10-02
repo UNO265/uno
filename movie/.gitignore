@@ -1,0 +1,10 @@
+# 원본·중간·완성 영상과 음성은 용량이 커서 레포에 올리지 않는다
+work/*
+!work/.gitkeep
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.m4a
