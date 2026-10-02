@@ -24,16 +24,16 @@ export const NumberPunch: React.FC<TP & { value: string; label: string; source?:
       ))}
     </div>
     <World cam={{ x: interpolate(f, [0, dur], [-40, 40]), y: 0, z: interpolate(f, [0, dur], [260, 140]), rx: 0, ry: interpolate(f, [0, dur], [-6, 6]) }}>
-      <At y={-40} ry={backIn(f, 2, 18, 50)} s={0.85 + 0.15 * out(f, 2, 12)}>
+      <At y={-110} ry={backIn(f, 2, 18, 50)} s={0.85 + 0.15 * out(f, 2, 12)}>
         <Ex text={value} size={280} color={C.ink} side="#6a655d" depth={72} />
       </At>
-      <At y={190} z={60} o={out(f, 12, 10)}>
+      <At y={110} z={60} o={out(f, 12, 10)}>
         <div style={{ background: C.or, padding: "8px 30px" }}>
           <Txt text={label} size={56} color={C.bg} font={F.jpb} />
         </div>
       </At>
     </World>
-    {source && <div style={{ position: "absolute", left: 0, right: 0, bottom: 120, textAlign: "center", fontFamily: F.jpb, fontSize: 24, color: C.gray, opacity: out(f, 20, 10) }}>{source}</div>}
+    {source && <div style={{ position: "absolute", left: 0, right: 0, top: 720, textAlign: "center", fontFamily: F.jpb, fontSize: 26, color: C.gray, opacity: out(f, 20, 10) }}>{source}</div>}
   </AbsoluteFill>
 );
 
@@ -89,7 +89,7 @@ export const Chapter: React.FC<TP & { no: number; title: string; sub?: string }>
 
 /* T05 結論型の折れ線（紙） ─────────────────────────── */
 export const LineChart: React.FC<TP & { title: string; sub: string; data: { x: number; y: number; label?: string }[]; unit: string; source: string; yMax: number }> = ({ f, dur, title, sub, data, unit, source, yMax }) => {
-  const X0 = 240, X1 = 1680, Y0 = 860, Y1 = 380;
+  const X0 = 240, X1 = 1680, Y0 = 660, Y1 = 310;
   const xs = data.map((d) => d.x), x0 = Math.min(...xs), x1 = Math.max(...xs);
   const px = (x: number) => X0 + ((x - x0) / (x1 - x0)) * (X1 - X0);
   const py = (y: number) => Y0 - (y / yMax) * (Y0 - Y1);
@@ -124,7 +124,7 @@ export const LineChart: React.FC<TP & { title: string; sub: string; data: { x: n
               </g>
             );
           })}
-          <text x={160} y={980} fontFamily={F.jpb} fontSize={22} fill="#8a8a90">{source}</text>
+          <text x={X0} y={Y0 + 104} fontFamily={F.jpb} fontSize={26} fill="#8a8a90">{source}</text>
         </svg>
       </div>
     </AbsoluteFill>
@@ -137,13 +137,13 @@ export const Bar3D: React.FC<TP & { title: string; items: { k: string; v: number
   return (
     <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
       <World cam={{ x: interpolate(f, [0, dur], [-80, 140]), y: -40, z: 260, rx: -6, ry: interpolate(f, [0, dur], [-4, 12]) }}>
-        <At y={-400} z={-100} o={out(f, 0, 10)}>
+        <At y={-470} z={-100} o={out(f, 0, 10)}>
           <Txt text={title} size={64} font={F.jpb} />
         </At>
         {items.map((b, i) => {
-          const h = (b.v / max) * 520 * out(f, 6 + i * 4, 18);
+          const h = (b.v / max) * 340 * out(f, 6 + i * 4, 18);
           return (
-            <At key={b.k} x={-((items.length - 1) * 320) / 2 + i * 320} y={330 - h / 2} z={-40} ry={-24}>
+            <At key={b.k} x={-((items.length - 1) * 320) / 2 + i * 320} y={50 - h / 2} z={-40} ry={-24}>
               <div style={{ position: "relative" }}>
                 <Prism w={170} h={Math.max(2, h)} d={120} color={b.hot ? C.or : "#3a3a40"} dark={b.hot ? "#b23c10" : "#232327"} top={b.hot ? "#ff8a5c" : "#55555c"} />
                 <div style={{ position: "absolute", top: h + 24, width: 260, left: -45, textAlign: "center", fontFamily: F.jpb, fontSize: 34, lineHeight: 1.2, whiteSpace: "normal", color: b.hot ? C.or : "#a0a0a8" }}>{b.k}</div>
@@ -153,7 +153,7 @@ export const Bar3D: React.FC<TP & { title: string; items: { k: string; v: number
           );
         })}
       </World>
-      <div style={{ position: "absolute", left: 0, right: 0, bottom: 110, textAlign: "center", fontFamily: F.jpb, fontSize: 24, color: C.gray }}>{source}</div>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 745, textAlign: "center", fontFamily: F.jpb, fontSize: 26, color: C.gray }}>{source}</div>
     </AbsoluteFill>
   );
 };
@@ -162,7 +162,7 @@ export const Bar3D: React.FC<TP & { title: string; items: { k: string; v: number
 export const CompareCards: React.FC<TP & { lead: string; cards: { title: string; value: string; note?: string; hot?: boolean }[]; source?: string }> = ({ f, dur, lead, cards, source }) => (
   <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
     <World cam={{ x: 0, y: 0, z: interpolate(f, [0, dur], [300, 220]), rx: 0, ry: interpolate(f, [0, dur], [-5, 5]) }}>
-      <At y={-380} z={-60} o={out(f, 0, 10)}>
+      <At y={-430} z={-60} o={out(f, 0, 10)}>
         <Txt text={lead} size={58} font={F.jpb} />
       </At>
       {cards.map((c, i) => {
@@ -170,8 +170,8 @@ export const CompareCards: React.FC<TP & { lead: string; cards: { title: string;
         const flip = interpolate(f, [a, a + 16], [180, 0], { ...clamp, easing: Easing.out(Easing.back(1.3)) });
         const n = cards.length;
         return (
-          <At key={i} x={(i - (n - 1) / 2) * 470} y={40} z={c.hot ? 40 : -40} ry={(i - (n - 1) / 2) * -10 + flip} o={f >= a ? 1 : 0}>
-            <div style={{ width: 400, height: 520, borderRadius: 28, background: c.hot ? C.or : "#222227", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 40px 80px rgba(0,0,0,.55)", backfaceVisibility: "hidden" }}>
+          <At key={i} x={(i - (n - 1) / 2) * 470} y={-70} z={c.hot ? 40 : -40} ry={(i - (n - 1) / 2) * -10 + flip} o={f >= a ? 1 : 0}>
+            <div style={{ width: 400, height: 400, borderRadius: 28, background: c.hot ? C.or : "#222227", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, boxShadow: "0 40px 80px rgba(0,0,0,.55)", backfaceVisibility: "hidden" }}>
               <div style={{ fontFamily: F.jpb, fontSize: 44, color: c.hot ? C.bg : "#c8c8cf" }}>{c.title}</div>
               <div style={{ fontFamily: F.en, fontSize: fitSize(c.value, 330, 170), lineHeight: 1, color: c.hot ? C.bg : C.ink, whiteSpace: "nowrap" }}>{c.value}</div>
               {c.note && <div style={{ fontFamily: F.jpb, fontSize: 28, color: c.hot ? C.bg : C.gray }}>{c.note}</div>}
@@ -180,7 +180,7 @@ export const CompareCards: React.FC<TP & { lead: string; cards: { title: string;
         );
       })}
     </World>
-    {source && <div style={{ position: "absolute", left: 0, right: 0, bottom: 110, textAlign: "center", fontFamily: F.jpb, fontSize: 24, color: C.gray }}>{source}</div>}
+    {source && <div style={{ position: "absolute", left: 0, right: 0, top: 745, textAlign: "center", fontFamily: F.jpb, fontSize: 26, color: C.gray }}>{source}</div>}
   </AbsoluteFill>
 );
 
@@ -190,7 +190,9 @@ export const MoneyFlow: React.FC<TP & { nodes: { id: string; label: string; x: n
   return (
     <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
       <svg width={1920} height={1080} style={{ position: "absolute" }}>
-        <text x={960} y={150} textAnchor="middle" fontFamily={F.jpb} fontSize={56} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
+        <text x={960} y={130} textAnchor="middle" fontFamily={F.jpb} fontSize={56} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
+        {/* 図は字幕の帯（y≈800〜）にかからないよう上に縮める */}
+        <g transform="translate(960 40) scale(0.86) translate(-960 0)">
         {edges.map((e, i) => {
           const a = N[e.from], b = N[e.to];
           const at = 10 + i * 10;
@@ -228,6 +230,7 @@ export const MoneyFlow: React.FC<TP & { nodes: { id: string; label: string; x: n
             <text key={i} x={mx} y={my - 26} textAnchor="middle" fontFamily={F.jpb} fontSize={34} fill={e.hot ? C.or : "#c8c8cf"} stroke={C.bg} strokeWidth={10} paintOrder="stroke" opacity={f >= at ? out(f, at + 10, 8) : 0}>{e.label}</text>
           );
         })}
+      </g>
       </svg>
     </AbsoluteFill>
   );
@@ -237,7 +240,7 @@ export const MoneyFlow: React.FC<TP & { nodes: { id: string; label: string; x: n
 export const Document: React.FC<TP & { name: string; lines: string[]; mark: number; source: string }> = ({ f, dur, name, lines, mark, source }) => (
   <AbsoluteFill style={{ background: "#e9e4d9", opacity: fadeOut(f, dur) }}>
     <World cam={{ x: 0, y: interpolate(f, [0, dur], [-20, 40]), z: interpolate(f, [0, dur], [380, 200]), rx: 0, ry: 0 }}>
-      <At y={-10} rx={interpolate(f, [0, 16], [30, 10], { ...clamp, easing: Easing.out(Easing.cubic) })} ry={-8} rz={-2}>
+      <At y={-80} rx={interpolate(f, [0, 16], [30, 10], { ...clamp, easing: Easing.out(Easing.cubic) })} ry={-8} rz={-2}>
         <div style={{ width: 1100, padding: "60px 80px", background: "#fffdf7", boxShadow: "0 50px 90px rgba(0,0,0,.25)", fontFamily: F.jpb }}>
           <div style={{ fontSize: 30, color: "#6b6b70", letterSpacing: 2, marginBottom: 30, borderBottom: "2px solid #ddd6c8", paddingBottom: 16 }}>{name}</div>
           {lines.map((l, i) => (
@@ -246,10 +249,10 @@ export const Document: React.FC<TP & { name: string; lines: string[]; mark: numb
               <span style={{ position: "relative" }}>{l}</span>
             </div>
           ))}
+          <div style={{ marginTop: 26, paddingTop: 14, borderTop: "2px solid #ddd6c8", fontSize: 26, color: "#6b6b70" }}>{source}</div>
         </div>
       </At>
     </World>
-    <div style={{ position: "absolute", left: 160, top: 110, fontFamily: F.jpb, fontSize: 24, color: "#6b6b70" }}>{source}</div>
   </AbsoluteFill>
 );
 
@@ -286,7 +289,7 @@ export const Timeline: React.FC<TP & { events: { year: string; text: string; hot
 
 /* T11 要点の一文（紙） ─────────────────────────── */
 export const KeyLine: React.FC<TP & { parts: { t: string; hot?: boolean }[]; note?: string }> = ({ f, dur, parts, note }) => (
-  <AbsoluteFill style={{ background: PAPER, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center" }}>
+  <AbsoluteFill style={{ background: PAPER, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center", flexDirection: "column", paddingBottom: 230 }}>
     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", maxWidth: 1500, transform: `scale(${1 + 0.03 * interpolate(f, [0, dur], [0, 1])})` }}>
       {parts.map((p, i) => {
         const a = 4 + i * 5;
@@ -298,7 +301,7 @@ export const KeyLine: React.FC<TP & { parts: { t: string; hot?: boolean }[]; not
         );
       })}
     </div>
-    {note && <div style={{ position: "absolute", bottom: 130, fontFamily: F.jpb, fontSize: 26, color: "#8a8a90", opacity: out(f, 20, 10) }}>{note}</div>}
+    {note && <div style={{ marginTop: 34, fontFamily: F.jpb, fontSize: 28, color: "#8a8a90", opacity: out(f, 20, 10) }}>{note}</div>}
   </AbsoluteFill>
 );
 
@@ -313,7 +316,7 @@ export const BlobLayer: React.FC<{ f: number }> = ({ f }) => (
 
 /** T11 の黒地版（答え・CLUE の一文。強い） */
 export const KeyLineDark: React.FC<TP & { parts: { t: string; hot?: boolean; at?: number }[]; size?: number; note?: string }> = ({ f, dur, parts, size = 110, note }) => (
-  <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center" }}>
+  <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center", flexDirection: "column", paddingBottom: 230 }}>
     <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "baseline", maxWidth: 1600, rowGap: 10, transform: `scale(${1 + 0.035 * interpolate(f, [0, dur], [0, 1])}) perspective(1200px) rotateX(${interpolate(f, [0, dur], [6, -2])}deg)` }}>
       {parts.map((p, i) => {
         const a = p.at ?? 3 + i * 6;
@@ -325,7 +328,7 @@ export const KeyLineDark: React.FC<TP & { parts: { t: string; hot?: boolean; at?
         );
       })}
     </div>
-    {note && <div style={{ position: "absolute", bottom: 130, fontFamily: F.jpb, fontSize: 26, color: C.gray }}>{note}</div>}
+    {note && <div style={{ marginTop: 34, fontFamily: F.jpb, fontSize: 28, color: C.gray }}>{note}</div>}
   </AbsoluteFill>
 );
 
@@ -334,8 +337,8 @@ export const ListCard: React.FC<TP & { title: string; items: { t: string; at: nu
   const bg = dark ? C.bg : PAPER, ink = dark ? C.ink : C.bg;
   return (
     <AbsoluteFill style={{ background: bg, opacity: fadeOut(f, dur), transformOrigin: "20% 30%", transform: `scale(${1 + 0.05 * interpolate(f, [0, dur], [0, 1])}) translateY(${interpolate(f, [0, dur], [0, -14])}px)` }}>
-      <div style={{ position: "absolute", left: 220, top: 170, fontFamily: F.jp, fontSize: 64, color: ink, opacity: out(f, 0, 10) }}>{title}</div>
-      <div style={{ position: "absolute", left: 220, top: 300, display: "flex", flexDirection: "column", gap: 34 }}>
+      <div style={{ position: "absolute", left: 220, top: 150, fontFamily: F.jp, fontSize: 64, color: ink, opacity: out(f, 0, 10) }}>{title}</div>
+      <div style={{ position: "absolute", left: 220, top: 280, display: "flex", flexDirection: "column", gap: 24 }}>
         {items.map((it, i) => {
           const o = out(f, it.at, 8);
           const strike = it.strike ? out(f, it.at + 10, 8) : 0;
@@ -357,7 +360,7 @@ export const ListCard: React.FC<TP & { title: string; items: { t: string; at: nu
 /** 円を回るお金の輪（来店のループ） */
 const boxW = (t: string) => Math.max(300, [...t].reduce((a, ch) => a + (/[\x00-\x7f]/.test(ch) ? 26 : 46), 0) + 80);
 export const LoopFlow: React.FC<TP & { title: string; nodes: { label: string; at: number; hot?: boolean }[] }> = ({ f, dur, title, nodes }) => {
-  const cx = 960, cy = 560, R = 300;
+  const cx = 960, cy = 470, R = 260;
   const n = nodes.length;
   const pos = (i: number) => [cx + R * Math.cos(-Math.PI / 2 + (i * 2 * Math.PI) / n), cy + R * Math.sin(-Math.PI / 2 + (i * 2 * Math.PI) / n)];
   const all = nodes[n - 1].at + 10;
@@ -365,7 +368,7 @@ export const LoopFlow: React.FC<TP & { title: string; nodes: { label: string; at
   return (
     <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
       <svg width={1920} height={1080}>
-        <text x={960} y={140} textAnchor="middle" fontFamily={F.jpb} fontSize={54} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
+        <text x={960} y={120} textAnchor="middle" fontFamily={F.jpb} fontSize={54} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
         <circle cx={cx} cy={cy} r={R} fill="none" stroke="#3a3a40" strokeWidth={10} strokeDasharray={2 * Math.PI * R} strokeDashoffset={2 * Math.PI * R * (1 - out(f, 2, all))} />
         {f > all &&
           Array.from({ length: 6 }, (_, k) => {
@@ -392,13 +395,13 @@ export const Stamp: React.FC<TP & { lines: string[]; stamp: string; at: number }
   const p = interpolate(f, [at, at + 6], [2.4, 1], { ...clamp, easing: Easing.out(Easing.cubic) });
   return (
     <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur), alignItems: "center", justifyContent: "center" }}>
-      <div style={{ textAlign: "center", transform: "translateY(-110px)" }}>
+      <div style={{ textAlign: "center", transform: "translateY(-150px)" }}>
         {lines.map((l, i) => (
           <div key={i} style={{ fontFamily: F.jp, fontSize: 96, color: C.ink, opacity: out(f, 2 + i * 6, 8), lineHeight: 1.35 }}>{l}</div>
         ))}
       </div>
       {f >= at && (
-        <div style={{ position: "absolute", transform: `translateY(170px) rotate(-8deg) scale(${p})`, border: `14px solid ${C.or}`, borderRadius: 24, padding: "10px 60px", fontFamily: F.jp, fontSize: 170, color: C.or, opacity: 0.92 }}>{stamp}</div>
+        <div style={{ position: "absolute", transform: `translateY(120px) rotate(-8deg) scale(${p})`, border: `14px solid ${C.or}`, borderRadius: 24, padding: "10px 60px", fontFamily: F.jp, fontSize: 170, color: C.or, opacity: 0.92 }}>{stamp}</div>
       )}
     </AbsoluteFill>
   );

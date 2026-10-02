@@ -68,7 +68,6 @@ const Overlay: React.FC = () => {
   const light = SCENES.some((s) => s.light && f >= at(s.ids[0]) && f < at(s.ids[s.ids.length - 1]) + cut(s.ids[s.ids.length - 1]).duration);
   return (
     <svg width={1920} height={1080} style={{ position: "absolute", inset: 0 }}>
-      {!light && <rect x={0} y={950} width={1920} height={130} fill="url(#capfade)" />}
       <defs>
         <linearGradient id="capfade" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#000" stopOpacity={0} />

@@ -94,15 +94,14 @@ export const Rise: React.FC<{ x: number; y: number; text: string; size: number; 
 /** 画面の四隅の計器（タイムコード・場面番号・ラベル） */
 export const Hud: React.FC<{ f: number; scene: number; total: number; label?: string; dark?: boolean }> = ({ f, scene, total, label = "DRUGSTORE", dark = true }) => {
   const col = dark ? "rgba(244,241,234,.7)" : "rgba(11,11,12,.7)";
-  const s = Math.floor(f / 30);
-  const tc = `00:00:${String(s).padStart(2, "0")}:${String(f % 30).padStart(2, "0")}`;
   return (
     <g fontFamily={F.mono} fontSize={18} fill={col} letterSpacing={2}>
       <text x={40} y={48}>KANENAZO — CASE #009</text>
       <text x={1880} y={48} textAnchor="end">ECONOMY × MYSTERY</text>
       {/* 右下は YouTube のブランディング透かし（チャンネルアイコン）の場所なので空けておく */}
+      {/* 走るタイムコードは「誤り」に見えるので 2026-10 に削除。章番号だけ左下に残す */}
       <text x={40} y={1050}>
-        {tc}　　{String(scene).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        {String(scene).padStart(2, "0")} / {String(total).padStart(2, "0")}
       </text>
       <text x={960} y={48} textAnchor="middle" opacity={0.8}>{label}</text>
     </g>
@@ -123,13 +122,47 @@ export const Marquee: React.FC<{ y: number; text: string; f: number; speed?: num
   );
 };
 
-/** 下の小さな字幕（キネティック文字は要点だけなので、文全体はここ） */
-export const Caption: React.FC<{ text: string; dark?: boolean }> = ({ text, dark = true }) =>
-  text ? (
+/** 字幕（2026-10 改訂）: 行をほぼ満たす大きさ・半透明の黒帯・白文字。背景が白でも黒でも読める。
+ *  長い文は句読点で 2 行に分ける。右下（YouTube の透かしの場所）にはかからない幅 CAP_W に収める。 */
+const CAP_W = 1480, CAP_MAX = 64, CAP_MIN = 44, CAP_BOTTOM = 1004;
+const units = (t: string) => [...t].reduce((a, ch) => a + (/[\x00-\x7f]/.test(ch) ? 0.55 : 1), 0);
+const splitCaption = (t: string): string[] => {
+  if (units(t) * CAP_MAX * 0.8 <= CAP_W) return [t];
+  // 真ん中に近い句読点（、。」）の後ろで切る。なければ真ん中で切る
+  const chars = [...t], half = units(t) / 2;
+  let best = -1, bestD = 1e9, acc = 0;
+  chars.forEach((ch, i) => {
+    acc += /[\x00-\x7f]/.test(ch) ? 0.55 : 1;
+    if ("、。」）".includes(ch) && i < chars.length - 2 && Math.abs(acc - half) < bestD) { best = i; bestD = Math.abs(acc - half); }
+  });
+  if (best < 0 || bestD > half * 0.45) {
+    // 句読点が遠いときは、真ん中に近い助詞（は・が・を・に・で・の・も・と・へ）の後ろで切る
+    acc = 0; let pb = -1, pd = 1e9;
+    chars.forEach((ch, i) => {
+      acc += /[\x00-\x7f]/.test(ch) ? 0.55 : 1;
+      if ("はがをにでのもとへ".includes(ch) && i < chars.length - 2 && !/[\x00-\x7fー]/.test(chars[i + 1]) && Math.abs(acc - half) < pd) { pb = i; pd = Math.abs(acc - half); }
+    });
+    if (pb >= 0 && pd < bestD) best = pb;
+    if (best < 0) { let a = 0; best = chars.findIndex((ch) => (a += /[\x00-\x7f]/.test(ch) ? 0.55 : 1) >= half); }
+  }
+  return [chars.slice(0, best + 1).join(""), chars.slice(best + 1).join("")];
+};
+export const Caption: React.FC<{ text: string; dark?: boolean }> = ({ text }) => {
+  if (!text) return null;
+  const lines = splitCaption(text);
+  const size = Math.max(CAP_MIN, Math.min(CAP_MAX, CAP_W / Math.max(...lines.map(units))));
+  const lh = size * 1.28, padX = 28, padY = 14;
+  const w = Math.min(CAP_W, Math.max(...lines.map(units)) * size) + padX * 2;
+  const h = lh * lines.length + padY * 2;
+  const top = CAP_BOTTOM - h;
+  return (
     <g>
-      {/* 長い字幕は右下の透かしにかからないよう幅 1560 に収める */}
-      <text x={960} y={1000} textAnchor="middle" fontFamily={F.jpb} fontSize={34} fill={dark ? C.ink : C.bg} opacity={0.92} {...([...text].length * 34 > 1560 ? { textLength: 1560, lengthAdjust: "spacingAndGlyphs" } : {})}>
-        {text}
-      </text>
+      <rect x={960 - w / 2} y={top} width={w} height={h} rx={14} fill="rgba(11,11,12,0.74)" />
+      {lines.map((l, i) => (
+        <text key={i} x={960} y={top + padY + lh * i + size * 1.02} textAnchor="middle" fontFamily={F.jpb} fontSize={size} fill="#f4f1ea" {...(units(l) * size > CAP_W ? { textLength: CAP_W, lengthAdjust: "spacingAndGlyphs" } : {})}>
+          {l}
+        </text>
+      ))}
     </g>
-  ) : null;
+  );
+};
