@@ -1,6 +1,6 @@
 {
  "fps": 30,
- "totalFrames": 23526,
+ "totalFrames": 23553,
  "cuts": [
   {
    "id": "D01",
@@ -1199,18 +1199,18 @@
     {
      "text": "カネナゾ。",
      "start": 0.4,
-     "end": 1.1454583333333335
+     "end": 1.2915625
     },
     {
      "text": "「身近なお金の謎を解く。」",
-     "start": 1.4254583333333333,
-     "end": 3.3603125
+     "start": 1.9415624999999999,
+     "end": 4.258062499999999
     }
    ],
    "voice": "case009/voice/D38.wav",
    "voiceStart": 0.4,
    "from": 23192,
-   "duration": 119
+   "duration": 146
   },
   {
    "id": "D39",
@@ -1228,7 +1228,7 @@
    ],
    "voice": "case009/voice/D39.wav",
    "voiceStart": 0.4,
-   "from": 23311,
+   "from": 23338,
    "duration": 215
   }
  ]
