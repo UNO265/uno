@@ -92,3 +92,31 @@ export const ChartDiet: React.FC = () => {
     </Frame>
   );
 };
+
+export const ChartHQ: React.FC = () => {
+  const rows = d.hq;
+  const X0 = 200, X1 = 1720, Y0 = 900, H = 500, max = 1400;
+  const bw = (X1 - X0) / rows.length;
+  return (
+    <Frame tag="DATA 04 ／ 本部" title="本部が1店から得る利益も、6年で約17%減った" sub="セブン-イレブン（国内コンビニ事業）の営業利益 ÷ 期末の店舗数（万円）　※計算・22年2月期から新セグメント" source="出典：セブン＆アイ・ホールディングス「セグメント情報」「月次営業情報」（2018〜2026年2月期）をもとに KANENAZO が計算">
+      {[0, 500, 1000].map((t) => (
+        <g key={t}>
+          <line x1={X0} x2={X1} y1={Y0 - (t / max) * H} y2={Y0 - (t / max) * H} stroke={GRID} strokeWidth={2} />
+          <text x={X1 + 16} y={Y0 - (t / max) * H + 10} fontSize={26} fill={GRAY} fontFamily={SANS}>{t.toLocaleString()}</text>
+        </g>
+      ))}
+      {rows.map((r, i) => {
+        const hot = r.fy === 2020 || r.fy === 2026;
+        const h = (r.per_store_man / max) * H;
+        return (
+          <g key={r.fy} fontFamily={SANS}>
+            <rect x={X0 + i * bw + bw * 0.2} y={Y0 - h} width={bw * 0.6} height={h} fill={hot ? RED : NAVY} opacity={hot ? 1 : 0.7} />
+            <text x={X0 + i * bw + bw / 2} y={Y0 - h - 16} fontSize={hot ? 44 : 28} fontWeight={hot ? 900 : 400} fill={hot ? RED : GRAY} textAnchor="middle">{r.per_store_man.toLocaleString()}</text>
+            <text x={X0 + i * bw + bw / 2} y={Y0 + 50} fontSize={26} fill={hot ? RED : GRAY} fontWeight={hot ? 700 : 400} textAnchor="middle">{String(r.fy).slice(2)}/2期</text>
+          </g>
+        );
+      })}
+      <text x={X0 + 5.5 * bw} y={Y0 - H - 10} fontSize={28} fill={INK} textAnchor="middle" fontFamily={SANS}>1店あたり1日に直すと 約3万3,600円 → 約2万8,100円</text>
+    </Frame>
+  );
+};
