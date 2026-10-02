@@ -61,7 +61,7 @@
 
 ## V7. 나레이션
 
-- **VOICEVOX 青山龍星(ノーマル, style 13)** — #009 키네틱판부터(2026-10-02 사용자 결정: 화면이 "경제 해설" 톤으로 바뀌어 낮고 억양 폭이 넓은 목소리로 교체. 12개 후보 비교 `docs/brand/README.md` 참고). 명령: `python3 scripts/narration.py --case case00X --voice aoyama`. #008 이전(雀松朱司, style 52)은 `--voice suzumatsu`(기본값).
+- **VOICEVOX 青山龍星(ノーマル, style 13)** — #009 키네틱판부터(2026-10-02 사용자 결정: 화면이 "경제 해설" 톤으로 바뀌어 낮고 억양 폭이 넓은 목소리로 교체. 12개 후보 중 B: 평균 104Hz·폭 76~149Hz로 가장 낮으면서 억양 폭이 넓음). 명령: `python3 scripts/narration.py --case case00X --voice aoyama`. #008 이전(雀松朱司, style 52)은 `--voice suzumatsu`(기본값).
   - **이용 조건**: 크레디트 `VOICEVOX:青山龍星` 필수(제거 불가). **기업·개인사업자이거나 기업과 계약한 개인이 되면 공개 전에 「ななはぴ」(https://v.seventhh.com/contact/)에 사전 신청**해야 한다(2026-10-02 현재 사용자는 해당 없음). 정치·종교·특정 집단 비방 용도 금지.
 - **최종 음성 먼저**: 실제 발화 길이가 컷 길이·자막·BGM을 정한다.
 - **구간별 말투**: cuts.json의 `pace`(속도)·`tone`(억양)·`pitch`로 구간마다 ±4~8% 바꾼다. CLUE·답 문장은 pace 0.93, 결론부는 SLOW_CUTS로 느리게. 「――」 뒤 0.55초 쉼.
