@@ -58,7 +58,7 @@ def draw_line(img, text, h_px, max_w, x, y_bottom, colors, stroke, align="left",
     return (x + eb[0], y + eb[1], x + eb[2], y + eb[3])
 
 
-def draw_boxed(img, text, h_px, max_w, x, y_bottom, fg, bg, alpha=1.0, align="left", tail=False):
+def draw_boxed(img, text, h_px, max_w, x, y_bottom, fg, bg, alpha=1.0, align="left", tail=False, tail_x=None):
     """글자 뒤에 둥근 상자(말풍선이면 꼬리)를 깔고 테두리 없이 쓴다. bbox 반환."""
     f = fit(text, h_px, max_w)
     bb = f.getbbox(text)
@@ -71,7 +71,8 @@ def draw_boxed(img, text, h_px, max_w, x, y_bottom, fg, bg, alpha=1.0, align="le
     d = ImageDraw.Draw(lay)
     d.rounded_rectangle((x, y, x + bw, y + bh), radius=round(bh * 0.28), fill=bg + (round(255 * alpha),))
     if tail:                                                   # 말풍선 꼬리(아래쪽, 오른쪽 사람 쪽)
-        tx = x + bw - round(bw * 0.18)
+        tx = round(tail_x * img.size[0]) if tail_x is not None else x + bw - round(bw * 0.18)
+        tx = min(max(tx, x + 30), x + bw - 30)
         d.polygon([(tx - 18, y + bh - 1), (tx + 18, y + bh - 1), (tx + 26, y + bh + 26)], fill=bg + (round(255 * alpha),))
     sh = lay.split()[3].filter(ImageFilter.GaussianBlur(8))
     img.paste(Image.new("RGB", img.size, 0), (3, 5), sh.point(lambda v: int(v * 0.35)))
@@ -101,6 +102,8 @@ def main():
                     help="인용: stroke=흰 글자+검정 테두리 / darkbox=반투명 검정 상자 / bubble=흰 말풍선+검정 글자 / navy=남색 상자+아이보리")
     ap.add_argument("--l1-style", default="stroke", choices=["stroke", "red", "navy", "ivory"],
                     help="1줄: stroke=흰 글자+검정 테두리 / red=빨강 띠+흰 글자 / navy=남색 띠+흰 글자 / ivory=아이보리 글자+남색 테두리")
+    ap.add_argument("--quote-w", type=float, default=0.70, help="말풍선 글자 최대 폭(화면 폭 대비). 얼굴을 가리면 줄인다")
+    ap.add_argument("--tail-x", type=float, default=None, help="말풍선 꼬리 위치(화면 폭 대비 0~1). 말한 사람 쪽으로")
     ap.add_argument("--s2", default="000000", help="2줄 테두리 색(hex)")
     ap.add_argument("--text-w", type=float, default=0.74, help="아래 제목의 최대 폭(화면 폭 대비). 얼굴을 가리면 줄인다")
     a = ap.parse_args()
@@ -123,8 +126,8 @@ def main():
         else:
             fg, bg, al_a = {"darkbox": ((255, 255, 255), (12, 12, 12), 0.72), "bubble": ((20, 20, 20), (255, 255, 255), 0.96),
                             "navy": ((247, 243, 234), (27, 42, 65), 0.92)}[a.quote_style]
-            boxes.append(draw_boxed(img, a.quote, round(H * 0.07), round(W * 0.70), x, round(H * 0.16), fg, bg, al_a, al,
-                                    tail=a.quote_style == "bubble"))
+            boxes.append(draw_boxed(img, a.quote, round(H * 0.07), round(W * a.quote_w), x, round(H * 0.16), fg, bg, al_a, al,
+                                    tail=a.quote_style == "bubble", tail_x=a.tail_x))
     b2 = draw_line(img, a.line2, round(H * 0.165), round(W * a.text_w), m, round(H * 0.86), yellow, 10,
                    stroke_rgb=hx(a.s2 + "," + a.s2)[0])
     if a.l1_style == "stroke":
