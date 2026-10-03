@@ -56,7 +56,10 @@ for i, ln in enumerate(S["narration"]):
     narr[a:b] += v[: b - a]
     spans.append((ln["start"], ln["start"] + len(v) / SR))
 pts = [(0, 1.0)]
-for s, e in spans:
+# "voice": false の行（字幕だけ）は無音なので BGM を下げない
+for (s, e), ln in zip(spans, S["narration"]):
+    if ln.get("voice", True) is False:
+        continue
     pts += [(s - 0.25, 1.0), (s, 0.0), (e, 0.0), (e + 0.35, 1.0)]
 duck = env(pts + [(DUR, 1.0)], n)  # 1 = ナレーションなし
 

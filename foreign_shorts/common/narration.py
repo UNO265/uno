@@ -1,4 +1,5 @@
 """ナレーション合成（VOICEVOX）。声は script.json の "voice": {"vvm", "style", "speed"} で CASE ごとに選ぶ。
+narration の行に "voice": false を付けると字幕だけ（音は無音、字幕を出す長さは読む長さのまま）。
 usage: python3 narration.py SCRIPT.json OUT_DIR  → OUT_DIR/NN.wav
 """
 import json, sys, wave
@@ -27,6 +28,12 @@ for i, ln in enumerate(lines):
     p.write_bytes(syn.synthesis(q, v["style"]))
     with wave.open(str(p)) as w:
         d = w.getnframes() / w.getframerate()
+        params, nf = w.getparams(), w.getnframes()
+    if ln.get("voice", True) is False:  # 字幕だけの行: 読む長さ（字幕を出す長さ）はそのままで音は無音にする
+        with wave.open(str(p), "w") as w:
+            w.setparams(params)
+            w.writeframes(b"\0" * nf * params.sampwidth * params.nchannels)
     nxt = lines[i + 1]["start"] if i + 1 < len(lines) else None
     warn = "  ⚠ 次のセリフに重なる" if nxt is not None and ln["start"] + d > nxt - 0.1 else ""
-    print(f"{i:02d} start={ln['start']:5.1f} dur={d:4.2f} end={ln['start']+d:5.2f}{warn}  {ln['say']}")
+    mute = "  (字幕のみ)" if ln.get("voice", True) is False else ""
+    print(f"{i:02d} start={ln['start']:5.1f} dur={d:4.2f} end={ln['start']+d:5.2f}{warn}{mute}  {ln['say']}")
