@@ -16,7 +16,7 @@
 - 인용: 흰 말풍선 + 검정 글자, 꼬리는 말한 사람(실케) 쪽
 - 1줄: 빨강 띠(#C8102E, 채널 로고 색) + 흰 글자
 - 2줄: 노랑 그라데이션(#FFEC00→#FFB000) + 두꺼운 검정 테두리
-- 글꼴: Zen Kaku Gothic New Black(SIL OFL). 비교안에 쓴 글꼴 그대로. 사용자가 다른 번호를 고르면 바꾼다
+- 글꼴: **미정**(사용자 선택 대기). 후보 비교 `preview/thumb/font_final_compare.jpg`(1·2·3·5·9·10·12·19번). 완성본은 임시로 3번 Zen Kaku Gothic New
 - 완성본: `preview/thumb/case002_thumbnail.png`(1280×720, 업로드용) / `.jpg`
 
 ```
