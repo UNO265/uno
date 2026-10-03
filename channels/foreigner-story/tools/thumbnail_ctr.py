@@ -16,7 +16,8 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 sys.path.insert(0, str(Path(__file__).parent))
 from thumbnail import crop_fill, grab, sec  # noqa: E402
 
-BLACK_FONT = "/home/user/media/fonts/NotoSansJP-Black.ttf"
+FONTS = "/home/user/media/fonts/"
+BLACK_FONT = FONTS + "NotoSansJP-Black.ttf"   # --font 로 바꿀 수 있다(모두 SIL OFL: 상업 이용 가능)
 W, H = 1280, 720
 
 
@@ -32,7 +33,7 @@ def fit(text, h_px, max_w):
     return ImageFont.truetype(BLACK_FONT, size)
 
 
-def draw_line(img, text, h_px, max_w, x, y_bottom, colors, stroke, align="left"):
+def draw_line(img, text, h_px, max_w, x, y_bottom, colors, stroke, align="left", stroke_rgb=(0, 0, 0)):
     """그라데이션 글자 + 두꺼운 검정 테두리 + 부드러운 그림자. 아래 끝을 y_bottom 에 맞춘다. bbox 반환."""
     f = fit(text, h_px, max_w)
     pad = stroke * 3
@@ -47,7 +48,7 @@ def draw_line(img, text, h_px, max_w, x, y_bottom, colors, stroke, align="left")
     y = y_bottom - th + pad
     sh = edge.filter(ImageFilter.GaussianBlur(stroke * 1.5))
     img.paste(Image.new("RGB", (tw, th), 0), (x + stroke // 2, y + stroke), sh.point(lambda v: int(v * 0.8)))
-    img.paste(Image.new("RGB", (tw, th), 0), (x, y), edge)
+    img.paste(Image.new("RGB", (tw, th), stroke_rgb), (x, y), edge)
     fb = fill.getbbox()
     top, bot = np.array(colors[0], np.float32), np.array(colors[1], np.float32)
     t = np.clip((np.arange(th) - fb[1]) / max(1, fb[3] - fb[1]), 0, 1)[:, None, None]
@@ -71,21 +72,29 @@ def main():
     ap.add_argument("--cx", type=float, default=0.5); ap.add_argument("--cy", type=float, default=0.5)
     ap.add_argument("--zoom", type=float, default=1.0)
     ap.add_argument("--quote-right", action="store_true", help="인용을 오른쪽 위에")
+    ap.add_argument("--font", default="NotoSansJP-Black.ttf", help="글꼴 파일 이름(/home/user/media/fonts/)")
+    ap.add_argument("--c1", default="FFFFFF,E8E8E8", help="1줄·인용 색(위,아래 hex)")
+    ap.add_argument("--c2", default="FFEC00,FFB000", help="2줄 색(위,아래 hex)")
+    ap.add_argument("--s2", default="000000", help="2줄 테두리 색(hex)")
     ap.add_argument("--text-w", type=float, default=0.74, help="아래 제목의 최대 폭(화면 폭 대비). 얼굴을 가리면 줄인다")
     a = ap.parse_args()
+    global BLACK_FONT
+    BLACK_FONT = FONTS + a.font
+    hx = lambda c: tuple(tuple(int(x[i:i + 2], 16) for i in (0, 2, 4)) for x in c.split(","))
     img = crop_fill(grab(a.src, sec(a.at)), W, H, a.cx, a.cy, a.zoom)
     img = ImageEnhance.Color(img).enhance(1.15)
     img = ImageEnhance.Contrast(img).enhance(1.08)
     img = shade(img, 0.22 if a.quote != "-" else 0.001, 0.5)
     m = round(W * 0.045)
-    white, yellow = ((255, 255, 255), (232, 232, 232)), ((255, 236, 0), (255, 176, 0))
+    white, yellow = hx(a.c1), hx(a.c2)
     boxes = []
     if a.quote != "-":
         q = f"「{a.quote}」"
         x = W - m if a.quote_right else m - 10
         boxes.append(draw_line(img, q, round(H * 0.085), round(W * 0.80), x, round(H * 0.16), white, 7,
                                "right" if a.quote_right else "left"))
-    b2 = draw_line(img, a.line2, round(H * 0.165), round(W * a.text_w), m, round(H * 0.86), yellow, 10)
+    b2 = draw_line(img, a.line2, round(H * 0.165), round(W * a.text_w), m, round(H * 0.86), yellow, 10,
+                   stroke_rgb=hx(a.s2 + "," + a.s2)[0])
     b1 = draw_line(img, a.line1, round(H * 0.105), round(W * a.text_w), m, b2[1] - round(H * 0.01), white, 8)
     boxes += [b1, b2]
     img.save(a.out)
