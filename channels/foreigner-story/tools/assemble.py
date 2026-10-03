@@ -59,7 +59,17 @@ def synth(texts, readings, tmp, speed=1.25):
     return out
 
 
+def pic_vf(it, fill):
+    """원본(1280x540, 약 2.37:1)을 화면에 놓는 방법. fill=16:9 가득(좌우를 잘라 확대, it['cx']로 자르는 위치 0~1),
+    아니면 위아래 검은 띠(letterbox)."""
+    if fill:
+        cx = it.get("cx", 0.5)
+        return f"scale=-2:{H},crop={W}:{H}:(iw-{W})*{cx}:0"
+    return f"scale={W}:-2,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:black"
+
+
 def render_items(plan, src, tmp, narr):
+    fill = plan.get("frame") == "fill"
     files = []
     for i, it in enumerate(plan["items"]):
         p = Path(tmp) / f"{i:03d}.mp4"
@@ -68,15 +78,19 @@ def render_items(plan, src, tmp, narr):
             d = b - a
             f = min(0.06, d / 4)
             run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-ss", f"{min(3, a):.3f}", "-t", f"{d:.3f}",
-                 "-vf", f"scale={W}:-2,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:black,fps={FPS},format=yuv420p",
+                 "-vf", f"{pic_vf(it, fill)},fps={FPS},format=yuv420p",
                  "-af", f"aresample=48000,afade=t=in:d={f},afade=t=out:st={d - f:.3f}:d={f}", *ENC, str(p)])
         elif it["type"] == "freeze":
             png = Path(tmp) / f"{i:03d}.png"
             run(["-ss", f"{sec(it['at']):.3f}", "-i", src, "-frames:v", "1", str(png)])
             d = narr[it["narr"]][1] + 1.1
             n = int(d * FPS)
-            zp = (f"scale={W * 2}:-2,zoompan=z='1+0.05*on/{n}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
-                  f":d={n}:s={W}x{PIC_H}:fps={FPS},pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:black,format=yuv420p")
+            if fill:
+                zp = (f"{pic_vf(it, True)},scale={W * 2}:-2,zoompan=z='1+0.05*on/{n}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
+                      f":d={n}:s={W}x{H}:fps={FPS},format=yuv420p")
+            else:
+                zp = (f"scale={W * 2}:-2,zoompan=z='1+0.05*on/{n}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)'"
+                      f":d={n}:s={W}x{PIC_H}:fps={FPS},pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:black,format=yuv420p")
             run(["-i", str(png), "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", f"{d:.3f}",
                  "-vf", zp, *ENC, str(p)])
         elif it["type"] == "card" and it.get("bg"):
@@ -155,6 +169,9 @@ def build_events(plan, cues, starts, durs, narr):
     return ev, narr_pos
 
 
+FILL = False
+
+
 def write_ass(ev, cards, total, path):
     head = Path(path).with_suffix(".head")
     B.write_ass([], total, head)                      # 기본 스타일(Y·YS·YK·YJ·N·C)을 받아 온다
@@ -165,6 +182,13 @@ def write_ass(ev, cards, total, path):
         "Style: CB,TBN Noto Sans JP Bold,84,&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,5,80,80,0,1\n"
         "Style: CS,TBN Noto Sans JP Medium,40,&H002E10C8,&H002E10C8,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,80,80,0,1\n")
     base = base.replace("\n[Events]", styles_extra + "\n[Events]")
+    if FILL:   # 16:9 가득: 글자가 화면 위에 올라가므로 테두리·그림자를 더하고 자막을 조금 올린다
+        import re
+        base = re.sub(r"(Style: Y[SKJ]?,[^\n]*?),1,4,0,2,60,60,22,1", r"\1,1,4,2,2,60,60,64,1", base)
+        base = base.replace("&H40FFFFFF,&H40FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,22,22,34,1",
+                            "&H30FFFFFF,&H30FFFFFF,&H80000000,&H80000000,0,0,0,0,100,100,0,0,1,1.5,0,7,22,22,22,1")
+        base = base.replace("&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,8,20,20,30,1",
+                            "&H00EAF3F7,&H00EAF3F7,&H00000000,&H80000000,0,0,0,0,100,100,2,0,1,2.5,1,8,20,20,26,1")
     lines = []
     # 출처 표시는 카드 위에는 띄우지 않는다
     edges = [0.0]
@@ -196,6 +220,8 @@ def write_ass(ev, cards, total, path):
 def main():
     plan_p, cues_p, src, out = sys.argv[1:5]
     plan = json.load(open(plan_p))
+    global FILL
+    FILL = plan.get("frame") == "fill"
     cues = json.load(open(cues_p))
     tmp = tempfile.mkdtemp(prefix="asm_", dir=os.path.dirname(os.path.abspath(out)))
     texts = [it["narr"] for it in plan["items"] if it.get("narr")]
