@@ -6,6 +6,7 @@
   --mode long   : 1280x720(16:9). 제목은 왼쪽 아래, 오른쪽 아래 재생 시간 표시 자리(가로 20%·세로 15%)는 비운다(TH4).
   --cx/--cy     : 잘라 낼 영역의 중심(원본 폭·높이 대비 0~1). 얼굴이 위쪽 절반에 오도록 맞춘다.
   --zoom        : 1보다 크면 더 확대(얼굴을 크게).
+  --style       : clean(기본, 명조·테두리 없음) / sans(가는 고딕) / bold(굵은 고딕·테두리)
 끝나면 제목 블록의 실제 픽셀 위치를 재서 기준 통과 여부를 출력한다.
 """
 import argparse, subprocess, sys
@@ -14,9 +15,19 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-FONT = "/home/user/media/fonts/NotoSansJP-Black.ttf"     # Noto Sans JP wght 900 인스턴스
-WHITE = ((255, 255, 255), (226, 226, 226))                # 1줄: 순백 → 아주 연한 회색
-YELLOW = ((255, 230, 0), (255, 180, 0))                   # 2줄: #FFE600 → #FFB400
+FONTS = "/home/user/media/fonts/"
+# 스타일(TH5): bold = 굵은 고딕 + 테두리(시끄러운 해외 반응형에 가까움) / clean = 명조 + 테두리 없음(차분) / sans = 가는 고딕 + 테두리 없음
+# 값: 글꼴, (1줄 색 위→아래), (2줄 색 위→아래), 롱폼 1줄·2줄 높이(화면 높이 대비), 쇼츠 1줄·2줄 높이, 테두리, 그림자 세기
+STYLES = {
+    "bold":  ("NotoSansJP-Black.ttf", ((255, 255, 255), (226, 226, 226)), ((255, 230, 0), (255, 180, 0)),
+              (0.11, 0.15), (0.10, 0.135), True, 1.6),
+    "clean": ("NotoSerifCJKjp-Bold.otf", ((255, 255, 255), (244, 244, 244)), ((255, 232, 140), (250, 210, 100)),
+              (0.07, 0.13), (0.06, 0.105), False, 1.3),
+    "sans":  ("NotoSansJP-Bold.ttf", ((255, 255, 255), (244, 244, 244)), ((255, 225, 77), (255, 205, 60)),
+              (0.065, 0.12), (0.055, 0.10), False, 1.3),
+}
+FONT = FONTS + STYLES["bold"][0]
+EDGE, SHADOW = True, 1.6
 
 
 def sec(t):
@@ -111,9 +122,10 @@ def place(canvas, lines, bottom, x_mode, margin, gap, max_w=None):
         shadow.paste(lay.split()[3], (x, yy), lay.split()[3])
     r = max(8, H // 90)
     sh = shadow.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.GaussianBlur(r))
-    canvas.paste(Image.new("RGB", (W, H), 0), (0, 0), sh.point(lambda v: min(255, int(v * 1.6))))
-    edge = shadow.filter(ImageFilter.MaxFilter(5))                   # 얇은 검정 테두리
-    canvas.paste(Image.new("RGB", (W, H), 0), (0, 0), edge)
+    canvas.paste(Image.new("RGB", (W, H), 0), (0, 0), sh.point(lambda v: min(255, int(v * SHADOW))))
+    if EDGE:
+        edge = shadow.filter(ImageFilter.MaxFilter(5))               # 얇은 검정 테두리
+        canvas.paste(Image.new("RGB", (W, H), 0), (0, 0), edge)
     for lay, x, yy in layers:
         canvas.paste(lay, (x, yy), lay)
     xs = [x for _, x, _ in layers] + [x + l.width for l, x, _ in layers]
@@ -126,21 +138,25 @@ def main():
     ap.add_argument("--mode", default="shorts", choices=["shorts", "long"])
     ap.add_argument("--cx", type=float, default=0.5); ap.add_argument("--cy", type=float, default=0.5)
     ap.add_argument("--zoom", type=float, default=1.0)
+    ap.add_argument("--style", default="clean", choices=list(STYLES))
     a = ap.parse_args()
+    global FONT, EDGE, SHADOW
+    font, WHITE, YELLOW, hl, hs, EDGE, SHADOW = STYLES[a.style]
+    FONT = FONTS + font
     frame = grab(a.src, sec(a.at))
     ok = True
     if a.mode == "shorts":
         W, H = 1080, 1920
         img = darken_bottom(crop_fill(frame, W, H, a.cx, a.cy, a.zoom), 0.5, 0.55)
-        h1, h2, gap = round(H * 0.10), round(H * 0.135), round(H * 0.015)
+        h1, h2, gap = round(H * hs[0]), round(H * hs[1]), round(H * 0.015)
         # 아래 끝을 86%(88%까지 여유 2%)에 맞춘다. 블록 높이 최대(10.5+1.5+14=26%)여도 위 끝은 60%대
         bb = place(img, [(a.line1, WHITE, h1), (a.line2, YELLOW, h2)], round(H * 0.86), "center", round(W * 0.05), gap)
         checks = [("위 끝 ≥ 61%", bb[1] / H >= 0.61), ("아래 끝 ≤ 88%", bb[3] / H <= 0.88),
                   ("좌우 여백 ≥ 5%", bb[0] / W >= 0.05 and (W - bb[2]) / W >= 0.05)]
     else:
         W, H = 1280, 720
-        img = darken_left(darken_bottom(crop_fill(frame, W, H, a.cx, a.cy, a.zoom), 0.55, 0.45), 0.6, 0.35)
-        h1, h2, gap = round(H * 0.11), round(H * 0.15), round(H * 0.02)
+        img = darken_left(darken_bottom(crop_fill(frame, W, H, a.cx, a.cy, a.zoom), 0.55, 0.45), 0.6, 0.35 if EDGE else 0.6)  # 테두리 없는 스타일은 바탕을 더 어둡게
+        h1, h2, gap = round(H * hl[0]), round(H * hl[1]), round(H * (0.02 if EDGE else 0.03))
         bb = place(img, [(a.line1, WHITE, h1), (a.line2, YELLOW, h2)], round(H * 0.84), "left", round(W * 0.05), gap,
                    max_w=round(W * 0.72))
         ts = (W * 0.80, H * 0.85)                                    # 재생 시간 표시 자리
