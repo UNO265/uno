@@ -119,7 +119,13 @@ def main():
     mix = np.zeros((n, 2), dtype=np.float32)
     tmp = tempfile.mkdtemp(prefix="bgm_")
     xf = plan.get("crossfade", 2.0)
-    for i, cue in enumerate(plan["cues"]):
+    cues = plan["cues"]
+    for k, cue in enumerate(cues):                                   # from_item(항목 번호) → 시각
+        if "from_item" in cue:
+            cue["start"] = items[cue["from_item"]]["start"]
+            nxt = cues[k + 1]["from_item"] if k + 1 < len(cues) else None
+            cue["end"] = items[nxt]["start"] if nxt is not None else total
+    for i, cue in enumerate(cues):
         a, b = cue["start"], cue["end"]
         midi = Path(tmp) / f"{cue['name']}.mid"
         wav = out / "stems" / f"{cue['name']}.wav"

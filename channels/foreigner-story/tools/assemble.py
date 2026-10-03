@@ -38,7 +38,7 @@ def run(args):
     subprocess.run(["ffmpeg", "-v", "error", "-y", *args], check=True)
 
 
-def synth(texts, readings, tmp):
+def synth(texts, readings, tmp, speed=1.25):
     from voicevox_core.blocking import Onnxruntime, OpenJtalk, Synthesizer, VoiceModelFile
     lib = next((B.VV / "onnxruntime" / "lib").glob("libvoicevox_onnxruntime.so.*.*"))
     syn = Synthesizer(Onnxruntime.load_once(filename=str(lib)), OpenJtalk(str(B.VV / "open_jtalk_dic_utf_8-1.11")))
@@ -50,7 +50,7 @@ def synth(texts, readings, tmp):
         for k, v in readings.items():
             s = s.replace(k, v)
         q = syn.create_audio_query(s, B.NARR_STYLE)
-        q.speed_scale, q.pre_phoneme_length, q.post_phoneme_length = 0.95, 0.05, 0.2
+        q.speed_scale, q.pre_phoneme_length, q.post_phoneme_length = speed, 0.05, 0.15
         raw = Path(tmp) / f"nr{i}.wav"
         raw.write_bytes(syn.synthesis(q, B.NARR_STYLE))
         wav = Path(tmp) / f"n{i}.wav"
@@ -79,6 +79,14 @@ def render_items(plan, src, tmp, narr):
                   f":d={n}:s={W}x{PIC_H}:fps={FPS},pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:black,format=yuv420p")
             run(["-i", str(png), "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", f"{d:.3f}",
                  "-vf", zp, *ENC, str(p)])
+        elif it["type"] == "card" and it.get("bg"):
+            # 그 장을 대표하는 장면을 흐리고 어둡게 깔고(남색을 살짝 섞음) 위에 큰 글자를 올린다
+            a = sec(it["bg"])
+            vf = (f"scale=-2:{H},crop={W}:{H},boxblur=10:2,eq=brightness=-0.18:saturation=0.75,"
+                  f"drawbox=x=0:y=0:w={W}:h={H}:color={NAVY}@0.45:t=fill,fps={FPS},format=yuv420p")
+            run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-ss", f"{min(3, a):.3f}", "-t", str(it["dur"]),
+                 "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-map", "0:v", "-map", "1:a",
+                 "-vf", vf, "-t", str(it["dur"]), *ENC, str(p)])
         elif it["type"] == "card":
             run(["-f", "lavfi", "-i", f"color=c={NAVY}:s={W}x{H}:r={FPS}:d={it['dur']}",
                  "-f", "lavfi", "-i", "anullsrc=r=48000:cl=stereo", "-t", str(it["dur"]), *ENC, str(p)])
@@ -154,8 +162,8 @@ def write_ass(ev, cards, total, path):
     base += "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n"
     styles_extra = (
         "Style: L,TBN Noto Sans JP Medium,26,&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,8,20,20,30,1\n"
-        "Style: CB,TBN Noto Sans JP Bold,64,&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,5,80,80,0,1\n"
-        "Style: CS,TBN Noto Sans JP Medium,30,&H002E10C8,&H002E10C8,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,80,80,0,1\n")
+        "Style: CB,TBN Noto Sans JP Bold,84,&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,5,80,80,0,1\n"
+        "Style: CS,TBN Noto Sans JP Medium,40,&H002E10C8,&H002E10C8,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,80,80,0,1\n")
     base = base.replace("\n[Events]", styles_extra + "\n[Events]")
     lines = []
     # 출처 표시는 카드 위에는 띄우지 않는다
@@ -177,9 +185,9 @@ def write_ass(ev, cards, total, path):
                     tx = "{\\fs32}" + B.SPEAKERS[spk] + "{\\fs50}　" + tx
                     seen.add(spk)
         elif st == "CB":
-            tx = "{\\pos(640,372)}" + tx
+            tx = "{\\pos(640,380)\\fad(250,200)\\bord2\\3c&H00141414&}" + tx
         elif st == "CS":
-            tx = "{\\pos(640,268)}" + tx
+            tx = "{\\pos(640,262)\\fad(250,200)}" + tx
         lines.append(f"Dialogue: 1,{B.ass_time(e['t0'])},{B.ass_time(e['t1'])},{st},,0,0,0,,{tx}")
     Path(path).write_text(base + "\n".join(lines) + "\n", encoding="utf-8")
     head.unlink()
@@ -191,7 +199,7 @@ def main():
     cues = json.load(open(cues_p))
     tmp = tempfile.mkdtemp(prefix="asm_", dir=os.path.dirname(os.path.abspath(out)))
     texts = [it["narr"] for it in plan["items"] if it.get("narr")]
-    narr = synth(texts, plan.get("readings", {}), tmp)
+    narr = synth(texts, plan.get("readings", {}), tmp, plan.get("narr_speed", 1.25))
     files = render_items(plan, src, tmp, narr)
     durs = [dur(f) for f in files]
     starts = [sum(durs[:i]) for i in range(len(durs))]

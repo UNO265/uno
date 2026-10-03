@@ -1,0 +1,305 @@
+{
+ "note": "CASE #002 v6 BGM. 구간은 plan_v6 항목 번호(from_item) 기준 — 길이가 바뀌어도 장면에 맞춰 따라간다. 악기는 FluidR3_GM(GM 번호).",
+ "crossfade": 2.5,
+ "end_fade": 3.0,
+ "silence": [],
+ "cues": [
+  {
+   "name": "01_prologue",
+   "bpm": 68,
+   "fade_in": 1.5,
+   "fade_out": 3.0,
+   "chords": [
+    "F",
+    "C",
+    "Dm7",
+    "BbM7"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 0,
+     "kind": "broken",
+     "vel": 58,
+     "density": 0.9
+    },
+    {
+     "ch": 1,
+     "prog": 89,
+     "kind": "pad",
+     "vel": 42,
+     "vol": 80
+    }
+   ],
+   "from_item": 0
+  },
+  {
+   "name": "02_road",
+   "bpm": 92,
+   "chords": [
+    "D",
+    "A",
+    "Bm7",
+    "G"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 24,
+     "kind": "arp",
+     "vel": 56
+    },
+    {
+     "ch": 1,
+     "prog": 12,
+     "kind": "bell",
+     "vel": 50,
+     "n": 2,
+     "oct": -12
+    },
+    {
+     "ch": 2,
+     "prog": 33,
+     "kind": "bass",
+     "vel": 60,
+     "vol": 85
+    },
+    {
+     "ch": 3,
+     "prog": 89,
+     "kind": "pad",
+     "vel": 36,
+     "vol": 70
+    }
+   ],
+   "from_item": 4
+  },
+  {
+   "name": "03_shrine",
+   "bpm": 76,
+   "chords": [
+    "D",
+    "Bm7",
+    "GM7",
+    "Asus"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 0,
+     "kind": "broken",
+     "vel": 52,
+     "density": 0.75
+    },
+    {
+     "ch": 1,
+     "prog": 89,
+     "kind": "pad",
+     "vel": 44,
+     "vol": 85
+    },
+    {
+     "ch": 2,
+     "prog": 33,
+     "kind": "bass",
+     "vel": 50,
+     "vol": 75
+    }
+   ],
+   "from_item": 10
+  },
+  {
+   "name": "04_home",
+   "bpm": 80,
+   "chords": [
+    "GM7",
+    "Em7",
+    "CM7",
+    "D"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 4,
+     "kind": "arp",
+     "vel": 50
+    },
+    {
+     "ch": 1,
+     "prog": 48,
+     "kind": "pad",
+     "vel": 40,
+     "vol": 80
+    },
+    {
+     "ch": 2,
+     "prog": 33,
+     "kind": "bass",
+     "vel": 56,
+     "vol": 85
+    }
+   ],
+   "from_item": 15
+  },
+  {
+   "name": "05_takachiho",
+   "bpm": 80,
+   "chords": [
+    "G",
+    "D",
+    "Em7",
+    "C"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 4,
+     "kind": "arp",
+     "vel": 50
+    },
+    {
+     "ch": 1,
+     "prog": 48,
+     "kind": "pad",
+     "vel": 40,
+     "vol": 80
+    },
+    {
+     "ch": 2,
+     "prog": 73,
+     "kind": "melody",
+     "vel": 54,
+     "vol": 75
+    },
+    {
+     "ch": 3,
+     "prog": 33,
+     "kind": "bass",
+     "vel": 56,
+     "vol": 85
+    }
+   ],
+   "from_item": 24
+  },
+  {
+   "name": "06_childhood",
+   "bpm": 96,
+   "chords": [
+    "C",
+    "Am7",
+    "F",
+    "G"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 8,
+     "kind": "bell",
+     "vel": 58,
+     "n": 3
+    },
+    {
+     "ch": 1,
+     "prog": 45,
+     "kind": "broken",
+     "vel": 56,
+     "density": 0.85,
+     "oct": -12
+    },
+    {
+     "ch": 2,
+     "prog": 0,
+     "kind": "pad",
+     "vel": 34,
+     "vol": 70
+    },
+    {
+     "ch": 3,
+     "prog": 33,
+     "kind": "bass",
+     "vel": 52,
+     "vol": 80
+    }
+   ],
+   "from_item": 25
+  },
+  {
+   "name": "07_morning",
+   "bpm": 88,
+   "chords": [
+    "C",
+    "G",
+    "Am7",
+    "F"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 0,
+     "kind": "arp",
+     "vel": 48
+    },
+    {
+     "ch": 1,
+     "prog": 8,
+     "kind": "bell",
+     "vel": 48,
+     "n": 1
+    },
+    {
+     "ch": 2,
+     "prog": 89,
+     "kind": "pad",
+     "vel": 34,
+     "vol": 70
+    }
+   ],
+   "from_item": 32
+  },
+  {
+   "name": "08_matane",
+   "bpm": 70,
+   "fade_out": 4.0,
+   "chords": [
+    "F",
+    "Am7",
+    "BbM7",
+    "C",
+    "Dm7",
+    "BbM7",
+    "Gm7",
+    "C"
+   ],
+   "parts": [
+    {
+     "ch": 0,
+     "prog": 0,
+     "kind": "arp",
+     "vel": 52
+    },
+    {
+     "ch": 1,
+     "prog": 48,
+     "kind": "pad",
+     "vel": 46,
+     "vol": 90
+    },
+    {
+     "ch": 2,
+     "prog": 33,
+     "kind": "bass",
+     "vel": 54,
+     "vol": 80
+    },
+    {
+     "ch": 3,
+     "prog": 0,
+     "kind": "melody",
+     "vel": 60,
+     "vol": 85
+    }
+   ],
+   "from_item": 37
+  }
+ ]
+}
