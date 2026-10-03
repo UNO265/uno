@@ -20,7 +20,7 @@ NARR_STYLE = 31          # No.7 読み聞かせ
 DUCK = 0.3               # 내레이션 중 원본 음량
 CREDIT = "映像：SilkyRonTheRoad（YouTube）"
 READINGS = {"その夜": "そのよる"}   # 내레이션 읽기 보정
-# 화자별 노란 계열 색(E3, 2026-10-02 사용자 결정): S=シルケ 노랑, K=キーラン 주황빛 노랑, J=일본인 출연자 연둣빛 노랑
+# 화자별 노란 계열 색(E3, 2026-10-02 사용자 결정): S=シルケ 연한 레몬 #FFF680, K=キーラン 진한 주황 #FF8A00, J=일본인 출연자 연두 #8EE070 (2026-10-03 대비 강화)
 SPEAKERS = {"S": "シルケ", "K": "キーラン", "J": "モリさん"}
 
 V2_SEG15_SRC = "19:02.80"   # 뼈대 v2 의 포켓몬 구간 시작(원본 시각)
@@ -101,9 +101,9 @@ ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Y,TBN Noto Sans JP Bold,50,&H0000D4FF,&H0000D4FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
-Style: YS,TBN Noto Sans JP Bold,50,&H0000D4FF,&H0000D4FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
-Style: YK,TBN Noto Sans JP Bold,50,&H0033A7FF,&H0033A7FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
-Style: YJ,TBN Noto Sans JP Bold,50,&H006BF2D9,&H006BF2D9,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
+Style: YS,TBN Noto Sans JP Bold,50,&H0080F6FF,&H0080F6FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
+Style: YK,TBN Noto Sans JP Bold,50,&H00008AFF,&H00008AFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
+Style: YJ,TBN Noto Sans JP Bold,50,&H0070E08E,&H0070E08E,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1
 Style: N,TBN Noto Sans JP Bold,44,&H00FFFFFF,&H00FFFFFF,&H40141414,&H40141414,0,0,0,0,100,100,1,0,3,12,0,2,60,60,30,1
 Style: C,TBN Noto Sans JP Medium,20,&H40FFFFFF,&H40FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,22,22,34,1
 
