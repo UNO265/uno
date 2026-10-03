@@ -16,12 +16,15 @@
 - 인용: 흰 말풍선 + 검정 글자, 꼬리는 말한 사람(실케) 쪽
 - 1줄: 빨강 띠(#C8102E, 채널 로고 색) + 흰 글자
 - 2줄: 노랑 그라데이션(#FFEC00→#FFB000) + 두꺼운 검정 테두리
-- 글꼴: **미정**(사용자 선택 대기). 후보 비교 `preview/thumb/font_final_compare.jpg`(1·2·3·5·9·10·12·19번). 완성본은 임시로 3번 Zen Kaku Gothic New
+- 글꼴: 사용자 「감 대신 데이터로」(2026-10-03) → 조사·측정 결과([조사 기록](../../guide/source/thumbnail_research_2026-10-03.md) 「추가 조사」)로 **기본 A = 5 Zen Maru Gothic Black**(가독성 1위). 업로드 때 YouTube 「テストと比較」(테스트 및 비교)로 A·B·C를 시험해 시청자 데이터로 확정
+  - A `preview/thumb/case002_thumb_A_zenmaru.png`(5 Zen Maru Gothic, 가독성 96%)
+  - B `preview/thumb/case002_thumb_B_mplus1p.png`(9 M PLUS 1p Black, 89%, 장르 표준 굵은 고딕 중 1위)
+  - C `preview/thumb/case002_thumb_C_noto.png`(1 Noto Sans JP Black, 80%, 가장 흔한 표준형 기준점)
 - 완성본: `preview/thumb/case002_thumbnail.png`(1280×720, 업로드용) / `.jpg`
 
 ```
 python3 tools/thumbnail_ctr.py <main.mp4> 512 "家族みんな、すごく優しい" "ヒッチハイクで出会った" "日本人の家へ" case002_thumbnail.png \
-  --cx 0.5 --cy 0.42 --zoom 1.1 --quote-right --font ZenKakuGothicNew-Black.ttf --quote-style bubble --l1-style red
+  --cx 0.5 --cy 0.42 --zoom 1.1 --quote-right --font ZenMaruGothic-Black.ttf --quote-style bubble --l1-style red
 ```
 
 
