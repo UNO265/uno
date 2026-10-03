@@ -11,7 +11,19 @@
 | 1줄 | ヒッチハイクで出会った | 히치하이크로 만난 | 원본 00:00·01:15, 모리 씨가 히치하이크하던 두 사람을 태움 |
 | 2줄 | 日本人の家へ | 일본인의 집으로 | 원본 "they invited us to move in" |
 
-글꼴·색: 비교 중(1+A / 3+A / 3+E / 5+B, `preview/thumb/final_0~3.png`).
+## 확정 디자인 (2026-10-03 사용자 결정: 상단 표현 5번)
+
+- 인용: 흰 말풍선 + 검정 글자, 꼬리는 말한 사람(실케) 쪽
+- 1줄: 빨강 띠(#C8102E, 채널 로고 색) + 흰 글자
+- 2줄: 노랑 그라데이션(#FFEC00→#FFB000) + 두꺼운 검정 테두리
+- 글꼴: Zen Kaku Gothic New Black(SIL OFL). 비교안에 쓴 글꼴 그대로. 사용자가 다른 번호를 고르면 바꾼다
+- 완성본: `preview/thumb/case002_thumbnail.png`(1280×720, 업로드용) / `.jpg`
+
+```
+python3 tools/thumbnail_ctr.py <main.mp4> 512 "家族みんな、すごく優しい" "ヒッチハイクで出会った" "日本人の家へ" case002_thumbnail.png \
+  --cx 0.5 --cy 0.42 --zoom 1.1 --quote-right --font ZenKakuGothicNew-Black.ttf --quote-style bubble --l1-style red
+```
+
 
 
 ## (이전) 2026-10-03 사용자 확정: GPT로 제작, 롱폼 A
