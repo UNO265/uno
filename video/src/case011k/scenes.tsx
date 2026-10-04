@@ -156,7 +156,7 @@ export const SCENES: Scene[] = [
     <S at={rel("F33", 1) + 30} name="thud" v={0.6} /><S at={b} name="whoosh1" />{void f}
   </>); } },
   { ids: ["F33B"], light: true, el: ({ dur, rel }) => { const f = use(); return <ListCard f={f} dur={dur} title="こう選ぶ" items={[{ t: "在庫の多い去年のお米と、新米の値段の差", at: 6 }, { t: "袋の精米日も一緒に見る", at: rel("F33B", 2), hot: true }]} />; } },
-  { ids: ["F34"], el: ({ dur, rel }) => { const f = use(); return <KeyLineDark f={f} dur={dur} parts={[{ t: "安さの裏で、", at: rel("F34", 2) }, { t: "来年の作り手が減る", hot: true, at: rel("F34", 2) + 26 }]} size={96} note="費用の重い小さな田んぼから（可能性）" />; } },
+  { ids: ["F34"], el: ({ dur, rel }) => { const f = use(); return <KeyLineDark f={f} dur={dur} parts={[{ t: "安くなるのは、うれしい。", at: 6 }, { t: "でも、下がりすぎれば", at: rel("F34", 1) }, { t: "小さな田んぼから", at: rel("F34", 1) + 60 }, { t: "来年の作り手が減る", hot: true, at: rel("F34", 2) + 26 }]} size={88} note="費用の重い小さな田んぼから（可能性）" />; } },
 
   /* ── 5. MONEY FLOW → 答え ── */
   { ids: ["F35", "F36", "F36B"], el: ({ dur, rel }) => { const f = use(); return (<>
@@ -169,6 +169,10 @@ export const SCENES: Scene[] = [
     ]} />
     <S at={rel("F36", 0)} name="whoosh2" /><S at={rel("F36B", 2)} name="thud" v={0.5} />
   </>); } },
-  { ids: ["F37"], el: ({ dur, rel }) => { const f = use(); return <KeyLineDark f={f} dur={dur} parts={[{ t: "儲けの話", at: rel("F37", 0) + 30 }, { t: "→ 揺れの商売", hot: true, at: rel("F37", 2) + 40 }, { t: "→ 田んぼの大きさ", hot: true, at: rel("F37", 3) + 40 }]} size={92} />; } },
+  { ids: ["F37"], el: ({ dur, rel }) => { const c = rel("F37", 2) - 4; return (<>
+    <Part from={0} to={c} total={dur}>{(f, d) => <KeyLineDark f={f} dur={d} parts={[{ t: "誰かが儲けている？", at: 10 }, { t: "341円払っても買われた年", at: rel("F37", 1) + 30 }, { t: "費用を回収できない年", hot: true, at: rel("F37", 1) + 150 }]} size={90} />}</Part>
+    <Part from={c} total={dur}>{(f, d) => <KeyLineDark f={f} dur={d} parts={[{ t: "揺れの商売", hot: true, at: 10 }, { t: "耐えられるかは", at: rel("F37", 3) - c }, { t: "田んぼの大きさ", hot: true, at: rel("F37", 3) - c + 50 }]} size={96} />}</Part>
+    <S at={rel("F37", 1) + 150} name="pop0" /><S at={c} name="whoosh1" />
+  </>); } },
   { ids: ["F38"], el: ({ dur, rel }) => { const f = use(); return (<><KeyLineDark f={f} dur={dur} parts={[{ t: "答えは――今年、5キロで農家に残るのは", at: 10 }, { t: "0円以下", hot: true, at: rel("F38", 0) + 80 }, { t: "（去年は約940円）", at: rel("F38", 1) }]} size={84} note="新潟コシヒカリ・家族の労働を費用に含めた場合（計算）" /><S at={rel("F38", 0) + 80} name="thud" v={0.7} /></>); } },
 ];
