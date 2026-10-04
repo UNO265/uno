@@ -172,7 +172,7 @@ python3 foreign_shorts/common/build.py foreign_shorts/CASE/script.json "$F" $S $
 | `source.blur` | `{x,y,w,h,t0,t1,src_w,src_h}` 원본 좌표 기준 흐림 |
 | `zooms` | `{t0,t1,from,to,cx,cy,from_cx,from_cy,ramp,back}` 편집 후 시간·화면비 좌표 |
 | `marks` | `{type: arrow/circle/flash, t0, t1, path:[[t,x,y],…], label, r}` |
-| `narration` | `{start, say(읽을 문장), sub(자막, \n 줄바꿈), hl(노란 강조어), speed, ko(한국어), voice(false면 자막만)}` |
+| `narration` | `{start, say(읽을 문장), sub(자막, \n 줄바꿈), hl(노란 강조어), speed, ko(한국어), voice(false면 자막만), color(속마음은 cream)}` |
 | `captions` | 내레이션 없는 자막(오프닝 훅 「このあと…」 등) `{start,end,text,color,size}` |
 | `upload` | `{title, title_ko, hashtags}` |
 
