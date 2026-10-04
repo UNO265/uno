@@ -1,5 +1,5 @@
 /**
- * CASE #011「お米5キロ、農家に残るのは？」（docs/case011-conti-v5.md）
+ * 公開番号 CASE #010（作業フォルダは case011）「お米5キロ、農家に残るのは？」（docs/case011-conti-v5.md）
  * 導入 = 3D キネティック（T01）、本編 = モーション・テンプレート（T02〜T11）+ HERO、波形の強弱。
  * BGM = OpenTracks 5 曲（#009 と同じ曲を別の並びで、docs/case011-audio-credits.md）、エンディング = 固定（C8、#009 と同じ画面）。
  */
@@ -73,7 +73,7 @@ const Overlay: React.FC = () => {
           <stop offset="1" stopColor="#000" stopOpacity={0.6} />
         </linearGradient>
       </defs>
-      <Hud f={f} scene={chapter} total={5} dark={!light} label="RICE" caseNo="#011" />
+      <Hud f={f} scene={chapter} total={5} dark={!light} label="RICE" caseNo="#010" />
       <Caption text={cap} dark={!light} />
     </svg>
   );

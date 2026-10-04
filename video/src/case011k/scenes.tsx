@@ -40,7 +40,7 @@ export const SCENES: Scene[] = [
   } },
   { ids: ["F04"], el: ({ dur }) => { const f = use(); return (<><QuestionDrum f={f} dur={dur} text="お米5キロ、農家に残るのは？" hot="残る" band="HOW MUCH LEFT?  ✦  残るのは？" /><S at={0} name="whoosh2" /></>); } },
   { ids: ["F05"], el: ({ dur, rel }) => { const f = use(); return (<><KeyLineDark f={f} dur={dur} parts={[{ t: "答えは2分で出る。", at: 4 }, { t: "残る田んぼ", hot: true, at: rel("F05", 1) + 40 }, { t: "と", at: rel("F05", 1) + 52 }, { t: "残らない田んぼ", hot: true, at: rel("F05", 1) + 62 }]} size={92} /><S at={rel("F05", 1) + 40} name="pop0" /></>); } },
-  { ids: ["F06"], el: ({ dur }) => { const f = use(); return (<><Chapter f={f} dur={dur} no={1} title="お米" sub="KANENAZO CASE #011" /><S at={0} name="whoosh0" /></>); } },
+  { ids: ["F06"], el: ({ dur }) => { const f = use(); return (<><Chapter f={f} dur={dur} no={1} title="お米" sub="KANENAZO CASE #010" /><S at={0} name="whoosh0" /></>); } },
 
   /* ── 1. 5キロの中身 → 答え ── */
   { ids: ["F07"], el: ({ dur, rel }) => (<>

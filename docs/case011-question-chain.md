@@ -1,4 +1,4 @@
-# CASE #011 QUESTION CHAIN 설계 (대본 작성 전)
+# CASE #010（공개 번호, 작업 파일은 case011） QUESTION CHAIN 설계 (대본 작성 전)
 
 ## 0. ANSWER CARD
 
