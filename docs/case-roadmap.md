@@ -7,6 +7,7 @@
 | #008 | 自動販売機 | 제목 확정 「自販機、なぜ減っても値上げ？」 → 질문 사슬 → 대본 4,861자(S10 보강) → **06 DIRECTION 재제작**: 콘티 47 CUT → 음성 14:58 → **렌더 완료(14:58, out/case008_parts 4개)** ([case008-research.md](case008-research.md)) |
 | #009 | ドラッグストア | 제목 확정 「ドラッグストア、なぜ食品が安い？」 → 질문 사슬 확정 → 대본 확정(4,053자) → 음성 13:24 → 콘티 39 CUT 확정 → **렌더 완료(13:24, out/case009_parts 4개)** → [case009-research.md](case009-research.md) |
 | #010 | コンビニ | 제목 확정 「コンビニ、なぜ値引きせず捨てる？」 → 질문 사슬 확정 → 대본 확정(4,235자) → 음성 13:38 → 콘티 43 CUT 확정 → **렌더 완료(13:38, out/case010_parts 4개)** → [case010-research.md](case010-research.md) |
+| #011 | お米 | 수요 조사(YouTube 자동완성) → 제목 확정 「お米5キロ、農家に残るのは？」 → 질문 사슬 → 대본(4,052자) → 음성 12:59(Nemo) → 콘티 v5 확정 → 키네틱 제작([case011-research.md](case011-research.md)) |
 
 - 각 CASE는 CORE v4 순서로 진행한다: ANSWER CARD → 질문 사슬 설계 → 대본 → 장면 설계 → 음성 → 영상 → PROMISE AUDIT.
 - [case006-candidates.md](case006-candidates.md)의 スシロー 안은 보관한다(이후 CASE 후보).
