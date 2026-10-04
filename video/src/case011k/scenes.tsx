@@ -124,7 +124,7 @@ export const SCENES: Scene[] = [
   /* ── 3. 同じ値段、違う田んぼ ── */
   { ids: ["F25"], el: ({ dur }) => { const f = use(); return (<><Chapter f={f} dur={dur} no={3} title="同じ値段、違う田んぼ" sub="size matters" /><S at={0} name="whoosh2" /></>); } },
   { ids: ["F26"], el: ({ dur, rel }) => { const f = use(); return (<>
-    <SizeBars f={f} dur={dur} title="お米を作る費用（2024年産・玄米60キロ・田んぼの広さ別）" items={[{ k: "0.5ha未満", v: 27217 }, { k: "0.5〜1", v: 22027 }, { k: "1〜3", v: 17781 }, { k: "3ha以上", v: 12912 }, { k: "平均", v: 15814 }, { k: "50ha以上", v: 9978 }]} line={18500} lineLabel="今年の概算金 18,500円（新潟）" lineAt={rel("F26", 5)} source="出典：農林水産省 令和6年産米生産費（全算入生産費）" />
+    <SizeBars f={f} dur={dur} title="お米を作る費用（2024年産・玄米60キロ・田んぼの広さ別）" items={[{ k: "0.5ha未満", v: 27217, at: rel("F26", 1) + 20 }, { k: "0.5〜1", v: 22027, at: rel("F26", 1) + 60 }, { k: "1〜3", v: 17781, at: rel("F26", 1) + 100 }, { k: "3ha以上", v: 12912, at: rel("F26", 2) }, { k: "平均", v: 15814, at: rel("F26", 4) }, { k: "50ha以上", v: 9978, at: rel("F26", 2) + 30 }]} line={18500} lineLabel="今年の概算金 18,500円（新潟）" lineAt={rel("F26", 5)} source="出典：農林水産省 令和6年産米生産費（全算入生産費）" />
     <S at={rel("F26", 3)} name="pop0" /><S at={rel("F26", 5)} name="thud" v={0.6} />
   </>); } },
   { ids: ["F27"], el: ({ dur, rel }) => { const f = use(); const b = rel("F27", 3) - 4; return (<>

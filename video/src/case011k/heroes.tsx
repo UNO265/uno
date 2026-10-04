@@ -8,6 +8,8 @@ type TP = { f: number; dur: number };
 const fadeOut = (f: number, dur: number, d = 8) => interpolate(f, [dur - d, dur], [1, 0], clamp);
 const GREEN = "#3ecf8e";
 const yen = (n: number) => Math.round(n).toLocaleString();
+/** 静止を避けるゆっくりした寄り（中央上寄せ） */
+const drift = (f: number, dur: number): React.CSSProperties => ({ transformOrigin: "50% 35%", transform: `scale(${1 + 0.045 * interpolate(f, [0, dur], [0, 1])})` });
 
 /** HERO1 「5キロの中身」: 費用 4 段階を下から積み上げる 3D 柱（生産が一番厚い） */
 export const StackBag: React.FC<TP & { parts: { k: string; v: number; at: number; hot?: boolean }[]; total: number; source: string }> = ({ f, dur, parts, total, source }) => {
@@ -69,7 +71,7 @@ export const Balance: React.FC<TP & { title: string; states: { at: number; label
   );
   return (
     <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
-      <svg width={1920} height={1080}>
+      <svg width={1920} height={1080} style={drift(f, dur)}>
         <text x={960} y={110} textAnchor="middle" fontFamily={F.jpb} fontSize={54} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
         <text x={960} y={162} textAnchor="middle" fontFamily={F.jpb} fontSize={40} fill={C.or} opacity={out(f, cur.at, 8)}>{cur.label}</text>
         {/* 天びんの棒（差で傾く） */}
@@ -92,17 +94,17 @@ export const Balance: React.FC<TP & { title: string; states: { at: number; label
 };
 
 /** HERO3 「田んぼの大きさ」: 規模別の費用の棒 + 受け取る値段の基準線。線より上（費用が高い）は赤 */
-export const SizeBars: React.FC<TP & { title: string; items: { k: string; v: number }[]; line: number; lineLabel: string; source: string; lineAt: number }> = ({ f, dur, title, items, line, lineLabel, source, lineAt }) => {
+export const SizeBars: React.FC<TP & { title: string; items: { k: string; v: number; at?: number }[]; line: number; lineLabel: string; source: string; lineAt: number }> = ({ f, dur, title, items, line, lineLabel, source, lineAt }) => {
   const max = Math.max(...items.map((i) => i.v)) * 1.08;
   const X0 = 220, W = 1480, H = 440, BASE = 690;
   const bw = (W / items.length) * 0.62;
   const ly = BASE - (line / max) * H;
   return (
     <AbsoluteFill style={{ background: C.bg, opacity: fadeOut(f, dur) }}>
-      <svg width={1920} height={1080}>
+      <svg width={1920} height={1080} style={drift(f, dur)}>
         <text x={960} y={120} textAnchor="middle" fontFamily={F.jpb} fontSize={52} fill={C.ink} opacity={out(f, 0, 10)}>{title}</text>
         {items.map((it, i) => {
-          const a = 6 + i * 5;
+          const a = it.at ?? 6 + i * 5;
           const h = (it.v / max) * H * out(f, a, 16);
           const x = X0 + (W / items.length) * i + ((W / items.length) - bw) / 2;
           const over = f >= lineAt && it.v > line;
