@@ -88,7 +88,7 @@ export const Chapter: React.FC<TP & { no: number; title: string; sub?: string }>
 };
 
 /* T05 結論型の折れ線（紙） ─────────────────────────── */
-export const LineChart: React.FC<TP & { title: string; sub: string; data: { x: number; y: number; label?: string }[]; unit: string; source: string; yMax: number }> = ({ f, dur, title, sub, data, unit, source, yMax }) => {
+export const LineChart: React.FC<TP & { title: string; sub: string; data: { x: number; y: number; label?: string; xl?: string }[]; unit: string; source: string; yMax: number }> = ({ f, dur, title, sub, data, unit, source, yMax }) => {
   const X0 = 240, X1 = 1680, Y0 = 660, Y1 = 310;
   const xs = data.map((d) => d.x), x0 = Math.min(...xs), x1 = Math.max(...xs);
   const px = (x: number) => X0 + ((x - x0) / (x1 - x0)) * (X1 - X0);
@@ -120,7 +120,7 @@ export const LineChart: React.FC<TP & { title: string; sub: string; data: { x: n
               <g key={i} transform={`translate(${px(d.x)} ${py(d.y)}) scale(${s})`}>
                 <circle r={14} fill={i === data.length - 1 ? C.or : C.bg} stroke={PAPER} strokeWidth={4} />
                 <text y={-32} textAnchor="middle" fontFamily={F.en} fontSize={i === data.length - 1 ? 64 : 40} fill={i === data.length - 1 ? C.or : C.bg}>{d.label ?? d.y}{unit}</text>
-                <text y={58} textAnchor="middle" fontFamily={F.mono} fontSize={24} fill="#6b6b70">{d.x}</text>
+                <text y={58} textAnchor="middle" fontFamily={F.mono} fontSize={24} fill="#6b6b70">{d.xl ?? d.x}</text>
               </g>
             );
           })}

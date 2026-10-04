@@ -92,11 +92,11 @@ export const Rise: React.FC<{ x: number; y: number; text: string; size: number; 
 };
 
 /** 画面の四隅の計器（タイムコード・場面番号・ラベル） */
-export const Hud: React.FC<{ f: number; scene: number; total: number; label?: string; dark?: boolean }> = ({ f, scene, total, label = "DRUGSTORE", dark = true }) => {
+export const Hud: React.FC<{ f: number; scene: number; total: number; label?: string; dark?: boolean; caseNo?: string }> = ({ scene, total, label = "DRUGSTORE", dark = true, caseNo = "#009" }) => {
   const col = dark ? "rgba(244,241,234,.7)" : "rgba(11,11,12,.7)";
   return (
     <g fontFamily={F.mono} fontSize={18} fill={col} letterSpacing={2}>
-      <text x={40} y={48}>KANENAZO — CASE #009</text>
+      <text x={40} y={48}>KANENAZO — CASE {caseNo}</text>
       <text x={1880} y={48} textAnchor="end">ECONOMY × MYSTERY</text>
       {/* 右下は YouTube のブランディング透かし（チャンネルアイコン）の場所なので空けておく */}
       {/* 走るタイムコードは「誤り」に見えるので 2026-10 に削除。章番号だけ左下に残す */}
