@@ -1,0 +1,27 @@
+{
+ "font": "noto-black",
+ "scale_x": 0.8,
+ "gap": 14,
+ "grade": "eq=contrast=1.15:saturation=1.1:gamma=0.95,vignette=PI/5",
+ "sizes": [
+  250,
+  300
+ ],
+ "time": 98.3,
+ "crop": [
+  220,
+  421,
+  606,
+  1077
+ ],
+ "lines": [
+  [
+   "家に来た少年は",
+   "white"
+  ],
+  [
+   "何者？",
+   "yellow"
+  ]
+ ]
+}
