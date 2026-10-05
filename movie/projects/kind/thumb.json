@@ -1,27 +1,28 @@
 {
- "font": "noto-black",
- "scale_x": 0.8,
- "gap": 14,
- "grade": "eq=contrast=1.15:saturation=1.1:gamma=0.95,vignette=PI/5",
- "sizes": [
-  250,
-  300
- ],
- "time": 98.3,
+ "note": "최종(추천 B로 진행): 0:33 밤에 침대에서 걱정하는 리 앤. 문구 「泊めた少年が / 消えた朝」(영상 0:36 '翌朝、彼の姿がありません').",
+ "time": 32.9,
  "crop": [
-  220,
+  0,
   421,
   606,
   1077
  ],
  "lines": [
   [
-   "家に来た少年は",
+   "泊めた少年が",
    "white"
   ],
   [
-   "何者？",
+   "消えた朝",
    "yellow"
   ]
- ]
+ ],
+ "font": "noto-black",
+ "scale_x": 0.8,
+ "gap": 14,
+ "sizes": [
+  250,
+  300
+ ],
+ "grade": "eq=contrast=1.15:saturation=1.1:gamma=0.95,vignette=PI/5"
 }
