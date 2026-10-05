@@ -1,6 +1,8 @@
 """구성안(plan JSON)대로 원본 구간·정지 화면·카드를 이어 붙이고, 자막·내레이션을 입힌다.
 
-사용: python3 assemble.py <plan.json> <cues_src.json> <source.mp4> <out.mp4> [--ass-only]
+사용: python3 assemble.py <plan.json> <cues_src.json> <source.mp4 | sources.json> <out.mp4> [--ass-only]
+  원본이 여러 편이면 sources.json({"Ep24": "/path/ep24.mp4", ...})을 주고, item·cue에 "ep"를 적는다(#003부터).
+  item "audio": "vocals" 이면 plan["stems_dir"]/<ep>_<IN>_<OUT>.wav(음원 분리한 목소리)를 소리로 쓴다(원본 음악 제거, 04 E6).
 
 plan items
   clip   : {"src": [IN, OUT], "label"?: 날짜·장소 표시, "narr"?: 장면 위 내레이션, "narr_at"?: 시작 오프셋}
@@ -68,18 +70,33 @@ def pic_vf(it, fill):
     return f"scale={W}:-2,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:black"
 
 
-def render_items(plan, src, tmp, narr):
+def src_of(src, it):
+    return src[it["ep"]] if isinstance(src, dict) else src
+
+
+def stem_of(plan, it):
+    a, b = it["src"]
+    return Path(plan["stems_dir"]) / f"{it['ep']}_{a.replace(':', '')}_{b.replace(':', '')}.wav"
+
+
+def render_items(plan, srcs, tmp, narr):
     fill = plan.get("frame") == "fill"
     files = []
     for i, it in enumerate(plan["items"]):
         p = Path(tmp) / f"{i:03d}.mp4"
+        src = src_of(srcs, it) if it["type"] != "card" or it.get("bg") else None
         if it["type"] == "clip":
             a, b = map(sec, it["src"])
             d = b - a
             f = min(0.06, d / 4)
-            run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-ss", f"{min(3, a):.3f}", "-t", f"{d:.3f}",
-                 "-vf", f"{pic_vf(it, fill)},fps={FPS},format=yuv420p",
-                 "-af", f"aresample=48000,afade=t=in:d={f},afade=t=out:st={d - f:.3f}:d={f}", *ENC, str(p)])
+            af = f"aresample=48000,afade=t=in:d={f},afade=t=out:st={d - f:.3f}:d={f}"
+            if it.get("audio") == "vocals":       # 음원 분리한 목소리만(원본 음악 제거)
+                run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-i", str(stem_of(plan, it)),
+                     "-ss", f"{min(3, a):.3f}", "-t", f"{d:.3f}", "-map", "0:v", "-map", "1:a",
+                     "-vf", f"{pic_vf(it, fill)},fps={FPS},format=yuv420p", "-af", af, *ENC, str(p)])
+            else:
+                run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-ss", f"{min(3, a):.3f}", "-t", f"{d:.3f}",
+                     "-vf", f"{pic_vf(it, fill)},fps={FPS},format=yuv420p", "-af", af, *ENC, str(p)])
         elif it["type"] == "freeze":
             png = Path(tmp) / f"{i:03d}.png"
             run(["-ss", f"{sec(it['at']):.3f}", "-i", src, "-frames:v", "1", str(png)])
@@ -141,6 +158,8 @@ def build_events(plan, cues, starts, durs, narr):
         if it["type"] == "clip":
             a, b = map(sec, it["src"])
             for c in cues:
+                if c.get("ep") != it.get("ep"):
+                    continue
                 if c["kind"] == "Y" and a - 0.2 <= c["s0"] < b - 0.3:
                     ev.append(dict(t0=t0 + max(0, c["s0"] - a), t1=t0 + min(c["s1"], b) - a, kind="Y",
                                    spk=c.get("spk"), ja=c["ja"]))
@@ -219,7 +238,13 @@ def write_ass(ev, cards, total, path):
 
 def main():
     plan_p, cues_p, src, out = sys.argv[1:5]
+    if src.endswith(".json"):
+        src = json.load(open(src))
     plan = json.load(open(plan_p))
+    if plan.get("credit"):                 # CASE별 출처 표기·화자 이름(plan에 있으면 그것을 쓴다)
+        B.CREDIT = plan["credit"]
+    if plan.get("speakers"):
+        B.SPEAKERS = plan["speakers"]
     global FILL
     FILL = plan.get("frame") == "fill"
     cues = json.load(open(cues_p))
