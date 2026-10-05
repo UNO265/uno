@@ -1,0 +1,692 @@
+[
+ {
+  "ep": "Ep24",
+  "s0": 19.94,
+  "s1": 22.78,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "おはようございます、マルクスです",
+  "ko": "좋은 아침이에요, 마르쿠스예요",
+  "en": "ohayou gozaimasu marcus desu"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 22.78,
+  "s1": 24.88,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "自転車で日本を横断しています",
+  "ko": "자전거로 일본을 횡단하고 있어요",
+  "en": "i'm cycling across japan"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 24.88,
+  "s1": 28.56,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今日は少し曇りの今治から出発します",
+  "ko": "오늘은 조금 흐린 이마바리에서 출발해요",
+  "en": "today i'm starting from a bit cloudy imabari"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 215.83,
+  "s1": 221.09,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ホテルで「自転車を部屋に入れて」と言われたのは、ここが初めて",
+  "ko": "호텔에서 「자전거를 방에 들이세요」라고 한 건 여기가 처음이에요",
+  "en": "this was the first place where they asked me to take the bike inside the hotel room"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 221.09,
+  "s1": 226.03,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今回の四国は、短めの滞在にするつもりです",
+  "ko": "이번 시코쿠는 짧게 머물 생각이에요",
+  "en": "my goal is now to have a quite short stay here in shikoku"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 230.09,
+  "s1": 235.49,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "1日70キロちょっとを2日間",
+  "ko": "하루 70km 남짓씩 이틀",
+  "en": "two days ride 70 something kilometers each"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 235.49,
+  "s1": 239.83,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "それからフェリーで本州に戻ります",
+  "ko": "그다음 페리로 혼슈로 돌아가요",
+  "en": "and then i will take a ferry back to the honshu"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 239.83,
+  "s1": 244.35,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "3日目には倉敷",
+  "ko": "셋째 날에는 구라시키",
+  "en": "and on the third day i will be at the kurashiki"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 244.35,
+  "s1": 253.75,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "前回の日本の旅で、すごく気に入った街です",
+  "ko": "지난번 일본 여행에서 정말 좋아했던 도시예요",
+  "en": "which was a city which i liked a lot on my first ride here in japan"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 253.75,
+  "s1": 259.97,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも、見たいものを全部見る時間がなかった",
+  "ko": "하지만 볼거리를 다 볼 시간이 없었어요",
+  "en": "but i didn't have enough time to see all the views"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 430.84,
+  "s1": 436.6,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ああ、これはまずい。なくした",
+  "ko": "아, 이건 안 좋아요. 잃어버렸어요",
+  "en": "yeah this is not a good thing i have a loss i have lost them"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 439.98,
+  "s1": 442.76,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "マイクの、体に付けるマグネットを",
+  "ko": "마이크를 몸에 붙이는 자석을",
+  "en": "magnet from my body"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 446.53,
+  "s1": 456.57,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "クリップもあるけど、服の内側に付けられるマグネットの方がずっと好きだった",
+  "ko": "클립도 있지만 옷 안에 붙일 수 있는 자석이 훨씬 좋았는데",
+  "en": "there is a clip button i have liked the magnet much more because then you can do it under your clothes"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 456.57,
+  "s1": 467.77,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "これが、この旅で最初の「失くし物」",
+  "ko": "이게 이번 여행의 첫 번째 손실이네요",
+  "en": "well that was the first loss for this for this trip"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 551.38,
+  "s1": 553.82,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "やあ、こんにちは",
+  "ko": "오, 안녕하세요",
+  "en": "oh hi how are you"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 554.4,
+  "s1": 558.28,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "荷物がすごいですね。僕も多いと思ってたけど",
+  "ko": "짐이 정말 많으시네요. 저도 많다고 생각했는데",
+  "en": "oh you have a lot of gear i thought i have a lot of"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 558.28,
+  "s1": 561.64,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "どのくらいの旅ですか？——3か月",
+  "ko": "여행 얼마나 하세요? ——3개월",
+  "en": "how long trip you have around the world three months"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 561.64,
+  "s1": 564.44,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "3か月。——その前に半年旅してきたばかりで",
+  "ko": "3개월. ——그 전에 6개월 여행하고 막 돌아왔어요",
+  "en": "three months ah and we've just come off for six months"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 615.28,
+  "s1": 618.16,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ヨハンナ、僕たちもできるよ",
+  "ko": "요한나, 우리도 할 수 있어",
+  "en": "joanna we could do that too"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 618.16,
+  "s1": 623.94,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "半年旅して、今度は3か月の旅だって",
+  "ko": "반년 여행하고 이번엔 3개월 여행이래",
+  "en": "they did a half year tour and now they are on three months tour"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 623.94,
+  "s1": 630.78,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ほかの自転車旅の人に会えるのはうれしい。家族に会ったみたいだ",
+  "ko": "다른 자전거 여행자를 만나니 좋네요. 가족을 만난 것 같아요",
+  "en": "what a nice to meet some other cyclists it's like meeting a family"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 637.43,
+  "s1": 644.52,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "後ろのタイヤが、横にずれるような感じがした",
+  "ko": "뒷타이어가 옆으로 미끄러지는 느낌이었어요",
+  "en": "where did my my rear tire start to make a going to the sideways"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 644.52,
+  "s1": 660.88,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "チェーンが古くなってきたか、ギアの調整が必要かな",
+  "ko": "체인이 낡았거나 기어를 조정해야 하나 봐요",
+  "en": "i think that either my chain is kept getting old or i need to adjust my gears"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 660.88,
+  "s1": 668.44,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "とにかく、何かがうまく合っていない感じが、どんどん強くなる",
+  "ko": "어쨌든 뭔가 잘 안 맞는 느낌이 점점 강해져요",
+  "en": "but anyway i have getting more and more of those feelings that it it doesn't fit there well"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1020.29,
+  "s1": 1029.75,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "何かおかしい。後ろのホイールがおかしい",
+  "ko": "뭔가 이상해요. 뒷바퀴가 이상해요",
+  "en": "there's something wrong in my oh there is something wrong with my back wheel"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1030.43,
+  "s1": 1038.87,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "それとも、そう見えるだけ？",
+  "ko": "아니면 그렇게 보이기만 하는 건가?",
+  "en": "or is it just does it just look like it"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1058.98,
+  "s1": 1060.88,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "これ、すごく緩んでる",
+  "ko": "이거 엄청 헐거워요",
+  "en": "this one is very loose"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1067.22,
+  "s1": 1074.7,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "スポークが、少なくとも1本ひどく緩んでいる。締めないと",
+  "ko": "바퀴살이 적어도 하나는 심하게 헐거워요. 조여야 해요",
+  "en": "my spokes at least one spoke is very loose i need to tie them up"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1078.38,
+  "s1": 1082.23,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "本当に「面白く」なってきた",
+  "ko": "정말 「재밌어」지기 시작했네요",
+  "en": "it started to feel really really interesting"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1082.23,
+  "s1": 1088.65,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "大丈夫だといいけど",
+  "ko": "괜찮으면 좋겠는데",
+  "en": "let's hope that let's hope that it's okay"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1096.04,
+  "s1": 1105.31,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "どれだったかな…これだ。直さないと",
+  "ko": "어느 거였지… 이거다. 고쳐야 해요",
+  "en": "let's see which one was it this one yeah yeah i need to do some fixing"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1106.33,
+  "s1": 1113.15,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも、気づけてよかった",
+  "ko": "그래도 알아챘으니 다행이에요",
+  "en": "oh yeah but luckily i felt it"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1113.15,
+  "s1": 1130.61,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "昨日、自転車が部屋にあった時、点検しなきゃと思ったのに、面倒でやらなかった。怠けた",
+  "ko": "어제 자전거가 방에 있을 때 점검해야지 했는데 귀찮아서 안 했어요. 게을렀어요",
+  "en": "i was thinking yesterday when i had the bike in my room that i should check it but i was lazy i was too lazy"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1130.61,
+  "s1": 1138.81,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "まっすぐではないけど、少なくとも緩んではいない。それが一番大事",
+  "ko": "똑바르진 않지만 적어도 헐겁진 않아요. 그게 제일 중요해요",
+  "en": "definitely not not in straight but at least it's not loose that's the main thing"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1138.81,
+  "s1": 1146.89,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも、まっすぐに直せる人を探さないと",
+  "ko": "하지만 똑바로 고쳐 줄 사람을 찾아야 해요",
+  "en": "but then i need to need to find somebody who can who could make it go straight"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1148.39,
+  "s1": 1158.73,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "幸い、日本には自転車屋がたくさんある。でも残念ながら、どこもいい店とは限らない",
+  "ko": "다행히 일본엔 자전거 가게가 많아요. 하지만 아쉽게도 다 좋은 가게는 아니에요",
+  "en": "but luckily there are plenty of bike shops in japan but unluckily not all of them are good ones"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1166.6,
+  "s1": 1171.8,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "問題は、予定がすごく詰まっていること",
+  "ko": "문제는 일정이 정말 빡빡하다는 거예요",
+  "en": "but the problem is that my schedule is really tight"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1182.94,
+  "s1": 1189.52,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "明日はまずフェリーに乗らないといけない。朝は自転車屋に行けない",
+  "ko": "내일은 먼저 페리를 타야 해요. 아침엔 자전거 가게에 못 가요",
+  "en": "i need to reach the ferry first tomorrow i can't go to the bike shop in the morning"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1269.45,
+  "s1": 1275.99,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ホイールのせいで、少し怖くなってきた",
+  "ko": "바퀴 때문에 조금 무서워졌어요",
+  "en": "oh yeah now i feel a little bit scared because of the wheel"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1275.99,
+  "s1": 1286.22,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今日もこのホイールで、けっこう速く走っていたと思うと、もっと怖い",
+  "ko": "오늘도 이 바퀴로 꽤 빨리 달렸다고 생각하니 더 무서워요",
+  "en": "and then even more scared when i'd be thinking that that i have been riding with that wheel to even today quite fast"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1286.22,
+  "s1": 1291.44,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "本当に緩んでいたスポークが、少なくとも4、5本あった",
+  "ko": "정말 헐거운 바퀴살이 적어도 4~5개 있었어요",
+  "en": "there was at least four or five spokes which were really loose"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1299.44,
+  "s1": 1307.06,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今、ホイールは全然まっすぐじゃない。走ると実際に分かる",
+  "ko": "지금 바퀴가 전혀 똑바르지 않아요. 타 보면 실제로 느껴져요",
+  "en": "the wheel is not straight at all now and you can actually feel it when you ride"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1319.93,
+  "s1": 1330.37,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも、まだ2時半。この辺でいい自転車屋が見つかれば",
+  "ko": "그래도 아직 2시 반. 이 근처에서 좋은 자전거 가게를 찾으면",
+  "en": "but it's only half past two so if i find a bike shop from here which would be a good bike shop"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1335.81,
+  "s1": 1344.49,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今日中に直せるかもしれない。そうなればいいな",
+  "ko": "오늘 고칠 수 있을지도. 그러면 좋겠어요",
+  "en": "then i could maybe get this fixed today and that would be nice"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1345.83,
+  "s1": 1358.57,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ここから6.5キロくらいのところに自転車屋がある。ホテルへの道の途中だ",
+  "ko": "여기서 6.5km쯤에 자전거 가게가 있어요. 호텔 가는 길이에요",
+  "en": "there is a bicycle shop on the way from here about six and a half kilometers and it's on the way to my hotel"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1359.53,
+  "s1": 1363.51,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "行って、助けてもらえるか聞いてみよう",
+  "ko": "가서 도와줄 수 있는지 물어볼게요",
+  "en": "i'll go and check if they can help me"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1363.51,
+  "s1": 1373.55,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "四国の山の中で起きなくて、本当に運が良かった",
+  "ko": "시코쿠 산속에서 안 일어나서 정말 운이 좋았어요",
+  "en": "yeah i'm so lucky that this didn't happen when i was somewhere in the middle of shikakum mountains"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1373.55,
+  "s1": 1384.87,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "山の中には自転車屋がない。全部自分でなんとかするしかなかった",
+  "ko": "거기엔 자전거 가게가 없으니 혼자 다 해결해야 했을 거예요",
+  "en": "there are no bike shops then i should have been forced to handle this thing all by myself"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1384.87,
+  "s1": 1389.13,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "開いてる。よし、行ってみよう",
+  "ko": "열려 있네요. 좋아, 가 보자",
+  "en": "open that's good let's go and try"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1403.62,
+  "s1": 1417.54,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "悪い知らせです。正直、かなり悪い",
+  "ko": "안 좋은 소식이에요. 사실 꽤 안 좋아요",
+  "en": "yeah some bad news really bad actually"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1417.54,
+  "s1": 1425.86,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "一番の問題は、緩んだスポークじゃなかった",
+  "ko": "가장 큰 문제는 헐거운 바퀴살이 아니었어요",
+  "en": "the main problem was not the loose spokes"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1425.86,
+  "s1": 1436.88,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "後ろのホイール全体に、ヒビがいくつも入っていた",
+  "ko": "뒷바퀴 전체에 금이 여러 군데 가 있었어요",
+  "en": "the main problem is that the whole whole back wheel is there are several fractures"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1436.88,
+  "s1": 1441.78,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "店の人が調べたら、ヒビが少なくとも5か所",
+  "ko": "가게 분이 확인해 보니 금이 적어도 5곳",
+  "en": "when he checked the wheel there is at least five fractures"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1441.78,
+  "s1": 1448.46,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "これでは札幌までは、絶対にもたない",
+  "ko": "이걸로는 삿포로까지 절대 못 버텨요",
+  "en": "that one will not hold until the supper for sure"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1448.46,
+  "s1": 1458.96,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "問題は、どれだけもつか。衝撃を受けたら、もう終わり",
+  "ko": "문제는 얼마나 버티느냐. 충격을 받으면 끝이에요",
+  "en": "and now the question is that how long it will hold it can't get any hits or it's done"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1458.96,
+  "s1": 1477.42,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "みんながママチャリかロードバイクに乗るこの国で、このタイプのホイールを手に入れるのは簡単じゃない",
+  "ko": "다들 생활 자전거나 로드바이크를 타는 이 나라에서 이런 바퀴를 구하기는 쉽지 않아요",
+  "en": "in this country where everybody are riding either a granny bike or a road bike it's not an easy job together this kind of wheel"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1478.86,
+  "s1": 1484.12,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "それでも、明日は予定どおり進むつもり",
+  "ko": "그래도 내일은 계획대로 갈 생각이에요",
+  "en": "i still think that i will do tomorrow as i planned"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1484.12,
+  "s1": 1491.64,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "途中に自転車屋があれば、ホイールがあるか聞ける",
+  "ko": "가는 길에 자전거 가게가 있으면 바퀴가 있는지 물어볼 수 있어요",
+  "en": "if there are bike shops on the way i can ask if they have wheels"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1491.64,
+  "s1": 1497.38,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ネットで注文するのも、一つの手かもしれない",
+  "ko": "인터넷으로 주문하는 것도 한 방법일지도",
+  "en": "maybe one possibility is to order from the internet"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1509.3,
+  "s1": 1526.06,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "よかったのは、四国の山越えの途中じゃなかったこと。平地で、店もわりと近い",
+  "ko": "다행인 건 시코쿠 산을 넘는 중이 아니었다는 거예요. 평지이고 가게도 꽤 가까워요",
+  "en": "yeah the good thing is that i was not going across those mountains of the shikako that i'm here in flatland and uh some way close to the services"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1526.06,
+  "s1": 1533.62,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "大きな問題は、ホイールが完全に壊れるかもしれないこと",
+  "ko": "큰 문제는 바퀴가 완전히 부서질 수 있다는 거예요",
+  "en": "a big problem is that that wheel can break totally"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1533.62,
+  "s1": 1540.74,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今は小さなヒビだけど、完全に割れることもある",
+  "ko": "지금은 작은 금이지만 완전히 갈라질 수도 있어요",
+  "en": "now there are small fractures but it can it can crack totally"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1549.14,
+  "s1": 1555.62,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも走るのがずっとつまらなくなった。ずっと気をつけていないといけないから",
+  "ko": "하지만 달리는 게 훨씬 재미없어졌어요. 계속 조심해야 하니까",
+  "en": "but now the riding is much more boring because i have to be careful all the time"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1556.32,
+  "s1": 1558.38,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "気をつけながら走るのは、楽しくない",
+  "ko": "조심하면서 달리는 건 재미없어요",
+  "en": "it's not so fun to be careful"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1604.16,
+  "s1": 1617.62,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "実はあの自転車屋にシューズカバーがあって、サイズも合っていたけど、僕の靴の形には合わなかった",
+  "ko": "사실 그 자전거 가게에 신발 커버가 있었고 사이즈도 맞았는데, 제 신발 모양엔 안 맞았어요",
+  "en": "there was actually shoe covers on that bike shop and they were right size but they were not for my kind of my kind of shoes"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1617.62,
+  "s1": 1630.64,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "段差があるたびに、もっと壊れるんじゃないかと怖い",
+  "ko": "턱이 있을 때마다 더 부서질까 봐 무서워요",
+  "en": "every time then when there is a bump i scare that now it will break break more"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1630.64,
+  "s1": 1639.32,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "完全に壊れたら、困る。本当に困る",
+  "ko": "완전히 부서지면 곤란해요. 정말 곤란해요",
+  "en": "because if it breaks totally then i have a problem then i really have a problem"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1639.86,
+  "s1": 1648.22,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも倉敷までたどり着ければ。ここから100キロくらい",
+  "ko": "그래도 구라시키까지만 가면. 여기서 100km 정도",
+  "en": "but if i manage to the kurashiki it's about 100 kilometers of riding from here"
+ },
+ {
+  "ep": "Ep24",
+  "s0": 1648.94,
+  "s1": 1654.36,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "そこで時間を使って、ホイールをそこに注文できる",
+  "ko": "거기서 시간을 보내면서 바퀴를 거기로 주문할 수 있어요",
+  "en": "then i could spend their time and order order the wheel to there"
+ }
+]
