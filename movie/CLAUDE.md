@@ -26,7 +26,7 @@
 
 - `guide/` 지침
 - `projects/<slug>/` 영상별 대본·타임라인(`script.json`)과 BGM 구성(`bgm.json`)
-- `tools/` 제작 도구: `tts.py`(edge-tts, 프록시 CA), `narrate.py`(해설 생성·속도 맞춤), `bgm.py`(BGM 작곡), `build.py`(오디오 믹스·블러·자막·렌더), `thumbnail.py`(커버 1080×1920, 01_COVER 기준·`projects/<slug>/thumb.json`)
+- `tools/` 제작 도구: `tts.py`(edge-tts, 프록시 CA), `narrate.py`(해설 생성·속도 맞춤), `bgm.py`(BGM 작곡), `build.py`(오디오 믹스·블러·자막·렌더), `thumbnail.py`(커버 1080×1920, 01_COVER 기준·`projects/<slug>/thumb.json`, 중요한 피사체가 화면 아래에 있으면 `top_h`로 장면을 위에 두고 아래는 흐린 배경)
 - `work/` 중간 파일(레포에 올리지 않음, `.gitignore`)
 - `outputs/` 납품물(MP4·SRT·ASS·대본·검수 내역). 영상·음성 파일은 용량 때문에 커밋하지 않고 텍스트 산출물만 커밋한다.
 - 원본 영상은 덮어쓰지 않는다.

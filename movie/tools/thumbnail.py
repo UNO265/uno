@@ -17,12 +17,25 @@ TOP, BOTTOM = int(H * 0.61), int(H * 0.88)
 SIDE = int(W * 0.05)
 
 
-def frame(src, t, crop):
+def frame(src, t, crop, top_h=None):
+    """top_h가 있으면 장면을 위쪽 top_h px에 맞추고, 아래는 같은 장면을 흐리고 어둡게 늘려 채운다(제목이 중요한 피사체를 덮지 않게)."""
     out = ROOT / "work/_thumb_frame.png"
+    h = top_h or H
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(t), "-i", str(src), "-frames:v", "1",
-                    "-vf", f"crop={crop[2]}:{crop[3]}:{crop[0]}:{crop[1]},scale={W}:{H}:flags=lanczos,unsharp=5:5:0.6",
+                    "-vf", f"crop={crop[2]}:{crop[3]}:{crop[0]}:{crop[1]},scale={W}:{h}:flags=lanczos,unsharp=5:5:0.6",
                     str(out)], check=True)
-    return Image.open(out).convert("RGB")
+    img = Image.open(out).convert("RGB")
+    if not top_h:
+        return img
+    bg = img.resize((W, H)).filter(ImageFilter.GaussianBlur(40))
+    bg = Image.blend(bg, Image.new("RGB", (W, H), (0, 0, 0)), 0.55)
+    fade = 160  # 장면 아래 끝을 배경으로 부드럽게
+    mask = Image.new("L", (W, h), 255)
+    d = ImageDraw.Draw(mask)
+    for y in range(h - fade, h):
+        d.line([(0, y), (W, y)], fill=int(255 * (h - y) / fade))
+    bg.paste(img, (0, 0), mask)
+    return bg
 
 
 def text_layer(lines, sizes, font="dela", scale_x=1.0):
@@ -66,7 +79,7 @@ def main():
     P = ROOT / f"projects/{slug}"
     cfg = json.load(open(P / "thumb.json"))
     S = json.load(open(P / "script.json"))
-    img = frame(ROOT / S["source"], cfg["time"], cfg["crop"])
+    img = frame(ROOT / S["source"], cfg["time"], cfg["crop"], cfg.get("top_h"))
     # 아래쪽을 어둡게(글자 대비)
     shade = Image.new("L", (W, H), 0)
     d = ImageDraw.Draw(shade)
