@@ -1,0 +1,14 @@
+{
+  "note": "외로운 노교수와 이민자 커플. 침입 장면은 낮은 긴장 패드, 밤거리 이후 쓸쓸한 단조 피아노, 드럼 연습부터 따뜻한 장조. 마지막 드럼 공연(131초~)은 영화 음악을 살리려 BGM을 끈다.",
+  "length": 131.5,
+  "bpm": 72,
+  "programs": {"0": 0, "1": 49, "2": 32, "3": 11},
+  "volumes": {"0": 90, "1": 66, "2": 60, "3": 54},
+  "sections": [
+    {"t": [0, 12.5], "prog": ["Am", "F", "Dm", "E"], "piano": null, "pad": true, "bass": true, "dyn": 0.7},
+    {"t": [12.5, 52.0], "prog": ["Am", "Fmaj7", "Dm7", "Esus4"], "piano": "sparse", "pad": true, "dyn": 0.65},
+    {"t": [52.0, 76.0], "prog": ["Am", "Fmaj7", "C", "G"], "piano": "sparse", "pad": true, "bass": true, "dyn": 0.8},
+    {"t": [76.0, 94.6], "prog": ["Am", "Fmaj7", "Dm7", "Esus4"], "piano": "arp", "pad": true, "dyn": 0.85},
+    {"t": [94.6, 131.5], "prog": ["C", "Am7", "Fmaj7", "G"], "piano": "broken", "pad": true, "bass": true, "bell": true, "dyn": 0.85}
+  ]
+}
