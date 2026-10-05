@@ -231,7 +231,7 @@ def write_ass(ev, cards, total, path):
         if st == "Y":
             spk = e.get("spk")
             if spk in B.SPEAKERS:
-                st = "Y" + spk
+                st = "Y" + spk if f"Style: Y{spk}," in base else "Y"   # 화자 색 스타일이 없으면 기본 노랑
                 if spk not in seen:
                     tx = "{\\fs32}" + B.SPEAKERS[spk] + "{\\fs50}　" + tx
                     seen.add(spk)

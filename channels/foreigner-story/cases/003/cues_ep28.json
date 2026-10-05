@@ -7,7 +7,8 @@
   "spk": "M",
   "ja": "リムのせいで、倉敷に4泊しました",
   "ko": "림 때문에 구라시키에서 4박 했어요",
-  "en": "I have stayed here in Kurashiki four nights because of the rim,"
+  "en": "I have stayed here in Kurashiki four nights because of the rim,",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -17,7 +18,8 @@
   "spk": "M",
   "ja": "新しいリムを手に入れるために",
   "ko": "새 림을 구하려고",
-  "en": "to get a new rim."
+  "en": "to get a new rim.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -27,7 +29,8 @@
   "spk": "M",
   "ja": "今はもう、ある。いい気分です",
   "ko": "이제 있어요. 기분 좋네요",
-  "en": "Now I have it. It feels good."
+  "en": "Now I have it. It feels good.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -37,7 +40,8 @@
   "spk": "M",
   "ja": "昨日試しに乗ってみたら、すごく良かった",
   "ko": "어제 시험 삼아 타 봤는데 정말 좋았어요",
-  "en": "I had a test ride yesterday and it felt really good."
+  "en": "I had a test ride yesterday and it felt really good.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -47,7 +51,8 @@
   "spk": "M",
   "ja": "正直、この自転車は今までで一番いい感じ",
   "ko": "사실 이 자전거, 그 어느 때보다 느낌이 좋아요",
-  "en": "Actually this bike feels better than ever."
+  "en": "Actually this bike feels better than ever.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -57,7 +62,8 @@
   "spk": "M",
   "ja": "お、ここに出たか",
   "ko": "오, 여기로 나왔네",
-  "en": "Oh yeah, look at where we come."
+  "en": "Oh yeah, look at where we come.",
+  "use": false
  },
  {
   "ep": "Ep28",
@@ -67,7 +73,8 @@
   "spk": "M",
   "ja": "こっちから来ると、反対側からよりずっと近い",
   "ko": "이쪽으로 오면 반대쪽보다 훨씬 가깝네",
-  "en": "It's much shorter to come this way to here than it was from the other way."
+  "en": "It's much shorter to come this way to here than it was from the other way.",
+  "use": false
  },
  {
   "ep": "Ep28",
@@ -77,7 +84,8 @@
   "spk": "M",
   "ja": "初日の夜、ここに来たんです",
   "ko": "첫날 저녁에 여기 왔었어요",
-  "en": "I came here on the first evening."
+  "en": "I came here on the first evening.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -87,7 +95,8 @@
   "spk": "M",
   "ja": "その時は人でいっぱいでした",
   "ko": "그때는 사람으로 가득했어요",
-  "en": "And this was full of people."
+  "en": "And this was full of people.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -97,7 +106,8 @@
   "spk": "M",
   "ja": "ぎゅうぎゅうでした",
   "ko": "꽉 찼었어요",
-  "en": "Totally packed."
+  "en": "Totally packed.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -107,7 +117,8 @@
   "spk": "M",
   "ja": "でも見て。きれいだ",
   "ko": "그래도 봐요. 아름다워",
-  "en": "But yeah, look at this. This is beautiful."
+  "en": "But yeah, look at this. This is beautiful.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -117,7 +128,8 @@
   "spk": "M",
   "ja": "さあ、倉敷の歴史地区に",
   "ko": "자, 구라시키 역사지구에",
-  "en": "But now let's say bye bye for Kurashiki"
+  "en": "But now let's say bye bye for Kurashiki",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -127,7 +139,8 @@
   "spk": "M",
   "ja": "バイバイして、先へ進もう",
   "ko": "작별하고 계속 가자",
-  "en": "Historical center and let's continue."
+  "en": "Historical center and let's continue.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -137,7 +150,8 @@
   "spk": "M",
   "ja": "自転車の調子がいいと、走るのが楽しい",
   "ko": "자전거 상태가 좋으면 달리는 게 즐거워요",
-  "en": "It's nice to ride when the bike feels good."
+  "en": "It's nice to ride when the bike feels good.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -147,7 +161,8 @@
   "spk": "M",
   "ja": "この前の100キロ、いや、もっと前からかもしれない",
   "ko": "지난 100km, 어쩌면 그보다 더 전부터",
-  "en": "That last 100 kilometers and maybe even longer time"
+  "en": "That last 100 kilometers and maybe even longer time",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -157,7 +172,8 @@
   "spk": "M",
   "ja": "たぶんリムのせいだと、分かっていなかった",
   "ko": "아마 림 때문이라는 걸 몰랐어요",
-  "en": "I just didn't understand it that it's connected most likely to a rim."
+  "en": "I just didn't understand it that it's connected most likely to a rim.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -167,7 +183,8 @@
   "spk": "M",
   "ja": "あまり調子が良くなかったんです",
   "ko": "그다지 좋지 않았어요",
-  "en": "It didn't feel so good."
+  "en": "It didn't feel so good.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -177,7 +194,8 @@
   "spk": "M",
   "ja": "でも今は気分がいい。こんなに雨具を着ていても",
   "ko": "하지만 지금은 좋아요. 이렇게 우비를 다 입고 있어도",
-  "en": "But now this feels good even with all these gears."
+  "en": "But now this feels good even with all these gears.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -187,7 +205,8 @@
   "spk": "M",
   "ja": "妻にずっと聞かれていたんです",
   "ko": "아내가 계속 물어봤어요",
-  "en": "My wife has been asking that"
+  "en": "My wife has been asking that",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -197,7 +216,8 @@
   "spk": "M",
   "ja": "「毎回の荷造り、もう飽きたんじゃない？」って",
   "ko": "「매번 짐 싸는 거 이제 지겹지 않아?」라고",
-  "en": "if I have already get bored to packing all the time."
+  "en": "if I have already get bored to packing all the time.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -207,7 +227,8 @@
   "spk": "M",
   "ja": "でも昨日の夜、同じホテルで4泊目だったんですが",
   "ko": "그런데 어젯밤, 같은 호텔에서 4박째였는데",
-  "en": "But yesterday evening when I it was a fourth night in the same hotel"
+  "en": "But yesterday evening when I it was a fourth night in the same hotel",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -217,7 +238,8 @@
   "spk": "M",
   "ja": "「よし、朝に向けて荷物をまとめられる」",
   "ko": "「좋아, 아침을 위해 짐을 쌀 수 있다」",
-  "en": "and I noticed that yeah I can pack my things already for the morning"
+  "en": "and I noticed that yeah I can pack my things already for the morning",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -227,7 +249,8 @@
   "spk": "M",
   "ja": "「朝になったら走りに行ける」と思って",
   "ko": "「아침이 되면 달리러 갈 수 있다」고 생각하고",
-  "en": "and in the morning I can go cycling."
+  "en": "and in the morning I can go cycling.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -237,7 +260,8 @@
   "spk": "M",
   "ja": "実は荷造りが好きなんだと気づきました",
   "ko": "사실 짐 싸는 걸 좋아한다는 걸 알았어요",
-  "en": "I noticed that I actually like the packing."
+  "en": "I noticed that I actually like the packing.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -247,7 +271,8 @@
   "spk": "M",
   "ja": "走りに行く前の、ルーティンみたいなものなんです",
   "ko": "달리러 가기 전의 루틴 같은 거예요",
-  "en": "It's a kind of routine which is happening before I go cycling."
+  "en": "It's a kind of routine which is happening before I go cycling.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -257,7 +282,8 @@
   "spk": "M",
   "ja": "レインカバー、いいですね",
   "ko": "레인 커버, 좋네요",
-  "en": "Rain covers. They are good."
+  "en": "Rain covers. They are good.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -267,7 +293,8 @@
   "spk": "M",
   "ja": "靴が全然濡れていない",
   "ko": "신발이 전혀 안 젖었어요",
-  "en": "My shoes are totally dry."
+  "en": "My shoes are totally dry.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -277,7 +304,8 @@
   "spk": "M",
   "ja": "本当にいい買い物でした。今日もう元が取れた",
   "ko": "정말 좋은 투자였어요. 오늘 벌써 본전 뽑았어요",
-  "en": "It was a really good investment. It paid back already today"
+  "en": "It was a really good investment. It paid back already today",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -287,7 +315,8 @@
   "spk": "M",
   "ja": "これがなかったら、今ごろ靴下は濡れて",
   "ko": "이게 없었으면 지금쯤 양말은 젖고",
-  "en": "because without those my socks would be wet now and my"
+  "en": "because without those my socks would be wet now and my",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -297,7 +326,8 @@
   "spk": "M",
   "ja": "足も冷えていた。でも今は平気",
   "ko": "발도 차가웠을 거예요. 하지만 지금은 괜찮아요",
-  "en": "feet would be cold. But now they are not."
+  "en": "feet would be cold. But now they are not.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -307,7 +337,8 @@
   "spk": "M",
   "ja": "これはきつかった",
   "ko": "이건 힘들었어요",
-  "en": "This have been a tough one."
+  "en": "This have been a tough one.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -317,7 +348,8 @@
   "spk": "M",
   "ja": "最初は楽だったのに、かなり急になった",
   "ko": "처음엔 쉬웠는데 꽤 가팔라졌어요",
-  "en": "It started easy as easy one but then it turned it to be quite quite steep"
+  "en": "It started easy as easy one but then it turned it to be quite quite steep",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -327,7 +359,8 @@
   "spk": "M",
   "ja": "押して歩くだけでも、脚にきてる",
   "ko": "끌고 걷기만 해도 다리에 와요",
-  "en": "Now this start to feel in the legs even this walking."
+  "en": "Now this start to feel in the legs even this walking.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -337,7 +370,8 @@
   "spk": "M",
   "ja": "もう体力はついたと思っていたのに",
   "ko": "이미 체력이 좋아졌다고 생각했는데",
-  "en": "Oh yeah and I thought that I'm already in a better condition."
+  "en": "Oh yeah and I thought that I'm already in a better condition.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -347,7 +381,8 @@
   "spk": "M",
   "ja": "4日間ゴロゴロしていたのが、良くなかったかも",
   "ko": "나흘 동안 누워 있던 게 안 좋았나 봐요",
-  "en": "Maybe that four days of laying down was not good for me."
+  "en": "Maybe that four days of laying down was not good for me.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -357,7 +392,8 @@
   "spk": "M",
   "ja": "この旅で一番きつい上り坂だったと思う",
   "ko": "이번 여행에서 가장 힘든 오르막이었던 것 같아요",
-  "en": "This has been I would say that the hardest climb so far on my trip"
+  "en": "This has been I would say that the hardest climb so far on my trip",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -367,7 +403,8 @@
   "spk": "M",
   "ja": "もう52キロ走った後に、18%くらいの坂があったから",
   "ko": "이미 52km를 달린 뒤에 18% 정도의 오르막이 있었으니까요",
-  "en": "because I have already done 52 km and then there is this kind of I don't know 18% uphill or something."
+  "en": "because I have already done 52 km and then there is this kind of I don't know 18% uphill or something.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -377,7 +414,8 @@
   "spk": "M",
   "ja": "もっと急な坂もあったけど、ずっと短かった",
   "ko": "더 가파른 곳도 있었지만 훨씬 짧았어요",
-  "en": "There have been a couple of even steeper ones but they have been much shorter ones."
+  "en": "There have been a couple of even steeper ones but they have been much shorter ones.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -387,7 +425,8 @@
   "spk": "M",
   "ja": "そこが違う",
   "ko": "그게 차이예요",
-  "en": "That's the difference."
+  "en": "That's the difference.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -397,7 +436,8 @@
   "spk": "M",
   "ja": "そういえば、自転車屋さんでもらった物がある",
   "ko": "그러고 보니 자전거 가게에서 받은 선물이 있어요",
-  "en": "Now I remember that I got some gifts from the bike shop."
+  "en": "Now I remember that I got some gifts from the bike shop.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -407,7 +447,8 @@
   "spk": "M",
   "ja": "今、役に立つかも",
   "ko": "지금 쓸모 있을지도",
-  "en": "This might be useful now."
+  "en": "This might be useful now.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -417,7 +458,8 @@
   "spk": "M",
   "ja": "「簡単に開けられる」なのに、ビニールが付いてる",
   "ko": "「쉽게 열린다」인데 비닐이 씌워져 있어요",
-  "en": "It's an easy open but there is plastic on it."
+  "en": "It's an easy open but there is plastic on it.",
+  "use": false
  },
  {
   "ep": "Ep28",
@@ -427,7 +469,8 @@
   "spk": "M",
   "ja": "包み紙ごと食べられる…のかな",
   "ko": "포장째 먹을 수 있는… 건가",
-  "en": "Now it's it's eatable package I guess."
+  "en": "Now it's it's eatable package I guess.",
+  "use": false
  },
  {
   "ep": "Ep28",
@@ -437,7 +480,8 @@
   "spk": "M",
   "ja": "145キロカロリー。多くはないけど、少しは",
   "ko": "145kcal. 많진 않지만 조금은",
-  "en": "145 calories in this. Not much but something."
+  "en": "145 calories in this. Not much but something.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -447,7 +491,8 @@
   "spk": "M",
   "ja": "コーラ1本と同じくらい",
   "ko": "콜라 한 병이랑 비슷해요",
-  "en": "About the same as a cola bottle."
+  "en": "About the same as a cola bottle.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -457,7 +502,8 @@
   "spk": "M",
   "ja": "味は悪くない。まあまあ",
   "ko": "맛은 나쁘지 않아요. 그럭저럭",
-  "en": "And the taste is not bad but okay."
+  "en": "And the taste is not bad but okay.",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -467,7 +513,8 @@
   "spk": "M",
   "ja": "80キロで上り1キロくらいが、今の限界みたいだ",
   "ko": "80km에 오르막 1km 정도가 지금 한계인 것 같아요",
-  "en": "yeah it looks like that this around 80 kilometers and almost 1 kilometers of elevation gain is my current limit"
+  "en": "yeah it looks like that this around 80 kilometers and almost 1 kilometers of elevation gain is my current limit",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -477,7 +524,8 @@
   "spk": "M",
   "ja": "食事か何かの休憩が必要になる",
   "ko": "식사나 뭔가로 쉬는 시간이 필요해요",
-  "en": "I would need some kind of break for eating or something"
+  "en": "I would need some kind of break for eating or something",
+  "use": false
  },
  {
   "ep": "Ep28",
@@ -487,7 +535,8 @@
   "spk": "M",
   "ja": "それでも、数年前に考えていたよりずっと多くのことができる。普通の自転車で",
   "ko": "그래도 몇 년 전에 생각했던 것보다 훨씬 많이 할 수 있어요. 평범한 자전거로",
-  "en": "but anyway it's much more than I thought few years ago what I could do with the normal bike"
+  "en": "but anyway it's much more than I thought few years ago what I could do with the normal bike",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -497,7 +546,8 @@
   "spk": "M",
   "ja": "大人になって自転車を始める前は、電動自転車でもそう思わなかった",
   "ko": "어른이 돼서 자전거를 시작하기 전엔, 전기자전거로도 그렇게 생각 못 했어요",
-  "en": "and even with the e-bike before I started my adulthood cycling hobby or career"
+  "en": "and even with the e-bike before I started my adulthood cycling hobby or career",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -507,7 +557,8 @@
   "spk": "M",
   "ja": "若い頃や学生時代は、かなり自転車に乗っていた",
   "ko": "젊을 때와 학생 때는 자전거를 꽤 탔어요",
-  "en": "yeah I was cycling quite a lot when I was young and when I was a student"
+  "en": "yeah I was cycling quite a lot when I was young and when I was a student",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -517,7 +568,8 @@
   "spk": "M",
   "ja": "それから、なぜかやめてしまった",
   "ko": "그러다 왜인지 그만뒀어요",
-  "en": "then I stopped cycling I don't know why"
+  "en": "then I stopped cycling I don't know why",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -527,7 +579,8 @@
   "spk": "M",
   "ja": "でも妻が、電動自転車を買うことにして",
   "ko": "그런데 아내가 전기자전거를 사기로 했고",
-  "en": "but then my wife decided to take an e-bike"
+  "en": "but then my wife decided to take an e-bike",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -537,7 +590,8 @@
   "spk": "M",
   "ja": "僕は、まったくばかげた考えだと思った",
   "ko": "저는 완전히 바보 같은 생각이라고 했어요",
-  "en": "I thought it's a totally stupid idea"
+  "en": "I thought it's a totally stupid idea",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -547,7 +601,8 @@
   "spk": "M",
   "ja": "たぶん史上一番高くついた電動自転車です",
   "ko": "아마 역사상 가장 비싸게 먹힌 전기자전거일 거예요",
-  "en": "and I have been maybe the most expensive e-bike ever"
+  "en": "and I have been maybe the most expensive e-bike ever",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -557,7 +612,8 @@
   "spk": "M",
   "ja": "妻が買った時、僕が試しに乗ってみたから",
   "ko": "아내가 샀을 때 제가 시험 삼아 타 봤거든요",
-  "en": "because when she took an e-bike I tested it"
+  "en": "because when she took an e-bike I tested it",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -567,7 +623,8 @@
   "spk": "M",
   "ja": "その結果が、これです",
   "ko": "그 결과가 이거예요",
-  "en": "and yeah and this is the result"
+  "en": "and yeah and this is the result",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -577,7 +634,8 @@
   "spk": "M",
   "ja": "3か月かけて、自転車で日本を横断している",
   "ko": "3개월 동안 자전거로 일본을 횡단하고 있어요",
-  "en": "I'm spending 3 months cycling across Japan"
+  "en": "I'm spending 3 months cycling across Japan",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -587,7 +645,8 @@
   "spk": "M",
   "ja": "見て。「自転車は中へどうぞ」って",
   "ko": "봐요. 「자전거는 안으로 들이세요」래요",
-  "en": "yeah look at that they said take your bike inside"
+  "en": "yeah look at that they said take your bike inside",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -597,7 +656,8 @@
   "spk": "M",
   "ja": "タオルをもらって、自転車を拭きました",
   "ko": "수건을 받아서 자전거를 닦았어요",
-  "en": "they gave me a towel I cleaned my bike and"
+  "en": "they gave me a towel I cleaned my bike and",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -607,7 +667,8 @@
   "spk": "M",
   "ja": "次の動画は、明日、鳥取へ",
   "ko": "다음 영상은 내일, 돗토리로",
-  "en": "next for the next video tomorrow to the Tottori that's where I am going tomorrow actually"
+  "en": "next for the next video tomorrow to the Tottori that's where I am going tomorrow actually",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -617,7 +678,8 @@
   "spk": "M",
   "ja": "砂丘に行くのは明日じゃなくて、その次の日",
   "ko": "사구에 가는 건 내일이 아니라 그다음 날",
-  "en": "not going to see the sand dunes tomorrow it will be the day after that but"
+  "en": "not going to see the sand dunes tomorrow it will be the day after that but",
+  "use": false
  },
  {
   "ep": "Ep28",
@@ -627,7 +689,8 @@
   "spk": "M",
   "ja": "今から温泉に行きます。下の階に温泉があるんです",
   "ko": "지금 온천에 갈 거예요. 아래층에 온천이 있어요",
-  "en": "yeah now I am going to the onsen there is an onsen downstairs"
+  "en": "yeah now I am going to the onsen there is an onsen downstairs",
+  "use": true
  },
  {
   "ep": "Ep28",
@@ -637,6 +700,7 @@
   "spk": "M",
   "ja": "また次の動画で",
   "ko": "다음 영상에서 만나요",
-  "en": "see you in the next video"
+  "en": "see you in the next video",
+  "use": true
  }
 ]

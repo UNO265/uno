@@ -7,7 +7,8 @@
   "spk": "M",
   "ja": "こんにちは、マルクスです。自転車で日本を横断しています",
   "ko": "안녕하세요, 마르쿠스예요. 자전거로 일본을 횡단하고 있어요",
-  "en": "Konnichiwa, Markus desu. I'm cycling across Japan."
+  "en": "Konnichiwa, Markus desu. I'm cycling across Japan.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -17,7 +18,8 @@
   "spk": "M",
   "ja": "新しいリムが届きました",
   "ko": "새 림이 도착했어요",
-  "en": "Yes, the new rim arrived."
+  "en": "Yes, the new rim arrived.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -27,7 +29,8 @@
   "spk": "M",
   "ja": "合うといいんだけど。これ用のスポークは持っていないので",
   "ko": "맞으면 좋겠는데요. 이걸 위한 바퀴살이 없거든요",
-  "en": "Now let's hope that it fits because I don't have a spokes for it."
+  "en": "Now let's hope that it fits because I don't have a spokes for it.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -37,7 +40,8 @@
   "spk": "M",
   "ja": "古いスポークを使えるといいんですが",
   "ko": "옛 바퀴살을 쓸 수 있으면 좋겠어요",
-  "en": "So hopefully we can use the old spokes."
+  "en": "So hopefully we can use the old spokes.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -47,7 +51,8 @@
   "spk": "M",
   "ja": "新しいリムは、前のより幅が狭い",
   "ko": "새 림은 예전 것보다 폭이 좁아요",
-  "en": "This new rim is more narrow than the old one."
+  "en": "This new rim is more narrow than the old one.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -57,7 +62,8 @@
   "spk": "M",
   "ja": "どうかな。このタイヤでも使えるはずだけど",
   "ko": "어떨까. 이 타이어에도 맞을 텐데",
-  "en": "Let's see. It should work with these tires."
+  "en": "Let's see. It should work with these tires.",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -67,7 +73,8 @@
   "spk": "M",
   "ja": "まだ少し心配です。どうなるか",
   "ko": "아직 조금 걱정돼요. 어떻게 될지",
-  "en": "But I'm still a little bit concerned. Let's see how it goes."
+  "en": "But I'm still a little bit concerned. Let's see how it goes.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -77,7 +84,8 @@
   "spk": "M",
   "ja": "とにかく、午前中に届いてよかった。明日は自転車屋さんが休みなので",
   "ko": "어쨌든 오전에 와서 다행이에요. 내일은 자전거 가게가 쉬거든요",
-  "en": "At least it arrived in the morning. Tomorrow the bike shop will be closed."
+  "en": "At least it arrived in the morning. Tomorrow the bike shop will be closed.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -87,7 +95,8 @@
   "spk": "M",
   "ja": "水曜日です。なぜか、いつも水曜日が休み",
   "ko": "수요일이에요. 왠지 항상 수요일에 쉬어요",
-  "en": "It's Wednesday. For some reason they close always on Wednesday."
+  "en": "It's Wednesday. For some reason they close always on Wednesday.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -97,7 +106,8 @@
   "spk": "M",
   "ja": "週末に営業しているからかな",
   "ko": "주말에 영업해서 그런가 봐요",
-  "en": "Maybe because they are open on weekends."
+  "en": "Maybe because they are open on weekends.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -107,7 +117,8 @@
   "spk": "M",
   "ja": "今、ちょっと怖い",
   "ko": "지금 좀 무서워요",
-  "en": "Yeah, a little bit scared now."
+  "en": "Yeah, a little bit scared now.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -117,7 +128,8 @@
   "spk": "M",
   "ja": "いい感じ。大丈夫だ。ちゃんと動く",
   "ko": "좋은 느낌이에요. 돼요. 돼요",
-  "en": "Now I have a good feeling. It works. It works."
+  "en": "Now I have a good feeling. It works. It works.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -127,7 +139,8 @@
   "spk": "M",
   "ja": "ありがとうございます！",
   "ko": "감사합니다!",
-  "en": "Thank you very much."
+  "en": "Thank you very much.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -137,7 +150,8 @@
   "spk": "M",
   "ja": "新しいリムで、ちゃんと動きます",
   "ko": "새 림으로 잘 굴러가요",
-  "en": "Yeah, there is a new rim and it works."
+  "en": "Yeah, there is a new rim and it works.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -147,7 +161,8 @@
   "spk": "M",
   "ja": "倉敷で自転車に困ったら、来るべき店はここ",
   "ko": "구라시키에서 자전거 문제가 생기면 와야 할 곳은 여기예요",
-  "en": "This is a place in Kurashiki where you need to come when you have problems with your bike."
+  "en": "This is a place in Kurashiki where you need to come when you have problems with your bike.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -157,7 +172,8 @@
   "spk": "M",
   "ja": "タケチさん。自転車が直ったので、旅を続けます",
   "ko": "다케치 씨. 자전거가 고쳐졌으니 여행을 계속할게요",
-  "en": "Takashi bikes. Now my bike is working and I will continue."
+  "en": "Takashi bikes. Now my bike is working and I will continue.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -167,7 +183,8 @@
   "spk": "M",
   "ja": "本当にほっとしました。タケチさんのおかげです",
   "ko": "정말 안심돼요. 다케치 씨 덕분이에요",
-  "en": "Yes, now I'm so relieved. Thanks to the Takashi bikes."
+  "en": "Yes, now I'm so relieved. Thanks to the Takashi bikes.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -177,7 +194,8 @@
   "spk": "M",
   "ja": "ひとつだけ、まだ少し気になることがある",
   "ko": "딱 하나, 아직 조금 신경 쓰이는 게 있어요",
-  "en": "Only thing which I'm still a little bit wondering. Let's see how it goes."
+  "en": "Only thing which I'm still a little bit wondering. Let's see how it goes.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -187,7 +205,8 @@
   "spk": "M",
   "ja": "スポークは全部、古いのを使ったので",
   "ko": "바퀴살은 전부 옛 걸 썼거든요",
-  "en": "Because we use all the old spokes."
+  "en": "Because we use all the old spokes.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -197,7 +216,8 @@
   "spk": "M",
   "ja": "今日少し走って、緩まないか確かめます",
   "ko": "오늘 좀 달려서 안 풀리는지 확인할게요",
-  "en": "If they start to get loose I try to ride a little bit today and see if they stay tight"
+  "en": "If they start to get loose I try to ride a little bit today and see if they stay tight",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -207,7 +227,8 @@
   "spk": "M",
   "ja": "緩んだら、また店に戻らないと",
   "ko": "풀리면 다시 가게에 가야 해요",
-  "en": "and if they don't then I need to go back."
+  "en": "and if they don't then I need to go back.",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -217,7 +238,8 @@
   "spk": "M",
   "ja": "でも原因は、傷んだリムだったと思う",
   "ko": "하지만 원인은 상한 림이었다고 생각해요",
-  "en": "But I think that it was because of that rim which was damaged."
+  "en": "But I think that it was because of that rim which was damaged.",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -227,7 +249,8 @@
   "spk": "M",
   "ja": "店で炭酸ももらいました。飲み物2本と、チョコレート",
   "ko": "가게에서 탄산음료도 받았어요. 음료 두 병이랑 초콜릿",
-  "en": "I got a soda from there. Two bottles of drinks and a chocolate."
+  "en": "I got a soda from there. Two bottles of drinks and a chocolate.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -237,7 +260,8 @@
   "spk": "M",
   "ja": "それにお茶も。いつもの自転車屋さんとは、ちょっと違う体験でした",
   "ko": "그리고 차도요. 평소 자전거 가게와는 좀 다른 경험이었어요",
-  "en": "Tea and it was a bit different experience but I have good use to be in a bike shop."
+  "en": "Tea and it was a bit different experience but I have good use to be in a bike shop.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -247,7 +271,8 @@
   "spk": "M",
   "ja": "ずっといい感じ。音がしない",
   "ko": "훨씬 좋아요. 소리가 안 나요",
-  "en": "Yeah, this feels so much better now. There is no noise."
+  "en": "Yeah, this feels so much better now. There is no noise.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -257,7 +282,8 @@
   "spk": "M",
   "ja": "リムのせいで、全部が少しずつずれていたんだ",
   "ko": "림 때문에 전부 조금씩 틀어져 있었던 거예요",
-  "en": "Because of the rim everything was a little bit in the wrong position."
+  "en": "Because of the rim everything was a little bit in the wrong position.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -267,7 +293,8 @@
   "spk": "M",
   "ja": "完全に静か。自転車が、まったく音を立てない",
   "ko": "완전히 조용해요. 자전거가 전혀 소리를 안 내요",
-  "en": "Yeah, now it's totally silent. The bike is totally silent."
+  "en": "Yeah, now it's totally silent. The bike is totally silent.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -277,7 +304,8 @@
   "spk": "M",
   "ja": "本当にいい仕事をしてくれた。本当に",
   "ko": "정말 일을 잘해 주셨어요. 정말로",
-  "en": "He did an extremely good job. Extremely good job."
+  "en": "He did an extremely good job. Extremely good job.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -287,7 +315,8 @@
   "spk": "M",
   "ja": "ああ、気持ちいい",
   "ko": "아, 기분 좋다",
-  "en": "Oh, this feels so fine. Oh yeah."
+  "en": "Oh, this feels so fine. Oh yeah.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -297,7 +326,8 @@
   "spk": "M",
   "ja": "旅を続けられるのは、うれしい",
   "ko": "여행을 계속할 수 있어서 좋아요",
-  "en": "It feels good to continue the journey."
+  "en": "It feels good to continue the journey.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -307,7 +337,8 @@
   "spk": "M",
   "ja": "ここ数日、少し落ち込んでいました",
   "ko": "며칠 동안 조금 처져 있었어요",
-  "en": "I had been a little bit down side for a few days."
+  "en": "I had been a little bit down side for a few days.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -317,7 +348,8 @@
   "spk": "M",
   "ja": "ホテルは悪くなかった。でも、リムは来るのか、合うのか、使えるのか",
   "ko": "호텔은 괜찮았어요. 하지만 림이 올지, 맞을지, 쓸 수 있을지",
-  "en": "The hotel has been okay but when you have constant fear that if the rim is coming or does it fit or work"
+  "en": "The hotel has been okay but when you have constant fear that if the rim is coming or does it fit or work",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -327,7 +359,8 @@
   "spk": "M",
   "ja": "もう何日かここにいるべきか、全部どうなるのか、ずっと不安で",
   "ko": "며칠 더 있어야 할지, 다 어떻게 될지 계속 불안하면",
-  "en": "should I stay here even couple more days and how everything goes"
+  "en": "should I stay here even couple more days and how everything goes",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -337,7 +370,8 @@
   "spk": "M",
   "ja": "落ち着けなかった。でも今は、また落ち着いています",
   "ko": "편할 수가 없죠. 하지만 이제 다시 편해요",
-  "en": "then it doesn't make you relaxed but now I'm relaxed again."
+  "en": "then it doesn't make you relaxed but now I'm relaxed again.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -347,7 +381,8 @@
   "spk": "M",
   "ja": "それで思い出した。四国の自転車屋さんが、モンベルの店を教えてくれたことを",
   "ko": "그러다 생각났어요. 시코쿠 자전거 가게 분이 몽벨 매장을 알려 준 걸",
-  "en": "But then I remembered about that guy in a bike shop in Shikoku who told me about the Montbell shop."
+  "en": "But then I remembered about that guy in a bike shop in Shikoku who told me about the Montbell shop.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -357,7 +392,8 @@
   "spk": "M",
   "ja": "一つは店から7キロで、逆方向だった",
   "ko": "하나는 가게에서 7km였는데 반대 방향이었어요",
-  "en": "One of them was located seven kilometers from their place and it was to the wrong direction."
+  "en": "One of them was located seven kilometers from their place and it was to the wrong direction.",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -367,7 +403,8 @@
   "spk": "M",
   "ja": "その時調べたら、倉敷にもあった",
   "ko": "그때 찾아보니 구라시키에도 있었어요",
-  "en": "On that time I googled that there is one also here in Kurashiki."
+  "en": "On that time I googled that there is one also here in Kurashiki.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -377,7 +414,8 @@
   "spk": "M",
   "ja": "一番かっこいいわけでも、世界一いいわけでもないけど",
   "ko": "제일 멋지지도, 세계 최고도 아니겠지만",
-  "en": "Maybe not the coolest one and maybe not the best one in the world"
+  "en": "Maybe not the coolest one and maybe not the best one in the world",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -387,7 +425,8 @@
   "spk": "M",
   "ja": "僕が見つけた中では、間違いなく一番",
   "ko": "제가 찾은 것 중엔 확실히 최고예요",
-  "en": "but definitely best one which I have found."
+  "en": "but definitely best one which I have found.",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -397,7 +436,8 @@
   "spk": "M",
   "ja": "レインカバーを手に入れた。さあ、雨よ来い",
   "ko": "레인 커버를 손에 넣었어요. 자, 비야 와라",
-  "en": "now I have a rain cover so may the rain come."
+  "en": "now I have a rain cover so may the rain come.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -407,7 +447,8 @@
   "spk": "M",
   "ja": "6800円。40ユーロ弱",
   "ko": "6,800엔. 40유로 조금 안 돼요",
-  "en": "These were 6800 yen which is around something like 40 euro bit less."
+  "en": "These were 6800 yen which is around something like 40 euro bit less.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -417,7 +458,8 @@
   "spk": "M",
   "ja": "すごく安くはないけど、水を防いでくれるなら、その価値はある",
   "ko": "아주 싸진 않지만 물을 막아 주면 그만한 가치가 있어요",
-  "en": "Not extremely cheap but if they keep the water away then they are worth it."
+  "en": "Not extremely cheap but if they keep the water away then they are worth it.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -427,7 +469,8 @@
   "spk": "M",
   "ja": "不思議なもので、走ることに体が慣れてしまう",
   "ko": "신기하게도 달리는 데 몸이 익숙해져요",
-  "en": "It's funny how you get used to the cycling."
+  "en": "It's funny how you get used to the cycling.",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -437,7 +480,8 @@
   "spk": "M",
   "ja": "ちゃんと走れないと、走りに行かなきゃという気になる",
   "ko": "제대로 못 달리면 달리러 가야 할 것 같은 기분이 들어요",
-  "en": "When I wasn't able to cycle decent amounts I get the feeling that I should go cycling"
+  "en": "When I wasn't able to cycle decent amounts I get the feeling that I should go cycling",
+  "use": false
  },
  {
   "ep": "Ep27",
@@ -447,7 +491,8 @@
   "spk": "M",
   "ja": "ただ走るのが気持ちよくて、地図を見るのも、案内を聞くのも忘れていた",
   "ko": "그냥 달리는 게 너무 좋아서 지도 보는 것도 안내 듣는 것도 잊었어요",
-  "en": "It was so nice to just ride that I forgot to look the map and listen to the instructions."
+  "en": "It was so nice to just ride that I forgot to look the map and listen to the instructions.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -457,7 +502,8 @@
   "spk": "M",
   "ja": "いいね。すごくいい",
   "ko": "좋아요. 아주 좋아요",
-  "en": "Looks good, very good."
+  "en": "Looks good, very good.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -467,7 +513,8 @@
   "spk": "M",
   "ja": "1本も緩んでいない",
   "ko": "하나도 안 풀렸어요",
-  "en": "None of them has got losing."
+  "en": "None of them has got losing.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -477,7 +524,8 @@
   "spk": "M",
   "ja": "いい一日だった",
   "ko": "좋은 하루였어요",
-  "en": "It had been a good day."
+  "en": "It had been a good day.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -487,7 +535,8 @@
   "spk": "M",
   "ja": "全部そろった。新しいリムと、自転車用シューズのレインカバー",
   "ko": "다 갖췄어요. 새 림이랑 자전거 신발용 레인 커버",
-  "en": "It provided me everything. I got a new new rim and I got rain covers for my cycling shoes."
+  "en": "It provided me everything. I got a new new rim and I got rain covers for my cycling shoes.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -497,7 +546,8 @@
   "spk": "M",
   "ja": "明日は少し雨かもしれない。ひどくないといいな",
   "ko": "내일은 비가 조금 올지도. 많이 안 오면 좋겠어요",
-  "en": "Tomorrow there can be a little bit rain. Let's hope not much."
+  "en": "Tomorrow there can be a little bit rain. Let's hope not much.",
+  "use": true
  },
  {
   "ep": "Ep27",
@@ -507,6 +557,7 @@
   "spk": "M",
   "ja": "また明日。長い道のりです",
   "ko": "내일 봐요. 긴 길이에요",
-  "en": "See you tomorrow. It's a long ride."
+  "en": "See you tomorrow. It's a long ride.",
+  "use": true
  }
 ]
