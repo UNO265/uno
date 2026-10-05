@@ -136,7 +136,7 @@ def narration_lines():
 def build_subs():
     lines = narration_lines()
     for d in S["dialogue"]:
-        lines.append(dict(a=d["t"][0], b=d["t"][1], text=d["ja"], kind="dia"))
+        lines.append(dict(a=d["t"][0], b=d["t"][1], text=d["ja"], kind="dia", who=d.get("who")))
     for c in S.get("captions", []):
         lines.append(dict(a=c["t"][0], b=c["t"][1], text=c["ja"], kind="cap", y=c["y"]))
     lines.sort(key=lambda x: x["a"])
@@ -162,8 +162,13 @@ def build_subs():
     srt = []
     for i, x in enumerate(lines):
         style = {"narr": "Narr", "dia": "Dia", "cap": "Cap"}[x["kind"]]
+        color = ""
+        sc = S.get("speaker_colors", {})
+        if x["kind"] == "dia" and x.get("who") in sc:  # 인물별 대사 색(없으면 기본 노랑)
+            h = sc[x["who"]].lstrip("#")
+            color = f"\\c&H{h[4:6]}{h[2:4]}{h[0:2]}&"
         y = x.get("y", L["narr_y"])
-        ass.append(f"Dialogue: 0,{ts_ass(x['a'])},{ts_ass(x['b'])},{style},,0,0,0,,{{\\pos(540,{y})}}{x['text']}")
+        ass.append(f"Dialogue: 0,{ts_ass(x['a'])},{ts_ass(x['b'])},{style},,0,0,0,,{{\\pos(540,{y}){color}}}{x['text']}")
         srt.append(f"{i + 1}\n{ts_srt(x['a'])} --> {ts_srt(x['b'])}\n{x['text']}\n")
     (O / f"{slug}_ja.ass").write_text("\n".join(ass) + "\n", encoding="utf-8")
     (O / f"{slug}_ja.srt").write_text("\n".join(srt), encoding="utf-8")
