@@ -75,8 +75,15 @@ def src_of(src, it):
 
 
 def stem_of(plan, it):
-    a, b = it["src"]
-    return Path(plan["stems_dir"]) / f"{it['ep']}_{a.replace(':', '')}_{b.replace(':', '')}.wav"
+    """그 클립을 덮는 음원 분리 덩어리(<ep>_<시작초>_<끝초>.wav)와 덩어리 안의 시작 위치."""
+    a, b = map(sec, it["src"])
+    for f in sorted(Path(plan["stems_dir"]).glob(f"{it['ep']}_*.wav")):
+        if f.name.endswith(".rest.wav"):
+            continue
+        s0, s1 = map(float, f.stem.split("_")[1:3])
+        if s0 <= a and b <= s1:
+            return f, a - s0
+    raise SystemExit(f"음원 분리 덩어리 없음: {it['ep']} {it['src']}")
 
 
 def render_items(plan, srcs, tmp, narr):
@@ -91,8 +98,9 @@ def render_items(plan, srcs, tmp, narr):
             f = min(0.06, d / 4)
             af = f"aresample=48000,afade=t=in:d={f},afade=t=out:st={d - f:.3f}:d={f}"
             if it.get("audio") == "vocals":       # 음원 분리한 목소리만(원본 음악 제거)
-                run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-i", str(stem_of(plan, it)),
-                     "-ss", f"{min(3, a):.3f}", "-t", f"{d:.3f}", "-map", "0:v", "-map", "1:a",
+                stem, off = stem_of(plan, it)
+                run(["-ss", f"{a:.3f}", "-i", src, "-ss", f"{off:.3f}", "-i", str(stem),
+                     "-t", f"{d:.3f}", "-map", "0:v", "-map", "1:a",
                      "-vf", f"{pic_vf(it, fill)},fps={FPS},format=yuv420p", "-af", af, *ENC, str(p)])
             else:
                 run(["-ss", f"{max(0, a - 3):.3f}", "-i", src, "-ss", f"{min(3, a):.3f}", "-t", f"{d:.3f}",
