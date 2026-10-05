@@ -27,3 +27,24 @@
 ## 다음 단계
 - 사용자가 고른 2~3편의 **영어 자막(스크립트)**을 받아 S0 여섯 질문으로 채택 판정(본편을 이 환경에서 받을 수 없음).
 - 채택 후 영상 파일 확보 → 원본 음악 분리 확인(04 E6) → BGM 검색 조건 정리.
+
+## 추가 검색 (같은 날, 사용자: 「1번은 짧다 → 다른 영상 더 추천」) — 20~50분, 사건 하나로 길게 가는 것
+
+검색어 15개 추가(「car broke down」「stranded by typhoon」「hospital in japan as a tourist」「cycling across japan locals helped」「reunited with host family」 등). 같은 한계(본편 미확인).
+
+| # | 영상 | 채널 | 길이·시기·조회 | 보이는 흐름 | 메모 |
+|---|---|---|---|---|---|
+| 12 | [My Bike Is Breaking Down — Cycling across Japan Ep 24](https://www.youtube.com/watch?v=4ZURDFx7bfE) + [My Bike Is Fixed! — Ep 27](https://www.youtube.com/watch?v=USgu0in28mM) | Markus Kiili | 28:21 + 20:22 · 1개월·3주 전 · 3천·6.5천 | 자전거 일본 종단 중 뒷바퀴 고장 → 며칠 고생 → 고쳐서 다시 출발 | **한 사람·한 문제가 여러 편에 걸쳐 해결**되는 구조. 같은 제작자라 허락 한 번. 고친 과정에 현지인이 얼마나 나오는지 확인 필요 |
+| 13 | [Surviving a Typhoon on Japan's Most Isolated Coast](https://www.youtube.com/watch?v=zzs0i3SzaHQ) | Small Brained Americans | 33:51 · 1년 전 · 53.6만 | 외딴 해안 여행 중 태풍 → 버팀 | 사건 하나로 30분. 미국인 여행자 채널. 현지인과의 관계가 있는지 확인 |
+| 14 | [I went to Hospital in Japan — Overseas Debut Pt 2](https://www.youtube.com/watch?v=40OOPNfZLy8) | Rhys Dobbins | 21:04 · 3개월 전 · 217 | 혼자 일본 여행 마지막 10일, 병원에 감 | 작은 채널. 병원 장면 비중·결과 확인 |
+| 15 | [RUSHED TO THE HOSPITAL IN JAPAN — traveling with 3 kids](https://www.youtube.com/watch?v=aLphl3eJGEQ) | Kareny Martinez | 23:23 · 6개월 전 · 3천 | 아이 셋과 여행 중 병원 응급 | 아이 의료 장면 → 사생활·민감도 높음, 신중 |
+| 16 | [Living in a Van During a Japan Typhoon](https://www.youtube.com/watch?v=aA1H_YltZRw) | Nomad Push | 22:20 · 4개월 전 · 9.8만 | 40번째 생일에 태풍, 차에서 버팀 | 혼자 여행, 사건 하나 |
+| 17 | [I Fell in Love with Japanese Kindness — Mt. Nyu & Shirakoma Lake](https://www.youtube.com/watch?v=fyf0aL_4YBw) | DropJapan | 22:29 · 5개월 전 · 1.1만 | 호수 산책 → 낯선 두 사람을 만나 정상까지 함께 등반 | 만남→동행→결과. 채널이 일본 거주자인지 확인(S1) |
+| 18 | [Japan Travel Diary — Helping Strangers, Castle Tours & Lost in the Mountains](https://www.youtube.com/watch?v=W7qzIvX3QoY) | Christoff Smit | 29:27 · 6개월 전 · 10 | 여행 일기 중 산에서 길을 잃음 | 일기형(나열) 위험 |
+
+제외: Chani Japan(「After Losing Everything, a Stranger…」 — 일본 거주자, S1), CBC Docs 펜팔 다큐(방송사 다큐, VLOG 아님·허락 어려움), 거주자 태풍·병원 브이로그.
+
+### 추천(20분 내외 기준)
+1. **12 자전거 고장 → 수리(두 편 묶음)** — 문제가 며칠에 걸쳐 풀리는 긴 호흡, 같은 제작자, 작은 채널(허락 요청 현실적). 합계 약 49분 → 20분으로 압축 가능.
+2. **13 태풍 속 외딴 해안** — 사건 하나로 34분. 조회수가 높아 소재 검증됨. 대신 큰 채널이라 허락이 어려울 수 있음.
+3. **17 낯선 사람과 정상까지** — 만남이 동행으로 바뀌는 #002형. 22분.
