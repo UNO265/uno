@@ -1,0 +1,233 @@
+[
+ {
+  "ep": "Ep23",
+  "s0": 506.35,
+  "s1": 515.17,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "不思議な気分です。前にここへ来た時は、もう二度とここを走ることはないと思っていた",
+  "ko": "신기한 기분이에요. 지난번 여기 왔을 때는 다시는 여기를 달릴 일이 없을 줄 알았어요",
+  "en": "This is some way an interesting feeling that when I was here last time I thought that I will not cycle here again.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 516.17,
+  "s1": 519.43,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "楽しいな。ここにいられて、本当にうれしい",
+  "ko": "즐겁네요. 여기 있을 수 있어서 정말 좋아요",
+  "en": "And this is fun, it's really nice to be here.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 564.53,
+  "s1": 566.55,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ここ、覚えてる",
+  "ko": "여기 기억나요",
+  "en": "Yeah, this place I remember.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 577.25,
+  "s1": 579.37,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ベサのために、写真を撮らないと",
+  "ko": "베사를 위해 사진을 찍어야 해요",
+  "en": "I need to go and take a photo for Vesa.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 579.37,
+  "s1": 591.17,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "1年半前、一緒に来た旅で、ここでベサの写真を撮ったんです",
+  "ko": "1년 반 전 같이 온 여행에서 여기서 베사 사진을 찍었거든요",
+  "en": "Yeah, I took a photo of Vesa on our trip when we were here one and a half years ago.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 591.63,
+  "s1": 598.87,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "同じ場所から新しく撮って、送りました。覚えているかな",
+  "ko": "같은 자리에서 새로 찍어서 보냈어요. 기억하려나",
+  "en": "From that exact spot took a new photo and sent him if he still remembers the place.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 734.06,
+  "s1": 740.92,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ああ、悲しい。閉まってる。もう、ないんだ",
+  "ko": "아, 슬퍼요. 닫혔어요. 이제 없네요",
+  "en": "Oh, this is sad. It's closed. It's not here anymore.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 746.18,
+  "s1": 749.5,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "本当に、本当に、すてきな店だった",
+  "ko": "정말, 정말 멋진 가게였는데",
+  "en": "It was just really, really, really something.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 749.88,
+  "s1": 753.02,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "年配のご夫婦がやっていて",
+  "ko": "나이 지긋한 부부가 하던 곳인데",
+  "en": "It was an old, old couple running it.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 753.6,
+  "s1": 760.02,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "目の前で料理を作ってくれて、全部見られたんです",
+  "ko": "바로 앞에서 요리를 해 줘서 다 볼 수 있었어요",
+  "en": "They made the food just on side of you so you could see everything for what they did.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 824.13,
+  "s1": 828.29,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "伯方のオレンジジュース。地元のです",
+  "ko": "하카타 오렌지 주스. 이 지역 거예요",
+  "en": "Orange juice from Hakata. Local orange juice.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 836.77,
+  "s1": 839.35,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "こんなの、飲んだことない",
+  "ko": "이런 건 처음 마셔 봐요",
+  "en": "Oh yeah, never taste anything like this.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 844.11,
+  "s1": 845.01,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "完璧",
+  "ko": "완벽해요",
+  "en": "This is perfect.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 975.43,
+  "s1": 980.33,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ちょうど、橋が一番きれいな光の時間に間に合った",
+  "ko": "딱 다리가 가장 아름다운 빛일 때 맞춰 왔어요",
+  "en": "Just in time to see the bridge in the most beautiful light.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 980.93,
+  "s1": 985.73,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも、ここの夕日は沈むのが速い。どんどん沈んでいく",
+  "ko": "하지만 여기 해는 빨리 져요. 쭉쭉 내려가요",
+  "en": "But the sunset here is very quick. You can see how it goes down.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 987.23,
+  "s1": 992.01,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ラップランドだと、何時間もかかるのに",
+  "ko": "라플란드에서는 몇 시간이나 걸리는데",
+  "en": "I don't know if it looks like it is in Lapland where it takes hours.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 1002.27,
+  "s1": 1004.23,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ああ、きれいだ",
+  "ko": "아, 아름다워요",
+  "en": "Oh yeah, that is beautiful.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 1238.23,
+  "s1": 1244.81,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ライトがあまり良くない。暗い中を走る予定じゃなかったので",
+  "ko": "라이트가 별로 안 좋아요. 어두울 때 달릴 계획이 아니었거든요",
+  "en": "Yeah, my lives are not very good. I have not planned that I will ride in the dark.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 1258.73,
+  "s1": 1264.43,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ひとつ言うと、日本は街灯をあまり信じていない",
+  "ko": "하나 말하자면, 일본은 가로등을 별로 안 믿어요",
+  "en": "Yeah, one thing is that in Japan, they don't believe in street lights.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 1265.05,
+  "s1": 1268.07,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "どうしようもない。まだ5.4キロある",
+  "ko": "어쩔 수 없죠. 아직 5.4km 남았어요",
+  "en": "What can I do? There is still 5.4 kilometers.",
+  "use": true
+ },
+ {
+  "ep": "Ep23",
+  "s0": 1269.61,
+  "s1": 1272.89,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "もちろん、スマホの電池も切れそう",
+  "ko": "물론 휴대폰 배터리도 다 돼 가요",
+  "en": "Of course my phone is dying.",
+  "use": true
+ }
+]

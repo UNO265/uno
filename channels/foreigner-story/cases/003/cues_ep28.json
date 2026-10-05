@@ -639,6 +639,39 @@
  },
  {
   "ep": "Ep28",
+  "s0": 2384.1,
+  "s1": 2386.0,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ああ、きれいだ",
+  "ko": "아, 아름다워요",
+  "en": "oh yeah this is beautiful",
+  "use": true
+ },
+ {
+  "ep": "Ep28",
+  "s0": 2387.5,
+  "s1": 2392.0,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "写真にいい場所はあるかな",
+  "ko": "사진 찍기 좋은 곳이 있을까",
+  "en": "let's see if I get a nice place for a photo",
+  "use": true
+ },
+ {
+  "ep": "Ep28",
+  "s0": 2394.6,
+  "s1": 2396.3,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "雨の中の桜",
+  "ko": "빗속의 벚꽃",
+  "en": "very blossom in the rain",
+  "use": true
+ },
+ {
+  "ep": "Ep28",
   "s0": 2638.71,
   "s1": 2644.29,
   "kind": "Y",
