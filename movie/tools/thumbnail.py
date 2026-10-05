@@ -17,7 +17,7 @@ TOP, BOTTOM = int(H * 0.61), int(H * 0.88)
 SIDE = int(W * 0.05)
 
 
-def frame(src, t, crop, top_h=None):
+def frame(src, t, crop, top_h=None, top_y=0):
     """top_h가 있으면 장면을 위쪽 top_h px에 맞추고, 아래는 같은 장면을 흐리고 어둡게 늘려 채운다(제목이 중요한 피사체를 덮지 않게)."""
     out = ROOT / "work/_thumb_frame.png"
     h = top_h or H
@@ -34,7 +34,10 @@ def frame(src, t, crop, top_h=None):
     d = ImageDraw.Draw(mask)
     for y in range(h - fade, h):
         d.line([(0, y), (W, y)], fill=int(255 * (h - y) / fade))
-    bg.paste(img, (0, 0), mask)
+    if top_y:  # 장면을 아래로 내리면 위 끝도 흐린 배경으로 부드럽게 잇는다
+        for y in range(0, min(fade, h)):
+            d.line([(0, y), (W, y)], fill=min(int(255 * y / fade), 255 if y >= h - fade else 255))
+    bg.paste(img, (0, top_y), mask)
     return bg
 
 
@@ -79,7 +82,7 @@ def main():
     P = ROOT / f"projects/{slug}"
     cfg = json.load(open(P / "thumb.json"))
     S = json.load(open(P / "script.json"))
-    img = frame(ROOT / S["source"], cfg["time"], cfg["crop"], cfg.get("top_h"))
+    img = frame(ROOT / S["source"], cfg["time"], cfg["crop"], cfg.get("top_h"), cfg.get("top_y", 0))
     # 아래쪽을 어둡게(글자 대비)
     shade = Image.new("L", (W, H), 0)
     d = ImageDraw.Draw(shade)
