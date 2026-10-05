@@ -1,0 +1,602 @@
+[
+ {
+  "ep": "Ep26",
+  "s0": 126.33,
+  "s1": 128.29,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "僕のホイールに、いい知らせです",
+  "ko": "제 바퀴에 좋은 소식이 있어요",
+  "en": "Good news about my wheel."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 128.89,
+  "s1": 138.87,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "チャンネルを見ていない人のために。後ろのホイール、正確にはリムにヒビが入っています",
+  "ko": "채널을 안 보신 분들을 위해. 뒷바퀴, 정확히는 림에 금이 갔어요",
+  "en": "If you have not been following my channel my rear wheel or rim actually has got fractures."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 139.17,
+  "s1": 143.41,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ヒビは7か所。札幌まではもちません",
+  "ko": "금은 7곳. 삿포로까지는 못 버텨요",
+  "en": "There are seven fractures and it will not hold until the Sapporo."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 143.93,
+  "s1": 145.23,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "今、リムがこちらに向かっています",
+  "ko": "지금 림이 오고 있어요",
+  "en": "Now there is a rim coming."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 147.03,
+  "s1": 156.47,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ただ、今日は土曜日。発送は月曜で、届くのは火曜日",
+  "ko": "다만 오늘은 토요일이라 월요일에 보내고 화요일에 도착해요",
+  "en": "Only problem is that now it's a Saturday and they can send it on Monday so that it will arrive in Tuesday."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 157.11,
+  "s1": 162.97,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ホイールごとじゃなくリムだけなので、誰かに組んでもらわないと",
+  "ko": "바퀴 통째가 아니라 림만이라 누군가 조립해 줘야 해요",
+  "en": "It's only a rim not the whole wheel so somebody needs to put it together."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 163.19,
+  "s1": 166.47,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "それができる店を探さないといけない",
+  "ko": "그걸 해 줄 곳을 찾아야 해요",
+  "en": "I need to find a place where it can be done."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 332.92,
+  "s1": 338.12,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ママチャリに追い抜かれます。電動モーターが付いているから",
+  "ko": "할머니 자전거들이 추월해 가요. 전기 모터가 달려 있으니까",
+  "en": "Those granny bikes pass you because they have electric motors on those."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 338.84,
+  "s1": 347.12,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "坂の上で、あの人が「やっと！」と言ったのがおかしかった",
+  "ko": "언덕 위에서 저 사람이 「드디어!」라고 해서 웃겼어요",
+  "en": "It sounded funny when that guy said on the top of the hill that finally"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 347.12,
+  "s1": 351.62,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "電動自転車に乗っていたのに",
+  "ko": "전기자전거를 타고 있었는데",
+  "en": "he was riding an electric bike."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 771.19,
+  "s1": 778.6,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "面白かった。僕が通れるように、車が止まってくれた",
+  "ko": "재밌었어요. 제가 지나가도록 차가 멈춰 줬어요",
+  "en": "This was interesting they stopped the car that I can go."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 781.12,
+  "s1": 789.26,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "普通は逆なのに。ここでは自転車が大事にされているみたい",
+  "ko": "보통은 반대인데. 여기선 자전거를 중요하게 여기나 봐요",
+  "en": "Normally it goes other ways but here it seems that they think that the bikes are important."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 888.89,
+  "s1": 891.11,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "自転車が、車より先",
+  "ko": "자전거가 차보다 먼저",
+  "en": "The bike goes before the cars."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 891.73,
+  "s1": 893.17,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "素晴らしい国だ",
+  "ko": "멋진 나라예요",
+  "en": "This is wonderful country."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 894.67,
+  "s1": 895.59,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "宇野へようこそ",
+  "ko": "우노에 오신 걸 환영해요",
+  "en": "Welcome to Uno."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 966.5,
+  "s1": 970.9,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "後ろから、すごく変な音がする",
+  "ko": "뒤에서 정말 이상한 소리가 나요",
+  "en": "I'm having really weird noises from back."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 971.2,
+  "s1": 978.49,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "リムなのか、ギアなのか、どこからなのか分からない",
+  "ko": "림인지 기어인지, 어디서 나는지 모르겠어요",
+  "en": "I'm not sure if it comes from the rim or if it's from the gears or where it comes from"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 978.98,
+  "s1": 989.26,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "こいでいない時は鳴らない。こいでいる時は、鳴ったり鳴らなかったり",
+  "ko": "페달을 안 밟을 땐 안 나요. 밟을 땐 났다 안 났다 해요",
+  "en": "but it doesn't come when I'm not pedaling but if I pedaling sometimes it comes sometimes not"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 992.26,
+  "s1": 998.25,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "いや…サドルかな？　サドルかもしれない",
+  "ko": "아니… 안장인가? 안장일 수도 있어요",
+  "en": "No it could be could it be saddle. Yeah it could be saddle"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1013.26,
+  "s1": 1019.9,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "すごく一定にこいでいると、鳴らない",
+  "ko": "아주 일정하게 밟으면 안 나요",
+  "en": "It doesn't come if I'm pedaling very steadily."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1021.04,
+  "s1": 1025.98,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "リムを確認してみよう",
+  "ko": "림을 확인해 볼게요",
+  "en": "Let's I'll check the rim. I'll check the rim."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1043.57,
+  "s1": 1047.77,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ここからだ",
+  "ko": "여기서 나네요",
+  "en": "it's coming from here yeah."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1048.97,
+  "s1": 1052.01,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "スポークが何本か緩んできている",
+  "ko": "바퀴살 몇 개가 헐거워지고 있어요",
+  "en": "There are some spokes getting loose."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1052.75,
+  "s1": 1061.09,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "本当に、新しいリムが必要な時だ",
+  "ko": "정말 새 림이 필요한 때예요",
+  "en": "I think that it will be time really time to get a new new rim."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1089.52,
+  "s1": 1093.98,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "もう音はしない。やっぱり、あそこだった",
+  "ko": "이제 소리가 안 나요. 역시 거기였어요",
+  "en": "I don't feel the sound anymore. Yeah it came from there."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1100.23,
+  "s1": 1105.53,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "なぜか、こういう普通の場所がすごく好きなんです",
+  "ko": "왠지 이런 평범한 곳이 정말 좋아요",
+  "en": "Yeah for some reason I like these ordinary places quite a lot."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1106.53,
+  "s1": 1112.43,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "観光客向けの場所より、ずっと",
+  "ko": "관광객용 장소보다 훨씬",
+  "en": "Much more than those tourist orientated places."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1120.08,
+  "s1": 1129.96,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "僕は観光地に住んでいるので、それが日常なんです",
+  "ko": "저는 관광지에 살아서 그게 일상이에요",
+  "en": "For me when I'm living in a tourist attraction it's it's everyday life for me."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1130.76,
+  "s1": 1136.3,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ここを走って、人の暮らしの裏側を見る方がずっと面白い",
+  "ko": "여기를 달리며 사람들 뒷마당을 보는 게 훨씬 재밌어요",
+  "en": "It's much more interesting to ride over here and see the people's backyard."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1136.88,
+  "s1": 1144.86,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "変に聞こえるかもしれないけど、僕にとって休暇はこういう場所に来ること",
+  "ko": "이상하게 들리겠지만 저한테 휴가는 이런 곳에 오는 거예요",
+  "en": "It sounds funny but that it is for me to be in the holidays go to places like this."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1146.02,
+  "s1": 1156.14,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "こういう場所に住む人にとっては、休暇は観光地に行くことなんですけどね",
+  "ko": "이런 곳에 사는 사람들에겐 휴가가 관광지에 가는 거겠지만요",
+  "en": "And for people who are living in places like this going to the holiday is going to the holiday destination."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1306.83,
+  "s1": 1316.25,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "また1本、緩んでいる。同じのかは分からないけど",
+  "ko": "또 하나 헐거워요. 같은 건지는 모르겠지만",
+  "en": "Yeah there is one spoke that yes I'm not sure if it's the same one but it there is one loose one again."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1323.43,
+  "s1": 1328.77,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ああ、北への旅は長くなりそうだ",
+  "ko": "아, 북쪽까지의 여정이 길겠네요",
+  "en": "Oh yeah it will be a long journey to the north."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1329.61,
+  "s1": 1334.83,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "5キロごとに、これだ",
+  "ko": "5km마다 이래요",
+  "en": "Doing it like this after every five kilometers."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1335.85,
+  "s1": 1337.85,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でも幸い、もう音で分かる",
+  "ko": "그래도 다행히 이제 소리로 알아요",
+  "en": "But luckily now I know the sound."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1338.99,
+  "s1": 1346.69,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "スポーク同士が触れて、こすれると音が出るんです",
+  "ko": "바퀴살끼리 닿아서 비벼지면 소리가 나요",
+  "en": "Sound comes when those spokes when they touch each other and move it move on each other."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1452.61,
+  "s1": 1458.53,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "これだ。いつも同じやつ",
+  "ko": "이거예요. 항상 같은 거",
+  "en": "This one it is. Yeah same one all the time."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1461.71,
+  "s1": 1467.17,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "締め続けても、無駄なのかもしれない",
+  "ko": "계속 조여도 소용없을지도 몰라요",
+  "en": "Maybe it's kind of useless to try to keep it."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1469.76,
+  "s1": 1473.42,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "これはひどい。ひどい",
+  "ko": "이건 끔찍해요. 끔찍해",
+  "en": "Now that's terrible. That's terrible."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1473.62,
+  "s1": 1486.69,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "1本だけじゃないかも。…何本もある",
+  "ko": "하나만이 아닐지도. …여러 개예요",
+  "en": "Maybe it's not the only one. Yeah there are several of them."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1487.57,
+  "s1": 1497.05,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "あのホイールが届くまで、この自転車ではあまり走れそうにない",
+  "ko": "그 바퀴를 받을 때까지 이 자전거로는 많이 못 달리겠어요",
+  "en": "Yeah it looks like that I will not ride a lot with this bike before I get that wheel."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1498.13,
+  "s1": 1509.75,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "何度も止まって、段差のたびに心配していたら、平均速度も上がらない",
+  "ko": "계속 멈추고 턱마다 걱정하면 평균 속도도 안 올라가요",
+  "en": "Yeah the average speed doesn't get very high when you need to stop all the time and be worried about every bump."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1510.23,
+  "s1": 1518.8,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "数日前、「100キロもってくれれば」と言いました",
+  "ko": "며칠 전 「100km만 버텨 주면 좋겠다」고 했죠",
+  "en": "But when I said a couple days ago that it would be good if it holds 100 kilometers."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1519.9,
+  "s1": 1525.3,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "あれから80キロちょっと走りました",
+  "ko": "그 뒤로 80km 조금 넘게 달렸어요",
+  "en": "I have done now 80 kilometers a bit over after that."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1525.88,
+  "s1": 1531.8,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "自転車屋さんまで、なんとかもってほしい",
+  "ko": "자전거 가게까지 꼭 버텨 줬으면 해요",
+  "en": "I really would like that it holds until the bike shop."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1534.61,
+  "s1": 1544.24,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "「それで1000キロ走れる」と言った人がいたけど、無理です。無理",
+  "ko": "「그걸로 1000km 탈 수 있다」고 한 사람이 있었는데, 못 타요. 못 타",
+  "en": "But when somebody said that you could ride 1000 kilometers with that no I can't. No I can't."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1641.68,
+  "s1": 1647.26,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "自転車の調子がいい時の方が、ずっと楽しい",
+  "ko": "자전거 상태가 좋을 때가 훨씬 즐거워요",
+  "en": "This is much more fun when you have the bike which is in condition."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1648.36,
+  "s1": 1655.3,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "最初の1000キロちょっとは、本当に楽しかった",
+  "ko": "처음 1000km 남짓은 정말 즐거웠어요",
+  "en": "I would say that the first 1000 something kilometers were really fun"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1655.3,
+  "s1": 1661.18,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "でもこの100キロは、そうでもない。全然",
+  "ko": "하지만 지난 100km는 별로. 전혀",
+  "en": "but the past 100 kilometer not so much not so much"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1661.18,
+  "s1": 1666.62,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "この10キロなんて、たぶん一番ひどかった",
+  "ko": "지난 10km는 아마 최악이었어요",
+  "en": "and if I think about the past 10 kilometers that that's maybe the worst one."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1674.25,
+  "s1": 1675.99,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "音は問題じゃない",
+  "ko": "소리가 문제가 아니에요",
+  "en": "and the sound is not a problem."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1676.71,
+  "s1": 1681.61,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "問題は、音が鳴る理由なんです",
+  "ko": "문제는 소리가 나는 이유예요",
+  "en": "The problem is the reason of the sound."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1762.92,
+  "s1": 1764.78,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "なんだか、帰ってきたような気がする",
+  "ko": "왠지 집에 돌아온 것 같아요",
+  "en": "Now it feels like coming home."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1766.52,
+  "s1": 1779.94,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "不思議なんです。「ここが自分のいるべき場所だ」と感じる場所が、世界にいくつかある",
+  "ko": "신기해요. 「여기가 내가 있어야 할 곳」이라고 느끼는 곳이 세상에 몇 군데 있어요",
+  "en": "It's funny. I have few places in the world where I really somehow feel that this is a place where I need to be."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1780.08,
+  "s1": 1781.58,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "倉敷は、その一つ",
+  "ko": "구라시키가 그중 하나예요",
+  "en": "Kurasiki is one of those."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1782.7,
+  "s1": 1790.36,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "ほかは、僕が住むフィンランドのアカスロンポロと、エストニアのタルトゥ",
+  "ko": "나머지는 제가 사는 핀란드 아캐슬롬폴로, 그리고 에스토니아 타르투",
+  "en": "The other ones are Akaslumpalo where I'm living and then a Tartu in Estonia."
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1791.24,
+  "s1": 1794.32,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "前に来てから、また来たいと思っていた",
+  "ko": "전에 온 뒤로 다시 오고 싶었어요",
+  "en": "Since I was here I wanted to come back here"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1795.04,
+  "s1": 1800.76,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "リムが壊れたことに、いいことがあるとすれば、それが起きた場所",
+  "ko": "림이 깨진 데 좋은 점이 있다면, 그게 일어난 장소예요",
+  "en": "and if there is something good in that rim break it's where it happened"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1800.76,
+  "s1": 1807.48,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "おかげで、ここで何日か多く過ごせる",
+  "ko": "덕분에 여기서 며칠 더 지낼 수 있으니까요",
+  "en": "because now I can spend a few more days over here"
+ },
+ {
+  "ep": "Ep26",
+  "s0": 1807.48,
+  "s1": 1817.22,
+  "kind": "Y",
+  "spk": "M",
+  "ja": "そうでなければ、また1泊か2泊して、すぐ先へ行っていたはずだから",
+  "ko": "안 그랬으면 또 1~2박만 하고 바로 떠났을 테니까요",
+  "en": "because otherwise I would maybe spend yet again one night or two nights and then just go on."
+ }
+]
