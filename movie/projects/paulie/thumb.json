@@ -1,0 +1,27 @@
+{
+ "font": "noto-black",
+ "scale_x": 0.8,
+ "gap": 14,
+ "sizes": [
+  250,
+  300
+ ],
+ "time": 47.6,
+ "crop": [
+  490,
+  541,
+  400,
+  711
+ ],
+ "grade": "eq=contrast=1.08:saturation=1.15:gamma=1.0,vignette=PI/6",
+ "lines": [
+  [
+   "この子に会うため",
+   "white"
+  ],
+  [
+   "オウムは飛んだ",
+   "yellow"
+  ]
+ ]
+}
