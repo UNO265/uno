@@ -1,7 +1,7 @@
 """쇼츠 커버(썸네일) 1080×1920을 만든다. 기준은 guide/01_COVER.md.
 
 - 원본 영상의 한 프레임에서 영화 화면만 세로 9:16으로 잘라 키운다.
-- 제목 2줄(1줄 흰색, 2줄 노란 그라데이션), 블록은 높이 61~88% 안. 넘치면 위치를 내리지 않고 글자를 줄인다.
+- 제목 2줄(1줄 흰색, 2줄 노란 그라데이션), 블록은 위 끝 62%·아래 끝 80.7%(guide/01_COVER.md). 넘치면 위치는 그대로 두고 글자를 줄인다.
 설정: projects/<slug>/thumb.json   사용: python3 tools/thumbnail.py <slug>
 """
 import json, subprocess, sys
@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent.parent
 FONTS = {"dela": (str(ROOT / "work/fonts/DelaGothicOne-Regular.ttf"), None),
          "noto-black": (str(ROOT / "work/fonts/NotoSansJP-VF.ttf"), "Black")}
 W, H = 1080, 1920
-TOP, BOTTOM = int(H * 0.61), int(H * 0.88)
+TOP, BOTTOM = int(H * 0.62), int(H * 0.807)  # 2026-10-06 사용자 확정 위치(guide/01_COVER.md)
 SIDE = int(W * 0.05)
 
 
@@ -93,7 +93,7 @@ def main():
 
     sizes = list(cfg["sizes"])
     gap = cfg.get("gap", 18)
-    while True:  # 폭(좌우 5%)을 넘는 줄만 줄이고, 높이(61~88%)를 넘으면 전체를 줄인다
+    while True:  # 폭(좌우 5%)을 넘는 줄만 줄이고, 높이(62~80.7%)를 넘으면 전체를 줄인다
         layers = text_layer(cfg["lines"], sizes, cfg.get("font", "dela"), cfg.get("scale_x", 1.0))
         total = sum(h for _, _, h, _ in layers) + gap * (len(layers) - 1)
         wide = [i for i, (_, w, _, _) in enumerate(layers) if w > W - 2 * SIDE]
@@ -103,7 +103,7 @@ def main():
             sizes = [int(v * 0.97) for v in sizes]
         else:
             break
-    y = BOTTOM - total  # 블록 아래 끝을 88% 선에 맞춘다(위 끝은 61% 이상)
+    y = BOTTOM - total  # 블록 아래 끝을 80.7% 선에 맞춘다
     y = max(y, TOP)
     canvas = img.convert("RGBA")
     boxes = []
@@ -116,7 +116,7 @@ def main():
     canvas.convert("RGB").save(out)
     x0 = min(b[0] for b in boxes); x1 = max(b[2] for b in boxes); y0 = boxes[0][1]; y1 = boxes[-1][3]
     print(f"wrote {out}  sizes={sizes}  text block x {x0}-{x1}, y {y0}-{y1} "
-          f"({y0 / H:.1%}–{y1 / H:.1%} of height; rule 61–88%)")
+          f"({y0 / H:.1%}–{y1 / H:.1%} of height; rule 62.0–80.7%)")
 
 
 if __name__ == "__main__":
