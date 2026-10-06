@@ -62,3 +62,26 @@ n = sum(1 for x in items if x["type"] == "clip")
 from datetime import timedelta
 tot = sum((lambda a, b: (int(b[:2]) * 60 + float(b[3:])) - (int(a[:2]) * 60 + float(a[3:])))(*x["src"]) for x in items if x["type"] == "clip")
 print(f"items {len(items)}, clips {n}, clip total {tot / 60:.1f} min")
+
+# BGM 배치(bgm_bed.py 입력) — 곡은 audio-credits.md 의 선정곡
+B = "/home/user/media/case003/bgm/"
+card = [i for i, x in enumerate(items) if x["type"] == "card"]   # 0:제목, 1~5:장
+freeze0 = next(i for i, x in enumerate(items) if x["type"] == "freeze")
+bgm = dict(tracks={"A": B + "A_Stay the Course.mp3", "B": B + "B_Morning.mp3", "C": B + "C_Beauty Flow.mp3",
+                   "D": B + "D_Carefree.mp3", "E": B + "E_Danse Morialta.mp3", "F": B + "F_Fretless.mp3",
+                   "G": B + "G_The Parting.mp3"},
+           cues=[dict(item=0, track="A"),                               # 첫 30초: 조용한 긴장
+                 dict(item=freeze0, track="B"),                         # 프롤로그: 잔잔한 여행
+                 dict(item=card[1], track="B", **{"from": 40.0}),       # 1장 앞부분(가벼운 주행)
+                 dict(ep="Ep24", t=1020.0, track="A"),                  # 「何かおかしい」부터 긴장
+                 dict(item=card[2], track="C"),                         # 2장: 담담하게 버티며
+                 dict(item=card[3], track="C", **{"from": 120.0}),      # 3장
+                 dict(ep="Ep26", t=332.7, track="D"),                   # 전기자전거 웃음
+                 dict(ep="Ep26", t=771.0, track="C", **{"from": 200.0}),
+                 dict(ep="Ep26", t=1452.4, track="E"),                  # 「これはひどい」 바닥
+                 dict(ep="Ep26", t=1762.7, track="F"),                  # 「帰ってきたような」 구라시키
+                 dict(item=card[4], track="A", **{"from": 60.0}),       # 4장: 림 도착, 불안
+                 dict(ep="Ep27", t=95.5, track="F", **{"from": 30.0}),  # 「いい感じ。大丈夫だ」 안도
+                 dict(item=card[5], track="G"),                         # 5장: 비 속 재출발 → 엔딩
+                 ])
+json.dump(bgm, open(Path(sys.argv[1]).with_name("bgm_" + Path(sys.argv[1]).stem.split("_")[-1] + ".json"), "w"), ensure_ascii=False, indent=1)

@@ -5,7 +5,7 @@
   "s1": 515.17,
   "kind": "Y",
   "spk": "M",
-  "ja": "不思議な気分です。前にここへ来た時は、もう二度とここを走ることはないと思っていた",
+  "ja": "不思議な気分です。前にここへ来た時は、\\Nもう二度とここを走ることはないと思っていた",
   "ko": "신기한 기분이에요. 지난번 여기 왔을 때는 다시는 여기를 달릴 일이 없을 줄 알았어요",
   "en": "This is some way an interesting feeling that when I was here last time I thought that I will not cycle here again.",
   "use": true
@@ -49,7 +49,7 @@
   "s1": 591.17,
   "kind": "Y",
   "spk": "M",
-  "ja": "1年半前、一緒に来た旅で、ここでベサの写真を撮ったんです",
+  "ja": "1年半前、一緒に来た旅で、\\Nここでベサの写真を撮ったんです",
   "ko": "1년 반 전 같이 온 여행에서 여기서 베사 사진을 찍었거든요",
   "en": "Yeah, I took a photo of Vesa on our trip when we were here one and a half years ago.",
   "use": true
@@ -60,7 +60,7 @@
   "s1": 598.87,
   "kind": "Y",
   "spk": "M",
-  "ja": "同じ場所から新しく撮って、送りました。覚えているかな",
+  "ja": "同じ場所から新しく撮って、\\N送りました。覚えているかな",
   "ko": "같은 자리에서 새로 찍어서 보냈어요. 기억하려나",
   "en": "From that exact spot took a new photo and sent him if he still remembers the place.",
   "use": true
@@ -104,7 +104,7 @@
   "s1": 760.02,
   "kind": "Y",
   "spk": "M",
-  "ja": "目の前で料理を作ってくれて、全部見られたんです",
+  "ja": "目の前で料理を作ってくれて、\\N全部見られたんです",
   "ko": "바로 앞에서 요리를 해 줘서 다 볼 수 있었어요",
   "en": "They made the food just on side of you so you could see everything for what they did.",
   "use": true
@@ -134,7 +134,7 @@
  {
   "ep": "Ep23",
   "s0": 844.11,
-  "s1": 845.01,
+  "s1": 845.09,
   "kind": "Y",
   "spk": "M",
   "ja": "完璧",
@@ -148,7 +148,7 @@
   "s1": 980.33,
   "kind": "Y",
   "spk": "M",
-  "ja": "ちょうど、橋が一番きれいな光の時間に間に合った",
+  "ja": "ちょうど、\\N橋が一番きれいな光の時間に間に合った",
   "ko": "딱 다리가 가장 아름다운 빛일 때 맞춰 왔어요",
   "en": "Just in time to see the bridge in the most beautiful light.",
   "use": true
@@ -159,7 +159,7 @@
   "s1": 985.73,
   "kind": "Y",
   "spk": "M",
-  "ja": "でも、ここの夕日は沈むのが速い。どんどん沈んでいく",
+  "ja": "でも、ここの夕日は沈むのが速い。\\Nどんどん沈んでいく",
   "ko": "하지만 여기 해는 빨리 져요. 쭉쭉 내려가요",
   "en": "But the sunset here is very quick. You can see how it goes down.",
   "use": true
@@ -192,7 +192,7 @@
   "s1": 1244.81,
   "kind": "Y",
   "spk": "M",
-  "ja": "ライトがあまり良くない。暗い中を走る予定じゃなかったので",
+  "ja": "ライトがあまり良くない。\\N暗い中を走る予定じゃなかったので",
   "ko": "라이트가 별로 안 좋아요. 어두울 때 달릴 계획이 아니었거든요",
   "en": "Yeah, my lives are not very good. I have not planned that I will ride in the dark.",
   "use": true

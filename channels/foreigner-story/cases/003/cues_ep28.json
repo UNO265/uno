@@ -13,7 +13,7 @@
  {
   "ep": "Ep28",
   "s0": 90.02,
-  "s1": 91.76,
+  "s1": 92.08,
   "kind": "Y",
   "spk": "M",
   "ja": "新しいリムを手に入れるために",
@@ -101,7 +101,7 @@
  {
   "ep": "Ep28",
   "s0": 262.8,
-  "s1": 263.78,
+  "s1": 264.41,
   "kind": "Y",
   "spk": "M",
   "ja": "ぎゅうぎゅうでした",
@@ -159,7 +159,7 @@
   "s1": 397.38,
   "kind": "Y",
   "spk": "M",
-  "ja": "この前の100キロ、いや、もっと前からかもしれない",
+  "ja": "この前の100キロ、いや、\\Nもっと前からかもしれない",
   "ko": "지난 100km, 어쩌면 그보다 더 전부터",
   "en": "That last 100 kilometers and maybe even longer time",
   "use": true
@@ -225,7 +225,7 @@
   "s1": 465.51,
   "kind": "Y",
   "spk": "M",
-  "ja": "でも昨日の夜、同じホテルで4泊目だったんですが",
+  "ja": "でも昨日の夜、\\N同じホテルで4泊目だったんですが",
   "ko": "그런데 어젯밤, 같은 호텔에서 4박째였는데",
   "en": "But yesterday evening when I it was a fourth night in the same hotel",
   "use": true
@@ -269,7 +269,7 @@
   "s1": 485.75,
   "kind": "Y",
   "spk": "M",
-  "ja": "走りに行く前の、ルーティンみたいなものなんです",
+  "ja": "走りに行く前の、\\Nルーティンみたいなものなんです",
   "ko": "달리러 가기 전의 루틴 같은 거예요",
   "en": "It's a kind of routine which is happening before I go cycling.",
   "use": true
@@ -401,7 +401,7 @@
   "s1": 1397.22,
   "kind": "Y",
   "spk": "M",
-  "ja": "もう52キロ走った後に、18%くらいの坂があったから",
+  "ja": "もう52キロ走った後に、\\N18%くらいの坂があったから",
   "ko": "이미 52km를 달린 뒤에 18% 정도의 오르막이 있었으니까요",
   "en": "because I have already done 52 km and then there is this kind of I don't know 18% uphill or something.",
   "use": true
@@ -420,7 +420,7 @@
  {
   "ep": "Ep28",
   "s0": 1406.4,
-  "s1": 1407.38,
+  "s1": 1407.65,
   "kind": "Y",
   "spk": "M",
   "ja": "そこが違う",
@@ -456,7 +456,7 @@
   "s1": 1636.35,
   "kind": "Y",
   "spk": "M",
-  "ja": "「簡単に開けられる」なのに、ビニールが付いてる",
+  "ja": "「簡単に開けられる」\\Nなのに、ビニールが付いてる",
   "ko": "「쉽게 열린다」인데 비닐이 씌워져 있어요",
   "en": "It's an easy open but there is plastic on it.",
   "use": false
@@ -486,7 +486,7 @@
  {
   "ep": "Ep28",
   "s0": 1656.12,
-  "s1": 1657.82,
+  "s1": 1657.91,
   "kind": "Y",
   "spk": "M",
   "ja": "コーラ1本と同じくらい",
@@ -511,7 +511,7 @@
   "s1": 2304.22,
   "kind": "Y",
   "spk": "M",
-  "ja": "80キロで上り1キロくらいが、今の限界みたいだ",
+  "ja": "80キロで上り1キロくらいが、\\N今の限界みたいだ",
   "ko": "80km에 오르막 1km 정도가 지금 한계인 것 같아요",
   "en": "yeah it looks like that this around 80 kilometers and almost 1 kilometers of elevation gain is my current limit",
   "use": true
@@ -533,7 +533,7 @@
   "s1": 2325.44,
   "kind": "Y",
   "spk": "M",
-  "ja": "それでも、数年前に考えていたよりずっと多くのことができる。普通の自転車で",
+  "ja": "それでも、数年前に考えていたより\\Nずっと多くのことができる。普通の自転車で",
   "ko": "그래도 몇 년 전에 생각했던 것보다 훨씬 많이 할 수 있어요. 평범한 자전거로",
   "en": "but anyway it's much more than I thought few years ago what I could do with the normal bike",
   "use": true
@@ -544,7 +544,7 @@
   "s1": 2339.34,
   "kind": "Y",
   "spk": "M",
-  "ja": "大人になって自転車を始める前は、電動自転車でもそう思わなかった",
+  "ja": "大人になって自転車を始める前は、\\N電動自転車でもそう思わなかった",
   "ko": "어른이 돼서 자전거를 시작하기 전엔, 전기자전거로도 그렇게 생각 못 했어요",
   "en": "and even with the e-bike before I started my adulthood cycling hobby or career",
   "use": true
@@ -720,7 +720,7 @@
   "s1": 2679.71,
   "kind": "Y",
   "spk": "M",
-  "ja": "今から温泉に行きます。下の階に温泉があるんです",
+  "ja": "今から温泉に行きます。\\N下の階に温泉があるんです",
   "ko": "지금 온천에 갈 거예요. 아래층에 온천이 있어요",
   "en": "yeah now I am going to the onsen there is an onsen downstairs",
   "use": true

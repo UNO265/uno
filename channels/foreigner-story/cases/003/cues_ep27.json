@@ -5,7 +5,7 @@
   "s1": 23.11,
   "kind": "Y",
   "spk": "M",
-  "ja": "こんにちは、マルクスです。自転車で日本を横断しています",
+  "ja": "こんにちは、マルクスです。\\N自転車で日本を横断しています",
   "ko": "안녕하세요, 마르쿠스예요. 자전거로 일본을 횡단하고 있어요",
   "en": "Konnichiwa, Markus desu. I'm cycling across Japan.",
   "use": true
@@ -27,7 +27,7 @@
   "s1": 35.01,
   "kind": "Y",
   "spk": "M",
-  "ja": "合うといいんだけど。これ用のスポークは持っていないので",
+  "ja": "合うといいんだけど。\\Nこれ用のスポークは持っていないので",
   "ko": "맞으면 좋겠는데요. 이걸 위한 바퀴살이 없거든요",
   "en": "Now let's hope that it fits because I don't have a spokes for it.",
   "use": true
@@ -82,7 +82,7 @@
   "s1": 58.79,
   "kind": "Y",
   "spk": "M",
-  "ja": "とにかく、午前中に届いてよかった。明日は自転車屋さんが休みなので",
+  "ja": "とにかく、午前中に届いてよかった。\\N明日は自転車屋さんが休みなので",
   "ko": "어쨌든 오전에 와서 다행이에요. 내일은 자전거 가게가 쉬거든요",
   "en": "At least it arrived in the morning. Tomorrow the bike shop will be closed.",
   "use": true
@@ -145,7 +145,7 @@
  {
   "ep": "Ep27",
   "s0": 101.03,
-  "s1": 102.01,
+  "s1": 102.82,
   "kind": "Y",
   "spk": "M",
   "ja": "ありがとうございます！",
@@ -211,7 +211,7 @@
  {
   "ep": "Ep27",
   "s0": 136.25,
-  "s1": 138.39,
+  "s1": 138.58,
   "kind": "Y",
   "spk": "M",
   "ja": "スポークは全部、古いのを使ったので",
@@ -258,7 +258,7 @@
   "s1": 166.69,
   "kind": "Y",
   "spk": "M",
-  "ja": "店で炭酸ももらいました。飲み物2本と、チョコレート",
+  "ja": "店で炭酸ももらいました。\\N飲み物2本と、チョコレート",
   "ko": "가게에서 탄산음료도 받았어요. 음료 두 병이랑 초콜릿",
   "en": "I got a soda from there. Two bottles of drinks and a chocolate.",
   "use": true
@@ -269,7 +269,7 @@
   "s1": 177.61,
   "kind": "Y",
   "spk": "M",
-  "ja": "それにお茶も。いつもの自転車屋さんとは、ちょっと違う体験でした",
+  "ja": "それにお茶も。いつもの自転車屋さんとは、\\Nちょっと違う体験でした",
   "ko": "그리고 차도요. 평소 자전거 가게와는 좀 다른 경험이었어요",
   "en": "Tea and it was a bit different experience but I have good use to be in a bike shop.",
   "use": true
@@ -357,7 +357,7 @@
   "s1": 281.67,
   "kind": "Y",
   "spk": "M",
-  "ja": "ホテルは悪くなかった。でも、リムは来るのか、合うのか、使えるのか",
+  "ja": "ホテルは悪くなかった。でも、\\Nリムは来るのか、合うのか、使えるのか",
   "ko": "호텔은 괜찮았어요. 하지만 림이 올지, 맞을지, 쓸 수 있을지",
   "en": "The hotel has been okay but when you have constant fear that if the rim is coming or does it fit or work",
   "use": true
@@ -368,7 +368,7 @@
   "s1": 287.57,
   "kind": "Y",
   "spk": "M",
-  "ja": "もう何日かここにいるべきか、全部どうなるのか、ずっと不安で",
+  "ja": "もう何日かここにいるべきか、\\N全部どうなるのか、ずっと不安で",
   "ko": "며칠 더 있어야 할지, 다 어떻게 될지 계속 불안하면",
   "en": "should I stay here even couple more days and how everything goes",
   "use": true
@@ -379,7 +379,7 @@
   "s1": 291.67,
   "kind": "Y",
   "spk": "M",
-  "ja": "落ち着けなかった。でも今は、また落ち着いています",
+  "ja": "落ち着けなかった。でも今は、\\Nまた落ち着いています",
   "ko": "편할 수가 없죠. 하지만 이제 다시 편해요",
   "en": "then it doesn't make you relaxed but now I'm relaxed again.",
   "use": true
@@ -390,7 +390,7 @@
   "s1": 398.24,
   "kind": "Y",
   "spk": "M",
-  "ja": "それで思い出した。四国の自転車屋さんが、モンベルの店を教えてくれたことを",
+  "ja": "それで思い出した。四国の自転車屋さんが、\\Nモンベルの店を教えてくれたことを",
   "ko": "그러다 생각났어요. 시코쿠 자전거 가게 분이 몽벨 매장을 알려 준 걸",
   "en": "But then I remembered about that guy in a bike shop in Shikoku who told me about the Montbell shop.",
   "use": true
@@ -423,7 +423,7 @@
   "s1": 680.83,
   "kind": "Y",
   "spk": "M",
-  "ja": "一番かっこいいわけでも、世界一いいわけでもないけど",
+  "ja": "一番かっこいいわけでも、\\N世界一いいわけでもないけど",
   "ko": "제일 멋지지도, 세계 최고도 아니겠지만",
   "en": "Maybe not the coolest one and maybe not the best one in the world",
   "use": false
@@ -467,7 +467,7 @@
   "s1": 717.45,
   "kind": "Y",
   "spk": "M",
-  "ja": "すごく安くはないけど、水を防いでくれるなら、その価値はある",
+  "ja": "すごく安くはないけど、\\N水を防いでくれるなら、その価値はある",
   "ko": "아주 싸진 않지만 물을 막아 주면 그만한 가치가 있어요",
   "en": "Not extremely cheap but if they keep the water away then they are worth it.",
   "use": true
@@ -489,7 +489,7 @@
   "s1": 954.15,
   "kind": "Y",
   "spk": "M",
-  "ja": "ちゃんと走れないと、走りに行かなきゃという気になる",
+  "ja": "ちゃんと走れないと、\\N走りに行かなきゃという気になる",
   "ko": "제대로 못 달리면 달리러 가야 할 것 같은 기분이 들어요",
   "en": "When I wasn't able to cycle decent amounts I get the feeling that I should go cycling",
   "use": false
@@ -500,7 +500,7 @@
   "s1": 1098.68,
   "kind": "Y",
   "spk": "M",
-  "ja": "ただ走るのが気持ちよくて、地図を見るのも、案内を聞くのも忘れていた",
+  "ja": "ただ走るのが気持ちよくて、\\N地図を見るのも、案内を聞くのも忘れていた",
   "ko": "그냥 달리는 게 너무 좋아서 지도 보는 것도 안내 듣는 것도 잊었어요",
   "en": "It was so nice to just ride that I forgot to look the map and listen to the instructions.",
   "use": true
@@ -530,7 +530,7 @@
  {
   "ep": "Ep27",
   "s0": 1157.19,
-  "s1": 1158.43,
+  "s1": 1158.62,
   "kind": "Y",
   "spk": "M",
   "ja": "いい一日だった",
@@ -544,7 +544,7 @@
   "s1": 1169.41,
   "kind": "Y",
   "spk": "M",
-  "ja": "全部そろった。新しいリムと、自転車用シューズのレインカバー",
+  "ja": "全部そろった。新しいリムと、\\N自転車用シューズのレインカバー",
   "ko": "다 갖췄어요. 새 림이랑 자전거 신발용 레인 커버",
   "en": "It provided me everything. I got a new new rim and I got rain covers for my cycling shoes.",
   "use": true
