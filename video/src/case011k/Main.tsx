@@ -4,7 +4,7 @@
  * BGM = OpenTracks 5 曲（#009 と同じ曲を別の並びで、docs/case011-audio-credits.md）、エンディング = 固定（C8、#009 と同じ画面）。
  */
 import React from "react";
-import { AbsoluteFill, Audio, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Audio, Sequence, getInputProps, interpolate, staticFile, useCurrentFrame } from "remotion";
 import timeline from "../../public/case011/timeline.json";
 import { CutData } from "../lib";
 import { END9 } from "../case009/end";
@@ -31,8 +31,11 @@ const duck = (f: number) => {
   return g;
 };
 type Cue = { file: string; from: number; to: number; start?: number; level: number };
+/* 0:00〜2:22 の曲。試聴用に --props '{"introBgm":"…mp3"}' で差し替えられる */
+const IP = getInputProps() as { introBgm?: string; introLevel?: number };
+const INTRO = IP.introBgm ?? "case009/music_ot/ot_random_number.mp3";
 const CUES: Cue[] = [
-  { file: "case009/music_ot/ot_random_number.mp3", from: 0, to: at("F14"), level: 0.2 },
+  { file: INTRO, from: 0, to: at("F14"), level: IP.introLevel ?? 0.2 },
   { file: "case009/music_ot/ot_investor_night.mp3", from: at("F14"), to: at("F17"), level: 0.19 },
   { file: "case009/music_ot/ot_cassette_tape_dream.mp3", from: at("F17"), to: at("F21"), level: 0.18 },
   { file: "case009/music_ot/ot_whisper_of_drums.mp3", from: at("F21"), to: at("F31"), level: 0.19 },
