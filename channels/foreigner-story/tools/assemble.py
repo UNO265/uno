@@ -168,7 +168,8 @@ def build_events(plan, cues, starts, durs, narr):
             for c in cues:
                 if c.get("ep") != it.get("ep"):
                     continue
-                if c["kind"] == "Y" and a - 0.2 <= c["s0"] < b - 0.3:
+                # 클립과 겹치는 자막은 모두(클립 앞에서 시작한 말도) — 겹침이 0.3초 이하인 조각만 뺀다
+                if c["kind"] == "Y" and min(c["s1"], b) - max(c["s0"], a) > 0.3:
                     ev.append(dict(t0=t0 + max(0, c["s0"] - a), t1=t0 + min(c["s1"], b) - a, kind="Y",
                                    spk=c.get("spk"), ja=c["ja"]))
             if it.get("label"):

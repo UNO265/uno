@@ -20,20 +20,40 @@ CH = [  # (ep, 카드 큰 글자, 카드 작은 글자, 카드 배경 시각, �
 NARR = {  # (ep, 이 시각 이후 첫 클립 앞에 정지 화면 내레이션)
     ("Ep24", 1426.0): ("24:00.00", "リムとは、タイヤをはめる、ホイールの外側の輪のことです。"),
 }
+WORDS = {}
+def words(ep):
+    if ep not in WORDS:
+        WORDS[ep] = sorted((w["s"], w["e"]) for g in json.load(open(f"/home/user/media/case003/work/{ep}.words.json")) for w in g["words"])
+    return WORDS[ep]
+def snap(ep, a, b):
+    """클립 경계를 단어에 맞춘다: 경계에 걸친 단어는 통째로 넣고(시작은 그 단어 앞, 끝은 그 단어 뒤),
+    여유(앞 0.4·뒤 0.5초)는 바로 앞·뒤 단어에 닿기 0.1초 전까지만."""
+    ws = words(ep)
+    for s0, e0 in ws:                      # 경계에 걸친 단어 → 포함
+        if s0 < a < e0: a = s0
+        if s0 < b < e0: b = e0
+    prev_end = max([e0 for s0, e0 in ws if e0 <= a + 1e-6] or [a - 1])
+    next_start = min([s0 for s0, e0 in ws if s0 >= b - 1e-6] or [b + 1])
+    a2 = max(a - 0.4, prev_end + 0.1) if prev_end < a else a
+    b2 = min(b + 0.5, next_start - 0.1) if next_start > b else b
+    return round(min(a, a2), 2), round(max(b, b2), 2)
 def clips(ep):
     c = sorted([x for x in json.load(open(H / f"cues_{ep.lower()}.json")) if x.get("use", True)], key=lambda x: x["s0"])
-    spans = [[x["s0"] - 0.4, x["s1"] + 0.5] for x in c] + [list(e) for e in EXTRA.get(ep, [])]
+    spans = [[x["s0"], x["s1"]] for x in c] + [list(e) for e in EXTRA.get(ep, [])]
     spans.sort()
     out = []
     for a, b in spans:
-        if out and a - out[-1][1] < 4: out[-1][1] = max(out[-1][1], b)
+        if out and a - out[-1][1] < 4.9: out[-1][1] = max(out[-1][1], b)
         else: out.append([a, b])
-    return out
+    return [list(snap(ep, a, b)) for a, b in out]
+def snapped(ep, a, b):
+    a, b = snap(ep, sec_(a), sec_(b)); return [mmss(a), mmss(b)]
+def sec_(t): return int(t[:2]) * 60 + float(t[3:])
 TITLE = "{\\fs60}リムに7つのヒビ…\\N{\\fs48}日本縦断中のフィンランド人は、倉敷までたどり着けるのか"
 items = [  # 0장: 첫 30초(나중 장면을 먼저 — 그 장면의 발언만, 02 T5)
-    dict(type="clip", ep="Ep24", src=["23:33.00", "23:38.00"], audio="vocals"),
-    dict(type="clip", ep="Ep24", src=["23:58.40", "24:08.80"], audio="vocals"),
-    dict(type="clip", ep="Ep26", src=["27:27.90", "27:46.90"], audio="vocals"),
+    dict(type="clip", ep="Ep24", src=snapped("Ep24", "23:33.00", "23:37.40"), audio="vocals"),
+    dict(type="clip", ep="Ep24", src=snapped("Ep24", "23:56.88", "24:08.35"), audio="vocals"),
+    dict(type="clip", ep="Ep26", src=snapped("Ep26", "27:28.20", "27:46.70"), audio="vocals"),
     dict(type="card", dur=4.0, ep="Ep24", bg="24:02.00", big=TITLE, small=""),
     # 프롤로그: 1년 반 만에 다시 달리는 길(Ep23)
     dict(type="freeze", ep="Ep23", at="16:15.50",
@@ -52,7 +72,7 @@ for i, (ep, big, small, bg, label) in enumerate(CH, 1):
         for (nep, at), (fr, text) in NARR.items():
             if nep == ep and a <= at < b:
                 items.append(dict(type="freeze", ep=ep, at=fr, narr=text))
-plan = dict(note="CASE #003 v2: v1 + 내레이션 정지 화면 24:00, 자막 분할 시점 단어 기준, 번역 2곳 수정(タケチ・バイクス, 木曜日に開くということだった).",
+plan = dict(note="CASE #003 v3: 클립 경계를 단어 시각에 맞춤(말 잘림·자막 조각 제거), 첫 30초 클립 재설정, 겹치는 자막 모두 표시. / v2: v1 + 내레이션 정지 화면 24:00, 자막 분할 시점 단어 기준, 번역 2곳 수정(タケチ・バイクス, 木曜日に開くということだった).",
             frame="fill", narr_speed=1.25, stems_dir="/home/user/media/case003/stems",
             credit="映像：Markus Kiili（YouTube）", speakers={"M": "マルクス"},
             readings={"鹿児島": "かごしま", "札幌": "さっぽろ", "3か月": "さんかげつ", "四国中央": "しこくちゅうおう", "直島": "なおしま", "宇野": "うの", "津山": "つやま"},
