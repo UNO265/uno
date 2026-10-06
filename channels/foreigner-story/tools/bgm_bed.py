@@ -7,7 +7,7 @@ bgm_spec: {"tracks": {"A": "/path/a.mp3", ...},
 - 곡마다 음량을 같은 크기(-23 LUFS)로 맞춘 뒤 깐다(말에 맞춘 감쇄는 mix_bgm.sh 의 sidechain).
 - 곡이 짧으면 처음부터 다시 잇고(2초 교차), 곡이 바뀌는 곳은 2초 교차 페이드.
 """
-import json, subprocess, sys, tempfile
+import json, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 SR = 48000
@@ -67,6 +67,7 @@ def main():
     for a, b, k, off in segs:
         print(f"{int(a // 60):02d}:{a % 60:04.1f}–{int(b // 60):02d}:{b % 60:04.1f}  {k or '(무음)'}")
     print(f"→ {out}  {total:.1f}s")
+    shutil.rmtree(tmp, ignore_errors=True)          # 임시 파일 정리(디스크가 차서 렌더링이 멈춘 적 있음, 2026-10-06)
 
 
 if __name__ == "__main__":

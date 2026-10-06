@@ -12,7 +12,7 @@ cues_src : 원본 시각 기준 노란 자막(화자 포함). clip 구간 안의
 
 v1.2 §8: 장면 순서는 바꿔도 각 장면의 발언은 그 장면에만 붙는다(자막은 원본 시각으로만 매핑).
 """
-import json, os, subprocess, sys, tempfile
+import json, os, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -296,6 +296,7 @@ def main():
          "-movflags", "+faststart", out])
     ny = sum(e["kind"] == "Y" for e in ev)
     print(f"items {len(files)}, Y {ny}, N {len(narr_pos)}, total {int(total // 60)}:{total % 60:04.1f} → {out}")
+    shutil.rmtree(tmp, ignore_errors=True)          # 클립 조각 정리(디스크 보호)
 
 
 if __name__ == "__main__":
