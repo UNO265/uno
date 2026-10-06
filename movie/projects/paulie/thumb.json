@@ -1,26 +1,27 @@
 {
+ "note": "사용자 지정: 마지막 장면(2:53) 성장한 마리가 환하게 웃는 얼굴. 문구는 결말을 직접 말하지 않는 궁금증형.",
+ "time": 173.17,
+ "crop": [
+  209,
+  421,
+  606,
+  1077
+ ],
  "font": "noto-black",
  "scale_x": 0.8,
  "gap": 14,
  "sizes": [
-  250,
-  300
+  160,
+  250
  ],
- "time": 47.6,
- "crop": [
-  490,
-  541,
-  400,
-  711
- ],
- "grade": "eq=contrast=1.08:saturation=1.15:gamma=1.0,vignette=PI/6",
+ "grade": "eq=contrast=1.1:saturation=1.12:gamma=0.98,vignette=PI/5",
  "lines": [
   [
-   "この子に会うため",
+   "4800キロ先で",
    "white"
   ],
   [
-   "オウムは飛んだ",
+   "待っていたのは",
    "yellow"
   ]
  ]
