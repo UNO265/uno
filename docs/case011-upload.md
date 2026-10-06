@@ -54,7 +54,7 @@ JAの概算金（新潟・千葉・熊本・JA阿蘇 ほか、報道）
 
 ▼ クレジット
 ナレーション：VOICEVOX Nemo
-BGM：OpenTracks（Anonyment「Random Number」「Investor Night」「Whisper of Drums」「Connectedness」、しゃろう「Cassette Tape Dream」）
+BGM：OpenTracks（Anonyment「Sulpiride」「Random Number」「Investor Night」「Whisper of Drums」「Connectedness」、しゃろう「Cassette Tape Dream」）
 エンディング曲・効果音：オリジナル（音源：FluidR3_GM SoundFont / MIT License）
 
 KANENAZO｜カネナゾ ― 身近なお金のナゾを、数字で解く。

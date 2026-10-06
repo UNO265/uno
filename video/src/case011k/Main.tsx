@@ -1,7 +1,7 @@
 /**
  * 公開番号 CASE #010（作業フォルダは case011）「お米5キロ、農家に残るのは？」（docs/case011-conti-v5.md）
  * 導入 = 3D キネティック（T01）、本編 = モーション・テンプレート（T02〜T11）+ HERO、波形の強弱。
- * BGM = OpenTracks 5 曲（#009 と同じ曲を別の並びで、docs/case011-audio-credits.md）、エンディング = 固定（C8、#009 と同じ画面）。
+ * BGM = OpenTracks 6 曲（冒頭は Sulpiride、残りは #009 と同じ曲を別の並びで、docs/case011-audio-credits.md）、エンディング = 固定（C8、#009 と同じ画面）。
  */
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, getInputProps, interpolate, staticFile, useCurrentFrame } from "remotion";
@@ -33,7 +33,7 @@ const duck = (f: number) => {
 type Cue = { file: string; from: number; to: number; start?: number; level: number };
 /* 0:00〜2:22 の曲。試聴用に --props '{"introBgm":"…mp3"}' で差し替えられる */
 const IP = getInputProps() as { introBgm?: string; introLevel?: number };
-const INTRO = IP.introBgm ?? "case009/music_ot/ot_random_number.mp3";
+const INTRO = IP.introBgm ?? "case009/music_ot/ot_sulpiride.mp3";
 const CUES: Cue[] = [
   { file: INTRO, from: 0, to: at("F14"), level: IP.introLevel ?? 0.2 },
   { file: "case009/music_ot/ot_investor_night.mp3", from: at("F14"), to: at("F17"), level: 0.19 },
