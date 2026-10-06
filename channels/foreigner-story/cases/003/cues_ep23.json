@@ -30,7 +30,7 @@
   "ja": "ここ、覚えてる",
   "ko": "여기 기억나요",
   "en": "Yeah, this place I remember.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -41,7 +41,7 @@
   "ja": "ベサのために、写真を撮らないと",
   "ko": "베사를 위해 사진을 찍어야 해요",
   "en": "I need to go and take a photo for Vesa.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -52,7 +52,7 @@
   "ja": "1年半前、一緒に来た旅で、\\Nここでベサの写真を撮ったんです",
   "ko": "1년 반 전 같이 온 여행에서 여기서 베사 사진을 찍었거든요",
   "en": "Yeah, I took a photo of Vesa on our trip when we were here one and a half years ago.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -63,7 +63,7 @@
   "ja": "同じ場所から新しく撮って、\\N送りました。覚えているかな",
   "ko": "같은 자리에서 새로 찍어서 보냈어요. 기억하려나",
   "en": "From that exact spot took a new photo and sent him if he still remembers the place.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -118,7 +118,7 @@
   "ja": "伯方のオレンジジュース。地元のです",
   "ko": "하카타 오렌지 주스. 이 지역 거예요",
   "en": "Orange juice from Hakata. Local orange juice.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -129,7 +129,7 @@
   "ja": "こんなの、飲んだことない",
   "ko": "이런 건 처음 마셔 봐요",
   "en": "Oh yeah, never taste anything like this.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -140,7 +140,7 @@
   "ja": "完璧",
   "ko": "완벽해요",
   "en": "This is perfect.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",
@@ -195,7 +195,7 @@
   "ja": "ライトがあまり良くない。\\N暗い中を走る予定じゃなかったので",
   "ko": "라이트가 별로 안 좋아요. 어두울 때 달릴 계획이 아니었거든요",
   "en": "Yeah, my lives are not very good. I have not planned that I will ride in the dark.",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep23",

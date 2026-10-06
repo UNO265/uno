@@ -85,7 +85,7 @@
   "ja": "3日目には倉敷",
   "ko": "셋째 날에는 구라시키",
   "en": "and on the third day i will be at the kurashiki",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -96,7 +96,7 @@
   "ja": "前回の日本の旅で、すごく気に入った街です",
   "ko": "지난번 일본 여행에서 정말 좋아했던 도시예요",
   "en": "which was a city which i liked a lot on my first ride here in japan",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -107,7 +107,7 @@
   "ja": "でも、見たいものを全部見る時間がなかった",
   "ko": "하지만 볼거리를 다 볼 시간이 없었어요",
   "en": "but i didn't have enough time to see all the views",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -250,7 +250,7 @@
   "ja": "チェーンが古くなってきたか、\\Nギアの調整が必要かな",
   "ko": "체인이 낡았거나 기어를 조정해야 하나 봐요",
   "en": "i think that either my chain is kept getting old or i need to adjust my gears",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -283,7 +283,7 @@
   "ja": "それとも、そう見えるだけ？",
   "ko": "아니면 그렇게 보이기만 하는 건가?",
   "en": "or is it just does it just look like it",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -437,7 +437,7 @@
   "ja": "今日もこのホイールで、\\Nけっこう速く走っていたと思うと、もっと怖い",
   "ko": "오늘도 이 바퀴로 꽤 빨리 달렸다고 생각하니 더 무서워요",
   "en": "and then even more scared when i'd be thinking that that i have been riding with that wheel to even today quite fast",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -525,7 +525,7 @@
   "ja": "山の中には自転車屋がない。\\N全部自分でなんとかするしかなかった",
   "ko": "거기엔 자전거 가게가 없으니 혼자 다 해결해야 했을 거예요",
   "en": "there are no bike shops then i should have been forced to handle this thing all by myself",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -668,7 +668,7 @@
   "ja": "よかったのは、四国の山越えの\\N途中じゃなかったこと。平地で、店もわりと近い",
   "ko": "다행인 건 시코쿠 산을 넘는 중이 아니었다는 거예요. 평지이고 가게도 꽤 가까워요",
   "en": "yeah the good thing is that i was not going across those mountains of the shikako that i'm here in flatland and uh some way close to the services",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -679,7 +679,7 @@
   "ja": "大きな問題は、\\Nホイールが完全に壊れるかもしれないこと",
   "ko": "큰 문제는 바퀴가 완전히 부서질 수 있다는 거예요",
   "en": "a big problem is that that wheel can break totally",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
@@ -690,7 +690,7 @@
   "ja": "今は小さなヒビだけど、完全に割れることもある",
   "ko": "지금은 작은 금이지만 완전히 갈라질 수도 있어요",
   "en": "now there are small fractures but it can it can crack totally",
-  "use": true
+  "use": false
  },
  {
   "ep": "Ep24",
