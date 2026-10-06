@@ -1,0 +1,36 @@
+{
+ "note": "명화관 원본(1080x1920, 영화 화면 y 421-1498) 기준. 다른 원본이면 box를 바꾼다. box = [x, y, 폭, 높이].",
+ "regions": [
+  {
+   "name": "subtitle",
+   "box": [
+    0,
+    1160,
+    1080,
+    320
+   ],
+   "mode": "auto",
+   "dilate": 15,
+   "subvideo_length": 60,
+   "chunk": 240
+  },
+  {
+   "name": "logo",
+   "box": [
+    760,
+    424,
+    320,
+    176
+   ],
+   "mode": "fixed",
+   "mask_box": [
+    50,
+    12,
+    245,
+    110
+   ],
+   "subvideo_length": 80,
+   "chunk": 300
+  }
+ ]
+}
