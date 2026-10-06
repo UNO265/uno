@@ -82,8 +82,8 @@
   "s1": 102.36,
   "kind": "Y",
   "spk": "M",
-  "ja": "倉敷なら、少し長くいてもいい街だから",
-  "ko": "구라시키라면 좀 오래 있어도 좋은 도시라서요",
+  "ja": "倉敷は、少し長くいたい街だから",
+  "ko": "구라시키는 좀 오래 있고 싶은 도시라서",
   "en": "because it's a city where I could like to stay a bit longer.",
   "use": true
  },
@@ -335,7 +335,7 @@
   "s1": 774.47,
   "kind": "Y",
   "spk": "M",
-  "ja": "今は、\\N下り坂の前に毎回スポークを確かめています",
+  "ja": "今は、下り坂の前に\\N毎回スポークを確かめています",
   "ko": "이제 내리막 전에 매번 바퀴살을 확인해요",
   "en": "now I check my spokes before every every beaker down here.",
   "use": true
@@ -486,22 +486,11 @@
  {
   "ep": "Ep25",
   "s0": 1423.97,
-  "s1": 1428.88,
-  "kind": "Y",
-  "spk": "M",
-  "ja": "「フィンランドのエスコ・アホ首相が来日」",
-  "ko": "「핀란드 에스코 아호 총리 방일」 신문을 읽은 일본인은 좀 웃었을 거예요",
-  "en": "and I think that it was a bit funny for Japanese to read from the newspapers that Finnish Prime Minister Esuko Aho is visiting in Japan.",
-  "use": true
- },
- {
-  "ep": "Ep25",
-  "s0": 1428.93,
   "s1": 1434.89,
   "kind": "Y",
   "spk": "M",
-  "ja": "という新聞を読んだ日本人は、\\Nちょっと笑ったと思う",
-  "ko": "「핀란드 에스코 아호 총리 방일」 신문을 읽은 일본인은 좀 웃었을 거예요",
+  "ja": "『エスコ・アホ首相、来日』という新聞に、\\N日本人はちょっと笑ったと思う",
+  "ko": "「에스코 아호 총리 방일」 신문에 일본인은 좀 웃었을 거예요",
   "en": "and I think that it was a bit funny for Japanese to read from the newspapers that Finnish Prime Minister Esuko Aho is visiting in Japan.",
   "use": true
  },
@@ -522,7 +511,7 @@
   "s1": 1624.66,
   "kind": "Y",
   "spk": "M",
-  "ja": "水曜日は、\\Nほとんど全部閉まっていることが多い気がする",
+  "ja": "水曜日は、ほとんど全部閉まって\\Nいることが多い気がする",
   "ko": "수요일엔 거의 다 문을 닫는 경우가 많은 것 같아요",
   "en": "on Wednesday almost everything seems to be closed.",
   "use": true

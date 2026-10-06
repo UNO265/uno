@@ -1,0 +1,76 @@
+{
+ "tracks": {
+  "A": "/home/user/media/case003/bgm/A_Stay the Course.mp3",
+  "B": "/home/user/media/case003/bgm/B_Morning.mp3",
+  "C": "/home/user/media/case003/bgm/C_Beauty Flow.mp3",
+  "D": "/home/user/media/case003/bgm/D_Carefree.mp3",
+  "E": "/home/user/media/case003/bgm/E_Danse Morialta.mp3",
+  "F": "/home/user/media/case003/bgm/F_Fretless.mp3",
+  "G": "/home/user/media/case003/bgm/G_The Parting.mp3"
+ },
+ "cues": [
+  {
+   "item": 0,
+   "track": "A"
+  },
+  {
+   "item": 4,
+   "track": "B"
+  },
+  {
+   "item": 11,
+   "track": "B",
+   "from": 40.0
+  },
+  {
+   "ep": "Ep24",
+   "t": 1020.0,
+   "track": "A"
+  },
+  {
+   "item": 33,
+   "track": "C"
+  },
+  {
+   "item": 53,
+   "track": "C",
+   "from": 120.0
+  },
+  {
+   "ep": "Ep26",
+   "t": 332.7,
+   "track": "D"
+  },
+  {
+   "ep": "Ep26",
+   "t": 771.0,
+   "track": "C",
+   "from": 200.0
+  },
+  {
+   "ep": "Ep26",
+   "t": 1452.4,
+   "track": "E"
+  },
+  {
+   "ep": "Ep26",
+   "t": 1762.7,
+   "track": "F"
+  },
+  {
+   "item": 71,
+   "track": "A",
+   "from": 60.0
+  },
+  {
+   "ep": "Ep27",
+   "t": 95.5,
+   "track": "F",
+   "from": 30.0
+  },
+  {
+   "item": 83,
+   "track": "G"
+  }
+ ]
+}

@@ -36,7 +36,7 @@ def soft_cut(s, lo, hi):
 
 
 def wrap_cut(s):
-    lo, hi = len(s) - MAX, MAX
+    lo, hi = max(len(s) - MAX, 6), min(MAX, len(s) - 6)      # 한쪽 줄이 6자 미만이 되게 자르지 않는다
     return best_cut(s, lo, hi) or soft_cut(s, lo, hi)
 
 

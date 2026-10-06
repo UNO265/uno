@@ -81,7 +81,7 @@ for i, (ep, big, small, bg, label) in enumerate(CH, 1):
         for (nep, at), (fr, text) in NARR.items():
             if nep == ep and a <= at < b:
                 items.append(dict(type="freeze", ep=ep, at=fr, narr=text))
-plan = dict(note="CASE #003 v4: 프롤로그 단축·1장 빨리 진입·화면 카운터·아호 총리 일화(Ep25)·4장 카드에 가게 이름. / v3: 클립 경계를 단어 시각에 맞춤(말 잘림·자막 조각 제거), 첫 30초 클립 재설정, 겹치는 자막 모두 표시. / v2: v1 + 내레이션 정지 화면 24:00, 자막 분할 시점 단어 기준, 번역 2곳 수정(タケチ・バイクス, 木曜日に開くということだった).",
+plan = dict(note="CASE #003 v5: 완성본 대조 시트 23장 전수 검수 후 번역 6곳 수정·한쪽 줄 6자 미만 줄바꿈 정리. / v4: 프롤로그 단축·1장 빨리 진입·화면 카운터·아호 총리 일화(Ep25)·4장 카드에 가게 이름. / v3: 클립 경계를 단어 시각에 맞춤(말 잘림·자막 조각 제거), 첫 30초 클립 재설정, 겹치는 자막 모두 표시. / v2: v1 + 내레이션 정지 화면 24:00, 자막 분할 시점 단어 기준, 번역 2곳 수정(タケチ・バイクス, 木曜日に開くということだった).",
             frame="fill", narr_speed=1.25, stems_dir="/home/user/media/case003/stems",
             credit="映像：Markus Kiili（YouTube）", speakers={"M": "マルクス"},
             readings={"鹿児島": "かごしま", "札幌": "さっぽろ", "3か月": "さんかげつ", "四国中央": "しこくちゅうおう", "直島": "なおしま", "宇野": "うの", "津山": "つやま"},

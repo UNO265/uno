@@ -93,8 +93,8 @@
   "s1": 61.91,
   "kind": "Y",
   "spk": "M",
-  "ja": "水曜日です。なぜか、いつも水曜日が休み",
-  "ko": "수요일이에요. 왠지 항상 수요일에 쉬어요",
+  "ja": "明日は水曜日。なぜか、いつも水曜日が休み",
+  "ko": "내일은 수요일. 왠지 항상 수요일에 쉬어요",
   "en": "It's Wednesday. For some reason they close always on Wednesday.",
   "use": true
  },
@@ -566,8 +566,8 @@
   "s1": 1188.33,
   "kind": "Y",
   "spk": "M",
-  "ja": "また明日。長い道のりです",
-  "ko": "내일 봐요. 긴 길이에요",
+  "ja": "また明日。明日は長い道のりです",
+  "ko": "내일 봐요. 내일은 긴 길이에요",
   "en": "See you tomorrow. It's a long ride.",
   "use": true
  }
