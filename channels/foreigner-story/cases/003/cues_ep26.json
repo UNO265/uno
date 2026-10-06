@@ -585,23 +585,23 @@
  {
   "ep": "Ep26",
   "s0": 1766.52,
-  "s1": 1769.15,
+  "s1": 1768.1,
   "kind": "Y",
   "spk": "M",
   "ja": "不思議なんです。",
   "ko": "신기해요. 「여기가 내가 있어야 할 곳」이라고 느끼는 곳이 세상에 몇 군데 있어요",
-  "en": "It's funny. I have few places in the world where I really somehow feel that this is a place where I need to be.",
+  "en": "It's funny.",
   "use": true
  },
  {
   "ep": "Ep26",
-  "s0": 1769.2,
-  "s1": 1779.94,
+  "s0": 1768.18,
+  "s1": 1779.2,
   "kind": "Y",
   "spk": "M",
   "ja": "「ここが自分のいるべき場所だ」\\Nと感じる場所が、世界にいくつかある",
   "ko": "신기해요. 「여기가 내가 있어야 할 곳」이라고 느끼는 곳이 세상에 몇 군데 있어요",
-  "en": "It's funny. I have few places in the world where I really somehow feel that this is a place where I need to be.",
+  "en": "I have few places in the world where I really somehow feel that this is a place where I need to be.",
   "use": true
  },
  {

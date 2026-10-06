@@ -606,24 +606,24 @@
  },
  {
   "ep": "Ep24",
-  "s0": 1458.96,
-  "s1": 1468.14,
+  "s0": 1460.3,
+  "s1": 1472.2,
   "kind": "Y",
   "spk": "M",
   "ja": "みんながママチャリか\\Nロードバイクに乗るこの国で、",
   "ko": "다들 생활 자전거나 로드바이크를 타는 이 나라에서 이런 바퀴를 구하기는 쉽지 않아요",
-  "en": "in this country where everybody are riding either a granny bike or a road bike it's not an easy job together this kind of wheel",
+  "en": "in this country where everybody are riding either a granny bike or a road bike",
   "use": true
  },
  {
   "ep": "Ep24",
-  "s0": 1468.19,
-  "s1": 1477.42,
+  "s0": 1472.26,
+  "s1": 1477.3,
   "kind": "Y",
   "spk": "M",
   "ja": "このタイプのホイールを\\N手に入れるのは簡単じゃない",
   "ko": "다들 생활 자전거나 로드바이크를 타는 이 나라에서 이런 바퀴를 구하기는 쉽지 않아요",
-  "en": "in this country where everybody are riding either a granny bike or a road bike it's not an easy job together this kind of wheel",
+  "en": "it's not an easy job together this kind of wheel",
   "use": true
  },
  {
@@ -717,23 +717,23 @@
  {
   "ep": "Ep24",
   "s0": 1604.16,
-  "s1": 1610.25,
+  "s1": 1610.4,
   "kind": "Y",
   "spk": "M",
   "ja": "実はあの自転車屋にシューズカバーがあって、",
   "ko": "사실 그 자전거 가게에 신발 커버가 있었고 사이즈도 맞았는데, 제 신발 모양엔 안 맞았어요",
-  "en": "there was actually shoe covers on that bike shop and they were right size but they were not for my kind of my kind of shoes",
+  "en": "there was actually shoe covers on that bike shop",
   "use": true
  },
  {
   "ep": "Ep24",
-  "s0": 1610.3,
-  "s1": 1617.62,
+  "s0": 1610.55,
+  "s1": 1617.6,
   "kind": "Y",
   "spk": "M",
   "ja": "サイズも合っていたけど、\\N僕の靴の形には合わなかった",
   "ko": "사실 그 자전거 가게에 신발 커버가 있었고 사이즈도 맞았는데, 제 신발 모양엔 안 맞았어요",
-  "en": "there was actually shoe covers on that bike shop and they were right size but they were not for my kind of my kind of shoes",
+  "en": "and they were right size but they were not for my kind of my kind of shoes",
   "use": true
  },
  {

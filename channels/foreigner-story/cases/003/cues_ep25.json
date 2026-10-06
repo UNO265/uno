@@ -123,23 +123,23 @@
  {
   "ep": "Ep25",
   "s0": 397.24,
-  "s1": 401.25,
+  "s1": 400.6,
   "kind": "Y",
   "spk": "M",
   "ja": "今はそれほどひどく見えない。",
   "ko": "지금은 아주 심해 보이진 않아요. 하지만 커지기 시작하면 림이 두 동강 날 수도 있어요",
-  "en": "They are not looking very bad now but when they start to advance it can put the whole rim to the two pieces.",
+  "en": "They are not looking very bad now",
   "use": true
  },
  {
   "ep": "Ep25",
-  "s0": 401.3,
-  "s1": 408.54,
+  "s0": 400.78,
+  "s1": 408.5,
   "kind": "Y",
   "spk": "M",
   "ja": "でも広がり始めたら、\\Nリムが真っ二つになることもある",
   "ko": "지금은 아주 심해 보이진 않아요. 하지만 커지기 시작하면 림이 두 동강 날 수도 있어요",
-  "en": "They are not looking very bad now but when they start to advance it can put the whole rim to the two pieces.",
+  "en": "but when they start to advance it can put the whole rim to the two pieces.",
   "use": true
  },
  {
@@ -423,7 +423,7 @@
   "s1": 1660.54,
   "kind": "Y",
   "spk": "M",
-  "ja": "地元の自転車屋さんも水曜日は休みで、\\N木曜日に開くと書いてあった",
+  "ja": "地元の自転車屋さんも水曜日は休みで、\\N木曜日に開くということだった",
   "ko": "동네 자전거 가게도 수요일엔 쉬고 목요일에 연다고 했어요",
   "en": "and also one of the local bike shops was closed on Wednesday and it was said that it would be open on Thursday.",
   "use": true

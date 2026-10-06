@@ -18,7 +18,7 @@ CH = [  # (ep, 카드 큰 글자, 카드 작은 글자, 카드 배경 시각, �
     ("Ep28", "雨の再出発", "倉敷 → 津山", "39:50.00", "倉敷"),
 ]
 NARR = {  # (ep, 이 시각 이후 첫 클립 앞에 정지 화면 내레이션)
-    ("Ep24", 1426.0): ("23:57.50", "リムとは、タイヤをはめる、ホイールの外側の輪のことです。"),
+    ("Ep24", 1426.0): ("24:00.00", "リムとは、タイヤをはめる、ホイールの外側の輪のことです。"),
 }
 def clips(ep):
     c = sorted([x for x in json.load(open(H / f"cues_{ep.lower()}.json")) if x.get("use", True)], key=lambda x: x["s0"])
@@ -52,7 +52,7 @@ for i, (ep, big, small, bg, label) in enumerate(CH, 1):
         for (nep, at), (fr, text) in NARR.items():
             if nep == ep and a <= at < b:
                 items.append(dict(type="freeze", ep=ep, at=fr, narr=text))
-plan = dict(note="CASE #003 v1: 초벌(0장 첫 30초·프롤로그·1~5장).",
+plan = dict(note="CASE #003 v2: v1 + 내레이션 정지 화면 24:00, 자막 분할 시점 단어 기준, 번역 2곳 수정(タケチ・バイクス, 木曜日に開くということだった).",
             frame="fill", narr_speed=1.25, stems_dir="/home/user/media/case003/stems",
             credit="映像：Markus Kiili（YouTube）", speakers={"M": "マルクス"},
             readings={"鹿児島": "かごしま", "札幌": "さっぽろ", "3か月": "さんかげつ", "四国中央": "しこくちゅうおう", "直島": "なおしま", "宇野": "うの", "津山": "つやま"},
