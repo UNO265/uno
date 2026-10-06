@@ -50,9 +50,10 @@ def events(band=(1180, 1420)):
     """한국어 자막(흰 글자=해설, 색 글자=대사, 검은 테두리) 이벤트를 0.1초 단위로 찾는다."""
     y0, y1 = band
     raw = frames_gray(f"crop=1080:{y1 - y0}:0:{y0}", fps=10)
-    A = np.frombuffer(raw, np.uint8).reshape(-1, y1 - y0, 1080, 3).astype(int)
+    A = np.frombuffer(raw, np.uint8).reshape(-1, y1 - y0, 1080, 3)  # 프레임별로 int 변환(메모리 절약)
     masks, kinds = [], []
     for a in A:
+        a = a.astype(np.int16)
         mx, mn, g = a.max(2), a.min(2), a[..., 1]
         white = mn > 215; col = (mx > 170) & ((mx - mn) > 80)
         dark = mx < 45

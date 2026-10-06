@@ -1,0 +1,16 @@
+{
+  "note": "가족·모험 드라마. 초반 따뜻한 장조, 이별 장면 애틋하게, 아이비와의 여행은 밝은 왈츠풍 아르페지오, 죽음 이후 단조, 미샤와 재회는 밝은 장조와 첼레스타.",
+  "length": 179.6,
+  "bpm": 80,
+  "programs": {"0": 0, "1": 49, "2": 32, "3": 8},
+  "volumes": {"0": 90, "1": 66, "2": 60, "3": 58},
+  "sections": [
+    {"t": [0, 29.5], "prog": ["C", "G", "Am7", "Fmaj7"], "piano": "broken", "pad": true, "dyn": 0.8},
+    {"t": [29.5, 60.3], "prog": ["Am", "Fmaj7", "C", "G"], "piano": "sparse", "pad": true, "bass": true, "dyn": 0.85},
+    {"t": [60.3, 95.4], "prog": ["F", "C", "Dm7", "Bbmaj7"], "piano": "broken", "pad": false, "bass": true, "dyn": 0.8},
+    {"t": [95.4, 110.6], "prog": ["G", "Em7", "Cmaj7", "D"], "piano": "arp", "pad": true, "bass": true, "dyn": 0.9},
+    {"t": [110.6, 130.0], "prog": ["Am", "Fmaj7", "Dm7", "Esus4"], "piano": "sparse", "pad": true, "dyn": 0.75},
+    {"t": [130.0, 154.3], "prog": ["Dm", "Bbmaj7", "F", "C"], "piano": "arp", "pad": true, "bass": true, "dyn": 0.85},
+    {"t": [154.3, 179.6], "prog": ["C", "Am7", "Fmaj7", "G"], "piano": "arp", "pad": true, "bass": true, "bell": true, "dyn": 0.9}
+  ]
+}
