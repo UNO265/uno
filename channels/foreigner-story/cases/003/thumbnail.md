@@ -1,4 +1,12 @@
-# CASE #003 썸네일 시안 (2026-10-06, 사용자 선택 전)
+# CASE #003 썸네일 (2026-10-06 사용자 결정: **A**)
+
+완성본: `preview/thumb/case003_thumbnail.png`(1280×720, = A_mechanic.png)
+```
+python3 tools/thumbnail_ctr.py <Ep27.mp4> 1:23 "-" "リムにヒビ7か所" "倉敷の自転車屋で" case003_thumbnail.png \
+  --font ZenMaruGothic-Black.ttf --l1-style red --cx 0.45 --zoom 1.05 --text-w 0.6
+```
+
+## 시안 기록
 
 형식(06 TH8): 실제 프레임 + 빨강 띠 1줄 + 노랑 2줄(+ 말풍선은 사진 속 사람이 실제로 한 말만). 글꼴 Zen Maru Gothic Black(데이터 기준 기본).
 방향: 「일본 사람과의 만남」(조회수 상위 비슷한 영상의 제목 공통점: 助けた日本人·出会った日本人たち·救われた).
