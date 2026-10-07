@@ -219,13 +219,18 @@ def render(preview=None):
     fz = L.get("freeze", [])
     freeze = "".join(f"[src{i}]split[fa{i}][fb{i}];[fa{i}][fb{i}]freezeframes=first={a}:last={b}:replace={r}[src{i + 1}];"
                      for i, (a, b, r) in enumerate(fz))
-    fc = (
-        f"[0:v]null[src0];{freeze}[src{len(fz)}]split=3[base][lg][bd];"
+    # layout.erased: 사용자 PC(GPU, tools/erase_win)에서 한국어 자막·로고를 이미 지운 원본이면 블러를 건너뛴다
+    blur = "" if L.get("erased") else (
+        f"[src{len(fz)}]split=3[base][lg][bd];"
         f"[lg]crop={lw}:{lh}:{lx}:{ly},gblur=sigma=9[lgb];"
         f"[bd]crop=1080:{MY1 - MY0}:0:{MY0},gblur=sigma=26,boxblur=6:2[bdb];"
         f"[bdb][1:v]alphamerge[bdm];"
         f"[base][lgb]overlay={lx}:{ly}[v1];"
-        f"[v1][bdm]overlay=0:{MY0}[v2];"
+        f"[v1][bdm]overlay=0:{MY0}[v2];")
+    if L.get("erased"):
+        blur = f"[src{len(fz)}]null[v2];"
+    fc = (
+        f"[0:v]null[src0];{freeze}{blur}"
         f"[v2]drawbox=x=0:y=0:w=1080:h={L['movie_y0']}:color={box}:t=fill,"
         f"drawbox=x=0:y={L['movie_y1']}:w=1080:h={1920 - L['movie_y1']}:color={box}:t=fill,"
         + (f"setpts=PTS+{preview[0]}/TB," if preview else "")
