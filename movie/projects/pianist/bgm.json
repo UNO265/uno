@@ -1,0 +1,17 @@
+{
+  "note": "1920년대 여객선 재즈 피아노 대결. 영화 원음이 피아노라서 BGM에는 피아노 음색을 쓰지 않는다(비브라폰·현악·콘트라베이스). 원본은 한국어 해설 구간에서 영화 음악을 끊어 두었으므로 그 빈자리를 낮은 재즈 화성으로 메운다. 대결이 달아오를수록 조금씩 밀도를 올리고, 마지막 담배 장면은 조용히 닫는다.",
+  "length": 179.6,
+  "bpm": 92,
+  "programs": {"0": 11, "1": 48, "2": 32, "3": 11},
+  "volumes": {"0": 70, "1": 56, "2": 66, "3": 50},
+  "sections": [
+    {"t": [0, 19.9], "prog": ["Dm7", "G7", "Cmaj7", "Am7"], "piano": "sparse", "pad": true, "dyn": 0.7},
+    {"t": [19.9, 46.0], "prog": ["Dm7", "G7", "Em7", "A7"], "piano": "sparse", "pad": true, "bass": true, "dyn": 0.75},
+    {"t": [46.0, 75.0], "prog": ["Fmaj7", "Em7", "Dm7", "G7"], "piano": "sparse", "pad": true, "bass": true, "dyn": 0.75},
+    {"t": [75.0, 98.9], "prog": ["Am7", "D7", "Gmaj7", "Cmaj7"], "piano": "broken", "pad": true, "bass": true, "dyn": 0.8},
+    {"t": [98.9, 132.0], "prog": ["Dm7", "G7", "Cmaj7", "A7"], "piano": "broken", "pad": true, "bass": true, "dyn": 0.85},
+    {"t": [132.0, 149.0], "prog": ["Am7", "Fmaj7", "Dm7", "E7"], "piano": "sparse", "pad": true, "bass": true, "dyn": 0.8},
+    {"t": [149.0, 172.5], "prog": ["Dm7", "G7", "Cmaj7", "Fmaj7"], "piano": "arp", "pad": true, "bass": true, "dyn": 0.85},
+    {"t": [172.5, 179.6], "prog": ["Cmaj7", "Fmaj7", "Cmaj7", "Cmaj7"], "piano": null, "pad": true, "bell": true, "dyn": 0.6}
+  ]
+}
