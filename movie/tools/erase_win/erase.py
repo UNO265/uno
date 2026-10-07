@@ -54,6 +54,8 @@ def text_mask(img, dilate):
 def process_region(src, reg, work, fps, preview):
     name = reg["name"]; x, y, w, h = reg["box"]
     w -= w % 8; h -= h % 8  # ProPainter는 8의 배수가 안전
+    sc = reg.get("scale", 1.0)  # 0.5면 가로세로 반으로 줄여 메운다(약 4배 빠름). 지운 자리만 원래 크기로 되돌려 붙인다
+    pw, ph = max(8, int(w * sc) // 8 * 8), max(8, int(h * sc) // 8 * 8)
     d = work / name
     if d.exists(): shutil.rmtree(d)
     (d / "frames").mkdir(parents=True); (d / "masks").mkdir()
@@ -85,17 +87,29 @@ def process_region(src, reg, work, fps, preview):
             for nm in names[s0 - a0:]: shutil.copy(d / "frames" / nm, out / nm)  # 지울 것이 없는 구간
         else:
             for nm in names:
-                shutil.copy(d / "frames" / nm, cd / "f" / nm); shutil.copy(d / "masks" / nm, cd / "m" / nm)
+                if (pw, ph) == (w, h):
+                    shutil.copy(d / "frames" / nm, cd / "f" / nm); shutil.copy(d / "masks" / nm, cd / "m" / nm)
+                else:
+                    cv2.imwrite(str(cd / "f" / nm), cv2.resize(cv2.imread(str(d / "frames" / nm)), (pw, ph), interpolation=cv2.INTER_AREA))
+                    m = cv2.resize(cv2.imread(str(d / "masks" / nm), 0), (pw, ph), interpolation=cv2.INTER_AREA)
+                    cv2.imwrite(str(cd / "m" / nm), np.where(m > 0, 255, 0).astype(np.uint8))
             run([sys.executable, str(PROPAINTER / "inference_propainter.py"),
                  "--video", str(cd / "f"), "--mask", str(cd / "m"), "--output", str(cd / "pp"),
                  "--fp16", "--save_frames", "--subvideo_length", str(reg.get("subvideo_length", 60)),
-                 "--neighbor_length", "10", "--ref_stride", "10", "--width", str(w), "--height", str(h)],
+                 "--neighbor_length", "10", "--ref_stride", "10", "--width", str(pw), "--height", str(ph)],
                 cwd=str(PROPAINTER))
             res = sorted((cd / "pp" / "f" / "frames").glob("*.png"))
             if len(res) != len(names):
                 raise SystemExit(f"ProPainter 결과 프레임 수가 맞지 않습니다: {cd}")
             for i, nm in enumerate(names):
-                if i >= s0 - a0: shutil.copy(res[i], out / nm)  # 앞쪽 겹침 구간은 버림
+                if i < s0 - a0: continue  # 앞쪽 겹침 구간은 버림
+                if (pw, ph) == (w, h):
+                    shutil.copy(res[i], out / nm); continue
+                # 줄여서 메운 결과를 키워, 마스크(부드러운 가장자리) 부분만 원본 프레임에 섞는다 → 글자 없는 곳은 원본 화질 그대로
+                big = cv2.resize(cv2.imread(str(res[i])), (w, h), interpolation=cv2.INTER_CUBIC)
+                org = cv2.imread(str(d / "frames" / nm))
+                al = cv2.GaussianBlur(cv2.imread(str(d / "masks" / nm), 0), (9, 9), 0).astype(np.float32)[..., None] / 255
+                cv2.imwrite(str(out / nm), (org * (1 - al) + big * al).astype(np.uint8))
         shutil.rmtree(cd)
         s0 = e0; k += 1
     return out, (x, y, w, h)
