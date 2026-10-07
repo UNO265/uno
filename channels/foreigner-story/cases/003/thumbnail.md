@@ -18,3 +18,11 @@ python3 tools/thumbnail_ctr.py <Ep27.mp4> 1:23 "-" "リムにヒビ7か所" "倉
 | C | Ep27 1:36 수리 직후 가게 안 마르쿠스 | 「本当にほっとしました」(정말 안심했어요) | リムにヒビ7か所 | 倉敷の自転車屋で | 같은 날 마르쿠스 발언(Ep27 2:04) |
 
 파일: `preview/thumb/A_mechanic.png`, `B_crack.png`, `C_relief.png`(1280×720), 비교 `thumb_v4_ABC.jpg`.
+
+## 시안 D (2026-10-07, 전체 영상 4초 간격 468장 검토 후 후보 5개 중 사용자 선택 3번)
+`preview/thumb/D_mechanic_smile.png` — Ep27 1:43.77 다케치 바이크스 정비사가 파란 장갑을 끼고 웃는 장면. 말풍선 없음(A와 같은 이유).
+```
+python3 tools/thumbnail_ctr.py <Ep27.mp4> 1:43.77 "-" "リムにヒビ7か所" "倉敷の自転車屋で" D_mechanic_smile.png \
+  --font ZenMaruGothic-Black.ttf --l1-style red --cx 0.40 --cy 0.4 --zoom 1.15 --text-w 0.6
+```
+다른 후보: 1 Ep24 23:55(가게 앞 고민) · 2 Ep24 23:58(림 근접) · 4 Ep27 1:40(수리 후 안도) · 5 Ep28 44:02(호텔 방 안의 자전거, 「自転車は中へどうぞ」).
