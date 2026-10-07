@@ -58,6 +58,8 @@ def process_region(src, reg, work, fps, preview):
     w -= w % 8; h -= h % 8  # ProPainter는 8의 배수가 안전
     sc = reg.get("scale", 1.0)  # 0.5면 가로세로 반으로 줄여 메운다(약 4배 빠름). 지운 자리만 원래 크기로 되돌려 붙인다
     pw, ph = max(8, int(w * sc) // 8 * 8), max(8, int(h * sc) // 8 * 8)
+    if ph < 160:  # 높이 88px처럼 너무 작으면 ProPainter가 검게 칠하거나 멈춘다(2026-10-07 확인) → 높이는 줄이지 않는다
+        ph = h
     d = work / name
     if d.exists(): shutil.rmtree(d)
     (d / "frames").mkdir(parents=True); (d / "masks").mkdir()
