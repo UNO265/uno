@@ -1,9 +1,8 @@
 """GPT가 만든 썸네일에서 인물은 그대로 두고 제목 글자만 기준 위치(62.0~80.7%)로 옮기거나 줄인다(guide/01_COVER.md).
 
 사용: python3 tools/fix_gpt_text.py <GPT결과.png> <GPT에 준 사진.png> <출력.png> [--fill]
---fill: (2026-10-07 사용자 지정) GPT가 그린 글자 모양 그대로, 줄마다 따로 키워 기준 사진처럼 좌우를 꽉 채운다.
-  흰 줄 x 8.9~92.3%(같은 비율로 확대, 위 끝 62.0%), 줄 간격 1.0%, 노란 줄 x 5.7~95.3%·아래 끝 80.7%
-  (노란 줄은 남은 높이에 맞추고 가로만 늘려 꽉 채움)
+--fill: (2026-10-07 사용자 지정) GPT가 그린 글자 모양 그대로, 줄마다 같은 비율로 키워 좌우(x 4.5~95.8%)를 채운다.
+  글자 수가 적은 줄은 글자가 더 커진다(가로만 늘리지 않음). 위 끝 61.4%, 줄 간격 1.4%, 아래 끝 87.6% 이내.
 1. GPT 결과를 1080x1920으로 맞추고, 준 사진을 ORB로 정렬
 2. 글자 띠 위·아래 영역으로 색 회귀(x, x², y, x·y) → 정렬한 사진 색을 GPT 색감에 맞춤
 3. 글자 띠를 사진으로 복원(바탕), 차이로 글자+그림자 알파를 뽑음
@@ -70,29 +69,32 @@ def line_box(img, kind, r0, r1):
 
 
 if "--fill" in sys.argv:
+    # 2026-10-07 사용자 지정(기준: もう家族だと/思ってた): 위 끝 61.4%, 두 줄 간격 1.4%, 아래 끝은 87.6%를 넘지 않음.
+    # 줄마다 GPT 글자 모양 그대로 같은 비율로 키워 좌우(x 4.5~95.8%)를 채운다 → 글자 수가 적은 줄은 글자가 더 커진다.
+    FT, FB, GAP, X0, X1 = 0.614, 0.876, 0.014, 0.045, 0.958
     wb = line_box(G, "white", y0, y1); yb = line_box(G, "yellow", y0, y1)
     cut = (wb[3] + yb[1]) // 2  # 두 줄 사이
+    tw = (X1 - X0) * W
+    ks = [tw / (bx[2] - bx[0]) for bx in (wb, yb)]
+    hs = [k * (bx[3] - bx[1]) for k, bx in zip(ks, (wb, yb))]
+    room = (FB - FT - GAP) * H
+    if sum(hs) > room:  # 높이가 넘치면 두 줄을 같은 비율로 줄인다
+        f = room / sum(hs); ks = [k * f for k in ks]; hs = [h * f for h in hs]
     out = base.copy()
-    # 흰 줄: 같은 비율로 x 8.9~92.3%까지, 위 끝 62.0%
-    tw = (0.923 - 0.089) * W; sw = tw / (wb[2] - wb[0])
-    wtop = TOP * H; wbot = wtop + sw * (wb[3] - wb[1])
-    # 노란 줄: 간격 1% 아래부터 80.7%까지, 가로는 x 5.7~95.3%로 꽉
-    ytop = wbot + 0.010 * H; ybot = BOT * H
-    syy = (ybot - ytop) / (yb[3] - yb[1]); syx = (0.953 - 0.057) * W / (yb[2] - yb[0])
-    for (bx0, by0, bx1, by1), sx, sy, tx0, ty0, rr in [
-            (wb, sw, sw, (W - tw) / 2, wtop, (0, cut)),
-            (yb, syx, syy, 0.057 * W, ytop, (cut, H))]:
+    tops = [FT * H, FT * H + hs[0] + GAP * H]
+    for bx, k, top, rr in [(wb, ks[0], tops[0], (0, cut)), (yb, ks[1], tops[1], (cut, H))]:
         a = alpha.copy(); a[:rr[0]] = 0; a[rr[1]:] = 0
-        M = np.float32([[sx, 0, tx0 - sx * bx0], [0, sy, ty0 - sy * by0]])
+        cx = (bx[0] + bx[2]) / 2
+        M = np.float32([[k, 0, W / 2 - k * cx], [0, k, top - k * bx[1]]])
         Tg = cv2.warpAffine(G.astype(np.float32), M, (W, H))
         Ta = cv2.warpAffine(a, M, (W, H))[..., None]
         out = out * (1 - Ta) + Tg * Ta
     out = np.clip(out, 0, 255).astype(np.uint8)
     cv2.imwrite(sys.argv[3], out)
-    print(f"fill: white scale {sw:.3f}, yellow scale x{syx:.3f} y{syy:.3f}")
-    for k in ("white", "yellow"):
-        bx = line_box(out, k, int(H * .55), H)
-        print(f"  {k}: y {bx[1]/H:.1%}-{bx[3]/H:.1%}  x {bx[0]/W:.1%}-{bx[2]/W:.1%}")
+    print(f"fill: white x{ks[0]:.3f}, yellow x{ks[1]:.3f} (같은 비율)")
+    for kk in ("white", "yellow"):
+        bx = line_box(out, kk, int(H * .55), H)
+        print(f"  {kk}: y {bx[1]/H:.1%}-{bx[3]/H:.1%}  x {bx[0]/W:.1%}-{bx[2]/W:.1%}")
     sys.exit()
 # 4) 글자 블록 이동·축소(아래 끝 기준)
 s = (BOT - TOP) * H / (y1 - y0)

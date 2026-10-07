@@ -1,12 +1,12 @@
 {
  "font": "noto-black",
- "scale_x": 0.8,
+ "scale_x": 1.0,
  "gap": 14,
  "sizes": [
   160,
   250
  ],
- "grade": "eq=contrast=1.12:saturation=1.08:gamma=0.97,vignette=PI/5",
+ "grade": "eq=contrast=1.2:saturation=1.15:gamma=0.97,unsharp=5:5:0.5,vignette=PI/5",
  "image": "work/pianist/thumb/crop_blend.png",
  "time": 128.97,
  "crop": [
@@ -26,5 +26,6 @@
    "yellow"
   ]
  ],
- "note": "128.97s 1900 클로즈업. 720p 원본을 Real-ESRGAN x4 + 원본 확대 40% 섞기(피부가 밀랍처럼 보이지 않게) + 약한 그레인 / 사용자 확정 2026-10-07: A3"
+ "note": "128.97s 1900 클로즈업. 720p 원본을 Real-ESRGAN x4 + 원본 확대 40% 섞기(피부가 밀랍처럼 보이지 않게) + 약한 그레인 / 사용자 확정 2026-10-07: A3",
+ "style": "gpt"
 }
