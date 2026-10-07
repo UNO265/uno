@@ -1,0 +1,102 @@
+{
+  "channel": "nimaru",
+  "title": [
+    {
+      "text": "顔に見えるけど",
+      "color": "white"
+    },
+    {
+      "text": "全部イカです",
+      "color": "red"
+    }
+  ],
+  "voice": {
+    "name": "琴詠ニア",
+    "vvm": 14,
+    "style": 74,
+    "speed": 0.95,
+    "credit": "VOICEVOX:琴詠ニア"
+  },
+  "sub_y": 0.58,
+  "source": {
+    "note": "NOAA Ocean Exploration（パブリックドメイン）の 68 秒・1280x720、Seascape Alaska 3（2023）水深約 700m のグラススクイッド（Taonius borealis）。build 前に crop=405:720:420:0 → 1080x1920（vert.mp4）。左上の NOAA ロゴ・冒頭の英語情報・エンドカードは切り出しと区間選びで外す。原音は完全な無音。正面の目の下〜赤い消化腺の上が透明なので字幕は sub_y 0.58",
+    "segments": [
+      [
+        6.5,
+        10.0
+      ],
+      [
+        14.0,
+        19.5
+      ],
+      [
+        28.0,
+        37.0
+      ],
+      [
+        60.0,
+        63.5
+      ]
+    ],
+    "hold_end": 0,
+    "orig_audio": 0.0
+  },
+  "zooms": [],
+  "marks": [],
+  "captions": [],
+  "narration": [
+    {
+      "start": 0.3,
+      "say": "地球のみなさん、こんにちは。",
+      "sub": "（……地球のみなさん、\nこんにちは）",
+      "ko": "(……지구 여러분, 안녕하세요)",
+      "color": "cream"
+    },
+    {
+      "start": 3.8,
+      "say": "深海から、来ました。",
+      "sub": "（深海から、来ました）",
+      "ko": "(심해에서, 왔습니다)",
+      "color": "cream",
+      "voice": false
+    },
+    {
+      "start": 9.3,
+      "say": "中身も、ぜんぶお見せします。",
+      "sub": "（中身も、\nぜんぶお見せします）",
+      "ko": "(속도, 전부 보여 드립니다)",
+      "color": "cream",
+      "voice": false
+    },
+    {
+      "start": 12.4,
+      "say": "この赤いのは、おなかです。",
+      "sub": "（この赤いのは……\nおなかです）",
+      "ko": "(이 빨간 건…… 배입니다)",
+      "color": "cream",
+      "voice": false,
+      "hl": "おなか"
+    },
+    {
+      "start": 15.4,
+      "say": "目が、合いましたね。",
+      "sub": "（……目が、\n合いましたね）",
+      "ko": "(……눈이, 마주쳤네요)",
+      "color": "cream",
+      "voice": false
+    },
+    {
+      "start": 18.4,
+      "say": "あの、見すぎです。",
+      "sub": "（……あの、\n見すぎです）",
+      "ko": "(……저기, 너무 보시네요)",
+      "color": "cream",
+      "hl": "見すぎ"
+    }
+  ],
+  "upload": {
+    "title": "この顔の正体、わかる？🦑",
+    "title_ko": "이 얼굴의 정체, 알겠어?",
+    "hashtags": "#深海 #深海生物 #イカ #透明 #生き物"
+  }
+}
