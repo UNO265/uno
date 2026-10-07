@@ -32,7 +32,7 @@ def probe(src):
     return s["width"], s["height"], float(n) / float(d)
 
 
-def text_mask(img, dilate):
+def text_mask(img, dilate, down=0):
     """흰 글자 또는 밝은 색 글자 중 검은 테두리가 붙어 있는 픽셀 = 자막 글자."""
     a = img.astype(np.int16)
     mx, mn = a.max(2), a.min(2)
@@ -48,6 +48,8 @@ def text_mask(img, dilate):
         return np.zeros(t.shape, np.uint8)
     t = cv2.morphologyEx(t, cv2.MORPH_CLOSE, np.ones((7, 7), np.uint8))
     t = cv2.dilate(t, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (dilate, dilate)))
+    if down:  # 글자 아래로 번진 그림자까지 덮는다(흰 배경에서 회색 자국이 남는 것 방지)
+        t = cv2.dilate(t, np.ones((down + 1, 1), np.uint8), anchor=(0, down))
     return t * 255
 
 
@@ -71,7 +73,7 @@ def process_region(src, reg, work, fps, preview):
         fixed[my:my + mh, mx:mx + mw] = 255
     on = 0
     for f in frames:
-        m = fixed if fixed is not None else text_mask(cv2.imread(str(f)), reg.get("dilate", 15))
+        m = fixed if fixed is not None else text_mask(cv2.imread(str(f)), reg.get("dilate", 15), reg.get("shadow_down", 0))
         on += int(m.any())
         cv2.imwrite(str(d / "masks" / f.name), m)
     print(f"[{name}] frames {len(frames)}, frames with mask {on}")
