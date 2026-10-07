@@ -6,7 +6,7 @@
 3. ProPainter로 마스크 부분을 앞뒤 프레임을 참고해 메운다(구간을 나눠 8GB VRAM 안에서).
 4. 메운 조각을 원본 위치에 다시 붙이고 원본 소리를 그대로 넣어 <원본이름>_clean.mp4로 저장한다.
 
-사용:  python erase.py 원본.mp4 [--regions regions.json] [--preview 20]
+사용:  python erase.py 원본.mp4 [--regions regions.json] [--preview 20] [--compose-only]
 필요:  ffmpeg(PATH), ProPainter 폴더(README 참고), Python 패키지(opencv-python numpy)
 """
 import argparse, json, os, shutil, subprocess, sys
@@ -116,7 +116,21 @@ def process_region(src, reg, work, fps, preview):
                 cv2.imwrite(str(out / nm), (org * (1 - al) + big * al).astype(np.uint8))
         shutil.rmtree(cd)
         s0 = e0; k += 1
+    fill_missing(name, d)
     return out, (x, y, w, h)
+
+
+def fill_missing(name, d):
+    """합칠 때 번호가 하나라도 비거나 깨지면 영상이 그 자리에서 끊긴다(2026-10-07 전체 영상이 12초에서 끊김).
+    미리 확인하고, 빠진 프레임은 원본 조각으로 채운다."""
+    frames = sorted((d / "frames").glob("*.png")); out = d / "out"; out.mkdir(exist_ok=True)
+    bad = []
+    for f in frames:
+        o = out / f.name
+        if not o.exists() or cv2.imread(str(o)) is None:
+            shutil.copy(f, o); bad.append(f.name)
+    print(f"[{name}] 결과 프레임 {len(list(out.glob('*.png')))}/{len(frames)}"
+          + (f", 빠지거나 깨진 {len(bad)}장은 원본으로 채움(처음: {bad[:5]})" if bad else ", 빠진 것 없음"))
 
 
 def main():
@@ -124,13 +138,21 @@ def main():
     ap.add_argument("src")
     ap.add_argument("--regions", default=str(HERE / "regions.json"))
     ap.add_argument("--preview", type=float, default=0, help="앞부분 N초만 처리(테스트용)")
+    ap.add_argument("--compose-only", action="store_true", help="지우기는 건너뛰고 작업 폴더의 결과로 마지막 합치기만 다시")
     a = ap.parse_args()
     src = Path(a.src).resolve()
     W, H, fps = probe(src)
     regs = json.load(open(a.regions, encoding="utf-8"))["regions"]
     work = src.parent / (src.stem + "_erase_work")
     work.mkdir(exist_ok=True)
-    done = [process_region(src, r, work, fps, a.preview) for r in regs]
+    if a.compose_only:  # 지우기는 끝났고 마지막 합치기만 다시(작업 폴더가 남아 있어야 함)
+        done = []
+        for r in regs:
+            x, y, w, h = r["box"]; w -= w % 8; h -= h % 8
+            fill_missing(r["name"], work / r["name"])
+            done.append((work / r["name"] / "out", (x, y, w, h)))
+    else:
+        done = [process_region(src, r, work, fps, a.preview) for r in regs]
     # 원본 위에 메운 조각을 덮어 합성
     cmd = ["ffmpeg", "-v", "error", "-y"]
     if a.preview: cmd += ["-t", str(a.preview)]
@@ -144,7 +166,12 @@ def main():
     cmd += ["-filter_complex", ";".join(chain), "-map", last, "-map", "0:a?", "-c:v", "libx264", "-crf", "16",
             "-preset", "medium", "-pix_fmt", "yuv420p", "-c:a", "copy", str(out)]
     run(cmd)
-    print("완료:", out)
+    d_src = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(src)], capture_output=True, text=True).stdout)
+    d_out = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(out)], capture_output=True, text=True).stdout)
+    want = min(d_src, a.preview) if a.preview else d_src
+    if d_out < want - 0.5:
+        raise SystemExit(f"결과 길이가 짧습니다: {d_out:.1f}초 (원본 {want:.1f}초). 작업 폴더를 지우지 말고 이 화면을 보내 주세요.")
+    print(f"완료: {out}  (길이 {d_out:.1f}초, 원본 {want:.1f}초)")
 
 
 if __name__ == "__main__":
