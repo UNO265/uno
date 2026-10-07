@@ -6,24 +6,25 @@
   160,
   250
  ],
- "grade": "eq=contrast=1.15:saturation=1.08:gamma=0.95,vignette=PI/5",
- "time": 128.6,
+ "grade": "eq=contrast=1.12:saturation=1.08:gamma=0.97,vignette=PI/5",
+ "image": "work/pianist/thumb/crop_blend.png",
+ "time": 128.97,
  "crop": [
-  80,
-  540,
-  720,
-  700
+  0,
+  0,
+  1920,
+  1864
  ],
- "top_h": 1050,
+ "top_h": 1048,
  "lines": [
   [
-   "ジャズの神が",
+   "一度も船を",
    "white"
   ],
   [
-   "挑んだ男",
+   "降りない天才",
    "yellow"
   ]
  ],
- "note": "128.6s 1900 클로즈업(정면 응시). 「재즈의 신이 도전한 남자」"
+ "note": "128.97s 1900 클로즈업. 720p 원본을 Real-ESRGAN x4 + 원본 확대 40% 섞기(피부가 밀랍처럼 보이지 않게) + 약한 그레인"
 }

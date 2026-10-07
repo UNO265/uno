@@ -21,7 +21,8 @@ def frame(src, t, crop, top_h=None, top_y=0, grade=""):
     """top_h가 있으면 장면을 위쪽 top_h px에 맞추고, 아래는 같은 장면을 흐리고 어둡게 늘려 채운다(제목이 중요한 피사체를 덮지 않게)."""
     out = ROOT / "work/_thumb_frame.png"
     h = top_h or H
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(t), "-i", str(src), "-frames:v", "1",
+    seek = [] if str(src).endswith(".png") else ["-ss", str(t)]
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *seek, "-i", str(src), "-frames:v", "1",
                     "-vf", f"crop={crop[2]}:{crop[3]}:{crop[0]}:{crop[1]},scale={W}:{h}:flags=lanczos,unsharp=5:5:0.6" + (f",{grade}" if grade else ""),
                     str(out)], check=True)
     img = Image.open(out).convert("RGB")
@@ -82,7 +83,8 @@ def main():
     P = ROOT / f"projects/{slug}"
     cfg = json.load(open(P / "thumb.json"))
     S = json.load(open(P / "script.json"))
-    img = frame(ROOT / S["source"], cfg["time"], cfg["crop"], cfg.get("top_h"), cfg.get("top_y", 0), cfg.get("grade", ""))
+    # image: 원본이 저화질(720p 등)이면 미리 Real-ESRGAN으로 키운 장면 사진을 쓴다(crop은 그 사진 기준)
+    img = frame(ROOT / cfg.get("image", S["source"]), cfg["time"], cfg["crop"], cfg.get("top_h"), cfg.get("top_y", 0), cfg.get("grade", ""))
     # 아래쪽을 어둡게(글자 대비)
     shade = Image.new("L", (W, H), 0)
     d = ImageDraw.Draw(shade)
