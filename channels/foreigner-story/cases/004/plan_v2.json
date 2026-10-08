@@ -1,7 +1,9 @@
 {
- "note": "CASE #004 v1: 구성안 v2 + 내레이션 v1 + 자막 v1(검수 전)",
+ "note": "CASE #004: 시청자 고령층(#002: 55세 이상 88%) → 글자 1.12배·한 줄 20자·내레이션 1.1배속",
  "frame": "fill",
- "narr_speed": 1.25,
+ "narr_speed": 1.1,
+ "font_scale": 1.12,
+ "narr_line_chars": 20,
  "stems_dir": "/home/user/media/case004c/stems",
  "credit": "映像：World Family Explorers（YouTube）",
  "speakers": {

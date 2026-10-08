@@ -80,7 +80,7 @@ for i, (ch, ep, a, b) in enumerate(clips):
 used = sorted({k for v in list(BEFORE.values()) + list(AFTER.values()) for k in v})
 DROP = {3, 5}                                                   # v2: 안 쓰는 내레이션
 assert used == [k for k in range(len(N)) if k not in DROP], set(range(len(N))) - set(used) - DROP
-plan = dict(note="CASE #004 v1: 구성안 v2 + 내레이션 v1 + 자막 v1(검수 전)", frame="fill", narr_speed=1.25,
+plan = dict(note="CASE #004: 시청자 고령층(#002: 55세 이상 88%) → 글자 1.12배·한 줄 20자·내레이션 1.1배속", frame="fill", narr_speed=1.1, font_scale=1.12, narr_line_chars=20,
             stems_dir=str(M / "stems"), credit="映像：World Family Explorers（YouTube）",
             speakers={"C": "クリス", "E": "エリー", "B": "息子", "J": "店員さん"},
             speaker_colors={"C": "FF8A00", "E": "FFF680", "B": "FFD400", "J": "8EE070"},

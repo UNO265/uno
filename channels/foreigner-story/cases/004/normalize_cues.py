@@ -4,7 +4,8 @@
 여러 번 돌려도 결과가 같다. 사용: python3 normalize_cues.py cues_ep*.json"""
 import json, re, sys
 
-MAX = 22
+import os
+MAX = int(os.environ.get("SUB_MAX", 22))   # 한 줄 글자 수(#004: 20 — 글자를 키워서)
 
 
 def plain(s):

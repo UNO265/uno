@@ -133,7 +133,8 @@ def render_items(plan, srcs, tmp, narr):
     return files
 
 
-def split_narr(e, limit=22):
+def split_narr(e, limit=None):
+    limit = limit or NARR_LIMIT
     """긴 내레이션 자막을 문장(。)·쉼표(、) 단위로 나눠 차례로 보여 준다(한 줄 원칙, 화면 밖으로 넘치지 않게)."""
     import re
     parts = [p for p in re.split(r"(?<=。)", e["ja"]) if p]
@@ -198,6 +199,8 @@ def build_events(plan, cues, starts, durs, narr):
 
 
 FILL = False
+FONT_SCALE = 1.0
+NARR_LIMIT = 22
 SPK_COLORS = {}   # plan["speaker_colors"]: {"C": "FF8A00", ...} 화자별 노란 계열 색(#RRGGBB), #004부터
 
 
@@ -221,6 +224,8 @@ def write_ass(ev, cards, total, path):
                             "&H30FFFFFF,&H30FFFFFF,&H80000000,&H80000000,0,0,0,0,100,100,0,0,1,1.5,0,7,22,22,22,1")
         base = base.replace("&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,8,20,20,30,1",
                             "&H00EAF3F7,&H00EAF3F7,&H00000000,&H80000000,0,0,0,0,100,100,2,0,1,2.5,1,8,20,20,26,1")
+    if FONT_SCALE != 1.0:   # plan["font_scale"]: 대사(Y*)·내레이션(N) 글자 크기 배율(#004부터, 시청자 고령층)
+        base = re.sub(r"(Style: (?:Y[A-Z]?|N),TBN Noto Sans JP Bold,)(\d+)", lambda m: m.group(1) + str(round(int(m.group(2)) * FONT_SCALE)), base)
     lines = []
     # 출처 표시는 카드 위에는 띄우지 않는다
     edges = [0.0]
@@ -238,7 +243,7 @@ def write_ass(ev, cards, total, path):
             if spk in B.SPEAKERS:
                 st = "Y" + spk if f"Style: Y{spk}," in base else "Y"   # 화자 색 스타일이 없으면 기본 노랑
                 if spk not in seen:
-                    tx = "{\\fs32}" + B.SPEAKERS[spk] + "{\\fs50}　" + tx
+                    tx = "{\\fs%d}" % round(32 * FONT_SCALE) + B.SPEAKERS[spk] + "{\\fs%d}　" % round(50 * FONT_SCALE) + tx
                     seen.add(spk)
         elif st == "CB":
             tx = "{\\pos(640,380)\\fad(250,200)\\bord2\\3c&H00141414&}" + tx
@@ -258,7 +263,9 @@ def main():
         B.CREDIT = plan["credit"]
     if plan.get("speakers"):
         B.SPEAKERS = plan["speakers"]
-    global FILL, SPK_COLORS
+    global FILL, SPK_COLORS, FONT_SCALE, NARR_LIMIT
+    FONT_SCALE = plan.get("font_scale", 1.0)
+    NARR_LIMIT = plan.get("narr_line_chars", 22)
     FILL = plan.get("frame") == "fill"
     SPK_COLORS = plan.get("speaker_colors", {})
     cues = json.load(open(cues_p))
