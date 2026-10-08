@@ -53,8 +53,18 @@ BEFORE = {2: [2, 3], 3: [], 6: [6], 7: [8], 8: [10], 9: [9], 14: [11, 12], 16: [
 AFTER = {1: [0, 1], 2: [4], 3: [5], 6: [7], 30: [20], 37: [26], 42: [30, 31]}
 LABEL = {2: "大阪・鶴橋", 7: "大阪城の近く", 14: "大阪城", 22: "大阪", 31: "大阪・鶴橋", 36: "新大阪駅", 41: "品川駅"}
 FREEZE_AT = {29: ("T", "10:55.00")}   # 후지산 문장: 화장실 화면 대신 창밖 화면
+HOOK = [("T", 463.95, 466.75), ("T", 469.85, 480.05), ("O", 1910.13, 1915.85), ("T", 94.20, 103.45), ("O", 771.92, 777.85)]  # 첫 20초: 사건 몽타주(#002 지속 그래프 근거)
 items = []
 for i, (ch, ep, a, b) in enumerate(clips):
+    if i in (0, 1):                                          # v2: 원래 첫 장면 대신 사건 몽타주 + 질문 + 제목
+        if i == 1:
+            for e, x, y in HOOK:
+                items.append(dict(type="clip", ep=e, src=[mmss(x), mmss(y)], audio="vocals"))
+            for k in AFTER[1]:
+                items.append(dict(type="freeze", ep="T", at="07:44.20", narr=N[k]))
+            items.append(dict(type="card", dur=3.0, ep="T", bg="10:20.00",
+                              big="{\\fs56}「日本の電車が怖かった」\\N{\\fs48}初来日のアメリカ人家族、新幹線で東京へ", small=""))
+        continue
     a, b = fit(i, ep, a, b)
     if i in CARDS:
         n, big, small, cep, bg = CARDS[i]
@@ -67,9 +77,6 @@ for i, (ch, ep, a, b) in enumerate(clips):
     items.append(it)
     for k in AFTER.get(i, []):
         items.append(dict(type="freeze", ep=ep, at=mmss(b - 0.5), narr=N[k]))
-    if i == 1:   # 질문 뒤 제목 카드
-        items.append(dict(type="card", dur=4.0, ep="T", bg="10:20.00",
-                          big="{\\fs56}「日本の電車が怖かった」\\N{\\fs48}初来日のアメリカ人家族、新幹線で東京へ", small=""))
 used = sorted({k for v in list(BEFORE.values()) + list(AFTER.values()) for k in v})
 assert used == list(range(len(N))), set(range(len(N))) - set(used)
 plan = dict(note="CASE #004 v1: 구성안 v2 + 내레이션 v1 + 자막 v1(검수 전)", frame="fill", narr_speed=1.25,

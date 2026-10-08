@@ -1234,10 +1234,10 @@
  {
   "ep": "O",
   "s0": 1906.94,
-  "s1": 1911.44,
+  "s1": 1909.74,
   "kind": "Y",
   "spk": "C",
-  "ja": "着いてすぐ体験したんだよな。\\N流そうとして、どうなった？",
+  "ja": "着いてすぐ体験したんだよな",
   "ko": "도착하자마자 경험했지. 물 내리려다 어떻게 됐어?",
   "en": "Logan experienced the bidet toilet right off the bat... You're trying to flush it, what happened?",
   "use": true
@@ -1883,7 +1883,7 @@
  {
   "ep": "T",
   "s0": 88.48,
-  "s1": 95.18,
+  "s1": 94.2,
   "kind": "Y",
   "spk": "C",
   "ja": "探したけど、下りのエレベーターも\\Nエスカレーターもない",
@@ -1893,7 +1893,7 @@
  },
  {
   "ep": "T",
-  "s0": 95.18,
+  "s0": 94.22,
   "s1": 101.92,
   "kind": "Y",
   "spk": "C",
@@ -3176,6 +3176,17 @@
   "ja": "子どもたち、調子はどう？",
   "ko": "얘들아, 어때?",
   "en": "are you kids doing pretty good? How are you?",
+  "use": true
+ },
+ {
+  "ep": "O",
+  "s0": 1910.16,
+  "s1": 1911.44,
+  "kind": "Y",
+  "spk": "C",
+  "ja": "流そうとして、どうなった？",
+  "ko": "물 내리려다 어떻게 됐어?",
+  "en": "You're trying to flush it, what happened?",
   "use": true
  },
  {
