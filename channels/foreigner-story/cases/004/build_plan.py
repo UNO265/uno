@@ -80,10 +80,10 @@ for i, (ch, ep, a, b) in enumerate(clips):
 used = sorted({k for v in list(BEFORE.values()) + list(AFTER.values()) for k in v})
 DROP = {3, 5}                                                   # v2: 안 쓰는 내레이션
 assert used == [k for k in range(len(N)) if k not in DROP], set(range(len(N))) - set(used) - DROP
-plan = dict(note="CASE #004: 시청자 고령층(#002: 55세 이상 88%) → 글자 1.12배·한 줄 20자·내레이션 1.1배속", frame="fill", narr_speed=1.1, font_scale=1.12, narr_line_chars=20,
+plan = dict(note="CASE #004: 시청자 고령층·TV 65.7% → 글자 1.6배(대사 80·내레이션 70, 레퍼런스 수준, 2026-10-08 사용자 확정)·내레이션 한 줄 17자·1.1배속", frame="fill", narr_speed=1.1, font_scale=1.6, narr_line_chars=17,
             stems_dir=str(M / "stems"), credit="映像：World Family Explorers（YouTube）",
             speakers={"C": "クリス", "E": "エリー", "B": "息子", "J": "店員さん"},
-            speaker_colors={"C": "FF8A00", "E": "FFF680", "B": "FFD400", "J": "8EE070"},
+            speaker_colors={"C": "5CC8FF", "E": "FF80C0", "B": "FFE600", "J": "7CE07C"},   # 2026-10-08 사용자: 노랑·주황이 비슷 → 하늘·분홍·노랑·초록
             readings=json.load(open(H / "narr_v1.json"))["readings"], items=items)
 json.dump(plan, open(sys.argv[1], "w"), ensure_ascii=False, indent=1)
 def sec(t): m, s = t.split(":"); return int(m) * 60 + float(s)
