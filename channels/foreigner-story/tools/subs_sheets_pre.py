@@ -47,7 +47,7 @@ def main():
             for c in sorted((c for c in cues if c.get("ep") == it["ep"] and c["kind"] == "Y"
                              and min(c["s1"], b) - max(c["s0"], a) > 0.3), key=lambda c: c["s0"]):
                 mid = (max(c["s0"], a) + min(c["s1"], b)) / 2
-                rows.append(dict(ep=it["ep"], t=mid, ja=c["ja"], en=c.get("en", ""), out=t_out + mid - a, kind="Y"))
+                rows.append(dict(ep=it["ep"], t=mid, ja=c["ja"], en=c.get("en", ""), out=t_out + mid - a, kind="Y", spk=c.get("spk", "")))
             t_out += b - a
         elif it["type"] == "freeze":
             rows.append(dict(ep=it["ep"], t=sec(it["at"]), ja=it["narr"], en="(ナレーション)", out=t_out, kind="N"))
@@ -60,7 +60,7 @@ def main():
         draw_sub(im, r["ja"], (255, 230, 0) if r["kind"] == "Y" else (255, 255, 255))
         tile = Image.new("RGB", (W, H + 64), (20, 20, 20)); tile.paste(im, (0, 0))
         d = ImageDraw.Draw(tile)
-        d.text((6, H + 2), f"#{i + 1}  (≈{int(r['out'] // 60):02d}:{int(r['out'] % 60):02d})  {r['ep']} {r['t']:.1f}", font=FS, fill=(255, 220, 0))
+        d.text((6, H + 2), f"#{i + 1}  (≈{int(r['out'] // 60):02d}:{int(r['out'] % 60):02d})  {r['ep']} {r['t']:.1f}  [{r.get('spk', '')}]", font=FS, fill=(255, 220, 0))
         d.text((6, H + 22), r["en"][:62], font=FS, fill=(230, 230, 230)); d.text((6, H + 41), r["en"][62:124], font=FS, fill=(230, 230, 230))
         tiles.append(tile)
     for k in range(0, len(tiles), 12):

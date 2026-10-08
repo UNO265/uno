@@ -12,7 +12,7 @@ cues_src : 원본 시각 기준 노란 자막(화자 포함). clip 구간 안의
 
 v1.2 §8: 장면 순서는 바꿔도 각 장면의 발언은 그 장면에만 붙는다(자막은 원본 시각으로만 매핑).
 """
-import json, os, shutil, subprocess, sys, tempfile
+import json, os, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -198,6 +198,7 @@ def build_events(plan, cues, starts, durs, narr):
 
 
 FILL = False
+SPK_COLORS = {}   # plan["speaker_colors"]: {"C": "FF8A00", ...} 화자별 노란 계열 색(#RRGGBB), #004부터
 
 
 def write_ass(ev, cards, total, path):
@@ -209,10 +210,13 @@ def write_ass(ev, cards, total, path):
         "Style: L,TBN Noto Sans JP Medium,26,&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,8,20,20,30,1\n"
         "Style: CB,TBN Noto Sans JP Bold,84,&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,5,80,80,0,1\n"
         "Style: CS,TBN Noto Sans JP Medium,40,&H002E10C8,&H002E10C8,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,80,80,0,1\n")
+    for k, rgb in SPK_COLORS.items():     # plan 의 화자 색(기본 YS·YK·YJ 외)
+        bgr = rgb[4:6] + rgb[2:4] + rgb[0:2]
+        base = re.sub(rf"Style: Y{k},[^\n]*\n", "", base)
+        styles_extra += f"Style: Y{k},TBN Noto Sans JP Bold,50,&H00{bgr},&H00{bgr},&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,4,0,2,60,60,22,1\n"
     base = base.replace("\n[Events]", styles_extra + "\n[Events]")
     if FILL:   # 16:9 가득: 글자가 화면 위에 올라가므로 테두리·그림자를 더하고 자막을 조금 올린다
-        import re
-        base = re.sub(r"(Style: Y[SKJ]?,[^\n]*?),1,4,0,2,60,60,22,1", r"\1,1,4,2,2,60,60,64,1", base)
+        base = re.sub(r"(Style: Y[A-Z]?,[^\n]*?),1,4,0,2,60,60,22,1", r"\1,1,4,2,2,60,60,64,1", base)
         base = base.replace("&H40FFFFFF,&H40FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,22,22,34,1",
                             "&H30FFFFFF,&H30FFFFFF,&H80000000,&H80000000,0,0,0,0,100,100,0,0,1,1.5,0,7,22,22,22,1")
         base = base.replace("&H00EAF3F7,&H00EAF3F7,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,8,20,20,30,1",
@@ -254,8 +258,9 @@ def main():
         B.CREDIT = plan["credit"]
     if plan.get("speakers"):
         B.SPEAKERS = plan["speakers"]
-    global FILL
+    global FILL, SPK_COLORS
     FILL = plan.get("frame") == "fill"
+    SPK_COLORS = plan.get("speaker_colors", {})
     cues = json.load(open(cues_p))
     tmp = tempfile.mkdtemp(prefix="asm_", dir=os.path.dirname(os.path.abspath(out)))
     texts = [it["narr"] for it in plan["items"] if it.get("narr")]

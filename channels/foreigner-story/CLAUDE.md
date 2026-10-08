@@ -13,7 +13,7 @@
 |---|---|
 | **[00_CORE](guide/00_CORE.md)** | 항상. 최상위(판 관계·채널 정의·핵심 원칙·팩트·FACT/NARRATION·권리·변경 금지 기준·최종 판단) |
 | [01_SOURCE](guide/01_SOURCE.md) | 원본 찾기·**여섯 질문과 채택 판단**·선정·제외 |
-| [02_STORY](guide/02_STORY.md) | USE/SUPPORT/DELETE·롱폼 구성(20분 내외)·장면 묶음·내레이션·제목·첫 30초 |
+| [02_STORY](guide/02_STORY.md) | USE/SUPPORT/DELETE·롱폼 구성(길이는 내용이 정함, 최대 40분)·장면 묶음·내레이션·제목·첫 30초 |
 | [03_PRODUCTION](guide/03_PRODUCTION.md) | 제작 9단계·완성 전 체크리스트·첫 영상 기록·미정 사항 |
 | [04_EDIT_SUBTITLE](guide/04_EDIT_SUBTITLE.md) | 컷·소리·자막(흰색=해설/노랑=현장 번역)·번역 절차 |
 | [05_SHORTS](guide/05_SHORTS.md) | 쇼츠(단일 사건형·연속 발견형) |
