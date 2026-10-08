@@ -5,7 +5,13 @@
 import json, re, sys
 
 import os
-MAX = int(os.environ.get("SUB_MAX", 22))   # 한 줄 글자 수(#004: 20 — 글자를 키워서)
+MAX = int(os.environ.get("SUB_MAX", 22))
+WORDS = {}   # 환경 변수 WORDS_DIR 에 words_<ep>.json 이 있으면 나누는 시점을 단어 시작에 맞춘다
+if os.environ.get("WORDS_DIR"):
+    for _ep in ("O", "T"):
+        _p = os.path.join(os.environ["WORDS_DIR"], f"words_{_ep}.json")
+        if os.path.exists(_p):
+            WORDS[_ep] = [w for _s in json.load(open(_p)) for w in _s["w"]]   # 한 줄 글자 수(#004: 20 — 글자를 키워서)
 
 
 def plain(s):
@@ -29,7 +35,7 @@ def soft_cut(s, lo, hi):
     for a, b in zip(toks, toks[1:]):
         pos += len(a.surface)
         pa, pb = a.part_of_speech.split(",")[0], b.part_of_speech.split(",")[0]
-        if pa in ("助詞", "助動詞") and pb not in ("助詞", "助動詞") and b.surface[0] not in "」』）" and "接尾" not in b.part_of_speech:
+        if pa in ("助詞", "助動詞") and pb not in ("助詞", "助動詞", "記号") and b.surface[0] not in "」』）。、？！" and "接尾" not in b.part_of_speech:
             if lo <= pos <= hi:
                 cuts.append(pos)
     mid = len(s) / 2
@@ -55,6 +61,9 @@ def split(c):
         return [c]
     k = best_cut(s, 1, len(s) - 1, "。？！") or best_cut(s, 1, len(s) - 1) or soft_cut(s, 1, len(s) - 1) or len(s) // 2
     t = c["s0"] + (c["s1"] - c["s0"]) * k / len(s)
+    ws = [w for w in WORDS.get(c.get("ep"), []) if c["s0"] + 0.3 < w[0] < c["s1"] - 0.3]
+    if ws:                                   # 글자 비율로 잡은 시점을 가장 가까운 단어 시작으로(싱크, #004 v2부터)
+        t = min((w[0] for w in ws), key=lambda x: abs(x - t))
     a = dict(c, ja=s[:k], s1=round(t - 0.05, 2))
     b = dict(c, ja=s[k:], s0=round(t, 2))
     return split(a) + split(b)

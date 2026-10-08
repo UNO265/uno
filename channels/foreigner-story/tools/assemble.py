@@ -1,6 +1,6 @@
 """구성안(plan JSON)대로 원본 구간·정지 화면·카드를 이어 붙이고, 자막·내레이션을 입힌다.
 
-사용: python3 assemble.py <plan.json> <cues_src.json> <source.mp4 | sources.json> <out.mp4> [--ass-only]
+사용: python3 assemble.py <plan.json> <cues_src.json> <source.mp4 | sources.json> <out.mp4> [--ass-only | --ass-fast <이전 timeline.json>]
   원본이 여러 편이면 sources.json({"Ep24": "/path/ep24.mp4", ...})을 주고, item·cue에 "ep"를 적는다(#003부터).
   item "audio": "vocals" 이면 plan["stems_dir"]/<ep>_<IN>_<OUT>.wav(음원 분리한 목소리)를 소리로 쓴다(원본 음악 제거, 04 E6).
 
@@ -133,6 +133,23 @@ def render_items(plan, srcs, tmp, narr):
     return files
 
 
+def wrap_narr(x, limit):
+    """쉼표로도 못 나눈 긴 한 줄(limit+3자 초과)은 조사·조동사 뒤에서 두 줄로(화면 밖으로 넘치지 않게, #004 v2부터)."""
+    if len(x) <= limit + 3:
+        return x
+    from janome.tokenizer import Tokenizer
+    toks, pos, cuts = list(Tokenizer().tokenize(x)), 0, []
+    for a, b in zip(toks, toks[1:]):
+        pos += len(a.surface)
+        pa, pb = a.part_of_speech.split(",")[0], b.part_of_speech.split(",")[0]
+        if pa in ("助詞", "助動詞") and pb not in ("助詞", "助動詞", "記号") and 6 <= pos <= len(x) - 6:
+            cuts.append(pos)
+    if not cuts:
+        return x
+    k = min(cuts, key=lambda i: abs(i - len(x) / 2))
+    return x[:k] + "\\N" + x[k:]
+
+
 def split_narr(e, limit=None):
     limit = limit or NARR_LIMIT
     """긴 내레이션 자막을 문장(。)·쉼표(、) 단위로 나눠 차례로 보여 준다(한 줄 원칙, 화면 밖으로 넘치지 않게)."""
@@ -152,7 +169,8 @@ def split_narr(e, limit=None):
                 out.append(buf)
         else:
             out.append(p)
-    n = [len(x) for x in out]
+    out = [wrap_narr(x, limit) for x in out]
+    n = [len(x.replace("\\N", "")) for x in out]
     t, span, res = e["t0"], e["t1"] - e["t0"], []
     for x, k in zip(out, n):
         d = span * k / sum(n)
@@ -201,6 +219,7 @@ def build_events(plan, cues, starts, durs, narr):
 FILL = False
 FONT_SCALE = 1.0
 NARR_LIMIT = 22
+SUB_TOP = []      # plan["sub_top"]: [[출력 시작초, 끝초], ...] 자막을 화면 위로 올릴 구간(#004부터)
 SPK_COLORS = {}   # plan["speaker_colors"]: {"C": "FF8A00", ...} 화자별 노란 계열 색(#RRGGBB), #004부터
 
 
@@ -249,6 +268,8 @@ def write_ass(ev, cards, total, path):
             tx = "{\\pos(640,380)\\fad(250,200)\\bord2\\3c&H00141414&}" + tx
         elif st == "CS":
             tx = "{\\pos(640,262)\\fad(250,200)}" + tx
+        if st[0] in "YN" and any(e["t0"] < b and e["t1"] > a for a, b in SUB_TOP):
+            tx = "{\\an8}" + tx      # plan["sub_top"]: 원본 화면 글자(요금 표시 등)와 겹치는 구간은 자막을 위로
         lines.append(f"Dialogue: 1,{B.ass_time(e['t0'])},{B.ass_time(e['t1'])},{st},,0,0,0,,{tx}")
     Path(path).write_text(base + "\n".join(lines) + "\n", encoding="utf-8")
     head.unlink()
@@ -263,7 +284,8 @@ def main():
         B.CREDIT = plan["credit"]
     if plan.get("speakers"):
         B.SPEAKERS = plan["speakers"]
-    global FILL, SPK_COLORS, FONT_SCALE, NARR_LIMIT
+    global FILL, SPK_COLORS, FONT_SCALE, NARR_LIMIT, SUB_TOP
+    SUB_TOP = plan.get("sub_top", [])
     FONT_SCALE = plan.get("font_scale", 1.0)
     NARR_LIMIT = plan.get("narr_line_chars", 22)
     FILL = plan.get("frame") == "fill"
@@ -272,8 +294,13 @@ def main():
     tmp = tempfile.mkdtemp(prefix="asm_", dir=os.path.dirname(os.path.abspath(out)))
     texts = [it["narr"] for it in plan["items"] if it.get("narr")]
     narr = synth(texts, plan.get("readings", {}), tmp, plan.get("narr_speed", 1.25))
-    files = render_items(plan, src, tmp, narr)
-    durs = [dur(f) for f in files]
+    if "--ass-fast" in sys.argv:     # 자막 검수용: 이미 렌더링한 타임라인의 길이를 써서 ASS만 만든다(영상 렌더링 없음)
+        prev = json.load(open(sys.argv[sys.argv.index("--ass-fast") + 1]))["items"]
+        assert len(prev) == len(plan["items"]), "plan 항목 수가 이전 타임라인과 다르다"
+        files, durs = [], [x["dur"] for x in prev]
+    else:
+        files = render_items(plan, src, tmp, narr)
+        durs = [dur(f) for f in files]
     starts = [sum(durs[:i]) for i in range(len(durs))]
     total = sum(durs)
     ev, narr_pos = build_events(plan, cues, starts, durs, narr)
@@ -282,6 +309,10 @@ def main():
     write_ass(ev, cards, total, ass)
     json.dump(dict(items=[dict(it, start=round(s, 2), dur=round(d, 2)) for it, s, d in zip(plan["items"], starts, durs)],
                    events=ev), open(Path(out).with_suffix(".timeline.json"), "w"), ensure_ascii=False, indent=1)
+    if "--ass-fast" in sys.argv:
+        shutil.rmtree(tmp)
+        print(f"ASS → {ass}, total {total:.1f}s (fast)")
+        return
     lst = Path(tmp) / "list.txt"
     lst.write_text("".join(f"file '{f}'\n" for f in files))
     cut = Path(tmp) / "cut.mp4"
