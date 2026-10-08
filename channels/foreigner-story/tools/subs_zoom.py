@@ -9,7 +9,7 @@
 
 사용(렌더링 없이):
   1) python3 assemble.py <plan> <cues> <sources.json> <out.mp4> --ass-only   # out.ass + out.timeline.json
-  2) python3 subs_zoom.py <case_dir> <out.ass> [--asr] [--from 초] [--to 초] [--video 렌더본.mp4]
+  2) python3 subs_zoom.py <case_dir> <out.ass> [--asr] [--from 초] [--to 초] [--video 렌더본.mp4] [--windows 창목록] [--report-only]
      case_dir 에 sources.json, stems/(<ep>_<s0>_<s1>.wav), words_<ep>.json 이 있어야 한다.
      결과: <case_dir>/zoom_<ass이름>/z_XXXX.jpg, report.txt(어긋남·자막 없는 말 목록)
   --video 를 주면 렌더본 화면을 쓰고, 없으면 원본 프레임에 ASS를 입혀 만든다(렌더링 불필요).
@@ -185,10 +185,17 @@ def main():
     subs = load_subs(ass)
     if words: report(subs, words, od / "report.txt")
     total = max(i["start"] + i["dur"] for i in items)
-    for s in np.arange(float(opt("--from", 0)), float(opt("--to", total)), 15):
-        out = od / f"z_{int(s):04d}.jpg"
-        sheet(case, items, ass, subs, words, srcw, vad, wav, s, min(s + 16, total), out, opt("--video"))
-        print(out.name, flush=True)
+    if "--report-only" in a:
+        print("REPORT", od / "report.txt"); return
+    wins = np.arange(float(opt("--from", 0)), float(opt("--to", total)), 15)
+    if opt("--windows"):    # subs_pick.py 가 고른 창만(의심 구간 + 무작위 20%)
+        wins = sorted({float(l.split()[0]) for l in open(opt("--windows")) if l[:1].isdigit()})
+    from concurrent.futures import ProcessPoolExecutor    # 시트를 3장씩 동시에(4코어 기준 약 2.5배 빠름)
+    with ProcessPoolExecutor(3) as ex:
+        futs = [ex.submit(sheet, case, items, ass, subs, words, srcw, vad, wav, s, min(s + 16, total),
+                          od / f"z_{int(s):04d}.jpg", opt("--video")) for s in wins]
+        for s, f in zip(wins, futs):
+            f.result(); print(f"z_{int(s):04d}.jpg", flush=True)
     print("ZOOMDONE", od)
 
 
