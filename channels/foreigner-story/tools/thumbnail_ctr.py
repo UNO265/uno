@@ -33,11 +33,44 @@ def fit(text, h_px, max_w):
     return ImageFont.truetype(BLACK_FONT, size)
 
 
-def draw_line(img, text, h_px, max_w, x, y_bottom, colors, stroke, align="left", stroke_rgb=(0, 0, 0)):
-    """그라데이션 글자 + 두꺼운 검정 테두리 + 부드러운 그림자. 아래 끝을 y_bottom 에 맞춘다. bbox 반환."""
-    f = fit(text, h_px, max_w)
+RED = ((255, 59, 59), (224, 0, 0))
+
+
+def draw_rich(img, text, h_px, max_w, x, y_bottom, colors, stroke, stroke_rgb=(0, 0, 0)):
+    """[ ]로 감싼 부분만 빨강(06 TH8 보강 2). 글자 크기는 전체 문장 기준으로 한 번 정한다. bbox 반환."""
+    import re
+    parts = [(t[1:-1], True) if t.startswith("[") else (t, False) for t in re.split(r"(\[[^\]]*\])", text) if t]
+    plain = "".join(t for t, _ in parts)
+    f = fit(plain, h_px, max_w)
+    boxes, cx = [], x
+    for t, red in parts:
+        b = draw_line(img, t, h_px, max_w, cx, y_bottom, RED if red else colors, stroke, stroke_rgb=stroke_rgb, font=f,
+                      base=f.getbbox(plain, stroke_width=stroke))
+        boxes.append(b)
+        cx += round(f.getlength(t))
+    return (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
+
+
+def draw_mark(img, kind, fx, fy, fr):
+    """빨간 원(ring) 또는 빨간 「?!」(06 TH8 보강 3). fx, fy, fr 는 화면 비율."""
+    d = ImageDraw.Draw(img)
+    x, y, r = fx * W, fy * H, fr * H
+    if kind == "ring":
+        d.ellipse((x - r, y - r, x + r, y + r), outline=(0, 0, 0), width=16)
+        d.ellipse((x - r + 3, y - r + 3, x + r - 3, y + r - 3), outline=(255, 30, 30), width=10)
+    else:
+        f = ImageFont.truetype(BLACK_FONT, round(r * 2))
+        d.text((x, y), "?!", font=f, fill=(255, 30, 30), stroke_width=7, stroke_fill=(255, 255, 255), anchor="mm")
+
+
+def draw_line(img, text, h_px, max_w, x, y_bottom, colors, stroke, align="left", stroke_rgb=(0, 0, 0), font=None, base=None):
+    """그라데이션 글자 + 두꺼운 검정 테두리 + 부드러운 그림자. 아래 끝을 y_bottom 에 맞춘다. bbox 반환.
+    font·base 를 주면 그 글꼴과 기준 bbox(여러 조각의 세로 위치를 맞추기 위해)를 쓴다."""
+    f = font or fit(text, h_px, max_w)
     pad = stroke * 3
     bb = f.getbbox(text, stroke_width=stroke)
+    if base is not None:
+        bb = (bb[0], base[1], bb[2], base[3])
     tw, th = bb[2] - bb[0] + 2 * pad, bb[3] - bb[1] + 2 * pad
     fill = Image.new("L", (tw, th), 0); edge = Image.new("L", (tw, th), 0)
     o = (pad - bb[0], pad - bb[1])
@@ -106,6 +139,7 @@ def main():
     ap.add_argument("--tail-x", type=float, default=None, help="말풍선 꼬리 위치(화면 폭 대비 0~1). 말한 사람 쪽으로")
     ap.add_argument("--s2", default="000000", help="2줄 테두리 색(hex)")
     ap.add_argument("--text-w", type=float, default=0.74, help="아래 제목의 최대 폭(화면 폭 대비). 얼굴을 가리면 줄인다")
+    ap.add_argument("--mark", default=None, help="ring:x,y,r 또는 q:x,y,r (화면 비율). 빨간 원 / 빨간 「?!」 하나")
     a = ap.parse_args()
     global BLACK_FONT
     BLACK_FONT = FONTS + a.font
@@ -128,7 +162,10 @@ def main():
                             "navy": ((247, 243, 234), (27, 42, 65), 0.92)}[a.quote_style]
             boxes.append(draw_boxed(img, a.quote, round(H * 0.07), round(W * a.quote_w), x, round(H * 0.16), fg, bg, al_a, al,
                                     tail=a.quote_style == "bubble", tail_x=a.tail_x))
-    b2 = draw_line(img, a.line2, round(H * 0.165), round(W * a.text_w), m, round(H * 0.86), yellow, 10,
+    if a.mark:
+        k, v = a.mark.split(":")
+        draw_mark(img, "ring" if k == "ring" else "q", *map(float, v.split(",")))
+    b2 = draw_rich(img, a.line2, round(H * 0.165), round(W * a.text_w), m, round(H * 0.86), yellow, 10,
                    stroke_rgb=hx(a.s2 + "," + a.s2)[0])
     if a.l1_style == "stroke":
         b1 = draw_line(img, a.line1, round(H * 0.105), round(W * a.text_w), m, b2[1] - round(H * 0.01), white, 8)
