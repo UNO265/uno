@@ -17,7 +17,7 @@
 | 9 | [Our FIRST TIME in Japan 🇯🇵 TOKYO Is Full of Surprises!](https://www.youtube.com/watch?v=SMmSMtSaE_M) | Flora and Note | 21분 · 14만 | 첫 방일 커플 | r4형(첫날 고전). 여행 일기형 위험 |
 | 10 | [Our First Week in Tokyo Was NOT What We Expected! 🇯🇵](https://www.youtube.com/watch?v=r5yFB1cf_n8) | On The Fly | 48분 · 64만 | 첫 방일 | 길어서 사건 하나를 골라야 함 |
 | 11 | [MY FIRST TIME in JAPAN 🇯🇵 Tokyo is Even Better than Expected](https://www.youtube.com/watch?v=Mcggugol2ts) | Zane Travel | 44분 · 182만 | 첫 방일 | 큰 채널(허락 어려울 수 있음), 일기형 위험 |
-| 12 | [Two out of three bikes broke down on our ride. [Troubles, humanity, and Harleys]](https://www.youtube.com/watch?v=F5g6oR570ts) | junkmotorcycle | 27분 · 10.8만 | 고장 → 도움(#003과 같은 구조) | 출연자가 외국인 여행자인지 확인 |
+| ~~12~~ | ~~[Two out of three bikes broke down on our ride. [Troubles, humanity, and Harleys]](https://www.youtube.com/watch?v=F5g6oR570ts) | junkmotorcycle | 27분 · 10.8만 | 고장 → 도움(#003과 같은 구조) | **제외: 일본인 채널**(채널의 다른 영상이 모두 일본어 제목, 2026-10-08 확인) |
 
 ## 추천 순서(1차)
 1. **#1 Nomadic Indian** — 조회 상위 소재(도와준 일본인) + 길이(39분)가 충분.
@@ -32,3 +32,11 @@
 - 나머지 약 30분은 걸으며 하는 혼잣말 해설(빈집, 편의점, 쓰레기통, 치안·신뢰, 혼자 사는 노인의 고독사, 인도와의 비교 등).
 - 01 여섯 질문: 목적(다음 역까지 걷기)·행동·반응·결과가 이어지는 사건은 ④ 하나뿐. 20분을 채우려면 관광·감탄·일반론 해설로 채워야 해서 02 T7 「분량을 관광지·감탄으로 채우지 않는다」에 걸림. 고독사·「일본인은」 일반화 발언은 그대로 옮기면 민감.
 - **판정: 롱폼 보류. ④ 장면은 쇼츠(단일 사건형, 05)로 적합**(비 → 차가 멈춤 → 태워 줌 → 「You are very nice」). 힌디어라 번역은 받아쓰기 모델을 키워(medium) 다시 확인해야 함.
+
+## 붙여서 만들 조합 (2026-10-08, 사용자 결정 「15분 미만은 2~3편을 붙인다」, 채널 영상 목록으로 확인)
+| 조합 | 편 | 합계 | 메모 |
+|---|---|---|---|
+| **A(추천)** | Sofia Huyhua [LOST IN JAPAN!!! (PART 1)](https://www.youtube.com/watch?v=epRzSPnrx2o) + [(PART 2)](https://www.youtube.com/watch?v=jySnIqmbrUM) | 15+15 = 30분 | 한 사건(길 잃음)이 두 편으로 이어짐. 작은 채널(허락 쉬울 가능성) |
+| B | Jet Bent-Lee [we flew 12 hours to surprise my dad in japan.](https://www.youtube.com/watch?v=omi3pt6BGbU) + [72 hours in tokyo.](https://www.youtube.com/watch?v=qytvYm5lShg) | 13+16 = 29분 | 깜짝 방문(r5형, 30만). 아버지가 일본 거주인지 확인. 두 편의 순서·연결 확인 |
+| C | World Family Explorers [First Time Riding Japan's BULLET Train!](https://www.youtube.com/watch?v=pAH9D9_Qi1Y) + [OUR FIRST TIME IN JAPAN! OSAKA TOOK US BY SURPRISE](https://www.youtube.com/watch?v=czXlHDWvc80) | 18+53분 | 가족 첫 일본(r6형). 오사카 편이 길어 사건 하나를 골라야 함 |
+- LOUGOTGUAP은 채널에 「living *alone* in Japan」 등이 있어 **일본 거주인지 확인 전 보류**.
