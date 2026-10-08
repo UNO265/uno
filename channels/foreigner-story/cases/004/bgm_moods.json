@@ -1,0 +1,13 @@
+{
+ "_motif": "주제 선율: 0,4,7,9,7,2 (모든 장 공통, 악기만 바꿈)",
+ "A": {"_name": "0 첫 장면·개찰구의 혼란", "prog": ["Am9", "Fmaj7", "Dm9", "E7sus4"], "bpm": 92, "beats": 4, "key": 57, "lead": "MARIMBA", "pulse": "arp8", "pad": "STRINGS", "pizz": true, "bell": "CELESTA", "drums": "shaker", "motif": [0, 4, 7, 9, 7, 2]},
+ "B": {"_name": "1 처음 타는 전철", "prog": ["Fmaj7", "G6", "Em7", "Am7"], "bpm": 96, "beats": 4, "key": 53, "lead": "EPIANO", "pulse": "call", "pad": "WARMPAD", "pizz": true, "bell": "GLOCK", "drums": "road", "motif": [0, 4, 7, 9, 7, 2]},
+ "C": {"_name": "2 팬케이크 가게", "prog": ["Cmaj7", "Am7", "Dm7", "G6"], "bpm": 100, "beats": 4, "key": 60, "lead": "VIBES", "pulse": "pop", "pad": "WARMPAD", "pizz": true, "bell": "MUSICBOX", "drums": "rim", "swing": 0.08, "motif": [0, 4, 7, 9, 7, 2]},
+ "D": {"_name": "3 오사카성", "prog": ["Dm", "C", "Bbmaj7", "A7sus4"], "bpm": 84, "beats": 4, "key": 50, "lead": "HARP", "pulse": "harp", "pad": "STRINGS", "pizz": false, "bell": "FLUTE", "drums": "timp", "motif": [0, 3, 5, 7, 5, 0]},
+ "E": {"_name": "4 숙소", "prog": ["Ebmaj7", "Cm7", "Abmaj7", "Bb6"], "bpm": 88, "beats": 3, "key": 51, "lead": "NYLON", "pulse": "waltz", "pad": null, "pizz": false, "bell": "CELESTA", "motif": [0, 4, 7, 9, 7, 2]},
+ "F": {"_name": "5 첫 회전 초밥", "prog": ["Gmaj7", "Em7", "Am7", "D7sus4"], "bpm": 104, "beats": 4, "key": 55, "lead": "JAZZGTR", "pulse": "comp", "pad": "WARMPAD", "walk": true, "pizz": false, "bell": "VIBES", "drums": "brush", "swing": 0.16, "motif": [0, 4, 7, 9, 7, 2]},
+ "G": {"_name": "6 짐 45kg·도쿄로", "prog": ["Dm", "Bb", "F", "C"], "bpm": 104, "beats": 4, "key": 50, "lead": "CLEANGTR", "pulse": "drive16", "pad": "STRINGS", "pizz": true, "bell": "GLOCK", "drums": "kick4", "motif": [0, 4, 7, 9, 7, 2]},
+ "H": {"_name": "7 개찰구 앞에서", "prog": ["Em7", "Cmaj7", "Am7", "B7sus4"], "bpm": 90, "beats": 4, "key": 52, "lead": "PIZZ", "pulse": "stacc", "pad": "SLOWSTR", "pizz": false, "bell": "CELESTA", "drums": "heart", "motif": [0, 4, 7, 9, 7, 2]},
+ "I": {"_name": "8 시속 300km", "prog": ["Amaj7", "F#m7", "Dmaj7", "E6"], "bpm": 108, "beats": 4, "key": 57, "lead": "EPIANO", "pulse": "arp8", "pad": "STRINGS", "pizz": true, "bell": "GLOCK", "drums": "shaker", "motif": [0, 4, 7, 9, 7, 2]},
+ "J": {"_name": "9 도쿄·끝", "prog": ["Fmaj7", "Am7", "Bbmaj7", "C6"], "bpm": 78, "beats": 4, "key": 53, "lead": "PIANO", "pulse": "broken", "pad": "STRINGS", "pizz": false, "bell": "CELESTA", "motif": [0, 4, 7, 9, 7, 2]}
+}

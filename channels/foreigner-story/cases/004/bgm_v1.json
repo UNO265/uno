@@ -1,0 +1,56 @@
+{
+ "tracks": {
+  "A": "/home/user/media/case004c/bgm/A.wav",
+  "B": "/home/user/media/case004c/bgm/B.wav",
+  "C": "/home/user/media/case004c/bgm/C.wav",
+  "D": "/home/user/media/case004c/bgm/D.wav",
+  "E": "/home/user/media/case004c/bgm/E.wav",
+  "F": "/home/user/media/case004c/bgm/F.wav",
+  "G": "/home/user/media/case004c/bgm/G.wav",
+  "H": "/home/user/media/case004c/bgm/H.wav",
+  "I": "/home/user/media/case004c/bgm/I.wav",
+  "J": "/home/user/media/case004c/bgm/J.wav"
+ },
+ "cues": [
+  {
+   "item": 0,
+   "track": "A"
+  },
+  {
+   "item": 5,
+   "track": "B"
+  },
+  {
+   "item": 17,
+   "track": "C"
+  },
+  {
+   "item": 28,
+   "track": "D"
+  },
+  {
+   "item": 39,
+   "track": "E"
+  },
+  {
+   "item": 44,
+   "track": "F"
+  },
+  {
+   "item": 58,
+   "track": "G"
+  },
+  {
+   "item": 67,
+   "track": "H"
+  },
+  {
+   "item": 73,
+   "track": "I"
+  },
+  {
+   "item": 80,
+   "track": "J"
+  }
+ ]
+}
