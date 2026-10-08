@@ -1,5 +1,7 @@
 # CASE #004 업로드 문구 (2026-10-08, v2 렌더 기준)
 
+> 업로드용 파일: 드라이브 `tabinome/CASE004/case004_1080p.mp4`(1920×1080, 28:42, 1.36GB, 13:02 정지 화면 교체본) https://drive.google.com/open?id=1Lkf1rMrIg8KUmn0vt-kx635l5osbBi4m
+
 > 업로드 문구는 **일본어만**. 괄호 안 한국어는 확인용이며 올리지 않는다.
 > 근거: 「電車が少し怖かった」= O 1:45 「we were a little intimidated by the train system here」·T 4:19 / 「45キロ」= T 1:42 「100 pounds」 / 「時速300キロ」= T 10:46 / 「44140円」= T 17:52 / 「新幹線の勝ち」= T 18:27.
 > 쓰지 않는 것: 사용 허락을 받았다는 표현(미확인), 원본에 없는 감정·평가.
