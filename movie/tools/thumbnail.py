@@ -12,7 +12,9 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent.parent
 FONTS = {"dela": (str(ROOT / "work/fonts/DelaGothicOne-Regular.ttf"), None),
-         "noto-black": (str(ROOT / "work/fonts/NotoSansJP-VF.ttf"), "Black")}
+         "noto-black": (str(ROOT / "work/fonts/NotoSansJP-VF.ttf"), "Black"),
+         # 2026-10-07 사용자 지정 썸네일 폰트(GPT 썸네일 글자와 가장 비슷): M PLUS 1p Black, 자간을 좁혀 쓴다
+         "mplus-black": (str(ROOT / "assets/fonts/MPLUS1p-Black.ttf"), None)}
 W, H = 1080, 1920
 TOP, BOTTOM = int(H * 0.614), int(H * 0.876)  # 2026-10-07 사용자 확정 위치(guide/01_COVER.md)
 SIDE = int(W * 0.045)
@@ -44,18 +46,25 @@ def frame(src, t, crop, top_h=None, top_y=0, grade=""):
     return bg
 
 
-def text_layer(lines, sizes, font="dela", scale_x=1.0, style="gpt"):
+def text_layer(lines, sizes, font="dela", scale_x=1.0, style="gpt", tracking=0.0):
     """lines: [(텍스트, 'white'|'yellow')], sizes: 각 줄 글자 크기. 줄마다 RGBA 이미지와 실제 글자 상자를 돌려준다."""
     out = []
     for (txt, col), size in zip(lines, sizes):
         path, var = FONTS[font]
         f = ImageFont.truetype(path, size)
         if var: f.set_variation_by_name(var)
+        trk = int(size * tracking)  # 자간(음수면 좁게)
+        adv = [f.getlength(ch) for ch in txt]
         l, t, r, b = f.getbbox(txt)
-        w, h = r - l, b - t
+        w, h = int(sum(adv) + trk * (len(txt) - 1) - l), b - t
         pad = 40
         mask = Image.new("L", (w + pad * 2, h + pad * 2), 0)
-        ImageDraw.Draw(mask).text((pad - l, pad - t), txt, font=f, fill=255)
+        dm = ImageDraw.Draw(mask); xx = pad - l
+        for ch, a in zip(txt, adv):
+            dm.text((xx, pad - t), ch, font=f, fill=255); xx += a + trk
+        bb = mask.getbbox()  # 실제 글자 상자로 다시 맞춤
+        if bb:
+            mask = mask.crop((bb[0] - pad, bb[1] - pad, bb[2] + pad, bb[3] + pad)); w, h = bb[2] - bb[0], bb[3] - bb[1]
         if style == "gpt":  # GPT 썸네일 글자처럼 획을 조금 더 굵게
             mask = mask.filter(ImageFilter.MaxFilter(3))
         if scale_x != 1.0:  # 장체(가로로 좁힌 글자) — 참고 썸네일처럼 세로로 길게
@@ -107,14 +116,15 @@ def main():
     # 줄마다 글자 크기를 바꿔 좌우를 꽉 채운다(같은 비율). 두 줄 높이가 띠를 넘으면 같은 비율로 줄인다.
     gap = int(H * GAP_RATIO)
     sizes = list(cfg.get("sizes", [200, 200]))
-    font, sx, style = cfg.get("font", "noto-black"), cfg.get("scale_x", 1.0), cfg.get("style", "gpt")
+    font, sx, style = cfg.get("font", "mplus-black"), cfg.get("scale_x", 1.0), cfg.get("style", "gpt")
+    trk = cfg.get("tracking", -0.06)
     for _ in range(4):
-        layers = text_layer(cfg["lines"], sizes, font, sx, style)
+        layers = text_layer(cfg["lines"], sizes, font, sx, style, trk)
         sizes = [max(20, int(sz * (W - 2 * SIDE) / w)) for sz, (_, w, _, _) in zip(sizes, layers)]
-    layers = text_layer(cfg["lines"], sizes, font, sx, style)
+    layers = text_layer(cfg["lines"], sizes, font, sx, style, trk)
     while sum(h for _, _, h, _ in layers) + gap * (len(layers) - 1) > BOTTOM - TOP:
         sizes = [int(v * 0.98) for v in sizes]
-        layers = text_layer(cfg["lines"], sizes, font, sx, style)
+        layers = text_layer(cfg["lines"], sizes, font, sx, style, trk)
     y = TOP  # 1줄 위 끝 61.4% 고정
     canvas = img.convert("RGBA")
     boxes = []

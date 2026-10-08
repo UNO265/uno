@@ -1,5 +1,5 @@
 {
- "font": "noto-black",
+ "font": "mplus-black",
  "scale_x": 1.0,
  "gap": 14,
  "sizes": [
@@ -27,5 +27,6 @@
   ]
  ],
  "note": "128.97s 1900 클로즈업. 720p 원본을 Real-ESRGAN x4 + 원본 확대 40% 섞기(피부가 밀랍처럼 보이지 않게) + 약한 그레인 / 사용자 확정 2026-10-07: A3",
- "style": "gpt"
+ "style": "gpt",
+ "tracking": -0.06
 }
