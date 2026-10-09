@@ -9,7 +9,7 @@
 | #010 | お米 | 수요 조사(YouTube 자동완성) → 제목 확정 「お米5キロ、農家に残るのは？」 → 질문 사슬 → 대본(4,052자) → 음성 12:59(Nemo) → 콘티 v5 확정 → 키네틱 제작([case011-research.md](case011-research.md)) |
 | #011 | タクシー | 수요 조사(자동완성 넓은 조사, [case011-candidates.md](case011-candidates.md)) → 주제 확정 → 1차 자료 확인·ANSWER CARD 초안([case011-research.md](case011-research.md)) → 제목 확정 「タクシー1000円、運転手に残るのは？」 → **질문 사슬 설계 확인 대기**([case011-question-chain.md](case011-question-chain.md)) |
 
-- **2026-10-09 사용자**: 편의점 편(「コンビニ、なぜ値引きせず捨てる？」)은 공개하지 않고 **완전 삭제**. 작업 파일 번호를 공개 번호에 맞춤: お米 = case010, タクシー = case011.| #011 | タクシー | 수요 조사(자동완성 넓은 조사) → 주제 확정 → 1차 자료 확인·ANSWER CARD 초안([case011-research.md](case011-research.md)) → 제목 확정 「タクシー1000円、運転手に残るのは？」 → **질문 사슬 설계 확인 대기**([case011-question-chain.md](case011-question-chain.md)) |
+- **2026-10-09 사용자**: 편의점 편(「コンビニ、なぜ値引きせず捨てる？」)은 공개하지 않고 **완전 삭제**. 작업 파일 번호를 공개 번호에 맞춤: お米 = case010, タクシー = case011.
 
 - 각 CASE는 CORE v4 순서로 진행한다: ANSWER CARD → 질문 사슬 설계 → 대본 → 장면 설계 → 음성 → 영상 → PROMISE AUDIT.
 - [case006-candidates.md](case006-candidates.md)의 スシロー 안은 보관한다(이후 CASE 후보).
