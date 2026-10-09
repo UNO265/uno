@@ -1,23 +1,17 @@
-# CASE #010 오디오 출처·라이선스
+# CASE #010 오디오 출처
 
-CASE #001과 같은 음원·같은 조건입니다([CASE #001 문서](case001-audio-credits.md)).
-
-| 구분 | 사용한 것 | 설명란 표기 |
+| 항목 | 출처 | 표기 |
 |---|---|---|
-| 내레이션 | VOICEVOX / 雀松朱司(ノーマル, style 52) | **필요**: `VOICEVOX:雀松朱司` |
-| BGM | CASE #010용 오리지널 8곡(`music.py --case case010`, e_open·e_calc·e_rule·e_why·e_new·e_choice·e_answer·outro), 음원 FluidR3_GM(MIT) | 의무 아님 |
-| 효과음 | 자체 제작 | 의무 아님 |
+| 내레이션 | VOICEVOX Nemo 女声1(style 10005) | **필요**: `VOICEVOX Nemo`(상업 이용 무료, 기계학습 이용 금지) |
+| BGM | OpenTracks 6곡(0:00~2:22는 Sulpiride, 나머지는 #009 키네틱판과 같은 5곡을 순서 변경) — 상업 이용 가능·저작권 표기 불필요·YouTube 배경음악 가능, 작곡가 조건 「サイト準拠」 | 권장: 곡명·작곡가 |
+| 엔딩곡·효과음 | 자체 작곡(FluidR3_GM SoundFont, MIT) | 권장 |
 
-| 무드 | 구간 | 템포 | 악기 |
-|---|---|---|---|
-| e_open | E03~E05 | 72 | 비브라폰 + 패드 |
-| e_calc | E06~E15 | 100 | 실로폰 스타카토 + 피치카토 + 어쿠스틱 베이스 + 림 |
-| e_rule | E16~E23 | 84 | 클라리넷 + 현 |
-| e_why | E24~E30B | 96 | 뮤트 기타 분산화음 + 프렛리스 베이스 + 셰이커 |
-| e_new | E31~E35 | 88 | 일렉트릭 피아노 + 글로켄 주제 + 느린 현 |
-| e_choice | E36~E37 | 98 | 칼림바 + 셰이커 |
-| e_answer | E38~E40 | 72 | 피아노 + 비브라폰 주제 |
-| outro | E41~ | 80 | 피아노 + 비브라폰 주제 |
-
-- 주제 선율: 계산대 「ピッ」을 떠올리게 하는 짧은 상하(12·7·9·4). **실제 체인의 입점 차임은 쓰지 않는다.**
-- BGM을 끄는 곳: E01~E02, E11(답 먼저), E31(CLUE 01), E40 첫 문장 전.
+| 구간 | 곡 |
+|---|---|
+| 0:00~2:22 도입·5키로의 속 | Sulpiride (Anonyment, https://opentracks.com/bgm/detail/12192) — 2026-10-06 사용자 선택(후보 4곡 중) |
+| 2:22~4:40 | Investor Night (Anonyment) |
+| 4:40~6:32 | Cassette Tape Dream (しゃろう) |
+| 6:32~9:36 (HERO: 논의 크기) | Whisper of Drums (Anonyment) |
+| 9:36~11:26 | Connectedness (Anonyment) |
+| 11:26~12:43 (흔들림·최종 답) | Random Number(1:00부터) |
+| 12:43~ 엔딩 | 자체 outro |

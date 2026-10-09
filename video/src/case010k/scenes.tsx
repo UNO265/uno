@@ -1,4 +1,4 @@
-/** #011 お米 の場面（F01〜F38）。docs/case011-conti-v5.md。rel(id, i) = その場面の中で、カット id の i 番目の文が始まるフレーム */
+/** #010 お米 の場面（F01〜F38）。docs/case010-conti-v5.md。rel(id, i) = その場面の中で、カット id の i 番目の文が始まるフレーム */
 import React from "react";
 import { Audio, Sequence, staticFile, useCurrentFrame } from "remotion";
 import { Bar3D, BlobLayer, Chapter, CompareCards, Document, KeyLine, KeyLineDark, LineChart, ListCard, NumberPunch, QuestionDrum, Stamp, countText } from "../tpl/templates";

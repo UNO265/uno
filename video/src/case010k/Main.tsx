@@ -1,18 +1,18 @@
 /**
- * 公開番号 CASE #010（作業フォルダは case011）「お米5キロ、農家に残るのは？」（docs/case011-conti-v5.md）
+ * CASE #010「お米5キロ、農家に残るのは？」（docs/case010-conti-v5.md）
  * 導入 = 3D キネティック（T01）、本編 = モーション・テンプレート（T02〜T11）+ HERO、波形の強弱。
- * BGM = OpenTracks 6 曲（冒頭は Sulpiride、残りは #009 と同じ曲を別の並びで、docs/case011-audio-credits.md）、エンディング = 固定（C8、#009 と同じ画面）。
+ * BGM = OpenTracks 6 曲（冒頭は Sulpiride、残りは #009 と同じ曲を別の並びで、docs/case010-audio-credits.md）、エンディング = 固定（C8、#009 と同じ画面）。
  */
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, getInputProps, interpolate, staticFile, useCurrentFrame } from "remotion";
-import timeline from "../../public/case011/timeline.json";
+import timeline from "../../public/case010/timeline.json";
 import { CutData } from "../lib";
 import { END9 } from "../case009/end";
 import { C, Caption, Hud, clamp, useFonts } from "../kinetic/kit";
 import { SCENES } from "./scenes";
 
 const cuts = timeline.cuts as CutData[];
-export const total011k = timeline.totalFrames;
+export const total010k = timeline.totalFrames;
 const cut = (id: string) => cuts.find((c) => c.id === id)!;
 const at = (id: string) => cut(id).from;
 
@@ -41,7 +41,7 @@ const CUES: Cue[] = [
   { file: "case009/music_ot/ot_whisper_of_drums.mp3", from: at("F21"), to: at("F31"), level: 0.19 },
   { file: "case009/music_ot/ot_connectedness.mp3", from: at("F31"), to: at("F35"), level: 0.18 },
   { file: "case009/music_ot/ot_random_number.mp3", from: at("F35"), to: at("F39"), start: 60 * 30, level: 0.2 },
-  { file: "case009/music_k/c9k_06_outro.wav", from: at("F39"), to: total011k, level: 0.3 },
+  { file: "case009/music_k/c9k_06_outro.wav", from: at("F39"), to: total010k, level: 0.3 },
 ];
 const CueTrack: React.FC<{ cue: Cue }> = ({ cue }) => {
   const len = cue.to - cue.from;
@@ -82,7 +82,7 @@ const Overlay: React.FC = () => {
   );
 };
 
-export const Main011K: React.FC = () => {
+export const Main010K: React.FC = () => {
   useFonts();
   return (
     <AbsoluteFill style={{ background: C.bg }}>

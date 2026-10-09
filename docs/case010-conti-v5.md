@@ -1,6 +1,6 @@
-# #010（작업 파일 case011） 최종 콘티 v5 — 「お米5キロ、農家に残るのは？」
+# #010 최종 콘티 v5 — 「お米5キロ、農家に残るのは？」
 
-음성 **12:59**(VOICEVOX Nemo 女声1, `video/public/case011/timeline.json`). #009 키네틱판과 같은 체계: 템플릿은 [motion-templates](templates/motion-templates.md), 자막·출처 규칙은 03(큰 자막 띠, 출처는 그래픽 바로 아래, 그래픽은 y≈790 위, 오른쪽 아래 비움).
+음성 **12:59**(VOICEVOX Nemo 女声1, `video/public/case010/timeline.json`). #009 키네틱판과 같은 체계: 템플릿은 [motion-templates](templates/motion-templates.md), 자막·출처 규칙은 03(큰 자막 띠, 출처는 그래픽 바로 아래, 그래픽은 y≈790 위, 오른쪽 아래 비움).
 강도: **강** = 키네틱·펀치(검정), **중** = 비교·흐름(검정), **약** = 설명(종이). ★ = 이 편만의 HERO. 「計算」「目安」「報道」은 화면에 표시(C4).
 
 | 시각 | CUT | 내용(요지) | 화면 | 강도 |

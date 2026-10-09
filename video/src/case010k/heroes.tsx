@@ -1,4 +1,4 @@
-/** #011 お米 の HERO 場面（docs/case011-conti-v5.md）。すべて黒地、グラフは y≈790 より上に収める（03 字幕帯）。 */
+/** #010 お米 の HERO 場面（docs/case010-conti-v5.md）。すべて黒地、グラフは y≈790 より上に収める（03 字幕帯）。 */
 import React from "react";
 import { AbsoluteFill, Easing, interpolate } from "remotion";
 import { C, F, clamp, out, pop } from "../kinetic/kit";
